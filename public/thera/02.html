@@ -1,0 +1,641 @@
+
+<html>
+<head>
+    <title>Маха дуккхаккхандха сутта: Большая лекция о груде страданий :: Мадджхима Никая 13</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Всероссийский сайт о буддизме - Тхеравада.ру">
+    <meta name="keywords" content="будда, буддизм, буддийский храм, тхеравада, тэравада, учение старейшин, учение старцев, путь старцев, стхавиравада, theravada, теравада, сутта, палийский канон, типитака, трипитака, абхидхамма, сиддхартха готама, гаутама, Шакьямуни, архат, монах, дхарма, дхамма, сангха, восьмеричный путь, четыре благородные истины, виная, просветленный, просветление, сансара, бхикку, бхиккху">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript">
+        //Пути к директориям
+        var pathToScript = '/Index/Scripts/';
+        var pathToArticles = '/Teaching/Canon/Suttanta/Texts/';
+        //-----------------------------------
+        var request = false;
+        try {
+            request = new XMLHttpRequest();
+        }
+        catch (trymicrosoft) {
+            try {
+                request = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (othermicrosoft) {
+                try {
+                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (failed) {
+                    request = false;
+                }
+            }
+        }
+
+        if (!request) {
+            alert("Ошибка в работе");
+        }
+
+        function sendRequest() {
+            var url = "/Index/Scripts/build_array.php?scr="+pathToScript+"&art="+pathToArticles;
+            request.open("GET", url, true);
+            request.onreadystatechange = getResponse;
+            request.send(null);
+        }
+
+        function getResponse() {
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    var response = request.responseText;
+                    var articles = request.responseText.split(' ');
+                    var random = Math.round((Math.random()*(articles.length-2)));
+                    window.open("http://" + document.domain + articles[random], "_self");
+                }
+            }
+        }
+    </script>
+</head>
+<body text="#333300" leftmargin="1" topmargin="1" marginwidth="1" marginheight="1" no-repeat bgcolor="#FFFFCC" vlink="#996633" link="#996633" alink="#996633">
+<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center" style="background:#FFFFCC;">
+    <tr>
+        <td>
+            <div align="center">
+                <style>
+                    a {border:0px solid #FFFFCC;text-decoration:none}
+                    a:hover {font-family: Arial;
+                        border:0px solid #996633;color: #000000;text-decoration:none;background-color:#D8D68B;padding: 0;}
+                    a:link { color: #996633; font-family: Arial; text-decoration: none }
+                    div {font-family: Arial;text-decoration:none}
+                    .a{TEXT-INDENT: 2em}
+                    .bottom
+                    a:hover { color: #000000; font-family: Arial; text-decoration: none; background: none; }
+                    .bottom
+                    a:link { color: #996633; font-family: Arial; text-decoration: none; }
+                    body { background:#FFFFCC; overflow-y:scroll}
+                    p {TEXT-INDENT: 0em}
+                </style>
+                <br>
+                <table width="97%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                        <td width="84%" bgcolor="#CBB079" height="45">&nbsp;&nbsp;&nbsp;<i><font size="2" face="Georgia, Times New Roman, Times, serif"><b>Буддизм<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Учение Старцев </b></font></i></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                </table>
+                <table width="97%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td width="9%" bgcolor="#EFE699" height="64" rowspan="3">
+                            <table width="50%" border="0" cellspacing="0" cellpadding="0" align="center">
+                                <tr>
+                                    <td><a href="/index.htm" style="border:0px;" title="вернуться к разделу">
+                                        <div style='font-size:24.0pt;font-family:"Arial"'>
+                                            <div align="center">«</div>
+                                        </div>
+                                    </a></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td colspan="2" bgcolor="#EFE699" rowspan="3"><font face="Times New Roman, Times, serif" size="7">Тхеравада.ру</font></td>
+                        <td width="3%" bgcolor="#CBB079">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#CBB079">&nbsp;</td>
+                        <td rowspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <br>
+                <table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td class="bottom" height="2" width="1%"> <a href="../majjhima.htm#7" style="border:0px;" title="вернуться к разделу">
+                            <div style='font-size:16.0pt;font-family:"Arial"'>&#9668;</div>
+                        </a><a href="javascript: void(0)" onclick="sendRequest()" style="border:0px;" title="случайная сутта">
+                            <div style='font-size:16.0pt;font-family:"Arial"'><font size="-4">&nbsp;</font>&#8362;</div>
+                        </a> </td>
+                        <td height="2" width="44%">&nbsp; </td>
+                        <td height="2" width="36%"><span
+                            style='font-size:32.0pt;font-family:"Times New Roman"'>&#1645;</span></td>
+                        <td class="bottom" height="2" width="19%">
+                            <div style='font-size:22.0pt;font-family:"Arial"'></div>
+
+                        </td>
+                    </tr>
+                    <tr bgcolor="#F4EFBD">
+                        <td height="3" colspan="4">
+                            <div align="center"><font face="Arial, Helvetica, sans-serif" color="#FFFFCC" style="cursor:default;font-size:1pt;">.</font></div>
+                        </td>
+                    </tr>
+                </table>
+                <div align="center"><br>
+                    <table width="70%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <div align="center"><font size="5" face="Times New Roman, Times, serif">Маха
+                                    дуккхаккхандха сутта: Большая лекция о груде страданий<br>
+                                    <font size="3">МН 13</font></font></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table width="70%" border="0" cellspacing="5" cellpadding="0">
+                        <tr>
+                            <td width="61%" height="2">&nbsp;</td>
+                            <td width="38%" height="2"><span style="font-size:8pt;font-family:Arial;">
+        <div align="right"><span style="font-size:8pt;font-family:Arial;">
+                  <div align="right"><i><font color="#996633"><span style="font-size:8pt;font-family:Arial;"><span style="font-size:8pt;font-family:Arial;"><span style="font-size:8pt;font-family:Arial;"><span style="font-size:8pt;font-family:Arial;"><span style="font-size:8pt;font-family:Arial;">редакция
+                    перевода: 20.02.2015</span></span></span><br>
+                    Перевод с английского: SV<br>
+                    <br>
+                    источник: <br>
+                    &quot;Majjhima Nikaya by Nyanamoli &amp; Bodhi, p. 179&quot;</span></span></font></i></div>
+                  </span></div>
+                </span></td>
+                            <td width="1%" height="2" bgcolor="#F4EFBD"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table width="60%" border="0" cellspacing="0" cellpadding="0" height="400">
+                        <tr>
+                            <td style="text-align: justify" valign="top" height="2105">
+                                <div> <font size="5" face="Times New Roman, Times, serif" color="#996633"><b>Т</b></font><font size="2" face="Arial, Helvetica, sans-serif">ак
+                                    я слышал. Благословенный проживал в Саваттхи в роще Джеты в
+                                    монастыре Анатхапиндики. И тогда, утром, несколько монахов оделись,
+                                    взяли чаши и верхние одеяния и отправились в Саваттхи за подаяниями.
+                                    Затем они подумали: «Слишком рано ходить по Саваттхи в поисках
+                                    подаяний. Что если мы отправимся в парк странников-приверженцев
+                                    других учений?» И тогда они отправились в парк странников-приверженцев
+                                    других учений и обменялись со странниками вежливыми приветствиями.
+                                    После обмена вежливыми приветствиями и любезностями они сели
+                                    рядом. Странники сказали им:</font>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><a name="1"></a>«Друзья,
+                                        отшельник Готама предписывает полное понимание чувственных
+                                        удовольствий, и мы тоже делаем так. Отшельник Готама предписывает
+                                        полное понимание материальной формы, и мы тоже делаем так.
+                                        Отшельник Готама предписывает полное понимание чувств, и мы
+                                        тоже делаем так. Так в чём же здесь отличие, в чём разница,
+                                        в чём несоответствие между учением отшельника Готамы и нашим
+                                        [учением], между его наставлениями и нашими?»<font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><sup><a href="#link1">1</a></sup></font></font></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">И тогда
+                                        те монахи ни одобрили, ни опровергли слова странников. Не
+                                        сделав так, они встали со своих сидений и ушли, думая: «Поймём
+                                        значение этих слов в присутствии Благословенного». </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Когда
+                                        они походили по Саваттхи в поисках подаяний, вернулись с хождения
+                                        за подаяниями, после принятия пищи они отправились к Благословенному
+                                        и, поклонившись ему, сели рядом и рассказали обо всём, что
+                                        произошло. [Благословенный сказал]:</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Монахи,
+                                        странников-приверженцев других учений, которые говорят так,
+                                        следует спросить: «Но, друзья, в чём заключается привлекательность,
+                                        в чём заключается опасность, в чём заключается спасение в
+                                        отношении чувственных удовольствий? В чём заключается привлекательность,
+                                        в чём заключается опасность, в чём заключается спасение в
+                                        отношении материальной формы? В чём заключается привлекательность,
+                                        в чём заключается опасность, в чём заключается спасение в
+                                        отношении чувств?» Будучи спрошенными так, странники-приверженцы
+                                        других учений не смогут дать объяснений, и более того, попадут
+                                        впросак. И почему? Потому что это вне их области [знания].
+                                        Монахи, я не вижу никого в этом мире с его богами, с его Марами,
+                                        с его Брахмами, в этом поколении с его жрецами и отшельниками,
+                                        с его князьями и [простыми] людьми, кто мог бы удовлетворить
+                                        ум ответом на эти вопросы, кроме Татхагаты или его ученика,
+                                        или того, кто узнал об этом от них. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><b><font face="Georgia, Times New Roman, Times, serif"><br>
+                                        Чувственные удовольствия</font></b></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Привлекательность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, привлекательность в отношении чувственных
+                                        удовольствий? Монахи, есть эти пять нитей чувственных удовольствий.
+                                        Какие пять?</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4" face="Times New Roman, Times, serif"><br>
+                                        *</font></font></font></font> формы, познаваемые глазом…<br>
+                                        <font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4" face="Times New Roman, Times, serif">*</font></font></font></font>
+                                        звуки, познаваемые ухом…<br>
+                                        <font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4" face="Times New Roman, Times, serif">*</font></font></font></font>
+                                        запахи, познаваемые носом…<br>
+                                        <font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4" face="Times New Roman, Times, serif">*</font></font></font></font>вкусы,
+                                        познаваемые языком…<br>
+                                        <font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4" face="Times New Roman, Times, serif">*</font></font></font></font>
+                                        осязаемые вещи, познаваемые телом – желанные, желаемые, приятные,
+                                        привлекательные, связанны с чувственным желанием, вызывающие
+                                        страсть.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        Таковы пять нитей чувственных удовольствий. Удовольствие и
+                                        радость, возникающие в зависимости от этих пяти нитей чувственных
+                                        удовольствий, являются привлекательностью в отношении чувственных
+                                        удовольствий. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Опасность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, опасность в отношении чувственных удовольствий?
+                                        Вот, монахи, что касается ремесла, которым представитель клана
+                                        добывает себе на жизнь – проверкой, или подсчётом, или расчётом,
+                                        или сельским хозяйством, или торговлей, или земледелием, или
+                                        стрельбой из лука, или служением царю, или каким бы то ни
+                                        было ремеслом – ему приходится сталкиваться с холодом, приходится
+                                        сталкиваться с жарой, ему вредят соприкосновения с мухами,
+                                        с комарами, с ветром, с солнцем, с ползучими тварями. Ему
+                                        грозит смерть от голода и жажды. Вот что является опасностью
+                                        в отношении чувственных удовольствий – груды страданий, что
+                                        видна здесь и сейчас, имеющая чувственные удовольствия своей
+                                        причиной, чувственные удовольствия своим источником, чувственные
+                                        удовольствия своей основой. Причина этому [страданию] – просто
+                                        лишь чувственные удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Если имущество
+                                        не приходит к представителю клана по мере того, как он работает,
+                                        старается, прилагает усилие, то тогда он печалится, горюет
+                                        и плачет, бьёт себя в груди, становится обезумевшим, рыдая:
+                                        «Моя работа была напрасной, мои усилия были тщетными!» И это
+                                        также опасность в отношении чувственных удовольствий – груды
+                                        страданий… Причина этому [страданию] – просто лишь чувственные
+                                        удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Если имущество
+                                        приходит к представителю клана по мере того, как он работает,
+                                        старается, прилагает усилие, он переживает боль и печаль,
+                                        оберегая его: «Как сделать так, чтобы ни цари, ни воры не
+                                        забрали бы его; чтобы огонь не сжёг его; чтобы вода не смыла
+                                        бы его; чтобы ненавистные наследники не забрали бы его?» По
+                                        мере того как он охраняет и защищает своё имущество, цари
+                                        и воры забирают его, или огонь сжигает его, или вода смывает
+                                        его, или ненавистные наследники забирают его. И тогда он печалится,
+                                        горюет и плачет, бьёт себя в груди, становится обезумевшим,
+                                        рыдая: «У меня больше нет того, что было прежде!» И это также
+                                        опасность в отношении чувственных удовольствий – груды страданий…
+                                        Причина этому [страданию] – просто лишь чувственные удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        имея чувственные удовольствия своей причиной, чувственные
+                                        удовольствия своим источником, чувственные удовольствия своей
+                                        основой, просто лишь из-за наличия чувственных удовольствий – цари ссорятся с царями, знать со знатью, брахманы с брахманами,
+                                        домохозяева с домохозяевами. Мать ссорится с сыном, сын – с матерью; отец – с сыном, сын – с отцом. Брат ссорится с
+                                        братом, брат – с сестрой; сестра – с братом; друг – с другом.
+                                        И в этих своих ссорах, перебранках, пререканиях, они нападают
+                                        друг на друга с кулаками, дубинами, палками, ножами, из-за
+                                        чего навлекают на себя смерть или смертельные страдания. И
+                                        это также опасность в отношении чувственных удовольствий – груды страданий… Причина этому [страданию] – просто лишь чувственные
+                                        удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        имея чувственные удовольствия своей причиной… мужчины берутся
+                                        за мечи и щиты, за пряжки на луках и колчанах, и пускаются
+                                        в битву стенкой на стенку с летящими стрелами и копьями, со
+                                        взмахами мечей. Там их ранят стрелы и копья, головы отрубаются
+                                        мечами, и этим они навлекают на себя смерть или смертельные
+                                        страдания. И это также опасность в отношении чувственных удовольствий – груды страданий… Причина этому [страданию] – просто лишь
+                                        чувственные удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        имея чувственные удовольствия своей причиной… мужчины берутся
+                                        за мечи и щиты, за пряжки на луках и колчанах, и они нападают
+                                        на слабые бастионы с летящими стрелами и копьями, со взмахами
+                                        мечей. Там их ранят стрелы и копья, их поливают [со стен бастионов]
+                                        кипящими жидкостями, крушат тяжестями, отрубают головы мечами,
+                                        и этим они навлекают на себя смерть или смертельные страдания.
+                                        И это также опасность в отношении чувственных удовольствий – груды страданий… Причина этому [страданию] – просто лишь
+                                        чувственные удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        имея чувственные удовольствия своей причиной… мужчины вламываются
+                                        в дома, воруют богатство, совершают кражи, устраивают засады
+                                        на дорогах, соблазняют чужих жён, а когда их ловят, цари подвергают
+                                        их многочисленным видам пыток. Они приказывают хлестать их
+                                        кнутами, бить бамбуком, бить дубинами. Они приказывают отрезать
+                                        им руки, отрезать им ноги, отрезать им руки и ноги; отрезать
+                                        им уши, отрезать им нос, отрезать им уши и нос. Они приказывают
+                                        подвергнуть их [пытке под названием] «котёл с кашей», «бритьё
+                                        [до состояния] отполированной раковины», «рот Раху», «огненный
+                                        венок», «пылающая длань», «лезвия травы», «одежда из коры»,
+                                        «антилопа», «мясные крюки», «монеты», «пикелевание щёлоком»,
+                                        «</font><font size="2" face="Arial, Helvetica, sans-serif">крутящийся
+                                        штифт», «свёрнутый матрац». Они приказывают облить их кипящим
+                                        маслом, приказывают отдать на растерзание собакам, приказывают
+                                        насадить их заживо на кол, приказывают отрубить им голову
+                                        мечом. Этим они навлекают на себя смерть или смертельные страдания.
+                                        И это также опасность в отношении чувственных удовольствий
+                                        – груды страданий… Причина этому [страданию] – просто лишь
+                                        чувственные удовольствия. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><a name="2"></a>Далее,
+                                        имея чувственные удовольствия своей причиной… люди пускаются
+                                        в неблагое поведение телом, речью, умом. Сделав так, с распадом
+                                        тела, после смерти, они возникают в состоянии лишения, в несчастливом
+                                        уделе, в погибели, даже в аду. Это – опасность в отношении
+                                        чувственных удовольствий, груда страданий в жизни, которая
+                                        придёт<font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><sup><a href="#link2">2</a></sup></font></font></font></font>,
+                                        имеющая чувственные удовольствия своей причиной, чувственные
+                                        удовольствия своим источником, чувственные удовольствия своей
+                                        основой. Причина этому [страданию] – просто лишь чувственные
+                                        удовольствия.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Спасение</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, спасение в отношении чувственных удовольствий?
+                                        Это устранение желания и жажды, оставление желания и жажды
+                                        к чувственным удовольствиям. Это является спасением в отношении
+                                        чувственных удовольствий. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Не может
+                                        быть такого, чтобы те жрецы и отшельники, которые не понимают
+                                        в соответствии с действительностью привлекательность как привлекательность,
+                                        опасность как опасность, спасение как спасение в отношении
+                                        чувственных удовольствий, могли бы либо сами полностью понимать
+                                        чувственные удовольствия, либо наставлять другого так, чтобы
+                                        он смог полностью понять чувственные удовольствия. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Может
+                                        быть так, что те жрецы и отшельники, которые понимают… могли
+                                        бы либо сами полностью понимать чувственные удовольствия,
+                                        либо наставлять другого так, чтобы он смог полностью понять
+                                        чувственные удовольствия. </font></div>
+                                    <div class=a><font size="2" face="Georgia, Times New Roman, Times, serif"><b><br>
+                                        Материальная форма</b></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Привлекательность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, привлекательность в отношении материальной
+                                        формы? Представьте пятнадцатилетнюю или шестнадцатилетнюю
+                                        девушку из варны знати или варны брахманов или из домохозяйства
+                                        – ни слишком высокую, ни слишком низкую, ни слишком худую,
+                                        ни слишком толстую, ни слишком тёмную, ни слишком светлую.
+                                        Не была бы её красота и миловидность в таком случае наибольшей?»</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Да, Учитель».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Удовольствие
+                                        и радость, возникающие из-за этой красоты и миловидности,
+                                        являются привлекательностью в отношении материальной формы.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Опасность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, опасность в отношении материальной формы?
+                                        Спустя какое-то время можно будет увидеть эту же самую женщину,
+                                        которой восемьдесят, девяносто, или сто лет – скрючившуюся
+                                        как подкова, согнутую вдвое, опирающуюся на палку, шатающуюся,
+                                        хилую, утратившую молодость, с разбитыми зубами, седыми и
+                                        скудными волосами, плешивую, морщинистую, с покрытыми пятнами
+                                        частями тела. Как вы думаете, монахи? Не исчезла ли её красота
+                                        и миловидность, и не стала ли видна опасность?»</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Да, Учитель».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Монахи,
+                                        это является опасностью в отношении материальной формы.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        можно будет увидеть эту же самую женщину – нездоровую, страдающую,
+                                        серьёзно больную, лежащую испачканной собственной мочой и
+                                        испражнениями, которую ставят на ноги одни, а кладут другие.
+                                        Как вы думаете, монахи? Не исчезла ли её красота и миловидность,
+                                        и не стала ли видна опасность?»</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Да, Учитель».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Монахи,
+                                        это также является опасностью в отношении материальной формы.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        можно будет увидеть эту же самую женщину – труп, брошенный
+                                        на кладбище день, два, три тому назад – мёртвый, раздувшийся,
+                                        бледный, истекающий [нечистотами]. Как вы думаете, монахи?
+                                        Не исчезла ли её красота и миловидность, и не стала ли видна
+                                        опасность?»</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Да, Учитель».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Монахи,
+                                        это также является опасностью в отношении материальной формы.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        можно будет увидеть эту же самую женщину – труп, брошенный
+                                        на кладбище, пожираемый воронами, ястребами, грифами, собаками,
+                                        шакалами, различными видами червей… скелет с плотью и кровью,
+                                        стянутый сухожилиями… скелет без плоти, измазанный кровью,
+                                        стянутый сухожилиями… скелет без плоти, стянутый сухожилиями…
+                                        разъединённые кости, разбросанные повсюду – там кость руки,
+                                        там кость ноги, там берцовая кость, там бедренная кость, там
+                                        тазовая кость, там позвоночник, там рёбра, там грудная кость,
+                                        там плечевая кость, там челюсть, там зуб, там череп… [скелет]
+                                        с побелевшими костями, цвета морской раковины… кости, собранные
+                                        в кучу… кости, которым больше сотни лет, сгнившие и стёршиеся
+                                        в пыль. Как вы думаете, монахи? Не исчезла ли её красота и
+                                        миловидность, и не стала ли видна опасность?»</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Да, Учитель».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">«Монахи,
+                                        это также является опасностью в отношении материальной формы.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Спасение</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, спасение в отношении материальной формы?
+                                        Это устранение желания и жажды, оставление желания и жажды
+                                        к материальной форме. Это является спасением в отношении материальной
+                                        формы. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Не может
+                                        быть такого, чтобы те жрецы и отшельники, которые не понимают
+                                        в соответствии с действительностью привлекательность как привлекательность,
+                                        опасность как опасность, спасение как спасение в отношении
+                                        материальной формы, могли бы либо сами полностью понимать
+                                        материальную форму, либо наставлять другого так, чтобы он
+                                        смог полностью понять материальную форму. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Может
+                                        быть так, что те жрецы и отшельники, которые понимают… могли
+                                        бы либо сами полностью понимать материальную форму, либо наставлять
+                                        другого так, чтобы он смог полностью понять материальную форму.</font></div>
+                                    <div class=a><font size="2" face="Georgia, Times New Roman, Times, serif"><b><br>
+                                        Чувства</b></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Привлекательность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        <a name="3"></a>И что такое, монахи, привлекательность в отношении
+                                        чувств? Вот, монахи, будучи отстранённым от чувственных удовольствий,
+                                        отстранённым от неблагих состояний [ума], монах входит и пребывает
+                                        в первой джхане, которая сопровождается направлением и удержанием
+                                        [ума на объекте медитации], с восторгом и удовольствием, которые возникли из-за [этой] отстранённости<font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><sup><a href="#link3">3</a></sup></font></font></font></font>.
+                                    </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">В этом
+                                        случае он не намеревается [сделать что-либо] ради собственной
+                                        болезненности, или болезненности других, или ради болезненности
+                                        обоих. В этом случае он чувствует только чувство, которое
+                                        свободно от болезненности. Высшая привлекательность в отношении
+                                        чувств – это свобода от болезненности, я говорю вам.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Далее,
+                                        с угасанием направления и удержания [ума на объекте], монах
+                                        входит и пребывает во второй джхане, в которой наличествуют
+                                        внутренняя уверенность и единение ума, в которой нет направления
+                                        и удержания, но есть восторг и удовольствие, которые возникли посредством
+                                        сосредоточения. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">В этом
+                                        случае он не намеревается… болезненности, я говорю вам.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">С угасанием
+                                        восторга монах пребывает невозмутимым, осознанным, бдительным
+                                        и ощущает приятное телом. Он входит и пребывает в третьей джхане,
+                                        о которой Благородные говорят так: «Он невозмутим, осознан, пребывает в удовольствии». </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">В этом
+                                        случае он не намеревается… болезненности, я говорю вам.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">С оставлением
+                                        удовольствия и боли, равно как и с предыдущим угасанием радости
+                                        и недовольства, монах входит и пребывает в четвёртой джхане,
+                                        которая ни-приятна-ни-болезненна, характерна чистейшей осознанностью
+                                        из-за невозмутимости.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">В этом
+                                        случае он не намеревается [сделать что-либо] ради собственной
+                                        болезненности, или болезненности других, или ради болезненности
+                                        обоих. В этом случае он чувствует только чувство, которое
+                                        свободно от болезненности. Высшая привлекательность в отношении
+                                        чувств – это свобода от болезненности, я говорю вам.</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Опасность</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, опасность в отношении чувств? Чувства
+                                        непостоянны, страдательны, подвержены изменению. Это является
+                                        опасностью в отношении чувств. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><i><br>
+                                        Спасение</i></font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif"><br>
+                                        И что такое, монахи, спасение в отношении чувств? Это устранение
+                                        желания и жажды, оставление желания и жажды к чувствам. Это
+                                        является спасением в отношении чувств. </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Не может
+                                        быть такого, чтобы те жрецы и отшельники, которые не понимают
+                                        в соответствии с действительностью привлекательность как привлекательность,
+                                        опасность как опасность, спасение как спасение в отношении
+                                        чувств, могли бы либо сами полностью понимать чувства, либо
+                                        наставлять другого так, чтобы он смог полностью понять чувства.
+                                    </font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Может
+                                        быть так, что те жрецы и отшельники, которые понимают… могли
+                                        бы либо сами полностью понимать чувства, либо наставлять другого
+                                        так, чтобы он смог полностью понять чувства».</font></div>
+                                    <div class=a><font size="2" face="Arial, Helvetica, sans-serif">Так сказал
+                                        Благословенный. Монахи были довольны и восхитились словами
+                                        Благословенного.<br>
+                                    </font></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="2" face="Arial, Helvetica, sans-serif"><font size="4"></font></font></font></font></font><br>
+                    <div align="center">
+                        <table width="55%" border="0" cellspacing="0" cellpadding="4">
+                            <tr>
+                                <td class="bottom" width="3%" bgcolor="#F4EFBD" valign="middle" height="14"><a href="#1" style="border:0px;" title="вернуться к сноске в тексте">
+                                    <div style='font-size:20.0pt;font-family:"Arial"'>&#8593;</div>
+                                </a></td>
+                                <td  width="1%" height="14" valign="top"><font face="Times New Roman, Times, serif" size="2" color="#996600">1<span style='font-size:18pt;font-family:"Wingdings 3";
+mso-bidi-font-family:"Wingdings 3"'><font color="#C7B683"></font></span></font></td>
+                                <td height="14" width="96%"><font size="2" face="Arial, Helvetica, sans-serif"><i><font size="2" face="Arial, Helvetica, sans-serif"><a name="link1"></a></font><font size="2" face="Arial, Helvetica, sans-serif"><i><font color="#999966">Комментарий:
+                                    &quot;Полное понимание (париннья) здесь означает преодоление
+                                    (саматиккама) или оставление (пахана). Странники-приверженцы
+                                    других учений обозначали полным пониманием чувственных удовольствий
+                                    первую джхану; полным пониманием материальной формы нематериальные
+                                    миры существования; полным пониманием чувств мир не-воспринимающих
+                                    существ. Будда же, напротив, описывает полное понимание чувственных
+                                    удовольствий как путь не-возвращающегося, а полное понимание
+                                    материальной формы и чувств как путь арахантства&quot;. (см.
+                                    также <a href="an3_126-bharandukalama-sutta-sv.htm">АН 3.126</a>,
+                                    где содержится похожая беседа Будды с учеником Алара Каламы,
+                                    бывшего учителя бодхисатты).</font></i></font></i></font><span style='font-size:16.0pt'><o:p></o:p></span></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table width="55%" border="0" cellspacing="0" cellpadding="4">
+                            <tr>
+                                <td class="bottom" width="3%" bgcolor="#F4EFBD" valign="middle" height="2"><a href="#2" style="border:0px;" title="вернуться к сноске в тексте">
+                                    <div style='font-size:20.0pt;font-family:"Arial"'>&#8593;</div>
+                                </a></td>
+                                <td  width="1%" height="2" valign="top"><font face="Times New Roman, Times, serif" size="2" color="#996600">2</font></td>
+                                <td height="2" width="96%"><font size="2" face="Arial, Helvetica, sans-serif"><i><font size="2" face="Arial, Helvetica, sans-serif"><a name="link2"></a></font><font color="#999966">Стоит
+                                    отметить, что в предыдущих примерах опасности чувственных удовольствий
+                                    идёт другая фраза &quot;груда страданий, видимая здесь и сейчас&quot;
+                                    (то есть, в этой самой жизни).</font></i></font><span style='font-size:16.0pt'><o:p></o:p></span></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <table width="55%" border="0" cellspacing="0" cellpadding="4">
+                            <tr>
+                                <td class="bottom" width="3%" bgcolor="#F4EFBD" valign="middle" height="2"><a href="#3" style="border:0px;" title="вернуться к сноске в тексте">
+                                    <div style='font-size:20.0pt;font-family:"Arial"'>&#8593;</div>
+                                </a></td>
+                                <td  width="1%" height="2" valign="top"><font face="Times New Roman, Times, serif" size="2" color="#996600">3</font></td>
+                                <td height="2" width="96%"><font size="2" face="Arial, Helvetica, sans-serif"><i><font size="2" face="Arial, Helvetica, sans-serif"><a name="link3"></a></font><font color="#999966">Будда
+                                    специально выбрал наиболее возвышенные виды чувств, чтобы показать,
+                                    что даже и они непостоянны.</font></i></font><span style='font-size:16.0pt'><o:p></o:p></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
+                        <tr bgcolor="#F4EFBD">
+                            <td class="bottom" height="2" colspan="4">
+                                <div align="center"><font face="Arial, Helvetica, sans-serif" color="#FFFFCC" style="cursor:default;font-size:1pt;">.</font></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="70%" border="0" cellspacing="0" cellpadding="4">
+                        <tr>
+                            <td class="bottom" width="1%" valign="middle" height="2"><a href="../majjhima.htm#7" style="border:0px;" title="вернуться к разделу">
+                                <div style='font-size:16.0pt;font-family:"Arial"'>&#9668;</div>
+                            </a></td>
+                            <td class="bottom" valign="middle" width="1%" height="2"> <a href="#" style="border:0px;" title="вернуться наверх">
+                                <div style='font-size:16.0pt;font-family:"Arial"'>&#9650;</div>
+                            </a></td>
+                            <td valign="top" width="32%" height="2">
+                                <div align="center"><font face="Wingdings" color="#C7B683" style="cursor:default;font-size:24pt;"><noindex><!--LiveInternet counter--><script type="text/javascript">
+                                    new Image().src = "//counter.yadro.ru/hit?r"+
+                                        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                                            ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                                            screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+                                        ";h"+escape(document.title.substring(0,150))+
+                                        ";"+Math.random();</script><!--/LiveInternet--><!--LiveInternet logo--><a href="//www.liveinternet.ru/click"
+                                                                                                                  target="_blank"><img src="//counter.yadro.ru/logo?42.6"
+                                                                                                                                       title="LiveInternet"
+                                                                                                                                       alt="" border="0" width="1" height="1"/></a><!--/LiveInternet--><!--SpyLOG-->
+                                    <span id="spylog2031418"></span>
+                                    <script type="text/javascript"> var spylog = { counter: 2031418, image: undefined, next: spylog }; document.write(unescape("%3Cscript src=%22http" +
+                                        (("https:" == document.location.protocol) ? "s" : "") +
+                                        "://counter.spylog.com/cnt.js%22 defer=%22defer%22%3E%3C/script%3E")); </script>
+                                    <!--SpyLOG--></noindex></font></div>
+                            </td>
+                            <td valign="top" width="19%" height="2">
+                                <div align="center"><span
+                                    style='font-size:32.0pt;font-family:"Times New Roman"'><font color="C7B683">&#1645;</font></span>
+                                </div>
+                            </td>
+                            <td valign="top" width="37%" height="2">
+                                <div align="right"><font face="Arial, Helvetica, sans-serif" style="font-size:7pt; font-family: Arial;" color="#C8C16C">&copy;
+                                    theravada.ru – при копировании материалов<br>
+                                    просьба ставить прямую ссылку на наш сайт.<br>
+                                </font></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function viewport(){
+        var e = window , a = 'inner';
+        if ( !( 'innerWidth' in window ) ) { a = 'client'; e = document.documentElement || document.body; }
+        return { width : e[ a+'Width' ] , height : e[ a+'Height' ] }
+    }
+    var screen = viewport();
+
+    if(screen.width < 1002){
+        // Content
+        document.querySelectorAll("table[width='60%']").forEach(function(item){ item.setAttribute("width", "95%"); });
+        // Comments
+        document.querySelectorAll("table[width='55%']").forEach(function(item){ item.setAttribute("width", "85%"); });
+        // Title
+        document.querySelectorAll("font[size='5']").forEach(function(item){ item.setAttribute("size", "8"); });
+        document.querySelectorAll("font[size='3']").forEach(function(item){ item.setAttribute("size", "8"); });
+        // Text
+        document.querySelectorAll("font[size='2']").forEach(function(item){ item.setAttribute("size", "7"); });
+    }else{
+        if(screen.width < 1280){
+            // Content
+            document.querySelectorAll("table[width='60%']").forEach(function(item){ item.setAttribute("width", "85%"); });
+            // Comments
+            document.querySelectorAll("table[width='55%']").forEach(function(item){ item.setAttribute("width", "85%"); });
+            // Title
+            document.querySelectorAll("font[size='5']").forEach(function(item){ item.setAttribute("size", "6"); });
+            document.querySelectorAll("font[size='3']").forEach(function(item){ item.setAttribute("size", "6"); });
+            // Text
+            document.querySelectorAll("font[size='2']").forEach(function(item){ item.setAttribute("size", "4"); });
+        }
+    }
+</script>
+
+</body>
+</html>

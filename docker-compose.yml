@@ -1,0 +1,48 @@
+version: "3.1"
+services:
+
+  nginx:
+    image: nginx:alpine
+    container_name: laravelsu-nginx
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/data/logs/nginx:/var/log/nginx/
+    ports:
+      - "7001:80"
+
+  php:
+    build: docker/php
+    container_name: laravelsu-php
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./docker/php/php-fpm-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - ./docker/php/php-cli-ini-overrides.ini:/etc/php/7.4/cli/conf.d/99-overrides.ini
+
+  mysql:
+    image: mysql:5.7
+    container_name: laravelsu-mysql
+    working_dir: /application
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=laravelsu
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=mysql_password
+    ports:
+      - "7003:3306"
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: laravelsu-mailhog
+    ports:
+      - "7002:8025"
+
+  redis:
+    image: redis:alpine
+    container_name: laravelsu-redis
+
+

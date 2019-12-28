@@ -1,0 +1,217 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/base.css
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/base";
+ */
+@tailwind base;
+
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+body{
+    @apply text-gray-800
+}
+
+h1 {
+    @apply text-4xl mb-8 text-red-500
+}
+h2 {
+    @apply text-3xl mt-4 mb-4 text-red-500
+}
+h3 {
+    @apply text-2xl mt-4 mb-4 text-red-500
+}
+h4 {
+    @apply text-xl mt-4 mb-4 text-gray-900
+}
+
+.link{
+    @apply underline text-blue-500 underline cursor-pointer
+}
+
+.card {
+    @apply p-4 shadow rounded bg-white
+}
+.card-no-padding {
+    @apply shadow rounded bg-white
+}
+
+.text{
+    @apply leading-normal
+}
+
+p {
+    @apply leading-relaxed mb-4 ;
+}
+
+p a {
+    @apply underline text-blue-500 underline cursor-pointer
+}
+
+.desc {
+    @apply text-sm text-gray-500
+}
+
+th {
+    @apply px-3 py-2 border-b border-gray-300 text-left
+}
+td {
+    @apply px-3 py-2
+}
+tr:nth-child(even) {
+    background-color: #FAFAFA
+}
+tr:hover{
+    @apply bg-indigo-100
+}
+tr.selected td{
+    @apply bg-blue-100
+}
+tr.checkbox_selected td{
+    @apply bg-yellow-200
+}
+
+
+
+
+/* Documentation */
+
+.docs_sidebar{
+    width: 230px;
+}
+
+.docs_sidebar h2{
+    @apply text-xl mb-4 text-red-500
+}
+.docs_sidebar ul{
+    @apply mb-6
+}
+
+.docs_sidebar ul li{
+    @apply mb-3 text-sm
+}
+
+.docs_sidebar ul li a{
+    @apply pl-3
+}
+
+
+
+
+.docs_content {
+    @apply leading-relaxed
+}
+
+.docs_content ul li {
+    @apply mb-4
+}
+
+.docs_content ul li a{
+    @apply text-blue-600 cursor-pointer
+}
+
+.docs_content ul li:before, .docs_content h2 a:before {
+    /*content: '#';*/
+    /*color: #fbc0be;*/
+    /*margin-right: 8px;*/
+    content: '#';
+    @apply text-blue-200 mr-1
+}
+
+.docs_content ul {
+    @apply pl-2 mb-1
+}
+
+.docs_content ul li {
+    @apply mb-2
+}
+
+.docs_content ul li ul {
+    @apply pt-1 pl-4
+}
+
+.docs_content ul li ul li{
+    @apply mb-2
+}
+
+.docs_content blockquote {
+    @apply bg-blue-500 text-blue-100 px-4 pt-4 pb-2 mb-4 rounded shadow
+}
+.docs_content blockquote a {
+    @apply text-white underline
+}
+.docs_content blockquote code{
+    padding: 2px;
+    @apply text-red-500 bg-gray-100 text-sm rounded
+}
+
+.docs_content code{
+    padding: 2px;
+    @apply text-red-500 text-sm
+}
+
+.docs_content pre code{
+    @apply block p-4 bg-gray-100 rounded text-xs text-gray-900 mb-4
+}
+
+
+.footer a:hover{
+    text-decoration: underline;
+}
+
+.footer .footer_link {
+    @apply mb-3 text-sm
+}
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/utilities";
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
