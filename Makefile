@@ -24,6 +24,9 @@ art:
 php:
 	docker-compose exec php php $(ARGS)
 
+migrate:
+	docker-compose exec php php artisan migrate
+
 migrate-refresh:
 	docker-compose exec php php artisan migrate:refresh
 	docker-compose exec php php artisan ide-helper:models -W -R
