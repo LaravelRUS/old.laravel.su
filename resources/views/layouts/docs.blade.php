@@ -9,6 +9,7 @@
 
     <meta name="description" content="@yield("description")">
     <title>@yield("title")</title>
+    <link rel="icon" href="./favicon.png"/>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
