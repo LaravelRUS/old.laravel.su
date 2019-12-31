@@ -2,14 +2,32 @@
 
 @section('content')
     <div style="min-height: 1000px">
-        <div class="w-full flex flex-col">
-            <div class="flex flex-col items-center mb-16">
-                <div class="text-3xl text-gray-500 mb-4">Laravel Idea</div>
-                <div class="text-xl mb-4">Плагин для Phpstorm, который делает работу с фреймворком более продуктивной.</div>
-                <div>
-                    <iframe width="760" height="515" src="https://www.youtube.com/embed/8klTJYhNo-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="w-full flex flex-row">
+
+            <div class="w-1/3 mr-4">
+                <div class="card flex flex-col shadow items-center">
+                    <div class="mb-8 text-3xl">Laravel Idea</div>
+                    <div class="mb-8">Удобный плагин для разработки в Phpstorm</div>
+                    <div class="mb-4 "><a class="link" href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/">Видео</a> | <a class="link" href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/">Plugin store</a></div>
                 </div>
             </div>
+
+            <div class="w-1/3 mr-4">
+                <div class="card flex flex-col shadow items-center">
+                    <div class="mb-8 text-3xl">SleepingOwl Admin</div>
+                    <div class="mb-8">Генератор админ-интерфейса для Laravel</div>
+                    <div class="mb-4 "><a class="link" href="https://sleepingowladmin.ru/">sleepingowladmin.ru</a></div>
+                </div>
+            </div>
+
+            <div class="w-1/3">
+                <div class="card flex flex-col shadow items-center">
+                    <div class="mb-8 text-3xl">Orchid</div>
+                    <div class="mb-8">Платформа для back-office приложений на Laravel</div>
+                    <div class="mb-4 "><a class="link" href="https://orchid.software/ru/">orchid.software</a></div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
