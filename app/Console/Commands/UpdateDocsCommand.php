@@ -12,7 +12,7 @@ use Illuminate\Console\Command;
 
 class UpdateDocsCommand extends Command
 {
-    protected $signature = 'su:update_docs {force?} {--branch=} {--file=} {--pretend}';
+    protected $signature = 'su:update_docs {force?} {--branch=} {--file=} {--pretend} {--debug}';
 
     protected $description = 'Fetch translated documentation from github';
     /**
@@ -51,6 +51,7 @@ class UpdateDocsCommand extends Command
         $forceBranch = $this->option('branch');
         $forceFile = $this->option('file');
         $isPretend = $this->option('pretend');
+        $isDebug = $this->option('debug');
 
         if ($forceBranch) {
             $allFrameworkVersions[] = FrameworkVersion::query()->version($forceBranch)->first();
@@ -131,8 +132,11 @@ class UpdateDocsCommand extends Command
                                     // Считаем сколько коммитов прошло с момента перевода
                                     $this->line(' get current original commit');
                                     $after_last_original_commit_at = $last_original_commit_at;
+                                    if($isDebug OR $forceFile) $this->line(" date of last original commit is {$last_original_commit_at->format('Y-m-d H:i:s')}");
                                     $after_last_original_commit_at = $after_last_original_commit_at->addSecond();
+                                    if($isDebug OR $forceFile) $this->line(" get commits after {$after_last_original_commit_at->format('Y-m-d H:i:s')}");
                                     $original_commits = $this->githubOriginal->getCommits($version, $filename, $after_last_original_commit_at);
+                                    if($isDebug OR $forceFile) dump($original_commits);
                                     $count_ahead = count($original_commits);
                                     $current_original_commit = $this->githubOriginal->getLastCommit($version, $filename);
                                     $current_original_commit_id = $current_original_commit['sha'];

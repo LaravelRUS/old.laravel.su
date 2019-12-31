@@ -20,7 +20,7 @@ class DocsStatusController extends Controller
     public function index()
     {
         $versions = FrameworkVersion::query()
-            ->with(["documentation" => function($query){ $query->orderBy("page", "asc"); }])
+            ->with(["documentation" => function($query){ $query->where("page", "!=", "documentation")->orderBy("page", "asc"); }])
             ->orderBy("title", "desc")
             ->get();
         $documentedVersions = $this->versionService->documentedVersions();
