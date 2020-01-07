@@ -11,7 +11,7 @@
     <meta name="description" content="@yield('description')" />
     <meta name="keywords" content="@yield('keywords')" />
 
-    <title>@yield('title') &mdash; {{ config('app.name') }}</title>
+    <title>@yield('title') — {{ config('app.name') }}</title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
     <meta name="theme-color" content="#ffffff" />
