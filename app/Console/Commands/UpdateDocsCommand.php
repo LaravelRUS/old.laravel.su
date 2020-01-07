@@ -183,7 +183,7 @@ class UpdateDocsCommand extends Command
 
                                 $content = preg_replace('/git(.*?)(\n*?)---(\n*?)/', "", $content);
                                 preg_match('/#(.*?)$/m', $content, $matches);
-                                $title = trim(Arr::get($matches, '1'));
+                                $title = trim((string)Arr::get($matches, '1'));
                                 $page = Documentation::query()->byVersion($v)->page($name)->first();
                                 if ($page) {
                                     if ($current_original_commit_id != $page->current_original_commit) {
