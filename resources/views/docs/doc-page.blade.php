@@ -1,12 +1,8 @@
 @extends('layouts.master')
 
-@section('title')
-    {{ $version->title }} - {{ $page->title }} ({{ $page->page }})
-@stop
-
-@section('description')
-    Русская документация Laravel {{ $version->title }} - {{ $page->title }}
-@stop
+@section('title'){{ $page->title }} (Laravel {{ $version->title }})@stop
+@section('description')Русская документация Laravel {{ $version->title }} - {{ $page->title }}@stop
+@section('keywords'){{ \implode(', ', [...\preg_split('/\W+/u', $page->page), $page->title, 'Laravel ' . $version->title]) }}@stop
 
 @push('header')
     @component('components.version-selector')
