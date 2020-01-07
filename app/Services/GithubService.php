@@ -71,7 +71,7 @@ class GithubService
 
     public function getCommits($branch, $filename, $since)
     {
-        $since = date('c', strtotime($since));
+        $since = date('c', strtotime((string)$since));
 
         $response = $this->githubClient->api('repo')->commits()->all(
             $this->github_user, $this->github_repository, [
