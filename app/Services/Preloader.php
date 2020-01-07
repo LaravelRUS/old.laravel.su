@@ -45,7 +45,7 @@ final class Preloader
         // We'll use composer's classmap
         // to easily find which classes to autoload,
         // based on their filename
-        $classMap = require __DIR__ . '/vendor/composer/autoload_classmap.php';
+        $classMap = require __DIR__ . '/../../vendor/composer/autoload_classmap.php';
 
         $this->fileMap = array_flip($classMap);
     }
