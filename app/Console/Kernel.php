@@ -38,7 +38,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        //
+        $schedule->command('su:update_docs')
+            ->hourly()
+            ->withoutOverlapping();
     }
 
     /**
