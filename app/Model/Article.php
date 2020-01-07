@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Article
  */
-class Article extends Model
+final class Article extends Model
 {
     use SoftDeletes;
 

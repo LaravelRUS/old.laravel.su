@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +17,7 @@ use Illuminate\Notifications\Notifiable;
 /**
  * Class User
  */
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     use Notifiable;
 

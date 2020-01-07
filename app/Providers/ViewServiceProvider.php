@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Http\View\Composers\VersionsComposer;
 use App\Http\View\Composers\YandexMetrikaComposer;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +25,8 @@ class ViewServiceProvider extends ServiceProvider
      * @var array[]
      */
     private const VIEW_COMPOSERS = [
-        YandexMetrikaComposer::class => ['partials.yandex_metrika']
+        YandexMetrikaComposer::class => ['partials.yandex-metrika'],
+        VersionsComposer::class      => ['partials.version-selector'],
     ];
 
     /**

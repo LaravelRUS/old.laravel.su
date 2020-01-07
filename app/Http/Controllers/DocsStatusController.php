@@ -2,35 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\FrameworkVersion;
-use App\Services\VersionService;
+use App\Model\FrameworkVersion;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class DocsStatusController
+ */
 class DocsStatusController
 {
     /**
-     * @var VersionService
+     * @var Factory
      */
-    private $versionService;
+    private Factory $factory;
 
-    public function __construct(VersionService $versionService)
+    /**
+     * DocsStatusController constructor.
+     *
+     * @param Factory $factory
+     */
+    public function __construct(Factory $factory)
     {
-        $this->versionService = $versionService;
+        $this->factory = $factory;
     }
 
-    public function index()
+    /**
+     * @return View
+     */
+    public function index(): View
     {
+        $relation = fn(HasMany $query) =>
+            $query->where('page', '!=', 'documentation')
+                ->orderBy('page', 'asc')
+        ;
+
         $versions = FrameworkVersion::query()
-            ->with([
-                'documentation' => function ($query) {
-                    $query->where('page', '!=', 'documentation')->orderBy('page', 'asc');
-                },
-            ])
+            ->with(['documentation' => $relation])
             ->orderBy('title', 'desc')
             ->get();
 
-        $documentedVersions = $this->versionService->documentedVersions();
-        $versionTitle = '';
-
-        return view('docs/status', compact('versions', 'documentedVersions', 'versionTitle'));
+        return $this->factory->make('docs.status', [
+            'versions' => $versions,
+        ]);
     }
 }

@@ -23,10 +23,14 @@
     <div id="app">
         @include('partials.header')
 
-        @yield('app')
+        @stack('header')
+
+        @yield('content')
+
+        @stack('footer')
 
         @include('partials.footer')
-        @include('partials.yandex_metrika')
+        @include('partials.yandex-metrika')
     </div>
 </body>
 </html>

@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Documentation;
+use App\Model\FrameworkVersion;
+use App\Model\Repository\DocumentationRepositoryInterface;
 use App\Services\DocsService;
-use App\Services\VersionService;
-use Cookie;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class DocsController
@@ -26,18 +26,14 @@ use Illuminate\View\View;
 class DocsController
 {
     /**
-     * TODO Это должно быть в БД
-     *
-     * The default docs page.
-     *
      * @var string
      */
-    protected string $defaultPage = 'installation';
+    private const ERROR_PAGE_NOT_FOUND = 'Documentation page %s not found';
 
     /**
-     * @var VersionService
+     * @var string
      */
-    private VersionService $versionService;
+    private const ERROR_MENU_NOT_FOUND = 'Menu for framework version %s not found';
 
     /**
      * @var DocsService
@@ -45,76 +41,61 @@ class DocsController
     private DocsService $docsService;
 
     /**
+     * @var Redirector
+     */
+    private Redirector $redirector;
+
+    /**
+     * @var DocumentationRepositoryInterface
+     */
+    private DocumentationRepositoryInterface $docs;
+
+    /**
      * DocsController constructor.
      *
-     * @param VersionService $versionService
+     * @param Redirector $redirector
+     * @param DocumentationRepositoryInterface $docs
      * @param DocsService $docsService
      */
-    public function __construct(VersionService $versionService, DocsService $docsService)
-    {
-        $this->versionService = $versionService;
+    public function __construct(
+        Redirector $redirector,
+        DocumentationRepositoryInterface $docs,
+        DocsService $docsService
+    ) {
+        $this->docs = $docs;
+        $this->redirector = $redirector;
         $this->docsService = $docsService;
     }
 
     /**
-     * TODO Очень плохо написанный код, переписать всё нафиг. Не более 5-6 строк на метод контроллера
-     *
-     * @param string $versionTitle
+     * @param FrameworkVersion $current
+     * @param string $version
      * @param string $page
      * @return Factory|RedirectResponse|Redirector|View
      */
-    public function index($versionTitle = '', $page = '')
+    public function index(FrameworkVersion $current, string $version, string $page = '')
     {
-        if (! $versionTitle && ! $page) {
-            $versionTitle = $this->checkForVersionInCookies();
-
-            // Использовать хелперы redirect и route нельзя
-            return redirect(route('docs', [$versionTitle, $this->defaultPage]));
+        if (! $page) {
+            return $this->redirector->route('docs', [
+                $current->title,
+                $current->default_page,
+            ]);
         }
 
-        if ($versionTitle && ! $page) {
-            if ($this->versionService->isDocumented($versionTitle)) {
-                // Использовать хелперы redirect и route нельзя
-                return redirect(route('docs', [$versionTitle, $this->defaultPage]));
-            }
-
-            // Использовать хелперы redirect и route нельзя
-            return redirect(route('docs', [$this->versionService->getDefaultVersionTitle(), ""]));
+        if (! $document = $this->docs->findByName($current, $page)) {
+            throw new NotFoundHttpException(\sprintf(self::ERROR_PAGE_NOT_FOUND, $page));
         }
 
-        // Нельзя использовать фасады!!!!!
-        Cookie::queue('docs_version', $versionTitle, 1440);
+        if (! $menu = $this->docs->findMenu($current)) {
+            throw new NotFoundHttpException(\sprintf(self::ERROR_MENU_NOT_FOUND, $version));
+        }
 
-        // Здесь может случиться NPE
-        $page = Documentation::byVersion($versionTitle)->page($page)->firstOrFail();
-        $pageHtml = $this->docsService->convertToHtml($page->text, $versionTitle);
-
-        // Здесь может случиться NPE тоже
-        $menu = Documentation::byVersion($versionTitle)->page('documentation')->first();
-        $menuHtml = $this->docsService->convertToHtml($menu->text, $versionTitle);
-
-        $documentedVersions = $this->versionService->documentedVersions();
-
-        $metaTitle = "$versionTitle - $page->title ($page->page)";
-        // Это должно быть во view
-        $metaDescription = "Русская документация Laravel $versionTitle - $page->title";
-
-        return view('docs.doc-page', compact('menu', 'page',
-            "pageHtml", "menuHtml",
-            "documentedVersions", "versionTitle",
-            "metaTitle", "metaDescription"
-        ));
-    }
-
-    /**
-     * Check the cookies for docs version or return the default one.
-     *
-     * @return mixed|null|string
-     */
-    private function checkForVersionInCookies()
-    {
-        // Нельзя использовать фасады!!!!!
-        return Cookie::has('docs_version') ? Cookie::get('docs_version')
-            : $this->versionService->getDefaultVersionTitle();
+        return view('docs.doc-page', [
+            'version'  => $current,
+            'page'     => $document,
+            'menu'     => $menu,
+            'pageHtml' => $this->docsService->convertToHtml($document->text, $current->title),
+            'menuHtml' => $this->docsService->convertToHtml($menu->text, $current->title),
+        ]);
     }
 }

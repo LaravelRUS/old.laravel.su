@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Documentation;
-use App\FrameworkVersion;
+use App\Model\Documentation;
+use App\Model\FrameworkVersion;
 use App\Services\GithubService;
 use Illuminate\Support\Arr;
 use Carbon\Carbon;

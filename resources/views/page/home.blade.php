@@ -4,7 +4,7 @@
     Главная
 @stop
 
-@section('app')
+@section('content')
     <div class="bg-white py-8 border-b border-gray-200 mb-8">
             <div class="container mx-auto flex flex-row">
                 <div class="mr-8"><img src="/images/human.png" style="width: 500px"></div>

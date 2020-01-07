@@ -9,17 +9,16 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Collection;
 
 /**
  * Class FrameworkVersion
  */
-class FrameworkVersion extends Model
+final class FrameworkVersion extends Model
 {
     /**
      * @var string
@@ -45,22 +44,28 @@ class FrameworkVersion extends Model
     }
 
     /**
+     * @param Builder $builder
+     * @return Builder
+     */
+    public function scopeActual(Builder $builder): Builder
+    {
+        return $builder->orderBy('title', 'desc');
+    }
+
+    /**
+     * @param Builder $builder
+     * @return Builder
+     */
+    public function scopeDocumented(Builder $builder): Builder
+    {
+        return $builder->where('is_documented', 1);
+    }
+
+    /**
      * @return HasMany
      */
     public function documentation(): HasMany
     {
         return $this->hasMany(Documentation::class, 'version_id');
     }
-
-    /**
-     * @return Collection|FrameworkVersion[]
-     */
-    public static function documentedVersions(): Collection
-    {
-        return static::query()
-            ->where('is_documented', 1)
-            ->orderBy('title', 'desc')
-            ->get();
-    }
-
 }

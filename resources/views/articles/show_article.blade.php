@@ -1,21 +1,22 @@
-@extends('layouts.docs')
+@extends('layouts.master')
 
 @section('title', $article->title)
 @section('description', $article->description)
 
-@section('version_selector')
-    @include('partials.version-selector', [
-        'documentedVersions' => [],
-        'versionTitle' => ''
-    ])
-@endsection
+@push('header')
+    @component('components.version-selector')
+        @include('partials.version-selector')
+    @endcomponent
+@endpush
 
 @section('content')
-    <div class="card">
-        <h1>{{$article->title}}</h1>
+    <div class="container mx-auto px-4">
+        <div class="card">
+            <h1>{{$article->title}}</h1>
 
-        <div class="docs_content">
-            {!! $article->displayContentHtml() !!}
+            <div class="docs_content">
+                {!! $article->displayContentHtml() !!}
+            </div>
         </div>
     </div>
 @endsection

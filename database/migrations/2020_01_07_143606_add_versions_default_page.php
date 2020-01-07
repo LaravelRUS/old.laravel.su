@@ -14,9 +14,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateFailedJobsTable
+ * Class AddVersionsDefaultPage
  */
-class CreateFailedJobsTable extends Migration
+class AddVersionsDefaultPage extends Migration
 {
     /**
      * Run the migrations.
@@ -25,13 +25,11 @@ class CreateFailedJobsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('failed_jobs', static function (Blueprint $table): void {
-            $table->bigIncrements('id');
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::table('versions', static function(Blueprint $t): void {
+            $t->string('default_page')
+                ->default('installation')
+                ->after('title')
+                ->index();
         });
     }
 
@@ -42,6 +40,8 @@ class CreateFailedJobsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::table('versions', static function (Blueprint $t): void {
+            $t->dropColumn('default_page');
+        });
     }
 }

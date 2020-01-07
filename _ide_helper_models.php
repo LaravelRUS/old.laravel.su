@@ -10,7 +10,7 @@
  */
 
 
-namespace App{
+namespace App\Model{
 /**
  * Class Article
  *
@@ -26,29 +26,29 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Article onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Model\Article onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article query()
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereSourceArticleAuthor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereSourceArticleUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Article withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Article withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereSourceArticleAuthor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereSourceArticleUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Article whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Model\Article withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Model\Article withoutTrashed()
  */
-	class Article extends \Eloquent {}
+	final class Article extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Model{
 /**
  * Class Documentation
  *
@@ -66,73 +66,79 @@ namespace App{
  * @property int|null $original_commits_ahead
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\FrameworkVersion $version
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation byVersion($version)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation orderByLastCommit()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation page($pageTitle)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereCurrentOriginalCommit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereCurrentOriginalCommitAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereLastCommit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereLastCommitAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereLastOriginalCommit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereLastOriginalCommitAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereOriginalCommitsAhead($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation wherePage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Documentation whereVersionId($value)
+ * @property-read \App\Model\FrameworkVersion $version
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation byVersion(\App\Model\FrameworkVersion $version)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation orderByLastCommit()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation page($pageTitle)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereCurrentOriginalCommit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereCurrentOriginalCommitAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereLastCommit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereLastCommitAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereLastOriginalCommit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereLastOriginalCommitAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereOriginalCommitsAhead($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation wherePage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Documentation whereVersionId($value)
  */
-	class Documentation extends \Eloquent {}
+	final class Documentation extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Model{
 /**
  * Class FrameworkVersion
  *
  * @property int $id
  * @property string $title
+ * @property string $menu_page
  * @property int $is_documented
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Documentation[] $documentation
+ * @property string $default_page
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\Documentation[] $documentation
  * @property-read int|null $documentation_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion version($version)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereIsDocumented($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion actual()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion documented()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion version($version)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereDefaultPage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereIsDocumented($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereMenuPage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\FrameworkVersion whereUpdatedAt($value)
  */
-	class FrameworkVersion extends \Eloquent {}
+	final class FrameworkVersion extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Model{
 /**
  * Class Settings
  *
  * @property int $id
  * @property string $key
  * @property string $value
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Settings whereValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Settings whereValue($value)
  */
-	class Settings extends \Eloquent {}
+	final class Settings extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Model{
 /**
  * Class User
  *
@@ -146,18 +152,18 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\User whereUpdatedAt($value)
  */
-	class User extends \Eloquent {}
+	final class User extends \Eloquent {}
 }
 

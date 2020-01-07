@@ -174,6 +174,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
+        App\Providers\DatabaseServiceProvider::class,
     ],
 
     /*
@@ -190,6 +191,7 @@ return [
     'aliases' => [
         // TODO Убрать (Есть зависимости в контроллерах)
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
+
         // TODO Убрать (используется в миграциях)
         'DB' => \Illuminate\Support\Facades\DB::class,
 

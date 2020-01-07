@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Model\Article;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 

@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Documentation
  */
-class Documentation extends Model
+final class Documentation extends Model
 {
     /**
      * @var string
@@ -36,22 +36,22 @@ class Documentation extends Model
     protected $dates = [
         'last_commit_at',
         'last_original_commit_at',
-        'current_original_commit_at'
+        'current_original_commit_at',
     ];
 
     /**
      * @param Builder $query
-     * @param mixed $version
+     * @param FrameworkVersion $version
      * @return Builder
      */
-    public function scopeByVersion(Builder $query, $version): Builder
+    public function scopeByVersion(Builder $query, FrameworkVersion $version): Builder
     {
         if ($version instanceof FrameworkVersion) {
-            return $query->where('version_id', $version->id); // Тут объект?
+            return $query->where('version_id', $version->id);
         }
 
         return $query->whereHas('version', static function (Builder $q) use ($version) {
-            return $q->where('title', $version); // А тут скаляр?
+            return $q->where('title', $version->title);
         });
     }
 
@@ -66,10 +66,10 @@ class Documentation extends Model
 
     /**
      * @param Builder $query
-     * @param $pageTitle
+     * @param string $pageTitle
      * @return Builder
      */
-    public function scopePage(Builder $query, $pageTitle): Builder
+    public function scopePage(Builder $query, string $pageTitle): Builder
     {
         return $query->where('page', $pageTitle);
     }

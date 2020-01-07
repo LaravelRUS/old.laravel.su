@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Settings
  */
-class Settings extends Model
+final class Settings extends Model
 {
     /**
      * @var string
