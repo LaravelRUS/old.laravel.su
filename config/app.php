@@ -190,12 +190,21 @@ return [
     */
 
     'aliases' => [
-        // TODO Есть зависимости. Убрать и удалить.
+        // TODO Убрать (Есть зависимости в контроллерах)
         'Cookie' => Illuminate\Support\Facades\Cookie::class,
+        // TODO Убрать (используется в миграциях)
+        'DB' => \Illuminate\Support\Facades\DB::class,
+
+        // Для отладки
         'Log' => Illuminate\Support\Facades\Log::class,
+
+        // Используется только в файле роутов
         'Route' => Illuminate\Support\Facades\Route::class,
+
+        // Используется только в миграциях
         'Schema' => Illuminate\Support\Facades\Schema::class,
+
+        // TODO Убрать (Есть зависимости в контроллерах и моделях)
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
     ],
-
 ];
