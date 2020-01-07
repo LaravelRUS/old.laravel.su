@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App\Providers;
 
-use App\Services\VersionService;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
 
+/**
+ * Class AppServiceProvider
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         if ($this->app->isLocal()) {
             $this->app->register(TelescopeServiceProvider::class);
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(IdeHelperServiceProvider::class);
         }
     }
 
@@ -26,14 +37,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-//        View::composer('docs*', function ($view) {
-//            $versionService = new VersionService();
-//            $documentedVersions = $versionService->documentedVersions();
-//            $versionTitle = request()->route("version");
-//            $view->with("documentedVersions", $documentedVersions);
-//            $view->with("versionTitle", $versionTitle);
-//        });
     }
 }

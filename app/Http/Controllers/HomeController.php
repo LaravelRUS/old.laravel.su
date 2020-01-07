@@ -1,28 +1,30 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
-class HomeController extends Controller
+/**
+ * Class HomeController
+ */
+class HomeController
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @param Factory $factory
+     * @return View
      */
-    public function __construct()
+    public function index(Factory $factory): View
     {
-
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+        return $factory->make('page.home');
     }
 }

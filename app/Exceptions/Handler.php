@@ -1,16 +1,31 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
+/**
+ * Class Handler
+ */
 class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that are not reported.
      *
-     * @var array
+     * @var array|string[]
      */
     protected $dontReport = [
         //
@@ -19,7 +34,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
-     * @var array
+     * @var array|string[]
      */
     protected $dontFlash = [
         'password',
@@ -29,25 +44,27 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
      * @return void
+     * @throws Exception
      */
-    public function report(Exception $exception)
+    public function report(Exception $exception): void
     {
-        if (app()->bound('sentry') && $this->shouldReport($exception)) {
+        if ($this->shouldReport($exception) && app()->bound('sentry')) {
             app('sentry')->captureException($exception);
         }
+
         parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param \Exception $exception
+     * @return Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $exception): Response
     {
         return parent::render($request, $exception);
     }

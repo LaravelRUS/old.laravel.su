@@ -276,27 +276,26 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.12",
+            "version": "2.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208"
+                "reference": "834593d5900615639208417760ba6a17299e2497"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6255605af39f2db7f5cb62e672bd8a7bad8d208",
-                "reference": "a6255605af39f2db7f5cb62e672bd8a7bad8d208",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/834593d5900615639208417760ba6a17299e2497",
+                "reference": "834593d5900615639208417760ba6a17299e2497",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
-                "php": ">= 5.5"
+                "php": ">=5.5"
             },
             "require-dev": {
-                "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
-                "satooshi/php-coveralls": "^1.0.1",
-                "symfony/phpunit-bridge": "^4.4@dev"
+                "dominicsayers/isemail": "^3.0.7",
+                "phpunit/phpunit": "^4.8.36|^7.5.15",
+                "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -330,20 +329,20 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-12-20T12:49:39+00:00"
+            "time": "2019-12-30T08:14:25+00:00"
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "6d893938171a817f4e9bc9e86f2da1e370b7bcd7"
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/6d893938171a817f4e9bc9e86f2da1e370b7bcd7",
-                "reference": "6d893938171a817f4e9bc9e86f2da1e370b7bcd7",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
                 "shasum": ""
             },
             "require": {
@@ -376,7 +375,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2019-03-17T18:48:37+00:00"
+            "time": "2019-12-30T22:54:17+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1160,16 +1159,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.61",
+            "version": "1.0.63",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9"
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4fb13c01784a6c9f165a351e996871488ca2d8c9",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
                 "shasum": ""
             },
             "require": {
@@ -1240,7 +1239,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-12-08T21:46:50+00:00"
+            "time": "2020-01-04T16:30:31+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1604,24 +1603,24 @@
         },
         {
             "name": "php-http/cache-plugin",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/cache-plugin.git",
-                "reference": "8e2505d2090316fac7cce637b39b6bbb5249c5a8"
+                "reference": "d137d46523343297e340cef697747381b6caeb66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/cache-plugin/zipball/8e2505d2090316fac7cce637b39b6bbb5249c5a8",
-                "reference": "8e2505d2090316fac7cce637b39b6bbb5249c5a8",
+                "url": "https://api.github.com/repos/php-http/cache-plugin/zipball/d137d46523343297e340cef697747381b6caeb66",
+                "reference": "d137d46523343297e340cef697747381b6caeb66",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.4 || ^7.0",
+                "php": "^7.1",
                 "php-http/client-common": "^1.9 || ^2.0",
                 "php-http/message-factory": "^1.0",
                 "psr/cache": "^1.0",
-                "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0"
+                "symfony/options-resolver": "^2.6 || ^3.0 || ^4.0 || ^5.0"
             },
             "require-dev": {
                 "henrikbjorn/phpspec-code-coverage": "^1.0",
@@ -1656,7 +1655,7 @@
                 "httplug",
                 "plugin"
             ],
-            "time": "2019-01-23T16:51:58+00:00"
+            "time": "2019-12-26T16:14:58+00:00"
         },
         {
             "name": "php-http/client-common",
@@ -1791,16 +1790,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.7.0",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "e822f86a6983790aa17ab13aa7e69631e86806b6"
+                "reference": "82dbef649ccffd8e4f22e1953c3a5265992b83c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/e822f86a6983790aa17ab13aa7e69631e86806b6",
-                "reference": "e822f86a6983790aa17ab13aa7e69631e86806b6",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/82dbef649ccffd8e4f22e1953c3a5265992b83c0",
+                "reference": "82dbef649ccffd8e4f22e1953c3a5265992b83c0",
                 "shasum": ""
             },
             "require": {
@@ -1852,20 +1851,20 @@
                 "message",
                 "psr7"
             ],
-            "time": "2019-06-30T09:04:27+00:00"
+            "time": "2020-01-03T11:25:47+00:00"
         },
         {
             "name": "php-http/httplug",
-            "version": "v2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/httplug.git",
-                "reference": "b3842537338c949f2469557ef4ad4bdc47b58603"
+                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/httplug/zipball/b3842537338c949f2469557ef4ad4bdc47b58603",
-                "reference": "b3842537338c949f2469557ef4ad4bdc47b58603",
+                "url": "https://api.github.com/repos/php-http/httplug/zipball/72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
+                "reference": "72d2b129a48f0490d55b7f89be0d6aa0597ffb06",
                 "shasum": ""
             },
             "require": {
@@ -1875,13 +1874,13 @@
                 "psr/http-message": "^1.0"
             },
             "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "^1.0",
-                "phpspec/phpspec": "^2.4"
+                "friends-of-phpspec/phpspec-code-coverage": "^4.1",
+                "phpspec/phpspec": "^4.3.4|^5.0|^6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -1909,7 +1908,7 @@
                 "client",
                 "http"
             ],
-            "time": "2018-10-31T09:14:44+00:00"
+            "time": "2019-12-27T10:07:11+00:00"
         },
         {
             "name": "php-http/message",
@@ -3727,25 +3726,25 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.4.2",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f"
+                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/2be23e63f33de16b49294ea6581f462932a77e2f",
-                "reference": "2be23e63f33de16b49294ea6581f462932a77e2f",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
+                "reference": "1ad3d0ffc00cc1990e5c9c7bb6b81578ec3f5f68",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": "^7.2.5"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -3777,7 +3776,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2019-10-28T21:57:16+00:00"
+            "time": "2019-11-18T17:27:11+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -5204,16 +5203,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.10.0",
+            "version": "v2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "0c9a646775ef549eb0a213a4f9bd4381d9b4d934"
+                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0c9a646775ef549eb0a213a4f9bd4381d9b4d934",
-                "reference": "0c9a646775ef549eb0a213a4f9bd4381d9b4d934",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
+                "reference": "c2b8e6e82732a64ecde1cddf9e1e06cb8556e3d8",
                 "shasum": ""
             },
             "require": {
@@ -5292,7 +5291,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2019-11-03T16:50:43+00:00"
+            "time": "2020-01-04T12:56:21+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -5482,16 +5481,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "1d2103aefecc9c4e6975bcc77fc5eceb330adb33"
+                "reference": "c6d36683b40e005cd395ddff1bbfbf0aa0fcd3c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/1d2103aefecc9c4e6975bcc77fc5eceb330adb33",
-                "reference": "1d2103aefecc9c4e6975bcc77fc5eceb330adb33",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/c6d36683b40e005cd395ddff1bbfbf0aa0fcd3c5",
+                "reference": "c6d36683b40e005cd395ddff1bbfbf0aa0fcd3c5",
                 "shasum": ""
             },
             "require": {
@@ -5549,7 +5548,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-11-27T11:17:18+00:00"
+            "time": "2020-01-06T09:32:42+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -5597,16 +5596,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "ecbc8f3ed2cafca3cfca3d5febaae5a9d2899508"
+                "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/ecbc8f3ed2cafca3cfca3d5febaae5a9d2899508",
-                "reference": "ecbc8f3ed2cafca3cfca3d5febaae5a9d2899508",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
+                "reference": "4c97f814aa2f0dd4d5bedc89181c10ef12c004c5",
                 "shasum": ""
             },
             "require": {
@@ -5625,7 +5624,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -5654,7 +5653,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2019-12-25T10:00:00+00:00"
+            "time": "2019-12-29T10:00:00+00:00"
         },
         {
             "name": "fruitcake/laravel-telescope-toolbar",
@@ -5773,73 +5772,6 @@
                 "fixtures"
             ],
             "time": "2019-12-12T13:22:17+00:00"
-        },
-        {
-            "name": "guzzlehttp/guzzle",
-            "version": "6.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
-                "psr/log": "^1.1"
-            },
-            "suggest": {
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
-                "psr/log": "Required for using the Log middleware"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -6062,23 +5994,22 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "5571962a4f733fbb57bede39778f71647fae8e66"
+                "reference": "f69bbde7d7a75d6b2862d9ca8fab1cd28014b4be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/5571962a4f733fbb57bede39778f71647fae8e66",
-                "reference": "5571962a4f733fbb57bede39778f71647fae8e66",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/f69bbde7d7a75d6b2862d9ca8fab1cd28014b4be",
+                "reference": "f69bbde7d7a75d6b2862d9ca8fab1cd28014b4be",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "~2.0",
                 "lib-pcre": ">=7.0",
-                "php": ">=5.6.0",
-                "sebastian/comparator": "^1.2.4|^3.0"
+                "php": ">=5.6.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
@@ -6086,7 +6017,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -6124,36 +6055,37 @@
                 "test double",
                 "testing"
             ],
-            "time": "2019-11-24T07:54:50+00:00"
+            "time": "2019-12-26T09:49:15+00:00"
         },
         {
             "name": "moontoast/math",
-            "version": "1.1.2",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/moontoast-math.git",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79"
+                "reference": "5f47d34c87767dbcc08b30377a9827df71de91fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
-                "reference": "c2792a25df5cad4ff3d760dd37078fc5b6fccc79",
+                "url": "https://api.github.com/repos/ramsey/moontoast-math/zipball/5f47d34c87767dbcc08b30377a9827df71de91fa",
+                "reference": "5f47d34c87767dbcc08b30377a9827df71de91fa",
                 "shasum": ""
             },
             "require": {
-                "ext-bcmath": "*",
-                "php": ">=5.3.3"
+                "php": ">=5.3.3",
+                "phpseclib/bcmath_compat": ">=1.0.3"
             },
             "require-dev": {
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
+                "phpunit/phpunit": "^4.8 || ^5.5 || ^6.5 || ^7.0",
                 "satooshi/php-coveralls": "^0.6.1",
                 "squizlabs/php_codesniffer": "^2.3"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Moontoast\\Math\\": "src/Moontoast/Math/"
+                    "Moontoast\\Math\\": "src/Moontoast/Math",
+                    "Moontoast\\Math\\Exception\\": "src/Moontoast/Math/Exception"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6173,7 +6105,8 @@
                 "bcmath",
                 "math"
             ],
-            "time": "2017-02-16T16:54:46+00:00"
+            "abandoned": "brick/math",
+            "time": "2020-01-05T04:49:34+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -6390,69 +6323,6 @@
             "time": "2018-07-08T19:19:57+00:00"
         },
         {
-            "name": "php-http/guzzle6-adapter",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-http/guzzle6-adapter.git",
-                "reference": "6074a4b1f4d5c21061b70bab3b8ad484282fe31f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-http/guzzle6-adapter/zipball/6074a4b1f4d5c21061b70bab3b8ad484282fe31f",
-                "reference": "6074a4b1f4d5c21061b70bab3b8ad484282fe31f",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": "^7.1",
-                "php-http/httplug": "^2.0",
-                "psr/http-client": "^1.0"
-            },
-            "provide": {
-                "php-http/async-client-implementation": "1.0",
-                "php-http/client-implementation": "1.0",
-                "psr/http-client-implementation": "1.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "php-http/client-integration-tests": "^2.0",
-                "phpunit/phpunit": "^7.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Http\\Adapter\\Guzzle6\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com"
-                },
-                {
-                    "name": "David de Boer",
-                    "email": "david@ddeboer.nl"
-                }
-            ],
-            "description": "Guzzle 6 HTTP Adapter",
-            "homepage": "http://httplug.io",
-            "keywords": [
-                "Guzzle",
-                "http"
-            ],
-            "time": "2018-12-16T14:44:03+00:00"
-        },
-        {
             "name": "phpdocumentor/reflection-common",
             "version": "2.0.0",
             "source": {
@@ -6506,16 +6376,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.3",
+            "version": "4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "2ecaa9fef01634c83bfa8dc1fe35fb5cef223a62"
+                "reference": "da3fd972d6bafd628114f7e7e036f45944b62e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2ecaa9fef01634c83bfa8dc1fe35fb5cef223a62",
-                "reference": "2ecaa9fef01634c83bfa8dc1fe35fb5cef223a62",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/da3fd972d6bafd628114f7e7e036f45944b62e9c",
+                "reference": "da3fd972d6bafd628114f7e7e036f45944b62e9c",
                 "shasum": ""
             },
             "require": {
@@ -6527,6 +6397,7 @@
             "require-dev": {
                 "doctrine/instantiator": "^1.0.5",
                 "mockery/mockery": "^1.0",
+                "phpdocumentor/type-resolver": "0.4.*",
                 "phpunit/phpunit": "^6.4"
             },
             "type": "library",
@@ -6553,7 +6424,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2019-12-20T13:40:23+00:00"
+            "time": "2019-12-28T18:55:12+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -6601,6 +6472,155 @@
             ],
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "time": "2019-08-22T18:11:29+00:00"
+        },
+        {
+            "name": "phpseclib/bcmath_compat",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/bcmath_compat.git",
+                "reference": "c394fcdf4e3f84438aac24252e21710c21cd59a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/bcmath_compat/zipball/c394fcdf4e3f84438aac24252e21710c21cd59a5",
+                "reference": "c394fcdf4e3f84438aac24252e21710c21cd59a5",
+                "shasum": ""
+            },
+            "require": {
+                "phpseclib/phpseclib": ">=2.0.19"
+            },
+            "provide": {
+                "ext-bcmath": "7.3.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "suggest": {
+                "ext-gmp": "Will enable faster math operations"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/bcmath.php"
+                ],
+                "psr-4": {
+                    "bcmath_compat\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "homepage": "http://phpseclib.sourceforge.net"
+                }
+            ],
+            "description": "PHP 5.x/7.x polyfill for bcmath extension",
+            "keywords": [
+                "BigInteger",
+                "bcmath",
+                "bigdecimal",
+                "math",
+                "polyfill"
+            ],
+            "time": "2019-06-20T12:36:23+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "2.0.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "sami/sami": "~2.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "time": "2019-09-17T03:41:22+00:00"
         },
         {
             "name": "phpspec/prophecy",

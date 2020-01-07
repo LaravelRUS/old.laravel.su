@@ -1,24 +1,44 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\Documentation;
 use App\FrameworkVersion;
 use App\Services\GithubService;
-use Arr;
+use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use Github\Exception\RuntimeException;
 use Illuminate\Console\Command;
 
+/**
+ * TODO Переписать всё нахрен ибо дичайший говнокод.
+ */
 class UpdateDocsCommand extends Command
 {
+    /**
+     * @var string
+     */
     protected $signature = 'su:update_docs {force?} {--branch=} {--file=} {--pretend} {--debug}';
 
+    /**
+     * @var string
+     */
     protected $description = 'Fetch translated documentation from github';
+
     /**
      * @var GithubService
      */
     private $githubTranslated;
+
     /**
      * @var GithubService
      */
@@ -107,17 +127,17 @@ class UpdateDocsCommand extends Command
                         $this->line(' get last translated commit');
                         $commit = $this->githubTranslated->getLastCommit($version, $filename);
 
-                        if (!is_null($commit)) {
+                        if (! is_null($commit)) {
                             $last_commit_id = $commit['sha'];
                             $last_commit_at = Carbon::createFromTimestampUTC(
                                 strtotime($commit['commit']['committer']['date'])
                             );
                             $this->line(' get file');
                             $content = $this->githubTranslated->getFile($version, $filename, $last_commit_id);
-                            if (!is_null($content)) {
+                            if (! is_null($content)) {
                                 preg_match('/git (.*?)$/m', $content, $matches);
                                 $last_original_commit_id = Arr::get($matches, '1');
-                                if( ! $last_original_commit_id){
+                                if (! $last_original_commit_id) {
                                     $this->error("Wrong format. Missing git xxxxxxxx - last commit id in original repo");
                                 }
 
@@ -132,20 +152,27 @@ class UpdateDocsCommand extends Command
                                     // Считаем сколько коммитов прошло с момента перевода
                                     $this->line(' get current original commit');
                                     $after_last_original_commit_at = $last_original_commit_at;
-                                    if($isDebug OR $forceFile) $this->line(" date of last original commit is {$last_original_commit_at->format('Y-m-d H:i:s')}");
+                                    if ($isDebug OR $forceFile) {
+                                        $this->line(" date of last original commit is {$last_original_commit_at->format('Y-m-d H:i:s')}");
+                                    }
                                     $after_last_original_commit_at = $after_last_original_commit_at->addSecond();
-                                    if($isDebug OR $forceFile) $this->line(" get commits after {$after_last_original_commit_at->format('Y-m-d H:i:s')}");
-                                    $original_commits = $this->githubOriginal->getCommits($version, $filename, $after_last_original_commit_at);
-                                    if($isDebug OR $forceFile) dump($original_commits);
+                                    if ($isDebug OR $forceFile) {
+                                        $this->line(" get commits after {$after_last_original_commit_at->format('Y-m-d H:i:s')}");
+                                    }
+                                    $original_commits = $this->githubOriginal->getCommits($version, $filename,
+                                        $after_last_original_commit_at);
+                                    if ($isDebug OR $forceFile) {
+                                        dump($original_commits);
+                                    }
                                     $count_ahead = count($original_commits);
-                                    $current_original_commit = $this->githubOriginal->getLastCommit($version, $filename);
+                                    $current_original_commit = $this->githubOriginal->getLastCommit($version,
+                                        $filename);
                                     $current_original_commit_id = $current_original_commit['sha'];
                                     $current_original_commit_at = Carbon::createFromTimestampUTC(
                                         strtotime(
                                             $current_original_commit['commit']['committer']['date']
                                         )
                                     );
-
                                 } catch (RuntimeException $e) {
                                     // Оригинальный файл не найден
                                     $last_original_commit_at = null;
@@ -164,11 +191,13 @@ class UpdateDocsCommand extends Command
                                         $page->current_original_commit = $current_original_commit_id;
                                         $page->current_original_commit_at = $current_original_commit_at;
                                         $page->original_commits_ahead = $count_ahead;
-                                        if (!$isPretend) {
+                                        if (! $isPretend) {
                                             $page->save();
                                         }
                                         $this->info("Detected changes in original $version/$filename - commit $current_original_commit_id. Requires new translation.");
-                                        $updatedOriginalDocs[] = ['name' => "$version/$filename", 'commit' => $current_original_commit_id];
+                                        $updatedOriginalDocs[] = ['name'   => "$version/$filename",
+                                                                  'commit' => $current_original_commit_id,
+                                        ];
                                     }
 
                                     if ($last_commit_id != $page->last_commit) {
@@ -180,31 +209,30 @@ class UpdateDocsCommand extends Command
                                         $page->original_commits_ahead = $count_ahead;
                                         $page->title = $title;
                                         $page->text = $content;
-                                        if (!$isPretend) {
+                                        if (! $isPretend) {
                                             $page->save();
                                         }
                                         $this->info("$version/$filename updated. Commit $last_commit_id. Last original commit $last_original_commit_id.");
                                     }
                                 } else {
-                                    if (!$isPretend) {
+                                    if (! $isPretend) {
                                         Documentation::create([
-                                            'version_id' => $id,
-                                            'page' => $name,
-                                            'title' => $title,
-                                            'last_commit' => $last_commit_id,
-                                            'last_commit_at' => $last_commit_at,
-                                            'last_original_commit' => $last_original_commit_id,
-                                            'last_original_commit_at' => $last_original_commit_at,
-                                            'current_original_commit' => $current_original_commit_id,
+                                            'version_id'                 => $id,
+                                            'page'                       => $name,
+                                            'title'                      => $title,
+                                            'last_commit'                => $last_commit_id,
+                                            'last_commit_at'             => $last_commit_at,
+                                            'last_original_commit'       => $last_original_commit_id,
+                                            'last_original_commit_at'    => $last_original_commit_at,
+                                            'current_original_commit'    => $current_original_commit_id,
                                             'current_original_commit_at' => $current_original_commit_at,
-                                            'original_commits_ahead' => $count_ahead,
-                                            'text' => $content
+                                            'original_commits_ahead'     => $count_ahead,
+                                            'text'                       => $content,
                                         ]);
                                     }
 
                                     $this->info("Translate for $version/$filename created, commit id=$last_commit_id. Translated from original commit id=$last_original_commit_id.");
                                 }
-
                             }
                         }
                     }

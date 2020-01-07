@@ -1,10 +1,25 @@
-<?php namespace App\Services;
+<?php
+
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+namespace App\Services;
 
 use Github\Client as GithubClient;
 
-class GithubService {
+/**
+ * TODO Это надо переписать всё на:%*(:%№уй"!!1111
+ */
+class GithubService
+{
     /**
-     * @var \Github\Client
+     * @var GithubClient
      */
     private $githubClient;
 
@@ -25,30 +40,18 @@ class GithubService {
         $this->github_repository = $github_repository;
     }
 
-    public function getLastCommitId($branch, $filename)
-    {
-        $response = $this->githubClient->api('repo')->commits()->all(
-            $this->github_user, $this->github_repository, [
-                'sha' => $branch,
-                'path' => $filename
-            ]
-        );
-
-        if (count($response)) return $response[0]['sha'];
-
-        return null;
-    }
-
     public function getLastCommit($branch, $filename)
     {
         $response = $this->githubClient->api('repo')->commits()->all(
             $this->github_user, $this->github_repository, [
-                'sha' => $branch,
-                'path' => $filename
+                'sha'  => $branch,
+                'path' => $filename,
             ]
         );
 
-        if (count($response)) return $response[0];
+        if (count($response)) {
+            return $response[0];
+        }
 
         return null;
     }
@@ -59,7 +62,9 @@ class GithubService {
             $this->github_user, $this->github_repository, $commit_id
         );
 
-        if (count($response)) return $response;
+        if (count($response)) {
+            return $response;
+        }
 
         return null;
     }
@@ -70,9 +75,9 @@ class GithubService {
 
         $response = $this->githubClient->api('repo')->commits()->all(
             $this->github_user, $this->github_repository, [
-                'sha' => $branch,
-                'path' => $filename,
-                'since' => $since
+                'sha'   => $branch,
+                'path'  => $filename,
+                'since' => $since,
             ]
         );
 
@@ -81,11 +86,12 @@ class GithubService {
 
     public function getFile($branch, $filename, $commit_id = '')
     {
-        if ( ! $commit_id)
-        {
+        if (! $commit_id) {
             $commit_id = $this->getLastCommitId($branch, $filename);
 
-            if ( ! $commit_id) return null;
+            if (! $commit_id) {
+                return null;
+            }
         }
 
         $content = file_get_contents('https://raw.githubusercontent.com/'
@@ -95,6 +101,22 @@ class GithubService {
         );
 
         return $content;
+    }
+
+    public function getLastCommitId($branch, $filename)
+    {
+        $response = $this->githubClient->api('repo')->commits()->all(
+            $this->github_user, $this->github_repository, [
+                'sha'  => $branch,
+                'path' => $filename,
+            ]
+        );
+
+        if (count($response)) {
+            return $response[0]['sha'];
+        }
+
+        return null;
     }
 
 }

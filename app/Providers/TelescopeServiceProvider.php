@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Laravel\Telescope\Telescope;
@@ -7,6 +16,9 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
+/**
+ * Class TelescopeServiceProvider
+ */
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
     /**
@@ -14,7 +26,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Telescope::night();
 
@@ -38,7 +50,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    protected function hideSensitiveRequestDetails()
+    protected function hideSensitiveRequestDetails(): void
     {
         if ($this->app->isLocal()) {
             return;
@@ -60,12 +72,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
-        Gate::define('viewTelescope', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
-        });
+
     }
 }

@@ -1,51 +1,65 @@
 <?php
 
+/**
+ * This file is part of laravel.su package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 /**
- * App\FrameworkVersion
- *
- * @property int $id
- * @property string $title
- * @property int $is_documented
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Documentation[] $documentation
- * @property-read int|null $documentation_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion version($version)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereIsDocumented($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\FrameworkVersion whereUpdatedAt($value)
- * @mixin \Eloquent
+ * Class FrameworkVersion
  */
 class FrameworkVersion extends Model
 {
-    protected $table = "versions";
-    protected $fillable = ["title", "is_documented"];
+    /**
+     * @var string
+     */
+    protected $table = 'versions';
 
-    public function scopeVersion(Builder $query, $version)
+    /**
+     * @var array|string[]
+     */
+    protected $fillable = [
+        'title',
+        'is_documented',
+    ];
+
+    /**
+     * @param Builder $query
+     * @param mixed $version
+     * @return Builder
+     */
+    public function scopeVersion(Builder $query, $version): Builder
     {
-    	return $query->where("title", $version);
+        return $query->where('title', $version);
     }
 
-    public function documentation()
+    /**
+     * @return HasMany
+     */
+    public function documentation(): HasMany
     {
-        return $this->hasMany(Documentation::class, "version_id");
+        return $this->hasMany(Documentation::class, 'version_id');
     }
 
-    public static function documentedVersions()
+    /**
+     * @return Collection|FrameworkVersion[]
+     */
+    public static function documentedVersions(): Collection
     {
-        return FrameworkVersion::query()
-            ->where("is_documented", 1)
-            ->orderBy("title", "desc")
+        return static::query()
+            ->where('is_documented', 1)
+            ->orderBy('title', 'desc')
             ->get();
     }
 
