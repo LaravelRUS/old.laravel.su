@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\FrameworkVersion;
 use App\Services\VersionService;
 
-class DocsStatusController extends Controller
+class DocsStatusController
 {
     /**
      * @var VersionService
