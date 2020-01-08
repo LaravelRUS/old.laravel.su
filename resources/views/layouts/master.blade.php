@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
     <meta name="theme-color" content="#ffffff" />
 
-    <link href="{{ mix('assets/app.css') }}?{{ \random_int(0, \PHP_INT_MAX) }}" rel="stylesheet" />
+    <link href="{{ mix('assets/app.css') }}" rel="stylesheet" />
 
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet" />

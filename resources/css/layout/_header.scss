@@ -135,7 +135,8 @@
                         transition: transform .3s ease;
                     }
 
-                    &:hover {
+                    &:hover,
+                    &.active {
                         color: $color-main;
 
                         &:before {
