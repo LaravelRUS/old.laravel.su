@@ -5,53 +5,76 @@
 @stop
 
 @section('content')
-    <div class="bg-white py-8 border-b border-gray-200 mb-8">
-            <div class="container mx-auto flex flex-row">
-                <div class="mr-8"><img src="/images/human.png" style="width: 500px"></div>
-                <div class="flex flex-col items-center">
-                    <div class="text-4xl text-center mb-16 text-gray-600">Laravel — php-фреймворк нового поколения</div>
-                    <div class="text-xl text-center text-gray-400 leading-normal mb-16">Мы верим, что процесс разработки
-                        только тогда наиболее продуктивен, когда работа с фреймворком приносит радость и удовольствие.
-                        Счастливые разработчики пишут лучший код.
-                    </div>
-                    <div>
-                        <a href="/docs" class="text-white bg-red-500 p-4 font-bold rounded-lg">
-                            Документация Laravel на русском языке
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="splash">
+        <div class="container">
+            <section class="splash-description">
+                <h1>Laravel — php-фреймворк нового поколения</h1>
+                <span>
+                    Мы верим, что процесс разработки только тогда наиболее
+                    продуктивен, когда работа с фреймворком приносит радость
+                    и удовольствие. Счастливые разработчики пишут лучший код.
+                </span>
+            </section>
+
+            <section class="splash-image">&nbsp;</section>
         </div>
+    </section>
 
-    <div class="container mx-auto px-4">
-            <div style="min-height: 1000px">
-                <div class="w-full flex flex-row">
+    <section class="section orchid">
+        <div class="container">
+            <article class="orchid-description section-description">
+                <a href="https://github.com/orchidsoftware/platform" target="_blank" rel="nofollow"
+                   class="orchid-description-github">
+                    <img src="/images/orchid/github.png" alt="GitHub" />
+                </a>
+                <h2>Orchid Platform</h2>
+                <span>
+                    Пакет для создания приложений в стиле администрирования на
+                    фреймворке Laravel. Позволяет абстрагировать общие шаблоны
+                    бизнес-приложений, чтобы разработчикам было легко реализовывать
+                    красивые и элегантные интерфейсы без особых усилий.
+                </span>
+            </article>
 
-                    <div class="w-1/3 mr-4">
-                        <div class="card flex flex-col shadow items-center">
-                            <div class="mb-8 text-3xl">Laravel Idea</div>
-                            <div class="mb-8">Удобный плагин для разработки в Phpstorm</div>
-                            <div class="mb-4 "><a class="link" href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/">Видео</a> | <a class="link" href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/">Plugin store</a></div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/3 mr-4">
-                        <div class="card flex flex-col shadow items-center">
-                            <div class="mb-8 text-3xl">SleepingOwl Admin</div>
-                            <div class="mb-8">Генератор админ-интерфейса для Laravel</div>
-                            <div class="mb-4 "><a class="link" href="https://sleepingowladmin.ru/">sleepingowladmin.ru</a></div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/3">
-                        <div class="card flex flex-col shadow items-center">
-                            <div class="mb-8 text-3xl">Orchid</div>
-                            <div class="mb-8">Платформа для back-office приложений на Laravel</div>
-                            <div class="mb-4 "><a class="link" href="https://orchid.software/ru/">orchid.software</a></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <img class="orchid-image section-image" src="/images/orchid/orchid.png" alt="Orchid Admin Panel" />
         </div>
+    </section>
+
+    <section class="section idea">
+        <div class="container">
+            <article class="idea-description section-description">
+                <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea" target="_blank" rel="nofollow"
+                   class="idea-description-market">
+                    <img src="/images/idea/market.png" alt="JetBrains Market" />
+                </a>
+                <h2>Laravel Plugin</h2>
+                <span>
+                    Расширение для платформы IDEA, экономящее времея при разработке решений на основе Laravel.
+                    Прекрасное автозаполнение магии Laravel, навигация по коду, генераторы кода моделей, автокомплит
+                    валидаторов и роутов, и многое другое.
+                </span>
+            </article>
+
+            <img class="idea-image section-image" src="/images/idea/idea.png" alt="Laravel IDEA Plugin" />
+        </div>
+    </section>
+
+    <section class="section sleeping-owl">
+        <div class="container">
+            <article class="sleeping-owl-description section-description">
+                <a href="https://github.com/laravelrus/sleepingowladmin/" target="_blank" rel="nofollow"
+                   class="sleeping-owl-description-github">
+                    <img src="/images/sleeping-owl/github.png" alt="GitHub" />
+                </a>
+                <h2>SleepingOwl Admin</h2>
+                <span>
+                    SleepingOwl Admin &mdash; это гибкая административная панель для Laravel. За свою более чем
+                    пятилетнюю историю &mdash; эта система зарекомендовала себя как мощное решение для разработки
+                    интерфейса любого уровня.
+                </span>
+            </article>
+
+            <img class="sleeping-owl-image section-image" src="/images/sleeping-owl/sleeping-owl.png" alt="SleepingOwl Admin Panel" />
+        </div>
+    </section>
 @endsection

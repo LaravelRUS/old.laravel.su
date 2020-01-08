@@ -16,11 +16,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
     <meta name="theme-color" content="#ffffff" />
 
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
-    <script src="{{ mix('js/app.js') }}" async="async"></script>
+    <link href="{{ mix('assets/app.css') }}?{{ \random_int(0, \PHP_INT_MAX) }}" rel="stylesheet" />
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet" />
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none">
-    <div id="app">
+<body>
+    <main id="app">
         @include('partials.header')
 
         @stack('header')
@@ -31,6 +33,7 @@
 
         @include('partials.footer')
         @include('partials.yandex-metrika')
-    </div>
+    </main>
+    <script src="{{ mix('assets/app.js') }}" async="async"></script>
 </body>
 </html>

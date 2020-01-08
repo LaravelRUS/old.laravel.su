@@ -1,0 +1,204 @@
+
+.splash {
+    border-bottom: $color-border 1px solid;
+    padding: 100px 0;
+    overflow: hidden;
+
+    .container {
+        height: 250px;
+        display: flex;
+        justify-content: stretch;
+    }
+
+    .splash-image {
+        width: 40%;
+        opacity: 1;
+        transition: width .3s ease, opacity .3s ease;
+        background: url(/images/human.png) center center no-repeat;
+    }
+
+    .splash-description {
+        box-sizing: border-box;
+        padding: 0 80px;
+        transition: width .3s ease;
+        width: 60%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        h1 {
+            display: block;
+            font-weight: 100;
+            font-size: 3rem;
+            margin: 0;
+            padding: 0 0 30px 0;
+        }
+
+        span {
+            color: $color-description;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .splash-image {
+            width: 0;
+            opacity: 0;
+        }
+
+        .splash-description {
+            width: 100%;
+        }
+    }
+}
+
+.section {
+    border-bottom: $color-border 1px solid;
+    position: relative;
+    overflow: hidden;
+    font-size: 18px;
+    line-height: 32px;
+
+    .container {
+        padding: 100px 0;
+        position: relative;
+
+        span {
+            color: $color-extra-light-black;
+        }
+
+        .section-image {
+            position: absolute;
+            bottom: 0;
+            opacity: 1;
+            pointer-events: none;
+            transition:
+                opacity .3s ease,
+                right .3s ease,
+                left .3s ease;
+        }
+
+        .section-description {
+            position: relative;
+            z-index: 3;
+            width: 40%;
+            padding: 0 50px;
+            box-sizing: border-box;
+        }
+
+        @include media-breakpoint-down(md) {
+            .section-description {
+                width: 100%;
+            }
+
+            .section-image {
+                opacity: 0;
+            }
+        }
+    }
+
+    &.orchid {
+        background: $color-dark-white url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9JzEyMScgd2lkdGg9JzEyMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNMSA2MGg2MGwtLjAyNC02MEg2MnY2MGg1OXYxSDYydjU5aC0xVjYxSDF6TTAgMGgxdjEyMUgwem0xIDEyMGgxMjB2MUgxeicgZmlsbD0nI0VGRjFGMycgZmlsbC1ydWxlPSdldmVub2RkJy8+PC9zdmc+) top center repeat fixed;
+
+        .orchid-image {
+            right: -900px;
+        }
+
+        .orchid-description {
+            .orchid-description-github {
+                text-decoration: none;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            .orchid-image {
+                right: -1100px;
+            }
+        }
+    }
+
+    &.idea {
+        background: #fff;
+
+        .container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .idea-image {
+            left: 10px;
+        }
+
+        .idea-description {
+            .idea-description-market {
+                text-decoration: none;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            .idea-image {
+                left: -210px;
+            }
+        }
+    }
+
+    &.sleeping-owl {
+        background: $color-dark-white;
+
+        .sleeping-owl-image {
+            right: 10px;
+        }
+
+        .sleeping-owl-description {
+            .sleeping-owl-description-github {
+                text-decoration: none;
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            .sleeping-owl-image {
+                right: -210px;
+            }
+        }
+    }
+
+    &.ecosystem {
+        .container {
+            padding: 50px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: stretch;
+        }
+
+        h2 {
+            text-align: center;
+            display: block;
+            padding: 0 0 50px 0;
+        }
+
+        .ecosystem-plank {
+            width: 25%;
+            padding: 20px;
+            box-sizing: border-box;
+
+            & > a {
+                height: 300px;
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+                border-radius: 2px;
+                box-shadow: 0 0 0 1px $color-border, $ui-box-shadow;
+                background: #fff;
+                transition: transform .3s ease;
+                transform: scale(1);
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}

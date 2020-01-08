@@ -1,0 +1,30 @@
+
+input[type=submit],
+input[type=reset],
+.button {
+    font-size: $font-size;
+    font-family: $font-family;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    line-height: $ui-height;
+    padding: 0 10px;
+    display: block;
+    text-decoration: none;
+    background: $color-main;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 0 1px darken($color-main, 20%);
+
+    &:hover {
+        text-decoration: none;
+        background: $color-main-hover;
+        color: #fff;
+    }
+
+    &:active {
+        background: darken($color-main, 10%);
+    }
+}

@@ -1,0 +1,15 @@
+/**
+ * Kernel variables
+ */
+$ui-height: 32px !default;
+$ui-height-div-2: $ui-height / 2 !default;
+
+$ui-padding: 15px !default;
+$ui-min-height: 18px !default;
+$ui-min-height-dev-2: $ui-min-height / 2 !default;
+
+/**
+ * Animations
+ */
+$ui-animation-swift:  cubic-bezier(.55, 0, .1, 1) !default;
+$ui-animation-bounce: cubic-bezier(.585, .22, .12, 1.355) !default;

@@ -1,0 +1,90 @@
+/**
+ * --------------------------------------------------------------------------------------
+ *  Main named colors
+ * --------------------------------------------------------------------------------------
+ */
+$color-red:     #ff2d20 !default;
+$color-orange:  #f4645f !default;
+$color-yellow:  #d9a910 !default;
+$color-green:   #28bc00 !default;
+$color-blue:    #64b5f6 !default;
+$color-purple:  #a184d5 !default;
+$color-pink:    #ba6380 !default;
+
+/**
+ * --------------------------------------------------------------------------------------
+ *  Grayscale colors list
+ * --------------------------------------------------------------------------------------
+ */
+$color-black:               #1f2d3d !default;
+$color-light-black:         #324057 !default;
+$color-extra-light-black:   #475669 !default;
+$color-silver:              #8492a6 !default;
+$color-light-silver:        #99a9bf !default;
+$color-extra-light-silver:  #c0ccda !default;
+$color-gray:                #d3dce6 !default;
+$color-light-gray:          #e5e9f2 !default;
+$color-extra-light-gray:    #eff2f7 !default;
+$color-dark-white:          #f9fafc !default;
+$color-white:               #fff !default;
+
+/**
+ * --------------------------------------------------------------------------------------
+ *  Semantic color names
+ * --------------------------------------------------------------------------------------
+ */
+$color-bg:            $color-dark-white;              // UI background support color
+$color-text:          $color-extra-light-black;       // Main text color
+$color-description:   $color-light-silver;            // Main description color
+$color-border:        $color-light-gray;              // Elements border color
+$color-border-hover:  $color-gray;                    // Element border color while element is hovered
+$color-border-focus:  $color-red;                     // Element border color while element is focused
+
+//
+// Disabled components
+//
+$color-disabled-border: $color-extra-light-silver;    // Borders color
+$color-disabled-body:   $color-light-silver;          // Text inside disabled element
+$color-disabled-bg:     $color-light-gray;            // Background color of disabled element
+$color-disabled-text:   $color-extra-light-silver;    // Text outside disabled element
+
+//
+// Disabled "filled" components
+//
+$color-disabled-filled-border: $color-light-silver;        // Borders color
+$color-disabled-filled-body:   $color-dark-white;          // Text inside disabled element
+$color-disabled-filled-bg:     $color-light-silver;        // Background color of disabled element
+$color-disabled-filled-text:   $color-extra-light-silver;  // Text outside disabled element
+
+//
+// Main color
+//
+$color-main: $color-red !default;
+$color-main-hover: lighten($color-red, 2%) !default;
+$color-main-text: desaturate(darken($color-red, 5%), 15%) !default;
+
+//
+// Color for "danger" elements, like "Alert Label"
+//
+$color-alert: $color-red !default;
+$color-alert-hover: lighten($color-red, 2%) !default;
+$color-alert-text: desaturate(darken($color-red, 5%), 15%) !default;
+
+//
+// Color for warnings
+//
+$color-warning: $color-yellow !default;
+$color-warning-hover: lighten($color-yellow, 2%) !default;
+$color-warning-text: desaturate(darken($color-yellow, 5%), 15%) !default;
+
+//
+// Color for successful notifications
+//
+$color-success: $color-green !default;
+$color-success-hover: lighten($color-green, 2%) !default;
+$color-success-text: desaturate(darken($color-green, 5%), 15%) !default;
+
+//
+// Shadows
+//
+$ui-box-shadow: 0 5px 13px rgba($color-black, .1) !default;

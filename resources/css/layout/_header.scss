@@ -1,0 +1,158 @@
+.header {
+    background: #fff;
+    position: relative;
+    padding-top: 9px;
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 9px;
+        background: url(/images/header_line.png) center center repeat-x;
+        display: block;
+        position: absolute;
+        top: 0;
+    }
+
+    & > .extras {
+        height: 36px;
+        line-height: 36px;
+        width: 100%;
+        border-bottom: $color-border 1px solid;
+
+        .extras-items {
+            max-width: map-get($grid-breakpoints, xl);
+            height: inherit;
+            justify-content: space-between;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        a {
+            color: $color-text;
+            margin: 0 10px;
+
+            &:hover {
+                color: $color-light-black;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+    }
+
+    & > .menu {
+        padding: 15px 0;
+        border-bottom: $color-border 1px solid;
+
+        .menu-content {
+            display: flex;
+            justify-content: stretch;
+            max-width: map-get($grid-breakpoints, xl);
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+            width: 170px;
+            height: 42px;
+            background: url(/images/logo.png) center right no-repeat;
+            opacity: 1;
+            transition: opacity .3s ease, width .3s ease;
+
+            h1 {
+                display: none;
+            }
+        }
+
+        .menu-aside {
+            padding: 0 20px;
+            box-sizing: border-box;
+            flex: 1;
+
+            .menu-search {
+                height: 42px;
+                line-height: 42px;
+                width: 100%;
+                display: flex;
+                justify-content: stretch;
+
+                .menu-search-input,
+                .menu-search-button {
+                    height: 42px;
+                    line-height: 42px;
+                }
+
+                .menu-search-input {
+                    width: 100%;
+                    flex: 1;
+                    padding: 0 15px;
+                    border-radius: 2px 0 0 2px;
+                }
+
+                .menu-search-button {
+                    width: 100px;
+                    border-radius: 0 2px 2px 0;
+                }
+            }
+
+            .menu-items {
+                width: 100%;
+                padding: 10px 0 0 0;
+                margin-bottom: -5px;
+                line-height: 22px;
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+
+                & > span, & > a {
+                    color: $color-text;
+                    height: 22px;
+                    margin: 0 10px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    position: relative;
+                }
+
+                & > span {
+                    color: $color-description;
+                }
+
+                & > a {
+                    transition: color .3s ease;
+
+                    &:before {
+                        pointer-events: none;
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        height: 2px;
+                        width: 100%;
+                        background: $color-main;
+                        transform: scaleX(0);
+                        transform-origin: 100% 100%;
+                        transition: transform .3s ease;
+                    }
+
+                    &:hover {
+                        color: $color-main;
+
+                        &:before {
+                            transform: scaleX(1);
+                            transform-origin: 0 0;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        @include media-breakpoint-down(sm) {
+            .logo {
+                width: 0;
+                opacity: 0;
+            }
+        }
+    }
+}

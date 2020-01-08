@@ -1,0 +1,12 @@
+
+.container {
+    width: 100%;
+    min-width: map-get($grid-breakpoints, sm);
+    max-width: map-get($grid-breakpoints, xl);
+    margin: 0 auto;
+}
+
+@import "layout/header";
+@import "layout/home";
+@import "layout/footer";
+

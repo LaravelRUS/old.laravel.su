@@ -1,19 +1,37 @@
-<div class="flex justify-center bg-red-500">
-    <div>
-        <img src="/images/header_line.png" />
-    </div>
-</div>
+<header class="header">
+    <section class="extras">
+        <nav class="container extras-items">
+            <a href="https://laravel.com/" target="_blank" rel="nofollow">Laravel</a>
+            <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/" target="_blank" rel="nofollow">Laravel IDEA</a>
+            <a href="https://sleepingowladmin.ru/" target="_blank" rel="nofollow">SleepingOwl</a>
+            <a href="https://orchid.software/ru/" target="_blank" rel="nofollow">Orchid</a>
+            <a href="https://vk.com/laravel_rus" target="_blank" rel="nofollow">Сообщество</a>
+            <a href="https://discord.gg/c8gJfed" target="_blank" rel="nofollow">Discord</a>
+            <a href="https://t.me/laravelrus" target="_blank" rel="nofollow">Telegram</a>
+            <a href="https://github.com/LaravelRUS" target="_blank" rel="nofollow">GitHub</a>
+        </nav>
+    </section>
 
-<div class="bg-white py-4 border-b border-gray-200 ">
-    <div class="container mx-auto px-4 flex flex-row justify-start items-center">
-        <a href="/" class="flex flex-row justify-start items-center">
-            <div class="mr-4"><img src="/images/logo_laravel.png" /></div>
-            <div class="mr-4"><img src="/images/logo_title.png" /></div>
-        </a>
-        <div class="px-8 flex flex-row items-center">
-            <div>
-                <a href="/docs" class="text-sm font-bold text-gray-600 hover:text-gray-800 mb-1">Документация</a>
-            </div>
-        </div>
-    </div>
-</div>
+    <section class="menu">
+        <section class="container menu-content">
+            <a href="{{ route('home') }}" class="logo">
+                <h1>{{ config('app.name') }}</h1>
+            </a>
+
+            <aside class="menu-aside">
+                {{--<section class="menu-search">
+                    <input type="text" class="menu-search-input" placeholder="Поиск по документации" />
+                    <a href="#" class="button menu-search-button">Искать</a>
+                </section>--}}
+
+                <nav class="menu-items">
+                    <a href="{{ route('home') }}">Главная</a>
+                    <a href="{{ route('docs') }}">Документация</a>
+                    <a href="{{ route('docs.status') }}">Перевод</a>
+                    <span>Статьи</span>
+                    <span>Пакеты</span>
+                </nav>
+            </aside>
+        </section>
+    </section>
+</header>

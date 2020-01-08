@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+/**
+ * Load kernel
+ */
+@import "kernel";
+@import '~reset-css';
+
+html,
+body {
+  @include font-optimize;
+  width: 100%;
+  color: $color-text;
+  min-height: 100vh;
+  line-height: $ui-min-height;
+  min: {
+    height: 100%;
+    width: map-get($grid-breakpoints, sm);
+  }
+  font: {
+    size: $font-size;
+    family: $font-family;
+  }
+
+  a {
+    color: $color-main;
+    outline: none;
+    text-decoration: none;
+
+    &:active,
+    &:hover {
+      color: $color-main-text;
+      background: none;
+      text-decoration: underline;
+    }
+
+    &.dashed {
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      &:active,
+      &:hover {
+        text-decoration: none;
+        border-bottom: 1px dashed $color-main-text;
+      }
+    }
+  }
+
+  pre, code {
+    font: {
+      size: $font-size;
+      family: $font-mono;
+    }
+  }
+
+  code {
+    background: $color-extra-light-gray;
+    border-radius: 2px;
+    padding: 2px 6px;
+    box-sizing: border-box;
+    line-height: $ui-min-height;
+    height: $ui-min-height;
+    color: inherit;
+  }
+
+  pre > code {
+    display: block;
+    white-space: pre;
+    background: $color-bg;
+    padding: 10px $ui-padding;
+    box-shadow: inset 3px 0 0 $color-main;
+    height: auto;
+    border-radius: 0 2px 2px 0;
+    line-height: $font-size + 6px;
+  }
+
+  ul {
+    li {
+      list-style: square;
+      margin: 4px 0;
+    }
+  }
+
+
+  hr {
+    border: none;
+    margin: 10px 0;
+    display: block;
+    height: 1px;
+    background: $color-border;
+  }
+
+  @import "ui";
+}
+
+@import "layout";
