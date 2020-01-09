@@ -79,10 +79,7 @@
                                                     <div class="w-6 text-red-500 font-bold"><i
                                                                 class="fa fa-circle"></i> {{ $doc->original_commits_ahead }}
                                                     </div>
-                                                    <div>git
-                                                        difftool {{ substr($doc->last_original_commit, 0, 7) }} {{ substr($doc->current_original_commit, 0, 7) }} {{ $doc->page }}
-                                                        .md
-                                                    </div>
+                                                    <code>git difftool {{ substr($doc->last_original_commit, 0, 7) }} {{ substr($doc->current_original_commit, 0, 7) }} {{ $doc->page }}.md</code>
                                                 @endif
                                             @endif
                                         </div>
