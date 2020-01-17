@@ -36,7 +36,7 @@
                 </span>
             </article>
 
-            <img class="orchid-image section-image" src="/images/orchid/orchid.png" alt="Orchid Admin Panel" />
+            <img class="orchid-image section-image" src="/images/orchid/orchid.png?v2" alt="Orchid Admin Panel" />
         </div>
     </section>
 
