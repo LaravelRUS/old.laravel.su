@@ -39,6 +39,22 @@
         @include media-breakpoint-down(sm) {
             display: none;
         }
+
+        &.alternative {
+            .extras-items {
+                color: $color-description !important;
+                justify-content: center;
+                font-size: 12px;
+
+                a {
+                    color: $color-description !important;
+                }
+
+                span > a {
+                    margin: 0 !important;
+                }
+            }
+        }
     }
 
     & > .menu {
