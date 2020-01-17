@@ -38,6 +38,5 @@ mix
 if (mix.inProduction()) {
     mix
         .version()
-        .purgeCss()
     ;
 }

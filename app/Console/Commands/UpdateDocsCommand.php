@@ -152,21 +152,26 @@ class UpdateDocsCommand extends Command
                                     // Считаем сколько коммитов прошло с момента перевода
                                     $this->line(' get current original commit');
                                     $after_last_original_commit_at = $last_original_commit_at;
-                                    if ($isDebug OR $forceFile) {
+                                    if ($isDebug or $forceFile) {
                                         $this->line(" date of last original commit is {$last_original_commit_at->format('Y-m-d H:i:s')}");
                                     }
                                     $after_last_original_commit_at = $after_last_original_commit_at->addSecond();
-                                    if ($isDebug OR $forceFile) {
+                                    if ($isDebug or $forceFile) {
                                         $this->line(" get commits after {$after_last_original_commit_at->format('Y-m-d H:i:s')}");
                                     }
-                                    $original_commits = $this->githubOriginal->getCommits($version, $filename,
-                                        $after_last_original_commit_at);
-                                    if ($isDebug OR $forceFile) {
+                                    $original_commits = $this->githubOriginal->getCommits(
+                                        $version,
+                                        $filename,
+                                        $after_last_original_commit_at
+                                    );
+                                    if ($isDebug or $forceFile) {
                                         dump($original_commits);
                                     }
                                     $count_ahead = count($original_commits);
-                                    $current_original_commit = $this->githubOriginal->getLastCommit($version,
-                                        $filename);
+                                    $current_original_commit = $this->githubOriginal->getLastCommit(
+                                        $version,
+                                        $filename
+                                    );
                                     $current_original_commit_id = $current_original_commit['sha'];
                                     $current_original_commit_at = Carbon::createFromTimestampUTC(
                                         strtotime(

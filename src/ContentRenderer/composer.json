@@ -1,0 +1,29 @@
+{
+    "name": "laravelrus/content-renderer",
+    "license": "MIT",
+    "type": "library",
+    "description": "Content polymorphic renderer",
+    "authors": [
+        {
+            "name": "Serafim",
+            "email": "nesk@xakep.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "league/commonmark": "~1.1",
+        "spatie/commonmark-highlighter": "~2.1",
+        "league/commonmark-ext-table": "~2.1",
+        "league/commonmark-ext-strikethrough": "~1.0",
+        "league/commonmark-ext-external-link": "~1.0",
+        "league/commonmark-ext-task-list": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\ContentRenderer\\": "src/"
+        },
+        "files": [
+            "resources/lang-patch.php"
+        ]
+    }
+}

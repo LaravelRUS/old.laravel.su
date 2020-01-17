@@ -98,6 +98,7 @@ tr.selected td {
 .docs_content {
     line-height: 32px;
     font-size: 16px;
+    padding: 0 0 100px 0;
 
     p {
         padding: 10px 0;
@@ -105,7 +106,6 @@ tr.selected td {
 
     ul {
         li {
-            margin-bottom: 1rem;
             margin-bottom: .5rem;
             list-style: none;
 
@@ -141,26 +141,6 @@ tr.selected td {
                 color: $color-description;
                 margin-right: .25rem;
             }
-        }
-    }
-
-    blockquote {
-        background-color: $color-blue;
-        color: #ebf5fb;
-        padding: 1rem 1rem .5rem;
-        margin-bottom: 1rem;
-        border-radius: .25rem;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-
-        a {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        code {
-            background-color: rgba(#fff, .3);
-            color: #fff;
-            border-radius: .25rem;
         }
     }
 

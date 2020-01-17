@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\ContentRenderer\Renderer\ContentRendererInterface;
 use App\Model\FrameworkVersion;
 use App\Model\Repository\DocumentationRepositoryInterface;
 use App\Services\DocsService;
@@ -36,11 +37,6 @@ class DocsController
     private const ERROR_MENU_NOT_FOUND = 'Menu for framework version %s not found';
 
     /**
-     * @var DocsService
-     */
-    private DocsService $docsService;
-
-    /**
      * @var Redirector
      */
     private Redirector $redirector;
@@ -51,20 +47,25 @@ class DocsController
     private DocumentationRepositoryInterface $docs;
 
     /**
+     * @var ContentRendererInterface
+     */
+    private ContentRendererInterface $renderer;
+
+    /**
      * DocsController constructor.
      *
      * @param Redirector $redirector
      * @param DocumentationRepositoryInterface $docs
-     * @param DocsService $docsService
+     * @param ContentRendererInterface $renderer
      */
     public function __construct(
         Redirector $redirector,
         DocumentationRepositoryInterface $docs,
-        DocsService $docsService
+        ContentRendererInterface $renderer
     ) {
         $this->docs = $docs;
         $this->redirector = $redirector;
-        $this->docsService = $docsService;
+        $this->renderer = $renderer;
     }
 
     /**
@@ -94,8 +95,8 @@ class DocsController
             'version'  => $current,
             'page'     => $document,
             'menu'     => $menu,
-            'pageHtml' => $this->docsService->convertToHtml($document->text, $current->title),
-            'menuHtml' => $this->docsService->convertToHtml($menu->text, $current->title),
+            'pageHtml' => $this->renderer->render($current->title, $document->text),
+            'menuHtml' => $this->renderer->render($current->title, $menu->text),
         ]);
     }
 }

@@ -27,4 +27,13 @@ class HomeController
     {
         return $factory->make('page.home');
     }
+
+    /**
+     * @param Factory $factory
+     * @return View
+     */
+    public function test(Factory $factory): View
+    {
+        return $factory->make('docs.markdown-test');
+    }
 }

@@ -1,6 +1,10 @@
 <?php
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')
+    ->name('home');
+
+Route::get('/test', 'HomeController@test')
+    ->name('test');
 
 Route::get('/status', 'DocsStatusController@index')
     ->name('docs.status');

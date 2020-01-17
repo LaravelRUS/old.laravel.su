@@ -6,7 +6,7 @@
 $h1-size: 4.236rem;
 $h2-size: 2.618rem;
 $h3-size: 1.618rem;
-$h4-size: 14px;
+$h4-size: $font-size + 1px;
 
 $h5-size: $font-size;
 $h6-size: $font-size;
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-headings;
   font-weight: 400;
   line-height: 1.4;
-  padding: 0 5px;
+  padding: 0;
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -60,17 +60,17 @@ h2 {
 h3 {
   font-size: $h3-size;
   font-weight: 400;
-  margin: $h3-size 0 ($h3-size / 2) 0;
+  margin: ($h3-size * 2) 0 $h3-size 0;
 }
 
 h4 {
   font-size: $h4-size;
-  text-transform: uppercase;
-  margin: $h4-size 0 ($h4-size / 2) 0;
+  font-weight: bold;
+  margin: ($h4-size * 2) 0 ($h4-size / 3) 0;
 }
 
 h5, h6 {
   font-size: $h5-size;
   font-weight: bold;
-  margin: $h4-size 0 ($h4-size / 2) 0;
+  margin: $h4-size 0 ($h4-size / 3) 0;
 }
