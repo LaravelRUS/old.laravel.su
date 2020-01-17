@@ -55,7 +55,7 @@
         .logo {
             display: block;
             text-decoration: none;
-            width: 170px;
+            width: 150px;
             height: 42px;
             background: url(/images/logo.png) center right no-repeat;
             opacity: 1;
@@ -103,7 +103,7 @@
                 margin-bottom: -5px;
                 line-height: 22px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 font-size: 14px;
 
                 & > span, & > a {

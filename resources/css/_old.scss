@@ -8,12 +8,6 @@
     }
 }
 
-.link {
-    color: #3398d8;
-    text-decoration: underline;
-    cursor: pointer
-}
-
 .card {
     padding: 1rem
 }
@@ -30,28 +24,6 @@
 .desc {
     font-size: .875rem;
     color: #868686
-}
-
-th {
-    border-bottom-width: 1px;
-    border-color: #cfcfcf;
-    text-align: left
-}
-
-td, th {
-    padding: .5rem .75rem
-}
-
-tr:nth-child(2n) {
-    background-color: #fafafa
-}
-
-tr:hover {
-    background-color: #ebf4ff
-}
-
-tr.selected td {
-    background-color: #ebf5fb
 }
 
 .docs_sidebar {

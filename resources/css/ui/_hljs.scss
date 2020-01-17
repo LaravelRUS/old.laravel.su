@@ -1,21 +1,6 @@
 .hljs {
     position: relative;
 
-    &:after {
-        content: attr(data-lang);
-        position: absolute;
-        padding: 0 9px;
-        background: $color-light-gray;
-        color: $color-description;
-        border-radius: 4px;
-        font-style: italic;
-        font-size: 12px;
-        line-height: 20px;
-        display: block;
-        right: 5px;
-        top: 5px;
-    }
-
     &-comment,
     &-quote {
         color: #bbbfb9;
