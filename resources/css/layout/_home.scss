@@ -103,7 +103,7 @@
         background: $color-dark-white url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9JzEyMScgd2lkdGg9JzEyMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNMSA2MGg2MGwtLjAyNC02MEg2MnY2MGg1OXYxSDYydjU5aC0xVjYxSDF6TTAgMGgxdjEyMUgwem0xIDEyMGgxMjB2MUgxeicgZmlsbD0nI0VGRjFGMycgZmlsbC1ydWxlPSdldmVub2RkJy8+PC9zdmc+) top center repeat fixed;
 
         .orchid-image {
-            right: -900px;
+            right: -250px;
         }
 
         .orchid-description {
@@ -114,7 +114,7 @@
 
         @include media-breakpoint-down(md) {
             .orchid-image {
-                right: -1100px;
+                right: -450px;
             }
         }
     }
