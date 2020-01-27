@@ -14,7 +14,7 @@
         @endforeach
     </section>
     <aside class="container footer-bottom">
-        <address>Руссокязычное Сообщество Laravel Framework &copy; {{ date('Y') }}</address>
+        <address>Русскоязычное сообщество Laravel Framework &copy; {{ date('Y') }}</address>
 
         <nav class="footer-bottom-menu">
             @foreach(config('menu.footer.menu') as $uri => $title)
