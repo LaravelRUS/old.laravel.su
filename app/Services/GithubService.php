@@ -33,7 +33,7 @@ class GithubService
         $this->githubClient->authenticate(
             config("laravelsu.github_client_id"),
             config("laravelsu.github_client_secret"),
-            GithubClient::AUTH_URL_CLIENT_ID
+            GithubClient::AUTH_HTTP_PASSWORD
         );
 
         $this->github_user = $github_user;
