@@ -12,10 +12,9 @@ declare(strict_types=1);
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class Handler
@@ -63,6 +62,7 @@ class Handler extends ExceptionHandler
      * @param Request $request
      * @param \Exception $exception
      * @return Response
+     * @throws Exception
      */
     public function render($request, Exception $exception): Response
     {
