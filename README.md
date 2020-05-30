@@ -14,12 +14,26 @@
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
+$ php artisan migrate --seed
 ```
 5. Откройте в браузере `http://localhost:7001/`
 
 Пунткы 3 и 4 требуются только при первом запуске. В дальнейшем они понядобятся только при обновлениях.
 
-### 
+### База Данных
+
+Для подключения к базе снаружи контейнера используйте следующие параметры:
+
+| Наименование | Значение       |
+|--------------|----------------|
+| Host         | localhost:7003 |
+| Database     | laravelsu      |
+| Login        | mysql_user     |
+| Password     | mysql_password |
+
+После установки вы увидите следующие таблицы:
+
+![](https://habrastorage.org/webt/sw/xf/2y/swxf2yrlhrkywbprmaidvkxqoow.png)
 
 ### Системные требования для локальной установки.
 
