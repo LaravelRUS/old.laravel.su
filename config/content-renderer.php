@@ -9,11 +9,6 @@
 
 declare(strict_types=1);
 
-use League\CommonMark\Ext\ExternalLink\ExternalLinkExtension;
-use League\CommonMark\Ext\Strikethrough\StrikethroughExtension;
-use League\CommonMark\Ext\Table\TableExtension;
-use League\CommonMark\Ext\TaskList\TaskListExtension;
-
 return [
 
     /*
@@ -31,10 +26,7 @@ return [
     */
 
     'extensions' => [
-        TableExtension::class,
-        StrikethroughExtension::class,
-        ExternalLinkExtension::class,
-        TaskListExtension::class,
+        \League\CommonMark\Extension\GithubFlavoredMarkdownExtension::class,
     ],
 
     /*
