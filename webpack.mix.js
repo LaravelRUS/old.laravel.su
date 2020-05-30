@@ -26,7 +26,7 @@ mix
     .js('resources/js/app.js', 'public/assets')
     .sass('resources/css/app.scss', 'public/assets', {
         sourceMap: true,
-        outputStyle: 'compressed',
+        // outputStyle: 'compressed',
     })
     .options({
         extractVueStyles: true,
