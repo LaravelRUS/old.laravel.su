@@ -10,7 +10,7 @@
 3. Откройте новую сессию терминала и выполните `docker exec -it laravelsu-php /bin/bash` 
 > Это позволит войти внутрь контейнера
 4. Выполните:
-```
+```bash
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
@@ -34,6 +34,34 @@ $ php artisan migrate --seed
 После установки вы увидите следующие таблицы:
 
 ![](https://habrastorage.org/webt/sw/xf/2y/swxf2yrlhrkywbprmaidvkxqoow.png)
+
+### Заполнение базы данных
+
+Для выгрузки самой последней документации [из репозитория GitHub](https://github.com/LaravelRUS/docs) стоит 
+воспользоваться командой:
+```bash
+$ php artisan su:update_docs
+```
+
+Обратите внимание, что GitHub имеет ограничение на количество запросов и скорее всего у вас возникнет ошибка, 
+которая содержит следующий текст:
+```
+\Github\Exception\RuntimeException You have reached GitHub hourly limit! Actual limit is: 60
+```
+
+В этот момент некоторая документация уже будет в наличии (скорее всего для Laravel 4.1) и ресурсом 
+можно пользоваться.
+
+Для выгрузки полной документации стоит прописать ключ GitHub в `.env` файл. Получить его можно на 
+странице https://github.com/settings/tokens
+
+1) Нажимаем на кнопку генерации нового токена (1).
+2) Выставляем права на чтение репозиториев.
+3) Получившийся ключ (2) вставляем в файл `.env` в качестве значения для переменной `GITHUB_CLIENT_SECRET`.
+
+![](https://habrastorage.org/webt/eb/xv/17/ebxv172okbewdbgxwn-wquola7g.png)
+
+После этого выгрузку всей документации можно произвести полностью, от начала и до конца.
 
 ### Системные требования для локальной установки.
 
