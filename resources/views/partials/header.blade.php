@@ -40,7 +40,7 @@
 
                     <a href="{{ route('home') }}" class="{{ $route === 'home' ? 'active' : '' }}">Главная</a>
                     <a href="{{ route('docs') }}" class="{{ $route === 'docs' ? 'active' : '' }}">Документация</a>
-                    <a href="{{ route('docs.status') }}" class="{{ $route === 'docs.status' ? 'active' : '' }}">Перевод</a>
+                    <a href="{{ route('status') }}" class="{{ $route === 'status' ? 'active' : '' }}">Перевод</a>
                     <span>Статьи</span>
                     <span>Пакеты</span>
                 </nav>

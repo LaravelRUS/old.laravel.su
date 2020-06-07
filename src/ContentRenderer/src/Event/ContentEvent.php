@@ -22,20 +22,13 @@ abstract class ContentEvent
     protected string $content;
 
     /**
-     * @var string
-     */
-    protected string $version;
-
-    /**
      * Rendering constructor.
      *
-     * @param string $version
      * @param string $content
      */
-    public function __construct(string $version, string $content)
+    public function __construct(string $content)
     {
         $this->content = $content;
-        $this->version = $version;
     }
 
     /**
@@ -44,13 +37,5 @@ abstract class ContentEvent
     public function getContent(): string
     {
         return $this->content;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVersion(): string
-    {
-        return $this->version;
     }
 }

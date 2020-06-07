@@ -11,14 +11,11 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Model\Documentation;
-use App\Model\FrameworkVersion;
-use App\Model\Repository\DocumentationRepositoryInterface;
-use App\Model\Repository\EloquentDocumentationRepository;
-use App\Model\Repository\EloquentFrameworkVersionRepository;
-use App\Model\Repository\FrameworkVersionRepositoryInterface;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use App\Entity;
+use App\Entity\Repository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,23 +25,26 @@ use Illuminate\Support\ServiceProvider;
 class DatabaseServiceProvider extends ServiceProvider
 {
     /**
-     * @var string[]|Model[]
+     * <code>
+     *  [
+     *      RepositoryInterface::class => Entity::class
+     *  ]
+     * <code>
+     *
+     * @var string[]
      */
-    private const BUILDERS = [
-        EloquentFrameworkVersionRepository::class => FrameworkVersion::class,
-        EloquentDocumentationRepository::class    => Documentation::class,
+    private const REPOSITORIES = [
+        Repository\VersionsRepository::class      => Entity\Version::class,
+        Repository\DocumentationRepository::class => Entity\Documentation::class,
+        Repository\ArticlesRepository::class      => Entity\Article::class,
     ];
 
     /**
-     * @var string[][]
+     * @var string[]
      */
-    private const REPOSITORIES = [
-        EloquentFrameworkVersionRepository::class => [
-            FrameworkVersionRepositoryInterface::class,
-        ],
-        EloquentDocumentationRepository::class    => [
-            DocumentationRepositoryInterface::class,
-        ],
+    private const LISTENERS = [
+        Entity\Documentation\Listener\OnContentRender::class,
+        Entity\Article\Listener\OnContentRender::class,
     ];
 
     /**
@@ -54,16 +54,18 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        foreach (self::REPOSITORIES as $impl => $interfaces) {
-            foreach ($interfaces as $interface) {
-                $this->app->singleton($interface, $impl);
-            }
+        // Register repository interfaces
+        foreach (self::REPOSITORIES as $repository => $entity) {
+            $this->app->singleton($repository, static function (Application $app) use ($entity): ObjectRepository {
+                return $app->make(EntityManagerInterface::class)
+                    ->getRepository($entity)
+                    ;
+            });
+        }
 
-            if (isset(self::BUILDERS[$impl])) {
-                $this->app->when($impl)
-                    ->needs(Builder::class)
-                    ->give(fn() => (self::BUILDERS[$impl])::query());
-            }
+        // Register listeners
+        foreach (self::LISTENERS as $listener) {
+            $this->app->singleton($listener);
         }
     }
 

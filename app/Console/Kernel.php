@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace App\Console;
 
-use App\Console\Commands\UpdateDocsCommand;
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -27,7 +26,14 @@ class Kernel extends ConsoleKernel
      * @var array|string[]|Command[]
      */
     protected $commands = [
-        UpdateDocsCommand::class,
+        // Articles
+        \App\Console\Commands\ArticlesTouchCommand::class,
+
+        // Docs
+        \App\Console\Commands\DocsFetchCommand::class,
+        \App\Console\Commands\DocsUpdateCommand::class,
+        \App\Console\Commands\DocsDiffCommand::class,
+        \App\Console\Commands\DocsTouchCommand::class,
     ];
 
     /**
@@ -38,9 +44,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('su:update_docs')
+        // 1) Выполняем чтение оригингала
+        // 2) Затем скачиваем переводы
+        // 3) Затем вычисляем дифф изменений
+        $schedule->command('su:docs:fetch')
             ->daily()
-            ->withoutOverlapping();
+            ->withoutOverlapping()
+            ->onSuccess(function () {
+                $this->call('su:docs:update');
+                $this->call('su:docs:diff');
+            });
     }
 
     /**

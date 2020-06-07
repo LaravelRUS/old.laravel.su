@@ -40,7 +40,7 @@ $ php artisan migrate --seed
 Для выгрузки самой последней документации [из репозитория GitHub](https://github.com/LaravelRUS/docs) стоит 
 воспользоваться командой:
 ```bash
-$ php artisan su:update_docs
+$ php artisan su:docs:update
 ```
 
 Обратите внимание, что GitHub имеет ограничение на количество запросов и скорее всего у вас возникнет ошибка, 

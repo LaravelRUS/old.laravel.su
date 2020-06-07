@@ -1,0 +1,50 @@
+.documentation {
+    display: flex;
+    flex-direction: row;
+
+    &-menu {
+        min-width: 230px;
+        width: 230px;
+        margin-right: 20px;
+
+        @import "menu";
+    }
+
+    &-content {
+        line-height: 32px;
+        font-size: 16px;
+        padding: 0 0 100px 0;
+
+        @import "content";
+    }
+
+    .translation-status {
+        box-sizing: border-box;
+        padding: 10px 20px !important;
+        background: #f9fafc;
+        border-radius: 2px;
+        line-height: 25px;
+        margin: 0 auto 10px auto;
+        font-size: 12px;
+
+        &.relevant {
+            color: desaturate(darken($color-green, 10%), 20%);
+            background: desaturate(lighten($color-green, 55%), 30%);
+        }
+
+        &.behind {
+            color: desaturate(darken($color-yellow, 10%), 20%);
+            background: desaturate(lighten($color-yellow, 50%), 30%);
+        }
+
+        &.far-behind {
+            color: desaturate(darken($color-red, 10%), 20%);
+            background: desaturate(lighten($color-red, 40%), 30%);
+        }
+
+        &.missing {
+            color: #fff;
+            background: $color-red;
+        }
+    }
+}

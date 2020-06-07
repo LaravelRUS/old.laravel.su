@@ -11,18 +11,15 @@ declare(strict_types=1);
 namespace App\ContentRenderer;
 
 use App\ContentRenderer\Renderer\ContentRendererInterface;
-use App\ContentRenderer\Renderer\MarkdownRenderer;
+use App\ContentRenderer\Renderer\LaravelRusMarkdownRenderer;
+use App\ContentRenderer\Renderer\PrivateContentRendererInterface;
+use App\ContentRenderer\Renderer\PublicContentRendererInterface;
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Block\Element\FencedCode;
 use League\CommonMark\Block\Element\IndentedCode;
-use League\CommonMark\Converter;
-use League\CommonMark\ConverterInterface;
-use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\EnvironmentInterface;
-use League\CommonMark\HtmlRenderer;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
@@ -40,7 +37,9 @@ class ContentRendererServiceProvider extends ServiceProvider
         $this->loadConfigs();
         $this->registerMarkdown();
 
-        $this->app->singleton(ContentRendererInterface::class, MarkdownRenderer::class);
+        $this->app->singleton(ContentRendererInterface::class, function () {
+            return $this->app->make(LaravelRusMarkdownRenderer::class);
+        });
     }
 
     /**
@@ -69,46 +68,20 @@ class ContentRendererServiceProvider extends ServiceProvider
                 $this->app->make(Repository::class)
             );
         });
-
-        $this->app->singleton(ConverterInterface::class, function (): ConverterInterface {
-            $env = $this->app->make(EnvironmentInterface::class);
-
-            $parser = new DocParser($env);
-            $renderer = new HtmlRenderer($env);
-
-            return new Converter($parser, $renderer);
-        });
     }
 
     /**
      * @param Repository $config
      * @return EnvironmentInterface
-     * @throws BindingResolutionException
      */
     private function getEnvironment(Repository $config): EnvironmentInterface
     {
-        $env = Environment::createCommonMarkEnvironment();
-
+        $env = Environment::createGFMEnvironment();
         $env->mergeConfig((array)$config->get('content-renderer.config', []));
-
-        foreach ((array)$config->get('content-renderer.extensions', []) as $extension) {
-            $env->addExtension($this->app->make($extension));
-        }
 
         $env->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['php', 'html']));
         $env->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['php', 'html']));
 
         return $env;
-    }
-
-    /**
-     * @return array|string[]
-     */
-    public function provides(): array
-    {
-        return [
-            ConverterInterface::class,
-            ContentRendererInterface::class,
-        ];
     }
 }

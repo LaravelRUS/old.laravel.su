@@ -11,20 +11,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
-use App\Model\FrameworkVersion;
-use App\Model\Repository\DocumentationRepositoryInterface;
-use App\Services\DocsService;
+use App\Entity\Repository\DocumentationRepository;
+use App\Entity\Version;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class DocsController
  */
-class DocsController
+final class DocsController
 {
     /**
      * @var string
@@ -37,66 +35,60 @@ class DocsController
     private const ERROR_MENU_NOT_FOUND = 'Menu for framework version %s not found';
 
     /**
-     * @var Redirector
+     * @var DocumentationRepository
      */
-    private Redirector $redirector;
+    private DocumentationRepository $docs;
 
     /**
-     * @var DocumentationRepositoryInterface
+     * @var Factory
      */
-    private DocumentationRepositoryInterface $docs;
-
-    /**
-     * @var ContentRendererInterface
-     */
-    private ContentRendererInterface $renderer;
+    private Factory $views;
 
     /**
      * DocsController constructor.
      *
-     * @param Redirector $redirector
-     * @param DocumentationRepositoryInterface $docs
-     * @param ContentRendererInterface $renderer
+     * @param Factory $views
+     * @param DocumentationRepository $docs
      */
-    public function __construct(
-        Redirector $redirector,
-        DocumentationRepositoryInterface $docs,
-        ContentRendererInterface $renderer
-    ) {
+    public function __construct(Factory $views, DocumentationRepository $docs)
+    {
         $this->docs = $docs;
-        $this->redirector = $redirector;
-        $this->renderer = $renderer;
+        $this->views = $views;
     }
 
     /**
-     * @param FrameworkVersion $current
+     * @param Version $current
      * @param string $version
      * @param string $page
-     * @return Factory|RedirectResponse|Redirector|View
+     * @return View|RedirectResponse
      */
-    public function index(FrameworkVersion $current, string $version, string $page = '')
+    public function show(Version $current, string $version, string $page)
     {
-        if (! $page) {
-            return $this->redirector->route('docs', [
-                $current->title,
-                $current->default_page,
-            ]);
-        }
-
-        if (! $document = $this->docs->findByName($current, $page)) {
+        if (! $document = $this->docs->findByVersionAndUrn($current, $page)) {
             throw new NotFoundHttpException(\sprintf(self::ERROR_PAGE_NOT_FOUND, $page));
         }
 
-        if (! $menu = $this->docs->findMenu($current)) {
-            throw new NotFoundHttpException(\sprintf(self::ERROR_MENU_NOT_FOUND, $version));
+        if (! $menu = $this->docs->findByVersionAndUrn($current, $current->menuPage)) {
+            throw new NotFoundHttpException(\sprintf(self::ERROR_MENU_NOT_FOUND, $page));
         }
 
-        return view('docs.doc-page', [
-            'version'  => $current,
-            'page'     => $document,
-            'menu'     => $menu,
-            'pageHtml' => $this->renderer->render($current->title, $document->text),
-            'menuHtml' => $this->renderer->render($current->title, $menu->text),
+        return $this->views->make('page.docs.show', [
+            'version' => $current,
+            'menu'    => $menu,
+            'page'    => $document,
+        ]);
+    }
+
+    /**
+     * @param Redirector $redirector
+     * @param Version $current
+     * @return RedirectResponse
+     */
+    public function index(Redirector $redirector, Version $current): RedirectResponse
+    {
+        return $redirector->route('docs.show', [
+            $current->name,
+            $current->defaultPage,
         ]);
     }
 }

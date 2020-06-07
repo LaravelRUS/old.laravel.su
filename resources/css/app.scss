@@ -5,6 +5,7 @@
  */
 @import "kernel";
 @import '~reset-css';
+@import '~font-awesome/scss/font-awesome';
 
 html,
 body {
@@ -175,4 +176,8 @@ body {
 }
 
 @import "layout";
-@import "old";
+
+@import "page/documentation";
+@import "page/versions";
+@import "page/progress";
+@import "page/article";

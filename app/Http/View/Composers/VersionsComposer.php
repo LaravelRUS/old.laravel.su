@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace App\Http\View\Composers;
 
-use App\Model\Repository\FrameworkVersionRepositoryInterface;
+use App\Entity\Repository\VersionsRepository;
 use Illuminate\Contracts\View\View;
 
 /**
@@ -20,16 +20,16 @@ use Illuminate\Contracts\View\View;
 class VersionsComposer
 {
     /**
-     * @var FrameworkVersionRepositoryInterface
+     * @var VersionsRepository
      */
-    private FrameworkVersionRepositoryInterface $versions;
+    private VersionsRepository $versions;
 
     /**
      * VersionsComposer constructor.
      *
-     * @param FrameworkVersionRepositoryInterface $versions
+     * @param VersionsRepository $versions
      */
-    public function __construct(FrameworkVersionRepositoryInterface $versions)
+    public function __construct(VersionsRepository $versions)
     {
         $this->versions = $versions;
     }
@@ -40,6 +40,6 @@ class VersionsComposer
      */
     public function compose(View $view): void
     {
-        $view->with('versions', $this->versions->all());
+        $view->with('versions', $this->versions->documented());
     }
 }

@@ -1,0 +1,121 @@
+.translation-progress {
+    padding-bottom: 100px;
+
+    &-menu {
+        column-count: 4;
+        column-gap: 2em;
+        line-height: 32px;
+        margin: 15px 0;
+        background: #f9fafc;
+        border-radius: 3px;
+        padding: 10px 20px;
+
+        .translation-progress-visible,
+        .translation-progress-hidden {
+            display: block;
+        }
+
+        .translation-progress-visible .fa {
+            color: $color-red;
+        }
+
+        .translation-progress-hidden .fa {
+            color: $color-description;
+        }
+    }
+
+    &-version {
+        .translation-progress-visible,
+        .translation-progress-hidden {
+            &:after {
+                @include fa-icon;
+                content: '';
+                width: 36px;
+                margin-left: 10px;
+                color: $color-description;
+            }
+        }
+
+        .translation-progress-visible {
+            &:after {
+                content: $fa-var-eye;
+            }
+            & + .translation-progress-description {
+                color: $color-green;
+            }
+        }
+
+        .translation-progress-hidden {
+            &:after {
+                content: $fa-var-eye-slash;
+            }
+            & + .translation-progress-description {
+                color: $color-description;
+            }
+        }
+
+        .translation-progress-description {
+            color: $color-description;
+            font-style: italic;
+            display: block;
+            margin: 20px 0;
+        }
+
+        .translation-page {
+            &-main {
+                td {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+            }
+
+            &-description {
+                color: $color-description;
+                font-style: italic;
+                display: block;
+                margin: 10px 0;
+            }
+
+            &-missing,
+            &-actual,
+            &-behind {
+                color: #fff;
+                line-height: 24px;
+                height: 24px;
+                display: inline-block;
+                border-radius: 2px;
+                padding: 0 10px;
+            }
+
+            &-missing {
+                color: desaturate(darken($color-red, 10%), 20%);
+                background: desaturate(lighten($color-red, 40%), 30%);
+            }
+
+            &-actual {
+                color: desaturate(darken($color-green, 10%), 20%);
+                background: desaturate(lighten($color-green, 55%), 30%);
+            }
+
+            &-behind {
+                color: desaturate(darken($color-yellow, 10%), 20%);
+                background: desaturate(lighten($color-yellow, 50%), 30%);
+            }
+
+            &-status {
+                text-align: right;
+            }
+
+            &-info {
+                text-align: right;
+                color: $color-description;
+                box-shadow: none;
+                background: none;
+
+                hr {
+                    background: none;
+                }
+            }
+        }
+    }
+}

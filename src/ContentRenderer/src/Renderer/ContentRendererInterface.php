@@ -16,9 +16,9 @@ namespace App\ContentRenderer\Renderer;
 interface ContentRendererInterface
 {
     /**
-     * @param string $version
      * @param string $original
+     * @param bool $escape
      * @return string
      */
-    public function render(string $version, string $original): string;
+    public function render(string $original, bool $escape = true): string;
 }

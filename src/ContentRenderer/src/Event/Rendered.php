@@ -24,15 +24,14 @@ class Rendered extends ContentEvent
     /**
      * Rendered constructor.
      *
-     * @param string $version
      * @param string $content
      * @param string $result
      */
-    public function __construct(string $version, string $content, string $result)
+    public function __construct(string $content, string $result)
     {
         $this->result = $result;
 
-        parent::__construct($version, $content);
+        parent::__construct($content);
     }
 
     /**

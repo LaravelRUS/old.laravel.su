@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         App\ContentRenderer\ContentRendererServiceProvider::class,
+        App\GitHub\GitHubServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -204,8 +205,5 @@ return [
 
         // Используется только в миграциях
         'Schema' => Illuminate\Support\Facades\Schema::class,
-
-        // TODO Убрать (Есть зависимости в контроллерах и моделях)
-        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
     ],
 ];

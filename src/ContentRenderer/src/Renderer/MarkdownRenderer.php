@@ -11,9 +11,10 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
-use Highlight\Highlighter;
 use Illuminate\Contracts\Events\Dispatcher;
-use League\CommonMark\ConverterInterface;
+use League\CommonMark\Environment;
+use League\CommonMark\EnvironmentInterface;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 /**
  * Class MarkdownRenderer
@@ -24,8 +25,13 @@ class MarkdownRenderer extends Renderer
      * @var string[]
      */
     private const REPLACEMENTS_BEFORE = [
-        '/<div.+?markdown="\d+">(.*?)<\/div>/isum' => '$1',
-        '/<style>.+?<\/style>/isum'                => '',
+        '/<div class="content\-list" markdown="1">(.+?)<\/div>/isum' =>
+            '$1',
+        '/`(\w+)\(\)`\h+\{#collection-method\}/isum' =>
+            '<a href="#method-$1"><code>$1()</code></a>',
+        '/`(\w+)\(\)`\h+\{#collection-method\h\.first-collection-method\}/isum' =>
+            '<a href="#method-$1"><code>$1()</code></a>',
+        '/<style>.+?<\/style>/isum'  => '',
     ];
 
     /**
@@ -39,42 +45,52 @@ class MarkdownRenderer extends Renderer
     ];
 
     /**
-     * @var ConverterInterface
+     * @var EnvironmentInterface
      */
-    private ConverterInterface $md;
+    private EnvironmentInterface $env;
 
     /**
      * MarkdownRenderer constructor.
      *
-     * @param ConverterInterface $md
+     * @param EnvironmentInterface $env
      * @param Dispatcher $dispatcher
      */
-    public function __construct(ConverterInterface $md, Dispatcher $dispatcher)
+    public function __construct(EnvironmentInterface $env, Dispatcher $dispatcher)
     {
-        $this->md = $md;
+        $this->env = $env;
 
         parent::__construct($dispatcher);
     }
 
     /**
-     * @param string $version
      * @param string $original
+     * @param bool $escape
      * @return string
      */
-    public function render(string $version, string $original): string
+    public function render(string $original, bool $escape = true): string
     {
-        return $this->execute($version, $original, $this->executor());
+        return $this->execute($original, $this->executor($escape));
     }
 
     /**
+     * @param bool $escape
      * @return \Closure
      */
-    private function executor(): \Closure
+    private function executor(bool $escape): \Closure
     {
-        return function (string $source): string {
+        $env = Environment::createGFMEnvironment();
+        $env->mergeConfig($this->env->getConfig());
+
+        if ($escape) {
+            $env->mergeConfig(['html_input' => 'escape']);
+        }
+
+        $renderer = new GithubFlavoredMarkdownConverter([], $env);
+
+        return function (string $source) use ($renderer): string {
             $result = $this->replaceAll(self::REPLACEMENTS_BEFORE, $source);
 
-            $result = $this->md->convertToHtml($result);
+            $result = $renderer->convertToHtml($result);
 
             $result = $this->replaceAll(self::REPLACEMENTS_AFTER, $result);
 

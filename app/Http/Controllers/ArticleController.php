@@ -11,9 +11,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Model\Article;
+use App\Entity\Repository\ArticlesRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ArticleController
@@ -21,32 +22,46 @@ use Illuminate\Contracts\View\View;
 class ArticleController
 {
     /**
+     * @var string
+     */
+    private const ERROR_PAGE_NOT_FOUND = 'Article not found';
+
+    /**
      * @var Factory
      */
     private Factory $factory;
 
     /**
+     * @var ArticlesRepository
+     */
+    private ArticlesRepository $articles;
+
+    /**
      * ArticleController constructor.
      *
+     * @param ArticlesRepository $articles
      * @param Factory $factory
      */
-    public function __construct(Factory $factory)
+    public function __construct(ArticlesRepository $articles, Factory $factory)
     {
         $this->factory = $factory;
+        $this->articles = $articles;
     }
 
     /**
-     * @param string $slug
+     * @param string $urn
      * @return View
      */
-    public function index(string $slug): View
+    public function index(string $urn): View
     {
-        $article = Article::query()
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $article = $this->articles->findByUrn($urn);
 
-        return $this->factory->make('articles.show_article', [
-            'article' => $article,
+        if (! $article) {
+            throw new NotFoundHttpException(self::ERROR_PAGE_NOT_FOUND);
+        }
+
+        return $this->factory->make('page.articles.show', [
+            'article' => $this->articles->findByUrn($urn),
         ]);
     }
 }

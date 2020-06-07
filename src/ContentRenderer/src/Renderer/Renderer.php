@@ -36,43 +36,38 @@ abstract class Renderer implements ContentRendererInterface
     }
 
     /**
-     * @param string $version
      * @param string $source
      * @param \Closure $then
      * @return string
      */
-    protected function execute(string $version, string $source, \Closure $then): string
+    protected function execute(string $source, \Closure $then): string
     {
-        $this->rendering($version, $source);
+        $this->rendering($source);
 
-        $result = \str_replace('{{version}}', $version, $source);
+        $result = $then($source);
 
-        $result = $then($result);
-
-        $this->rendered($version, $source, $result);
+        $this->rendered($source, $result);
 
         return $result;
     }
 
     /**
-     * @param string $version
      * @param string $content
      * @return void
      */
-    protected function rendering(string $version, string $content): void
+    protected function rendering(string $content): void
     {
-        $this->dispatcher->dispatch(new Rendering($version, $content));
+        $this->dispatcher->dispatch(new Rendering($content));
     }
 
     /**
-     * @param string $version
      * @param string $content
      * @param string $result
      * @return void
      */
-    protected function rendered(string $version, string $content, string $result): void
+    protected function rendered(string $content, string $result): void
     {
-        $this->dispatcher->dispatch(new Rendered($version, $content, $result));
+        $this->dispatcher->dispatch(new Rendered($content, $result));
     }
 
     /**

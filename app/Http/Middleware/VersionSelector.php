@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use App\Model\FrameworkVersion;
-use App\Model\Repository\FrameworkVersionRepositoryInterface;
+use App\Entity\Repository\VersionsRepository;
+use App\Entity\Version;
+use Happyr\DoctrineSpecification\Exception\NoResultException;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -29,7 +30,9 @@ final class VersionSelector
     /**
      * @var string
      */
-    private const ERROR_NO_VERSION = 'Can not find an actual framework version. Make sure all migrations/seeders are done correctly.';
+    private const ERROR_NO_VERSION =
+        'Can not find an actual framework version. ' .
+        'Make sure all migrations/seeders are done correctly.';
 
     /**
      * @var Route|null
@@ -42,9 +45,9 @@ final class VersionSelector
     private Redirector $redirector;
 
     /**
-     * @var FrameworkVersionRepositoryInterface
+     * @var VersionsRepository
      */
-    private FrameworkVersionRepositoryInterface $versions;
+    private VersionsRepository $versions;
 
     /**
      * @var Container
@@ -56,11 +59,15 @@ final class VersionSelector
      *
      * @param Router $router
      * @param Redirector $redirector
-     * @param FrameworkVersionRepositoryInterface $versions
+     * @param VersionsRepository $versions
      * @param Container $app
      */
-    public function __construct(Router $router, Redirector $redirector, FrameworkVersionRepositoryInterface $versions, Container $app)
-    {
+    public function __construct(
+        Router $router,
+        Redirector $redirector,
+        VersionsRepository $versions,
+        Container $app
+    ) {
         $this->route = $router->current();
         $this->redirector = $redirector;
         $this->versions = $versions;
@@ -74,9 +81,9 @@ final class VersionSelector
      */
     public function handle(Request $request, \Closure $then): Response
     {
-        return $this->detectVersionOr(function (FrameworkVersion $version) use ($then, $request): Response {
-            // Bind actual FrameworkVersion instance
-            $this->app->instance(FrameworkVersion::class, $version);
+        return $this->detectVersionOr(function (Version $version) use ($then, $request): Response {
+            // Bind actual Version instance
+            $this->app->instance(Version::class, $version);
 
             return $then($request);
         });
@@ -92,15 +99,13 @@ final class VersionSelector
             return $this->redirector->route('home');
         }
 
-        try {
-            $version = $this->getVersion($parameter = $this->route->parameter('version'));
-        } catch (\Throwable $e) {
-            throw new UnprocessableEntityHttpException(self::ERROR_NO_VERSION, $e);
-        }
+        $version = $this->getVersion(
+            $parameter = $this->route->parameter('version')
+        );
 
-        if ($version->title !== $parameter) {
+        if ($version->name !== $parameter) {
             return $this->redirector->route('docs', [
-                'version' => $version->title,
+                'version' => $version->name,
             ]);
         }
 
@@ -109,14 +114,18 @@ final class VersionSelector
 
     /**
      * @param string|null $version
-     * @return FrameworkVersion
+     * @return Version
      */
-    private function getVersion(?string $version): FrameworkVersion
+    private function getVersion(?string $version): Version
     {
-        if ($version === null) {
-            return $this->versions->last();
-        }
+        try {
+            if ($version === null) {
+                return $this->versions->last();
+            }
 
-        return $this->versions->findByTitle($version) ?? $this->versions->last();
+            return $this->versions->findByName($version) ?? $this->versions->last();
+        } catch (NoResultException $e) {
+            throw new UnprocessableEntityHttpException(self::ERROR_NO_VERSION, $e);
+        }
     }
 }

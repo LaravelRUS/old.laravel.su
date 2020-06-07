@@ -1,0 +1,33 @@
+.versions {
+    box-sizing: border-box;
+    padding: 10px 20px !important;
+    background: #f9fafc;
+    border-radius: 2px;
+    line-height: 25px;
+    margin: 10px auto 20px auto;
+
+    & > a,
+    & > span {
+        display: inline-block;
+        outline: none;
+        padding: 0 10px;
+        border-radius: 2px;
+        height: 25px;
+        margin-left: 10px;
+    }
+
+    & > span {
+        color: #fff;
+        background: #ff2d20;
+        text-decoration: none;
+        cursor: default;
+    }
+
+    & > a {
+        color: #ff2d20;
+    }
+
+    & > aside {
+        float: right;
+    }
+}

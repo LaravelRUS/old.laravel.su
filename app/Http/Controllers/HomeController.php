@@ -34,6 +34,6 @@ class HomeController
      */
     public function test(Factory $factory): View
     {
-        return $factory->make('docs.markdown-test');
+        return $factory->make('page.test.index');
     }
 }

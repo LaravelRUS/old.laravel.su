@@ -1,0 +1,32 @@
+ul {
+    margin-bottom: 1.5rem
+}
+
+ul li {
+    list-style: none !important;
+    margin-bottom: .75rem;
+    font-size: 14px;
+}
+
+& > ul > li,
+& > ul > li > h2 {
+    font-size: 18px !important;
+    font-weight: 400;
+    color: $color-silver;
+    margin: 0;
+}
+
+& > ul > li > ul {
+    padding: 20px 0 10px 0;
+    text-transform: none;
+}
+
+ul li a {
+    padding-left: .75rem;
+    color: $color-extra-light-black;
+    font-weight: normal !important;
+
+    &:hover {
+        color: $color-main;
+    }
+}

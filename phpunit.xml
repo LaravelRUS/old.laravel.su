@@ -12,11 +12,13 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory suffix="TestCase.php">./tests/Unit</directory>
         </testsuite>
-
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="TestCase.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Components">
+            <directory suffix="TestCase.php">./src/**/tests</directory>
         </testsuite>
     </testsuites>
     <filter>

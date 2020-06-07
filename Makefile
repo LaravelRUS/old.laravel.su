@@ -36,7 +36,7 @@ ide:
 	docker-compose exec php php artisan ide-helper:models -W -R
 
 update-docs:
-	docker-compose exec php php artisan su:update_docs
+	docker-compose exec php php artisan su:docs:update
 
 clear:
 	docker-compose exec php php artisan cache:clear

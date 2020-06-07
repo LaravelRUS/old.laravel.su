@@ -1,14 +1,25 @@
+@php /** @var \Illuminate\Support\Collection|\App\Entity\Version[] $versions */ @endphp
 
-<div class="mr-3">Версия фреймворка:</div>
+<section class="container versions">
+@if ($versions->count())
+    Версия фреймворка:
 
-@foreach($versions as $i)
-    @if(isset($version) && $version->title === $i->title)
-        <span class="bg-red-500 text-white px-3 py-1 mr-2 border border-red-500 rounded">
-            {{ $i->title }}
-        </span>
-    @else
-        <a class="px-3 py-1 mr-2 border border-red-500 rounded" href="/docs/{{ $i->title }}">{{ $i->title }}</a>
-    @endif
-@endforeach
+    @foreach($versions as $haystack)
+        @if(isset($version) && $version->name === $haystack->name)
+            <span>{{ $haystack->name }}</span>
+        @else
+            <a href="{!! route('docs', ['version' => $haystack->name]) !!}">{{ $haystack->name }}</a>
+        @endif
+    @endforeach
 
-
+    <aside>
+        @if(isset($version))
+            <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
+        @else
+            <a href="{!! route('status') !!}">Прогресс перевода</a>
+        @endif
+    </aside>
+@else
+    Нет доступных версий фреймворка
+@endif
+</section>

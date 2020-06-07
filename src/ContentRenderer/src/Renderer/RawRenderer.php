@@ -17,12 +17,11 @@ namespace App\ContentRenderer\Renderer;
 class RawRenderer extends Renderer
 {
     /**
-     * @param string $version
      * @param string $original
      * @return string
      */
-    public function render(string $version, string $original): string
+    public function render(string $original): string
     {
-        return $this->execute($version, $original, fn (string $text): string => $text);
+        return $this->execute($original, fn (string $text): string => $text);
     }
 }

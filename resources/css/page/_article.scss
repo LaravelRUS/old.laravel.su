@@ -1,0 +1,9 @@
+.article {
+    &-content {
+        line-height: 32px;
+        font-size: 16px;
+        padding: 0 0 100px 0;
+
+        @import "content";
+    }
+}

@@ -21,7 +21,6 @@ final class DatabaseSeeder extends Seeder
      * @var string|Seeder[]
      */
     private const SEEDERS = [
-        FrameworkVersionsSeeder::class,
         ArticlesSeeder::class,
     ];
 

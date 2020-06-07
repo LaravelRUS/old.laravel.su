@@ -9,37 +9,11 @@
 
 declare(strict_types=1);
 
-use League\CommonMark\Ext\ExternalLink\ExternalLinkExtension;
-use League\CommonMark\Ext\Strikethrough\StrikethroughExtension;
-use League\CommonMark\Ext\Table\TableExtension;
-use League\CommonMark\Ext\TaskList\TaskListExtension;
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Markdown Extensions
-    |--------------------------------------------------------------------------
-    |
-    | Extensions provide a way to group related parsers, renderers, etc.
-    | together with pre-defined priorities, configuration settings, etc.
-    | They are perfect for distributing your customizations as reusable,
-    | open-source packages that others can plug into their own projects!
-    |
-    | @see https://commonmark.thephpleague.com/1.0/customization/extensions/
-    |
-    */
-
-    'extensions' => [
-        TableExtension::class,
-        StrikethroughExtension::class,
-        ExternalLinkExtension::class,
-        TaskListExtension::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Markdown Extensions
+    | Markdown Config
     |--------------------------------------------------------------------------
     |
     | You can provide an array of configuration options.
@@ -84,5 +58,6 @@ return [
         ],
         'allow_unsafe_links' => false,
         'html_input'         => 'allow',
+        'max_nesting_level'  => \INF,
     ],
 ];
