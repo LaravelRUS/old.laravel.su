@@ -137,7 +137,14 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
      */
     public function getCommit(): string
     {
-        return $this->commit ??= $this->getHistory()->first()['sha'];
+        if ($this->commit === null) {
+            $history = $this->callApiGetCommitsMethod();
+            $last = $history->current();
+
+            $this->commit = $last['sha'];
+        }
+
+        return $this->commit;
     }
 
     /**
@@ -189,14 +196,14 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
      */
     public function getHistory(): Enumerable
     {
-        return LazyCollection::make($this->callApiGetCommitsMethod());
+        return Collection::make($this->callApiGetCommitsMethod());
     }
 
     /**
-     * @return \Traversable
+     * @return \Generator
      * @throws Exception
      */
-    private function callApiGetCommitsMethod(): \Traversable
+    private function callApiGetCommitsMethod(): \Generator
     {
         $repository = $this->branch->getRepository();
 

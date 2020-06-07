@@ -99,7 +99,7 @@ class DocsDiffCommand extends DocsTranslationCommand
 
         $found = false;
 
-        $result = Collection::make($commits)
+        $result = $commits
             ->filter(static function (array $commit) use ($needle, &$found) {
                 if ($found === false && $needle === $commit['sha']) {
                     $found = true;
