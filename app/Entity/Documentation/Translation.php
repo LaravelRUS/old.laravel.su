@@ -20,6 +20,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Translation extends Source
 {
     /**
+     * @var int
+     */
+    private const DIFF_NO_TRANSLATION = -1;
+
+    /**
      * @ORM\Column(name="commit_target", type="string", length=191)
      *
      * @var string|null
@@ -31,7 +36,7 @@ class Translation extends Source
      *
      * @var int
      */
-    public int $diff = 0;
+    public int $diff = self::DIFF_NO_TRANSLATION;
 
     /**
      * @param string|null $content
