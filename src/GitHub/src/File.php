@@ -13,13 +13,13 @@ namespace App\GitHub;
 
 use App\GitHub\Common\ApiTrait;
 use App\GitHub\Common\InteractWithApiInterface;
-use Carbon\Carbon;
 use Github\HttpClient\Message\ResponseMediator;
 use Http\Client\Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
+use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 
@@ -123,7 +123,6 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
     public function toArray(): array
     {
         return [
-            'commit'  => $this->getCommit(),
             'title'   => $this->getTitle(),
             'uri'     => $this->getUri(),
             'urn'     => $this->getUrn(),
@@ -134,36 +133,11 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
 
     /**
      * @return string
+     * @throws Exception
      */
     public function getCommit(): string
     {
-        return $this->commit ??= $this->getCommitInfo('sha');
-    }
-
-    /**
-     * @param string|null $key
-     * @return mixed
-     */
-    private function getCommitInfo(string $key = null)
-    {
-        if ($this->commitData === null) {
-            $this->commitData = $this->callApiCommitAtMethod();
-        }
-
-        return Arr::get($this->commitData, $key);
-    }
-
-    /**
-     * @return array
-     */
-    private function callApiCommitAtMethod(): array
-    {
-        $repo = $this->branch->getRepository();
-
-        return $this->client->repository()
-            ->commits()
-            ->show($repo->getUser(), $repo->getName(), $this->branch->getCommit())
-            ;
+        return $this->commit ??= $this->getHistory()->first()['sha'];
     }
 
     /**
@@ -215,7 +189,7 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
      */
     public function getHistory(): Enumerable
     {
-        return Collection::make($this->callApiGetCommitsMethod());
+        return LazyCollection::make($this->callApiGetCommitsMethod());
     }
 
     /**
