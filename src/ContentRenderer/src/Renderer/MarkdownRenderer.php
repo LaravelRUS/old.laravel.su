@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
+use App\ContentRenderer\EnvironmentFactory;
 use Illuminate\Contracts\Events\Dispatcher;
 use League\CommonMark\Environment;
 use League\CommonMark\EnvironmentInterface;
@@ -45,19 +46,19 @@ class MarkdownRenderer extends Renderer
     ];
 
     /**
-     * @var EnvironmentInterface
+     * @var EnvironmentFactory
      */
-    private EnvironmentInterface $env;
+    private EnvironmentFactory $factory;
 
     /**
      * MarkdownRenderer constructor.
      *
-     * @param EnvironmentInterface $env
+     * @param EnvironmentFactory $factory
      * @param Dispatcher $dispatcher
      */
-    public function __construct(EnvironmentInterface $env, Dispatcher $dispatcher)
+    public function __construct(EnvironmentFactory $factory, Dispatcher $dispatcher)
     {
-        $this->env = $env;
+        $this->factory = $factory;
 
         parent::__construct($dispatcher);
     }
@@ -78,14 +79,7 @@ class MarkdownRenderer extends Renderer
      */
     private function executor(bool $escape): \Closure
     {
-        $env = Environment::createGFMEnvironment();
-        $env->mergeConfig($this->env->getConfig());
-
-        if ($escape) {
-            $env->mergeConfig(['html_input' => 'escape']);
-        }
-
-        $renderer = new GithubFlavoredMarkdownConverter([], $env);
+        $renderer = new GithubFlavoredMarkdownConverter([], $this->factory->create($escape));
 
         return function (string $source) use ($renderer): string {
             $result = $this->replaceAll(self::REPLACEMENTS_BEFORE, $source);

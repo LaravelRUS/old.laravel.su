@@ -63,25 +63,10 @@ class ContentRendererServiceProvider extends ServiceProvider
      */
     private function registerMarkdown(): void
     {
-        $this->app->singleton(EnvironmentInterface::class, function (): EnvironmentInterface {
-            return $this->getEnvironment(
-                $this->app->make(Repository::class)
-            );
+        $this->app->singleton(EnvironmentFactory::class, function () {
+            $config = $this->app->make(Repository::class);
+
+            return new EnvironmentFactory((array)$config->get('content-renderer.config', []));
         });
-    }
-
-    /**
-     * @param Repository $config
-     * @return EnvironmentInterface
-     */
-    private function getEnvironment(Repository $config): EnvironmentInterface
-    {
-        $env = Environment::createGFMEnvironment();
-        $env->mergeConfig((array)$config->get('content-renderer.config', []));
-
-        $env->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['php', 'html']));
-        $env->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['php', 'html']));
-
-        return $env;
     }
 }
