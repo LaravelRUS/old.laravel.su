@@ -14,6 +14,7 @@ namespace App\Console\Commands;
 use App\Entity\Documentation;
 use App\GitHub\BranchInterface;
 use App\GitHub\FileInterface;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 
 /**
@@ -98,7 +99,7 @@ class DocsDiffCommand extends DocsTranslationCommand
 
         $found = false;
 
-        $result = $commits
+        $result = Collection::make($commits)
             ->filter(static function (array $commit) use ($needle, &$found) {
                 if ($found === false && $needle === $commit['sha']) {
                     $found = true;
