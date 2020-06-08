@@ -43,7 +43,7 @@
     <section class="section idea">
         <div class="container">
             <article class="idea-description section-description">
-                <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea" target="_blank" rel="nofollow"
+                <a href="https://laravel-idea.com" target="_blank" rel="nofollow"
                    class="idea-description-market">
                     <img src="/images/idea/market.png" alt="JetBrains Market" />
                 </a>
