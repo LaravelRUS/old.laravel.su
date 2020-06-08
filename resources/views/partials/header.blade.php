@@ -1,5 +1,5 @@
 <header class="header">
-    <section class="extras alternative">
+    {{--<section class="extras alternative">
         <nav class="container extras-items">
             <span>Регистрация на <a href="https://phprussia.ru" target="_blank" rel="nofollow">PHPRussia 2020</a> уже открыта:</span>
             <a href="https://phprussia.ru/moscow/2020/abstracts" target="_blank" rel="nofollow">Доклады</a>
@@ -8,9 +8,9 @@
             <span>&middot;</span>
             <a href="https://phprussia.ru/moscow/2020#prices" target="_blank" rel="nofollow">Цены</a>
         </nav>
-    </section>
+    </section>--}}
 
-    {{--<section class="extras">
+    <section class="extras">
         <nav class="container extras-items">
             <a href="https://laravel.com/" target="_blank" rel="nofollow">Laravel</a>
             <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea/" target="_blank" rel="nofollow">Laravel IDEA</a>
@@ -21,7 +21,7 @@
             <a href="https://t.me/laravelrus" target="_blank" rel="nofollow">Telegram</a>
             <a href="https://github.com/LaravelRUS" target="_blank" rel="nofollow">GitHub</a>
         </nav>
-    </section>--}}
+    </section>
 
     <section class="menu">
         <section class="container menu-content">
