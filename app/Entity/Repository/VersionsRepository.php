@@ -23,6 +23,14 @@ use Illuminate\Support\Collection;
 class VersionsRepository extends Repository
 {
     /**
+     * @return Collection|Version[]
+     */
+    public function all(): Collection
+    {
+        return Collection::make($this->match(Spec::orderBy('name', 'desc')));
+    }
+
+    /**
      * @return Version
      * @throws NoResultException
      */
