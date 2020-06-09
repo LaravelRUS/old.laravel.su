@@ -1,6 +1,6 @@
 {
     "name": "laravelrus/laravel.su",
-    "description": "The Laravel Framework.",
+    "description": "The Laravel Framework Translation Website",
     "keywords": [
         "laravelrus",
         "laravel.su"
@@ -8,23 +8,13 @@
     "license": "MIT",
     "type": "project",
     "repositories": [
-        {
-            "type": "path",
-            "url": "src/ContentRenderer",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "src/GitHub",
-            "options": {
-                "symlink": true
-            }
-        }
+        {"type": "path", "url": "src/ContentRenderer"},
+        {"type": "path", "url": "src/GitHub"}
     ],
     "require": {
         "php": "^7.4",
+        "app/github": "*",
+        "app/content-renderer": "*",
         "beberlei/doctrineextensions": "^1.2",
         "doctrine/inflector": "^1.4",
         "fideloper/proxy": "^4.2",
@@ -34,8 +24,6 @@
         "laravel-doctrine/orm": "^1.6",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "app/content-renderer": "*",
-        "app/github": "*",
         "sentry/sentry-laravel": "~1.7"
     },
     "require-dev": {

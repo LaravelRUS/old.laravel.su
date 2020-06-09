@@ -1,0 +1,30 @@
+.label {
+    display: inline-block;
+    outline: none;
+    padding: 0 10px;
+    border-radius: 2px;
+    height: 25px;
+    line-height: 25px;
+
+    &.active {
+        color: #fff;
+        background: #ff2d20;
+        text-decoration: none;
+        cursor: default;
+    }
+
+    &.success {
+        color: desaturate(darken($color-green, 10%), 20%);
+        background: desaturate(lighten($color-green, 55%), 30%);
+    }
+
+    &.notice {
+        color: desaturate(darken($color-yellow, 10%), 20%);
+        background: desaturate(lighten($color-yellow, 50%), 30%);
+    }
+
+    &.warning {
+        color: desaturate(darken($color-red, 10%), 20%);
+        background: desaturate(lighten($color-red, 40%), 30%);
+    }
+}

@@ -6,25 +6,17 @@
     line-height: 25px;
     margin: 10px auto 20px auto;
 
-    & > a,
-    & > span {
-        display: inline-block;
-        outline: none;
-        padding: 0 10px;
-        border-radius: 2px;
-        height: 25px;
+    .label {
         margin-left: 10px;
-    }
-
-    & > span {
-        color: #fff;
-        background: #ff2d20;
-        text-decoration: none;
-        cursor: default;
     }
 
     & > a {
         color: #ff2d20;
+
+        &:hover {
+            background: #fff;
+            text-decoration: none;
+        }
     }
 
     & > aside {

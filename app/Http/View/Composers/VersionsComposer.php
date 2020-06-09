@@ -40,6 +40,6 @@ class VersionsComposer
      */
     public function compose(View $view): void
     {
-        $view->with('versions', $this->versions->documented());
+        $view->with('versions', $this->versions->all());
     }
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\View\Composers;
+use App\Http\View\Directives;
+
 return [
 
     /*
@@ -33,4 +36,43 @@ return [
         realpath(storage_path('framework/views'))
     ),
 
+    /*
+    |--------------------------------------------------------------------------
+    | View Composers
+    |--------------------------------------------------------------------------
+    |
+    | View composers are callbacks or class methods that are called when a view
+    | is rendered. If you have data that you want to be bound to a view each
+    | time that view is rendered, a view composer can help you organize that
+    | logic into a single location.
+    |
+    */
+
+    'composers' => [
+        Composers\VersionsComposer::class => [
+            'page.docs.partials.versions',
+            'page.status.partials.menu',
+        ],
+
+        Composers\YandexMetrikaComposer::class => [
+            'partials.yandex-metrika',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Directives
+    |--------------------------------------------------------------------------
+    |
+    | Blade allows you to define your own custom directives using the directive
+    | method. When the Blade compiler encounters the custom directive, it will
+    | call the provided callback with the expression that the directive
+    | contains.
+    |
+    */
+
+    'directives' => [
+        'active' => Directives\ActiveDirective::class,
+        'nav'    => Directives\NavDirective::class,
+    ],
 ];

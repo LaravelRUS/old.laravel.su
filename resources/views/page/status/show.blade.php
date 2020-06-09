@@ -19,9 +19,7 @@
             <a href="{!! route('article', ['urn' => 'rus-documentation-contribution-guide']) !!}">инструкцией</a>.
         </p>
 
-        @include('page.status.partials.menu', [
-            'versions' => $versions,
-        ])
+        @include('page.status.partials.menu')
 
         <article class="translation-progress-version">
             @if($current->isDocumented)
@@ -48,11 +46,11 @@
                         </td>
                         <td class="translation-page-status">
                             @if ($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::MISSING)
-                                <span class="translation-page-missing">Перевод отсутсвует</span>
+                                <span class="label warning">Перевод отсутсвует</span>
                             @elseif($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::ACTUAL)
-                                <span class="translation-page-actual">Перевод актуален</span>
+                                <span class="label success">Перевод актуален</span>
                             @else
-                                <span class="translation-page-behind">
+                                <span class="label notice">
                                     Перевод отстаёт на {{$page->translation->diff}}
                                     {{ trans_choice('{1} коммит|[2,4] коммита|[5,*] коммитов', $page->translation->diff) }}
                                 </span>
@@ -64,16 +62,20 @@
                             @if($page->translation->targetCommit)
                                 Перевод ссылается на
                                 <a href="https://github.com/laravel/docs/commit/{{ $page->translation->targetCommit }}" target="_blank">
-                                    {{ $page->translation->targetCommit }}
+                                    {{ substr($page->translation->targetCommit, 0, 7) }}
                                 </a>
                             @else
                                 Файл перевода отсутсвует
                             @endif
                             <hr />
-                            Последний коммит
-                            <a href="https://github.com/laravel/docs/commit/{{ $page->source->commit }}" target="_blank">
-                                {{ $page->source->commit }}
-                            </a>
+                            @if($page->translation->commit)
+                                Последний коммит
+                                <a href="https://github.com/laravel/docs/commit/{{ $page->source->commit }}" target="_blank">
+                                    {{ substr($page->source->commit, 0, 7) }}
+                                </a>
+                            @else
+                                Данные страницы документации не обнаружены
+                            @endif
                         </td>
                     </tr>
                 @endforeach

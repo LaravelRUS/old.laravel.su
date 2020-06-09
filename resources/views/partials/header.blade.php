@@ -36,11 +36,9 @@
                 </section>--}}
 
                 <nav class="menu-items">
-                    @php $route = app('router')->getCurrentRoute()->getName(); @endphp
-
-                    <a href="{{ route('home') }}" class="{{ $route === 'home' ? 'active' : '' }}">Главная</a>
-                    <a href="{{ route('docs') }}" class="{{ $route === 'docs' ? 'active' : '' }}">Документация</a>
-                    <a href="{{ route('status') }}" class="{{ $route === 'status' ? 'active' : '' }}">Перевод</a>
+                    <a href="{{ route('home') }}" class="@active('home')">Главная</a>
+                    <a href="{{ route('docs') }}" class="@active('docs.*')">Документация</a>
+                    <a href="{{ route('status') }}" class="@active('status.*')">Перевод</a>
                     <span>Статьи</span>
                     <span>Пакеты</span>
                 </nav>

@@ -10,17 +10,47 @@
         border-radius: 3px;
         padding: 10px 20px;
 
-        .translation-progress-visible,
-        .translation-progress-hidden {
-            display: block;
-        }
-
-        .translation-progress-visible .fa {
+        &-visible .fa {
             color: $color-red;
         }
 
-        .translation-progress-hidden .fa {
+        &-hidden .fa {
             color: $color-description;
+        }
+
+        &-visible,
+        &-hidden {
+            display: inline-block;
+            outline: none;
+            padding: 0 10px;
+            border-radius: 2px;
+            height: 25px;
+            line-height: 25px;
+            margin-right: 25%;
+            text-decoration: none;
+
+            .fa {
+                margin-right: 7px;
+                &:before {
+                    min-width: 14px;
+                }
+            }
+
+            &:hover {
+                background: #fff;
+                text-decoration: none;
+            }
+
+            &.active {
+                color: #fff;
+                background: #ff2d20;
+                text-decoration: none;
+                cursor: default;
+
+                .fa {
+                    color: #fff;
+                }
+            }
         }
     }
 
@@ -74,32 +104,6 @@
                 font-style: italic;
                 display: block;
                 margin: 10px 0;
-            }
-
-            &-missing,
-            &-actual,
-            &-behind {
-                color: #fff;
-                line-height: 24px;
-                height: 24px;
-                display: inline-block;
-                border-radius: 2px;
-                padding: 0 10px;
-            }
-
-            &-missing {
-                color: desaturate(darken($color-red, 10%), 20%);
-                background: desaturate(lighten($color-red, 40%), 30%);
-            }
-
-            &-actual {
-                color: desaturate(darken($color-green, 10%), 20%);
-                background: desaturate(lighten($color-green, 55%), 30%);
-            }
-
-            &-behind {
-                color: desaturate(darken($color-yellow, 10%), 20%);
-                background: desaturate(lighten($color-yellow, 50%), 30%);
             }
 
             &-status {

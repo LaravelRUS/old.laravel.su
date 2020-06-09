@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-    Главная
-@stop
+@section('title', 'Главная')
 
 @section('content')
     <section class="splash">

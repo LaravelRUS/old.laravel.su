@@ -11,10 +11,13 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Http\View\Composers\VersionsComposer;
-use App\Http\View\Composers\YandexMetrikaComposer;
+use App\Http\View\Directives\GeneratedDirectiveInterface;
+use App\Http\View\Directives\IfDirectiveInterface;
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 /**
  * Class ViewServiceProvider
@@ -22,31 +25,32 @@ use Illuminate\Support\ServiceProvider;
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * @var array[]
-     */
-    private const VIEW_COMPOSERS = [
-        YandexMetrikaComposer::class => ['partials.yandex-metrika'],
-        VersionsComposer::class      => ['partials.version-selector'],
-    ];
-
-    /**
-     * @return void
-     */
-    public function register(): void
-    {
-        $this->app->singleton(YandexMetrikaComposer::class);
-    }
-
-    /**
+     * @param Repository $config
      * @param Factory $factory
+     * @param BladeCompiler $compiler
      * @return void
+     * @throws BindingResolutionException
      */
-    public function boot(Factory $factory): void
+    public function boot(Repository $config, Factory $factory, BladeCompiler $compiler): void
     {
-        foreach (self::VIEW_COMPOSERS as $composer => $views) {
+        // Load view composers
+        foreach ($config->get('view.composers', []) as $composer => $views) {
             $this->app->singleton($composer);
 
             $factory->composer($views, $composer);
+        }
+
+        // Load directives
+        foreach ($config->get('view.directives', []) as $name => $directive) {
+            $impl = $this->app->make($directive);
+
+            if ($impl instanceof GeneratedDirectiveInterface) {
+                $compiler->directive($name, fn(...$args): string => $impl->generate(...$args));
+            }
+
+            if ($impl instanceof IfDirectiveInterface) {
+                $compiler->if($name, fn(...$args): bool => $impl->match(...$args));
+            }
         }
     }
 }

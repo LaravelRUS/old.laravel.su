@@ -13,7 +13,7 @@
 @section('keywords'){{ $page->getKeywordsString() }}@stop
 
 @push('header')
-    @include('partials.version-selector', [
+    @include('page.docs.partials.versions', [
         'version' => $version
     ])
 @endpush
