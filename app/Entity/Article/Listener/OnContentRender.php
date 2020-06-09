@@ -13,7 +13,6 @@ namespace App\Entity\Article\Listener;
 
 use App\ContentRenderer\Renderer\ContentRendererInterface;
 use App\ContentRenderer\Renderer\MarkdownRenderer;
-use App\ContentRenderer\Renderer\PublicContentRendererInterface;
 use App\Entity\Article;
 use App\Entity\Common\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;

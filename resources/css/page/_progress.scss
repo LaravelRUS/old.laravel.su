@@ -54,72 +54,46 @@
         }
     }
 
-    &-version {
-        .translation-progress-visible,
-        .translation-progress-hidden {
-            &:after {
-                @include fa-icon;
-                content: '';
-                width: 36px;
-                margin-left: 10px;
-                color: $color-description;
+    table td {
+        width: 50%;
+    }
+
+    .translation-progress-description {
+        color: $color-description;
+        font-style: italic;
+        display: block;
+        margin: 20px 0;
+    }
+
+    .translation-page {
+        &-main {
+            td {
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
         }
 
-        .translation-progress-visible {
-            &:after {
-                content: $fa-var-eye;
-            }
-            & + .translation-progress-description {
-                color: $color-green;
-            }
-        }
-
-        .translation-progress-hidden {
-            &:after {
-                content: $fa-var-eye-slash;
-            }
-            & + .translation-progress-description {
-                color: $color-description;
-            }
-        }
-
-        .translation-progress-description {
+        &-description {
             color: $color-description;
             font-style: italic;
             display: block;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
-        .translation-page {
-            &-main {
-                td {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                }
-            }
+        &-status {
+            text-align: right;
+        }
 
-            &-description {
-                color: $color-description;
-                font-style: italic;
-                display: block;
-                margin: 10px 0;
-            }
+        &-info {
+            text-align: right;
+            color: $color-description;
+            box-shadow: none;
+            background: none;
 
-            &-status {
-                text-align: right;
-            }
-
-            &-info {
-                text-align: right;
-                color: $color-description;
-                box-shadow: none;
+            hr {
                 background: none;
-
-                hr {
-                    background: none;
-                }
             }
         }
     }
+
 }

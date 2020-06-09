@@ -1,11 +1,32 @@
 
+h1 {
+    margin-top: 0;
+}
+
 h1 + ul {
     font-size: 15px;
+    padding-left: .5rem;
 
     li {
+        list-style: none;
         font-weight: normal;
         line-height: 18px;
         margin-bottom: .5em;
+
+        &:before {
+            background: none;
+            content: "#";
+            color: $color-red;
+            pointer-events: none;
+            position: initial;
+        }
+
+        a {
+            color: $color-text;
+            &:hover {
+                color: $color-red;
+            }
+        }
     }
 
     ul {
@@ -27,19 +48,29 @@ p {
 }
 
 ul {
+    padding-left: 3rem;
+    margin-bottom: .25rem;
+
     li {
         margin-bottom: .5rem;
         list-style: none;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -20px;
+            width: 9px;
+            height: 10px;
+            color: $color-red;
+            background: url('data:image/svg+xml;utf8,<svg width="10" height="11" viewBox="0 0 10 11" xmlns="http://www.w3.org/2000/svg"><path d="M5.036 1.965l-3.492 1.94v3.88l3.492 1.94 3.492-1.94v-3.88l-3.492-1.94zm0-1.12l4.5 2.5v5l-4.5 2.5-4.5-2.5v-5l4.5-2.5z" fill="red" fill-rule="nonzero"/></svg>') no-repeat 50%;
+            background-size: contain;
+        }
 
         a {
             color: $color-main;
             cursor: pointer;
-        }
-
-        &:before {
-            content: "#";
-            color: $color-description;
-            margin-right: .25rem;
         }
 
         ul {
@@ -51,9 +82,6 @@ ul {
             }
         }
     }
-
-    padding-left: .5rem;
-    margin-bottom: .25rem;
 }
 
 h2 {
@@ -95,4 +123,10 @@ pre {
 
 #collection-method:not(.first-collection-method) {
     margin-top: 50px;
+}
+
+// --- valet.md
+#valet-support > ul {
+    column-count: 3;
+    line-height: 1.9;
 }

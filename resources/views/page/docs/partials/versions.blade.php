@@ -10,7 +10,7 @@
         Версия фреймворка:
 
         @foreach($versions as $current)
-            @continue(! $current->isDocumented)
+            @continue(! $current->isDocumented && $version->name !== $current->name)
 
             @if($version->name === $current->name)
                 <span class="label active">{{ $current->name }}</span>

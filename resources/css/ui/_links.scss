@@ -1,0 +1,50 @@
+
+a {
+    color: $color-main;
+    outline: none;
+    text-decoration: none;
+
+    &:active,
+    &:hover {
+        color: $color-main-text;
+        background: none;
+        text-decoration: underline;
+    }
+
+    &.dashed {
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+
+        &:active,
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px dashed $color-main-text;
+        }
+    }
+
+    &.external {
+        position: relative;
+
+        &:after {
+            @include fa-icon;
+            content: $fa-var-external-link;
+            font-size: 70%;
+            position: relative;
+            top: -4px;
+            right: -5px;
+            pointer-events: none;
+            transform: translateY(5px) scale(.8);
+            opacity: 0;
+            transition:
+                    opacity .1s ease,
+                    transform .1s ease;
+        }
+
+        &:hover {
+            &:after {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+    }
+}

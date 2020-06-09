@@ -13,8 +13,6 @@ namespace App\ContentRenderer\Renderer;
 
 use App\ContentRenderer\EnvironmentFactory;
 use Illuminate\Contracts\Events\Dispatcher;
-use League\CommonMark\Environment;
-use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 /**
@@ -39,10 +37,11 @@ class MarkdownRenderer extends Renderer
      * @var string[]
      */
     private const REPLACEMENTS_AFTER = [
+        '/<p>\s*<a\hname="(.+?)">.*?<\/a>\s*<\/p>/isum'             => '<a name="$1"></a>',
+        '/<a\hname="(.+?)"><\/a>/isum'                              => '<a class="anchor" href="#$1" id="$1"></a>',
         '/\s*<p>\s*<\/p>/isum'                                      => '',
         '/<blockquote>\s*<p>\s*(.*?)\s*<\/p>\s*<\/blockquote>/isum' => '<blockquote>$1</blockquote>',
         '/<blockquote>\s*{(\w+)}\s*(.*?)<\/blockquote>/isum'        => '<blockquote class="quote-$1">$2</blockquote>',
-        '/<p>\s*<a name="(.+?)">.*?<\/a>\s*<\/p>/isum'              => '<a name="$1"></a>',
     ];
 
     /**

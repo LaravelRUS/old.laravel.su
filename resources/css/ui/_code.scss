@@ -1,3 +1,33 @@
+pre, code {
+    font: {
+        size: $font-size + 1px;
+        family: $font-mono;
+    }
+}
+
+code {
+    background: $color-dark-white;
+    border-radius: 2px;
+    padding: 2px 6px;
+    box-sizing: border-box;
+    line-height: $ui-min-height;
+    height: $ui-min-height;
+    box-shadow: 0 1px 0 $color-light-gray;
+}
+
+pre > code {
+    background: $color-light-gray;
+    display: block;
+    white-space: pre;
+    background: $color-bg;
+    padding: 20px 30px;
+    height: auto;
+    border-radius: 6px;
+    line-height: $font-size + 8px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .2);
+}
+
+
 .hljs {
     position: relative;
 

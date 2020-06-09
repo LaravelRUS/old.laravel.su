@@ -13,9 +13,7 @@
 @section('keywords'){{ $page->getKeywordsString() }}@stop
 
 @push('header')
-    @include('page.docs.partials.versions', [
-        'version' => $version
-    ])
+    @include('page.docs.partials.versions', ['version' => $version])
 @endpush
 
 @section('content')
@@ -25,15 +23,9 @@
         </aside>
 
         <article class="documentation-content">
-            @include('page.docs.partials.translation-status', [
-                'page' => $page
-            ])
+            @include('page.docs.partials.translation-status', ['page' => $page])
 
-            <div class="px-4 pb-4">
-                <div class="docs_content">
-                    {!! $page !!}
-                </div>
-            </div>
+            {!! $page !!}
         </article>
     </section>
 @endsection
