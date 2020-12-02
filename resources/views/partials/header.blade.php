@@ -14,12 +14,6 @@
         <nav class="container extras-items">
             <a href="https://laravel.com/" target="_blank" rel="nofollow">Laravel</a>
             <a href="https://laravel-idea.com" target="_blank" rel="nofollow">Laravel IDEA</a>
-            <a href="https://sleepingowladmin.ru/" target="_blank" rel="nofollow">SleepingOwl</a>
-            <a href="https://orchid.software/ru/" target="_blank" rel="nofollow">Orchid</a>
-            <a href="https://vk.com/laravel_rus" target="_blank" rel="nofollow">Сообщество</a>
-            <a href="https://discord.gg/c8gJfed" target="_blank" rel="nofollow">Discord</a>
-            <a href="https://t.me/laravelrus" target="_blank" rel="nofollow">Telegram</a>
-            <a href="https://github.com/LaravelRUS" target="_blank" rel="nofollow">GitHub</a>
         </nav>
     </section>
 
@@ -36,11 +30,11 @@
                 </section>--}}
 
                 <nav class="menu-items">
-                    <a href="{{ route('home') }}" class="@active('home')">Главная</a>
-                    <a href="{{ route('docs') }}" class="@active('docs.*')">Документация</a>
-                    <a href="{{ route('status') }}" class="@active('status.*')">Перевод</a>
-                    <span>Статьи</span>
-                    <span>Пакеты</span>
+                    <a href="{{ route('home') }}" class="@active('home')">Головна</a>
+                    <a href="{{ route('docs', '8.x') }}" class="@active('docs.*')">Документація</a>
+                    <a href="{{ route('status') }}" class="@active('status.*')">Переклад</a>
+                    <span>Статті(в процессі)</span>
+                    <span>Пакети(в процессі)</span>
                 </nav>
             </aside>
         </section>

@@ -9,7 +9,7 @@
 @endphp
 
 @section('title'){{ $page->title }} (Laravel {{ $version->name }})@stop
-@section('description')Русская документация Laravel {{ $version->name }} - {{ $page->title }}@stop
+@section('description')Українська документація Laravel {{ $version->name }} - {{ $page->title }}@stop
 @section('keywords'){{ $page->getKeywordsString() }}@stop
 
 @push('header')

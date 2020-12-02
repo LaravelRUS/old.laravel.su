@@ -105,11 +105,12 @@ class DocsFetchCommand extends Command
             $progress->setMessage($branch->getName());
             $progress->advance();
 
+            $ver = intval(substr($branch->getName(), -3, 1));
             //
             // В том случае, если ветка временная (или master), то игнорируем
             // её синхронизацию.
             //
-            if (! $branch->isSyncable()) {
+            if (! $branch->isSyncable() or $ver < 8) {
                 continue;
             }
 

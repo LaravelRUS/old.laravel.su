@@ -7,7 +7,7 @@
 
 <section class="container versions">
     @if ($versions->count())
-        Версия фреймворка:
+        Версія фреймворка:
 
         @foreach($versions as $current)
             @continue(! $current->isDocumented && $version->name !== $current->name)
@@ -21,9 +21,9 @@
 
         <aside>
             @if(isset($version))
-                <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
+                <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогрес перекладу</a>
             @else
-                <a href="{!! route('status') !!}">Прогресс перевода</a>
+                <a href="{!! route('status') !!}">Прогрес перекладу</a>
             @endif
         </aside>
     @else

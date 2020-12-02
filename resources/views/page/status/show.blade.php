@@ -12,7 +12,7 @@
     @endphp
 
     <section class="container translation-progress">
-        <h1>Прогресс перевода Laravel {{ $current->name }}</h1>
+        <h1>Прогрес перекладу Laravel {{ $current->name }}</h1>
 
         <p>
             Если вы хотите помочь с переводом документации, ознакомьтесь пожалуйста с этой
@@ -22,16 +22,16 @@
         @include('page.status.partials.menu')
 
         @if($current->isDocumented)
-            <span class="translation-progress-description">Перевод показывается в меню</span>
+            <span class="translation-progress-description">Переклад відображається в меню</span>
         @else
-            <span class="translation-progress-description">Перевод не показывается в меню, но доступен по прямой ссылке</span>
+            <span class="translation-progress-description">Переклад не відображається в меню, але доступний по прямому посиланню</span>
         @endif
 
         <table class="table-auto">
             <thead>
                 <tr>
                     <th>Страница</th>
-                    <th>Прогресс перевода</th>
+                    <th>Прогрес перекладу</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,12 +50,12 @@
                     </td>
                     <td class="translation-page-status">
                         @if ($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::MISSING)
-                            <span class="label warning">Перевод отсутсвует</span>
+                            <span class="label warning">Переклад відсутній</span>
                         @elseif($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::ACTUAL)
-                            <span class="label success">Перевод актуален</span>
+                            <span class="label success">Переклад актуальний</span>
                         @else
                             <span class="label notice">
-                                Перевод отстаёт на {{$page->translation->diff}}
+                                Переклад відстає на {{$page->translation->diff}}
                                 {{ trans_choice('{1} коммит|[2,4] коммита|[5,*] коммитов', $page->translation->diff) }}
                             </span>
                         @endif
@@ -69,11 +69,11 @@
                                 {{ substr($page->translation->targetCommit, 0, 7) }}
                             </a>
                         @else
-                            Файл перевода отсутсвует
+                            Файл Перекладу відсутній
                         @endif
                         <hr />
                         @if($page->translation->commit)
-                            Последний коммит
+                            Останній комміт
                             <a href="https://github.com/laravel/docs/commit/{{ $page->source->commit }}" target="_blank">
                                 {{ substr($page->source->commit, 0, 7) }}
                             </a>

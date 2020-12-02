@@ -101,14 +101,20 @@ class Documentation extends BaseEntity
      */
     public function __toString(): string
     {
-        if ($this->translation->isRendered()) {
-            return (string)$this->translation;
-        }
+        // if( $this->translation->getStatus() === \App\Entity\Documentation\Translation\Status::ACTUAL ) {
 
-        if ($this->source->isRendered()) {
-            return (string)$this->source;
-        }
+            if ($this->translation->isRendered()) {
+                return (string)$this->translation;
+            }
 
-        return $this->urn;
+            if ($this->source->isRendered()) {
+                return (string)$this->source;
+            }
+
+            return $this->urn;
+        // } else {
+        //     return $this->urn;
+        // }
+
     }
 }

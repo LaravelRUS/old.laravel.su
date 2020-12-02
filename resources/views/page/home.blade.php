@@ -6,11 +6,9 @@
     <section class="splash">
         <div class="container">
             <section class="splash-description">
-                <h1>Laravel — php-фреймворк нового поколения</h1>
+                <h1>Laravel — популярний php-фреймворк, що постійно оновлюється</h1>
                 <span>
-                    Мы верим, что процесс разработки только тогда наиболее
-                    продуктивен, когда работа с фреймворком приносит радость
-                    и удовольствие. Счастливые разработчики пишут лучший код.
+                    Має широку спільноту по світу. Дозволяє будувати швидкі та безпечні сайти та має чудову документацію.
                 </span>
             </section>
 
@@ -18,7 +16,7 @@
         </div>
     </section>
 
-    <section class="section orchid">
+    {{-- <section class="section orchid">
         <div class="container">
             <article class="orchid-description section-description">
                 <a href="https://github.com/orchidsoftware/platform" target="_blank" rel="nofollow"
@@ -74,5 +72,5 @@
 
             <img class="sleeping-owl-image section-image" src="/images/sleeping-owl/sleeping-owl.png" alt="SleepingOwl Admin Panel" />
         </div>
-    </section>
+    </section> --}}
 @endsection

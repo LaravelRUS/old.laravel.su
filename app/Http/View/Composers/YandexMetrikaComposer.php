@@ -44,7 +44,8 @@ class YandexMetrikaComposer
 
         $view->with('metrika', (object)[
             'id'      => $id,
-            'enabled' => (bool)$id,
+            // 'enabled' => (bool)$id,
+            'enabled' => false,
         ]);
     }
 }
