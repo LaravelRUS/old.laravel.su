@@ -63,8 +63,8 @@ abstract class DocsTranslationCommand extends Command
         parent::__construct();
 
         $this->em = $em;
-        $this->source = new Repository($client, 'laravel', 'docs');
-        $this->translation = new Repository($client, 'LaravelRUS', 'docs');
+        $this->source = new Repository($client, config('documentation.laravel-source.user'), config('documentation.laravel-source.repository'));
+        $this->translation = new Repository($client, config('documentation.laravel-translation.user'), config('documentation.laravel-translation.repository'));
     }
 
     /**
