@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=7.4",
-        "league/commonmark": "~1.4",
-        "spatie/commonmark-highlighter": "~2.1"
+        "league/commonmark": "^1.4",
+        "spatie/commonmark-highlighter": "^2.1"
     },
     "autoload": {
         "psr-4": {
