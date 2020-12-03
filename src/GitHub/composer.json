@@ -12,9 +12,9 @@
     "require": {
         "php": ">=7.4",
         "symfony/cache": "^5.1",
-        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/guzzle7-adapter": "^0.1",
         "knplabs/github-api": "^2.9",
-        "illuminate/support": "^7.0",
+        "illuminate/support": "^8.0",
         "nesbot/carbon": "^2.0"
     },
     "autoload": {
