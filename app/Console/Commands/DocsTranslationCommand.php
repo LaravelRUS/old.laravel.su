@@ -19,7 +19,7 @@ use App\GitHub\FileInterface;
 use App\GitHub\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Github\Client;
-
+use Illuminate\Contracts\Config\Repository as Config;
 /**
  * Class DocsTranslationCommand
  */
@@ -58,13 +58,14 @@ abstract class DocsTranslationCommand extends Command
      * @param Client $client
      * @param EntityManagerInterface $em
      */
-    public function __construct(Client $client, EntityManagerInterface $em)
+    public function __construct(Client $client, EntityManagerInterface $em, Config $config)
     {
         parent::__construct();
 
         $this->em = $em;
-        $this->source = new Repository($client, 'laravel', 'docs');
-        $this->translation = new Repository($client, 'LaravelRUS', 'docs');
+        $this->source = new Repository($client, $config->get('documentation.laravel-source.user'), $config->get('documentation.laravel-source.repository'));
+        $this->translation = new Repository($client, $config->get('documentation.laravel-translation.user'), $config->get('documentation.laravel-translation.repository'));
+
     }
 
     /**
