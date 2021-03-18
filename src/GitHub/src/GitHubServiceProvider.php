@@ -84,11 +84,9 @@ class GitHubServiceProvider extends ServiceProvider
     private function loadConnection(Manager $manager, string $key, array $config): void
     {
         $manager->extend($key, function () use ($config) {
-            [$id, $secret] = [$config['id'] ?? null, $config['secret'] ?? null];
-
             $client = new Client();
             $client->addCache($this->app->make(CacheItemPoolInterface::class));
-            $client->authenticate($id, $secret, Client::AUTH_HTTP_PASSWORD);
+            $client->authenticate($config['token'] ?? null, null, Client::AUTH_ACCESS_TOKEN);
 
             return $client;
         });

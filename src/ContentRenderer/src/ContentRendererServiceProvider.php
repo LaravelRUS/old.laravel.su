@@ -12,16 +12,8 @@ namespace App\ContentRenderer;
 
 use App\ContentRenderer\Renderer\ContentRendererInterface;
 use App\ContentRenderer\Renderer\LaravelRusMarkdownRenderer;
-use App\ContentRenderer\Renderer\PrivateContentRendererInterface;
-use App\ContentRenderer\Renderer\PublicContentRendererInterface;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\ServiceProvider;
-use League\CommonMark\Block\Element\FencedCode;
-use League\CommonMark\Block\Element\IndentedCode;
-use League\CommonMark\Environment;
-use League\CommonMark\EnvironmentInterface;
-use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
-use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
 /**
  * Class ContentRendererServiceProvider.
@@ -50,8 +42,9 @@ class ContentRendererServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../resources/content-renderer.php'       => \config_path('content-renderer.php'),
-                __DIR__ . '/../resources/content-renderer/php.json'  => \config_path('content-renderer/php.json'),
-                __DIR__ . '/../resources/content-renderer/json.json' => \config_path('content-renderer/json.json'),
+                // Avoid custom styles
+                // __DIR__ . '/../resources/content-renderer/php.json'  => \config_path('content-renderer/php.json'),
+                // __DIR__ . '/../resources/content-renderer/json.json' => \config_path('content-renderer/json.json'),
             ]);
         }
 

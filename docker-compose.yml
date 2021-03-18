@@ -4,9 +4,9 @@ services:
   nginx:
     image: nginx:alpine
     container_name: laravelsu-nginx
-    working_dir: /application
+    working_dir: /home/forge/laravel.su
     volumes:
-      - .:/application
+      - .:/home/forge/laravel.su
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./docker/data/logs/nginx:/var/log/nginx/
     ports:
@@ -15,16 +15,16 @@ services:
   php:
     build: docker/php
     container_name: laravelsu-php
-    working_dir: /application
+    working_dir: /home/forge/laravel.su
     volumes:
-      - .:/application
-      - ./docker/php/php-fpm-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
-      - ./docker/php/php-cli-ini-overrides.ini:/etc/php/7.4/cli/conf.d/99-overrides.ini
+      - .:/home/forge/laravel.su
+      - ./docker/php/php-fpm-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini
+      - ./docker/php/php-cli-ini-overrides.ini:/etc/php/8.0/cli/conf.d/99-overrides.ini
 
   mysql:
     image: mysql:5.7
     container_name: laravelsu-mysql
-    working_dir: /application
+    working_dir: /home/forge/laravel.su
     volumes:
       - ./docker/data/mysql:/var/lib/mysql
     environment:

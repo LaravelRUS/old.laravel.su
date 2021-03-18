@@ -70,7 +70,7 @@ $ php artisan su:docs:diff
 
 1) Нажимаем на кнопку генерации нового токена (1).
 2) Выставляем права на чтение репозиториев.
-3) Получившийся ключ (2) вставляем в файл `.env` в качестве значения для переменной `GITHUB_CLIENT_SECRET`.
+3) Получившийся ключ (2) вставляем в файл `.env` в качестве значения для переменной `GITHUB_AUTH_ACCESS_TOKEN`.
 
 ![](https://habrastorage.org/webt/eb/xv/17/ebxv172okbewdbgxwn-wquola7g.png)
 

@@ -21,10 +21,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "happyr/doctrine-specification": "^1.1",
-        "laravel-doctrine/orm": "^1.6",
+        "laravel-doctrine/orm": "^1.7",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "sentry/sentry-laravel": "^1.7"
+        "sentry/sentry-laravel": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

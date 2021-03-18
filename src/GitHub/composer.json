@@ -13,7 +13,7 @@
         "php": ">=7.4",
         "symfony/cache": "^5.1",
         "php-http/guzzle7-adapter": "^0.1",
-        "knplabs/github-api": "^2.9",
+        "knplabs/github-api": "^3.0",
         "illuminate/support": "^8.0",
         "nesbot/carbon": "^2.0"
     },
