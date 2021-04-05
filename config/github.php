@@ -33,7 +33,7 @@ return [
 
     'connections' => [
         'default' => [
-            'token' => env('GITHUB_AUTH_ACCESS_TOKEN', env('GITHUB_CLIENT_SECRET')),
+            'token' => env('GITHUB_AUTH_ACCESS_TOKEN', ''),
         ],
     ],
 ];
