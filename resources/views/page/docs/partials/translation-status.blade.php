@@ -4,7 +4,7 @@
     @if ($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::MISSING)
         <aside class="translation-status label warning">
             <span class="fa fa-times-circle-o"></span>
-            Перевод отсутсвует
+            Перевод отсутствует
         </aside>
     @elseif($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::BEHIND)
         <aside class="translation-status label notice">
