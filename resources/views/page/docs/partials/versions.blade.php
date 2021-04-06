@@ -15,7 +15,7 @@
             @if($version->name === $current->name)
                 <span class="label active">{{ $current->name }}</span>
             @else
-                <a class="label" href="{!! route('docs', ['version' => $current->name]) !!}">{{ $current->name }}</a>
+                <a class="label" href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
             @endif
         @endforeach
 
