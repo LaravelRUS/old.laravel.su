@@ -92,8 +92,25 @@
 
             hr {
                 background: none;
+                margin: 6px 0;
+            }
+
+            .diff_command{
+                font-size: 15px;
+                font-family: "Roboto Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+                margin-left: 8px;
             }
         }
     }
 
+}
+
+.copy_to_clipboard{
+    cursor: pointer;
+}
+
+.clipboard_icon{
+    height: 20px;
+    width: 20px;
+    vertical-align: bottom;
 }

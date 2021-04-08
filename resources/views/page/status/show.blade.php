@@ -50,7 +50,7 @@
                     </td>
                     <td class="translation-page-status">
                         @if ($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::MISSING)
-                            <span class="label warning">Перевод отсутсвует</span>
+                            <span class="label warning">Перевод отсутствует</span>
                         @elseif($page->translation->getStatus() === \App\Entity\Documentation\Translation\Status::ACTUAL)
                             <span class="label success">Перевод актуален</span>
                         @else
@@ -65,21 +65,43 @@
                     <td colspan="2" class="translation-page-info">
                         @if($page->translation->targetCommit)
                             Перевод ссылается на
-                            <a href="https://github.com/laravel/docs/commit/{{ $page->translation->targetCommit }}" target="_blank">
-                                {{ substr($page->translation->targetCommit, 0, 7) }}
+                            <a href="https://github.com/laravel/docs/commit/{{ $page->translation->targetCommit }}" target="_blank" style="margin-right: 23px;">
+                                {{ $page->translation->targetCommit }}
                             </a>
                         @else
-                            Файл перевода отсутсвует
+                            <hr />
+                            Файл перевода отсутствует
                         @endif
-                        <hr />
-                        @if($page->translation->commit)
-                            Последний коммит
+
+                        @if($page->source->commit)
+                            <hr />
+                            Последний коммит:
                             <a href="https://github.com/laravel/docs/commit/{{ $page->source->commit }}" target="_blank">
-                                {{ substr($page->source->commit, 0, 7) }}
+                                {{ $page->source->commit }}
                             </a>
+                            <span class="copy_to_clipboard" data-clipboard-text="{{ $page->source->commit }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="clipboard_icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            </svg>
+                        </span>
                         @else
-                            Данные страницы документации не обнаружены
+                            <hr />
+                            Оригинальный файл не найден
                         @endif
+
+                        @if($page->translation->targetCommit AND $page->source->commit AND $page->translation->targetCommit != $page->source->commit)
+                            <hr />
+                            Непереведённый контент:
+                            <span class="diff_command">
+                                git difftool {{ substr($page->translation->targetCommit, 0, 7) }} {{ substr($page->source->commit, 0, 7) }} {{ $page->urn }}.md
+                            </span>
+                            <span class="copy_to_clipboard" data-clipboard-text="git difftool {{ substr($page->translation->targetCommit, 0, 7) }} {{ substr($page->source->commit, 0, 7) }} {{ $page->urn }}.md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="clipboard_icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                            </span>
+                        @endif
+
                     </td>
                 </tr>
             @endforeach

@@ -19,6 +19,7 @@
 
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet" />
+
 </head>
 <body>
     <main id="app">
@@ -34,5 +35,9 @@
         @include('partials.yandex-metrika')
     </main>
     <script src="{{ mix('assets/app.js') }}" async="async"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        var clipboard = new ClipboardJS('.copy_to_clipboard');
+    </script>
 </body>
 </html>
