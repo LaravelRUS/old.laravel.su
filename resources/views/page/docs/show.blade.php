@@ -24,7 +24,7 @@
 
         <article class="documentation-content">
             @if($page->version->name == '8.x')
-            @include('page.docs.partials.rularavelcom-notification', ['page' => $page])
+            @include('page.docs.partials.translation-notification', ['page' => $page])
             @endif
             @include('page.docs.partials.translation-status', ['page' => $page])
 
