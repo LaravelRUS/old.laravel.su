@@ -30,3 +30,21 @@ ul li a {
         color: $color-main;
     }
 }
+
+li.item-active {
+
+    // активный пункт - с голубым фоном, цвет шаблонный
+    background-color: $color-blue;
+    padding: 7px 0;
+
+    a.link-active {
+        color: #fff;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: #fff;
+            outline: none;
+        }
+    }
+}
