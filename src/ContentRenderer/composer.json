@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "league/commonmark": "^1.4",
         "spatie/commonmark-highlighter": "^2.1"
     },
