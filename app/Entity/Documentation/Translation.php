@@ -14,9 +14,7 @@ namespace App\Entity\Documentation;
 use App\Entity\Documentation\Translation\Status;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable()
- */
+#[ORM\Embeddable]
 class Translation extends Source
 {
     /**
@@ -25,17 +23,15 @@ class Translation extends Source
     private const DIFF_NO_TRANSLATION = -1;
 
     /**
-     * @ORM\Column(name="commit_target", type="string", length=191)
-     *
      * @var string|null
      */
+    #[ORM\Column(name: 'commit_target', type: 'string', length: 191)]
     public ?string $targetCommit;
 
     /**
-     * @ORM\Column(name="commit_diff", type="integer")
-     *
      * @var int
      */
+    #[ORM\Column(name: 'commit_diff', type: 'integer')]
     public int $diff = self::DIFF_NO_TRANSLATION;
 
     /**
@@ -57,18 +53,12 @@ class Translation extends Source
      */
     public function getStatus(): int
     {
-        switch (true) {
-            case $this->diff < 0:
-                return Status::MISSING;
-
-            case $this->diff === 0:
-                return Status::ACTUAL;
-
-            case $this->diff < 10:
-                return Status::BEHIND;
-        }
-
-        return Status::FAR_BEHIND;
+        return match (true) {
+            $this->diff < 0 => Status::MISSING,
+            $this->diff === 0 => Status::ACTUAL,
+            $this->diff < 10 => Status::BEHIND,
+            default => Status::FAR_BEHIND,
+        };
     }
 
     /**

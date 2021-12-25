@@ -15,9 +15,6 @@ use App\Entity\Documentation;
 use App\Entity\Version;
 use Happyr\DoctrineSpecification\Spec;
 
-/**
- * Class DocumentationRepository
- */
 class DocumentationRepository extends Repository
 {
     /**

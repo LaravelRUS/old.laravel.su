@@ -20,10 +20,9 @@ use Doctrine\ORM\Mapping as ORM;
 trait UpdatedAtTrait
 {
     /**
-     * @ORM\Column(name="updated_at", type="carbon", nullable=true)
-     *
      * @var Carbon|null
      */
+    #[ORM\Column(name: 'updated_at', type: 'carbon', nullable: true)]
     protected ?Carbon $updated = null;
 
     /**
@@ -36,7 +35,7 @@ trait UpdatedAtTrait
 
     /**
      * @param \DateTimeInterface|null $now
-     * @return $this|ProvidesUpdatedAt
+     * @return ProvidesUpdatedAt
      */
     public function touch(\DateTimeInterface $now = null): ProvidesUpdatedAt
     {
@@ -46,18 +45,18 @@ trait UpdatedAtTrait
     }
 
     /**
-     * @ORM\PrePersist()
      * @return void
      */
+    #[ORM\PrePersist]
     public function onPrePersistUpdatedField(): void
     {
         $this->touch();
     }
 
     /**
-     * @ORM\PreUpdate()
      * @return void
      */
+    #[ORM\PreUpdate]
     public function onPreUpdateUpdatedField(): void
     {
         $this->touch();

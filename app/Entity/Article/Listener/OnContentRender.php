@@ -18,9 +18,6 @@ use App\Entity\Common\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
-/**
- * Class OnContentRender
- */
 final class OnContentRender extends Listener
 {
     /**
@@ -29,8 +26,6 @@ final class OnContentRender extends Listener
     private ContentRendererInterface $renderer;
 
     /**
-     * OnContentRender constructor.
-     *
      * @param MarkdownRenderer $renderer
      */
     public function __construct(MarkdownRenderer $renderer)

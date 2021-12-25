@@ -15,9 +15,6 @@ use Doctrine\ORM\EntityRepository;
 use Happyr\DoctrineSpecification\EntitySpecificationRepositoryTrait;
 use Illuminate\Support\Collection;
 
-/**
- * Class Repository
- */
 abstract class Repository extends EntityRepository
 {
     use EntitySpecificationRepositoryTrait;

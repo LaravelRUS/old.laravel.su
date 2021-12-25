@@ -20,10 +20,9 @@ use Doctrine\ORM\Mapping as ORM;
 trait CreatedAtTrait
 {
     /**
-     * @ORM\Column(name="created_at", type="carbon")
-     *
      * @var Carbon
      */
+    #[ORM\Column(name: 'created_at', type: 'carbon')]
     protected Carbon $created;
 
     /**
@@ -34,9 +33,7 @@ trait CreatedAtTrait
         return $this->created ??= Carbon::now();
     }
 
-    /**
-     * @ORM\PrePersist
-     */
+    #[ORM\PrePersist]
     public function onPrePersistCreatedField(): void
     {
         $this->created = Carbon::now();

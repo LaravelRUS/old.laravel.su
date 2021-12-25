@@ -13,9 +13,6 @@ namespace App\Entity\Common;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
-/**
- * Class Listener
- */
 abstract class Listener
 {
     /**

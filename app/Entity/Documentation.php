@@ -16,52 +16,44 @@ use App\Entity\Documentation\Translation;
 use App\Entity\Repository\DocumentationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=DocumentationRepository::class)
- * @ORM\Table(name="docs")
- * @ORM\HasLifecycleCallbacks()
- */
+
+#[ORM\Table(name: 'docs')]
+#[ORM\Entity(repositoryClass: DocumentationRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Documentation extends BaseEntity
 {
     /**
-     * @ORM\ManyToOne(targetEntity=Version::class, inversedBy="docs", fetch="EAGER", cascade={"persist", "merge"})
-     * @ORM\JoinColumn(name="version_id", referencedColumnName="id")
-     *
      * @var Version
      */
+    #[ORM\ManyToOne(targetEntity: Version::class, cascade: ['persist', 'merge'], fetch: 'EAGER', inversedBy: 'docs')]
+    #[ORM\JoinColumn(name: 'version_id', referencedColumnName: 'id')]
     public Version $version;
 
     /**
-     * @ORM\Column(name="urn", type="string", length=191)
-     *
      * @var string
      */
+    #[ORM\Column(name: 'urn', type: 'string', length: 191)]
     public string $urn;
 
     /**
-     * @ORM\Column(name="title", type="string", length=191)
-     *
      * @var string
      */
+    #[ORM\Column(name: 'title', type: 'string', length: 191)]
     public string $title;
 
     /**
-     * @ORM\Embedded(class=Source::class, columnPrefix="content_")
-     *
      * @var Source
      */
+    #[ORM\Embedded(class: Source::class, columnPrefix: 'content_')]
     public Source $source;
 
     /**
-     * @ORM\Embedded(class=Translation::class, columnPrefix="translation_")
-     *
      * @var Translation
      */
+    #[ORM\Embedded(class: Translation::class, columnPrefix: 'translation_')]
     public Translation $translation;
 
     /**
-     * Documentation constructor.
-     *
      * @param Version $version
      * @param string $title
      * @param string $urn

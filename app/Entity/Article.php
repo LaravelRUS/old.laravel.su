@@ -17,51 +17,42 @@ use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Support\Str;
 
-/**
- * @ORM\Entity(repositoryClass=ArticlesRepository::class)
- * @ORM\Table(name="articles")
- * @ORM\HasLifecycleCallbacks()
- */
+#[ORM\Table(name: 'articles')]
+#[ORM\Entity(repositoryClass: ArticlesRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Article extends BaseEntity
 {
     /**
-     * @ORM\Column(name="title", type="string")
-     *
      * @var string
      */
+    #[ORM\Column(name: 'title', type: 'string')]
     public string $title;
 
     /**
-     * @ORM\Column(name="urn", type="string")
-     *
      * @var string|null
      */
+    #[ORM\Column(name: 'urn', type: 'string')]
     public ?string $urn = null;
 
     /**
-     * @ORM\Column(name="description", type="string")
-     *
      * @var string
      */
+    #[ORM\Column(name: 'description', type: 'string')]
     public string $description = '';
 
     /**
-     * @ORM\Embedded(class=Body::class, columnPrefix="content_")
-     *
      * @var Body
      */
+    #[ORM\Embedded(class: Body::class, columnPrefix: 'content_')]
     public Body $body;
 
     /**
-     * @ORM\Column(name="published_at", type="carbon", nullable=true)
-     *
      * @var Carbon|null
      */
+    #[ORM\Column(name: 'published_at', type: 'carbon', nullable: true)]
     protected ?Carbon $publishedAt = null;
 
     /**
-     * Article constructor.
-     *
      * @param string $title
      * @param Body $body
      */

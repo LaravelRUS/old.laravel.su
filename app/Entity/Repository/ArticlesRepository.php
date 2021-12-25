@@ -14,9 +14,6 @@ namespace App\Entity\Repository;
 use App\Entity\Article;
 use Happyr\DoctrineSpecification\Spec;
 
-/**
- * Class ArticlesRepository
- */
 class ArticlesRepository extends Repository
 {
     /**

@@ -19,12 +19,11 @@ use Doctrine\ORM\Mapping as ORM;
 trait IdentifiableTrait
 {
     /**
-     * @ORM\Id()
-     * @ORM\Column(name="id", type="integer", length=10)
-     * @ORM\GeneratedValue(strategy="AUTO")
-     *
      * @var int|null
      */
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(name: 'id', type: 'integer', length: 10)]
     protected ?int $id = null;
 
     /**

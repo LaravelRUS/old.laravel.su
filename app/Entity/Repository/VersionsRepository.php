@@ -17,9 +17,6 @@ use Happyr\DoctrineSpecification\Logic\AndX;
 use Happyr\DoctrineSpecification\Spec;
 use Illuminate\Support\Collection;
 
-/**
- * Class VersionsRepository
- */
 class VersionsRepository extends Repository
 {
     /**

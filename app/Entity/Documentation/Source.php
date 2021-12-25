@@ -15,16 +15,13 @@ use App\ContentRenderer\Renderer\ContentRendererInterface;
 use App\Entity\Version;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable()
- */
+#[ORM\Embeddable]
 class Source extends Content
 {
     /**
-     * @ORM\Column(name="commit", type="string", length=191, nullable=true)
-     *
      * @var string|null
      */
+    #[ORM\Column(name: 'commit', type: 'string', length: 191, nullable: true)]
     public ?string $commit = null;
 
     /**

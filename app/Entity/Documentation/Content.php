@@ -14,23 +14,19 @@ namespace App\Entity\Documentation;
 use App\ContentRenderer\Renderer\ContentRendererInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Embeddable()
- */
+#[ORM\Embeddable]
 abstract class Content
 {
     /**
-     * @ORM\Column(name="source", type="text", nullable=true)
-     *
      * @var string|null
      */
+    #[ORM\Column(name: 'source', type: 'text', nullable: true)]
     protected ?string $source = null;
 
     /**
-     * @ORM\Column(name="rendered", type="text", nullable=true)
-     *
      * @var string|null
      */
+    #[ORM\Column(name: 'rendered', type: 'text', nullable: true)]
     protected ?string $rendered = null;
 
     /**

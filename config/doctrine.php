@@ -31,7 +31,7 @@ return [
     'managers' => [
         'default' => [
             'dev'        => env('APP_DEBUG', false),
-            'meta'       => env('DOCTRINE_METADATA', 'annotations'),
+            'meta'       => env('DOCTRINE_METADATA', 'attributes'),
             'connection' => env('DB_CONNECTION', 'mysql'),
             'namespaces' => [],
             'paths'      => [
