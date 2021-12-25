@@ -12,7 +12,7 @@
         {"type": "path", "url": "src/GitHub"}
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^8.0",
         "app/github": "*",
         "app/content-renderer": "*",
         "beberlei/doctrineextensions": "^1.2",

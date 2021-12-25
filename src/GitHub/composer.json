@@ -5,12 +5,12 @@
     "description": "Simple GitHub integration library",
     "authors": [
         {
-            "name": "Serafim",
+            "name": "Kirill Nesmeyanov",
             "email": "nesk@xakep.ru"
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^8.0",
         "symfony/cache": "^5.1",
         "php-http/guzzle7-adapter": "^0.1",
         "knplabs/github-api": "^3.0",

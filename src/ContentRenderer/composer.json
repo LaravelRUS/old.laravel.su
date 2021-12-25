@@ -5,12 +5,12 @@
     "description": "Content polymorphic renderer",
     "authors": [
         {
-            "name": "Serafim",
+            "name": "Kirill Nesmeyanov",
             "email": "nesk@xakep.ru"
         }
     ],
     "require": {
-        "php": ">=7.4",
+        "php": "^8.0",
         "league/commonmark": "^1.4",
         "spatie/commonmark-highlighter": "^2.1"
     },
