@@ -10,9 +10,6 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
-/**
- * Interface ContentRenderInterface.
- */
 interface ContentRendererInterface
 {
     /**

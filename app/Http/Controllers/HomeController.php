@@ -14,9 +14,6 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class HomeController
- */
 class HomeController
 {
     /**

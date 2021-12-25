@@ -19,9 +19,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * Class DocsController
- */
 final class DocsController
 {
     /**

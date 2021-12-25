@@ -13,6 +13,7 @@ namespace App\Entity\Common;
 
 /**
  * @mixin Timestampable
+ * @psalm-require-implements Timestampable
  */
 trait TimestampsTrait
 {

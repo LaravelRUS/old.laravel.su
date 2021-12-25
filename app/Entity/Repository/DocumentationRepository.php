@@ -15,11 +15,14 @@ use App\Entity\Documentation;
 use App\Entity\Version;
 use Happyr\DoctrineSpecification\Spec;
 
+/**
+ * @template-extends Repository<Documentation>
+ */
 class DocumentationRepository extends Repository
 {
     /**
      * @param Version $version
-     * @param string $urn
+     * @param non-empty-string $urn
      * @return Documentation|null
      */
     public function findByVersionAndUrn(Version $version, string $urn): ?Documentation

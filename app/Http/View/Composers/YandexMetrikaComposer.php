@@ -12,12 +12,9 @@ declare(strict_types=1);
 namespace App\Http\View\Composers;
 
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
-/**
- * Class YandexMetrikaComposer
- */
-class YandexMetrikaComposer
+class YandexMetrikaComposer implements ViewComposerInterface
 {
     /**
      * @var Repository
@@ -25,8 +22,6 @@ class YandexMetrikaComposer
     private Repository $config;
 
     /**
-     * YandexMetrikaComposer constructor.
-     *
      * @param Repository $config
      */
     public function __construct(Repository $config)

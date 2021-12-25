@@ -23,7 +23,7 @@ class Translation extends Source
     private const DIFF_NO_TRANSLATION = -1;
 
     /**
-     * @var string|null
+     * @var non-empty-string|null
      */
     #[ORM\Column(name: 'commit_target', type: 'string', length: 191)]
     public ?string $targetCommit;
@@ -36,7 +36,7 @@ class Translation extends Source
 
     /**
      * @param string|null $content
-     * @param string $commit
+     * @param non-empty-string $commit
      * @return $this
      */
     public function update(?string $content, string $commit): self
@@ -49,9 +49,9 @@ class Translation extends Source
     }
 
     /**
-     * @return int
+     * @return Status
      */
-    public function getStatus(): int
+    public function getStatus(): Status
     {
         return match (true) {
             $this->diff < 0 => Status::MISSING,

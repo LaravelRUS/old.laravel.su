@@ -13,9 +13,6 @@ namespace App\Http\View\Directives;
 
 use Illuminate\Routing\Router;
 
-/**
- * Class NavDirective
- */
 final class NavDirective implements IfDirectiveInterface
 {
     /**
@@ -24,8 +21,6 @@ final class NavDirective implements IfDirectiveInterface
     private Router $router;
 
     /**
-     * RouteIsDirective constructor.
-     *
      * @param Router $router
      */
     public function __construct(Router $router)
@@ -37,7 +32,7 @@ final class NavDirective implements IfDirectiveInterface
      * @param mixed ...$args
      * @return bool
      */
-    public function match(...$args): bool
+    public function match(mixed ...$args): bool
     {
         return $this->router->is(...$args);
     }

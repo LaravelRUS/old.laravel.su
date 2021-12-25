@@ -14,9 +14,6 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-/**
- * Class RouteServiceProvider
- */
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -24,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * In addition, it is set as the URL generator's root namespace.
      *
-     * @var string
+     * @var non-empty-string
      */
     protected $namespace = 'App\Http\Controllers';
 

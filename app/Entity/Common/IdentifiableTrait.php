@@ -15,11 +15,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @mixin Identifiable
+ * @psalm-require-implements Identifiable
  */
 trait IdentifiableTrait
 {
     /**
-     * @var int|null
+     * @var positive-int|null|0
      */
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
@@ -35,7 +36,7 @@ trait IdentifiableTrait
     }
 
     /**
-     * @return int|null
+     * @return positive-int|null|0
      */
     public function getId(): ?int
     {

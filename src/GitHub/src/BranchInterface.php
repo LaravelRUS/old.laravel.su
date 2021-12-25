@@ -13,9 +13,6 @@ namespace App\GitHub;
 
 use Illuminate\Support\Enumerable;
 
-/**
- * Interface BranchInterface
- */
 interface BranchInterface extends SyncableInterface
 {
     /**
@@ -34,7 +31,7 @@ interface BranchInterface extends SyncableInterface
     public function getCommit(): string;
 
     /**
-     * @return Enumerable|FileInterface[]
+     * @return Enumerable<FileInterface>
      */
     public function getFiles(): Enumerable;
 }

@@ -23,9 +23,6 @@ use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * Class File
- */
 class File extends \SplFileInfo implements InteractWithApiInterface, FileInterface, Arrayable
 {
     use ApiTrait;

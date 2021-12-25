@@ -15,9 +15,6 @@ use App\ContentRenderer\Event\Rendered;
 use App\ContentRenderer\Event\Rendering;
 use Illuminate\Contracts\Events\Dispatcher;
 
-/**
- * Class Renderer
- */
 abstract class Renderer implements ContentRendererInterface
 {
     /**
@@ -26,8 +23,6 @@ abstract class Renderer implements ContentRendererInterface
     private Dispatcher $dispatcher;
 
     /**
-     * Renderer constructor.
-     *
      * @param Dispatcher $dispatcher
      */
     public function __construct(Dispatcher $dispatcher)

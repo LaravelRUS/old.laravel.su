@@ -13,7 +13,7 @@ namespace App\Entity;
 
 use App\Entity\Repository\VersionsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection as CollectionInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'versions')]
@@ -21,36 +21,36 @@ use Doctrine\ORM\Mapping as ORM;
 class Version extends BaseEntity
 {
     /**
-     * @var string
+     * @var non-empty-string
      */
-    public const DEFAULT_MENU_PAGE = 'documentation';
+    private const DEFAULT_MENU_PAGE = 'documentation';
 
     /**
-     * @var string
+     * @var non-empty-string
      */
-    public const DEFAULT_PAGE = 'installation';
+    private const DEFAULT_PAGE = 'installation';
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'title', type: 'string', length: 191)]
     public string $name;
 
     /**
-     * @var iterable|CollectionInterface|Documentation[]
+     * @var Collection<array-key, Documentation>
      */
     #[ORM\OneToMany(mappedBy: 'version', targetEntity: Documentation::class, cascade: ['persist', 'merge'])]
     #[ORM\JoinColumn(name: 'id', referencedColumnName: 'version_id')]
     public iterable $docs;
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'default_page', type: 'string', length: 191)]
     public string $defaultPage = self::DEFAULT_PAGE;
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'menu_page', type: 'string', length: 191)]
     public string $menuPage = self::DEFAULT_MENU_PAGE;
@@ -62,7 +62,7 @@ class Version extends BaseEntity
     public bool $isDocumented = false;
 
     /**
-     * @param string $title
+     * @param non-empty-string $title
      */
     public function __construct(string $title)
     {

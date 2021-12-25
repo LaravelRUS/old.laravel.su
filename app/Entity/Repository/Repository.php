@@ -15,12 +15,16 @@ use Doctrine\ORM\EntityRepository;
 use Happyr\DoctrineSpecification\EntitySpecificationRepositoryTrait;
 use Illuminate\Support\Collection;
 
+/**
+ * @template T
+ * @template-extends EntityRepository<T>
+ */
 abstract class Repository extends EntityRepository
 {
     use EntitySpecificationRepositoryTrait;
 
     /**
-     * @return Collection|object[]
+     * @return Collection<array-key, T>
      */
     public function all(): Collection
     {

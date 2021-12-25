@@ -15,9 +15,6 @@ use App\ContentRenderer\Renderer\LaravelRusMarkdownRenderer;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class ContentRendererServiceProvider.
- */
 class ContentRendererServiceProvider extends ServiceProvider
 {
     /**

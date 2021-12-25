@@ -13,14 +13,17 @@ namespace App\Entity\Repository;
 
 use App\Entity\Version;
 use Happyr\DoctrineSpecification\Exception\NoResultException;
-use Happyr\DoctrineSpecification\Logic\AndX;
 use Happyr\DoctrineSpecification\Spec;
+use Happyr\DoctrineSpecification\Specification\Specification;
 use Illuminate\Support\Collection;
 
+/**
+ * @template-extends Repository<Version>
+ */
 class VersionsRepository extends Repository
 {
     /**
-     * @return Collection|Version[]
+     * {@inheritDoc}
      */
     public function all(): Collection
     {
@@ -44,7 +47,7 @@ class VersionsRepository extends Repository
     }
 
     /**
-     * @return Collection|Version[]
+     * @return Collection<array-key, Version>
      */
     public function documented(): Collection
     {
@@ -54,7 +57,7 @@ class VersionsRepository extends Repository
     }
 
     /**
-     * @param string $name
+     * @param non-empty-string $name
      * @return Version|null
      */
     public function findByName(string $name): ?Version
@@ -63,13 +66,13 @@ class VersionsRepository extends Repository
             return $this->matchOneOrNullResult(
                 Spec::eq('name', $name)
             );
-        } catch (NoResultException $e) {
+        } catch (NoResultException) {
             return null;
         }
     }
 
     /**
-     * @param string $name
+     * @param non-empty-string $name
      * @return Version
      */
     public function findByNameOrNew(string $name): Version
@@ -78,9 +81,9 @@ class VersionsRepository extends Repository
     }
 
     /**
-     * @return AndX
+     * @return Specification
      */
-    private function lastDocumentedSpec(): AndX
+    private function lastDocumentedSpec(): Specification
     {
         return Spec::andX(
             Spec::orderBy('name', 'desc'),

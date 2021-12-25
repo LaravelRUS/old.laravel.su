@@ -12,23 +12,25 @@ declare(strict_types=1);
 namespace App\Entity\Common;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @mixin ProvidesUpdatedAt
+ * @psalm-require-implements ProvidesUpdatedAt
  */
 trait UpdatedAtTrait
 {
     /**
-     * @var Carbon|null
+     * @var CarbonInterface|null
      */
     #[ORM\Column(name: 'updated_at', type: 'carbon', nullable: true)]
-    protected ?Carbon $updated = null;
+    protected ?CarbonInterface $updated = null;
 
     /**
-     * @return Carbon|null
+     * @return CarbonInterface|null
      */
-    public function updatedAt(): ?Carbon
+    public function updatedAt(): ?CarbonInterface
     {
         return $this->updated;
     }
@@ -36,6 +38,7 @@ trait UpdatedAtTrait
     /**
      * @param \DateTimeInterface|null $now
      * @return ProvidesUpdatedAt
+     * @psalm-suppress LessSpecificImplementedReturnType
      */
     public function touch(\DateTimeInterface $now = null): ProvidesUpdatedAt
     {

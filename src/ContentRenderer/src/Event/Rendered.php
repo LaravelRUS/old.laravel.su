@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Event;
 
-/**
- * Class Rendered
- */
 class Rendered extends ContentEvent
 {
     /**

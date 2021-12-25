@@ -17,9 +17,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Psr\Cache\CacheItemPoolInterface;
 
-/**
- * Class GitHubServiceProvider
- */
 class GitHubServiceProvider extends ServiceProvider
 {
     /**

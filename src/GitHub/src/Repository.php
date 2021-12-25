@@ -18,9 +18,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Enumerable;
 use Illuminate\Support\LazyCollection;
 
-/**
- * Class Repository
- */
 final class Repository implements InteractWithApiInterface, RepositoryInterface, Arrayable
 {
     use ApiTrait;

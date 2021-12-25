@@ -14,10 +14,7 @@ namespace App\Http\View\Composers;
 use App\Entity\Repository\VersionsRepository;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class VersionsComposer
- */
-class VersionsComposer
+class VersionsComposer implements ViewComposerInterface
 {
     /**
      * @var VersionsRepository
@@ -25,8 +22,6 @@ class VersionsComposer
     private VersionsRepository $versions;
 
     /**
-     * VersionsComposer constructor.
-     *
      * @param VersionsRepository $versions
      */
     public function __construct(VersionsRepository $versions)

@@ -11,36 +11,25 @@ declare(strict_types=1);
 
 namespace App\Entity\Documentation\Translation;
 
-/**
- * Class Status
- */
-final class Status
+enum Status: int
 {
     /**
      * Перевод отсутсвует
-     *
-     * @var int
      */
-    public const MISSING = 0x00;
+    case MISSING = 0x00;
 
     /**
      * Перевод актуален
-     *
-     * @var int
      */
-    public const ACTUAL = 0x01;
+    case ACTUAL = 0x01;
 
     /**
      * Перевод немного отстаёт
-     *
-     * @var int
      */
-    public const BEHIND = 0x02;
+    case BEHIND = 0x02;
 
     /**
      * Перевод сильно отстаёт
-     *
-     * @var int
      */
-    public const FAR_BEHIND = 0x03;
+    case FAR_BEHIND = 0x03;
 }

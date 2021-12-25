@@ -23,15 +23,15 @@ use Illuminate\Support\Str;
 class Article extends BaseEntity
 {
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'title', type: 'string')]
     public string $title;
 
     /**
-     * @var string|null
+     * @var non-empty-string|null
      */
-    #[ORM\Column(name: 'urn', type: 'string')]
+    #[ORM\Column(name: 'urn', type: 'string', nullable: true)]
     public ?string $urn = null;
 
     /**
@@ -59,16 +59,17 @@ class Article extends BaseEntity
     public function __construct(string $title, Body $body)
     {
         $this->rename($title);
-
         $this->body = $body;
     }
 
     /**
-     * @param string $title
+     * @param non-empty-string $title
      * @return $this
      */
     public function rename(string $title): self
     {
+        assert($title !== '', 'Title can not be empty');
+
         $this->title = $title;
 
         if ($this->urn === null) {

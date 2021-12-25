@@ -19,9 +19,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class DatabaseServiceProvider
- */
 class DatabaseServiceProvider extends ServiceProvider
 {
     /**
@@ -31,7 +28,7 @@ class DatabaseServiceProvider extends ServiceProvider
      *  ]
      * <code>
      *
-     * @var string[]
+     * @var array<class-string<ObjectRepository>, class-string>
      */
     private const REPOSITORIES = [
         Repository\VersionsRepository::class      => Entity\Version::class,
@@ -40,7 +37,7 @@ class DatabaseServiceProvider extends ServiceProvider
     ];
 
     /**
-     * @var string[]
+     * @var list<class-string>
      */
     private const LISTENERS = [
         Entity\Documentation\Listener\OnContentRender::class,
@@ -59,7 +56,7 @@ class DatabaseServiceProvider extends ServiceProvider
             $this->app->singleton($repository, static function (Application $app) use ($entity): ObjectRepository {
                 return $app->make(EntityManagerInterface::class)
                     ->getRepository($entity)
-                    ;
+                ;
             });
         }
 

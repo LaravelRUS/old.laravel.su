@@ -9,13 +9,15 @@
 
 declare(strict_types=1);
 
-namespace App\Http\View\Directives;
+namespace App\Http\View\Composers;
 
-interface GeneratedDirectiveInterface extends DirectiveInterface
+use Illuminate\Contracts\View\View as ViewInterface;
+
+interface ViewComposerInterface
 {
     /**
-     * @param string $expression
-     * @return string
+     * @param ViewInterface $view
+     * @return void
      */
-    public function generate(string $expression): string;
+    public function compose(ViewInterface $view): void;
 }

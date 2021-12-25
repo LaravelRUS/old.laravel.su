@@ -18,9 +18,6 @@ use League\CommonMark\EnvironmentInterface;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
-/**
- * Class EnvironmentFactory
- */
 class EnvironmentFactory
 {
     /**

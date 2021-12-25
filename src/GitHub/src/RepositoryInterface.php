@@ -13,9 +13,6 @@ namespace App\GitHub;
 
 use Illuminate\Support\Enumerable;
 
-/**
- * Interface RepositoryInterface
- */
 interface RepositoryInterface
 {
     /**

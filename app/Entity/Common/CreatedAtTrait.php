@@ -12,23 +12,25 @@ declare(strict_types=1);
 namespace App\Entity\Common;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @mixin ProvidesCreatedAt
+ * @psalm-require-implements ProvidesCreatedAt
  */
 trait CreatedAtTrait
 {
     /**
-     * @var Carbon
+     * @var CarbonInterface
      */
     #[ORM\Column(name: 'created_at', type: 'carbon')]
-    protected Carbon $created;
+    protected CarbonInterface $created;
 
     /**
-     * @return Carbon
+     * @return CarbonInterface
      */
-    public function createdAt(): Carbon
+    public function createdAt(): CarbonInterface
     {
         return $this->created ??= Carbon::now();
     }

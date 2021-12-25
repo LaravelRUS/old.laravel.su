@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'docs')]
 #[ORM\Entity(repositoryClass: DocumentationRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Documentation extends BaseEntity
+class Documentation extends BaseEntity implements \Stringable
 {
     /**
      * @var Version
@@ -30,13 +30,13 @@ class Documentation extends BaseEntity
     public Version $version;
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'urn', type: 'string', length: 191)]
     public string $urn;
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     #[ORM\Column(name: 'title', type: 'string', length: 191)]
     public string $title;
@@ -55,8 +55,8 @@ class Documentation extends BaseEntity
 
     /**
      * @param Version $version
-     * @param string $title
-     * @param string $urn
+     * @param non-empty-string $title
+     * @param non-empty-string $urn
      */
     public function __construct(Version $version, string $title, string $urn)
     {
@@ -69,7 +69,7 @@ class Documentation extends BaseEntity
     }
 
     /**
-     * @return array|string[]
+     * @return list<non-empty-string>
      */
     public function getKeywords(): array
     {
@@ -81,7 +81,7 @@ class Documentation extends BaseEntity
     }
 
     /**
-     * @return string
+     * @return non-empty-string
      */
     public function getKeywordsString(): string
     {
@@ -89,7 +89,7 @@ class Documentation extends BaseEntity
     }
 
     /**
-     * @return string
+     * @return non-empty-string
      */
     public function __toString(): string
     {

@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Source extends Content
 {
     /**
-     * @var string|null
+     * @var non-empty-string|null
      */
     #[ORM\Column(name: 'commit', type: 'string', length: 191, nullable: true)]
     public ?string $commit = null;
@@ -43,7 +43,7 @@ class Source extends Content
 
     /**
      * @param string|null $content
-     * @param string $commit
+     * @param non-empty-string $commit
      * @return $this
      */
     public function update(?string $content, string $commit): self
@@ -56,7 +56,7 @@ class Source extends Content
     }
 
     /**
-     * @param string $commit
+     * @param non-empty-string $commit
      * @return bool
      */
     public function isActual(string $commit): bool

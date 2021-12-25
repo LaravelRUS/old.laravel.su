@@ -17,9 +17,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Enumerable;
 use Illuminate\Support\LazyCollection;
 
-/**
- * Class Branch
- */
 final class Branch implements InteractWithApiInterface, BranchInterface, Arrayable
 {
     use ApiTrait;

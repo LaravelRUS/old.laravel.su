@@ -14,9 +14,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command as BaseCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 
-/**
- * Class Command
- */
 abstract class Command extends BaseCommand
 {
     /**

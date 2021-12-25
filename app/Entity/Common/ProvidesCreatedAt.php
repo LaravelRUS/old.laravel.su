@@ -11,15 +11,12 @@ declare(strict_types=1);
 
 namespace App\Entity\Common;
 
-use Carbon\Carbon;
+use Carbon\CarbonInterface;
 
-/**
- * Interface ProvidesCreatedAt
- */
 interface ProvidesCreatedAt
 {
     /**
-     * @return Carbon
+     * @return CarbonInterface
      */
-    public function createdAt(): Carbon;
+    public function createdAt(): CarbonInterface;
 }

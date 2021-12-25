@@ -11,16 +11,14 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
-/**
- * Class RawRenderer
- */
 class RawRenderer extends Renderer
 {
     /**
      * @param string $original
+     * @param bool $escape
      * @return string
      */
-    public function render(string $original): string
+    public function render(string $original, bool $escape = true): string
     {
         return $this->execute($original, fn (string $text): string => $text);
     }

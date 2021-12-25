@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace App\Http\View\Directives;
 
-/**
- * Interface DirectiveInterface
- */
 interface DirectiveInterface
 {
 }

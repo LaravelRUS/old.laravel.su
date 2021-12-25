@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace App\Entity\Common;
 
-/**
- * Interface Timestampable
- */
 interface Timestampable extends ProvidesCreatedAt, ProvidesUpdatedAt
 {
 }

@@ -13,9 +13,6 @@ namespace App\GitHub;
 
 use Github\Client;
 
-/**
- * Interface ManagerInterface
- */
 interface ManagerInterface
 {
     /**

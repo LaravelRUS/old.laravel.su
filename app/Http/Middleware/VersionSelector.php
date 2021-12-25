@@ -22,9 +22,6 @@ use Illuminate\Routing\Router;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
-/**
- * Class VersionSelector
- */
 final class VersionSelector
 {
     /**

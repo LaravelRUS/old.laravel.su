@@ -11,24 +11,18 @@ declare(strict_types=1);
 
 namespace App\Entity\Common;
 
-use Carbon\Carbon;
+use Carbon\CarbonInterface;
 
-/**
- * Interface ProvidesUpdatedAt
- */
 interface ProvidesUpdatedAt
 {
     /**
-     * @return Carbon|null
+     * @return CarbonInterface|null
      */
-    public function updatedAt(): ?Carbon;
+    public function updatedAt(): ?CarbonInterface;
 
     /**
-     * Note: "self" return typehint does not work correctly in PhpStorm,
-     * generating errors.
-     *
      * @param \DateTimeInterface|null $now
-     * @return ProvidesUpdatedAt|$this
+     * @return $this
      */
-    public function touch(\DateTimeInterface $now = null): ProvidesUpdatedAt;
+    public function touch(\DateTimeInterface $now = null): self;
 }

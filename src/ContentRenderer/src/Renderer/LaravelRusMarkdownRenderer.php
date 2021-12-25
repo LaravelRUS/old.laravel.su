@@ -11,15 +11,12 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
-/**
- * Class LaravelRusMarkdownRenderer
- */
 class LaravelRusMarkdownRenderer extends MarkdownRenderer
 {
     /**
      * @var string
      */
-    private const PATTERN_COMMIT_HEADER = '/^git\h+(?:[a-z0-9]+)\n+\-+\n*/ium';
+    private const PATTERN_COMMIT_HEADER = '/^git\h+[a-z0-9]+\n+-+\n*/ium';
 
     /**
      * @var string

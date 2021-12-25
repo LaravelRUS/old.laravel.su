@@ -15,9 +15,6 @@ use App\ContentRenderer\EnvironmentFactory;
 use Illuminate\Contracts\Events\Dispatcher;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
-/**
- * Class MarkdownRenderer
- */
 class MarkdownRenderer extends Renderer
 {
     /**

@@ -13,9 +13,6 @@ namespace App\GitHub\Common;
 
 use Github\Client;
 
-/**
- * Interface InteractWithApiInterface
- */
 interface InteractWithApiInterface
 {
     /**

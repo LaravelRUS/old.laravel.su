@@ -15,6 +15,6 @@ use App\Entity\Documentation\Content;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]
-class Body extends Content
+final class Body extends Content
 {
 }

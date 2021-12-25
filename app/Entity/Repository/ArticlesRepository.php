@@ -14,10 +14,13 @@ namespace App\Entity\Repository;
 use App\Entity\Article;
 use Happyr\DoctrineSpecification\Spec;
 
+/**
+ * @template-extends Repository<Article>
+ */
 class ArticlesRepository extends Repository
 {
     /**
-     * @param string $urn
+     * @param non-empty-string $urn
      * @return Article|null
      */
     public function findByUrn(string $urn): ?Article

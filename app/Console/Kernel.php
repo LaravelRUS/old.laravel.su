@@ -15,9 +15,6 @@ use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-/**
- * Class Kernel
- */
 class Kernel extends ConsoleKernel
 {
     /**

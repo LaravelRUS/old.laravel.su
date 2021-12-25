@@ -19,9 +19,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 
-/**
- * Class ViewServiceProvider
- */
 class ViewServiceProvider extends ServiceProvider
 {
     /**

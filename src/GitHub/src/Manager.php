@@ -15,9 +15,6 @@ use Github\Client;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\Manager as BaseManager;
 
-/**
- * Class Manager
- */
 class Manager extends BaseManager implements ManagerInterface
 {
     /**
@@ -26,8 +23,6 @@ class Manager extends BaseManager implements ManagerInterface
     private string $default;
 
     /**
-     * Manager constructor.
-     *
      * @param Container $container
      * @param string $default
      */
