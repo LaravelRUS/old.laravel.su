@@ -4,31 +4,7 @@ use App\Entity\Article\Listener\OnContentRender;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Events;
-use DoctrineExtensions\Query\Mysql\Acos;
-use DoctrineExtensions\Query\Mysql\Asin;
-use DoctrineExtensions\Query\Mysql\Atan;
-use DoctrineExtensions\Query\Mysql\Atan2;
-use DoctrineExtensions\Query\Mysql\BitCount;
-use DoctrineExtensions\Query\Mysql\BitXor;
-use DoctrineExtensions\Query\Mysql\Ceil;
-use DoctrineExtensions\Query\Mysql\Cos;
-use DoctrineExtensions\Query\Mysql\Cot;
-use DoctrineExtensions\Query\Mysql\Degrees;
-use DoctrineExtensions\Query\Mysql\Exp;
-use DoctrineExtensions\Query\Mysql\Floor;
-use DoctrineExtensions\Query\Mysql\Log10;
-use DoctrineExtensions\Query\Mysql\Log2;
-use DoctrineExtensions\Query\Mysql\Pi;
-use DoctrineExtensions\Query\Mysql\Power;
-use DoctrineExtensions\Query\Mysql\Quarter;
-use DoctrineExtensions\Query\Mysql\Radians;
-use DoctrineExtensions\Query\Mysql\Rand;
-use DoctrineExtensions\Query\Mysql\Round;
-use DoctrineExtensions\Query\Mysql\Sin;
-use DoctrineExtensions\Query\Mysql\Std;
-use DoctrineExtensions\Query\Mysql\StdDev;
-use DoctrineExtensions\Query\Mysql\Tan;
-use DoctrineExtensions\Query\Mysql\Variance;
+use DoctrineExtensions\Query;
 use DoctrineExtensions\Types\CarbonDateTimeType;
 
 return [
@@ -90,7 +66,6 @@ return [
                     ],
                 ],
                 'subscribers' => [
-
                 ],
             ],
 
@@ -181,32 +156,32 @@ return [
     */
 
     'custom_numeric_functions' => [
-        'acos'      => Acos::class,
-        'asin'      => Asin::class,
-        'atan2'     => Atan2::class,
-        'atan'      => Atan::class,
-        'bit_count' => BitCount::class,
-        'bit_xor'   => BitXor::class,
-        'ceil'      => Ceil::class,
-        'cos'       => Cos::class,
-        'cot'       => Cot::class,
-        'degrees'   => Degrees::class,
-        'exp'       => Exp::class,
-        'floor'     => Floor::class,
-        'log'       => \DoctrineExtensions\Query\Mysql\Log::class,
-        'log10'     => Log10::class,
-        'log2'      => Log2::class,
-        'pi'        => Pi::class,
-        'power'     => Power::class,
-        'quarter'   => Quarter::class,
-        'radians'   => Radians::class,
-        'rand'      => Rand::class,
-        'round'     => Round::class,
-        'stddev'    => StdDev::class,
-        'sin'       => Sin::class,
-        'std'       => Std::class,
-        'tan'       => Tan::class,
-        'variance'  => Variance::class,
+        'acos'      => Query\Mysql\Acos::class,
+        'asin'      => Query\Mysql\Asin::class,
+        'atan2'     => Query\Mysql\Atan2::class,
+        'atan'      => Query\Mysql\Atan::class,
+        'bit_count' => Query\Mysql\BitCount::class,
+        'bit_xor'   => Query\Mysql\BitXor::class,
+        'ceil'      => Query\Mysql\Ceil::class,
+        'cos'       => Query\Mysql\Cos::class,
+        'cot'       => Query\Mysql\Cot::class,
+        'degrees'   => Query\Mysql\Degrees::class,
+        'exp'       => Query\Mysql\Exp::class,
+        'floor'     => Query\Mysql\Floor::class,
+        'log'       => Query\Mysql\Log::class,
+        'log10'     => Query\Mysql\Log10::class,
+        'log2'      => Query\Mysql\Log2::class,
+        'pi'        => Query\Mysql\Pi::class,
+        'power'     => Query\Mysql\Power::class,
+        'quarter'   => Query\Mysql\Quarter::class,
+        'radians'   => Query\Mysql\Radians::class,
+        'rand'      => Query\Mysql\Rand::class,
+        'round'     => Query\Mysql\Round::class,
+        'stddev'    => Query\Mysql\StdDev::class,
+        'sin'       => Query\Mysql\Sin::class,
+        'std'       => Query\Mysql\Std::class,
+        'tan'       => Query\Mysql\Tan::class,
+        'variance'  => Query\Mysql\Variance::class,
     ],
 
     /*
