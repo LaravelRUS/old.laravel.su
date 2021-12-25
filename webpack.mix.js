@@ -28,9 +28,9 @@ mix
         sourceMap: true,
         // outputStyle: 'compressed',
     })
-    .options({
-        extractVueStyles: true,
-        globalVueStyles: `${__dirname}/resources/css/_kernel.scss`,
+    .vue({
+        extractStyles: true,
+        globalStyles: `${__dirname}/resources/css/_kernel.scss`,
     })
     .sourceMaps()
 ;
