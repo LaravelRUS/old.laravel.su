@@ -1,6 +1,6 @@
 version: "3.1"
-services:
 
+services:
   nginx:
     image: nginx:alpine
     container_name: laravelsu-nginx
@@ -22,7 +22,7 @@ services:
       - ./docker/php/php-cli-ini-overrides.ini:/etc/php/8.0/cli/conf.d/99-overrides.ini
 
   mysql:
-    image: mysql:5.7
+    image: mariadb:10.1
     container_name: laravelsu-mysql
     working_dir: /home/forge/laravel.su
     volumes:
