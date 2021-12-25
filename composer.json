@@ -8,13 +8,13 @@
     "license": "MIT",
     "type": "project",
     "repositories": [
-        {"type": "path", "url": "src/ContentRenderer"},
-        {"type": "path", "url": "src/GitHub"}
+        {"type": "path", "url": "libs/content-renderer"},
+        {"type": "path", "url": "libs/github"}
     ],
     "require": {
         "php": "^8.1",
-        "app/github": "*",
-        "app/content-renderer": "*",
+        "local/github": "*",
+        "local/content-renderer": "*",
         "beberlei/doctrineextensions": "^1.2",
         "doctrine/inflector": "^1.4",
         "fideloper/proxy": "^4.4",

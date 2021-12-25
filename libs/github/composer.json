@@ -1,5 +1,5 @@
 {
-    "name": "app/github",
+    "name": "local/github",
     "license": "MIT",
     "type": "library",
     "description": "Simple GitHub integration library",

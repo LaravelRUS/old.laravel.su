@@ -1,5 +1,5 @@
 {
-    "name": "app/content-renderer",
+    "name": "local/content-renderer",
     "license": "MIT",
     "type": "library",
     "description": "Content polymorphic renderer",
