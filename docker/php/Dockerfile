@@ -10,6 +10,13 @@ RUN apt-get update
 # Installation Dependencies
 # ------------------------------------------------------------------------------
 
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install \
+      libzip-dev \
+      git \
+      curl
+
+
 # Composer
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer
@@ -17,6 +24,10 @@ RUN curl -sS https://getcomposer.org/installer | \
 # PDO MySQL
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
+
+# Zip
+RUN docker-php-ext-install zip
+RUN docker-php-ext-enable zip
 
 
 # ------------------------------------------------------------------------------
