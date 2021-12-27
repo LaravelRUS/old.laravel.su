@@ -13,7 +13,6 @@ namespace App\Console\Commands;
 
 use App\Entity\Article;
 use App\Entity\Repository\ArticlesRepository;
-use App\Entity\Repository\VersionsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\Collection;
 

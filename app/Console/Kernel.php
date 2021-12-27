@@ -53,10 +53,10 @@ class Kernel extends ConsoleKernel
      * @var list<class-string<Command>>
      */
     protected $commands = [
-        // Articles
+        // Команды, отвечающие за работу со статьями.
         \App\Console\Commands\ArticlesTouchCommand::class,
 
-        // Docs
+        // Команды, отвечающие за работу с документацией.
         \App\Console\Commands\DocsFetchCommand::class,
         \App\Console\Commands\DocsUpdateCommand::class,
         \App\Console\Commands\DocsDiffCommand::class,
@@ -78,7 +78,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('su:docs:fetch')
             ->daily()
             ->withoutOverlapping()
-            ->onSuccess(function () {
+            ->onSuccess(function (): void {
                 // Затем скачиваем переводы.
                 $this->call('su:docs:update');
                 // А затем вычисляем дифф изменений.
