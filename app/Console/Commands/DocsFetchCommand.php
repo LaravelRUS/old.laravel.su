@@ -21,11 +21,21 @@ use Doctrine\ORM\EntityManagerInterface;
 use Github\Client;
 
 /**
- * Команда для скачивания оригинала (версий и страниц)
+ * Команда для скачивания оригинала (версий и страниц).
+ *
+ * Чтобы Laravel видел эту консольную команду она была добавлена в
+ * список доступных команд, в поле {@see \App\Console\Kernel::$commands}.
+ *
+ * Подробнее о консольных командах можно прочитать в документации по
+ * адресу {@link https://laravel.su/docs/8.x/artisan#writing-commands}.
  */
 class DocsFetchCommand extends Command
 {
     /**
+     * Имя и сигнатура консольной команды. Т.е. для вызова этой команды следует
+     * открыть и выполнить `php artisan su:docs:fetch`, после этого Laravel
+     * вызовет метод {@see DocsFetchCommand::handle()}.
+     *
      * {@inheritDoc}
      */
     protected $signature = 'su:docs:fetch';
@@ -41,21 +51,13 @@ class DocsFetchCommand extends Command
     private Repository $source;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private EntityManagerInterface $em;
-
-    /**
-     * TestCommand constructor.
-     *
      * @param Client $client
      * @param EntityManagerInterface $em
      */
-    public function __construct(Client $client, EntityManagerInterface $em)
+    public function __construct(Client $client, private readonly EntityManagerInterface $em)
     {
         parent::__construct();
 
-        $this->em = $em;
         $this->source = new Repository($client, 'laravel', 'docs');
     }
 

@@ -14,11 +14,16 @@ namespace App\Console\Commands;
 use App\Entity\Documentation;
 use App\GitHub\BranchInterface;
 use App\GitHub\FileInterface;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 
 /**
- * Вычисление диффа (количества изменений) между оригиналом и переводом
+ * Вычисление диффа (количества изменений) между оригиналом и переводом.
+ *
+ * Чтобы Laravel видел эту консольную команду она была добавлена в
+ * список доступных команд, в поле {@see \App\Console\Kernel::$commands}.
+ *
+ * Подробнее о консольных командах можно прочитать в документации по
+ * адресу {@link https://laravel.su/docs/8.x/artisan#writing-commands}.
  */
 class DocsDiffCommand extends DocsTranslationCommand
 {
@@ -28,6 +33,10 @@ class DocsDiffCommand extends DocsTranslationCommand
     private const ERROR_BAD_COMMIT = '<error>The commit indicated on the page "%s" is not correct</error>';
 
     /**
+     * Имя и сигнатура консольной команды. Т.е. для вызова этой команды следует
+     * открыть и выполнить `php artisan su:docs:diff`, после этого Laravel
+     * вызовет метод {@see DocsDiffCommand::handle()}.
+     *
      * {@inheritDoc}
      */
     protected $signature = 'su:docs:diff';
@@ -80,10 +89,10 @@ class DocsDiffCommand extends DocsTranslationCommand
         $branch = $file->getBranch();
 
         return $this->source->getBranches()
-            ->first(fn(BranchInterface $b) => $b->getName() === $branch->getName())
+            ->first(fn (BranchInterface $b) => $b->getName() === $branch->getName())
             ->getFiles()
-            ->first(fn(FileInterface $f) => $f->getPathname() === $file->getPathname())
-            ;
+            ->first(fn (FileInterface $f) => $f->getPathname() === $file->getPathname())
+        ;
     }
 
     /**

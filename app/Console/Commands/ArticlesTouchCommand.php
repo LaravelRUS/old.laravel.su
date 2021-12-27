@@ -11,17 +11,27 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Entity\Article;
 use App\Entity\Repository\ArticlesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Illuminate\Support\Collection;
 
 /**
- * Перерисовка (ререндер) содержимого всех статей
+ * Команда, отвечающая за перерисовку (ререндер) содержимого всех статей из
+ * оригинального Markdown формата в формат HTML для отображения содержимого на
+ * сайте.
+ *
+ * Чтобы Laravel видел эту консольную команду она была добавлена в
+ * список доступных команд, в поле {@see \App\Console\Kernel::$commands}.
+ *
+ * Подробнее о консольных командах можно прочитать в документации по
+ * адресу {@link https://laravel.su/docs/8.x/artisan#writing-commands}.
  */
 class ArticlesTouchCommand extends Command
 {
     /**
+     * Имя и сигнатура консольной команды. Т.е. для вызова этой команды следует
+     * открыть и выполнить `php artisan su:articles:touch`, после этого Laravel
+     * вызовет метод {@see ArticlesTouchCommand::handle()}.
+     *
      * {@inheritDoc}
      */
     protected $signature = 'su:articles:touch';
@@ -30,22 +40,14 @@ class ArticlesTouchCommand extends Command
      * {@inheritDoc}
      */
     protected $description = 'Update articles and execute renderer';
-
+    
     /**
-     * @var EntityManagerInterface
-     */
-    private EntityManagerInterface $em;
-
-    /**
-     * TouchDocsCommand constructor.
-     *
      * @param EntityManagerInterface $em
      */
-    public function __construct(EntityManagerInterface $em)
-    {
+    public function __construct(
+        private readonly EntityManagerInterface $em
+    ) {
         parent::__construct();
-
-        $this->em = $em;
     }
 
     /**
@@ -54,9 +56,7 @@ class ArticlesTouchCommand extends Command
      */
     public function handle(ArticlesRepository $repository): void
     {
-        /** @var Article[]|Collection $articles */
         $articles = $repository->all();
-
         $progress = $this->progress($articles->count());
 
         foreach ($articles as $article) {

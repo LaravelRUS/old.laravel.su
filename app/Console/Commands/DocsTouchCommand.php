@@ -15,11 +15,23 @@ use App\Entity\Repository\VersionsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Перерисовка (ререндер) содержимого всех страниц документации
+ * Команда, отвечающая за перерисовку (ререндер) содержимого всех страниц
+ * документации из оригинального Markdown формата в формат HTML для отображени
+ * содержимого на сайте.
+ *
+ * Чтобы Laravel видел эту консольную команду она была добавлена в
+ * список доступных команд, в поле {@see \App\Console\Kernel::$commands}.
+ *
+ * Подробнее о консольных командах можно прочитать в документации по
+ * адресу {@link https://laravel.su/docs/8.x/artisan#writing-commands}.
  */
 class DocsTouchCommand extends Command
 {
     /**
+     * Имя и сигнатура консольной команды. Т.е. для вызова этой команды следует
+     * открыть и выполнить `php artisan su:docs:touch`, после этого Laravel
+     * вызовет метод {@see DocsTouchCommand::handle()}.
+     *
      * {@inheritDoc}
      */
     protected $signature = 'su:docs:touch';
@@ -30,20 +42,12 @@ class DocsTouchCommand extends Command
     protected $description = 'Update documentation and execute the page renderer';
 
     /**
-     * @var EntityManagerInterface
-     */
-    private EntityManagerInterface $em;
-
-    /**
-     * TouchDocsCommand constructor.
-     *
      * @param EntityManagerInterface $em
      */
-    public function __construct(EntityManagerInterface $em)
-    {
+    public function __construct(
+        private readonly EntityManagerInterface $em
+    ) {
         parent::__construct();
-
-        $this->em = $em;
     }
 
     /**
