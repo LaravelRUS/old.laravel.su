@@ -26,7 +26,7 @@
     }
 
     &.warning {
-        color: desaturate(darken($color-red, 10%), 20%);
+        color: desaturate(darken($color-red, 5%), 30%);
         background: desaturate(lighten($color-red, 40%), 30%);
     }
 }

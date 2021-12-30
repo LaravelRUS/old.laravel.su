@@ -19,10 +19,9 @@
 
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet" />
-
 </head>
 <body>
-    <main id="app">
+    <main id="app" class="@yield('layout-class')">
         @include('partials.header')
 
         @stack('header')

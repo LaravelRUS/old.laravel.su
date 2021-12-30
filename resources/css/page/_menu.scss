@@ -4,7 +4,8 @@ ul {
 
 ul li {
     list-style: none !important;
-    margin-bottom: .75rem;
+    margin: 0;
+    line-height: 32px;
     font-size: 14px;
 }
 
@@ -32,18 +33,18 @@ ul li a {
 }
 
 li.item-active {
-
-    // активный пункт - с голубым фоном, цвет шаблонный
-    background-color: $color-blue;
-    padding: 7px 0;
+    background: $color-black;
+    border-radius: 3px;
 
     a.link-active {
         color: #fff;
+        text-decoration: none;
+        cursor: default;
 
         &:hover,
         &:active,
         &:focus {
-            color: #fff;
+            color: #fff !important;
             outline: none;
         }
     }

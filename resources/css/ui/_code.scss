@@ -6,41 +6,38 @@ pre, code {
 }
 
 code {
-    background: $color-dark-white;
-    border-radius: 2px;
+    background: #fff;
+    border-radius: 3px;
     padding: 2px 6px;
     box-sizing: border-box;
     line-height: $ui-min-height;
     height: $ui-min-height;
-    box-shadow: 0 1px 0 $color-light-gray;
+    box-shadow: 0 1px 2px rgba($color-text, .2);
 }
 
 pre > code {
-    background: $color-light-gray;
+    background: #fff;
     display: block;
     white-space: pre;
-    background: $color-bg;
     padding: 20px 30px;
     height: auto;
     border-radius: 6px;
     line-height: $font-size + 8px;
-    text-shadow: 0 0 1px rgba(0, 0, 0, .2);
+    text-shadow: 0 0 1px rgba($color-text, .1);
 }
-
 
 .hljs {
     position: relative;
 
     &-comment,
     &-quote {
-        color: #bbbfb9;
+        color: #aeacba;
         font-weight: 100;
         font-style: italic;
-        text-shadow: 0 0 1px #fff;
     }
 
     &-keyword {
-        color: #07a;
+        color: #836789;
     }
 
     &-selector-tag,
@@ -58,13 +55,13 @@ pre > code {
 
     &-string,
     &-doctag {
-        color: $color-red;
+        color: #ee4c42;
     }
 
     &-title,
     &-section,
     &-selector-id {
-        color: #DA564A;
+        color: #835cb9;
         font-weight: bold;
     }
 

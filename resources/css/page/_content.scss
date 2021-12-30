@@ -1,17 +1,18 @@
 
 h1 {
     margin-top: 0;
+    font-size: 6.2rem;
+    line-height: 7.4rem;
 }
 
 h1 + ul {
-    font-size: 15px;
-    padding-left: .5rem;
+    font-size: 16px;
+    padding-left: .1rem;
 
     li {
         list-style: none;
         font-weight: normal;
         line-height: 18px;
-        margin-bottom: .5em;
 
         &:before {
             background: none;
@@ -33,7 +34,7 @@ h1 + ul {
         margin: 5px 0;
 
         li {
-            padding-left: 24px;
+            padding-left: .2rem;
         }
     }
 
@@ -74,7 +75,6 @@ ul {
         }
 
         ul {
-            padding-top: .25rem;
             padding-left: 1rem;
 
             li {

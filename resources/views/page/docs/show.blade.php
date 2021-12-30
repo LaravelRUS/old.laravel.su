@@ -16,6 +16,8 @@
     @include('page.docs.partials.versions', ['version' => $version, 'page' => $page])
 @endpush
 
+@section('layout-class', 'layout-documentation')
+
 @section('content')
     <section class="container documentation">
         <aside class="documentation-menu">
@@ -23,9 +25,6 @@
         </aside>
 
         <article class="documentation-content">
-            @if($page->version->name == '8.x')
-            @include('page.docs.partials.translation-notification', ['page' => $page])
-            @endif
             @include('page.docs.partials.translation-status', ['page' => $page])
 
             {!! $page !!}
