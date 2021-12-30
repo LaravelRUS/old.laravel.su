@@ -6,13 +6,13 @@ h1 {
 }
 
 h1 + ul {
-    font-size: 16px;
+    font-size: 14px;
     padding-left: .1rem;
 
     li {
         list-style: none;
         font-weight: normal;
-        line-height: 18px;
+        line-height: 24px;
 
         &:before {
             background: none;
@@ -31,10 +31,10 @@ h1 + ul {
     }
 
     ul {
-        margin: 5px 0;
+        margin: 8px 0;
 
         li {
-            padding-left: .2rem;
+            padding-left: .3rem;
         }
     }
 
