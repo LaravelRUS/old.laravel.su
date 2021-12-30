@@ -52,8 +52,8 @@
             "Tests\\": "tests",
             "Database\\Factories\\": "database/factories",
             "Database\\Seeders\\": "database/seeds",
-            "App\\GitHub\\Tests\\": "src/GitHub/tests",
-            "App\\ContentRenderer\\Tests\\": "src/ContentRenderer/tests"
+            "App\\GitHub\\Tests\\": "libs/github/tests",
+            "App\\ContentRenderer\\Tests\\": "libs/content-renderer/tests"
         }
     },
     "config": {
