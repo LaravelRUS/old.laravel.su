@@ -18,8 +18,7 @@ services:
     working_dir: /home/forge/laravel.su
     volumes:
       - .:/home/forge/laravel.su
-      - ./docker/php/php.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini
-      - ./docker/php/php.ini:/etc/php/8.0/cli/conf.d/99-overrides.ini
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/local.ini
 
   mysql:
     image: mariadb:10.1
