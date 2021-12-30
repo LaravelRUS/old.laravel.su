@@ -1,14 +1,14 @@
 <header class="header">
-    {{--<section class="extras alternative">
+    <section class="extras alternative">
         <nav class="container extras-items">
-            <span>Регистрация на <a href="https://phprussia.ru" target="_blank" rel="nofollow">PHPRussia 2020</a> уже открыта:</span>
-            <a href="https://phprussia.ru/moscow/2020/abstracts" target="_blank" rel="nofollow">Доклады</a>
+            <span>Регистрация на <a href="https://phprussia.ru/moscow/2022" target="_blank" rel="nofollow">PHPRussia 2022</a> уже открыта:</span>
+            <a href="https://phprussia.ru/moscow/2022/abstracts" target="_blank" rel="nofollow">Доклады</a>
             <span>&middot;</span>
-            <a href="https://phprussia.ru/moscow/2020/meetups" target="_blank" rel="nofollow">Митапы</a>
+            <a href="https://phprussia.ru/moscow/2022/meetups" target="_blank" rel="nofollow">Митапы</a>
             <span>&middot;</span>
-            <a href="https://phprussia.ru/moscow/2020#prices" target="_blank" rel="nofollow">Цены</a>
+            <a href="https://phprussia.ru/moscow/2022#prices" target="_blank" rel="nofollow">Цены</a>
         </nav>
-    </section>--}}
+    </section>
 
     <section class="extras">
         <nav class="container extras-items">
