@@ -11,18 +11,16 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Concerns;
 
-use App\Entity\Repository\VersionRepositoryInterface;
+use App\Entity\Repository\VersionRepository;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
-/**
- * Trait InteractWithVersionsTableTrait
- */
+
 trait InteractWithVersionsTableTrait
 {
     /**
-     * @var VersionRepositoryInterface
+     * @var VersionRepository
      */
-    protected VersionRepositoryInterface $repository;
+    protected VersionRepository $repository;
 
     /**
      * @return void
@@ -32,7 +30,7 @@ trait InteractWithVersionsTableTrait
     {
         parent::setUp();
 
-        $this->repository = $this->make(VersionRepositoryInterface::class);
+        $this->repository = $this->make(VersionRepository::class);
     }
 
     /**
@@ -71,6 +69,6 @@ trait InteractWithVersionsTableTrait
     {
         return $this->fillTable('versions', $versions)
             ->withoutDocumentationPages()
-            ;
+        ;
     }
 }

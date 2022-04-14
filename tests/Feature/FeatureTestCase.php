@@ -16,19 +16,18 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-/**
- * Class FeatureTestCase
- */
 abstract class FeatureTestCase extends TestCase
 {
-    use DatabaseTransactions;
     use InteractsWithDatabase;
+    use RefreshDatabase;
+    use DatabaseMigrations;
 
     /**
-     * @var array|string[]
+     * @var array<non-empty-string>
      */
     protected array $connectionsToTransact = [
         'mysql',
@@ -91,14 +90,43 @@ abstract class FeatureTestCase extends TestCase
      * @param string|null $connection
      * @return $this
      */
-    protected function fillTable(string $table, array $payload, string $connection = null): self
+    protected function withDatabaseData(string $table, array $payload, string $connection = null): self
+    {
+        $this->getConnection($connection)
+            ->table($table)
+            ->insert($payload)
+        ;
+
+        return $this;
+    }
+
+    /**
+     * @param string $table
+     * @param array $payload
+     * @param string|null $connection
+     * @return int
+     */
+    protected function withDatabaseRecord(string $table, array $payload, string $connection = null): int
+    {
+        $conn = $this->getConnection($connection)
+            ->table($table)
+        ;
+
+        return $conn->insertGetId($payload);
+    }
+
+    /**
+     * @param string $table
+     * @param string|null $connection
+     * @return $this
+     */
+    protected function withDatabaseEmptyTable(string $table, string $connection = null): self
     {
         $conn = $this->getConnection($connection)
             ->table($table)
         ;
 
         $conn->delete();
-        $conn->insert($payload);
 
         return $this;
     }
@@ -108,7 +136,7 @@ abstract class FeatureTestCase extends TestCase
      * @param string|null $connection
      * @return $this
      */
-    protected function dumpTable(string $table, string $connection = null): self
+    protected function dumpDatabaseTable(string $table, string $connection = null): self
     {
         $this->getConnection($connection)
             ->table($table)

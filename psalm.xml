@@ -8,13 +8,13 @@
 >
     <projectFiles>
         <directory name="app" />
-        <directory name="src" />
+        <directory name="libs" />
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
     <plugins>
         <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
-        <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
+        <!-- <pluginClass class="Psalm\LaravelPlugin\Plugin"/> -->
     </plugins>
 </psalm>

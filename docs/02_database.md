@@ -4,7 +4,7 @@
 
 | Наименование | Значение       |
 |--------------|----------------|
-| Host         | localhost:7003 |
+| Host         | localhost:8081 |
 | Database     | laravelsu      |
 | Login        | mysql_user     |
 | Password     | mysql_password |

@@ -1,14 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
 Route::get('/', 'HomeController@index')
     ->name('home');
-
-// -----------------------------------------------------------------------------
-//  Test
-// -----------------------------------------------------------------------------
-
-Route::get('/test', 'HomeController@test')
-    ->name('test');
 
 // -----------------------------------------------------------------------------
 //  Documentation
@@ -39,3 +35,13 @@ Route::get('/status/{version}', 'StatusController@show')
 
 Route::get('/articles/{urn}', 'ArticleController@index')
     ->name('article');
+
+
+// -----------------------------------------------------------------------------
+//  Test
+// -----------------------------------------------------------------------------
+
+if (App::isLocal()) {
+    Route::get('/test', 'HomeController@test')
+        ->name('test');
+}

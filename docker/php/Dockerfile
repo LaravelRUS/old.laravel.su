@@ -1,4 +1,5 @@
 FROM php:8.1-fpm
+
 WORKDIR "/home/forge/laravel.su"
 
 # Fix debconf warnings upon build

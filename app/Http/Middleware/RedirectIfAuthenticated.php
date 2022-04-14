@@ -13,6 +13,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class RedirectIfAuthenticated
 {
@@ -20,14 +22,18 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param Request $request
-     * @param \Closure $next
-     * @param string|null $guard
-     * @return mixed
+     * @param \Closure(Request): (Response|RedirectResponse) $next
+     * @param string|null ...$guards
+     * @return Response|RedirectResponse
      */
-    public function handle($request, \Closure $next, $guard = null)
+    public function handle($request, \Closure $next, ...$guards)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return redirect('/');
+            }
         }
 
         return $next($request);

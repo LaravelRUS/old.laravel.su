@@ -17,7 +17,7 @@ use Illuminate\Foundation\Application;
 final class DatabaseSeeder extends Seeder
 {
     /**
-     * @var string|Seeder[]
+     * @var array<class-string<Seeder>>
      */
     private const SEEDERS = [
         ArticlesSeeder::class,
@@ -45,8 +45,8 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if (! $this->app->isLocal()) {
-            throw new \LogicException('Only local environment are allowed');
+        if ($this->app->isProduction()) {
+            throw new \LogicException('Not available on production environment');
         }
 
         foreach (self::SEEDERS as $seeder) {

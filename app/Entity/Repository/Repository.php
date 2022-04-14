@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace App\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Happyr\DoctrineSpecification\EntitySpecificationRepositoryTrait;
+use Happyr\DoctrineSpecification\Repository\EntitySpecificationRepositoryTrait;
 use Illuminate\Support\Collection;
 
 /**
