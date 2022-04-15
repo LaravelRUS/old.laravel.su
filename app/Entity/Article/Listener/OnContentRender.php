@@ -11,8 +11,9 @@ declare(strict_types=1);
 
 namespace App\Entity\Article\Listener;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
-use App\ContentRenderer\Renderer\MarkdownRenderer;
+use App\ContentRenderer\ContentRendererInterface;
+use App\ContentRenderer\FactoryInterface;
+use App\ContentRenderer\Type;
 use App\Entity\Article;
 use App\Entity\Common\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -23,14 +24,15 @@ final class OnContentRender extends Listener
     /**
      * @var ContentRendererInterface
      */
-    private ContentRendererInterface $renderer;
+    private readonly ContentRendererInterface $renderer;
 
     /**
-     * @param MarkdownRenderer $renderer
+     * @param FactoryInterface $factory
      */
-    public function __construct(MarkdownRenderer $renderer)
-    {
-        $this->renderer = $renderer;
+    public function __construct(
+        FactoryInterface $factory,
+    ) {
+        $this->renderer = $factory->create(Type::ARTICLE);
     }
 
     /**
@@ -40,7 +42,7 @@ final class OnContentRender extends Listener
     public function prePersist(LifecycleEventArgs $e): void
     {
         $this->on($e, Article::class, function (Article $entity): void {
-            $entity->body->render($this->renderer, true);
+            $entity->body->renderUsing($this->renderer);
         });
     }
 
@@ -52,7 +54,7 @@ final class OnContentRender extends Listener
     {
         $this->on($e, Article::class, function (Article $entity) use ($e) {
             if ($e->hasChangedField('body.source') || ! $entity->body->isRendered()) {
-                $entity->body->render($this->renderer, true);
+                $entity->body->renderUsing($this->renderer);
             }
         });
     }

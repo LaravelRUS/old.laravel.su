@@ -11,30 +11,25 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Event;
 
+use App\ContentRenderer\ResultInterface;
+
 class Rendered extends ContentEvent
 {
     /**
-     * @var string
-     */
-    private string $result;
-
-    /**
-     * Rendered constructor.
-     *
      * @param string $content
-     * @param string $result
+     * @param ResultInterface $result
      */
-    public function __construct(string $content, string $result)
-    {
-        $this->result = $result;
-
+    public function __construct(
+        string $content,
+        private readonly ResultInterface $result
+    ) {
         parent::__construct($content);
     }
 
     /**
-     * @return string
+     * @return ResultInterface
      */
-    public function getResult(): string
+    public function getResult(): ResultInterface
     {
         return $this->result;
     }

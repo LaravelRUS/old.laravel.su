@@ -20,7 +20,7 @@
 
 @section('content')
     <section class="container documentation">
-        <aside class="documentation-menu">
+        <aside class="documentation-menu" data-vm="MenuViewModel">
             {!! $menu !!}
         </aside>
 

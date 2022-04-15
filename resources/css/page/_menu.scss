@@ -1,51 +1,73 @@
+
+/**
+ * Global Menu Styles
+ */
+
 ul {
-    margin-bottom: 1.5rem
-}
+    margin-bottom: .5rem;
 
-ul li {
-    list-style: none !important;
-    margin: 0;
-    line-height: 32px;
-    font-size: 14px;
-}
+    li {
+        list-style: none !important;
+    }
 
-& > ul > li,
-& > ul > li > h2 {
-    font-size: 18px !important;
-    font-weight: 400;
-    color: $color-silver;
-    margin: 0;
-}
+    a {
+        letter-spacing: 0;
+        line-height: 36px;
+        font-size: 16px;
+        padding-left: 1rem;
+        color: $color-silver;
+        display: block;
+        border-radius: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: relative;
+        z-index: 1;
+        text-transform: none;
 
-& > ul > li > ul {
-    padding: 20px 0 10px 0;
-    text-transform: none;
-}
+        &:hover {
+            color: $color-main;
+            text-decoration: none;
+        }
 
-ul li a {
-    padding-left: .75rem;
-    color: $color-extra-light-black;
-    font-weight: normal !important;
+        &.active,
+        &.active:hover,
+        &.active:active,
+        &.active:focus {
+            color: $color-white;
+            background: $color-main;
+            text-decoration: none;
+            cursor: default;
+            transition:
+                color .6s ease,
+                background .6s ease
+            ;
 
-    &:hover {
-        color: $color-main;
+            &:before {
+                display: none;
+            }
+        }
     }
 }
 
-li.item-active {
-    background: $color-black;
-    border-radius: 3px;
+/**
+ * Root Navigation Level (Titles)
+ */
+& > ul {
+    & > li {
+        color: $color-extra-light-black;
+        margin: 15px 0;
+        text-transform: uppercase;
+        line-height: 26px;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 1px;
 
-    a.link-active {
-        color: #fff;
-        text-decoration: none;
-        cursor: default;
-
-        &:hover,
-        &:active,
-        &:focus {
-            color: #fff !important;
-            outline: none;
+        /**
+         * Secondary Navigation Level (Menu)
+         */
+        & > ul {
+            padding: 10px 0;
         }
     }
 }

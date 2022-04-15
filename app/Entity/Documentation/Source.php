@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Documentation;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
+use App\ContentRenderer\ContentRendererInterface;
 use App\Entity\Version;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,15 +27,14 @@ class Source extends Content
     /**
      * @param Version $version
      * @param ContentRendererInterface $renderer
-     * @param bool $escape
      * @return $this
      */
-    public function renderWithVersion(Version $version, ContentRendererInterface $renderer, bool $escape = true): self
+    public function renderWithVersion(Version $version, ContentRendererInterface $renderer): self
     {
         if ($this->source !== null) {
             $rendered = \str_replace('{{version}}', $version->name, $this->source);
 
-            $this->rendered = $renderer->render($rendered, $escape);
+            $this->rendered = (string)$renderer->render($rendered);
         }
 
         return $this;

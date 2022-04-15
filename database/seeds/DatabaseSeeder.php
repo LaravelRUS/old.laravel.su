@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Connection;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Application;
 
@@ -21,26 +22,28 @@ final class DatabaseSeeder extends Seeder
      */
     private const SEEDERS = [
         ArticlesSeeder::class,
+        VersionsSeeder::class,
+        DocsSeeder::class,
     ];
 
     /**
-     * @var Application
+     * @var array<non-empty-string>
      */
-    private Application $app;
+    private const TABLES = [
+        'articles',
+        'docs',
+        'versions',
+    ];
 
     /**
-     * DatabaseSeeder constructor.
-     *
      * @param Application $app
      */
-    public function __construct(Application $app)
-    {
-        $this->app = $app;
+    public function __construct(
+        private readonly Application $app,
+    ) {
     }
 
     /**
-     * Seed the application's database.
-     *
      * @return void
      */
     public function run(): void
@@ -49,8 +52,24 @@ final class DatabaseSeeder extends Seeder
             throw new \LogicException('Not available on production environment');
         }
 
+        /** @var Connection $connection */
+        $connection = $this->app->make(Connection::class);
+
+        $schema = $connection->getSchemaBuilder();
+        $schema->disableForeignKeyConstraints();
+
+        foreach (self::TABLES as $table) {
+            $connection->table($table)
+                ->truncate()
+            ;
+        }
+
+        $schema->enableForeignKeyConstraints();
+
         foreach (self::SEEDERS as $seeder) {
             $this->call($seeder);
         }
+
+        $this->command->call('su:docs:touch');
     }
 }

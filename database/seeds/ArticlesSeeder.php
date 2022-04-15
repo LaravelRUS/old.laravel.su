@@ -17,31 +17,18 @@ use Illuminate\Database\Seeder;
 class ArticlesSeeder extends Seeder
 {
     /**
-     * @var Connection
-     */
-    private Connection $conn;
-
-    /**
-     * ArticlesSeeder constructor.
-     *
      * @param Connection $conn
      */
-    public function __construct(Connection $conn)
-    {
-        $this->conn = $conn;
+    public function __construct(
+        private readonly Connection $conn
+    ) {
     }
 
     /**
-     * Run the database seeds.
-     *
      * @return void
      */
     public function run(): void
     {
-        $this->conn->table('articles')
-            ->truncate()
-        ;
-
         $this->conn->table('articles')
             ->insert([
                 'title'            => 'Как правильно переводить документацию Laravel',

@@ -11,7 +11,9 @@ declare(strict_types=1);
 
 namespace App\Entity\Documentation\Listener;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
+use App\ContentRenderer\FactoryInterface;
+use App\ContentRenderer\ContentRendererInterface;
+use App\ContentRenderer\Type;
 use App\Entity\Common\Listener;
 use App\Entity\Documentation;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -20,16 +22,48 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 class OnContentRender extends Listener
 {
     /**
-     * @var ContentRendererInterface
+     * @param FactoryInterface $factory
      */
-    private ContentRendererInterface $renderer;
+    public function __construct(
+        private readonly FactoryInterface $factory
+    ) {
+    }
 
     /**
-     * @param ContentRendererInterface $renderer
+     * @param Documentation $entity
+     * @return ContentRendererInterface
      */
-    public function __construct(ContentRendererInterface $renderer)
+    private function getRendererForSource(Documentation $entity): ContentRendererInterface
     {
-        $this->renderer = $renderer;
+        if ($this->isMenu($entity)) {
+            return $this->factory->create(Type::MENU);
+        }
+
+        return $this->factory->create(Type::DOCUMENTATION);
+    }
+
+    /**
+     * @param Documentation $entity
+     * @return ContentRendererInterface
+     */
+    private function getRendererForTranslation(Documentation $entity): ContentRendererInterface
+    {
+        if ($this->isMenu($entity)) {
+            return $this->factory->create(Type::MENU);
+        }
+
+        return $this->factory->create(Type::TRANSLATION);
+    }
+
+    /**
+     * @param Documentation $entity
+     * @return bool
+     */
+    private function isMenu(Documentation $entity): bool
+    {
+        $version = $entity->version;
+
+        return $version->menuPage === $entity->urn;
     }
 
     /**
@@ -39,8 +73,15 @@ class OnContentRender extends Listener
     public function prePersist(LifecycleEventArgs $e): void
     {
         $this->on($e, Documentation::class, function (Documentation $entity): void {
-            $entity->translation->renderWithVersion($entity->version, $this->renderer, false);
-            $entity->source->renderWithVersion($entity->version, $this->renderer, false);
+            $entity->translation->renderWithVersion(
+                $entity->version,
+                $this->getRendererForTranslation($entity),
+            );
+
+            $entity->source->renderWithVersion(
+                $entity->version,
+                $this->getRendererForSource($entity),
+            );
         });
     }
 
@@ -52,11 +93,17 @@ class OnContentRender extends Listener
     {
         $this->on($e, Documentation::class, function (Documentation $entity) use ($e) {
             if ($e->hasChangedField('translation.source') || ! $entity->translation->isRendered()) {
-                $entity->translation->renderWithVersion($entity->version, $this->renderer, false);
+                $entity->translation->renderWithVersion(
+                    $entity->version,
+                    $this->getRendererForTranslation($entity),
+                );
             }
 
             if ($e->hasChangedField('content.source') || ! $entity->source->isRendered()) {
-                $entity->source->renderWithVersion($entity->version, $this->renderer, false);
+                $entity->source->renderWithVersion(
+                    $entity->version,
+                    $this->getRendererForSource($entity),
+                );
             }
         });
     }

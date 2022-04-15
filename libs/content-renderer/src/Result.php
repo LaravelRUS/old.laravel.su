@@ -9,22 +9,22 @@
 
 declare(strict_types=1);
 
-namespace App\ContentRenderer\Event;
+namespace App\ContentRenderer;
 
-abstract class ContentEvent
+class Result implements ResultInterface
 {
     /**
      * @param string $content
      */
     public function __construct(
-        protected readonly string $content,
+        private readonly string $content,
     ) {
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
-    public function getContent(): string
+    public function __toString(): string
     {
         return $this->content;
     }

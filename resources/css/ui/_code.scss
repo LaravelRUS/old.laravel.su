@@ -12,7 +12,7 @@ code {
     box-sizing: border-box;
     line-height: $ui-min-height;
     height: $ui-min-height;
-    box-shadow: 0 1px 2px rgba($color-text, .2);
+    box-shadow: 0 2px 5px rgba($color-text, .2);
 }
 
 pre > code {

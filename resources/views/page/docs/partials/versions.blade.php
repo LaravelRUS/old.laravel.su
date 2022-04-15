@@ -5,28 +5,34 @@
  */
 @endphp
 
-<section class="container versions">
-    @if ($versions->count())
-        Версия фреймворка:
+<section class="container versions"
+         data-vm="VersionsPanelViewModel"
+         data-bind="css: { fixed: fixed }"
+>
+    <nav class="versions-list">
+        <a href="#" class="scroll-to-top"></a>
 
-        @foreach($versions as $current)
-            @continue(! $current->isDocumented && $version->name !== $current->name)
+        @if ($versions->count())
+            Версия фреймворка:
 
-            @if($version->name === $current->name)
-                <span class="label active">{{ $current->name }}</span>
-            @else
-                <a class="label" href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
-            @endif
-        @endforeach
+            @foreach($versions as $current)
+                @continue(! $current->isDocumented && $version->name !== $current->name)
 
-        <aside>
-            @if(isset($version))
-                <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
-            @else
-                <a href="{!! route('status') !!}">Прогресс перевода</a>
-            @endif
-        </aside>
-    @else
-        Нет доступных версий фреймворка
-    @endif
+                @if($version->name === $current->name)
+                    <span class="label active">{{ $current->name }}</span>
+                @else
+                    <a class="label" href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
+                @endif
+            @endforeach
+        @else
+            Нет доступных версий фреймворка
+        @endif
+    </nav>
+    <aside>
+        @if(isset($version))
+            <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
+        @else
+            <a href="{!! route('status') !!}">Прогресс перевода</a>
+        @endif
+    </aside>
 </section>

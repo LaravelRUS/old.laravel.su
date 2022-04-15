@@ -1,33 +1,29 @@
 {
   "private": true,
   "scripts": {
-      "dev": "npm run development",
-      "development": "mix",
-      "watch": "mix watch",
-      "watch-poll": "mix watch -- --watch-options-poll=1000",
-      "hot": "mix watch --hot",
-      "prod": "npm run production",
-      "production": "mix --production"
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "laravel-mix": "^6.0",
     "laravel-mix-purgecss": "^6.0",
-    "lodash": "^4.17",
-    "mini-css-extract-plugin": "^2.4",
+    "mini-css-extract-plugin": "^2.6",
     "node-sass": "^7.0",
-    "resolve-url-loader": "^4.0",
-    "sass": "^1.45",
-    "sass-loader": "^12.4",
-    "sass-resources-loader": "^2.2",
-    "vue-loader": "^15.9",
-    "vue-template-compiler": "^2.6"
+    "resolve-url-loader": "^5.0",
+    "sass": "^1.50",
+    "sass-loader": "^12.6",
+    "sass-resources-loader": "^2.2"
   },
   "dependencies": {
+    "@tko/build.reference": "^4.0.0-alpha9.0",
     "axios": "^0.24",
     "font-awesome": "^4.7",
-    "reset-css": "^5.0",
-    "vue": "^2.6",
-    "object-path": "^0.11"
+    "reset-css": "^5.0"
   }
 }

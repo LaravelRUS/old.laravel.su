@@ -1,11 +1,48 @@
 .versions {
     box-sizing: border-box;
     padding: 10px 20px !important;
-    background: #fff;
-    border: $color-border 1px solid;
-    border-radius: 3px;
-    line-height: 25px;
-    margin: 10px auto 20px auto;
+    background: $color-white;
+    border: $color-border 3px solid;
+    border-radius: 5px;
+    margin: 20px auto 30px auto;
+    position: sticky;
+    height: 52px;
+    line-height: 26px;
+    top: -2px;
+    z-index: 9;
+    display: flex;
+    justify-content: space-between;
+
+    .versions-list {
+        display: flex;
+        position: relative;
+    }
+
+    .scroll-to-top {
+        display: block;
+        position: relative;
+        top: -10px;
+        left: -20px;
+        width: 0;
+        overflow: hidden;
+        height: 46px;
+        line-height: 46px;
+        font-size: 24px;
+        text-align: center;
+        border-radius: 0 0 0 5px;
+        background: $color-extra-light-gray;
+        transition: width .3s ease;
+
+        &:before {
+            @include fa-icon;
+            content: $fa-var-arrow-circle-o-up;
+        }
+
+        &:hover {
+            background: $color-main;
+            color: $color-white;
+        }
+    }
 
     .label {
         margin-left: 10px;
@@ -15,12 +52,20 @@
         color: #ff2d20;
 
         &:hover {
-            background: $color-bg;
+            background: $color-extra-light-gray;
             text-decoration: none;
         }
     }
 
     & > aside {
         float: right;
+    }
+
+    &.fixed {
+        border-radius: 0 0 8px 8px;
+
+        .scroll-to-top {
+            width: 46px;
+        }
     }
 }

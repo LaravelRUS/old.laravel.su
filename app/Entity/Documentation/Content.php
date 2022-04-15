@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Documentation;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
+use App\ContentRenderer\ContentRendererInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]
@@ -39,13 +39,12 @@ abstract class Content
 
     /**
      * @param ContentRendererInterface $renderer
-     * @param bool $escape
      * @return $this
      */
-    public function render(ContentRendererInterface $renderer, bool $escape = true): self
+    public function renderUsing(ContentRendererInterface $renderer): self
     {
         if ($this->source !== null) {
-            $this->rendered = $renderer->render($this->source, $escape);
+            $this->rendered = (string)$renderer->render($this->source);
         }
 
         return $this;

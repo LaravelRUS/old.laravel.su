@@ -28,10 +28,7 @@ mix
         sourceMap: true,
         // outputStyle: 'compressed',
     })
-    .vue({
-        extractStyles: true,
-        globalStyles: `${__dirname}/resources/css/_kernel.scss`,
-    })
+    .disableNotifications()
     .sourceMaps()
 ;
 

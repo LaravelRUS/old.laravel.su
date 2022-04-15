@@ -8,14 +8,13 @@
 
 declare(strict_types=1);
 
-namespace App\ContentRenderer\Renderer;
+namespace App\ContentRenderer;
 
 interface ContentRendererInterface
 {
     /**
      * @param string $original
-     * @param bool $escape
-     * @return string
+     * @return ResultInterface
      */
-    public function render(string $original, bool $escape = true): string;
+    public function render(string $original): ResultInterface;
 }

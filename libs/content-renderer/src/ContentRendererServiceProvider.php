@@ -10,9 +10,10 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer;
 
-use App\ContentRenderer\Renderer\ContentRendererInterface;
-use App\ContentRenderer\Renderer\LaravelRusMarkdownRenderer;
-use Illuminate\Contracts\Config\Repository;
+use App\ContentRenderer\Renderer\DefaultRenderer;
+use App\ContentRenderer\Renderer\MenuRenderer;
+use Illuminate\Contracts\Events\Dispatcher as DispatcherInterface;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class ContentRendererServiceProvider extends ServiceProvider
@@ -23,40 +24,29 @@ class ContentRendererServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->loadConfigs();
-        $this->registerMarkdown();
+        // Boot Default
+        $this->registerDefaultRenderer();
 
-        $this->app->singleton(ContentRendererInterface::class, function () {
-            return $this->app->make(LaravelRusMarkdownRenderer::class);
+        // Boot Factory
+        $this->app->singleton(Factory::class, function (Application $app) {
+            $factory = new Factory($app->make(ContentRendererInterface::class));
+
+            $factory->extend(Type::MENU, static function () use ($app) {
+                return new MenuRenderer($app->make(DispatcherInterface::class));
+            });
+
+            return $factory;
         });
+
+        $this->app->alias(Factory::class, FactoryInterface::class);
     }
 
     /**
      * @return void
      */
-    private function loadConfigs(): void
+    private function registerDefaultRenderer(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../resources/content-renderer.php'       => \config_path('content-renderer.php'),
-                // Avoid custom styles
-                // __DIR__ . '/../resources/content-renderer/php.json'  => \config_path('content-renderer/php.json'),
-                // __DIR__ . '/../resources/content-renderer/json.json' => \config_path('content-renderer/json.json'),
-            ]);
-        }
-
-        $this->mergeConfigFrom(__DIR__ . '/../resources/content-renderer.php', 'content-renderer');
-    }
-
-    /**
-     * @return void
-     */
-    private function registerMarkdown(): void
-    {
-        $this->app->singleton(EnvironmentFactory::class, function () {
-            $config = $this->app->make(Repository::class);
-
-            return new EnvironmentFactory((array)$config->get('content-renderer.config', []));
-        });
+        $this->app->singleton(DefaultRenderer::class);
+        $this->app->alias(DefaultRenderer::class, ContentRendererInterface::class);
     }
 }
