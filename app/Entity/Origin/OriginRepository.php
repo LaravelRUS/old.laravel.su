@@ -9,15 +9,14 @@
 
 declare(strict_types=1);
 
-namespace App\ContentRenderer;
+namespace App\Entity\Origin;
 
-enum Type
+use App\Entity\Common\Repository;
+use App\Entity\Origin;
+
+/**
+ * @template-extends Repository<Origin>
+ */
+class OriginRepository extends Repository
 {
-    case ARTICLE;
-
-    case MENU;
-    case DOCUMENTATION;
-
-    case MENU_TRANSLATION;
-    case DOCUMENTATION_TRANSLATION;
 }

@@ -11,7 +11,10 @@ declare(strict_types=1);
 namespace App\ContentRenderer;
 
 use App\ContentRenderer\Renderer\DefaultRenderer;
+use App\ContentRenderer\Renderer\DocumentationTranslationRenderer;
 use App\ContentRenderer\Renderer\MenuRenderer;
+use App\ContentRenderer\Renderer\DocumentationRenderer;
+use App\ContentRenderer\Renderer\MenuTranslationRenderer;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +36,18 @@ class ContentRendererServiceProvider extends ServiceProvider
 
             $factory->extend(Type::MENU, static function () use ($app) {
                 return new MenuRenderer($app->make(DispatcherInterface::class));
+            });
+
+            $factory->extend(Type::MENU_TRANSLATION, static function () use ($app) {
+                return new MenuTranslationRenderer($app->make(DispatcherInterface::class));
+            });
+
+            $factory->extend(Type::DOCUMENTATION, static function () use ($app) {
+                return new DocumentationRenderer($app->make(DispatcherInterface::class));
+            });
+
+            $factory->extend(Type::DOCUMENTATION_TRANSLATION, static function () use ($app) {
+                return new DocumentationTranslationRenderer($app->make(DispatcherInterface::class));
             });
 
             return $factory;

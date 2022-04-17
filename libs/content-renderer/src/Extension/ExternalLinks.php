@@ -16,7 +16,7 @@ use League\CommonMark\Event\DocumentParsedEvent;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\ExtensionInterface;
 
-final class ExternalLinkExtension implements ExtensionInterface
+final class ExternalLinks implements ExtensionInterface
 {
     /**
      * @param array<non-empty-string> $external
@@ -63,7 +63,7 @@ final class ExternalLinkExtension implements ExtensionInterface
     {
         $url = $link->getUrl();
 
-        foreach ($this->external as $prefix) {
+        foreach ([...$this->external, $this->reference] as $prefix) {
             if (\str_starts_with($url, $prefix)) {
                 $this->modifyExternalLink($link);
 

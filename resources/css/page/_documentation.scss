@@ -2,9 +2,13 @@
     background: $color-dark-white;
 }
 
+@import "documentation/versions";
+
 .documentation {
     display: flex;
     flex-direction: row;
+
+    @import "documentation/translation-status";
 
     &-menu {
         min-width: 240px;
@@ -12,7 +16,17 @@
         margin-right: 15px;
         padding: 10px 0 50px 0;
 
-        @import "menu";
+        @import "documentation/menu";
+
+        .extras {
+            white-space: normal;
+            line-height: 36px;
+            border-radius: 4px;
+            border: $color-border 2px solid;
+            padding: 10px 15px;
+            color: $color-silver;
+            margin-top: 20px;
+        }
     }
 
     &-content {
@@ -23,29 +37,6 @@
         width: 100%;
         border-left: $color-border 2px solid;
 
-        @import "content";
-    }
-
-    .translation-status {
-        display: block;
-        padding: 15px 20px;
-        background: $color-bg;
-        border-radius: 4px;
-        margin: 0 auto 10px auto;
-        height: auto;
-
-        .fa {
-            display: inline-block;
-            width: 40px;
-
-            &:before {
-                left: 20px;
-                top: 50%;
-                margin-top: -14px;
-                position: absolute;
-                font-size: 28px;
-                opacity: .2;
-            }
-        }
+        @import "documentation/content";
     }
 }

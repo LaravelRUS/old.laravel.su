@@ -49,10 +49,10 @@ class OnContentRender extends Listener
     private function getRendererForTranslation(Documentation $entity): ContentRendererInterface
     {
         if ($this->isMenu($entity)) {
-            return $this->factory->create(Type::MENU);
+            return $this->factory->create(Type::MENU_TRANSLATION);
         }
 
-        return $this->factory->create(Type::TRANSLATION);
+        return $this->factory->create(Type::DOCUMENTATION_TRANSLATION);
     }
 
     /**

@@ -2,7 +2,7 @@
 blockquote {
     padding: 20px 30px;
     height: auto;
-    border-radius: 6px;
+    border-radius: 8px;
     line-height: $font-size + 12px;
     color: rgba($color-text, .9);
     background: lighten($color-blue, 27%);
@@ -42,6 +42,7 @@ blockquote {
         background: $color-purple;
         color: rgba(#fff, .9);
         padding-left: 78px;
+        box-shadow: inset 0 0 0 3px desaturate(darken($color-purple, 10%), 30%);
 
         code {
             background: rgba(#fff, .1);
@@ -56,6 +57,7 @@ blockquote {
         background: desaturate($color-red, 20%);
         color: rgba(#fff, .9);
         padding-left: 78px;
+        box-shadow: inset 0 0 0 3px desaturate(darken(desaturate($color-red, 20%), 10%), 30%);
 
         code {
             background: rgba(#fff, .1);
@@ -71,6 +73,7 @@ blockquote {
         background: $color-blue;
         color: rgba(#fff, .9);
         padding-left: 78px;
+        box-shadow: inset 0 0 0 3px desaturate(darken($color-blue, 10%), 30%);
 
         code {
             background: rgba(#fff, .1);

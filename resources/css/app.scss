@@ -11,6 +11,7 @@ body {
     color: $color-text;
     min-height: 100vh;
     line-height: $ui-min-height;
+    scroll-behavior: smooth;
     min: {
         height: 100%;
         width: map-get($grid-breakpoints, sm);
@@ -41,6 +42,5 @@ body {
 @import "layout";
 
 @import "page/documentation";
-@import "page/versions";
 @import "page/progress";
 @import "page/article";

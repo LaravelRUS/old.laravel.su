@@ -30,6 +30,17 @@ ul {
             text-decoration: none;
         }
 
+        &.external-link {
+            &:after {
+                @include fa-icon;
+                content: $fa-var-external-link;
+                margin-left: 4px;
+                position: relative;
+                top: -4px;
+                transform: scale(.7);
+            }
+        }
+
         &.active,
         &.active:hover,
         &.active:active,

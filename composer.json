@@ -26,6 +26,18 @@
         "laravel/tinker": "^2.7",
         "sentry/sentry-laravel": "^2.12"
     },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*",
+        "symfony/polyfill-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
         "spatie/laravel-ignition": "^1.2",
@@ -38,11 +50,6 @@
         "squizlabs/php_codesniffer": "^3.6",
         "vimeo/psalm": "^4.22",
         "weirdan/doctrine-psalm-plugin": "^2.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app"
-        }
     },
     "autoload-dev": {
         "psr-4": {

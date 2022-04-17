@@ -1,0 +1,81 @@
+.versions {
+    $versions-height: 50px;
+
+    box-sizing: border-box;
+    padding: 0 20px !important;
+    background: $color-white;
+    border: $color-border 3px solid;
+    border-radius: 5px;
+    margin: 20px auto 30px auto;
+    position: sticky;
+    height: $versions-height;
+    line-height: $versions-height;
+    top: -2px;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .versions-list {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+
+        .label {
+            margin-left: 10px;
+            color: $color-main;
+
+            &:hover {
+                background: $color-extra-light-gray;
+                text-decoration: none;
+            }
+
+            &.active,
+            &.active:active,
+            &.active:focus {
+                background: $color-main;
+                color: $color-white;
+            }
+        }
+    }
+
+    .scroll-to-top {
+        display: block;
+        position: relative;
+        top: -3px;
+        left: -20px;
+        width: 0;
+        overflow: hidden;
+        height: $versions-height;
+        line-height: $versions-height + 4px;
+        font-size: 28px;
+        text-align: center;
+        border-radius: 0 0 0 5px;
+        background: $color-light-gray;
+        color: $color-light-silver;
+        transition:
+            width .3s ease,
+            background .3s ease,
+            color .3s ease;
+
+        &:before {
+            @include fa-icon;
+            content: $fa-var-arrow-circle-o-up;
+            color: inherit;
+        }
+
+        &:hover {
+            background: $color-dark-white;
+            color: $color-main;
+        }
+    }
+
+    &.fixed {
+        border-radius: 0 0 8px 8px;
+
+        .scroll-to-top {
+            width: $versions-height;
+        }
+    }
+}

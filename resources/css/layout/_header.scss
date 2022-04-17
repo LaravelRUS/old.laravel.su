@@ -1,17 +1,6 @@
 .header {
     background: #fff;
     position: relative;
-    padding-top: 9px;
-
-    &:before {
-        content: '';
-        width: 100%;
-        height: 9px;
-        background: url(/images/header_line.png) center center repeat-x;
-        display: block;
-        position: absolute;
-        top: 0;
-    }
 
     & > .extras {
         height: 36px;

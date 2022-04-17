@@ -1,0 +1,24 @@
+
+
+.translation-status {
+    display: block;
+    padding: 15px 20px;
+    background: $color-bg;
+    border-radius: 4px;
+    margin: 0 auto 10px auto;
+    height: auto;
+
+    .fa {
+        display: inline-block;
+        width: 40px;
+
+        &:before {
+            left: 20px;
+            top: 50%;
+            margin-top: -14px;
+            position: absolute;
+            font-size: 28px;
+            opacity: .2;
+        }
+    }
+}

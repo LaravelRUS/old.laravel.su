@@ -11,11 +11,10 @@ declare(strict_types=1);
 
 namespace App\ContentRenderer\Renderer;
 
-use App\ContentRenderer\Extension\ExternalLinks;
-use App\ContentRenderer\Extension\MenuTitlesNormalizer;
+use App\ContentRenderer\Extension\RemoveCommitRelation;
 use Illuminate\Contracts\Events\Dispatcher;
 
-class MenuRenderer extends Renderer
+class DocumentationTranslationRenderer extends DocumentationRenderer
 {
     /**
      * @param Dispatcher $dispatcher
@@ -25,7 +24,6 @@ class MenuRenderer extends Renderer
     ) {
         parent::__construct($dispatcher);
 
-        $this->env->addExtension(new MenuTitlesNormalizer());
-        $this->env->addExtension(new ExternalLinks(['/api'], 'https://laravel.com', 'external-link'));
+        $this->env->addExtension(new RemoveCommitRelation());
     }
 }
