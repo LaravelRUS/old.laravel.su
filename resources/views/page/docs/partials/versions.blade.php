@@ -13,7 +13,7 @@
         <a href="#" class="scroll-to-top"></a>
 
         @if ($versions->count())
-            Версия фреймворка:
+            <span class="label title">Laravel</span>
 
             @foreach($versions as $current)
                 @continue(! $current->isDocumented && $version->name !== $current->name)
@@ -30,9 +30,9 @@
     </nav>
     <aside>
         @if(isset($version))
-            <a href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
+            <a class="label" href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
         @else
-            <a href="{!! route('status') !!}">Прогресс перевода</a>
+            <a class="label" href="{!! route('status') !!}">Прогресс перевода</a>
         @endif
     </aside>
 </section>

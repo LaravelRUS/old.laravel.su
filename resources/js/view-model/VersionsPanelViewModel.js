@@ -1,17 +1,45 @@
 import ko from "@tko/build.reference";
 
+if (!requestAnimationFrame) {
+    function requestAnimationFrame(callback) {
+        callback();
+    }
+}
+
 export default class VersionsPanelViewModel {
     /**
      * @type {*}
      */
     fixed = ko.observable(false);
 
+    /**
+     * @type {*}
+     */
+    scrollDirectionDown = ko.observable(true);
+
+    /**
+     * @type {number}
+     */
+    #previousTop = 0;
+
+    /**
+     * @type {number}
+     */
+    #currentTop = 0;
+
     constructor(context) {
         const self = this;
-        window.addEventListener("scroll", function () {
+
+        window.addEventListener('scroll', function (e) {
             const rect = context.getBoundingClientRect();
 
-            self.fixed(rect.top < 0);
+            requestAnimationFrame(function () {
+                self.#currentTop = window.pageYOffset || document.documentElement.scrollTop;
+                self.scrollDirectionDown(self.#currentTop > self.#previousTop);
+                self.#previousTop = self.#currentTop;
+
+                self.fixed(rect.top < 0);
+            });
         });
     }
 }

@@ -2,7 +2,7 @@
     $versions-height: 50px;
 
     box-sizing: border-box;
-    padding: 0 20px !important;
+    padding: 0 10px !important;
     background: $color-white;
     border: $color-border 3px solid;
     border-radius: 5px;
@@ -21,22 +21,34 @@
         position: relative;
         justify-content: space-between;
         align-items: center;
+    }
 
-        .label {
-            margin-left: 10px;
-            color: $color-main;
+    .label {
+        margin: 0 5px;
+        color: $color-main;
 
-            &:hover {
-                background: $color-extra-light-gray;
-                text-decoration: none;
-            }
+        &.active,
+        &.active:active,
+        &.active:focus {
+            background: $color-main;
+            color: $color-white;
+        }
+    }
 
-            &.active,
-            &.active:active,
-            &.active:focus {
-                background: $color-main;
-                color: $color-white;
-            }
+    .label.title {
+        background: $color-extra-light-gray;
+        color: $color-description;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    a.label {
+        &:hover {
+            transition: background .3s ease;
+            background: $color-extra-light-gray;
+            color: darken($color-main, 10%);
+            text-decoration: none;
         }
     }
 
@@ -44,14 +56,14 @@
         display: block;
         position: relative;
         top: 0;
-        left: -20px;
+        left: -10px;
         width: 0;
         overflow: hidden;
         height: $versions-height - 6px;
         line-height: $versions-height - 6px;
         font-size: 28px;
         text-align: center;
-        border-radius: 0 0 0 5px;
+        border-radius: 0 0 0 2px;
         background: $color-light-gray;
         color: $color-light-silver;
         transition:
@@ -72,7 +84,7 @@
     }
 
     &.fixed {
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 5px 5px;
 
         .scroll-to-top {
             width: $versions-height;
