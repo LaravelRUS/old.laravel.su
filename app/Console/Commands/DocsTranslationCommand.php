@@ -58,6 +58,8 @@ abstract class DocsTranslationCommand extends Command
     public function __construct(Client $client, EntityManagerInterface $em, Config $config)
     {
         parent::__construct();
+        
+        \ini_set('memory_limit', -1);
 
         $this->em = $em;
 

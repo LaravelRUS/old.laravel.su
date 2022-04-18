@@ -58,6 +58,8 @@ class DocsFetchCommand extends Command
     {
         parent::__construct();
 
+        \ini_set('memory_limit', -1);
+
         $this->source = new Repository($client, 'laravel', 'docs');
     }
 
@@ -88,7 +90,7 @@ class DocsFetchCommand extends Command
         foreach ($branches as ['branch' => $branch, 'version' => $version]) {
             $this->info(\sprintf('Source %s documentation updating', $branch->getName()));
 
-            \iterator_to_array($this->loadFiles($docs, $branch, $version));
+            foreach($this->loadFiles($docs, $branch, $version) as $_);
 
             $this->comment(\sprintf('Source %s documentation updated', $branch->getName()));
         }
