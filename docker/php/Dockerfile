@@ -14,6 +14,7 @@ RUN apt-get update
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
       libzip-dev \
+      unzip \
       git \
       curl
 
