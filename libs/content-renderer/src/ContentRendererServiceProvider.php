@@ -28,40 +28,24 @@ class ContentRendererServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Boot Default
-        $this->registerDefaultRenderer();
+        $this->app->singleton(DefaultRenderer::class);
+        $this->app->singleton(MenuRenderer::class);
+        $this->app->singleton(MenuTranslationRenderer::class);
+        $this->app->singleton(DocumentationRenderer::class);
+        $this->app->singleton(DocumentationTranslationRenderer::class);
 
-        // Boot Factory
-        $this->app->singleton(Factory::class, function (Application $app) {
-            $factory = new Factory($app->make(ContentRendererInterface::class));
+        $this->app->singleton(Factory::class, function (Application $app): Factory {
+            $default = $app->make(ContentRendererInterface::class);
 
-            $factory->extend(Type::MENU, static function () use ($app) {
-                return new MenuRenderer($app->make(DispatcherInterface::class));
-            });
-
-            $factory->extend(Type::MENU_TRANSLATION, static function () use ($app) {
-                return new MenuTranslationRenderer($app->make(DispatcherInterface::class));
-            });
-
-            $factory->extend(Type::DOCUMENTATION, static function () use ($app) {
-                return new DocumentationRenderer($app->make(DispatcherInterface::class));
-            });
-
-            $factory->extend(Type::DOCUMENTATION_TRANSLATION, static function () use ($app) {
-                return new DocumentationTranslationRenderer($app->make(DispatcherInterface::class));
-            });
-
-            return $factory;
+            return new Factory($default, value(static function () use ($app): iterable {
+                yield Type::MENU => $app->make(MenuRenderer::class);
+                yield Type::MENU_TRANSLATION => $app->make(MenuTranslationRenderer::class);
+                yield Type::DOCUMENTATION => $app->make(DocumentationRenderer::class);
+                yield Type::DOCUMENTATION_TRANSLATION => $app->make(DocumentationTranslationRenderer::class);
+            }));
         });
 
-        $this->app->alias(Factory::class, FactoryInterface::class);
-    }
-
-    /**
-     * @return void
-     */
-    private function registerDefaultRenderer(): void
-    {
-        $this->app->singleton(DefaultRenderer::class);
         $this->app->alias(DefaultRenderer::class, ContentRendererInterface::class);
+        $this->app->alias(Factory::class, FactoryInterface::class);
     }
 }

@@ -17,14 +17,10 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class MenuRenderer extends Renderer
 {
-    /**
-     * @param Dispatcher $dispatcher
-     */
-    public function __construct(
-        Dispatcher $dispatcher,
-    ) {
-        parent::__construct($dispatcher);
-
+    public function __construct() 
+    {
+        parent::__construct();
+        
         $this->env->addExtension(new MenuTitlesNormalizer());
         $this->env->addExtension(new ExternalLinks(['/api'], 'https://laravel.com', 'external-link'));
     }

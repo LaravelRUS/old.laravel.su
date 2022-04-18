@@ -17,46 +17,21 @@ namespace App\ContentRenderer;
 final class Factory implements FactoryInterface
 {
     /**
-     * @var array<non-empty-string, RendererResolver>
-     */
-    private array $registered = [];
-
-    /**
      * @var array<non-empty-string, ContentRendererInterface>
      */
-    private array $resolved = [];
+    private array $renderers = [];
 
     /**
      * @param ContentRendererInterface $default
+     * @param iterable<Type, ContentRendererInterface> $renderers
      */
     public function __construct(
         private readonly ContentRendererInterface $default,
+        iterable $renderers = [],
     ) {
-    }
-
-    /**
-     * @param Type $type
-     * @param RendererResolver $resolver
-     * @return $this
-     */
-    public function extend(Type $type, callable $resolver): self
-    {
-        $this->registered[$type->name] = $resolver;
-
-        return $this;
-    }
-
-    /**
-     * @param Type|null $type
-     * @return ContentRendererInterface
-     */
-    private function resolve(?Type $type): ContentRendererInterface
-    {
-        if (isset($this->registered[$type->name])) {
-            return $this->registered[$type->name]();
+        foreach ($renderers as $type => $renderer) {
+            $this->renderers[$type->name] = $renderer;
         }
-
-        return $this->default;
     }
 
     /**
@@ -68,6 +43,6 @@ final class Factory implements FactoryInterface
             return $this->default;
         }
 
-        return $this->resolved[$type->name] ??= $this->resolve($type);
+        return $this->renderers[$type->name] ??= $this->default;
     }
 }

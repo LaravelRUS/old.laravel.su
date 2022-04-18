@@ -16,24 +16,17 @@ use App\ContentRenderer\Extension\NormalizeAnchors;
 use App\ContentRenderer\Extension\QuotesFormatter;
 use App\ContentRenderer\Extension\RemoveEmptyParagraphs;
 use App\ContentRenderer\Extension\RemoveStyleTags;
-use Illuminate\Contracts\Events\Dispatcher;
-use League\CommonMark\Util\HtmlFilter;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
+use League\CommonMark\Util\HtmlFilter;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 
 class DocumentationRenderer extends Renderer
 {
-    /**
-     * @param Dispatcher $dispatcher
-     */
-    public function __construct(
-        Dispatcher $dispatcher,
-    ) {
-        parent::__construct($dispatcher, [
-            'html_input' => HtmlFilter::ALLOW,
-        ]);
+    public function __construct()
+    {
+        parent::__construct(['html_input' => HtmlFilter::ALLOW]);
 
         $this->env->addExtension(new ImportHeaderClasses());
         $this->env->addExtension(new QuotesFormatter());

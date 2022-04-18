@@ -9,23 +9,25 @@
 
 declare(strict_types=1);
 
-namespace App\ContentRenderer\Event;
+namespace App\ContentRenderer\Result;
 
-abstract class ContentEvent
+final class Heading implements \Stringable
 {
     /**
-     * @param string $content
+     * @param string $text
+     * @param positive-int $level
      */
     public function __construct(
-        protected readonly string $content,
+        public readonly string $text,
+        public readonly int $level,
     ) {
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
-    public function getContent(): string
+    public function __toString(): string
     {
-        return $this->content;
+        return $this->text;
     }
 }

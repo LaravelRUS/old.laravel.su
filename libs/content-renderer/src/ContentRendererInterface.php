@@ -13,8 +13,8 @@ namespace App\ContentRenderer;
 interface ContentRendererInterface
 {
     /**
-     * @param string $original
+     * @param string $markdown
      * @return ResultInterface
      */
-    public function render(string $original): ResultInterface;
+    public function render(string $markdown): ResultInterface;
 }

@@ -13,6 +13,7 @@
         "php": "^8.1",
         "ext-simplexml": "*",
         "league/commonmark": "^2.3",
+        "scrivo/highlight.php": "^9.18.1.9",
         "spatie/commonmark-highlighter": "^3.0"
     },
     "autoload": {
@@ -30,12 +31,13 @@
         "psr-4": {
             "App\\ContentRenderer\\Tests\\": "tests"
         }
-    },"extra": {
-    "branch-alias": {
-        "dev-master": "1.x-dev",
-        "dev-main": "1.x-dev"
-    }
-},
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev",
+            "dev-main": "1.x-dev"
+        }
+    },
     "config": {
         "sort-packages": true
     },

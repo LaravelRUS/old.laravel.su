@@ -15,12 +15,19 @@ use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\Event\Rendered;
 use App\ContentRenderer\Event\Rendering;
 use App\ContentRenderer\Result;
+use App\ContentRenderer\Result\Heading;
 use App\ContentRenderer\ResultInterface;
-use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher as DispatcherInterface;
 use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\Node\Block\Heading as HeadingNode;
+use League\CommonMark\Extension\CommonMark\Node\Block\HtmlBlock;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
+use League\CommonMark\Extension\CommonMark\Node\Inline\HtmlInline;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
+use League\CommonMark\Node\Block\Document as DocumentNode;
+use League\CommonMark\Node\Inline\Text;
+use League\CommonMark\Node\Node;
 use League\CommonMark\Util\HtmlFilter;
-use League\Config\ConfigurationInterface;
 
 abstract class Renderer implements ContentRendererInterface
 {
@@ -43,13 +50,10 @@ abstract class Renderer implements ContentRendererInterface
     protected readonly Environment $env;
 
     /**
-     * @param Dispatcher $dispatcher
-     * @param array $config
+     * @param array<non-empty-string, mixed> $config
      */
-    public function __construct(
-        private readonly Dispatcher $dispatcher,
-        array $config = [],
-    ) {
+    public function __construct(array $config = [])
+    {
         $this->converter = new GithubFlavoredMarkdownConverter([
             ...self::DEFAULT_CONFIG,
             ...$config,
@@ -61,50 +65,51 @@ abstract class Renderer implements ContentRendererInterface
     /**
      * {@inheritDoc}
      */
-    public function render(string $original): ResultInterface
+    public function render(string $markdown): ResultInterface
     {
-        return $this->execute($original, function (string $content): ResultInterface {
-            $result = $this->converter->convert($content);
+        $result = $this->converter->convert($markdown);
 
-            return new Result($result->getContent());
-        });
+        return new Result(
+            content: $result->getContent(),
+            navigation: $this->navigation($result->getDocument()),
+        );
     }
 
     /**
-     * @template TInput of string
-     * @template TOutput of ResultInterface
-     *
-     * @param TInput $source
-     * @param \Closure(TInput):TOutput $then
-     * @return TOutput
+     * @param DocumentNode $document
+     * @return iterable<Heading>
      */
-    protected function execute(string $source, \Closure $then): ResultInterface
+    private function navigation(DocumentNode $document): iterable
     {
-        $this->rendering($source);
+        foreach ($document->iterator() as $node) {
+            if ($node instanceof HeadingNode) {
+                $text = $this->text($node);
 
-        $result = $then($source);
-
-        $this->rendered($source, $result);
-
-        return $result;
+                if ($text !== '') {
+                    yield new Heading($text, $node->getLevel());
+                }
+            }
+        }
     }
 
     /**
-     * @param string $content
-     * @return void
+     * @param Node $node
+     * @return string
      */
-    protected function rendering(string $content): void
+    private function text(Node $node): string
     {
-        $this->dispatcher->dispatch(new Rendering($content));
-    }
+        $result = [];
 
-    /**
-     * @param string $content
-     * @param ResultInterface $result
-     * @return void
-     */
-    protected function rendered(string $content, ResultInterface $result): void
-    {
-        $this->dispatcher->dispatch(new Rendered($content, $result));
+        foreach ($node->iterator() as $child) {
+            $result[] = \trim(match (true) {
+                $child instanceof Text,
+                $child instanceof Code => $child->getLiteral(),
+                $child instanceof HtmlInline,
+                $child instanceof HtmlBlock => \strip_tags($child->getLiteral()),
+                default => '',
+            });
+        }
+
+        return \implode(' ', \array_filter($result));
     }
 }

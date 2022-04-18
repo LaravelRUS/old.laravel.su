@@ -12,17 +12,12 @@ declare(strict_types=1);
 namespace App\ContentRenderer\Renderer;
 
 use App\ContentRenderer\Extension\RemoveCommitRelation;
-use Illuminate\Contracts\Events\Dispatcher;
 
-class DocumentationTranslationRenderer extends DocumentationRenderer
+final class DocumentationTranslationRenderer extends DocumentationRenderer
 {
-    /**
-     * @param Dispatcher $dispatcher
-     */
-    public function __construct(
-        Dispatcher $dispatcher,
-    ) {
-        parent::__construct($dispatcher);
+    public function __construct()
+    {
+        parent::__construct();
 
         $this->env->addExtension(new RemoveCommitRelation());
     }
