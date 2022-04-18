@@ -137,7 +137,7 @@ jobs:
     name: Feature Tests (${{matrix.php}})
     runs-on: ${{ matrix.os }}
     services:
-      mysql-service:
+      mysql:
         image: mariadb:10.1
         env:
           MYSQL_ROOT_PASSWORD: mysql_password
@@ -153,6 +153,8 @@ jobs:
       CACHE_DRIVER: file
       QUEUE_CONNECTION: sync
       SESSION_DRIVER: file
+      DB_CONNECTION: mysql
+      DB_USERNAME: root
     strategy:
       fail-fast: false
       matrix:
