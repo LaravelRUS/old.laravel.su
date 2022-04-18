@@ -136,12 +136,21 @@ jobs:
   feature-tests:
     name: Feature Tests (${{matrix.php}})
     runs-on: ${{ matrix.os }}
+    env:
+      CACHE_DRIVER: file
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: file
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: laravelsu
+      DB_USERNAME: root
+      DB_PASSWORD: mysql_password
     services:
       mysql:
         image: mariadb:10.1
         env:
-          MYSQL_ROOT_PASSWORD: mysql_password
-          MYSQL_DATABASE: laravelsu
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.DB_DATABASE }}
         ports:
           - 3306:3306
         options: >-
@@ -149,12 +158,6 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
-    env:
-      CACHE_DRIVER: file
-      QUEUE_CONNECTION: sync
-      SESSION_DRIVER: file
-      DB_CONNECTION: mysql
-      DB_USERNAME: root
     strategy:
       fail-fast: false
       matrix:
