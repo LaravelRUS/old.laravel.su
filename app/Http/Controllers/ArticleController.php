@@ -12,11 +12,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Entity\Repository\ArticlesRepository;
-use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class ArticleController
+final class ArticleController
 {
     /**
      * @var string
@@ -24,25 +24,13 @@ class ArticleController
     private const ERROR_PAGE_NOT_FOUND = 'Article not found';
 
     /**
-     * @var Factory
-     */
-    private Factory $factory;
-
-    /**
-     * @var ArticlesRepository
-     */
-    private ArticlesRepository $articles;
-
-    /**
-     * ArticleController constructor.
-     *
      * @param ArticlesRepository $articles
-     * @param Factory $factory
+     * @param ViewFactoryInterface $factory
      */
-    public function __construct(ArticlesRepository $articles, Factory $factory)
-    {
-        $this->factory = $factory;
-        $this->articles = $articles;
+    public function __construct(
+        private readonly ViewFactoryInterface $factory,
+        private readonly ArticlesRepository $articles
+    ) {
     }
 
     /**

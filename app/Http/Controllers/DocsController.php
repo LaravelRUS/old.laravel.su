@@ -13,8 +13,8 @@ namespace App\Http\Controllers;
 
 use App\Entity\Repository\DocumentationRepository;
 use App\Entity\Version;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
+use Illuminate\Contracts\View\View as ViewInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -32,34 +32,22 @@ final class DocsController
     private const ERROR_MENU_NOT_FOUND = 'Menu for framework version %s not found';
 
     /**
-     * @var DocumentationRepository
-     */
-    private DocumentationRepository $docs;
-
-    /**
-     * @var Factory
-     */
-    private Factory $views;
-
-    /**
-     * DocsController constructor.
-     *
-     * @param Factory $views
+     * @param ViewFactoryInterface $views
      * @param DocumentationRepository $docs
      */
-    public function __construct(Factory $views, DocumentationRepository $docs)
-    {
-        $this->docs = $docs;
-        $this->views = $views;
+    public function __construct(
+        private readonly ViewFactoryInterface $views,
+        private readonly DocumentationRepository $docs
+    ) {
     }
 
     /**
      * @param Version $current
      * @param string $version
      * @param string $page
-     * @return View|RedirectResponse
+     * @return ViewInterface
      */
-    public function show(Version $current, string $version, string $page)
+    public function show(Version $current, string $version, string $page): ViewInterface
     {
         if (! $document = $this->docs->findByVersionAndUrn($current, $page)) {
             throw new NotFoundHttpException(\sprintf(self::ERROR_PAGE_NOT_FOUND, $page));

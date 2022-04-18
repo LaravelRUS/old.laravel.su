@@ -13,7 +13,7 @@ namespace App\Http\Controllers;
 
 use App\Entity\Repository\VersionsRepository;
 use App\Entity\Version;
-use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -21,25 +21,13 @@ use Illuminate\Routing\Redirector;
 final class StatusController
 {
     /**
-     * @var Factory
-     */
-    private Factory $views;
-
-    /**
-     * @var VersionsRepository
-     */
-    private VersionsRepository $versions;
-
-    /**
-     * StatusController constructor.
-     *
-     * @param Factory $views
+     * @param ViewFactoryInterface $views
      * @param VersionsRepository $versions
      */
-    public function __construct(Factory $views, VersionsRepository $versions)
-    {
-        $this->views = $views;
-        $this->versions = $versions;
+    public function __construct(
+        private readonly ViewFactoryInterface $views,
+        private readonly VersionsRepository $versions
+    ) {
     }
 
     /**
