@@ -1,9 +1,6 @@
 <p align="center">
     <img src="https://avatars.githubusercontent.com/u/5966874?s=400&u=3c714efa1f077c89df7ff7c0e960d26253a8b0e4&v=4" width="128" />
-
-# Сайт Русскоязычного Сообщества Laravel
 </p>
-
 <p align="center">
     <a href="https://github.com/LaravelRUS/laravel.su/actions"><img src="https://github.com/LaravelRUS/laravel.su/workflows/build/badge.svg" /></a>
 </p>
@@ -15,6 +12,7 @@
     <a href="https://raw.githubusercontent.com/LaravelRUS/laravel.su/master/LICENSE.md"><img src="https://poser.pugx.org/laravelrus/laravel.su/license?style=for-the-badge" alt="License MIT" /></a>
 </p>
 
+# Сайт Русскоязычного Сообщества Laravel
 
 Данный репозиторий служит не только как готовый к работе проект, но и как
 средство обучения Laravel, включая обучение написанию качественного кода.
