@@ -13,22 +13,18 @@ jobs:
   security:
     name: Security
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
-        php: [ '8.1' ] # Note: This workflow requires only the LATEST version of PHP
+        php: [ '8.1' ]
         os: [ ubuntu-latest ]
-
-    steps: # General Steps
+    steps:
       - name: Set Git To Use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
       - name: Checkout
         uses: actions/checkout@v2
-
-      # Install PHP Dependencies
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -36,7 +32,6 @@ jobs:
       - name: Validate Composer
         run: composer validate
       - name: Get Composer Cache Directory
-        # Docs: <https://github.com/actions/cache/blob/master/examples.md#php---composer>
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
       - name: Restore Composer Cache
@@ -51,30 +46,25 @@ jobs:
           timeout_minutes: 5
           max_attempts: 5
           command: composer update --prefer-dist --no-interaction --no-progress
-
-      # Execution
       - name: Security Advisories
         run: composer require --dev roave/security-advisories:dev-latest
 
   psalm:
     name: Psalm
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
-        php: [ '8.1' ] # Note: This workflow requires only the LATEST version of PHP
+        php: [ '8.1' ]
         os: [ ubuntu-latest ]
 
-    steps: # General Steps
+    steps:
       - name: Set Git To Use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
       - name: Checkout
         uses: actions/checkout@v2
-
-      # Install PHP Dependencies
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -82,7 +72,6 @@ jobs:
       - name: Validate Composer
         run: composer validate
       - name: Get Composer Cache Directory
-        # Docs: <https://github.com/actions/cache/blob/master/examples.md#php---composer>
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
       - name: Restore Composer Cache
@@ -97,45 +86,36 @@ jobs:
           timeout_minutes: 5
           max_attempts: 5
           command: composer update --prefer-dist --no-interaction --no-progress
-
-      # Execution
       - name: Static Analysis
         continue-on-error: true
         run: vendor/bin/psalm --no-cache
 
   unit-tests:
-    name: Build (${{matrix.php}}, ${{ matrix.os }}, ${{ matrix.stability }})
+    name: Unit Tests (${{matrix.php}})
     runs-on: ${{ matrix.os }}
-
     strategy:
       fail-fast: false
       matrix:
         php: [ '8.1', '8.2' ]
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
-        stability: [ prefer-lowest, prefer-stable ]
-
-    steps: # General Steps
+        os: [ ubuntu-latest ]
+    steps:
       - name: Set Git To Use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
       - name: Checkout
         uses: actions/checkout@v2
-
-      # Install PHP Dependencies
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          # PHP Extras
           coverage: pcov
           tools: pecl
           ini-values: "memory_limit=-1"
-          extensions: phar, ffi
+          extensions: dom, libxml, mbstring
       - name: Validate Composer
         run: composer validate
       - name: Get Composer Cache Directory
-        # Docs: <https://github.com/actions/cache/blob/master/examples.md#php---composer>
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
       - name: Restore Composer Cache
@@ -149,8 +129,68 @@ jobs:
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: composer update --${{ matrix.stability }} --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
+          command: composer install --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
+      - name: Execute Unit Tests
+        run: vendor/bin/phpunit --testdox --verbose --testsuite unit
 
-      # Execution
-      - name: Execute Tests
-        run: vendor/bin/phpunit --testdox --verbose
+  feature-tests:
+    name: Feature Tests (${{matrix.php}})
+    runs-on: ${{ matrix.os }}
+    services:
+      mysql-service:
+        image: mariadb:10.1
+        env:
+          MYSQL_ROOT_PASSWORD: mysql_password
+          MYSQL_DATABASE: laravelsu
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.1', '8.2' ]
+        os: [ ubuntu-latest ]
+    steps:
+      - name: Set Git To Use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: pcov
+          tools: pecl
+          ini-values: "memory_limit=-1"
+          extensions: dom, libxml, mbstring, pdo, pdo_mysql
+      - name: Validate Composer
+        run: composer validate
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Restore Composer Cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
+      - name: Install Dependencies
+        uses: nick-invision/retry@v1
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer install --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
+      - name: Execute "post-root-package-install" command
+        run: composer run-script post-root-package-install
+      - name: Execute "post-create-project-cmd" command
+        run: composer run-script post-create-project-cmd
+      - name: Apply required permissions
+        run: chmod -R 0777 storage bootstrap/cache
+      - name: Execute Unit Tests
+        run: vendor/bin/phpunit --testdox --verbose --testsuite feature
