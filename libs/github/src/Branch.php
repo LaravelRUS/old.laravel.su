@@ -14,6 +14,7 @@ namespace App\GitHub;
 use App\GitHub\Common\ApiTrait;
 use App\GitHub\Common\InteractWithApiInterface;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 use Illuminate\Support\LazyCollection;
 
@@ -63,9 +64,9 @@ final class Branch implements InteractWithApiInterface, BranchInterface, Arrayab
      */
     public function getFiles(): Enumerable
     {
-        return LazyCollection::make(
-            $this->callFilesApiMethod()
-        );
+        return Collection::make([
+            ...$this->callFilesApiMethod()
+        ]);
     }
 
     /**

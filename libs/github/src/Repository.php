@@ -15,6 +15,7 @@ use App\GitHub\Common\ApiTrait;
 use App\GitHub\Common\InteractWithApiInterface;
 use Github\Client;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 use Illuminate\Support\LazyCollection;
 
@@ -57,9 +58,9 @@ final class Repository implements InteractWithApiInterface, RepositoryInterface,
      */
     public function getBranches(): Enumerable
     {
-        return LazyCollection::make(
-            $this->callBranchesApiMethod()
-        );
+        return Collection::make([
+            ...$this->callBranchesApiMethod()
+        ]);
     }
 
     /**
