@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5937d4e075fe6eb220f9cbf07b0353b1",
+    "content-hash": "af9b15adbf0d512ec8bc95bf74706b37",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -2883,16 +2883,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7"
+                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3e4a35d756eedc67096f30240a68a3149120dae7",
-                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
+                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
                 "shasum": ""
             },
             "require": {
@@ -2923,7 +2923,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.10.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.11.0"
             },
             "funding": [
                 {
@@ -2935,7 +2935,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-11T12:49:04+00:00"
+            "time": "2022-04-17T13:12:02+00:00"
         },
         {
             "name": "local/content-renderer",
@@ -2943,9 +2943,10 @@
             "dist": {
                 "type": "path",
                 "url": "libs/content-renderer",
-                "reference": "309b59451474d4df5918c194036336bb28516047"
+                "reference": "aa18d172bf547927dcb476bc9565f9bf84e3ca36"
             },
             "require": {
+                "ext-simplexml": "*",
                 "league/commonmark": "^2.3",
                 "php": "^8.1",
                 "spatie/commonmark-highlighter": "^3.0"
@@ -2954,6 +2955,12 @@
                 "phpunit/phpunit": "^9.5"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev",
+                    "dev-main": "1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "App\\ContentRenderer\\": "src"
@@ -2987,7 +2994,7 @@
             "dist": {
                 "type": "path",
                 "url": "libs/github",
-                "reference": "8d8a0d3db568f73081484c4066a37cdebaa6b5ce"
+                "reference": "32f28750196c7fab17f2ea1cff55108d0f59a401"
             },
             "require": {
                 "illuminate/support": "^8.0|^9.0",
@@ -3001,6 +3008,12 @@
                 "phpunit/phpunit": "^9.5"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev",
+                    "dev-main": "1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "App\\GitHub\\": "src"
@@ -3021,6 +3034,52 @@
                 }
             ],
             "description": "Simple GitHub integration library",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "local/markdown-info",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "libs/markdown-info",
+                "reference": "d305218194504061cac63c89c8b8d7ef567f0293"
+            },
+            "require": {
+                "league/commonmark": "^2.3",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev",
+                    "dev-main": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "App\\MarkdownInfo\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "App\\MarkdownInfo\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirill Nesmeyanov",
+                    "email": "nesk@xakep.ru"
+                }
+            ],
+            "description": "Markdown info reader",
             "transport-options": {
                 "relative": true
             }
