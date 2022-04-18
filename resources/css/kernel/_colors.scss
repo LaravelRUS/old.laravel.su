@@ -61,7 +61,7 @@ $color-disabled-filled-text:   $color-extra-light-silver;  // Text outside disab
 //
 $color-main: $color-red !default;
 $color-main-hover: lighten($color-red, 2%) !default;
-$color-main-text: desaturate(darken($color-red, 5%), 15%) !default;
+$color-main-text: desaturate(darken($color-red, 10%), 20%) !default;
 
 //
 // Color for "danger" elements, like "Alert Label"

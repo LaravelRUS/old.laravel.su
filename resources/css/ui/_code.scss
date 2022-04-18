@@ -6,17 +6,15 @@ pre, code {
 }
 
 code {
-    background: #fff;
+    background: $color-white;
     border-radius: 3px;
     padding: 2px 6px;
     box-sizing: border-box;
     line-height: $ui-min-height;
     height: $ui-min-height;
-    box-shadow: 0 2px 5px rgba($color-text, .2);
 }
 
 pre > code {
-    background: #fff;
     display: block;
     white-space: pre;
     padding: 20px 30px;
@@ -24,6 +22,7 @@ pre > code {
     border-radius: 6px;
     line-height: $font-size + 8px;
     text-shadow: 0 0 1px rgba($color-text, .1);
+    box-shadow: 0 2px 5px rgba($color-text, .2);
 }
 
 .hljs {

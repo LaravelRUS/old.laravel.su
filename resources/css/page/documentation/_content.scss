@@ -92,20 +92,38 @@ ul {
     }
 }
 
-h2 {
+.anchor {
+    position: relative;
+    top: -50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
     a {
-        &:before {
-            content: "#";
-            color: $color-description;
-            margin-right: .25rem;
-        }
+        position: relative;
+        color: inherit;
+        text-decoration: none;
     }
 }
 
-h3, h4 {
+h1, h2 {
     a {
-        text-decoration: none;
-        color: inherit;
+        &:before {
+            position: absolute;
+            content: "#";
+            color: $color-description;
+            left: -2rem;
+            font-weight: 100;
+            transition: .2s ease;
+            opacity: .2;
+            transform-origin: 50% 50%;
+            transform: scale(.7);
+        }
+
+        &:hover:before {
+            color: $color-main;
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 }
 
@@ -114,6 +132,34 @@ pre {
 
     & > code {
         box-shadow: 0 0 0 2px $color-border;
+        overflow: auto;
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-corner {
+            width: 4px;
+            height: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color-main, .9);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+    }
+}
+
+& > p > code {
+    color: $color-extra-light-black;
+    background: $color-extra-light-gray;
+}
+
+.collection-method {
+    color: $color-main-text;
+    font-weight: normal;
+    code {
+        box-shadow: none;
     }
 }
 
