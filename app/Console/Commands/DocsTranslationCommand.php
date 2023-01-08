@@ -1,12 +1,5 @@
 <?php
 
-/**
- * This file is part of laravel.su package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace App\Console\Commands;
@@ -58,7 +51,7 @@ abstract class DocsTranslationCommand extends Command
     public function __construct(Client $client, EntityManagerInterface $em, Config $config)
     {
         parent::__construct();
-        
+
         \ini_set('memory_limit', -1);
 
         $this->em = $em;
