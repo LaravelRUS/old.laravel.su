@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 WORKDIR "/home/forge/laravel.su"
 
@@ -17,7 +17,6 @@ RUN apt-get update \
       unzip \
       git \
       curl
-
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | \
