@@ -87,8 +87,7 @@ jobs:
           max_attempts: 5
           command: composer update --prefer-dist --no-interaction --no-progress
       - name: Static Analysis
-        continue-on-error: true
-        run: vendor/bin/psalm --no-cache
+        run: vendor/bin/psalm --no-cache --show-info=true
 
   unit-tests:
     name: Unit Tests (${{matrix.php}})
