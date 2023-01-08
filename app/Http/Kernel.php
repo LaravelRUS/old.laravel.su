@@ -29,8 +29,8 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            // \Illuminate\Session\Middleware\StartSession::class,
+            // \App\Http\Middleware\VerifyCsrfToken::class,
         ],
 
         'api' => [
