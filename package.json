@@ -10,19 +10,19 @@
     "production": "mix --production"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
+    "cross-env": "^7.0",
     "laravel-mix": "^6.0",
     "laravel-mix-purgecss": "^6.0",
-    "mini-css-extract-plugin": "^2.6",
-    "node-sass": "^7.0",
+    "mini-css-extract-plugin": "^2.7",
+    "node-sass": "^8.0",
     "resolve-url-loader": "^5.0",
     "sass": "^1.50",
-    "sass-loader": "^12.6",
+    "sass-loader": "^13.2",
     "sass-resources-loader": "^2.2"
   },
   "dependencies": {
-    "@tko/build.reference": "^4.0.0-alpha9.0",
-    "axios": "^0.24",
+    "knockout": "^3.5",
+    "axios": "^1.2",
     "font-awesome": "^4.7",
     "reset-css": "^5.0"
   }

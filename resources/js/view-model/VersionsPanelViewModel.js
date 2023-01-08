@@ -1,4 +1,4 @@
-import ko from "@tko/build.reference";
+import ko from 'knockout';
 
 if (!requestAnimationFrame) {
     function requestAnimationFrame(callback) {

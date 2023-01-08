@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import ko from '@tko/build.reference';
+import ko from 'knockout';
 
 export default class Application {
     boot() {

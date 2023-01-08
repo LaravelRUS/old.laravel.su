@@ -1,5 +1,14 @@
 /*!
- * The TKO Reference Build 🥊  @tko/build.reference@4.0.0-alpha9.0
- * (c) The Knockout.js Team - https://tko.io
+ * Knockout JavaScript library v3.5.1
+ * (c) The Knockout.js team - http://knockoutjs.com/
  * License: MIT (http://www.opensource.org/licenses/mit-license.php)
  */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
