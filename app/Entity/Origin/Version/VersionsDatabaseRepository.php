@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\Entity\Origin\Version;
 
-use App\Entity\Common\Repository;
-use App\Entity\Origin;
+use App\Entity\Repository\Repository;
+use App\Entity\Origin\OriginRepository;
 use App\Entity\Origin\Version;
 use Happyr\DoctrineSpecification\Spec;
 
 /**
  * @template-extends Repository<Version>
- * @template-implements VersionsRepositoryInterface<Origin>
+ * @template-implements VersionsRepositoryInterface<OriginRepository>
  */
 class VersionsDatabaseRepository extends Repository implements VersionsRepositoryInterface
 {
     /**
      * {@inheritDoc}
      */
-    public function findAllByRepository(Origin $origin): iterable
+    public function findAllByRepository(OriginRepository $origin): iterable
     {
         return $this->match(Spec::eq('origin', $origin));
     }
@@ -26,7 +26,7 @@ class VersionsDatabaseRepository extends Repository implements VersionsRepositor
     /**
      * {@inheritDoc}
      */
-    public function findByName(Origin $origin, string $name): ?Version
+    public function findByName(OriginRepository $origin, string $name): ?Version
     {
         return $this->matchOneOrNullResult(Spec::andX(
             Spec::eq('origin', $origin),
