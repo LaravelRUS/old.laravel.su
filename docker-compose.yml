@@ -45,14 +45,6 @@ services:
     networks:
       - laravel_su
 
-  mailhog:
-    image: mailhog/mailhog:latest
-    container_name: laravelsu-mailhog
-    ports:
-      - "8082:8025"
-    networks:
-      - laravel_su
-
   redis:
     image: redis:alpine
     container_name: laravelsu-redis
