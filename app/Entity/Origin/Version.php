@@ -7,7 +7,7 @@ namespace App\Entity\Origin;
 use App\Entity\BaseEntity;
 use App\Entity\Common\Timestampable;
 use App\Entity\Common\TimestampsTrait;
-use App\Entity\Origin;
+use App\Entity\Origin\OriginRepository;
 use App\Entity\Origin\Version\VersionsDatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -26,14 +26,14 @@ class Version extends BaseEntity implements Timestampable
     public iterable $documents;
 
     /**
-     * @param Origin $origin
+     * @param OriginRepository $origin
      * @param non-empty-string $name
      * @param non-empty-string $hash
      */
     public function __construct(
-        #[ORM\ManyToOne(targetEntity: Origin::class, cascade: ['persist', 'merge'], fetch: 'EAGER', inversedBy: 'versions')]
+        #[ORM\ManyToOne(targetEntity: OriginRepository::class, cascade: ['persist', 'merge'], fetch: 'EAGER', inversedBy: 'versions')]
         #[ORM\JoinColumn(name: 'repository_id', referencedColumnName: 'id')]
-        private readonly Origin $origin,
+        private readonly OriginRepository $origin,
         #[ORM\Column(name: 'name', type: 'string', length: 191)]
         private readonly string $name,
         #[ORM\Column(name: 'hash', type: 'string', length: 191)]
@@ -72,9 +72,9 @@ class Version extends BaseEntity implements Timestampable
     }
 
     /**
-     * @return Origin
+     * @return OriginRepository
      */
-    public function getRepository(): Origin
+    public function getRepository(): OriginRepository
     {
         return $this->origin;
     }

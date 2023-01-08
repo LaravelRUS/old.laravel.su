@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity\Origin;
 
-use App\Entity\Common\Repository;
-use App\Entity\Origin;
+use App\Entity\Repository\Repository;
 
 /**
- * @template-extends Repository<Origin>
+ * @template-extends Repository<OriginRepository>
  */
 class OriginRepository extends Repository
 {

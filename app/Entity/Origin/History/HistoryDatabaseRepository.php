@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Origin\History;
 
-use App\Entity\Common\Repository;
+use App\Entity\Repository\Repository;
 use App\Entity\Origin\Document;
 use App\Entity\Origin\History;
 use Happyr\DoctrineSpecification\Spec;

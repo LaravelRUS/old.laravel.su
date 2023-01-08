@@ -9,7 +9,7 @@ use Happyr\DoctrineSpecification\Repository\EntitySpecificationRepositoryTrait;
 use Illuminate\Support\Collection;
 
 /**
- * @template T
+ * @template T of object
  * @template-extends EntityRepository<T>
  */
 abstract class Repository extends EntityRepository
