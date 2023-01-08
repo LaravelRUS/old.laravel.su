@@ -23,6 +23,7 @@
         <aside class="documentation-menu" data-vm="MenuViewModel">
             {!! $menu !!}
 
+            {{--
             <nav class="extras">
                 <span>Регистрация на <a href="https://phprussia.ru/moscow/2022" target="_blank" rel="nofollow">PHPRussia 2022</a> уже открыта:</span>
                 <a href="https://phprussia.ru/moscow/2022/abstracts" target="_blank" rel="nofollow">Доклады</a>
@@ -31,6 +32,7 @@
                 <span>&middot;</span>
                 <a href="https://phprussia.ru/moscow/2022#prices" target="_blank" rel="nofollow">Цены</a>
             </nav>
+            --}}
         </aside>
 
         <article class="documentation-content">
