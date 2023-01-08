@@ -27,22 +27,7 @@ final class VersionSelector
     /**
      * @var Route|null
      */
-    private ?Route $route;
-
-    /**
-     * @var Redirector
-     */
-    private Redirector $redirector;
-
-    /**
-     * @var VersionsRepository
-     */
-    private VersionsRepository $versions;
-
-    /**
-     * @var Container
-     */
-    private Container $app;
+    private readonly ?Route $route;
 
     /**
      * VersionSelector constructor.
@@ -54,14 +39,11 @@ final class VersionSelector
      */
     public function __construct(
         Router $router,
-        Redirector $redirector,
-        VersionsRepository $versions,
-        Container $app
+        private readonly Redirector $redirector,
+        private readonly VersionsRepository $versions,
+        private readonly Container $app
     ) {
         $this->route = $router->current();
-        $this->redirector = $redirector;
-        $this->versions = $versions;
-        $this->app = $app;
     }
 
     /**
