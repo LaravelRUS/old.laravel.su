@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25333649a9a093426b094edce3408b44",
+    "content-hash": "a1ec2ab635c45631636b7b4b337b5005",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -2975,11 +2975,11 @@
         },
         {
             "name": "local/content-renderer",
-            "version": "dev-master",
+            "version": "1.0.0",
             "dist": {
                 "type": "path",
                 "url": "libs/content-renderer",
-                "reference": "026c7b6f8a5f84e178d8ee7f222dd7a27a17eedb"
+                "reference": "1c37cf80273563c4e63be0e96c4a8e4b8248dd03"
             },
             "require": {
                 "ext-simplexml": "*",
@@ -3027,11 +3027,11 @@
         },
         {
             "name": "local/github",
-            "version": "dev-master",
+            "version": "1.0.0",
             "dist": {
                 "type": "path",
                 "url": "libs/github",
-                "reference": "32f28750196c7fab17f2ea1cff55108d0f59a401"
+                "reference": "e7498ccf3d780aee9e71ede7637cb2a5a1d3a189"
             },
             "require": {
                 "illuminate/support": "^8.0|^9.0",
@@ -12304,7 +12304,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": "^8.2"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

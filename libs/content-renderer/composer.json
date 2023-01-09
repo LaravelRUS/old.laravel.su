@@ -3,6 +3,7 @@
     "license": "MIT",
     "type": "library",
     "description": "Content polymorphic renderer",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Kirill Nesmeyanov",

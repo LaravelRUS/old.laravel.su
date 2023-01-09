@@ -3,6 +3,7 @@
     "license": "MIT",
     "type": "library",
     "description": "Simple GitHub integration library",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Kirill Nesmeyanov",
