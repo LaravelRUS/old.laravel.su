@@ -39,6 +39,7 @@ final class Result implements ResultInterface
     public function getHeadings(): iterable
     {
         if ($this->initial !== null) {
+            /** @psalm-suppress InaccessibleProperty : Readonly property lazy initialization */
             $this->navigation = \iterator_to_array($this->initial, false);
             $this->initial = null;
         }
@@ -57,7 +58,7 @@ final class Result implements ResultInterface
     /**
      * {@inheritDoc}
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getContents();
     }

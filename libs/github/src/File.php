@@ -9,13 +9,14 @@ use App\GitHub\Common\InteractWithApiInterface;
 use Github\HttpClient\Message\ResponseMediator;
 use Http\Client\Exception;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
-use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * @template-implements Arrayable<non-empty-string, mixed>
+ */
 class File extends \SplFileInfo implements InteractWithApiInterface, FileInterface, Arrayable
 {
     use ApiTrait;
@@ -108,7 +109,7 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
     }
 
     /**
-     * @return array
+     * {@inheritDoc}
      */
     public function toArray(): array
     {
@@ -181,7 +182,7 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
     }
 
     /**
-     * @return Enumerable
+     * @return Enumerable<array-key, mixed>
      * @throws Exception
      */
     public function getHistory(): Enumerable
@@ -190,14 +191,14 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
     }
 
     /**
-     * @return \Generator
+     * @return \Generator<array-key, mixed>
      * @throws Exception
      */
     private function callApiGetCommitsMethod(): \Generator
     {
         $repository = $this->branch->getRepository();
 
-        $next = $page = 1;
+        $next = 1;
 
         do {
             $response = $this->client->getHttpClient()
@@ -239,9 +240,9 @@ class File extends \SplFileInfo implements InteractWithApiInterface, FileInterfa
         ]);
 
         return $uri . '?' . \http_build_query([
-                'sha'  => $this->branch->getCommit(),
-                'path' => $this->getPathname(),
-                'page' => $page,
-            ]);
+            'sha'  => $this->branch->getCommit(),
+            'path' => $this->getPathname(),
+            'page' => $page,
+        ]);
     }
 }

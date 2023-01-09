@@ -9,6 +9,7 @@ use App\Entity\Common\Timestampable;
 use App\Entity\Common\TimestampsTrait;
 use App\Entity\Origin\Document\DocumentsDatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DocumentsDatabaseRepository::class)]
@@ -19,11 +20,11 @@ class Document extends BaseEntity implements Timestampable
     use TimestampsTrait;
 
     /**
-     * @var list<History>
+     * @var Collection<array-key, History>
      */
     #[ORM\OneToMany(mappedBy: 'document', targetEntity: History::class, cascade: ['persist', 'merge'])]
     #[ORM\OrderBy(['committedAt' => 'desc'])]
-    public iterable $history;
+    public Collection $history;
 
     /**
      * @param Version $version
@@ -70,9 +71,9 @@ class Document extends BaseEntity implements Timestampable
     }
 
     /**
-     * @return list<History>
+     * @return Collection<array-key, History>
      */
-    public function getHistory(): iterable
+    public function getHistory(): Collection
     {
         return $this->history;
     }

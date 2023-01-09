@@ -10,6 +10,7 @@ use App\Entity\Common\TimestampsTrait;
 use App\Entity\Origin\OriginRepository;
 use App\Entity\Origin\Version\VersionsDatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VersionsDatabaseRepository::class)]
@@ -20,10 +21,10 @@ class Version extends BaseEntity implements Timestampable
     use TimestampsTrait;
 
     /**
-     * @var list<Document>
+     * @var Collection<array-key, Document>
      */
     #[ORM\OneToMany(mappedBy: 'version', targetEntity: Document::class, cascade: ['persist', 'merge'])]
-    public iterable $documents;
+    public Collection $documents;
 
     /**
      * @param OriginRepository $origin
@@ -80,9 +81,9 @@ class Version extends BaseEntity implements Timestampable
     }
 
     /**
-     * @return list<Document>
+     * @return Collection<array-key, Document>
      */
-    public function getDocuments(): iterable
+    public function getDocuments(): Collection
     {
         return $this->documents;
     }

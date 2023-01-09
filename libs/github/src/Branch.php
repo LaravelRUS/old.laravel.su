@@ -9,8 +9,10 @@ use App\GitHub\Common\InteractWithApiInterface;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
-use Illuminate\Support\LazyCollection;
 
+/**
+ * @template-implements Arrayable<non-empty-string, mixed>
+ */
 final class Branch implements InteractWithApiInterface, BranchInterface, Arrayable
 {
     use ApiTrait;
@@ -109,7 +111,7 @@ final class Branch implements InteractWithApiInterface, BranchInterface, Arrayab
     }
 
     /**
-     * @return array
+     * {@inheritDoc}
      */
     public function toArray(): array
     {

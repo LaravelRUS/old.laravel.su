@@ -17,7 +17,7 @@ abstract class Repository extends EntityRepository
     use EntitySpecificationRepositoryTrait;
 
     /**
-     * @return Collection<array-key, T>
+     * @return Collection<int<0, max>, T>
      */
     public function all(): Collection
     {

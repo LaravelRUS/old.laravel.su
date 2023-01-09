@@ -12,7 +12,7 @@
         {"type": "path", "url": "libs/github"}
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "local/github": "*",
         "local/content-renderer": "*",
         "beberlei/doctrineextensions": "^1.3",
@@ -74,6 +74,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
+        "psalm": "psalm --no-cache",
         "phpcs": "phpcs --standard=PSR12 --colors --encoding=utf-8 --extensions=php app src tests -p",
         "phpcbf": "phpcbf -s --colors --standard=PSR12 --encoding=utf-8 --extensions=php app src tests"
     },

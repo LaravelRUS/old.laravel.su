@@ -66,11 +66,11 @@ class Documentation extends BaseEntity implements \Stringable
      */
     public function getKeywords(): array
     {
-        return [
+        return \array_filter([
             ...\preg_split('/\W+/u', $this->urn),
             $this->title,
             'Laravel ' . $this->version->name
-        ];
+        ]);
     }
 
     /**

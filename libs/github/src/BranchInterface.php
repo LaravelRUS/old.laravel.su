@@ -24,7 +24,7 @@ interface BranchInterface extends SyncableInterface
     public function getCommit(): string;
 
     /**
-     * @return Enumerable<FileInterface>
+     * @return Enumerable<array-key, FileInterface>
      */
     public function getFiles(): Enumerable;
 }

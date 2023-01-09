@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace App\ContentRenderer\Renderer;
 
 use App\ContentRenderer\ContentRendererInterface;
-use App\ContentRenderer\Event\Rendered;
-use App\ContentRenderer\Event\Rendering;
 use App\ContentRenderer\Result;
 use App\ContentRenderer\Result\Heading;
 use App\ContentRenderer\ResultInterface;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherInterface;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading as HeadingNode;
 use League\CommonMark\Extension\CommonMark\Node\Block\HtmlBlock;
@@ -88,6 +85,8 @@ abstract class Renderer implements ContentRendererInterface
     /**
      * @param Node $node
      * @return string
+     *
+     * @psalm-suppress UndefinedMethod
      */
     private function text(Node $node): string
     {

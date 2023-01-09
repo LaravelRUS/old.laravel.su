@@ -32,15 +32,15 @@ final class NormalizeAnchors implements ExtensionInterface
         $document = $e->getDocument();
 
         $document->replaceChildren([
-            ...$this->unwrapAnchors($document->children()),
+            ...$this->unwrapAnchors([...$document->children()]),
         ]);
     }
 
     /**
-     * @param iterable<Node> $nodes
+     * @param array<Node> $nodes
      * @return iterable<Node>
      */
-    private function unwrapAnchors(iterable $nodes): iterable
+    private function unwrapAnchors(array $nodes): iterable
     {
         foreach ($nodes as $i => $anchor) {
             // Ignore non-paragraph nodes
