@@ -5,7 +5,7 @@ return [
     'dsn' => env('SENTRY_LARAVEL_DSN', env('SENTRY_DSN')),
 
     // capture release as git sha
-    'release' => trim(exec('git name-rev --name-only HEAD')),
+    'release' => trim(exec('git describe --tags')),
 
     'breadcrumbs' => [
         // Capture Laravel logs in breadcrumbs
