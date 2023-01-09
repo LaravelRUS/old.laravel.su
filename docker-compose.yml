@@ -24,30 +24,24 @@ services:
       - .:/home/forge/laravel.su
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/local.ini
     depends_on:
-      - mysql
-      - redis
+      - postgres
     networks:
       - laravel_su
 
-  mysql:
-    image: mariadb:10.1
-    container_name: laravelsu-mysql
-    working_dir: /home/forge/laravel.su
+  postgres:
+    image: postgres:15.1
+    container_name: laravelsu-postgres
+    env_file:
+      - .env
     volumes:
-      - ./docker/data/mysql:/var/lib/mysql
+      - postgres:/var/lib/postgresql/data
+      - ./docker/data/postgres:/home/db
     environment:
-      - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=laravelsu
-      - MYSQL_USER=mysql_user
-      - MYSQL_PASSWORD=mysql_password
+      - q=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - "8081:3306"
-    networks:
-      - laravel_su
-
-  redis:
-    image: redis:alpine
-    container_name: laravelsu-redis
+      - "5432:5432"
     networks:
       - laravel_su
 
@@ -56,3 +50,5 @@ networks:
     name: laravel_su
     driver: bridge
 
+volumes:
+  postgres:
