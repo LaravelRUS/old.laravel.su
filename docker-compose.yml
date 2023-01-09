@@ -37,7 +37,7 @@ services:
       - postgres:/var/lib/postgresql/data
       - ./docker/data/postgres:/home/db
     environment:
-      - q=${DB_DATABASE}
+      - POSTGRES_DB=${DB_DATABASE}
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
