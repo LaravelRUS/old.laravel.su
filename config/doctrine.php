@@ -32,7 +32,7 @@ return [
         'default' => [
             'dev'        => env('APP_DEBUG', false),
             'meta'       => env('DOCTRINE_METADATA', 'attributes'),
-            'connection' => env('DB_CONNECTION', 'mysql'),
+            'connection' => env('DB_CONNECTION', 'default'),
             'namespaces' => [],
             'paths'      => [
                 \app_path('Entity'),
@@ -155,34 +155,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'custom_numeric_functions' => [
-        'acos'      => Query\Mysql\Acos::class,
-        'asin'      => Query\Mysql\Asin::class,
-        'atan2'     => Query\Mysql\Atan2::class,
-        'atan'      => Query\Mysql\Atan::class,
-        'bit_count' => Query\Mysql\BitCount::class,
-        'bit_xor'   => Query\Mysql\BitXor::class,
-        'ceil'      => Query\Mysql\Ceil::class,
-        'cos'       => Query\Mysql\Cos::class,
-        'cot'       => Query\Mysql\Cot::class,
-        'degrees'   => Query\Mysql\Degrees::class,
-        'exp'       => Query\Mysql\Exp::class,
-        'floor'     => Query\Mysql\Floor::class,
-        'log'       => Query\Mysql\Log::class,
-        'log10'     => Query\Mysql\Log10::class,
-        'log2'      => Query\Mysql\Log2::class,
-        'pi'        => Query\Mysql\Pi::class,
-        'power'     => Query\Mysql\Power::class,
-        'quarter'   => Query\Mysql\Quarter::class,
-        'radians'   => Query\Mysql\Radians::class,
-        'rand'      => Query\Mysql\Rand::class,
-        'round'     => Query\Mysql\Round::class,
-        'stddev'    => Query\Mysql\StdDev::class,
-        'sin'       => Query\Mysql\Sin::class,
-        'std'       => Query\Mysql\Std::class,
-        'tan'       => Query\Mysql\Tan::class,
-        'variance'  => Query\Mysql\Variance::class,
-    ],
+    'custom_numeric_functions' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -197,9 +170,7 @@ return [
     | Register custom hydrators
     |--------------------------------------------------------------------------
     */
-    'custom_hydration_modes'  => [
-        // e.g. 'hydrationModeName' => MyHydrator::class,
-    ],
+    'custom_hydration_modes'  => [],
 
     /*
     |--------------------------------------------------------------------------

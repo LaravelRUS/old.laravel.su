@@ -30,7 +30,7 @@ abstract class FeatureTestCase extends TestCase
      * @var array<non-empty-string>
      */
     protected array $connectionsToTransact = [
-        'mysql',
+        'default',
     ];
 
     /**
