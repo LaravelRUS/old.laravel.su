@@ -9,7 +9,7 @@ use App\ContentRenderer\FactoryInterface;
 use App\ContentRenderer\Type;
 use App\Domain\Documentation\Documentation;
 use App\Domain\Shared\Listener;
-use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
 class DocumentationContentRenderer extends Listener
@@ -44,7 +44,7 @@ class DocumentationContentRenderer extends Listener
         return $version->menuPage === $entity->urn;
     }
 
-    public function prePersist(LifecycleEventArgs $e): void
+    public function prePersist(PrePersistEventArgs $e): void
     {
         $this->on($e, Documentation::class, function (Documentation $entity): void {
             $entity->translation->renderWithVersion(

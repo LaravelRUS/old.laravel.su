@@ -12,10 +12,6 @@ use Doctrine\Persistence\Event\LifecycleEventArgs;
  */
 abstract class Listener
 {
-    /**
-     * @param LifecycleEventArgs $e
-     * @return void
-     */
     protected function save(LifecycleEventArgs $e): void
     {
         $em = $e->getObjectManager();
@@ -29,10 +25,10 @@ abstract class Listener
     }
 
     /**
-     * @param LifecycleEventArgs $e
-     * @param string $entity
-     * @param \Closure $cb
-     * @return $this
+     * @template TExpectedObject of object
+     *
+     * @param class-string<TExpectedObject> $entity
+     * @param \Closure(TExpectedObject):void $cb
      */
     protected function on(LifecycleEventArgs $e, string $entity, \Closure $cb): self
     {
