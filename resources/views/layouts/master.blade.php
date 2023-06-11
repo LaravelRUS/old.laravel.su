@@ -18,7 +18,8 @@
     <link href="{{ mix('assets/app.css') }}" rel="stylesheet" />
 
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,400i,700,700i&display=swap&subset=cyrillic"
+          media="print" onload="this.media='all'" rel="stylesheet" />
 </head>
 <body>
     <main id="app" class="@yield('layout-class')">
