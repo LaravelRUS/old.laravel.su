@@ -26,12 +26,12 @@ return new class extends Migration
             $table->unsignedInteger('author_id')
                 ->unsigned()
                 ->index();
-            $table->timestamp('published_at')
+            $table->dateTimeTz('published_at')
                 ->nullable()
                 ->index();
-            $table->timestamp('created_at')
+            $table->dateTimeTz('created_at')
                 ->useCurrent();
-            $table->timestamp('updated_at')
+            $table->dateTimeTz('updated_at')
                 ->nullable();
             $table->softDeletes();
         });

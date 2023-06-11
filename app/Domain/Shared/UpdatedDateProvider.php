@@ -16,7 +16,7 @@ trait UpdatedDateProvider
     /**
      * @var \DateTimeImmutable|null
      */
-    #[ORM\Column(name: 'updated_at', type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(name: 'updated_at', type: 'datetimetz_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function updatedAt(): \DateTimeImmutable|null

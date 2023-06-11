@@ -28,9 +28,9 @@ return new class extends Migration
             $table->boolean('is_documented')
                 ->comment('Marks that documentation version is available')
                 ->default(false);
-            $table->timestamp('created_at')
+            $table->dateTimeTz('created_at')
                 ->useCurrent();
-            $table->timestamp('updated_at')
+            $table->dateTimeTz('updated_at')
                 ->nullable();
 
             // Keys
