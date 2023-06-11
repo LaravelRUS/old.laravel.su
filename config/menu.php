@@ -3,6 +3,18 @@
 declare(strict_types=1);
 
 return [
+    'header' => [
+        'links' => [
+            'https://laravel.com/' => 'Laravel',
+            'https://laravel-idea.com' => 'Laravel IDEA',
+            'https://sleepingowladmin.ru/' => 'SleepingOwl',
+            'https://orchid.software/ru/' => 'Orchid',
+            'https://t.me/laravelrus' => 'Telegram',
+            'https://vk.com/laravel_rus' => 'VK',
+            'https://discord.gg/c8gJfed' => 'Discord',
+            'https://github.com/LaravelRUS' => 'GitHub',
+        ]
+    ],
     'footer' => [
         'nav'  => [
             'Русскоязычное комьюнити' => [
@@ -25,9 +37,9 @@ return [
             ],
         ],
         'menu' => [
-            //'#'    => 'О сайте',
             'https://github.com/LaravelRUS/chat'                => 'Правила',
             'https://github.com/LaravelRUS/laravel.su'          => 'Исходники',
+            'https://laravel-rus.sentry.io/'                    => 'Sentry',
             'https://vk.com/laravel_rus?w=app5727453_-53758340' => 'Помощь проекту',
         ],
     ],
