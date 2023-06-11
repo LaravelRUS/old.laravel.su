@@ -28,33 +28,15 @@ abstract class DocsTranslationCommand extends Command
     private const NOTICE_TRANSLATION_EXTRA_FILE =
         '<error>Skip the translation file %s, which does not correspond to the source</error>';
 
-    /**
-     * @var Repository
-     */
-    protected Repository $source;
+    protected readonly Repository $source;
 
-    /**
-     * @var Repository
-     */
-    protected Repository $translation;
+    protected readonly Repository $translation;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    protected EntityManagerInterface $em;
-
-    /**
-     * @param Client $client
-     * @param EntityManagerInterface $em
-     * @param Config $config
-     */
-    public function __construct(Client $client, EntityManagerInterface $em, Config $config)
+    public function __construct(Client $client, Config $config)
     {
         parent::__construct();
 
         \ini_set('memory_limit', -1);
-
-        $this->em = $em;
 
         $this->source = new Repository(
             $client,
@@ -71,6 +53,7 @@ abstract class DocsTranslationCommand extends Command
     }
 
     public function handle(
+        EntityManagerInterface $em,
         VersionRepositoryInterface $versions,
         DocumentationRepositoryInterface $docs,
     ): void {
@@ -79,12 +62,13 @@ abstract class DocsTranslationCommand extends Command
         //
         foreach ($this->translation->getBranches() as $branch) {
             $this->info(\sprintf('Translation %s updating', $branch->getName()));
-            $this->loadTranslations($branch, $versions, $docs);
+            $this->loadTranslations($em, $branch, $versions, $docs);
             $this->comment(\sprintf('Translation %s updated', $branch->getName()));
         }
     }
 
     private function loadTranslations(
+        EntityManagerInterface $em,
         BranchInterface $branch,
         VersionRepositoryInterface $versions,
         DocumentationRepositoryInterface $docs
@@ -133,12 +117,12 @@ abstract class DocsTranslationCommand extends Command
 
             $this->each($page, $file);
 
-            $this->em->persist($page);
-            $this->em->flush();
+            $em->persist($page);
+            $em->flush();
         }
 
         $progress->clear();
-        $this->em->flush();
+        $em->flush();
     }
 
     /**

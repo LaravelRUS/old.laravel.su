@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Application\Console\Commands;
 
 use App\Domain\Article\ArticleRepositoryInterface;
-use App\Infrastructure\Persistence\Doctrine\Repository\ArticleDatabaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Clock\ClockInterface;
 
@@ -36,24 +35,18 @@ class ArticlesTouchCommand extends Command
      */
     protected $description = 'Update articles and execute renderer';
 
-    /**
-     * @param EntityManagerInterface $em
-     */
     public function __construct(
-        private readonly EntityManagerInterface $em,
         private readonly ClockInterface $clock,
     ) {
         parent::__construct();
     }
 
-    public function handle(ArticleRepositoryInterface $repository): void
-    {
+    public function handle(
+        EntityManagerInterface $em,
+        ArticleRepositoryInterface $repository,
+    ): void {
         $articles = $repository->all();
-        $count = $articles instanceof \Countable || \is_array($articles)
-            ? \count($articles)
-            : \count([...$articles])
-        ;
-        $progress = $this->progress($count);
+        $progress = $this->progress($this->count($articles));
 
         foreach ($articles as $article) {
             $progress->setMessage($article->title . ' (' . $article->urn . ')');
@@ -64,10 +57,10 @@ class ArticlesTouchCommand extends Command
 
             $article->touch($this->clock);
 
-            $this->em->persist($article);
+            $em->persist($article);
         }
 
         $progress->clear();
-        $this->em->flush();
+        $em->flush();
     }
 }

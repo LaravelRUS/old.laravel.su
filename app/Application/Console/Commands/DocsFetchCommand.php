@@ -39,16 +39,9 @@ class DocsFetchCommand extends Command
      */
     protected $description = 'Download and update source documentation';
 
-    /**
-     * @var Repository
-     */
-    private Repository $source;
+    private readonly Repository $source;
 
-    /**
-     * @param Client $client
-     * @param EntityManagerInterface $em
-     */
-    public function __construct(Client $client, private readonly EntityManagerInterface $em)
+    public function __construct(Client $client)
     {
         parent::__construct();
 
@@ -58,6 +51,7 @@ class DocsFetchCommand extends Command
     }
 
     public function handle(
+        EntityManagerInterface $em,
         VersionRepositoryInterface $versions,
         DocumentationRepositoryInterface $docs,
     ): void {
@@ -65,7 +59,7 @@ class DocsFetchCommand extends Command
         // Синхронизируем все доступные версии из оригинальной документации.
         //
         $this->info('Versions updating');
-        $branches = \iterator_to_array($this->loadVersions($versions));
+        $branches = \iterator_to_array($this->loadVersions($em, $versions));
         $this->comment('Versions updated');
 
         //
@@ -81,7 +75,7 @@ class DocsFetchCommand extends Command
         foreach ($branches as ['branch' => $branch, 'version' => $version]) {
             $this->info(\sprintf('Source %s documentation updating', $branch->getName()));
 
-            foreach($this->loadFiles($docs, $branch, $version) as $_);
+            foreach($this->loadFiles($em, $docs, $branch, $version) as $_);
 
             $this->comment(\sprintf('Source %s documentation updated', $branch->getName()));
         }
@@ -90,7 +84,7 @@ class DocsFetchCommand extends Command
     /**
      * @return \Traversable<non-empty-string, array{branch: BranchInterface, version: Version}>
      */
-    private function loadVersions(VersionRepositoryInterface $versions): \Traversable
+    private function loadVersions(EntityManagerInterface $em, VersionRepositoryInterface $versions): \Traversable
     {
         $branches = $this->source->getBranches();
         $progress = $this->progress($branches->count());
@@ -110,12 +104,12 @@ class DocsFetchCommand extends Command
             $version = $versions->findByName($branch->getName())
                 ?? new Version($branch->getName());
 
-            $this->em->persist($version);
+            $em->persist($version);
 
             yield $branch->getName() => ['branch' => $branch, 'version' => $version];
         }
 
-        $this->em->flush();
+        $em->flush();
         $progress->clear();
     }
 
@@ -123,6 +117,7 @@ class DocsFetchCommand extends Command
      * @return \Traversable<non-empty-string, array{file: FileInterface, page: Documentation}>
      */
     private function loadFiles(
+        EntityManagerInterface $em,
         DocumentationRepositoryInterface $docs,
         BranchInterface $branch,
         Version $ver,
@@ -161,10 +156,10 @@ class DocsFetchCommand extends Command
 
             yield $file->getUrn() => ['file' => $file, 'page' => $page];
 
-            $this->em->persist($page);
+            $em->persist($page);
         }
 
-        $this->em->flush();
         $progress->clear();
+        $em->flush();
     }
 }

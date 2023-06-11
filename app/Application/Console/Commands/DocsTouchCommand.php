@@ -36,14 +36,15 @@ class DocsTouchCommand extends Command
     protected $description = 'Update documentation and execute the page renderer';
 
     public function __construct(
-        private readonly EntityManagerInterface $em,
         private readonly ClockInterface $clock,
     ) {
         parent::__construct();
     }
 
-    public function handle(VersionRepositoryInterface $versions): void
-    {
+    public function handle(
+        EntityManagerInterface $em,
+        VersionRepositoryInterface $versions
+    ): void {
         foreach ($versions->all() as $version) {
             $progress = $this->progress($version->docs->count());
 
@@ -57,10 +58,10 @@ class DocsTouchCommand extends Command
 
                 $documentation->touch($this->clock);
 
-                $this->em->persist($documentation);
+                $em->persist($documentation);
             }
 
-            $this->em->flush();
+            $em->flush();
             $progress->clear();
         }
     }
