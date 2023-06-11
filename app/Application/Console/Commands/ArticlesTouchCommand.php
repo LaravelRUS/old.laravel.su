@@ -7,6 +7,7 @@ namespace App\Application\Console\Commands;
 use App\Domain\Article\ArticleRepositoryInterface;
 use App\Infrastructure\Doctrine\Persistence\Repository\ArticleDatabaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Clock\ClockInterface;
 
 /**
  * Команда, отвечающая за перерисовку (ререндер) содержимого всех статей из
@@ -39,7 +40,8 @@ class ArticlesTouchCommand extends Command
      * @param EntityManagerInterface $em
      */
     public function __construct(
-        private readonly EntityManagerInterface $em
+        private readonly EntityManagerInterface $em,
+        private readonly ClockInterface $clock,
     ) {
         parent::__construct();
     }
@@ -47,7 +49,11 @@ class ArticlesTouchCommand extends Command
     public function handle(ArticleRepositoryInterface $repository): void
     {
         $articles = $repository->all();
-        $progress = $this->progress($articles->count());
+        $count = $articles instanceof \Countable || \is_array($articles)
+            ? \count($articles)
+            : \count([...$articles])
+        ;
+        $progress = $this->progress($count);
 
         foreach ($articles as $article) {
             $progress->setMessage($article->title . ' (' . $article->urn . ')');
@@ -55,7 +61,8 @@ class ArticlesTouchCommand extends Command
 
             // Reset rendered content
             $article->body->clear();
-            $article->touch();
+
+            $article->touch($this->clock);
 
             $this->em->persist($article);
         }

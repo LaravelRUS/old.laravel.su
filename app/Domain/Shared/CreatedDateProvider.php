@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared;
 
-use Carbon\CarbonImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Psr\Clock\ClockInterface;
 
@@ -35,11 +34,5 @@ trait CreatedDateProvider
         }
 
         $this->createdAt = clone $date;
-    }
-
-    #[ORM\PrePersist]
-    public function onPrePersistCreatedField(): void
-    {
-        $this->wasCreatedAt(CarbonImmutable::now());
     }
 }

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared;
 
-use Carbon\Carbon;
-use Carbon\CarbonImmutable;
-use Carbon\CarbonInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Psr\Clock\ClockInterface;
 
@@ -38,17 +35,5 @@ trait UpdatedDateProvider
         }
 
         $this->updatedAt = clone $now;
-    }
-
-    #[ORM\PrePersist]
-    public function onPrePersistUpdatedField(): void
-    {
-        $this->touch(CarbonImmutable::now());
-    }
-
-    #[ORM\PreUpdate]
-    public function onPreUpdateUpdatedField(): void
-    {
-        $this->touch(CarbonImmutable::now());
     }
 }

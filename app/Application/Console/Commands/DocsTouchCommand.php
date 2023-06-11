@@ -6,6 +6,7 @@ namespace App\Application\Console\Commands;
 
 use App\Domain\Documentation\VersionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Clock\ClockInterface;
 
 /**
  * Команда, отвечающая за перерисовку (ререндер) содержимого всех страниц
@@ -35,14 +36,15 @@ class DocsTouchCommand extends Command
     protected $description = 'Update documentation and execute the page renderer';
 
     public function __construct(
-        private readonly EntityManagerInterface $em
+        private readonly EntityManagerInterface $em,
+        private readonly ClockInterface $clock,
     ) {
         parent::__construct();
     }
 
     public function handle(VersionRepositoryInterface $versions): void
     {
-        foreach ($versions->findAll() as $version) {
+        foreach ($versions->all() as $version) {
             $progress = $this->progress($version->docs->count());
 
             foreach ($version->docs as $documentation) {
@@ -52,7 +54,8 @@ class DocsTouchCommand extends Command
                 // Reset rendered content
                 $documentation->translation->clear();
                 $documentation->source->clear();
-                $documentation->touch();
+
+                $documentation->touch($this->clock);
 
                 $this->em->persist($documentation);
             }
