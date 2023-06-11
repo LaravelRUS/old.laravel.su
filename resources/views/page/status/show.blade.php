@@ -21,7 +21,7 @@
 
         @include('page.status.partials.menu')
 
-        @if($current->isDocumented)
+        @if($current->isDocumented())
             <span class="translation-progress-description">Перевод показывается в меню</span>
         @else
             <span class="translation-progress-description">Перевод не показывается в меню, но доступен по прямой ссылке</span>
@@ -39,14 +39,14 @@
                 <tr class="translation-page-main">
                     <td>
                         @if ($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::MISSING)
-                            <span>{{ $page->title }}</span>
+                            <span>{{ $page->getTitle() }}</span>
                         @else
-                            <a href="https://github.com/LaravelRUS/docs/blob/{{ $current->name }}/{{ $page->urn }}.md"
-                               class="external" target="_blank" rel="nofollow">{{ $page->title }}</a>
+                            <a href="https://github.com/LaravelRUS/docs/blob/{{ $current->name }}/{{ $page->getUrn() }}.md"
+                               class="external" target="_blank" rel="nofollow">{{ $page->getTitle() }}</a>
                         @endif
 
-                        <a href="{{ route('docs.show', ['version' => $current->name, 'page' => $page->urn]) }}"
-                           class="translation-page-description">/{{$current->name}}/{{ $page->urn }}</a>
+                        <a href="{{ route('docs.show', ['version' => $current->name, 'page' => $page->getUrn()]) }}"
+                           class="translation-page-description">/{{$current->name}}/{{ $page->getUrn() }}</a>
                     </td>
                     <td class="translation-page-status">
                         @if ($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::MISSING)
@@ -55,33 +55,33 @@
                             <span class="label success">Перевод актуален</span>
                         @else
                             <span class="label notice">
-                                Перевод отстаёт на {{$page->translation->diff}}
-                                {{ trans_choice('{1} коммит|[2,4] коммита|[5,*] коммитов', $page->translation->diff) }}
+                                Перевод отстаёт на {{$page->translation->getChangesCount()}}
+                                {{ trans_choice('{1} коммит|[2,4] коммита|[5,*] коммитов', $page->translation->getChangesCount()) }}
                             </span>
                         @endif
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="translation-page-info">
-                        @if($page->translation->targetCommit)
+                        @if($page->translation->getTargetVersionId())
                             Перевод ссылается на
-                            <a href="https://github.com/laravel/docs/commit/{{ $page->translation->targetCommit }}"
+                            <a href="https://github.com/laravel/docs/commit/{{ $page->translation->getTargetVersionId() }}"
                                target="_blank" style="margin-right: 23px;">
-                                {{ $page->translation->targetCommit }}
+                                {{ $page->translation->getTargetVersionId() }}
                             </a>
                         @else
                             <hr/>
                             Файл перевода отсутствует
                         @endif
 
-                        @if($page->source->commit)
+                        @if($page->source->getVersionId())
                             <hr/>
                             Последний коммит:
-                            <a href="https://github.com/laravel/docs/commit/{{ $page->source->commit }}"
+                            <a href="https://github.com/laravel/docs/commit/{{ $page->source->getVersionId() }}"
                                target="_blank">
-                                {{ $page->source->commit }}
+                                {{ $page->source->getVersionId() }}
                             </a>
-                            <span class="copy_to_clipboard" data-clipboard-text="{{ $page->source->commit }}">
+                            <span class="copy_to_clipboard" data-clipboard-text="{{ $page->source->getVersionId() }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="clipboard_icon" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -93,14 +93,16 @@
                             Оригинальный файл не найден
                         @endif
 
-                        @if($page->translation->targetCommit AND $page->source->commit AND $page->translation->targetCommit != $page->source->commit)
+                        @if($page->translation->getTargetVersionId()
+                            && $page->source->getVersionId()
+                            && $page->translation->getTargetVersionId() !== $page->source->getVersionId())
                             <hr/>
                             Непереведённый контент:
                             <span class="diff_command">
-                                git difftool {{ substr($page->translation->targetCommit, 0, 7) }} {{ substr($page->source->commit, 0, 7) }} {{ $page->urn }}.md
+                                git difftool {{ substr($page->translation->getTargetVersionId(), 0, 7) }} {{ substr($page->source->getVersionId(), 0, 7) }} {{ $page->getUrn() }}.md
                             </span>
                             <span class="copy_to_clipboard"
-                                  data-clipboard-text="git difftool {{ substr($page->translation->targetCommit, 0, 7) }} {{ substr($page->source->commit, 0, 7) }} {{ $page->urn }}.md">
+                                  data-clipboard-text="git difftool {{ substr($page->translation->getTargetVersionId(), 0, 7) }} {{ substr($page->source->getVersionId(), 0, 7) }} {{ $page->getUrn() }}.md">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="clipboard_icon" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

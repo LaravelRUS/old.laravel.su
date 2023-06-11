@@ -12,6 +12,7 @@ use App\Domain\Shared\UpdatedDateProviderInterface;
 
 class Documentation implements
     EntityInterface,
+    VersionProviderInterface,
     CreatedDateProviderInterface,
     UpdatedDateProviderInterface,
     \Stringable
@@ -21,21 +22,21 @@ class Documentation implements
 
     private DocumentationId $id;
 
-    public Version $version;
+    private Version $version;
 
     /**
      * @var non-empty-string
      */
-    public string $urn;
+    private readonly string $urn;
 
     /**
      * @var non-empty-string
      */
     public string $title;
 
-    public Source $source;
+    public readonly Source $source;
 
-    public Translation $translation;
+    public readonly Translation $translation;
 
     /**
      * @param non-empty-string $title
@@ -47,18 +48,51 @@ class Documentation implements
         string $urn,
         DocumentationId $id = null,
     ) {
-        $this->id = $id ?? DocumentationId::fromNamespace(static::class);
+        assert($title !== '', new \InvalidArgumentException('$title cannot be empty'));
+        assert($urn !== '', new \InvalidArgumentException('$urn cannot be empty'));
 
         $this->version = $version;
-        $this->source = new Source();
-        $this->translation = new Translation();
         $this->title = $title;
         $this->urn = $urn;
+        $this->id = $id ?? DocumentationId::fromNamespace(static::class);
+        $this->source = new Source();
+        $this->translation = new Translation();
     }
 
     public function getId(): DocumentationId
     {
         return $this->id;
+    }
+
+    public function getVersion(): Version
+    {
+        return $this->version;
+    }
+
+    /**
+     * @return non-empty-string
+     */
+    public function getUrn(): string
+    {
+        return $this->urn;
+    }
+
+    /**
+     * @return non-empty-string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param non-empty-string $title
+     */
+    public function rename(string $title): void
+    {
+        assert($title !== '', new \InvalidArgumentException('$title cannot be empty'));
+
+        $this->title = $title;
     }
 
     /**

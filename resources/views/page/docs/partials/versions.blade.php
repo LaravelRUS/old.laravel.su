@@ -2,6 +2,7 @@
     /**
      * @var \Illuminate\Support\Collection|\App\Domain\Documentation\Version[] $versions
      * @var \App\Domain\Documentation\Version $version
+     * @var \Add\Domain\Documentation\Documentation $page
      */
 @endphp
 
@@ -16,13 +17,13 @@
             <span class="label title">Laravel</span>
 
             @foreach($versions as $current)
-                @continue(! $current->isDocumented && $version->name !== $current->name)
+                @continue(!$current->isDocumented() && $version->name !== $current->name)
 
                 @if($version->name === $current->name)
                     <span class="label active">{{ $current->name }}</span>
                 @else
                     <a class="label"
-                       href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
+                       href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->getUrn()]) !!}">{{ $current->name }}</a>
                 @endif
             @endforeach
         @else

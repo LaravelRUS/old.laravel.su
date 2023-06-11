@@ -49,7 +49,7 @@ class DocsTouchCommand extends Command
             $progress = $this->progress($version->docs->count());
 
             foreach ($version->docs as $documentation) {
-                $progress->setMessage($documentation->title . ' (' . $documentation->version->name . ')');
+                $progress->setMessage($documentation->getTitle() . ' (' . $version->name . ')');
                 $progress->advance();
 
                 // Reset rendered content

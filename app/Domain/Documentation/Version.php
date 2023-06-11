@@ -52,7 +52,7 @@ class Version implements
      */
     public string $menuPage = self::DEFAULT_MENU_PAGE;
 
-    public bool $isDocumented = false;
+    private bool $isDocumented = false;
 
     /**
      * @param non-empty-string $title
@@ -69,5 +69,10 @@ class Version implements
     public function getId(): VersionId
     {
         return $this->id;
+    }
+
+    public function isDocumented(): bool
+    {
+        return $this->isDocumented;
     }
 }

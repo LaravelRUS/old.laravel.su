@@ -150,7 +150,7 @@ class DocsFetchCommand extends Command
             // Если хеш коммита отличается от того, что был сохранён в базе, то
             // обновляем его оригинальное содержимое.
             //
-            if (! $page->source->isActual($file->getCommit())) {
+            if (! $page->source->isVersionedBy($file->getCommit())) {
                 $page->source->update($file->getContents(), $file->getCommit());
             }
 

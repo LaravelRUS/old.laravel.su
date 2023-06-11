@@ -9,10 +9,10 @@
 @endphp
 
 @section('title')
-    {{ $page->title }} (Laravel {{ $version->name }})
+    {{ $page->getTitle() }} (Laravel {{ $version->name }})
 @stop
 @section('description')
-    Русская документация Laravel {{ $version->name }} - {{ $page->title }}
+    Русская документация Laravel {{ $version->name }} - {{ $page->getTitle() }}
 @stop
 @section('keywords')
     {{ $page->getKeywordsString() }}

@@ -39,21 +39,21 @@ class DocumentationContentRenderer extends Listener
 
     private function isMenu(Documentation $entity): bool
     {
-        $version = $entity->version;
+        $version = $entity->getVersion();
 
-        return $version->menuPage === $entity->urn;
+        return $version->menuPage === $entity->getUrn();
     }
 
     public function prePersist(PrePersistEventArgs $e): void
     {
         $this->on($e, Documentation::class, function (Documentation $entity): void {
             $entity->translation->renderWithVersion(
-                $entity->version,
+                $entity->getVersion(),
                 $this->getRendererForTranslation($entity),
             );
 
             $entity->source->renderWithVersion(
-                $entity->version,
+                $entity->getVersion(),
                 $this->getRendererForSource($entity),
             );
         });
@@ -68,14 +68,14 @@ class DocumentationContentRenderer extends Listener
         $this->on($e, Documentation::class, function (Documentation $entity) use ($e) {
             if ($e->hasChangedField('translation.source') || ! $entity->translation->isRendered()) {
                 $entity->translation->renderWithVersion(
-                    $entity->version,
+                    $entity->getVersion(),
                     $this->getRendererForTranslation($entity),
                 );
             }
 
             if ($e->hasChangedField('content.source') || ! $entity->source->isRendered()) {
                 $entity->source->renderWithVersion(
-                    $entity->version,
+                    $entity->getVersion(),
                     $this->getRendererForSource($entity),
                 );
             }

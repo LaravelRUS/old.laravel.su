@@ -56,7 +56,7 @@ class DocsDiffCommand extends DocsTranslationCommand
 
         $history = $this->getSourceFile($file)->getHistory();
 
-        $slice = $this->search($history, $page->translation->targetCommit);
+        $slice = $this->search($history, $page->translation->getTargetVersionId());
 
         //
         // Пропускаем, если коммит указанный для перевода не является
@@ -65,12 +65,12 @@ class DocsDiffCommand extends DocsTranslationCommand
         if ($slice === null) {
             $this->writeCommitError($page, $history);
 
-            $page->translation->withDiff(-1);
+            $page->translation->markAsNonTranslated();
 
             return;
         }
 
-        $page->translation->withDiff($slice->count());
+        $page->translation->applyTranslateChanges($slice->count());
     }
 
     /**
@@ -126,11 +126,11 @@ class DocsDiffCommand extends DocsTranslationCommand
     {
         $this->line('');
 
-        $this->line(\sprintf(self::ERROR_BAD_COMMIT, $page->urn));
+        $this->line(\sprintf(self::ERROR_BAD_COMMIT, $page->getUrn()));
         $this->line('  Translation:');
-        $this->line('    - <comment>' . ($page->translation->targetCommit ?? 'unknown') . '</comment>');
+        $this->line('    - <comment>' . ($page->translation->getTargetVersionId() ?? 'unknown') . '</comment>');
 
-        if ($page->translation->targetCommit) {
+        if ($page->translation->getTargetVersionId()) {
             $this->line('  History:');
 
             foreach ($history as $commit) {

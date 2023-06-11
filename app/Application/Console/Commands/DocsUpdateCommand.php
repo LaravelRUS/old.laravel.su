@@ -43,11 +43,11 @@ class DocsUpdateCommand extends DocsTranslationCommand
         // Если хеш коммита отличается от того, что был сохранён в базе,
         // то обновляем его и содержимое переводов.
         //
-        if (! $page->translation->isActual($file->getCommit())) {
+        if (! $page->translation->isVersionedBy($file->getCommit())) {
             $page->translation->update($file->getContents(), $file->getCommit());
 
             // Обновляем заголовок
-            $page->title = $file->getTitle();
+            $page->rename($file->getTitle());
         }
     }
 }
