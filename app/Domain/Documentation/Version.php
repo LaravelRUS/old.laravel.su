@@ -11,10 +11,7 @@ use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: 'versions')]
-#[ORM\Entity]
 class Version implements
     EntityInterface,
     CreatedDateProviderInterface,
@@ -23,9 +20,6 @@ class Version implements
     use CreatedDateProvider;
     use UpdatedDateProvider;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'NONE')]
-    #[ORM\Column(name: 'id', type: VersionId::class)]
     private VersionId $id;
 
     /**
@@ -41,32 +35,23 @@ class Version implements
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'title', type: 'string', length: 191)]
     public string $name;
 
     /**
      * @var Collection<array-key, Documentation>
      */
-    #[ORM\OneToMany(mappedBy: 'version', targetEntity: Documentation::class, cascade: ['persist', 'merge'])]
-    #[ORM\JoinColumn(name: 'id', referencedColumnName: 'version_id')]
     public iterable $docs;
 
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'default_page', type: 'string', length: 191)]
     public string $defaultPage = self::DEFAULT_PAGE;
 
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'menu_page', type: 'string', length: 191)]
     public string $menuPage = self::DEFAULT_MENU_PAGE;
 
-    /**
-     * @var bool
-     */
-    #[ORM\Column(name: 'is_documented', type: 'boolean')]
     public bool $isDocumented = false;
 
     /**

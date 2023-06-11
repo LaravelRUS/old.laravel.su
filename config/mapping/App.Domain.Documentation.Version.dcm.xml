@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Documentation\Version" table="versions">
+        <id name="id" type="App\Domain\Documentation\VersionId" column="id"/>
+        <field name="name" type="string" column="title" length="191" nullable="false"/>
+        <field name="defaultPage" type="string" column="default_page" length="191" nullable="false"/>
+        <field name="menuPage" type="string" column="menu_page" length="191" nullable="false"/>
+        <field name="isDocumented" type="boolean" column="is_documented" nullable="false"/>
+        <field name="createdAt" type="datetimetz_immutable" column="created_at" nullable="false">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetimetz_immutable" column="updated_at" nullable="true"/>
+        <one-to-many field="docs" target-entity="App\Domain\Documentation\Documentation" mapped-by="version"
+                     fetch="LAZY">
+            <cascade>
+                <cascade-persist/>
+                <cascade-merge/>
+            </cascade>
+        </one-to-many>
+    </entity>
+</doctrine-mapping>

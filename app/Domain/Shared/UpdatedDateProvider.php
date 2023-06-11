@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared;
 
-use Doctrine\ORM\Mapping as ORM;
 use Psr\Clock\ClockInterface;
 
 /**
@@ -16,7 +15,6 @@ trait UpdatedDateProvider
     /**
      * @var \DateTimeImmutable|null
      */
-    #[ORM\Column(name: 'updated_at', type: 'datetimetz_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function updatedAt(): \DateTimeImmutable|null

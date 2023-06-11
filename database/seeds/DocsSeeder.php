@@ -15,24 +15,17 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class DocsSeeder extends Seeder
 {
-    /**
-     * @param Connection $conn
-     */
     public function __construct(
         private readonly Connection $conn,
     ) {
     }
 
-    /**
-     * @return Generator
-     */
     private function faker(): Generator
     {
         return Factory::create();
     }
 
     /**
-     * @return void
      * @throws \Exception
      */
     public function run(): void

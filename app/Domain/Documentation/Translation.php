@@ -4,33 +4,47 @@ declare(strict_types=1);
 
 namespace App\Domain\Documentation;
 
+use App\ContentRenderer\ContentRendererInterface;
 use App\Domain\Documentation\Translation\Status;
-use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Embeddable]
-class Translation extends Source
+class Translation extends VersionedContent
 {
-    /**
-     * @var int
-     */
     private const DIFF_NO_TRANSLATION = -1;
+
+    /**
+     * @var int<-1, max>
+     */
+    public int $diff = self::DIFF_NO_TRANSLATION;
 
     /**
      * @var non-empty-string|null
      */
-    #[ORM\Column(name: 'commit_target', type: 'string', length: 191)]
-    public ?string $targetCommit;
+    public ?string $targetCommit = null;
+
+    protected ?string $source = null;
+    protected ?string $rendered = null;
+
+    public function clear(): void
+    {
+        $this->rendered = null;
+    }
+
+    public function renderUsing(ContentRendererInterface $renderer): self
+    {
+        if ($this->source !== null) {
+            $this->rendered = (string)$renderer->render($this->source);
+        }
+
+        return $this;
+    }
+
+    public function isRendered(): bool
+    {
+        return $this->rendered !== null;
+    }
 
     /**
-     * @var int
-     */
-    #[ORM\Column(name: 'commit_diff', type: 'integer')]
-    public int $diff = self::DIFF_NO_TRANSLATION;
-
-    /**
-     * @param string|null $content
      * @param non-empty-string $commit
-     * @return $this
      */
     public function update(?string $content, string $commit): self
     {
@@ -41,9 +55,6 @@ class Translation extends Source
         return parent::update($content, $commit);
     }
 
-    /**
-     * @return Status
-     */
     public function getStatus(): Status
     {
         return match (true) {
@@ -54,10 +65,6 @@ class Translation extends Source
         };
     }
 
-    /**
-     * @param int $changes
-     * @return $this
-     */
     public function withDiff(int $changes): self
     {
         $this->diff = $changes;
@@ -65,10 +72,6 @@ class Translation extends Source
         return $this;
     }
 
-    /**
-     * @param string $content
-     * @return void
-     */
     private function updateTargetCommitFromContent(string $content): void
     {
         \preg_match('/^git ([a-z0-9]+)\n/ium', $content, $matches);
@@ -76,5 +79,10 @@ class Translation extends Source
         if (\count($matches)) {
             $this->targetCommit = $matches[1];
         }
+    }
+
+    public function __toString(): string
+    {
+        return $this->rendered ?: $this->source ?? '';
     }
 }

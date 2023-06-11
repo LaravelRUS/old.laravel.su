@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Shared;
 
-use Doctrine\ORM\Mapping as ORM;
 use Psr\Clock\ClockInterface;
 
 /**
@@ -13,9 +12,6 @@ use Psr\Clock\ClockInterface;
  */
 trait CreatedDateProvider
 {
-    #[ORM\Column(name: 'created_at', type: 'datetimetz_immutable', options: [
-        'default' => 'CURRENT_TIMESTAMP',
-    ])]
     private \DateTimeImmutable $createdAt;
 
     public function createdAt(): \DateTimeImmutable

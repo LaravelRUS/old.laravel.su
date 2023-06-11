@@ -7,17 +7,11 @@ namespace App\Domain\Article;
 use App\Domain\Shared\CreatedDateProvider;
 use App\Domain\Shared\CreatedDateProviderInterface;
 use App\Domain\Shared\EntityInterface;
-use App\Domain\Shared\IdentifiableInterface;
-use App\Domain\Shared\IdentifierInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
-use Carbon\Carbon;
-use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Support\Str;
+use Psr\Clock\ClockInterface;
 
-#[ORM\Table(name: 'articles')]
-#[ORM\Entity]
-#[ORM\HasLifecycleCallbacks]
 class Article implements
     EntityInterface,
     CreatedDateProviderInterface,
@@ -26,40 +20,23 @@ class Article implements
     use CreatedDateProvider;
     use UpdatedDateProvider;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'NONE')]
-    #[ORM\Column(name: 'id', type: ArticleId::class)]
     private ArticleId $id;
 
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'title', type: 'string')]
     public string $title;
 
     /**
      * @var non-empty-string|null
      */
-    #[ORM\Column(name: 'urn', type: 'string', nullable: true)]
     public ?string $urn = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(name: 'description', type: 'string')]
     public string $description = '';
 
-    /**
-     * @var Body
-     */
-    #[ORM\Embedded(class: Body::class, columnPrefix: 'content_')]
     public Body $body;
 
-    /**
-     * @var Carbon|null
-     */
-    #[ORM\Column(name: 'published_at', type: 'carbon', nullable: true)]
-    protected ?Carbon $publishedAt = null;
+    protected ?\DateTimeInterface $publishedAt = null;
 
     public function __construct(
         string $title,
@@ -105,13 +82,17 @@ class Article implements
         return $this;
     }
 
-    /**
-     * @param \DateTimeInterface|null $at
-     * @return $this
-     */
-    public function publish(\DateTimeInterface $at = null): self
+    public function publish(\DateTimeInterface|ClockInterface $at = null): self
     {
-        $this->publishedAt = Carbon::make($at ?? Carbon::now());
+        if ($at instanceof ClockInterface) {
+            $at = $at->now();
+        }
+
+        if ($at instanceof \DateTimeInterface && !$at instanceof \DateTimeImmutable) {
+            $at = \DateTimeImmutable::createFromMutable($at);
+        }
+
+        $this->publishedAt = $at;
 
         return $this;
     }

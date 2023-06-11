@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Documentation\Documentation" table="docs">
+        <id name="id" type="App\Domain\Documentation\DocumentationId" column="id"/>
+        <field name="urn" type="string" column="urn" length="191" nullable="false"/>
+        <field name="title" type="string" column="title" length="191" nullable="false"/>
+        <many-to-one field="version" target-entity="App\Domain\Documentation\Version" inversed-by="docs" fetch="EAGER">
+            <cascade>
+                <cascade-persist/>
+                <cascade-merge/>
+            </cascade>
+            <join-columns>
+                <join-column name="version_id" referenced-column-name="id" nullable="true"/>
+            </join-columns>
+        </many-to-one>
+        <embedded name="source" class="App\Domain\Documentation\Source" column-prefix="content_" />
+        <embedded name="translation" class="App\Domain\Documentation\Translation" column-prefix="translation_" />
+        <field name="createdAt" type="datetimetz_immutable" column="created_at" nullable="false">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetimetz_immutable" column="updated_at" nullable="true"/>
+    </entity>
+</doctrine-mapping>

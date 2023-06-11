@@ -38,11 +38,11 @@ return [
     'managers' => [
         'default' => [
             'dev'        => env('APP_DEBUG', false),
-            'meta'       => env('DOCTRINE_METADATA', 'attributes'),
+            'meta'       => env('DOCTRINE_METADATA', 'xml'),
             'connection' => env('DB_CONNECTION', 'default'),
             'namespaces' => [],
             'paths'      => [
-                \app_path('Entity'),
+                \config_path('mapping'),
             ],
             'repository' => EntityRepository::class,
             'proxies'    => [

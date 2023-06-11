@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Article\Article" table="articles">
+        <id name="id" type="App\Domain\Article\ArticleId" column="id"/>
+        <field name="title" type="string" column="title" nullable="false"/>
+        <field name="urn" type="string" column="urn" nullable="true"/>
+        <field name="description" type="string" column="description" nullable="false"/>
+        <embedded name="body" class="App\Domain\Article\Body" />
+        <field name="publishedAt" type="datetimetz_immutable" column="published_at" nullable="true"/>
+        <field name="createdAt" type="datetimetz_immutable" column="created_at" nullable="false">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetimetz_immutable" column="updated_at" nullable="true"/>
+    </entity>
+</doctrine-mapping>

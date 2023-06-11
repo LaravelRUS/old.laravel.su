@@ -9,11 +9,7 @@ use App\Domain\Shared\CreatedDateProviderInterface;
 use App\Domain\Shared\EntityInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
-use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Table(name: 'docs')]
-#[ORM\Entity]
-#[ORM\HasLifecycleCallbacks]
 class Documentation implements
     EntityInterface,
     CreatedDateProviderInterface,
@@ -23,44 +19,25 @@ class Documentation implements
     use CreatedDateProvider;
     use UpdatedDateProvider;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'NONE')]
-    #[ORM\Column(name: 'id', type: DocumentationId::class)]
     private DocumentationId $id;
 
-    /**
-     * @var Version
-     */
-    #[ORM\ManyToOne(targetEntity: Version::class, cascade: ['persist', 'merge'], fetch: 'EAGER', inversedBy: 'docs')]
-    #[ORM\JoinColumn(name: 'version_id', referencedColumnName: 'id')]
     public Version $version;
 
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'urn', type: 'string', length: 191)]
     public string $urn;
 
     /**
      * @var non-empty-string
      */
-    #[ORM\Column(name: 'title', type: 'string', length: 191)]
     public string $title;
 
-    /**
-     * @var Source
-     */
-    #[ORM\Embedded(class: Source::class, columnPrefix: 'content_')]
     public Source $source;
 
-    /**
-     * @var Translation
-     */
-    #[ORM\Embedded(class: Translation::class, columnPrefix: 'translation_')]
     public Translation $translation;
 
     /**
-     * @param Version $version
      * @param non-empty-string $title
      * @param non-empty-string $urn
      */
