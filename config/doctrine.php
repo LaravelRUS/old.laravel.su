@@ -1,10 +1,9 @@
 <?php
 
-use App\Entity\Article\Listener\OnContentRender;
+use App\Domain\Article\Listener\OnContentRender;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Events;
-use DoctrineExtensions\Query;
 use DoctrineExtensions\Types\CarbonDateTimeType;
 
 return [
@@ -57,11 +56,11 @@ return [
             'events' => [
                 'listeners'   => [
                     Events::preUpdate  => [
-                        \App\Entity\Documentation\Listener\OnContentRender::class,
+                        \App\Domain\Documentation\Listener\OnContentRender::class,
                         OnContentRender::class,
                     ],
                     Events::prePersist => [
-                        \App\Entity\Documentation\Listener\OnContentRender::class,
+                        \App\Domain\Documentation\Listener\OnContentRender::class,
                         OnContentRender::class,
                     ],
                 ],

@@ -1,8 +1,8 @@
 @php
-/**
- * @var \Illuminate\Support\Collection|\App\Entity\Version[] $versions
- * @var \App\Entity\Version $version
- */
+    /**
+     * @var \Illuminate\Support\Collection|\App\Domain\Version[] $versions
+     * @var \App\Domain\Version $version
+     */
 @endphp
 
 <section class="container versions"
@@ -21,7 +21,8 @@
                 @if($version->name === $current->name)
                     <span class="label active">{{ $current->name }}</span>
                 @else
-                    <a class="label" href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
+                    <a class="label"
+                       href="{!! route('docs.show', ['version' => $current->name, 'page' => $page->urn]) !!}">{{ $current->name }}</a>
                 @endif
             @endforeach
         @else

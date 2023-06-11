@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\View\Composers;
-use App\Http\View\Directives;
+use App\Application\Http\View\Composers;
+use App\Application\Http\View\Directives;
 
 return [
 

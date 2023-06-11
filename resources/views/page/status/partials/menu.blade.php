@@ -1,8 +1,8 @@
 @php
-/**
- * @var \App\Entity\Version $current
- * @var \App\Entity\Version[] $versions
- */
+    /**
+     * @var \App\Domain\Version $current
+     * @var \App\Domain\Version[] $versions
+     */
 @endphp
 
 <nav class="translation-progress-menu">
