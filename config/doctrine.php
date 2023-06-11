@@ -11,6 +11,8 @@ use DoctrineExtensions\Types\CarbonImmutableDateTimeTzType;
 use DoctrineExtensions\Types\CarbonImmutableDateType;
 use DoctrineExtensions\Types\CarbonImmutableTimeType;
 use DoctrineExtensions\Types\CarbonTimeType;
+use App\Domain;
+use App\Infrastructure\Doctrine\Persistence;
 
 return [
 
@@ -105,7 +107,7 @@ return [
             */
 
             'mapping_types' => [
-                //'enum' => 'string'
+                'uuid' => 'string',
             ],
         ],
     ],
@@ -154,6 +156,10 @@ return [
         'carbondate_immutable' => CarbonImmutableDateType::class,
         'carbontime_immutable' => CarbonImmutableTimeType::class,
         'carbontime' => CarbonTimeType::class,
+
+        Domain\Article\ArticleId::class => Persistence\Type\ArticleIdType::class,
+        Domain\Documentation\DocumentationId::class => Persistence\Type\DocumentationIdType::class,
+        Domain\Documentation\VersionId::class => Persistence\Type\VersionIdType::class,
     ],
 
     /*

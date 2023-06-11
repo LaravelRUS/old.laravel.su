@@ -16,15 +16,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articles', static function (Blueprint $table): void {
-            $table->increments('id');
+            $table->uuid('id')
+                ->primary();
             $table->string('title');
             $table->string('urn')
                 ->unique();
             $table->text('description');
             $table->longText('content_source');
             $table->longText('content_rendered');
-            $table->unsignedInteger('author_id')
-                ->unsigned()
+            $table->uuid('author_id')
+                ->nullable()
                 ->index();
             $table->dateTimeTz('published_at')
                 ->nullable()

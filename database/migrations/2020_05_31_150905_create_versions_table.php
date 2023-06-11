@@ -16,7 +16,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('versions', static function (Blueprint $table): void {
-            $table->increments('id');
+            $table->uuid('id')
+                ->primary();
             $table->string('title')
                 ->comment('Current version name (like "1.0")');
             $table->string('default_page')

@@ -16,8 +16,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('docs', static function (Blueprint $table): void {
-            $table->increments('id');
-            $table->unsignedInteger('version_id')
+            $table->uuid('id')
+                ->primary();
+            $table->uuid('version_id')
                 ->comment('Relation to version identifier');
             $table->string('urn')
                 ->comment('Documentation page urn (extracted from file name)');

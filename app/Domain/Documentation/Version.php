@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace App\Domain\Documentation;
 
-use App\Domain\BaseEntity;
 use App\Domain\Shared\CreatedDateProvider;
 use App\Domain\Shared\CreatedDateProviderInterface;
+use App\Domain\Shared\EntityInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
-use App\Infrastructure\Doctrine\Persistence\Repository\VersionDatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'versions')]
 #[ORM\Entity]
-class Version extends BaseEntity implements
+class Version implements
+    EntityInterface,
     CreatedDateProviderInterface,
     UpdatedDateProviderInterface
 {
     use CreatedDateProvider;
     use UpdatedDateProvider;
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(name: 'id', type: VersionId::class)]
+    private VersionId $id;
 
     /**
      * @var non-empty-string
@@ -67,9 +72,17 @@ class Version extends BaseEntity implements
     /**
      * @param non-empty-string $title
      */
-    public function __construct(string $title)
-    {
+    public function __construct(
+        string $title,
+        VersionId $id = null,
+    ) {
+        $this->id = $id ?? VersionId::fromNamespace(static::class);
         $this->name = \trim($title);
         $this->docs = new ArrayCollection();
+    }
+
+    public function getId(): VersionId
+    {
+        return $this->id;
     }
 }

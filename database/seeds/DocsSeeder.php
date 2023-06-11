@@ -1,12 +1,5 @@
 <?php
 
-/**
- * This file is part of laravel.su package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Database\Seeders;
@@ -16,6 +9,7 @@ use Faker\Generator;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -51,6 +45,7 @@ class DocsSeeder extends Seeder
             $docs = $this->conn->table('docs');
 
             $docs->insert([
+                'id' => (string)Uuid::uuid4(),
                 'version_id' => $version->id,
                 'urn' => $version->menu_page,
                 'title' => $faker->text(random_int(10, 100)),
@@ -58,6 +53,7 @@ class DocsSeeder extends Seeder
             ]);
 
             $docs->insert([
+                'id' => (string)Uuid::uuid4(),
                 'version_id' => $version->id,
                 'urn' => $version->default_page,
                 'title' => $faker->text(random_int(10, 100)),

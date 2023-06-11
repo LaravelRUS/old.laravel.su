@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Article;
 
-use App\Domain\BaseEntity;
 use App\Domain\Shared\CreatedDateProvider;
 use App\Domain\Shared\CreatedDateProviderInterface;
+use App\Domain\Shared\EntityInterface;
+use App\Domain\Shared\IdentifiableInterface;
+use App\Domain\Shared\IdentifierInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
 use Carbon\Carbon;
@@ -16,12 +18,18 @@ use Illuminate\Support\Str;
 #[ORM\Table(name: 'articles')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Article extends BaseEntity implements
+class Article implements
+    EntityInterface,
     CreatedDateProviderInterface,
     UpdatedDateProviderInterface
 {
     use CreatedDateProvider;
     use UpdatedDateProvider;
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(name: 'id', type: ArticleId::class)]
+    private ArticleId $id;
 
     /**
      * @var non-empty-string
@@ -53,14 +61,20 @@ class Article extends BaseEntity implements
     #[ORM\Column(name: 'published_at', type: 'carbon', nullable: true)]
     protected ?Carbon $publishedAt = null;
 
-    /**
-     * @param string $title
-     * @param Body $body
-     */
-    public function __construct(string $title, Body $body)
-    {
+    public function __construct(
+        string $title,
+        Body $body,
+        ArticleId $id = null,
+    ) {
+        $this->id = $id ?? ArticleId::fromNamespace(static::class);
+
         $this->rename($title);
         $this->body = $body;
+    }
+
+    public function getId(): ArticleId
+    {
+        return $this->id;
     }
 
     /**

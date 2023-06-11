@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Domain\Documentation;
 
-use App\Domain\BaseEntity;
 use App\Domain\Shared\CreatedDateProvider;
 use App\Domain\Shared\CreatedDateProviderInterface;
+use App\Domain\Shared\EntityInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,13 +14,19 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: 'docs')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Documentation extends BaseEntity implements
+class Documentation implements
+    EntityInterface,
     CreatedDateProviderInterface,
     UpdatedDateProviderInterface,
     \Stringable
 {
     use CreatedDateProvider;
     use UpdatedDateProvider;
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(name: 'id', type: DocumentationId::class)]
+    private DocumentationId $id;
 
     /**
      * @var Version
@@ -58,14 +64,24 @@ class Documentation extends BaseEntity implements
      * @param non-empty-string $title
      * @param non-empty-string $urn
      */
-    public function __construct(Version $version, string $title, string $urn)
-    {
-        $this->version = $version;
+    public function __construct(
+        Version $version,
+        string $title,
+        string $urn,
+        DocumentationId $id = null,
+    ) {
+        $this->id = $id ?? DocumentationId::fromNamespace(static::class);
 
+        $this->version = $version;
         $this->source = new Source();
         $this->translation = new Translation();
         $this->title = $title;
         $this->urn = $urn;
+    }
+
+    public function getId(): DocumentationId
+    {
+        return $this->id;
     }
 
     /**
