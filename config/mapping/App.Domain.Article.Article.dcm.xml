@@ -8,7 +8,7 @@
         <field name="title" type="string" column="title" nullable="false"/>
         <field name="urn" type="string" column="urn" nullable="true"/>
         <field name="description" type="string" column="description" nullable="false"/>
-        <embedded name="body" class="App\Domain\Article\Body" />
+        <embedded name="body" class="App\Domain\Article\Body" column-prefix="content_" />
         <field name="publishedAt" type="datetimetz_immutable" column="published_at" nullable="true"/>
         <field name="createdAt" type="datetimetz_immutable" column="created_at" nullable="false">
             <options>
