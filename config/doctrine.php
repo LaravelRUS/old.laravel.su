@@ -221,7 +221,7 @@ return [
     */
 
     'cache' => [
-        'second_level' => false,
+        'second_level' => true,
         'default'      => env('DOCTRINE_CACHE', 'array'),
         'namespace'    => null,
         'metadata'     => [
