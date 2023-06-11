@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Doctrine\Persistence\Repository;
+namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\Documentation\Version;
 use App\Domain\Documentation\VersionRepositoryInterface;

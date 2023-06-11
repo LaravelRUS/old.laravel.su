@@ -15,7 +15,7 @@ final readonly class StatusController
 {
     public function __construct(
         private ViewFactoryInterface $views,
-        private VersionRepositoryInterface $versions
+        private VersionRepositoryInterface $versions,
     ) {
     }
 

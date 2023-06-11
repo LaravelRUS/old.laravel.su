@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Concerns;
 
-use App\Infrastructure\Doctrine\Persistence\Repository\VersionRepository;
+use App\Infrastructure\Persistence\Doctrine\Repository\VersionRepository;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
 

@@ -12,7 +12,7 @@ use DoctrineExtensions\Types\CarbonImmutableDateType;
 use DoctrineExtensions\Types\CarbonImmutableTimeType;
 use DoctrineExtensions\Types\CarbonTimeType;
 use App\Domain;
-use App\Infrastructure\Doctrine\Persistence;
+use App\Infrastructure\Persistence;
 
 return [
 
@@ -64,15 +64,15 @@ return [
             'events' => [
                 'listeners'   => [
                     Events::preUpdate  => [
-                        \App\Infrastructure\Doctrine\Listener\DocumentationContentRenderer::class,
-                        \App\Infrastructure\Doctrine\Listener\ArticleContentRenderer::class,
-                        \App\Infrastructure\Doctrine\Listener\UpdatedDateSynchronizer::class,
+                        Persistence\Doctrine\Listener\DocumentationContentRenderer::class,
+                        Persistence\Doctrine\Listener\ArticleContentRenderer::class,
+                        Persistence\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                     Events::prePersist => [
-                        \App\Infrastructure\Doctrine\Listener\DocumentationContentRenderer::class,
-                        \App\Infrastructure\Doctrine\Listener\ArticleContentRenderer::class,
-                        \App\Infrastructure\Doctrine\Listener\CreatedDateSynchronizer::class,
-                        \App\Infrastructure\Doctrine\Listener\UpdatedDateSynchronizer::class,
+                        Persistence\Doctrine\Listener\DocumentationContentRenderer::class,
+                        Persistence\Doctrine\Listener\ArticleContentRenderer::class,
+                        Persistence\Doctrine\Listener\CreatedDateSynchronizer::class,
+                        Persistence\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                 ],
                 'subscribers' => [
@@ -157,9 +157,9 @@ return [
         'carbontime_immutable' => CarbonImmutableTimeType::class,
         'carbontime' => CarbonTimeType::class,
 
-        Domain\Article\ArticleId::class => Persistence\Type\ArticleIdType::class,
-        Domain\Documentation\DocumentationId::class => Persistence\Type\DocumentationIdType::class,
-        Domain\Documentation\VersionId::class => Persistence\Type\VersionIdType::class,
+        Domain\Article\ArticleId::class => Persistence\Doctrine\Type\ArticleIdType::class,
+        Domain\Documentation\DocumentationId::class => Persistence\Doctrine\Type\DocumentationIdType::class,
+        Domain\Documentation\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,
     ],
 
     /*

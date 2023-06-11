@@ -15,7 +15,7 @@ final class ArticleController
 
     public function __construct(
         private readonly ViewFactoryInterface $factory,
-        private readonly ArticleRepositoryInterface $articles
+        private readonly ArticleRepositoryInterface $articles,
     ) {
     }
 

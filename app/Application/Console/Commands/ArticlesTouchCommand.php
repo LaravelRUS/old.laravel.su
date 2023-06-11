@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Application\Console\Commands;
 
 use App\Domain\Article\ArticleRepositoryInterface;
-use App\Infrastructure\Doctrine\Persistence\Repository\ArticleDatabaseRepository;
+use App\Infrastructure\Persistence\Doctrine\Repository\ArticleDatabaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Clock\ClockInterface;
 

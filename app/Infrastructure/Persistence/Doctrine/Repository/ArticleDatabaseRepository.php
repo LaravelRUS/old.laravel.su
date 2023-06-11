@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Doctrine\Persistence\Repository;
+namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\Article\Article;
 use App\Domain\Article\ArticleRepositoryInterface;

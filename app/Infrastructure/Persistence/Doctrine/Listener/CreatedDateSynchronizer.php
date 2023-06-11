@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Doctrine\Listener;
+namespace App\Infrastructure\Persistence\Doctrine\Listener;
 
 use App\Domain\Shared\CreatedDateProviderInterface;
 use Doctrine\Persistence\Event\LifecycleEventArgs;

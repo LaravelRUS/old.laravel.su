@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Doctrine\Listener;
+namespace App\Infrastructure\Persistence\Doctrine\Listener;
 
 use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\FactoryInterface;
