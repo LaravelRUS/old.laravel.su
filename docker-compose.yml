@@ -10,7 +10,7 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./docker/data/logs/nginx:/var/log/nginx/
     ports:
-      - "8080:80"
+      - "${LARAVEL_SU_HTTP_PUBLIC_PORT:-80}:80"
     depends_on:
       - php
     networks:
@@ -31,17 +31,15 @@ services:
   postgres:
     image: postgres:15.1
     container_name: laravelsu-postgres
-    env_file:
-      - .env
     volumes:
       - postgres:/var/lib/postgresql/data
       - ./docker/data/postgres:/home/db
     environment:
-      - POSTGRES_DB=${DB_DATABASE}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE:-laravelsu}
+      - POSTGRES_USER=${DB_USERNAME:-user}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-password}
     ports:
-      - "5432:5432"
+      - "${LARAVEL_SU_DATABASE_PUBLIC_PORT:-5432}:5432"
     networks:
       - laravel_su
 
