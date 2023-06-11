@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Domain\Documentation;
 
 use App\ContentRenderer\ContentRendererInterface;
-use App\Domain\Version;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Embeddable]

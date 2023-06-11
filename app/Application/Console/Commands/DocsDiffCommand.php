@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Documentation;
+use App\Domain\Documentation\Documentation;
 use App\GitHub\BranchInterface;
 use App\GitHub\FileInterface;
 use Illuminate\Support\Enumerable;

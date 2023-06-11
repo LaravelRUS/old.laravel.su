@@ -1,7 +1,7 @@
 @php
     /**
-     * @var \Illuminate\Support\Collection|\App\Domain\Version[] $versions
-     * @var \App\Domain\Version $version
+     * @var \Illuminate\Support\Collection|\App\Domain\Documentation\Version[] $versions
+     * @var \App\Domain\Documentation\Version $version
      */
 @endphp
 

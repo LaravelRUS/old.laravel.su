@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\Http\Middleware;
 
-use App\Domain\Repository\VersionsRepository;
-use App\Domain\Version;
+use App\Domain\Documentation\Version;
+use App\Domain\Documentation\VersionRepositoryInterface;
 use Happyr\DoctrineSpecification\Exception\NoResultException;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\Request;
@@ -17,39 +17,23 @@ use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 final class VersionSelector
 {
-    /**
-     * @var string
-     */
     private const ERROR_NO_VERSION =
         'Can not find an actual framework version. ' .
         'Make sure all migrations/seeders are done correctly.';
 
-    /**
-     * @var Route|null
-     */
     private readonly ?Route $route;
 
-    /**
-     * VersionSelector constructor.
-     *
-     * @param Router $router
-     * @param Redirector $redirector
-     * @param VersionsRepository $versions
-     * @param Container $app
-     */
     public function __construct(
         Router $router,
         private readonly Redirector $redirector,
-        private readonly VersionsRepository $versions,
-        private readonly Container $app
+        private readonly VersionRepositoryInterface $versions,
+        private readonly Container $app,
     ) {
         $this->route = $router->current();
     }
 
     /**
-     * @param Request $request
-     * @param \Closure $then
-     * @return Response
+     * @param \Closure(Request):Response $then
      */
     public function handle(Request $request, \Closure $then): Response
     {
@@ -62,8 +46,7 @@ final class VersionSelector
     }
 
     /**
-     * @param \Closure $then
-     * @return Response
+     * @param \Closure(Version):Response $then
      */
     private function detectVersionOr(\Closure $then): Response
     {
@@ -84,14 +67,10 @@ final class VersionSelector
         return $then($version);
     }
 
-    /**
-     * @param string|null $version
-     * @return Version
-     */
     private function getVersion(?string $version): Version
     {
         try {
-            if ($version === null) {
+            if ($version === null || $version === '') {
                 return $this->versions->last();
             }
 

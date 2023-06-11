@@ -5,30 +5,17 @@ declare(strict_types=1);
 namespace App\Infrastructure\Providers;
 
 use App\Domain;
-use App\Domain\Repository;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectRepository;
-use Illuminate\Foundation\Application;
+use App\Domain\Article\ArticleRepositoryInterface;
+use App\Domain\Documentation\DocumentationRepositoryInterface;
+use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Infrastructure\Doctrine\Persistence\Repository\ArticleDatabaseRepository;
+use App\Infrastructure\Doctrine\Persistence\Repository\DocumentationDatabaseRepository;
+use App\Infrastructure\Doctrine\Persistence\Repository\VersionDatabaseRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
-    /**
-     * <code>
-     *  [
-     *      RepositoryInterface::class => Entity::class
-     *  ]
-     * <code>
-     *
-     * @var array<class-string<ObjectRepository>, class-string>
-     */
-    private const REPOSITORIES = [
-        Repository\VersionsRepository::class      => Domain\Version::class,
-        Repository\DocumentationRepository::class => Domain\Documentation::class,
-        Repository\ArticlesRepository::class      => Domain\Article::class,
-    ];
-
     /**
      * @var list<class-string>
      */
@@ -44,14 +31,9 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Register repository interfaces
-        foreach (self::REPOSITORIES as $repository => $entity) {
-            $this->app->singleton($repository, static function (Application $app) use ($entity): ObjectRepository {
-                return $app->make(EntityManagerInterface::class)
-                    ->getRepository($entity)
-                ;
-            });
-        }
+        $this->app->singleton(ArticleRepositoryInterface::class, ArticleDatabaseRepository::class);
+        $this->app->singleton(DocumentationRepositoryInterface::class, DocumentationDatabaseRepository::class);
+        $this->app->singleton(VersionRepositoryInterface::class, VersionDatabaseRepository::class);
 
         // Register listeners
         foreach (self::LISTENERS as $listener) {

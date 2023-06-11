@@ -2,9 +2,9 @@
 
 @php
     /**
-     * @var \App\Domain\Version $version
-     * @var \App\Domain\Documentation $page
-     * @var \App\Domain\Documentation $menu
+     * @var \App\Domain\Documentation\Version $version
+     * @var \App\Domain\Documentation\Documentation $page
+     * @var \App\Domain\Documentation\Documentation $menu
      */
 @endphp
 

@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\Domain\Documentation;
 
-use App\Domain\Repository\VersionsRepository;
+use App\Domain\BaseEntity;
+use App\Infrastructure\Doctrine\Persistence\Repository\VersionDatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'versions')]
-#[ORM\Entity(repositoryClass: VersionsRepository::class)]
+#[ORM\Entity]
 class Version extends BaseEntity
 {
     /**

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Repository;
+namespace App\Infrastructure\Doctrine\Persistence\Repository;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Happyr\DoctrineSpecification\Repository\EntitySpecificationRepositoryTrait;
 use Illuminate\Support\Collection;
@@ -12,9 +13,17 @@ use Illuminate\Support\Collection;
  * @template T of object
  * @template-extends EntityRepository<T>
  */
-abstract class Repository extends EntityRepository
+abstract class DatabaseRepository extends EntityRepository
 {
     use EntitySpecificationRepositoryTrait;
+
+    /**
+     * @param class-string<T> $class
+     */
+    public function __construct(EntityManagerInterface $em, string $class)
+    {
+        parent::__construct($em, $em->getClassMetadata($class));
+    }
 
     /**
      * @return Collection<int<0, max>, T>

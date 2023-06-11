@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Repository\VersionsRepository;
+use App\Domain\Documentation\VersionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -34,20 +34,13 @@ class DocsTouchCommand extends Command
      */
     protected $description = 'Update documentation and execute the page renderer';
 
-    /**
-     * @param EntityManagerInterface $em
-     */
     public function __construct(
         private readonly EntityManagerInterface $em
     ) {
         parent::__construct();
     }
 
-    /**
-     * @param VersionsRepository $versions
-     * @return void
-     */
-    public function handle(VersionsRepository $versions): void
+    public function handle(VersionRepositoryInterface $versions): void
     {
         foreach ($versions->findAll() as $version) {
             $progress = $this->progress($version->docs->count());

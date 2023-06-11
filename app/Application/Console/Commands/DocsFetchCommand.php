@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Documentation;
-use App\Domain\Repository\DocumentationRepository;
-use App\Domain\Repository\VersionsRepository;
-use App\Domain\Version;
+use App\Domain\Documentation\Documentation;
+use App\Domain\Documentation\DocumentationRepositoryInterface;
+use App\Domain\Documentation\Version;
+use App\Domain\Documentation\VersionRepositoryInterface;
 use App\GitHub\BranchInterface;
+use App\GitHub\FileInterface;
 use App\GitHub\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Github\Client;
@@ -56,13 +57,10 @@ class DocsFetchCommand extends Command
         $this->source = new Repository($client, 'laravel', 'docs');
     }
 
-    /**
-     * @param VersionsRepository $versions
-     * @param DocumentationRepository $docs
-     * @return void
-     */
-    public function handle(VersionsRepository $versions, DocumentationRepository $docs): void
-    {
+    public function handle(
+        VersionRepositoryInterface $versions,
+        DocumentationRepositoryInterface $docs,
+    ): void {
         //
         // Синхронизируем все доступные версии из оригинальной документации.
         //
@@ -90,10 +88,9 @@ class DocsFetchCommand extends Command
     }
 
     /**
-     * @param VersionsRepository $versions
-     * @return \Traversable
+     * @return \Traversable<non-empty-string, array{branch: BranchInterface, version: Version}>
      */
-    private function loadVersions(VersionsRepository $versions): \Traversable
+    private function loadVersions(VersionRepositoryInterface $versions): \Traversable
     {
         $branches = $this->source->getBranches();
         $progress = $this->progress($branches->count());
@@ -110,7 +107,8 @@ class DocsFetchCommand extends Command
                 continue;
             }
 
-            $version = $versions->findByNameOrNew($branch->getName());
+            $version = $versions->findByName($branch->getName())
+                ?? new Version($branch->getName());
 
             $this->em->persist($version);
 
@@ -122,13 +120,13 @@ class DocsFetchCommand extends Command
     }
 
     /**
-     * @param DocumentationRepository $docs
-     * @param Version $ver
-     * @param BranchInterface $branch
-     * @return \Traversable
+     * @return \Traversable<non-empty-string, array{file: FileInterface, page: Documentation}>
      */
-    private function loadFiles(DocumentationRepository $docs, BranchInterface $branch, Version $ver): \Traversable
-    {
+    private function loadFiles(
+        DocumentationRepositoryInterface $docs,
+        BranchInterface $branch,
+        Version $ver,
+    ): \Traversable {
         $files = $branch->getFiles();
         $progress = $this->progress($files->count());
 

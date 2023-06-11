@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\Http\Controllers;
 
-use App\Domain\Repository\DocumentationRepository;
-use App\Domain\Version;
+use App\Domain\Documentation\DocumentationRepositoryInterface;
+use App\Domain\Documentation\Version;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
 use Illuminate\Http\RedirectResponse;
@@ -14,23 +14,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class DocsController
 {
-    /**
-     * @var string
-     */
     private const ERROR_PAGE_NOT_FOUND = 'Documentation page %s not found';
 
-    /**
-     * @var string
-     */
     private const ERROR_MENU_NOT_FOUND = 'Menu for framework version %s not found';
 
-    /**
-     * @param ViewFactoryInterface $views
-     * @param DocumentationRepository $docs
-     */
     public function __construct(
         private readonly ViewFactoryInterface $views,
-        private readonly DocumentationRepository $docs
+        private readonly DocumentationRepositoryInterface $docs,
     ) {
     }
 

@@ -12,6 +12,10 @@ use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
 use Doctrine\ORM\Mapping as ORM;
 
+/**s
+ * @deprecated Please implement id + created_at + updated_at fields using
+ *             concrete domain namespace.
+ */
 #[ORM\MappedSuperclass]
 #[ORM\HasLifecycleCallbacks]
 abstract class BaseEntity implements Identifiable, CreatedDateProviderInterface, UpdatedDateProviderInterface

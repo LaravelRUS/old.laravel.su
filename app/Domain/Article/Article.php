@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\Domain\Article;
 
-use App\Domain\Article\Body;
-use App\Domain\Repository\ArticlesRepository;
+use App\Domain\BaseEntity;
 use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Support\Str;
 
 #[ORM\Table(name: 'articles')]
-#[ORM\Entity(repositoryClass: ArticlesRepository::class)]
+#[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
 class Article extends BaseEntity
 {

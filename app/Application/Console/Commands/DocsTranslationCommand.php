@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Documentation;
-use App\Domain\Repository\DocumentationRepository;
-use App\Domain\Repository\VersionsRepository;
+use App\Domain\Documentation\Documentation;
+use App\Domain\Documentation\DocumentationRepositoryInterface;
+use App\Domain\Documentation\VersionRepositoryInterface;
 use App\GitHub\BranchInterface;
 use App\GitHub\FileInterface;
 use App\GitHub\Repository;
@@ -70,13 +70,10 @@ abstract class DocsTranslationCommand extends Command
 
     }
 
-    /**
-     * @param VersionsRepository $versions
-     * @param DocumentationRepository $docs
-     * @return void
-     */
-    public function handle(VersionsRepository $versions, DocumentationRepository $docs): void
-    {
+    public function handle(
+        VersionRepositoryInterface $versions,
+        DocumentationRepositoryInterface $docs,
+    ): void {
         //
         // Считываем файлы переводов и проверяем их статус в БД.
         //
@@ -87,16 +84,10 @@ abstract class DocsTranslationCommand extends Command
         }
     }
 
-    /**
-     * @param BranchInterface $branch
-     * @param VersionsRepository $versions
-     * @param DocumentationRepository $docs
-     * @return void
-     */
     private function loadTranslations(
         BranchInterface $branch,
-        VersionsRepository $versions,
-        DocumentationRepository $docs
+        VersionRepositoryInterface $versions,
+        DocumentationRepositoryInterface $docs
     ): void {
         $version = $versions->findByName($branch->getName());
 

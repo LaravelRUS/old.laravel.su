@@ -1,4 +1,4 @@
-@php /** @var \App\Domain\Documentation $page */ @endphp
+@php /** @var \App\Domain\Documentation\Documentation $page */ @endphp
 
 @if ($page->translation->getStatus() !== \App\Domain\Documentation\Translation\Status::ACTUAL)
     @if ($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::MISSING)

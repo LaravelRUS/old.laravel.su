@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Repository\ArticlesRepository;
+use App\Domain\Article\ArticleRepositoryInterface;
+use App\Infrastructure\Doctrine\Persistence\Repository\ArticleDatabaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -43,11 +44,7 @@ class ArticlesTouchCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * @param ArticlesRepository $repository
-     * @return void
-     */
-    public function handle(ArticlesRepository $repository): void
+    public function handle(ArticleRepositoryInterface $repository): void
     {
         $articles = $repository->all();
         $progress = $this->progress($articles->count());

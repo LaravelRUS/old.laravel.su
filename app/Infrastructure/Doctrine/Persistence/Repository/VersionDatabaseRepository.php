@@ -2,21 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Repository;
+namespace App\Infrastructure\Doctrine\Persistence\Repository;
 
-use App\Domain\Version;
+use App\Domain\Documentation\Version;
+use App\Domain\Documentation\VersionRepositoryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Happyr\DoctrineSpecification\Exception\NoResultException;
 use Happyr\DoctrineSpecification\Spec;
 use Happyr\DoctrineSpecification\Specification\Specification;
 use Illuminate\Support\Collection;
 
 /**
- * @template-extends Repository<Version>
+ * @template-extends DatabaseRepository<Version>
  */
-class VersionsRepository extends Repository
+class VersionDatabaseRepository extends DatabaseRepository implements VersionRepositoryInterface
 {
+    public function __construct(EntityManagerInterface $em)
+    {
+        parent::__construct($em, Version::class);
+    }
+
     /**
-     * {@inheritDoc}
+     * @return Collection<array-key, Version>
      */
     public function all(): Collection
     {
@@ -26,7 +33,6 @@ class VersionsRepository extends Repository
     }
 
     /**
-     * @return Version
      * @throws NoResultException
      */
     public function last(): Version
@@ -51,7 +57,6 @@ class VersionsRepository extends Repository
 
     /**
      * @param non-empty-string $name
-     * @return Version|null
      */
     public function findByName(string $name): ?Version
     {
@@ -62,15 +67,6 @@ class VersionsRepository extends Repository
         } catch (NoResultException) {
             return null;
         }
-    }
-
-    /**
-     * @param non-empty-string $name
-     * @return Version
-     */
-    public function findByNameOrNew(string $name): Version
-    {
-        return $this->findByName($name) ?? new Version($name);
     }
 
     /**

@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\Domain\Documentation;
 
-use App\Domain\Documentation\Source;
-use App\Domain\Documentation\Translation;
-use App\Domain\Repository\DocumentationRepository;
+use App\Domain\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
-
 #[ORM\Table(name: 'docs')]
-#[ORM\Entity(repositoryClass: DocumentationRepository::class)]
+#[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
 class Documentation extends BaseEntity implements \Stringable
 {

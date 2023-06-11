@@ -4,29 +4,21 @@ declare(strict_types=1);
 
 namespace App\Application\Http\Controllers;
 
-use App\Domain\Repository\VersionsRepository;
-use App\Domain\Version;
+use App\Domain\Documentation\Version;
+use App\Domain\Documentation\VersionRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 
-final class StatusController
+final readonly class StatusController
 {
-    /**
-     * @param ViewFactoryInterface $views
-     * @param VersionsRepository $versions
-     */
     public function __construct(
-        private readonly ViewFactoryInterface $views,
-        private readonly VersionsRepository $versions
+        private ViewFactoryInterface $views,
+        private VersionRepositoryInterface $versions
     ) {
     }
 
-    /**
-     * @param Redirector $redirector
-     * @return RedirectResponse
-     */
     public function index(Redirector $redirector): RedirectResponse
     {
         return $redirector->route('status.show', [
@@ -34,10 +26,6 @@ final class StatusController
         ]);
     }
 
-    /**
-     * @param Version $version
-     * @return View
-     */
     public function show(Version $version): View
     {
         return $this->views->make('page.status.show', [
