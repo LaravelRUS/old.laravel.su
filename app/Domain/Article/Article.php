@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace App\Domain\Article;
 
 use App\Domain\BaseEntity;
+use App\Domain\Shared\CreatedDateProvider;
+use App\Domain\Shared\CreatedDateProviderInterface;
+use App\Domain\Shared\UpdatedDateProvider;
+use App\Domain\Shared\UpdatedDateProviderInterface;
 use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Support\Str;
@@ -12,8 +16,13 @@ use Illuminate\Support\Str;
 #[ORM\Table(name: 'articles')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Article extends BaseEntity
+class Article extends BaseEntity implements
+    CreatedDateProviderInterface,
+    UpdatedDateProviderInterface
 {
+    use CreatedDateProvider;
+    use UpdatedDateProvider;
+
     /**
      * @var non-empty-string
      */

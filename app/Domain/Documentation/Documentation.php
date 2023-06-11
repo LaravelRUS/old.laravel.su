@@ -5,13 +5,23 @@ declare(strict_types=1);
 namespace App\Domain\Documentation;
 
 use App\Domain\BaseEntity;
+use App\Domain\Shared\CreatedDateProvider;
+use App\Domain\Shared\CreatedDateProviderInterface;
+use App\Domain\Shared\UpdatedDateProvider;
+use App\Domain\Shared\UpdatedDateProviderInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'docs')]
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Documentation extends BaseEntity implements \Stringable
+class Documentation extends BaseEntity implements
+    CreatedDateProviderInterface,
+    UpdatedDateProviderInterface,
+    \Stringable
 {
+    use CreatedDateProvider;
+    use UpdatedDateProvider;
+
     /**
      * @var Version
      */
