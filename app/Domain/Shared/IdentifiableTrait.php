@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Common;
+namespace App\Domain\Shared;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @deprecated Please use {@see IdentifierInterface} implementation instead,
+ *             like {@see UuidIdentifier} value object.
+ *
  * @mixin Identifiable
  * @psalm-require-implements Identifiable
  */

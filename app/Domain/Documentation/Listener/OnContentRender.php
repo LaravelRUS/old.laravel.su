@@ -7,8 +7,8 @@ namespace App\Domain\Documentation\Listener;
 use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\FactoryInterface;
 use App\ContentRenderer\Type;
-use App\Domain\Common\Listener;
 use App\Domain\Documentation;
+use App\Domain\Shared\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 

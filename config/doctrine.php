@@ -5,6 +5,13 @@ use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Events;
 use DoctrineExtensions\Types\CarbonDateTimeType;
+use DoctrineExtensions\Types\CarbonDateTimeTzType;
+use DoctrineExtensions\Types\CarbonDateType;
+use DoctrineExtensions\Types\CarbonImmutableDateTimeType;
+use DoctrineExtensions\Types\CarbonImmutableDateTimeTzType;
+use DoctrineExtensions\Types\CarbonImmutableDateType;
+use DoctrineExtensions\Types\CarbonImmutableTimeType;
+use DoctrineExtensions\Types\CarbonTimeType;
 
 return [
 
@@ -138,6 +145,13 @@ return [
     'custom_types' => [
         'json'   => JsonType::class,
         'carbon' => CarbonDateTimeType::class,
+        'carbondatetimetz' => CarbonDateTimeTzType::class,
+        'carbondate' => CarbonDateType::class,
+        'carbondatetime_immutable' => CarbonImmutableDateTimeType::class,
+        'carbondatetimetz_immutable' => CarbonImmutableDateTimeTzType::class,
+        'carbondate_immutable' => CarbonImmutableDateType::class,
+        'carbontime_immutable' => CarbonImmutableTimeType::class,
+        'carbontime' => CarbonTimeType::class,
     ],
 
     /*

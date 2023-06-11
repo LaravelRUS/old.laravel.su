@@ -2,10 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Common;
+namespace App\Domain\Shared;
 
-use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\EntityManager;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 
+/**
+ * @deprecated Please use raw Doctrine Listener/Subscriber instead.
+ */
 abstract class Listener
 {
     /**
@@ -14,9 +18,14 @@ abstract class Listener
      */
     protected function save(LifecycleEventArgs $e): void
     {
-        $e->getEntityManager()
-            ->getUnitOfWork()
-            ->computeChangeSets();
+        $em = $e->getObjectManager();
+
+        if (!$em instanceof EntityManager) {
+            return;
+        }
+
+        $uow = $em->getUnitOfWork();
+        $uow->computeChangeSets();
     }
 
     /**
@@ -27,7 +36,7 @@ abstract class Listener
      */
     protected function on(LifecycleEventArgs $e, string $entity, \Closure $cb): self
     {
-        $haystack = $e->getEntity();
+        $haystack = $e->getObject();
 
         if ($haystack instanceof $entity) {
             $cb($haystack);
