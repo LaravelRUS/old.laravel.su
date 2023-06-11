@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Providers;
 
-use App\Domain;
 use App\Domain\Article\ArticleRepositoryInterface;
 use App\Domain\Documentation\DocumentationRepositoryInterface;
 use App\Domain\Documentation\VersionRepositoryInterface;
@@ -20,8 +19,10 @@ class DatabaseServiceProvider extends ServiceProvider
      * @var list<class-string>
      */
     private const LISTENERS = [
-        Domain\Documentation\Listener\OnContentRender::class,
-        Domain\Article\Listener\OnContentRender::class,
+        \App\Infrastructure\Doctrine\Listener\DocumentationContentRenderer::class,
+        \App\Infrastructure\Doctrine\Listener\ArticleContentRenderer::class,
+        \App\Infrastructure\Doctrine\Listener\CreatedDateSynchronizer::class,
+        \App\Infrastructure\Doctrine\Listener\UpdatedDateSynchronizer::class,
     ];
 
     /**

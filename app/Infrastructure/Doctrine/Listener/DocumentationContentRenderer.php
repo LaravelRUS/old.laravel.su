@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Documentation\Listener;
+namespace App\Infrastructure\Doctrine\Listener;
 
 use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\FactoryInterface;
@@ -12,20 +12,13 @@ use App\Domain\Shared\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
-class OnContentRender extends Listener
+class DocumentationContentRenderer extends Listener
 {
-    /**
-     * @param FactoryInterface $factory
-     */
     public function __construct(
         private readonly FactoryInterface $factory
     ) {
     }
 
-    /**
-     * @param Documentation $entity
-     * @return ContentRendererInterface
-     */
     private function getRendererForSource(Documentation $entity): ContentRendererInterface
     {
         if ($this->isMenu($entity)) {
@@ -35,10 +28,6 @@ class OnContentRender extends Listener
         return $this->factory->create(Type::DOCUMENTATION);
     }
 
-    /**
-     * @param Documentation $entity
-     * @return ContentRendererInterface
-     */
     private function getRendererForTranslation(Documentation $entity): ContentRendererInterface
     {
         if ($this->isMenu($entity)) {
@@ -48,10 +37,6 @@ class OnContentRender extends Listener
         return $this->factory->create(Type::DOCUMENTATION_TRANSLATION);
     }
 
-    /**
-     * @param Documentation $entity
-     * @return bool
-     */
     private function isMenu(Documentation $entity): bool
     {
         $version = $entity->version;
@@ -59,10 +44,6 @@ class OnContentRender extends Listener
         return $version->menuPage === $entity->urn;
     }
 
-    /**
-     * @param LifecycleEventArgs $e
-     * @return void
-     */
     public function prePersist(LifecycleEventArgs $e): void
     {
         $this->on($e, Documentation::class, function (Documentation $entity): void {

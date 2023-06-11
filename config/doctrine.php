@@ -1,6 +1,5 @@
 <?php
 
-use App\Domain\Article\Listener\OnContentRender;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Events;
@@ -63,12 +62,15 @@ return [
             'events' => [
                 'listeners'   => [
                     Events::preUpdate  => [
-                        \App\Domain\Documentation\Listener\OnContentRender::class,
-                        OnContentRender::class,
+                        \App\Infrastructure\Doctrine\Listener\DocumentationContentRenderer::class,
+                        \App\Infrastructure\Doctrine\Listener\ArticleContentRenderer::class,
+                        \App\Infrastructure\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                     Events::prePersist => [
-                        \App\Domain\Documentation\Listener\OnContentRender::class,
-                        OnContentRender::class,
+                        \App\Infrastructure\Doctrine\Listener\DocumentationContentRenderer::class,
+                        \App\Infrastructure\Doctrine\Listener\ArticleContentRenderer::class,
+                        \App\Infrastructure\Doctrine\Listener\CreatedDateSynchronizer::class,
+                        \App\Infrastructure\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                 ],
                 'subscribers' => [
