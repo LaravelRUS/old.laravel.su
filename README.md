@@ -8,7 +8,7 @@
     <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/require/php?style=for-the-badge" alt="Latest Stable Version" /></a>
     <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/version?style=for-the-badge" alt="Latest Stable Version" /></a>
     <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/composerlock?style=for-the-badge" alt="Composer Lock" /></a>
-    <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/gitattributes?style=for-the-badge" alt="Git Attributes" /></a>
+    <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/require/php?style=for-the-badge" alt="PHP Version" /></a>
     <a href="https://raw.githubusercontent.com/LaravelRUS/laravel.su/master/LICENSE.md"><img src="https://poser.pugx.org/laravelrus/laravel.su/license?style=for-the-badge" alt="License MIT" /></a>
 </p>
 
