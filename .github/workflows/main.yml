@@ -120,7 +120,7 @@ jobs:
   # ----------------------------------------------------------------------------
 
   architecture-tests:
-    name: Unit Tests (${{matrix.php}})
+    name: Architecture Tests (${{matrix.php}})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
