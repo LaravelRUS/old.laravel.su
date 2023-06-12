@@ -4,7 +4,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <mapped-superclass name="App\Domain\Documentation\Translation">
-        <field name="targetCommit" type="string" column="commit_target" length="191" nullable="false"/>
-        <field name="diff" type="integer" column="commit_diff" nullable="false"/>
+        <field name="targetCommit" column="commit_target"
+               type="App\Domain\Documentation\TranslationVersionId" nullable="true" />
+        <field name="diff" column="commit_diff"
+               type="integer" nullable="false" />
     </mapped-superclass>
 </doctrine-mapping>

@@ -6,21 +6,8 @@ namespace App\Domain\Shared;
 
 use Ramsey\Uuid\Uuid;
 
-readonly class UuidIdentifier implements IdentifierInterface
+readonly class UuidIdentifier extends StringIdentifier
 {
-    /**
-     * @var non-empty-string
-     */
-    private string $value;
-
-    /**
-     * @param non-empty-string|\Stringable $scalar
-     */
-    final public function __construct(string|\Stringable $scalar)
-    {
-        $this->value = (string)$scalar;
-    }
-
     /**
      * @param non-empty-string|null $namespace
      */
@@ -57,15 +44,5 @@ readonly class UuidIdentifier implements IdentifierInterface
     public static function max(): static
     {
         return new static(Uuid::MAX);
-    }
-
-    public function equals(ValueObjectInterface $object): bool
-    {
-        return $object === $this || ($object instanceof self && $object->value === $this->value);
-    }
-
-    public function __toString(): string
-    {
-        return $this->value;
     }
 }

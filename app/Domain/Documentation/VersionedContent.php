@@ -4,51 +4,48 @@ declare(strict_types=1);
 
 namespace App\Domain\Documentation;
 
-use App\Domain\Shared\ValueObjectInterface;
-
 abstract class VersionedContent extends Content
 {
-    /**
-     * @var non-empty-string|null
-     */
-    protected ?string $commit = null;
+    protected ?ContentVersionId $commit = null;
 
-    public function equals(ValueObjectInterface $object): bool
-    {
-        return $object === $this || (
-            $object instanceof static && (
-                ($object->commit !== null && $object->commit === $this->commit)
-                || ($object->commit !== null && $object->source === $this->source)
-            )
-        );
-    }
-
-    /**
-     * @return non-empty-string|null
-     */
-    public function getVersionId(): ?string
+    public function getVersionId(): ?ContentVersionId
     {
         return $this->commit;
     }
 
     /**
-     * @param non-empty-string|null $commit
+     * @param ContentVersionId|non-empty-string $commit
      */
-    public function update(?string $content, ?string $commit): self
+    public function update(string $content, ContentVersionId|string $commit): self
     {
-        $this->clear();
+        if (\is_string($commit)) {
+            $commit = new ContentVersionId($commit);
+        }
 
+        $this->clear();
         $this->source = $content;
-        $this->commit = $commit ?: null;
+        $this->commit = $commit;
 
         return $this;
     }
 
     /**
-     * @param non-empty-string $commit
+     * @param ContentVersionId|non-empty-string $commit
      */
-    public function isVersionedBy(string $commit): bool
+    public function isVersionedBy(ContentVersionId|string $commit): bool
     {
-        return $this->commit === $commit;
+        if ($this->commit === null) {
+            return false;
+        }
+
+        if ($commit instanceof ContentVersionId) {
+            return $commit->equals($this->commit);
+        }
+
+        return \in_array($commit, [
+            $this->commit->toFullString(),
+            $this->commit->toShortString(),
+            $this->commit->toBinaryString(),
+        ], true);
     }
 }

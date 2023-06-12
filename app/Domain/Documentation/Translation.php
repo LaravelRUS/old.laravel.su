@@ -15,31 +15,26 @@ class Translation extends VersionedContent
      */
     protected int $diff = self::DIFF_NO_TRANSLATION;
 
-    /**
-     * @var non-empty-string|null
-     */
-    protected ?string $targetCommit = null;
+    protected ?TranslationVersionId $targetCommit = null;
 
     /**
-     * @param non-empty-string|null $commit
+     * @param ContentVersionId|non-empty-string $commit
      */
-    public function update(?string $content, ?string $commit): self
+    public function update(string $content, ContentVersionId|string $commit): self
     {
-        if ($content !== null) {
-            \preg_match('/^git ([a-z0-9]+)\n/ium', $content, $matches);
+        \preg_match('/^git ([a-z0-9]+)\n/ium', $content, $matches);
 
-            if (\count($matches)) {
-                $this->targetCommit = $matches[1];
-            }
+        if (\count($matches)) {
+            $this->targetCommit = new TranslationVersionId($matches[1]);
         }
 
         return parent::update($content, $commit);
     }
 
     /**
-     * @return non-empty-string|null
+     * @return TranslationVersionId|null
      */
-    public function getTargetVersionId(): ?string
+    public function getTargetVersionId(): ?TranslationVersionId
     {
         return $this->targetCommit;
     }

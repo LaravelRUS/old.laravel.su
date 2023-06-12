@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Type;
 
-use App\Domain\Shared\UuidIdentifier;
+use App\Domain\Shared\GitObjectIdentifier;
+use App\Domain\Shared\IdentifierInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
 /**
- * @template TValueObject of UuidIdentifier
+ * @template TValueObject of GitObjectIdentifier
  */
-abstract class UuidType extends Type
+abstract class GitObjectType extends Type
 {
     /**
      * @return non-empty-string
@@ -28,7 +29,7 @@ abstract class UuidType extends Type
 
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return 'UUID';
+        return 'CHAR(40)';
     }
 
     /**
@@ -50,7 +51,7 @@ abstract class UuidType extends Type
      *
      * @return TValueObject|null
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?UuidIdentifier
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?GitObjectIdentifier
     {
         if ($value === null) {
             return null;
