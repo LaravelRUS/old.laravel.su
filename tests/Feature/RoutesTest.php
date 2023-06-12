@@ -1,17 +1,12 @@
 <?php
 
-/**
- * This file is part of laravel.su package.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Tests\Feature;
 
-class RoutesTestCase extends FeatureTestCase
+use Ramsey\Uuid\Uuid;
+
+class RoutesTest extends FeatureTest
 {
     public function testHomePageIsAvailable(): void
     {
@@ -33,6 +28,7 @@ class RoutesTestCase extends FeatureTestCase
     {
         $this->withDatabaseEmptyTable('versions')
             ->withDatabaseData('versions', [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '42.0',
                 'is_documented' => false,
             ]);
@@ -46,6 +42,7 @@ class RoutesTestCase extends FeatureTestCase
     {
         $this->withDatabaseEmptyTable('versions')
             ->withDatabaseData('versions', [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '42.0',
                 'is_documented' => true,
             ]);
@@ -60,18 +57,22 @@ class RoutesTestCase extends FeatureTestCase
     {
         $this->withDatabaseData('versions', [
             [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '4.2',
                 'is_documented' => true,
             ],
             [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '5.1',
                 'is_documented' => true,
             ],
             [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '6.0',
                 'is_documented' => false,
             ],
             [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '4.3',
                 'is_documented' => true,
             ]
@@ -86,6 +87,7 @@ class RoutesTestCase extends FeatureTestCase
     public function testDocsVersionedShouldRedirectToDefaultPage(): void
     {
         $this->withDatabaseData('versions', [
+            'id' => (string)Uuid::uuid4(),
             'title' => '1.0',
             'default_page' => 'wtf_is_that',
             'is_documented' => true,
@@ -99,7 +101,10 @@ class RoutesTestCase extends FeatureTestCase
 
     public function testDocsUndocumentatedPageShouldReturnError(): void
     {
-        $this->withDatabaseData('versions', ['title' => '1.0'])
+        $this->withDatabaseData('versions', [
+            'id' => (string)Uuid::uuid4(),
+            'title' => '1.0'
+        ])
             ->withDatabaseEmptyTable('docs');
 
         $this->get('/docs/1.0/unknown_page')
@@ -120,7 +125,9 @@ class RoutesTestCase extends FeatureTestCase
     public function testDocsWithoutNavigationShouldReturnError(): void
     {
         $this->withDatabaseRecord('docs', [
+            'id' => (string)Uuid::uuid4(),
             'version_id' => $this->withDatabaseRecord('versions', [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '1.0',
                 'default_page' => 'default_test_page',
             ]),
@@ -135,7 +142,9 @@ class RoutesTestCase extends FeatureTestCase
     public function testDocsWithoutDefaultPageShouldReturnError(): void
     {
         $this->withDatabaseRecord('docs', [
+            'id' => (string)Uuid::uuid4(),
             'version_id' => $this->withDatabaseRecord('versions', [
+                'id' => (string)Uuid::uuid4(),
                 'title' => '1.0',
                 'menu_page' => 'menu_test_page',
             ]),
@@ -150,6 +159,7 @@ class RoutesTestCase extends FeatureTestCase
     public function testDocsWithPageShouldSuccess(): void
     {
         $version = $this->withDatabaseRecord('versions', [
+            'id' => (string)Uuid::uuid4(),
             'title' => '1.0',
             'default_page' => 'default_test_page',
             'menu_page' => 'menu_test_page',
@@ -157,11 +167,13 @@ class RoutesTestCase extends FeatureTestCase
 
         $this->withDatabaseData('docs', [
             [
+                'id' => (string)Uuid::uuid4(),
                 'version_id' => $version,
                 'title' => '',
                 'urn' => 'menu_test_page'
             ],
             [
+                'id' => (string)Uuid::uuid4(),
                 'version_id' => $version,
                 'title' => '',
                 'urn' => 'default_test_page'
