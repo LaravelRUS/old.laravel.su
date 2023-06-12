@@ -160,7 +160,7 @@ return [
         Domain\Article\ArticleId::class => Persistence\Doctrine\Type\ArticleIdType::class,
         Domain\Documentation\DocumentationId::class => Persistence\Doctrine\Type\DocumentationIdType::class,
         Domain\Documentation\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,
-        Domain\Documentation\ContentVersionId::class => Persistence\Doctrine\Type\ContentVersionIdType::class,
+        Domain\Documentation\SourceVersionId::class => Persistence\Doctrine\Type\SourceVersionIdType::class,
         Domain\Documentation\TranslationVersionId::class => Persistence\Doctrine\Type\TranslationVersionIdType::class,
     ],
 

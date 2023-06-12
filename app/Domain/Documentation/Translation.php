@@ -18,9 +18,9 @@ class Translation extends VersionedContent
     protected ?TranslationVersionId $targetCommit = null;
 
     /**
-     * @param ContentVersionId|non-empty-string $commit
+     * @param SourceVersionId|non-empty-string $commit
      */
-    public function update(string $content, ContentVersionId|string $commit): self
+    public function update(string $content, SourceVersionId|string $commit): self
     {
         \preg_match('/^git ([a-z0-9]+)\n/ium', $content, $matches);
 

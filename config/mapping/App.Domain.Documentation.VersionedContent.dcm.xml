@@ -5,6 +5,6 @@
                   https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <mapped-superclass name="App\Domain\Documentation\VersionedContent">
         <field name="commit" column="commit"
-               type="App\Domain\Documentation\ContentVersionId" nullable="true" />
+               type="App\Domain\Documentation\SourceVersionId" nullable="true" />
     </mapped-superclass>
 </doctrine-mapping>

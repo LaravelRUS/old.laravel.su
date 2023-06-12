@@ -6,20 +6,20 @@ namespace App\Domain\Documentation;
 
 abstract class VersionedContent extends Content
 {
-    protected ?ContentVersionId $commit = null;
+    protected ?SourceVersionId $commit = null;
 
-    public function getVersionId(): ?ContentVersionId
+    public function getVersionId(): ?SourceVersionId
     {
         return $this->commit;
     }
 
     /**
-     * @param ContentVersionId|non-empty-string $commit
+     * @param SourceVersionId|non-empty-string $commit
      */
-    public function update(string $content, ContentVersionId|string $commit): self
+    public function update(string $content, SourceVersionId|string $commit): self
     {
         if (\is_string($commit)) {
-            $commit = new ContentVersionId($commit);
+            $commit = new SourceVersionId($commit);
         }
 
         $this->clear();
@@ -30,15 +30,15 @@ abstract class VersionedContent extends Content
     }
 
     /**
-     * @param ContentVersionId|non-empty-string $commit
+     * @param SourceVersionId|non-empty-string $commit
      */
-    public function isVersionedBy(ContentVersionId|string $commit): bool
+    public function isVersionedBy(SourceVersionId|string $commit): bool
     {
         if ($this->commit === null) {
             return false;
         }
 
-        if ($commit instanceof ContentVersionId) {
+        if ($commit instanceof SourceVersionId) {
             return $commit->equals($this->commit);
         }
 
