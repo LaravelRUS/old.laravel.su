@@ -116,6 +116,60 @@ jobs:
         run: vendor/bin/psalm --no-cache --show-info=true
 
   # ----------------------------------------------------------------------------
+  #   Execute Architecture Test Cases
+  # ----------------------------------------------------------------------------
+
+  architecture-tests:
+    name: Unit Tests (${{matrix.php}})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.2' ]
+        os: [ ubuntu-latest ]
+    steps:
+      - name: Set Git To Use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: pcov
+          tools: pecl, composer:v2
+          ini-values: "memory_limit=-1"
+          extensions: dom, libxml, mbstring
+
+      - name: Validate Composer
+        run: composer validate
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Restore Composer Cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
+
+      - name: Install Dependencies
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer install --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
+
+      - name: Execute Architecture Tests
+        run: vendor/bin/phpstan analyse -c phpstan.neon
+
+  # ----------------------------------------------------------------------------
   #   Execute Unit Test Cases
   # ----------------------------------------------------------------------------
 
@@ -252,5 +306,5 @@ jobs:
       - name: Apply required permissions
         run: chmod -R 0777 storage bootstrap/cache
 
-      - name: Execute Unit Tests
+      - name: Execute Feature Tests
         run: vendor/bin/phpunit --testdox --verbose --testsuite feature
