@@ -20,4 +20,24 @@ class DomainTest
                 Selector::namespace('App\Infrastructure'),
             );
     }
+
+    public function testArticleDoesNotDependOnNeighbours(): Rule
+    {
+        return PHPat::rule()
+            ->classes(Selector::namespace('App\Domain\Article'))
+            ->shouldNotDependOn()
+            ->classes(
+                Selector::namespace('App\Domain\Documentation')
+            );
+    }
+
+    public function testDocumentationDoesNotDependOnNeighbours(): Rule
+    {
+        return PHPat::rule()
+            ->classes(Selector::namespace('App\Domain\Documentation'))
+            ->shouldNotDependOn()
+            ->classes(
+                Selector::namespace('App\Domain\Article')
+            );
+    }
 }
