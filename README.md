@@ -5,10 +5,9 @@
     <a href="https://github.com/LaravelRUS/laravel.su/actions"><img src="https://github.com/LaravelRUS/laravel.su/workflows/build/badge.svg" /></a>
 </p>
 <p align="center">
-    <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/require/php?style=for-the-badge" alt="Latest Stable Version" /></a>
+    <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/require/php?style=for-the-badge" alt="PHP Version" /></a>
     <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/version?style=for-the-badge" alt="Latest Stable Version" /></a>
     <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/composerlock?style=for-the-badge" alt="Composer Lock" /></a>
-    <a href="https://packagist.org/packages/laravelrus/laravel.su"><img src="https://poser.pugx.org/laravelrus/laravel.su/require/php?style=for-the-badge" alt="PHP Version" /></a>
     <a href="https://raw.githubusercontent.com/LaravelRUS/laravel.su/master/LICENSE.md"><img src="https://poser.pugx.org/laravelrus/laravel.su/license?style=for-the-badge" alt="License MIT" /></a>
 </p>
 
