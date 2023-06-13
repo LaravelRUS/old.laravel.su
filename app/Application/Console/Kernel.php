@@ -78,7 +78,7 @@ class Kernel extends ConsoleKernel
                 // Затем вычисляем дифф изменений.
                 $this->call('su:docs:diff');
                 // Затем вычисляем TF-IDF и генерируем ключевые слова на его основе
-                $this->call('su:docs:keywords');
+                // $this->call('su:docs:keywords');
             });
     }
 }
