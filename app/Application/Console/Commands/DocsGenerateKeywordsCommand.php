@@ -26,6 +26,13 @@ final class DocsGenerateKeywordsCommand extends Command
      */
     protected $description = 'Generate documentation keywords';
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        \ini_set('memory_limit', -1);
+    }
+
     public function handle(
         VersionRepositoryInterface $versions,
         EntityManagerInterface $em,
