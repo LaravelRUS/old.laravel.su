@@ -75,8 +75,10 @@ class Kernel extends ConsoleKernel
             ->onSuccess(function (): void {
                 // Затем скачиваем переводы.
                 $this->call('su:docs:update');
-                // А затем вычисляем дифф изменений.
+                // Затем вычисляем дифф изменений.
                 $this->call('su:docs:diff');
+                // Затем вычисляем TF-IDF и генерируем ключевые слова на его основе
+                $this->call('su:docs:keywords');
             });
     }
 }
