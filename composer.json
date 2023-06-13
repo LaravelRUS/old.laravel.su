@@ -22,7 +22,8 @@
         "laravel/tinker": "^2.8",
         "local/content-renderer": "^1.0",
         "local/github": "^1.0",
-        "sentry/sentry-laravel": "^3.2",
+        "sentry/sentry-laravel": "^3.4",
+        "serafim/tf-idf": "^0.1",
         "symfony/clock": "^6.2"
     },
     "replace": {

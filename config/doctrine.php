@@ -157,6 +157,9 @@ return [
         'carbontime_immutable' => CarbonImmutableTimeType::class,
         'carbontime' => CarbonTimeType::class,
 
+        'text[]' => Persistence\Doctrine\Type\TextArrayType::class,
+        'string[]' => Persistence\Doctrine\Type\StringArrayType::class,
+
         Domain\Article\ArticleId::class => Persistence\Doctrine\Type\ArticleIdType::class,
         Domain\Documentation\DocumentationId::class => Persistence\Doctrine\Type\DocumentationIdType::class,
         Domain\Documentation\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,

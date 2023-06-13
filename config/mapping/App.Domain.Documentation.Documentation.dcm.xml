@@ -7,6 +7,11 @@
         <id name="id" type="App\Domain\Documentation\DocumentationId" column="id"/>
         <field name="urn" type="string" column="urn" length="191" nullable="false"/>
         <field name="title" type="string" column="title" length="191" nullable="false"/>
+        <field name="keywords" type="string[]" column="keywords" nullable="false">
+            <options>
+                <option name="default">{}</option>
+            </options>
+        </field>
         <many-to-one field="version" target-entity="App\Domain\Documentation\Version" inversed-by="docs" fetch="EAGER">
             <cascade>
                 <cascade-persist/>

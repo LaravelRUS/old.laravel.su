@@ -34,6 +34,11 @@ class Documentation implements
      */
     public string $title;
 
+    /**
+     * @var list<non-empty-string>
+     */
+    private array $keywords = [];
+
     public readonly Source $source;
 
     public readonly Translation $translation;
@@ -95,16 +100,24 @@ class Documentation implements
         $this->title = $title;
     }
 
+    public function removeKeywords(): void
+    {
+        $this->keywords = [];
+    }
+
+    public function addKeyword(string $keyword): void
+    {
+        if (!\in_array($keyword, $this->keywords, true)) {
+            $this->keywords[] = $keyword;
+        }
+    }
+
     /**
      * @return list<non-empty-string>
      */
     public function getKeywords(): array
     {
-        return \array_filter([
-            ...\preg_split('/\W+/u', $this->urn),
-            $this->title,
-            'Laravel ' . $this->version->name
-        ]);
+        return $this->keywords;
     }
 
     /**

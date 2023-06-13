@@ -45,12 +45,36 @@ abstract class Content implements ValueObjectInterface
     }
 
     /**
+     * Возвращает {@see true} в том случае, если контент оригинальный
+     * отсутсвует и {@see false} в противном случае.
+     */
+    public function isEmpty(): bool
+    {
+        return $this->source === null || \trim($this->source) === '';
+    }
+
+    /**
      * Возвращает {@see true} в том случае, если контент
      * содержит html-содержимое и {@see false} в противном случае.
      */
     public function isRendered(): bool
     {
         return $this->rendered !== null;
+    }
+
+    public function getContent(): string
+    {
+        return $this->rendered ?: $this->source ?? '';
+    }
+
+    public function getRawContent(): string
+    {
+        return $this->source ?? '';
+    }
+
+    public function getRenderedContent(): string
+    {
+        return $this->rendered ?? '';
     }
 
     /**

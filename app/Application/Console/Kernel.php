@@ -54,6 +54,7 @@ class Kernel extends ConsoleKernel
         \App\Application\Console\Commands\DocsUpdateCommand::class,
         \App\Application\Console\Commands\DocsDiffCommand::class,
         \App\Application\Console\Commands\DocsTouchCommand::class,
+        \App\Application\Console\Commands\DocsGenerateKeywordsCommand::class,
     ];
 
     /**

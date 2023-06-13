@@ -8,15 +8,11 @@
      */
 @endphp
 
-@section('title')
-    {{ $page->getTitle() }} (Laravel {{ $version->name }})
-@stop
-@section('description')
-    Русская документация Laravel {{ $version->name }} - {{ $page->getTitle() }}
-@stop
-@section('keywords')
-    {{ $page->getKeywordsString() }}
-@stop
+@section('title'){{ $page->getTitle() }} (Laravel {{ $version->name }})@stop
+
+@section('description')Русская документация Laravel {{ $version->name }} — {{ $page->getTitle() }}@stop
+
+@section('keywords', $page->getKeywordsString())
 
 @push('header')
     @include('page.docs.partials.versions', ['version' => $version, 'page' => $page])
@@ -28,7 +24,6 @@
     <section class="container documentation">
         <aside class="documentation-menu" data-vm="MenuViewModel">
             {!! $menu !!}
-
             {{--
             <nav class="extras">
                 <span>Регистрация на <a href="https://phprussia.ru/moscow/2022" target="_blank" rel="nofollow">PHPRussia 2022</a> уже открыта:</span>
