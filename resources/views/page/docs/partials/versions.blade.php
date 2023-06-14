@@ -2,7 +2,7 @@
     /**
      * @var \Illuminate\Support\Collection|\App\Domain\Documentation\Version[] $versions
      * @var \App\Domain\Documentation\Version $version
-     * @var \Add\Domain\Documentation\Documentation $page
+     * @var \App\Domain\Documentation\Documentation $page
      */
 @endphp
 
@@ -14,7 +14,7 @@
         <a href="#" class="scroll-to-top"></a>
 
         @if ($versions->count())
-            <span class="label title">Laravel</span>
+            <span class="label title">Версия</span>
 
             @foreach($versions as $current)
                 @continue(!$current->isDocumented() && $version->name !== $current->name)
@@ -32,9 +32,23 @@
     </nav>
     <aside>
         @if(isset($version))
-            <a class="label" href="{!! route('status.show', ['version' => $version->name]) !!}">Прогресс перевода</a>
-        @else
-            <a class="label" href="{!! route('status') !!}">Прогресс перевода</a>
+            @if ($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::MISSING)
+                <a class="translation-status label warning" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                    Перевод отсутствует
+                </a>
+            @elseif($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::ACTUAL)
+                <a class="translation-status label success" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                    Перевод актуален
+                </a>
+            @elseif($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::BEHIND)
+                <a class="translation-status label notice" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                    Немного отстаёт от оригинала
+                </a>
+            @else
+                <a class="translation-status label warning" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                    Сильно отстаёт от оригинала
+                </a>
+            @endif
         @endif
     </aside>
 </section>

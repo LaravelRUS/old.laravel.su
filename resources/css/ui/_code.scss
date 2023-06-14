@@ -21,99 +21,118 @@ pre > code {
     border-radius: 6px;
     line-height: $font-size + 8px;
     text-shadow: 0 0 1px rgba($color-text, .1);
-    box-shadow: 0 2px 5px rgba($color-text, .2);
 }
 
 .hljs {
-    position: relative;
 
-    &-comment,
-    &-quote {
-        color: #aeacba;
-        font-weight: 100;
-        font-style: italic;
-    }
-
-    &-keyword {
-        color: #836789;
-    }
-
-    &-selector-tag,
-    &-subst {
-        color: #333;
-    }
-
-    &-number,
-    &-literal,
-    &-variable,
+    &-doctag,
+    &-keyword,
+    &-meta &-keyword,
+    &-template-tag,
     &-template-variable,
-    &-tag &-attr {
-        color: #008080;
-    }
-
-    &-string,
-    &-doctag {
-        color: #ee4c42;
+    &-type,
+    &-variable.language_ {
+        /* prettylights-syntax-keyword */
+        color: lighten($color-main, 14%);
     }
 
     &-title,
-    &-section,
+    &-title.class_,
+    &-title.class_.inherited__,
+    &-title.function_ {
+        /* prettylights-syntax-entity */
+        color: lighten($color-purple, 13%);
+    }
+
+    &-attr,
+    &-attribute,
+    &-literal,
+    &-meta,
+    &-number,
+    &-operator,
+    &-variable,
+    &-selector-attr,
+    &-selector-class,
     &-selector-id {
-        color: #835cb9;
-        font-weight: bold;
-    }
-
-    &-subst {
-        font-weight: normal;
-    }
-
-    &-type {
-        color: #458;
-    }
-
-    &-class &-title {
-        color: $color-text;
-    }
-
-    &-tag,
-    &-name,
-    &-attribute {
-        color: #000080;
-        font-weight: normal;
+        /* prettylights-syntax-constant */
+        color: lighten($color-blue, 2%);
     }
 
     &-regexp,
-    &-link {
-        color: #009926;
-    }
-
-    &-symbol,
-    &-bullet {
-        color: #990073;
+    &-string,
+    &-meta &-string {
+        /* prettylights-syntax-string */
+        color: desaturate(lighten($color-green, 35%), 36%);
     }
 
     &-built_in,
-    &-builtin-name {
-        color: #0086b3;
+    &-symbol {
+        /* prettylights-syntax-variable */
+        color: #f69d50;
     }
 
-    &-meta {
-        color: #999;
+    &-comment,
+    &-code,
+    &-formula {
+        /* prettylights-syntax-comment */
+        color: #768390;
     }
 
-    &-deletion {
-        background: #fdd;
+    &-name,
+    &-quote,
+    &-selector-tag,
+    &-selector-pseudo {
+        /* prettylights-syntax-entity-tag */
+        color: #8ddb8c;
     }
 
-    &-addition {
-        background: #dfd;
+    &-subst {
+        /* prettylights-syntax-storage-modifier-import */
+        color: #adbac7;
+    }
+
+    &-section {
+        /* prettylights-syntax-markup-heading */
+        color: #316dca;
+        font-weight: bold;
+    }
+
+    &-bullet {
+        /* prettylights-syntax-markup-list */
+        color: #eac55f;
     }
 
     &-emphasis {
+        /* prettylights-syntax-markup-italic */
+        color: #adbac7;
         font-style: italic;
     }
 
     &-strong {
+        /* prettylights-syntax-markup-bold */
+        color: #adbac7;
         font-weight: bold;
     }
+
+    &-addition {
+        /* prettylights-syntax-markup-inserted */
+        color: #b4f1b4;
+        background-color: #1b4721;
+    }
+
+    &-deletion {
+        /* prettylights-syntax-markup-deleted */
+        color: #ffd8d3;
+        background-color: #78191b;
+    }
+
+    &-char.escape_,
+    &-link,
+    &-params,
+    &-property,
+    &-punctuation,
+    &-tag {
+        /* purposely ignored */
+    }
+
 }

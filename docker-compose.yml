@@ -43,6 +43,13 @@ services:
     networks:
       - laravel_su
 
+  node:
+    build: docker/node
+    container_name: laravelsu-node
+    working_dir: /home/forge/laravel.su
+    volumes:
+      - .:/home/forge/laravel.su
+
 networks:
   laravel_su:
     name: laravel_su

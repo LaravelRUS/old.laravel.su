@@ -1,90 +1,135 @@
+.documentation-menu {
+    min-width: 260px;
+    width: 260px;
+    margin-right: 15px;
+    padding: 10px 0 50px 0;
 
-/**
- * Global Menu Styles
- */
+    /**
+     * Global Menu Styles
+     */
+    ul {
+        margin-bottom: .5rem;
 
-ul {
-    margin-bottom: .5rem;
-
-    li {
-        list-style: none !important;
-    }
-
-    a {
-        letter-spacing: 0;
-        line-height: 36px;
-        font-size: 16px;
-        padding-left: 1rem;
-        color: $color-silver;
-        display: block;
-        border-radius: 3px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: relative;
-        z-index: 1;
-        text-transform: none;
-
-        &:hover {
-            color: $color-main;
-            text-decoration: none;
+        li {
+            list-style: none !important;
         }
 
-        &.external-link {
-            &:after {
-                @include fa-icon;
-                content: $fa-var-external-link;
-                margin-left: 4px;
-                position: relative;
-                top: -4px;
-                transform: scale(.7);
-            }
-        }
-
-        &.active,
-        &.active:hover,
-        &.active:active,
-        &.active:focus {
-            color: $color-white;
-            background: $color-main;
-            text-decoration: none;
-            cursor: default;
+        a {
+            letter-spacing: 0;
+            line-height: 36px;
+            font-size: 16px;
+            padding: 0 1rem;
+            color: $color-silver;
+            display: block;
+            border-radius: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+            text-transform: none;
+            box-shadow: inset 0 0 0 1px rgba($color-white, 0);
             transition:
-                color .6s ease,
-                background .6s ease
+                color .1s ease,
+                box-shadow .1s ease,
+                background .1s ease
             ;
 
-            &:before {
-                display: none;
+            &:hover {
+                color: $color-main;
+                text-decoration: none;
+                background: $color-extra-light-gray;
+                transition:
+                    color .3s ease,
+                    box-shadow .3s ease,
+                    background .3s ease
+                ;
+            }
+
+            &:active {
+                box-shadow: inset 0 0 0 1px $color-main;
+                background: $color-white;
+                transition:
+                    color .3s ease,
+                    box-shadow 0s ease,
+                    background .3s ease
+                ;
+            }
+
+            &.external-link {
+                &:after {
+                    @include la-icon;
+                    content: $la-icon-link;
+                    margin-left: 4px;
+                    position: relative;
+                    top: -4px;
+                    transform: scale(.7);
+                }
+            }
+
+            &.active,
+            &.active:hover,
+            &.active:active,
+            &.active:focus {
+                color: $color-white;
+                background: $color-main;
+                text-decoration: none;
+                cursor: default;
+                transition:
+                    color .6s ease,
+                    background .6s ease
+                ;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+
+    }
+
+    /**
+     * Root Navigation Level (Titles)
+     */
+    & > ul {
+        h2 {
+            margin: 0 !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+        }
+
+        & > li {
+            color: $color-extra-light-black;
+            margin: 15px 0;
+            text-transform: uppercase;
+            line-height: 26px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: bold;
+
+            /**
+             * Secondary Navigation Level (Menu)
+             */
+            & > ul {
+                padding: 2px 0 4px 0;
+
+                li {
+                    line-height: 22px;
+                    font-size: 12px;
+                    font-weight: normal;
+                }
             }
         }
     }
-}
 
-/**
- * Root Navigation Level (Titles)
- */
-& > ul {
-    h2 {
-        margin: 0 !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-    }
-
-    & > li {
-        color: $color-extra-light-black;
-        margin: 15px 0;
-        text-transform: uppercase;
-        line-height: 26px;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 1px;
-
-        /**
-         * Secondary Navigation Level (Menu)
-         */
-        & > ul {
-            padding: 10px 0;
-        }
+    .extras {
+        white-space: normal;
+        line-height: 36px;
+        border-radius: 4px;
+        border: $color-border 2px solid;
+        padding: 10px 15px;
+        color: $color-silver;
+        margin-top: 20px;
     }
 }

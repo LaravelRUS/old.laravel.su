@@ -2,7 +2,7 @@
     padding-bottom: 100px;
 
     &-menu {
-        column-count: 4;
+        column-count: 6;
         column-gap: 2em;
         line-height: 32px;
         margin: 15px 0;
@@ -10,12 +10,26 @@
         border-radius: 3px;
         padding: 10px 20px;
 
-        &-visible .fa {
-            color: $color-red;
+        &-visible {
+            color: $color-green;
+            &:before {
+                @include la-icon;
+                content: $la-icon-ok;
+                width: 20px;
+            }
         }
 
-        &-hidden .fa {
+        &-hidden {
             color: $color-description;
+            &:before {
+                @include la-icon;
+                content: '';
+                width: 20px;
+            }
+
+            &.active:before {
+                content: $la-icon-cancel;
+            }
         }
 
         &-visible,
@@ -29,13 +43,6 @@
             margin-right: 25%;
             text-decoration: none;
 
-            .fa {
-                margin-right: 7px;
-                &:before {
-                    min-width: 14px;
-                }
-            }
-
             &:hover {
                 background: #fff;
                 text-decoration: none;
@@ -46,10 +53,6 @@
                 background: #ff2d20;
                 text-decoration: none;
                 cursor: default;
-
-                .fa {
-                    color: #fff;
-                }
             }
         }
     }

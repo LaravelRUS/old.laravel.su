@@ -15,6 +15,9 @@ require('laravel-mix-purgecss');
 
 mix
     .webpackConfig({
+        stats: {
+            children: true,
+        },
         resolve: {
             modules: [
                 `${__dirname}/node_modules`,
@@ -26,14 +29,14 @@ mix
     .js('resources/js/app.js', 'public/assets')
     .sass('resources/css/app.scss', 'public/assets', {
         sourceMap: true,
-        // outputStyle: 'compressed',
+        sassOptions: {
+            outputStyle: 'compressed',
+        }
     })
     .disableNotifications()
     .sourceMaps()
 ;
 
 if (mix.inProduction()) {
-    mix
-        .version()
-    ;
+    mix.version();
 }

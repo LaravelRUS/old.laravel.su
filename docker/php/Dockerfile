@@ -6,7 +6,7 @@ WORKDIR "/home/forge/laravel.su"
 ARG DEBIAN_FRONTEND=noninteractive
 
 # ------------------------------------------------------------------------------
-# Installation Dependencies
+# Install Dependencies
 # ------------------------------------------------------------------------------
 
 RUN apt-get update \
@@ -18,6 +18,10 @@ RUN apt-get update \
       unzip \
       git \
       curl
+
+# ------------------------------------------------------------------------------
+# Install PHP
+# ------------------------------------------------------------------------------
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | \

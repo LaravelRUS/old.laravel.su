@@ -1,12 +1,14 @@
+@use "sass:math";
+
 /**
  * Kernel variables
  */
 $ui-height: 32px !default;
-$ui-height-div-2: $ui-height / 2 !default;
+$ui-height-div-2: math.div($ui-height, 2) !default;
 
 $ui-padding: 15px !default;
 $ui-min-height: 18px !default;
-$ui-min-height-dev-2: $ui-min-height / 2 !default;
+$ui-min-height-dev-2: math.div($ui-min-height, 2) !default;
 
 /**
  * Animations

@@ -26,8 +26,7 @@ a {
         position: relative;
 
         &:after {
-            @include fa-icon;
-            content: $fa-var-external-link;
+            @include la-icon;
             font-size: 70%;
             position: relative;
             top: -4px;

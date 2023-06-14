@@ -2,20 +2,29 @@
 import axios from 'axios';
 import ko from 'knockout';
 
+import {AxiosStatic} from "axios";
+
 export default class Application {
-    boot() {
-        window.axios || (window.axios = Application.#bootAxios());
-        window.ko || (window.ko = Application.#bootKnockout());
+    static boot(viewModels: string): void {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function (): void {
+                Application.#run(viewModels);
+            });
+        } else {
+            Application.#run(viewModels);
+        }
     }
 
-    /**
-     * @returns {*}
-     */
-    static #bootKnockout() {
-        const nodes = document.querySelectorAll('[data-vm]');
+    static #run(viewModels: string): void {
+        window.axios = Application.#bootAxios();
+        window.ko = Application.#bootKnockout(viewModels);
+    }
 
-        for (let node of nodes) {
-            let vm = require(`../view-model/${node.getAttribute('data-vm')}.js`).default;
+    static #bootKnockout(viewModels: string): KnockoutStatic {
+        const nodes: NodeListOf<Element> = document.querySelectorAll('[data-vm]');
+
+        for (let node: Element of nodes) {
+            let vm = require(`../${viewModels}/${node.getAttribute('data-vm')}.js`).default;
 
             ko.applyBindings(new vm(node), node);
         }
@@ -27,10 +36,8 @@ export default class Application {
      * We'll load the axios HTTP library which allows us to easily issue requests
      * to our Laravel back-end. This library automatically handles sending the
      * CSRF token as a header based on the value of the "XSRF" token cookie.
-     *
-     * @returns {AxiosStatic}
      */
-    static #bootAxios() {
+    static #bootAxios(): AxiosStatic {
         axios.defaults.headers.common = {
             'X-Requested-With': 'XMLHttpRequest',
             'X-CSRF-TOKEN': document

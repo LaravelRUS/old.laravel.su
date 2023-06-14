@@ -10,20 +10,22 @@
     "production": "mix --production"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22",
+    "@babel/preset-flow": "^7.22",
     "cross-env": "^7.0",
     "laravel-mix": "^6.0",
     "laravel-mix-purgecss": "^6.0",
     "mini-css-extract-plugin": "^2.7",
-    "node-sass": "^8.0",
+    "node-sass": "^9.0",
     "resolve-url-loader": "^5.0",
-    "sass": "^1.50",
-    "sass-loader": "^13.2",
+    "sass": "^1.60",
+    "sass-loader": "^13.3",
     "sass-resources-loader": "^2.2"
   },
   "dependencies": {
+    "@types/knockout": "^3.4.72",
+    "axios": "^1.4",
     "knockout": "^3.5",
-    "axios": "^1.2",
-    "font-awesome": "^4.7",
     "reset-css": "^5.0"
   }
 }

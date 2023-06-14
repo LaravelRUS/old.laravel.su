@@ -62,11 +62,12 @@
     line-height: 32px;
 
     .container {
-        padding: 100px 0;
+        padding: 160px 0;
         position: relative;
 
         span {
             color: $color-extra-light-black;
+            font-size: 18px;
         }
 
         .section-image {

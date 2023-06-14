@@ -11,12 +11,6 @@
            class="label translation-progress-menu-{{ $version->isDocumented() ? 'visible' : 'hidden' }}
                {{ isset($current) && $version->name === $current->name ? 'active' : '' }}">
 
-            @if ($version->isDocumented())
-                <span class="fa fa-check"></span>
-            @else
-                <span class="fa fa-times"></span>
-            @endif
-
             Laravel {{ $version->name }}
         </a>
     @endforeach

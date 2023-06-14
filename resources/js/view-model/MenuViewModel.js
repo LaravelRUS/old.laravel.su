@@ -1,12 +1,10 @@
 
-const uri = window.location.pathname;
+const uri: string = window.location.pathname;
 
 export default class MenuViewModel {
-    constructor(node) {
-        const selected = node.querySelector(`a[href="${uri}"]`);
+    constructor(node: Element) {
+        const selected: ?Element = node.querySelector(`a[href="${uri}"]`);
 
-        if (selected) {
-            selected.classList.add('active');
-        }
+        selected?.classList.add('active');
     }
 }

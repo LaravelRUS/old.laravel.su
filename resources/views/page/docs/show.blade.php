@@ -37,8 +37,6 @@
         </aside>
 
         <article class="documentation-content">
-            @include('page.docs.partials.translation-status', ['page' => $page])
-
             {!! $page !!}
         </article>
     </section>

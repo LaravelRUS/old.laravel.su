@@ -1,0 +1,37 @@
+
+$la-font-size-base: 14px    !default;
+$la-line-height-base: 1     !default;
+
+@font-face {
+    font-family: 'laravel-su-icons';
+    src: url('../../fonts/laravel-su-icons.eot?53720013');
+    src: url('../../fonts/laravel-su-icons.eot?53720013#iefix') format('embedded-opentype'),
+         url('../../fonts/laravel-su-icons.woff2?53720013') format('woff2'),
+         url('../../fonts/laravel-su-icons.woff?53720013') format('woff'),
+         url('../../fonts/laravel-su-icons.ttf?53720013') format('truetype'),
+         url('../../fonts/laravel-su-icons.svg?53720013#laravel-su-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin la-icon() {
+    display: inline-block;
+    // shortening font declaration
+    font: normal normal normal #{$la-font-size-base}/#{$la-line-height-base} "laravel-su-icons";
+    // can't have font-size inherit on line above, so need to override
+    font-size: inherit;
+    // optimizelegibility throws things off #1094
+    text-rendering: auto;
+    @include font-optimize;
+}
+
+$la-icon-up: '\e800';       /* '' */
+$la-icon-right: '\e801';    /* '' */
+$la-icon-left: '\e802';     /* '' */
+$la-icon-down: '\e803';     /* '' */
+$la-icon-video: '\e804';    /* '' */
+$la-icon-link: '\e805';     /* '' */
+$la-icon-ok: '\e806';       /* '' */
+$la-icon-cancel: '\e807';   /* '' */
+$la-icon-quote: '\f10d';    /* '' */
+$la-icon-warning: '\f12a';  /* '' */

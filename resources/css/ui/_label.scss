@@ -16,8 +16,8 @@
     }
 
     &.success {
-        color: desaturate(darken($color-green, 10%), 20%);
-        background: desaturate(lighten($color-green, 55%), 30%);
+        color: desaturate(lighten($color-green, 1%), 25%);
+        background: desaturate(lighten($color-green, 56%), 42%);
     }
 
     &.notice {
@@ -28,5 +28,37 @@
     &.warning {
         color: desaturate(darken($color-red, 5%), 30%);
         background: desaturate(lighten($color-red, 40%), 30%);
+    }
+}
+
+
+
+a.label {
+    text-decoration: none;
+    transition:
+        color .3s ease,
+        background .3s ease
+    ;
+
+    &:hover {
+        transition:
+            color .1s ease,
+            background .1s ease
+        ;
+    }
+
+    &.success:hover {
+        color: desaturate(darken($color-green, 4%), 25%);
+        background: desaturate(lighten($color-green, 51%), 42%);
+    }
+
+    &.notice:hover {
+        color: desaturate(darken($color-yellow, 20%), 20%);
+        background: desaturate(lighten($color-yellow, 45%), 30%);
+    }
+
+    &.warning:hover {
+        color: desaturate(darken($color-red, 15%), 30%);
+        background: desaturate(lighten($color-red, 36%), 30%);
     }
 }

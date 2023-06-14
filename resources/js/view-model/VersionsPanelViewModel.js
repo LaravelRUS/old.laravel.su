@@ -7,33 +7,21 @@ if (!requestAnimationFrame) {
 }
 
 export default class VersionsPanelViewModel {
-    /**
-     * @type {*}
-     */
-    fixed = ko.observable(false);
+    fixed: KnockoutObservable<boolean> = ko.observable(false);
 
-    /**
-     * @type {*}
-     */
-    scrollDirectionDown = ko.observable(true);
+    scrollDirectionDown: KnockoutObservable<boolean> = ko.observable(true);
 
-    /**
-     * @type {number}
-     */
-    #previousTop = 0;
+    #previousTop: number = 0;
 
-    /**
-     * @type {number}
-     */
-    #currentTop = 0;
+    #currentTop: number = 0;
 
-    constructor(context) {
-        const self = this;
+    constructor(context: Element) {
+        const self: VersionsPanelViewModel = this;
 
-        window.addEventListener('scroll', function (e) {
-            const rect = context.getBoundingClientRect();
+        window.addEventListener('scroll', function (): void {
+            const rect: DOMRect = context.getBoundingClientRect();
 
-            requestAnimationFrame(function () {
+            requestAnimationFrame(function (): void {
                 self.#currentTop = window.pageYOffset || document.documentElement.scrollTop;
                 self.scrollDirectionDown(self.#currentTop > self.#previousTop);
                 self.#previousTop = self.#currentTop;

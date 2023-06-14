@@ -21,6 +21,15 @@
         position: relative;
         justify-content: space-between;
         align-items: center;
+
+        a.label {
+            &:hover {
+                transition: background .3s ease;
+                background: $color-extra-light-gray;
+                color: darken($color-main, 10%);
+                text-decoration: none;
+            }
+        }
     }
 
     .label {
@@ -36,20 +45,17 @@
     }
 
     .label.title {
+        max-width: 100px;
         background: $color-extra-light-gray;
         color: $color-description;
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: 1px;
-    }
-
-    a.label {
-        &:hover {
-            transition: background .3s ease;
-            background: $color-extra-light-gray;
-            color: darken($color-main, 10%);
-            text-decoration: none;
-        }
+        overflow: hidden;
+        transition:
+            max-width .3s ease-in-out,
+            padding .3s ease-in-out
+        ;
     }
 
     .scroll-to-top {
@@ -65,15 +71,17 @@
         text-align: center;
         border-radius: 0 0 0 2px;
         background: $color-light-gray;
+        box-shadow: inset 0 0 0 2px rgba($color-light-gray, 0);
         color: $color-light-silver;
         transition:
-            width .3s ease,
+            width .3s ease-in-out,
             background .3s ease,
+            box-shadow .3s ease,
             color .3s ease;
 
         &:before {
-            @include fa-icon;
-            content: $fa-var-arrow-circle-o-up;
+            @include la-icon;
+            content: $la-icon-up;
             color: inherit;
         }
 
@@ -81,10 +89,25 @@
             background: $color-dark-white;
             color: $color-main;
         }
+
+        &:active {
+            border-radius: 3px;
+            box-shadow: inset 0 0 0 2px $color-main;
+            transition:
+                width .3s ease-in-out,
+                background .3s ease,
+                box-shadow 0s ease,
+                color .3s ease;
+        }
     }
 
     &.fixed {
         border-radius: 0 0 5px 5px;
+
+        .label.title {
+            max-width: 0;
+            padding: 0;
+        }
 
         .scroll-to-top {
             width: $versions-height;
