@@ -37,18 +37,17 @@ return [
 
     'managers' => [
         'default' => [
-            'dev'        => env('APP_DEBUG', false),
-            'meta'       => env('DOCTRINE_METADATA', 'xml'),
+            'dev' => env('APP_DEBUG', false),
+            'meta' => 'xml',
             'connection' => env('DB_CONNECTION', 'default'),
-            'namespaces' => [],
-            'paths'      => [
-                \config_path('mapping'),
+            'paths' => [
+                config_path('mapping'),
             ],
             'repository' => EntityRepository::class,
-            'proxies'    => [
-                'namespace'     => false,
-                'path'          => storage_path('proxies'),
-                'auto_generate' => ! env('APP_DEBUG', false),
+            'proxies' => [
+                'namespace' => 'DoctrineProxies',
+                'path' => storage_path('proxies'),
+                'auto_generate' => !env('APP_DEBUG', false),
             ],
 
             /*
@@ -62,8 +61,8 @@ return [
             */
 
             'events' => [
-                'listeners'   => [
-                    Events::preUpdate  => [
+                'listeners' => [
+                    Events::preUpdate => [
                         Persistence\Doctrine\Listener\DocumentationContentRenderer::class,
                         Persistence\Doctrine\Listener\ArticleContentRenderer::class,
                         Persistence\Doctrine\Listener\UpdatedDateSynchronizer::class,
@@ -75,13 +74,10 @@ return [
                         Persistence\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                 ],
-                'subscribers' => [
-                ],
+                'subscribers' => [],
             ],
 
-            'filters' => [
-
-            ],
+            'filters' => [],
 
             /*
             |--------------------------------------------------------------------------
@@ -109,6 +105,17 @@ return [
             'mapping_types' => [
                 'uuid' => 'string',
             ],
+
+            /*
+             |
+             | Reference
+             |
+             | https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/architecture.html#middlewares
+             |
+             */
+            'middlewares' => [
+                // Doctrine\DBAL\Logging\Middleware::class
+            ]
         ],
     ],
 
@@ -147,7 +154,7 @@ return [
     */
 
     'custom_types' => [
-        'json'   => JsonType::class,
+        'json' => JsonType::class,
         'carbon' => CarbonDateTimeType::class,
         'carbondatetimetz' => CarbonDateTimeTzType::class,
         'carbondate' => CarbonDateType::class,
@@ -196,7 +203,9 @@ return [
     | Register custom hydrators
     |--------------------------------------------------------------------------
     */
-    'custom_hydration_modes'  => [],
+    'custom_hydration_modes' => [
+        // e.g. 'hydrationModeName' => MyHydrator::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -227,19 +236,19 @@ return [
 
     'cache' => [
         'second_level' => true,
-        'default'      => env('DOCTRINE_CACHE', 'array'),
-        'namespace'    => null,
-        'metadata'     => [
-            'driver'    => env('DOCTRINE_METADATA_CACHE', env('DOCTRINE_CACHE', 'array')),
-            'namespace' => null,
+        'default' => env('DOCTRINE_CACHE', 'array'),
+        'namespace' => '',
+        'metadata' => [
+            'driver' => env('DOCTRINE_METADATA_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'namespace' => '',
         ],
-        'query'        => [
-            'driver'    => env('DOCTRINE_QUERY_CACHE', env('DOCTRINE_CACHE', 'array')),
-            'namespace' => null,
+        'query' => [
+            'driver' => env('DOCTRINE_QUERY_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'namespace' => '',
         ],
-        'result'       => [
-            'driver'    => env('DOCTRINE_RESULT_CACHE', env('DOCTRINE_CACHE', 'array')),
-            'namespace' => null,
+        'result' => [
+            'driver' => env('DOCTRINE_RESULT_CACHE', env('DOCTRINE_CACHE', 'array')),
+            'namespace' => '',
         ],
     ],
 
