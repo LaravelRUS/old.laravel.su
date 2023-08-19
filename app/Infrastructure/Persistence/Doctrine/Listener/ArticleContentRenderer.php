@@ -8,33 +8,43 @@ use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\FactoryInterface;
 use App\ContentRenderer\Type;
 use App\Domain\Article\Article;
-use App\Domain\Shared\Listener;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
-final class ArticleContentRenderer extends Listener
+final readonly class ArticleContentRenderer
 {
-    private readonly ContentRendererInterface $renderer;
+    private ContentRendererInterface $renderer;
 
-    public function __construct(
-        FactoryInterface $factory,
-    ) {
+    public function __construct(FactoryInterface $factory)
+    {
         $this->renderer = $factory->create(Type::ARTICLE);
     }
 
     public function prePersist(PrePersistEventArgs $e): void
     {
-        $this->on($e, Article::class, function (Article $entity): void {
-            $entity->body->renderUsing($this->renderer);
-        });
+        $entity = $e->getObject();
+
+        if (!$entity instanceof Article) {
+            return;
+        }
+
+        $entity->body->renderUsing($this->renderer);
     }
 
     public function preUpdate(PreUpdateEventArgs $e): void
     {
-        $this->on($e, Article::class, function (Article $entity) use ($e) {
-            if ($e->hasChangedField('body.source') || ! $entity->body->isRendered()) {
-                $entity->body->renderUsing($this->renderer);
-            }
-        });
+        $entity = $e->getObject();
+
+        if (!$entity instanceof Article) {
+            return;
+        }
+
+        // - In case of content is already has been rendered.
+        // - And source content has not been changed.
+        if (!$e->hasChangedField('body.source') && $entity->body->isRendered()) {
+            return;
+        }
+
+        $entity->body->renderUsing($this->renderer);
     }
 }

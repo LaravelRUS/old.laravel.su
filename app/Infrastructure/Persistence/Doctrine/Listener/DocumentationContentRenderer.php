@@ -8,14 +8,13 @@ use App\ContentRenderer\ContentRendererInterface;
 use App\ContentRenderer\FactoryInterface;
 use App\ContentRenderer\Type;
 use App\Domain\Documentation\Documentation;
-use App\Domain\Shared\Listener;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
-class DocumentationContentRenderer extends Listener
+final readonly class DocumentationContentRenderer
 {
     public function __construct(
-        private readonly FactoryInterface $factory
+        private FactoryInterface $factory,
     ) {
     }
 
@@ -46,39 +45,43 @@ class DocumentationContentRenderer extends Listener
 
     public function prePersist(PrePersistEventArgs $e): void
     {
-        $this->on($e, Documentation::class, function (Documentation $entity): void {
+        $entity = $e->getObject();
+
+        if (!$entity instanceof Documentation) {
+            return;
+        }
+
+        $entity->translation->renderWithVersion(
+            $entity->getVersion(),
+            $this->getRendererForTranslation($entity),
+        );
+
+        $entity->source->renderWithVersion(
+            $entity->getVersion(),
+            $this->getRendererForSource($entity),
+        );
+    }
+
+    public function preUpdate(PreUpdateEventArgs $e): void
+    {
+        $entity = $e->getObject();
+
+        if (!$entity instanceof Documentation) {
+            return;
+        }
+
+        if ($e->hasChangedField('translation.source') || ! $entity->translation->isRendered()) {
             $entity->translation->renderWithVersion(
                 $entity->getVersion(),
                 $this->getRendererForTranslation($entity),
             );
+        }
 
+        if ($e->hasChangedField('content.source') || ! $entity->source->isRendered()) {
             $entity->source->renderWithVersion(
                 $entity->getVersion(),
                 $this->getRendererForSource($entity),
             );
-        });
-    }
-
-    /**
-     * @param PreUpdateEventArgs $e
-     * @return void
-     */
-    public function preUpdate(PreUpdateEventArgs $e): void
-    {
-        $this->on($e, Documentation::class, function (Documentation $entity) use ($e) {
-            if ($e->hasChangedField('translation.source') || ! $entity->translation->isRendered()) {
-                $entity->translation->renderWithVersion(
-                    $entity->getVersion(),
-                    $this->getRendererForTranslation($entity),
-                );
-            }
-
-            if ($e->hasChangedField('content.source') || ! $entity->source->isRendered()) {
-                $entity->source->renderWithVersion(
-                    $entity->getVersion(),
-                    $this->getRendererForSource($entity),
-                );
-            }
-        });
+        }
     }
 }
