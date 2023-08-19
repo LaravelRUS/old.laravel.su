@@ -7,22 +7,22 @@ namespace App\Domain\Documentation\Translation;
 enum Status: int
 {
     /**
-     * Перевод отсутсвует
+     * Перевод отсутствует.
      */
     case MISSING = 0x00;
 
     /**
-     * Перевод актуален
+     * Перевод актуален.
      */
     case ACTUAL = 0x01;
 
     /**
-     * Перевод немного отстаёт
+     * Перевод немного отстаёт.
      */
     case BEHIND = 0x02;
 
     /**
-     * Перевод сильно отстаёт
+     * Перевод сильно отстаёт.
      */
     case FAR_BEHIND = 0x03;
 }

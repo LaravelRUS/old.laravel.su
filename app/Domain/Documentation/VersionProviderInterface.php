@@ -6,8 +6,5 @@ namespace App\Domain\Documentation;
 
 interface VersionProviderInterface
 {
-    /**
-     * @return Version
-     */
     public function getVersion(): Version;
 }

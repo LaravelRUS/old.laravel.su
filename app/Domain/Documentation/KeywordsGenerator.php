@@ -14,18 +14,18 @@ use Serafim\TFIDF\VectorizerInterface;
 /**
  * @template-implements \IteratorAggregate<Documentation, DocumentInterface>
  */
-final class KeywordsGenerator implements \IteratorAggregate
+final readonly class KeywordsGenerator implements \IteratorAggregate
 {
-    private readonly VectorizerInterface $vectorizer;
-    private readonly DocumentMap $documents;
+    private VectorizerInterface $vectorizer;
+    private DocumentMap $documents;
 
     /**
      * @param null|\Closure(Entry, Documentation):void $progress
      * @param non-empty-string $locale
      */
     public function __construct(
-        private readonly ?\Closure $progress = null,
-        private readonly string $locale = 'ru_RU',
+        private ?\Closure $progress = null,
+        private string $locale = 'ru_RU',
     ) {
         $this->vectorizer = new Vectorizer();
         $this->documents = new DocumentMap();
