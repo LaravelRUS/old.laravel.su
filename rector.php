@@ -40,6 +40,8 @@ return static function (RectorConfig $config): void {
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
     ]);
 
+    $config->cacheDirectory(__DIR__ . '/storage/app');
+
     $config->parallel(360);
 
     $config->importNames();
