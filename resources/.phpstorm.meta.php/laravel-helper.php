@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.52.4.
+ * Generated for Laravel 10.19.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -248,7 +248,7 @@
          * @param string $name
          * @param string $type
          * @return void 
-         * @throws \Doctrine\DBAL\DBALException
+         * @throws \Doctrine\DBAL\Exception
          * @throws \RuntimeException
          * @static 
          */ 
@@ -531,7 +531,7 @@
                     /**
          * Begin a fluent query against a database table.
          *
-         * @param \Closure|\Illuminate\Database\Query\Builder|string $table
+         * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string $table
          * @param string|null $as
          * @return \Illuminate\Database\Query\Builder 
          * @static 
@@ -607,6 +607,20 @@
         {            //Method inherited from \Illuminate\Database\Connection         
                         /** @var \Illuminate\Database\PostgresConnection $instance */
                         return $instance->select($query, $bindings, $useReadPdo);
+        }
+                    /**
+         * Run a select statement against the database and returns all of the result sets.
+         *
+         * @param string $query
+         * @param array $bindings
+         * @param bool $useReadPdo
+         * @return array 
+         * @static 
+         */ 
+        public static function selectResultSets($query, $bindings = [], $useReadPdo = true)
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\PostgresConnection $instance */
+                        return $instance->selectResultSets($query, $bindings, $useReadPdo);
         }
                     /**
          * Run a select statement against the database and returns a generator.
@@ -797,6 +811,17 @@
                         $instance->resetTotalQueryDuration();
         }
                     /**
+         * Reconnect to the database if a PDO connection is missing.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function reconnectIfMissingConnection()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\PostgresConnection $instance */
+                        $instance->reconnectIfMissingConnection();
+        }
+                    /**
          * Register a hook to be run just before a database query is executed.
          *
          * @param \Closure $callback
@@ -824,13 +849,26 @@
          * Get a new raw query expression.
          *
          * @param mixed $value
-         * @return \Illuminate\Database\Query\Expression 
+         * @return \Illuminate\Contracts\Database\Query\Expression 
          * @static 
          */ 
         public static function raw($value)
         {            //Method inherited from \Illuminate\Database\Connection         
                         /** @var \Illuminate\Database\PostgresConnection $instance */
                         return $instance->raw($value);
+        }
+                    /**
+         * Escape a value for safe SQL embedding.
+         *
+         * @param string|float|int|bool|null $value
+         * @param bool $binary
+         * @return string 
+         * @static 
+         */ 
+        public static function escape($value, $binary = false)
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\PostgresConnection $instance */
+                        return $instance->escape($value, $binary);
         }
                     /**
          * Determine if the database connection has modified any database records.
@@ -902,7 +940,7 @@
                         return $instance->isDoctrineAvailable();
         }
                     /**
-         * Indicates whether native alter operations will be used when dropping or renaming columns, even if Doctrine DBAL is installed.
+         * Indicates whether native alter operations will be used when dropping, renaming, or modifying columns, even if Doctrine DBAL is installed.
          *
          * @return bool 
          * @static 
@@ -1209,6 +1247,17 @@
                         return $instance->getQueryLog();
         }
                     /**
+         * Get the connection query log with embedded bindings.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getRawQueryLog()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\PostgresConnection $instance */
+                        return $instance->getRawQueryLog();
+        }
+                    /**
          * Clear the query log.
          *
          * @return void 
@@ -1432,6 +1481,8 @@
      * @method static \Psr\Log\LoggerInterface getLogger()
      * @method static \Illuminate\Contracts\Events\Dispatcher getEventDispatcher()
      * @method static void setEventDispatcher(\Illuminate\Contracts\Events\Dispatcher $dispatcher)
+     * @method static \Illuminate\Log\Logger|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
+     * @method static \Illuminate\Log\Logger|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
      * @see \Illuminate\Log\LogManager
      */ 
         class Log {
@@ -1824,7 +1875,7 @@
                         return $instance->any($uri, $action);
         }
                     /**
-         * Register a new Fallback route with the router.
+         * Register a new fallback route with the router.
          *
          * @param array|string|callable|null $action
          * @return \Illuminate\Routing\Route 
@@ -2850,7 +2901,7 @@
                         \Illuminate\Database\Schema\PostgresBuilder::morphUsingUlids();
         }
                     /**
-         * Attempt to use native schema operations for dropping and renaming columns, even if Doctrine DBAL is installed.
+         * Attempt to use native schema operations for dropping, renaming, and modifying columns, even if Doctrine DBAL is installed.
          *
          * @param bool $value
          * @return void 
@@ -3395,18 +3446,6 @@
                     /**
          * 
          *
-         * @param $namespace
-         * @param string|null $connection
-         * @static 
-         */ 
-        public static function addNamespace($namespace, $connection = null)
-        {
-                        /** @var \LaravelDoctrine\ORM\DoctrineManager $instance */
-                        return $instance->addNamespace($namespace, $connection);
-        }
-                    /**
-         * 
-         *
          * @param array $paths
          * @param string|null $connection
          * @static 
@@ -3431,7 +3470,7 @@
                     /**
          * 
          *
-         * @param null $connection
+         * @param string|null $connection
          * @param \Doctrine\Persistence\ManagerRegistry $registry
          * @return \Doctrine\Persistence\Mapping\Driver\MappingDriver 
          * @static 
@@ -3923,6 +3962,16 @@
                         return $instance->initializeObject($obj);
         }
                     /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */ 
+        public static function isUninitializedObject($obj)
+        {
+                        /** @var \Doctrine\ORM\EntityManager $instance */
+                        return $instance->isUninitializedObject($obj);
+        }
+                    /**
          * Factory method to create EntityManager instances.
          *
          * @deprecated Use {@see DriverManager::getConnection()} to bootstrap the connection and call the constructor.
@@ -4115,6 +4164,21 @@
                         return $instance->captureLastError($hint);
         }
                     /**
+         * 
+         *
+         * @param string $slug Identifier of the Monitor
+         * @param \Sentry\CheckInStatus $status The status of the check-in
+         * @param int|float|null $duration The duration of the check-in
+         * @param \Sentry\MonitorConfig|null $monitorConfig Configuration of the Monitor
+         * @param string|null $checkInId A check-in ID from the previous check-in
+         * @static 
+         */ 
+        public static function captureCheckIn($slug, $status, $duration = null, $monitorConfig = null, $checkInId = null)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->captureCheckIn($slug, $status, $duration, $monitorConfig, $checkInId);
+        }
+                    /**
          * Records a new breadcrumb which will be attached to future events. They
          * will be added to subsequent events to provide more context on user's
          * actions prior to an error or crash.
@@ -4157,9 +4221,9 @@
          * which point the transaction with all its finished child spans will be sent to
          * Sentry.
          *
-         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @param array<string, mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
          * @param \Sentry\Tracing\TransactionContext $context Properties of the new transaction
-         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @param array<string, mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
          * @static 
          */ 
         public static function startTransaction($context, $customSamplingContext = [])
@@ -4312,6 +4376,27 @@
                     /**
          * 
          *
+         * @param array<class-string<ArgumentReducer>|ArgumentReducer>|\Spatie\Backtrace\Arguments\ArgumentReducers|null $argumentReducers
+         * @static 
+         */ 
+        public static function argumentReducers($argumentReducers)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->argumentReducers($argumentReducers);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function withStackFrameArguments($withStackFrameArguments = true)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->withStackFrameArguments($withStackFrameArguments);
+        }
+                    /**
+         * 
+         *
          * @static 
          */ 
         public static function version()
@@ -4383,7 +4468,7 @@
                     /**
          * 
          *
-         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware> $middleware
+         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware>|callable $middleware
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -4408,7 +4493,7 @@
          *
          * @param string $name
          * @param string $messageLevel
-         * @param \Spatie\FlareClient\array<int,  mixed> $metaData
+         * @param array<int, mixed> $metaData
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -4501,7 +4586,7 @@
                     /**
          * 
          *
-         * @param \Spatie\FlareClient\array<int,  string> $fieldNames
+         * @param array<int, string> $fieldNames
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -4577,7 +4662,7 @@
          * 
          *
          * @param string $groupName
-         * @param \Spatie\FlareClient\array<string,  mixed> $properties
+         * @param array<string, mixed> $properties
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -4660,6 +4745,114 @@
      
 }
 
+    namespace Illuminate\Database { 
+            /**
+     * 
+     *
+     */ 
+        class Grammar {
+                    /**
+         * 
+         *
+         * @see \App\Infrastructure\Providers\DatabaseServiceProvider::registerPostgresTypes()
+         * @param \Illuminate\Support\Fluent $column
+         * @return string 
+         * @static 
+         */ 
+        public static function typeText[]($column)
+        {
+                        return \Illuminate\Database\Grammar::typeText[]($column);
+        }
+                    /**
+         * 
+         *
+         * @see \App\Infrastructure\Providers\DatabaseServiceProvider::registerPostgresTypes()
+         * @param \Illuminate\Support\Fluent $column
+         * @return string 
+         * @static 
+         */ 
+        public static function typeString[]($column)
+        {
+                        return \Illuminate\Database\Grammar::typeString[]($column);
+        }
+                    /**
+         * 
+         *
+         * @see \App\Infrastructure\Providers\DatabaseServiceProvider::registerPostgresTypes()
+         * @param \Illuminate\Support\Fluent $column
+         * @return string 
+         * @static 
+         */ 
+        public static function typeInteger[]($column)
+        {
+                        return \Illuminate\Database\Grammar::typeInteger[]($column);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Console\Scheduling { 
+            /**
+     * 
+     *
+     */ 
+        class Event {
+                    /**
+         * 
+         *
+         * @see \Sentry\Laravel\Features\ConsoleIntegration::setupInactive()
+         * @param string|null $monitorSlug
+         * @param int|null $checkInMargin
+         * @param int|null $maxRuntime
+         * @param bool $updateMonitorConfig
+         * @static 
+         */ 
+        public static function sentryMonitor($monitorSlug = null, $checkInMargin = null, $maxRuntime = null, $updateMonitorConfig = true)
+        {
+                        return \Illuminate\Console\Scheduling\Event::sentryMonitor($monitorSlug, $checkInMargin, $maxRuntime, $updateMonitorConfig);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Database\Query\Grammars { 
+            /**
+     * 
+     *
+     */ 
+        class PostgresGrammar {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Grammar {
+         
+    }
+     
+}
+
+    namespace Illuminate\Database\Schema\Grammars { 
+            /**
+     * 
+     *
+     */ 
+        class PostgresGrammar {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Grammar {
+         
+    }
+     
+}
+
 
 namespace  { 
             class Cookie extends \Illuminate\Support\Facades\Cookie {}
@@ -4686,6 +4879,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Env;
 use Illuminate\Support\HigherOrderTapProxy;
 use Illuminate\Support\Optional;
+use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
 
 if (! function_exists('append_config')) {
@@ -4800,7 +4994,7 @@ if (! function_exists('e')) {
             $value = $value->value;
         }
 
-        return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8', $doubleEncode);
+        return htmlspecialchars($value ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', $doubleEncode);
     }
 }
 
@@ -4933,7 +5127,7 @@ if (! function_exists('retry')) {
             $sleepMilliseconds = $backoff[$attempts - 1] ?? $sleepMilliseconds;
 
             if ($sleepMilliseconds) {
-                usleep(value($sleepMilliseconds, $attempts, $e) * 1000);
+                Sleep::usleep(value($sleepMilliseconds, $attempts, $e) * 1000);
             }
 
             goto beginning;
@@ -4993,12 +5187,14 @@ if (! function_exists('throw_if')) {
     /**
      * Throw the given exception if the given condition is true.
      *
+     * @template TException of \Throwable
+     *
      * @param  mixed  $condition
-     * @param  \Throwable|string  $exception
+     * @param  TException|class-string<TException>|string  $exception
      * @param  mixed  ...$parameters
      * @return mixed
      *
-     * @throws \Throwable
+     * @throws TException
      */
     function throw_if($condition, $exception = 'RuntimeException', ...$parameters)
     {
@@ -5018,12 +5214,14 @@ if (! function_exists('throw_unless')) {
     /**
      * Throw the given exception unless the given condition is true.
      *
+     * @template TException of \Throwable
+     *
      * @param  mixed  $condition
-     * @param  \Throwable|string  $exception
+     * @param  TException|class-string<TException>|string  $exception
      * @param  mixed  ...$parameters
      * @return mixed
      *
-     * @throws \Throwable
+     * @throws TException
      */
     function throw_unless($condition, $exception = 'RuntimeException', ...$parameters)
     {
@@ -5037,7 +5235,7 @@ if (! function_exists('trait_uses_recursive')) {
     /**
      * Returns all traits used by a trait and its traits.
      *
-     * @param  string  $trait
+     * @param  object|string  $trait
      * @return array
      */
     function trait_uses_recursive($trait)
@@ -5056,10 +5254,14 @@ if (! function_exists('transform')) {
     /**
      * Transform the given value if it is present.
      *
-     * @param  mixed  $value
-     * @param  callable  $callback
-     * @param  mixed  $default
-     * @return mixed|null
+     * @template TValue of mixed
+     * @template TReturn of mixed
+     * @template TDefault of mixed
+     *
+     * @param  TValue  $value
+     * @param  callable(TValue): TReturn  $callback
+     * @param  TDefault|callable(TValue): TDefault|null  $default
+     * @return ($value is empty ? ($default is null ? null : TDefault) : TReturn)
      */
     function transform($value, callable $callback, $default = null)
     {
