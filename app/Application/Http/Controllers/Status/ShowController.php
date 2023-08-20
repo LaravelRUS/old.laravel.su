@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers;
+namespace App\Application\Http\Controllers\Status;
 
 use App\Domain\Documentation\Version;
 use App\Domain\Documentation\VersionRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 
-final readonly class StatusController
+final readonly class ShowController
 {
     public function __construct(
         private ViewFactoryInterface $views,
@@ -19,14 +17,7 @@ final readonly class StatusController
     ) {
     }
 
-    public function index(Redirector $redirector): RedirectResponse
-    {
-        return $redirector->route('status.show', [
-            'version' => $this->versions->last()->name,
-        ]);
-    }
-
-    public function show(Version $version): ViewInterface
+    public function __invoke(Version $version): ViewInterface
     {
         return $this->views->make('page.status.show', [
             'versions' => $this->versions->all(),

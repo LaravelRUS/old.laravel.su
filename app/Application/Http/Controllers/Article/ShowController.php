@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers;
+namespace App\Application\Http\Controllers\Article;
 
 use App\Domain\Article\ArticleRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final readonly class ArticleController
+final readonly class ShowController
 {
     private const ERROR_PAGE_NOT_FOUND = 'Article not found';
 
@@ -19,7 +19,7 @@ final readonly class ArticleController
     ) {
     }
 
-    public function index(string $urn): ViewInterface
+    public function __invoke(string $urn): ViewInterface
     {
         $article = $this->articles->findByUrn($urn);
 

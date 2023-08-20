@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers;
+namespace App\Application\Http\Controllers\Documentation;
 
 use App\Domain\Documentation\DocumentationRepositoryInterface;
 use App\Domain\Documentation\Version;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final readonly class DocsController
+final readonly class ShowController
 {
     private const ERROR_PAGE_NOT_FOUND = 'Documentation page %s not found';
 
@@ -24,7 +22,7 @@ final readonly class DocsController
     ) {
     }
 
-    public function show(Version $current, string $version, string $page): ViewInterface
+    public function __invoke(Version $current, string $version, string $page): ViewInterface
     {
         if (! $document = $this->docs->findByVersionAndUrn($current, $page)) {
             throw new NotFoundHttpException(\sprintf(self::ERROR_PAGE_NOT_FOUND, $page));
@@ -38,14 +36,6 @@ final readonly class DocsController
             'version' => $current,
             'menu'    => $menu,
             'page'    => $document,
-        ]);
-    }
-
-    public function index(Redirector $redirector, Version $current): RedirectResponse
-    {
-        return $redirector->route('docs.show', [
-            $current->name,
-            $current->defaultPage,
         ]);
     }
 }

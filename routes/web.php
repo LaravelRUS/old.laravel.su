@@ -1,20 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Application\Http\Controllers;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HomeController@index')
+// -----------------------------------------------------------------------------
+//  Home
+// -----------------------------------------------------------------------------
+
+Route::get('/', Controllers\Home\ShowController::class)
     ->name('home');
 
 // -----------------------------------------------------------------------------
 //  Documentation
 // -----------------------------------------------------------------------------
 
-Route::get('/docs/{version?}', 'DocsController@index')
+Route::get('/docs/{version?}', Controllers\Documentation\IndexController::class)
     ->middleware('version')
     ->name('docs');
 
-Route::get('/docs/{version}/{page}', 'DocsController@show')
+Route::get('/docs/{version}/{page}', Controllers\Documentation\ShowController::class)
     ->middleware('version')
     ->name('docs.show');
 
@@ -22,10 +27,10 @@ Route::get('/docs/{version}/{page}', 'DocsController@show')
 //  Status
 // -----------------------------------------------------------------------------
 
-Route::get('/status', 'StatusController@index')
+Route::get('/status', Controllers\Status\IndexController::class)
     ->name('status');
 
-Route::get('/status/{version}', 'StatusController@show')
+Route::get('/status/{version}', Controllers\Status\ShowController::class)
     ->middleware('version')
     ->name('status.show');
 
@@ -33,15 +38,14 @@ Route::get('/status/{version}', 'StatusController@show')
 //  Articles
 // -----------------------------------------------------------------------------
 
-Route::get('/articles/{urn}', 'ArticleController@index')
+Route::get('/articles/{urn}', Controllers\Article\ShowController::class)
     ->name('article');
-
 
 // -----------------------------------------------------------------------------
 //  Test
 // -----------------------------------------------------------------------------
 
 if (App::isLocal()) {
-    Route::get('/test', 'HomeController@test')
+    Route::get('/test', Controllers\Test\ShowController::class)
         ->name('test');
 }
