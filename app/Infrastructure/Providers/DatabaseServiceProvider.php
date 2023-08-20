@@ -6,13 +6,13 @@ namespace App\Infrastructure\Providers;
 
 use App\Domain\Article\ArticleRepositoryInterface;
 use App\Domain\Documentation\DocumentationRepositoryInterface;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use App\Infrastructure\Persistence\Doctrine\Repository\ArticleDatabaseRepository;
 use App\Infrastructure\Persistence\Doctrine\Repository\DocumentationDatabaseRepository;
 use App\Infrastructure\Persistence\Doctrine\Repository\VersionDatabaseRepository;
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityRepository;
 use Illuminate\Database\Grammar;
-use Illuminate\Database\Schema\Grammars\PostgresGrammar;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\ServiceProvider;
@@ -30,6 +30,12 @@ class DatabaseServiceProvider extends ServiceProvider
     ];
 
     /**
+     * @var list<class-string<EventSubscriber>>
+     */
+    private const SUBSCRIBERS = [
+    ];
+
+    /**
      * @var array<class-string, class-string<EntityRepository>>
      */
     private const REPOSITORIES = [
@@ -40,13 +46,12 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register(): void
     {
         $this->registerRepositoryInterfaces();
         $this->registerDoctrineListeners();
+        $this->registerDoctrineSubscribers();
         $this->registerPostgresTypes();
     }
 
@@ -61,6 +66,13 @@ class DatabaseServiceProvider extends ServiceProvider
     {
         foreach (self::LISTENERS as $listener) {
             $this->app->singleton($listener);
+        }
+    }
+
+    private function registerDoctrineSubscribers(): void
+    {
+        foreach (self::SUBSCRIBERS as $subscriber) {
+            $this->app->singleton($subscriber);
         }
     }
 
@@ -89,8 +101,6 @@ class DatabaseServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot(): void
     {

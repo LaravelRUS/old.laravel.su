@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Application\Http\Middleware;
 
-use App\Domain\Documentation\Version;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\Version;
+use App\Domain\Version\VersionRepositoryInterface;
 use Happyr\DoctrineSpecification\Exception\NoResultException;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\Request;

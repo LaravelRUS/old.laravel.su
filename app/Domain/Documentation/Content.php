@@ -6,6 +6,7 @@ namespace App\Domain\Documentation;
 
 use App\ContentRenderer\ContentRendererInterface;
 use App\Domain\Shared\ValueObjectInterface;
+use App\Domain\Version\Version;
 
 /**
  * Абстрактный value-object текстового содержимого.

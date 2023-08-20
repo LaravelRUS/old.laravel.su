@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers\Documentation;
+namespace App\Application\Http\Controllers\Web\Documentation;
 
 use App\Domain\Documentation\DocumentationRepositoryInterface;
-use App\Domain\Documentation\Version;
+use App\Domain\Version\Version;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

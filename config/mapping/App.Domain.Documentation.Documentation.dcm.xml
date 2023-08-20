@@ -12,10 +12,9 @@
                 <option name="default">{}</option>
             </options>
         </field>
-        <many-to-one field="version" target-entity="App\Domain\Documentation\Version" inversed-by="docs" fetch="EAGER">
+        <many-to-one field="version" target-entity="App\Domain\Version\Version" inversed-by="docs" fetch="EAGER">
             <cascade>
-                <cascade-persist/>
-                <cascade-merge/>
+                <cascade-all/>
             </cascade>
             <join-columns>
                 <join-column name="version_id" referenced-column-name="id" nullable="true"/>

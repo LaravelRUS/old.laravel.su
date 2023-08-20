@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers\Status;
+namespace App\Application\Http\Controllers\Web\Status;
 
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 

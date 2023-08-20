@@ -7,12 +7,12 @@ namespace App\Infrastructure\Providers;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Monolog\Logger;
+use Monolog\Processor\PsrLogMessageProcessor;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
-     *
      * @return void
      */
     public function register(): void
@@ -23,13 +23,12 @@ class AppServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot(): void
     {
-        //
+        $logger = $this->app->get('log');
+
+        if ($logger instanceof Logger) {
+            $logger->pushProcessor(new PsrLogMessageProcessor());
+        }
     }
 }

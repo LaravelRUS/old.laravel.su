@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Type;
 
-use App\Domain\Version\VersionId;
+use App\Domain\History\VersionId;
 
 /**
- * @template-extends UuidType<VersionId>
+ * @template-extends GitObjectType<VersionId>
  */
-final class VersionIdType extends UuidType
+final class HistoryVersionIdType extends GitObjectType
 {
     protected static function getClass(): string
     {

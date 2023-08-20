@@ -6,7 +6,7 @@ namespace App\Application\Console\Commands;
 
 use App\Domain\Documentation\Documentation;
 use App\Domain\Documentation\DocumentationRepositoryInterface;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use App\GitHub\BranchInterface;
 use App\GitHub\FileInterface;
 use App\GitHub\Repository;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Http\View\Composers;
 
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use Illuminate\Contracts\View\View;
 
 readonly class VersionsComposer implements ViewComposerInterface

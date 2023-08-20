@@ -74,7 +74,8 @@ return [
                         Persistence\Doctrine\Listener\UpdatedDateSynchronizer::class,
                     ],
                 ],
-                'subscribers' => [],
+                'subscribers' => [
+                ],
             ],
 
             'filters' => [],
@@ -114,7 +115,7 @@ return [
              |
              */
             'middlewares' => [
-                // Doctrine\DBAL\Logging\Middleware::class
+                Doctrine\DBAL\Logging\Middleware::class
             ]
         ],
     ],
@@ -168,10 +169,15 @@ return [
         'string[]' => Persistence\Doctrine\Type\StringArrayType::class,
 
         Domain\Article\ArticleId::class => Persistence\Doctrine\Type\ArticleIdType::class,
+
         Domain\Documentation\DocumentationId::class => Persistence\Doctrine\Type\DocumentationIdType::class,
-        Domain\Documentation\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,
         Domain\Documentation\SourceVersionId::class => Persistence\Doctrine\Type\SourceVersionIdType::class,
         Domain\Documentation\TranslationVersionId::class => Persistence\Doctrine\Type\TranslationVersionIdType::class,
+
+        Domain\Version\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,
+
+        Domain\History\HistoryId::class => Persistence\Doctrine\Type\HistoryIdType::class,
+        Domain\History\VersionId::class => Persistence\Doctrine\Type\HistoryVersionIdType::class,
     ],
 
     /*
@@ -206,21 +212,6 @@ return [
     'custom_hydration_modes' => [
         // e.g. 'hydrationModeName' => MyHydrator::class,
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Enable query logging with laravel file logging,
-    | debugbar, clockwork or an own implementation.
-    | Setting it to false, will disable logging
-    |
-    | Available:
-    | - LaravelDoctrine\ORM\Loggers\LaravelDebugbarLogger
-    | - LaravelDoctrine\ORM\Loggers\ClockworkLogger
-    | - LaravelDoctrine\ORM\Loggers\FileLogger
-    |--------------------------------------------------------------------------
-    */
-
-    'logger' => env('DOCTRINE_LOGGER', false),
 
     /*
     |--------------------------------------------------------------------------

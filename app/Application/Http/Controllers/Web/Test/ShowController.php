@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers\Test;
+namespace App\Application\Http\Controllers\Web\Test;
 
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;

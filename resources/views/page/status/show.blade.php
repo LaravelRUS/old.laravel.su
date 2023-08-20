@@ -6,8 +6,8 @@
 @section('content')
     @php
         /**
-         * @var \App\Domain\Documentation\Version[] $versions
-         * @var \App\Domain\Documentation\Version $current
+         * @var \App\Domain\Version\Version[] $versions
+         * @var \App\Domain\Version\Version $current
          */
     @endphp
 

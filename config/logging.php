@@ -96,5 +96,4 @@ return [
             'handler' => NullHandler::class,
         ],
     ],
-
 ];

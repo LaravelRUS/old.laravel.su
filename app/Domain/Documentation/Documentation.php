@@ -9,6 +9,8 @@ use App\Domain\Shared\CreatedDateProviderInterface;
 use App\Domain\Shared\EntityInterface;
 use App\Domain\Shared\UpdatedDateProvider;
 use App\Domain\Shared\UpdatedDateProviderInterface;
+use App\Domain\Version\Version;
+use App\Domain\Version\VersionProviderInterface;
 
 class Documentation implements
     EntityInterface,

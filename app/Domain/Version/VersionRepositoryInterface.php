@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Documentation;
+namespace App\Domain\Version;
 
 use Happyr\DoctrineSpecification\Exception\NoResultException;
 

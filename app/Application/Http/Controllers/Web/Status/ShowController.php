@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers\Status;
+namespace App\Application\Http\Controllers\Web\Status;
 
-use App\Domain\Documentation\Version;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\Version;
+use App\Domain\Version\VersionRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
 use Illuminate\Contracts\View\View as ViewInterface;
 

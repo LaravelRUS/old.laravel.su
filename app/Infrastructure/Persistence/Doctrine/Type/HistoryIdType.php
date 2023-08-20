@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Type;
 
-use App\Domain\Version\VersionId;
+use App\Domain\History\HistoryId;
 
 /**
- * @template-extends UuidType<VersionId>
+ * @template-extends UuidType<HistoryId>
  */
-final class VersionIdType extends UuidType
+final class HistoryIdType extends UuidType
 {
     protected static function getClass(): string
     {
-        return VersionId::class;
+        return HistoryId::class;
     }
 }

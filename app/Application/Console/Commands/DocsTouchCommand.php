@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Console\Commands;
 
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Clock\ClockInterface;
 

@@ -6,7 +6,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\Documentation\Documentation;
 use App\Domain\Documentation\DocumentationRepositoryInterface;
-use App\Domain\Documentation\Version;
+use App\Domain\Version\Version;
 use Doctrine\ORM\EntityManagerInterface;
 use Happyr\DoctrineSpecification\Spec;
 

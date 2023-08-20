@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Infrastructure\Persistence\Doctrine\Type;
 
 use App\Domain\Article\ArticleId;
-use App\Infrastructure\Persistence\Doctrine\Type\UuidType;
 
 /**
  * @template-extends UuidType<ArticleId>

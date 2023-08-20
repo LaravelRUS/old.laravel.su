@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
-use App\Domain\Documentation\Version;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\Version;
+use App\Domain\Version\VersionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Happyr\DoctrineSpecification\Exception\NoResultException;
 use Happyr\DoctrineSpecification\Spec;

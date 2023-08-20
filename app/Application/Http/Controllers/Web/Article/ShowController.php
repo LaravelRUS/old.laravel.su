@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Http\Controllers\Article;
+namespace App\Application\Http\Controllers\Web\Article;
 
 use App\Domain\Article\ArticleRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;

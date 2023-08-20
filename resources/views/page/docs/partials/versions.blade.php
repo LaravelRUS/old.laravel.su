@@ -1,7 +1,7 @@
 @php
     /**
-     * @var \Illuminate\Support\Collection|\App\Domain\Documentation\Version[] $versions
-     * @var \App\Domain\Documentation\Version $version
+     * @var \Illuminate\Support\Collection|\App\Domain\Version\Version[] $versions
+     * @var \App\Domain\Version\Version $version
      * @var \App\Domain\Documentation\Documentation $page
      */
 @endphp
@@ -33,19 +33,23 @@
     <aside>
         @if(isset($version))
             @if ($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::MISSING)
-                <a class="translation-status label warning" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                <a class="translation-status label warning"
+                   href="{!! route('status.show', ['version' => $version->name]) !!}">
                     Перевод отсутствует
                 </a>
             @elseif($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::ACTUAL)
-                <a class="translation-status label success" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                <a class="translation-status label success"
+                   href="{!! route('status.show', ['version' => $version->name]) !!}">
                     Перевод актуален
                 </a>
             @elseif($page->translation->getStatus() === \App\Domain\Documentation\Translation\Status::BEHIND)
-                <a class="translation-status label notice" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                <a class="translation-status label notice"
+                   href="{!! route('status.show', ['version' => $version->name]) !!}">
                     Немного отстаёт от оригинала
                 </a>
             @else
-                <a class="translation-status label warning" href="{!! route('status.show', ['version' => $version->name]) !!}">
+                <a class="translation-status label warning"
+                   href="{!! route('status.show', ['version' => $version->name]) !!}">
                     Сильно отстаёт от оригинала
                 </a>
             @endif

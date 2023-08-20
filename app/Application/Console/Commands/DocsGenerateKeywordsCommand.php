@@ -6,7 +6,7 @@ namespace App\Application\Console\Commands;
 
 use App\Domain\Documentation\Documentation;
 use App\Domain\Documentation\KeywordsGenerator;
-use App\Domain\Documentation\VersionRepositoryInterface;
+use App\Domain\Version\VersionRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Serafim\TFIDF\Entry;
 
