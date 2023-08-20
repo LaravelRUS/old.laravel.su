@@ -7,7 +7,7 @@ namespace App\Application\Http\Controllers;
 use App\Domain\Documentation\Version;
 use App\Domain\Documentation\VersionRepositoryInterface;
 use Illuminate\Contracts\View\Factory as ViewFactoryInterface;
-use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\View\View as ViewInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 
@@ -26,7 +26,7 @@ final readonly class StatusController
         ]);
     }
 
-    public function show(Version $version): View
+    public function show(Version $version): ViewInterface
     {
         return $this->views->make('page.status.show', [
             'versions' => $this->versions->all(),
