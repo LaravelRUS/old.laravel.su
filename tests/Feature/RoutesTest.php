@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use PHPUnit\Framework\Attributes\Group;
 use Ramsey\Uuid\Uuid;
 
-class RoutesTest extends FeatureTest
+#[Group('feature')]
+class RoutesTest extends FeatureTestCase
 {
     public function testHomePageIsAvailable(): void
     {

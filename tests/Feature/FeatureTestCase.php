@@ -10,9 +10,11 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Group;
 use Tests\TestCase;
 
-abstract class FeatureTest extends TestCase
+#[Group('feature')]
+abstract class FeatureTestCase extends TestCase
 {
     use InteractsWithDatabase;
     use RefreshDatabase;
