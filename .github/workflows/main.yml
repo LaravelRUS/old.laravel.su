@@ -55,7 +55,7 @@ jobs:
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: composer update --prefer-dist --no-interaction --no-progress
+          command: composer install --no-scripts --prefer-dist --no-interaction --no-progress
 
       - name: Composer Audit
         run: composer audit
@@ -221,7 +221,7 @@ jobs:
           command: composer install --no-scripts --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
 
       - name: Execute Unit Tests
-        run: vendor/bin/phpunit --testdox --verbose --testsuite unit
+        run: vendor/bin/phpunit --testdox --testsuite unit
 
   # ----------------------------------------------------------------------------
   #   Execute Feature Test Cases
