@@ -61,7 +61,7 @@ jobs:
         run: composer audit
 
       - name: Security Advisories
-        run: composer require --dev roave/security-advisories:dev-latest
+        run: composer require --dev roave/security-advisories:dev-latest --no-scripts
 
   # ----------------------------------------------------------------------------
   #   Static Analysis
