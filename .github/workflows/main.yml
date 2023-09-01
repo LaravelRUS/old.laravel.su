@@ -307,4 +307,4 @@ jobs:
         run: chmod -R 0777 storage bootstrap/cache
 
       - name: Execute Feature Tests
-        run: vendor/bin/phpunit --testdox --verbose --testsuite feature
+        run: vendor/bin/phpunit --testdox --testsuite feature
