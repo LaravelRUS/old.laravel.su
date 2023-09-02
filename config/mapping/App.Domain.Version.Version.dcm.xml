@@ -15,13 +15,7 @@
             </options>
         </field>
         <field name="updatedAt" type="datetimetz_immutable" column="updated_at" nullable="true"/>
-
         <one-to-many field="docs" target-entity="App\Domain\Documentation\Documentation" mapped-by="version" fetch="LAZY">
-            <cascade>
-                <cascade-all/>
-            </cascade>
-        </one-to-many>
-        <one-to-many field="history" target-entity="App\Domain\History\Entry" mapped-by="version" fetch="LAZY">
             <cascade>
                 <cascade-all/>
             </cascade>

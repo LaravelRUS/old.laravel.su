@@ -44,11 +44,6 @@ class Version implements
     public iterable $docs;
 
     /**
-     * @var Collection<array-key, Documentation>
-     */
-    public iterable $history;
-
-    /**
      * @var non-empty-string
      */
     public string $defaultPage = self::DEFAULT_PAGE;
@@ -70,7 +65,6 @@ class Version implements
         $this->id = $id ?? VersionId::fromNamespace(static::class);
         $this->name = \trim($title);
         $this->docs = new ArrayCollection();
-        $this->history = new ArrayCollection();
     }
 
     public function getId(): VersionId

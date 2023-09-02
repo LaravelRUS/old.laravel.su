@@ -175,9 +175,6 @@ return [
         Domain\Documentation\TranslationVersionId::class => Persistence\Doctrine\Type\TranslationVersionIdType::class,
 
         Domain\Version\VersionId::class => Persistence\Doctrine\Type\VersionIdType::class,
-
-        Domain\History\HistoryId::class => Persistence\Doctrine\Type\HistoryIdType::class,
-        Domain\History\VersionId::class => Persistence\Doctrine\Type\HistoryVersionIdType::class,
     ],
 
     /*
