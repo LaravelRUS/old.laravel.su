@@ -24,7 +24,6 @@ final class QueueMap implements \IteratorAggregate, \Countable
     private array $entries = [];
 
     /**
-     * @param DocumentMap $documents
      * @param int<1, max> $limit
      */
     public function __construct(

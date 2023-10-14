@@ -6,10 +6,10 @@ namespace App\Domain\Article;
 
 use App\ContentRenderer\ContentRendererInterface;
 
-final class Body
+final class Body implements \Stringable
 {
-    protected ?string $source = null;
-    protected ?string $rendered = null;
+    private ?string $source = null;
+    private ?string $rendered = null;
 
     public function clear(): void
     {

@@ -35,7 +35,7 @@ abstract class Command extends BaseCommand
      */
     protected function count(iterable $items): int
     {
-        if ($items instanceof \Countable || \is_array($items)) {
+        if (\is_countable($items)) {
             return \count($items);
         }
 

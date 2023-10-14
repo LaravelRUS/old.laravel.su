@@ -15,10 +15,6 @@ use Illuminate\View\Compilers\BladeCompiler;
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * @param Repository $config
-     * @param Factory $factory
-     * @param BladeCompiler $compiler
-     * @return void
      * @throws BindingResolutionException
      */
     public function boot(Repository $config, Factory $factory, BladeCompiler $compiler): void
@@ -35,11 +31,11 @@ class ViewServiceProvider extends ServiceProvider
             $impl = $this->app->make($directive);
 
             if ($impl instanceof GeneratedDirectiveInterface) {
-                $compiler->directive($name, fn(...$args): string => $impl->generate(...$args));
+                $compiler->directive($name, static fn(...$args): string => $impl->generate(...$args));
             }
 
             if ($impl instanceof IfDirectiveInterface) {
-                $compiler->if($name, fn(...$args): bool => $impl->match(...$args));
+                $compiler->if($name, static fn(...$args): bool => $impl->match(...$args));
             }
         }
     }

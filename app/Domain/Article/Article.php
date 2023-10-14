@@ -56,7 +56,6 @@ class Article implements
 
     /**
      * @param non-empty-string $title
-     * @return $this
      */
     public function rename(string $title): self
     {
@@ -71,10 +70,6 @@ class Article implements
         return $this;
     }
 
-    /**
-     * @param string $description
-     * @return $this
-     */
     public function describe(string $description): self
     {
         $this->description = $description;

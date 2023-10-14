@@ -40,7 +40,7 @@ final class DocsGenerateKeywordsCommand extends Command
         foreach ($versions->all() as $version) {
             $progress = $this->progress();
 
-            $generator = new KeywordsGenerator(function (Entry $entry, Documentation $page) use ($progress) {
+            $generator = new KeywordsGenerator(function (Entry $entry, Documentation $page) use ($progress): void {
                 $progress->setMessage(\vsprintf(
                     'Вычисление TF-IDF: <comment>%s</comment> -> [<info>%5f</info>] <info>%s</info>',
                     [

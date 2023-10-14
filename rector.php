@@ -24,8 +24,6 @@ return static function (RectorConfig $config): void {
     $config->sets([
         // CodeStyle
         SetList::TYPE_DECLARATION,
-        SetList::CODING_STYLE,
-        SetList::EARLY_RETURN,
         SetList::PRIVATIZATION,
         // Lang/Frames
         LevelSetList::UP_TO_PHP_82,
@@ -37,7 +35,7 @@ return static function (RectorConfig $config): void {
 
     $config->parallel(360);
 
-    $config->importNames();
+    //$config->importNames();
     $config->importShortClasses(false);
 
     $config->skip([
@@ -81,5 +79,7 @@ return static function (RectorConfig $config): void {
 
         // Не умеет в касты к анонимке/каррирование
         PrivatizeLocalGetterToPropertyRector::class,
+
+        \Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector::class,
     ]);
 };

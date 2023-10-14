@@ -20,9 +20,6 @@ use Illuminate\Support\Enumerable;
  */
 class DocsDiffCommand extends DocsTranslationCommand
 {
-    /**
-     * @var string
-     */
     private const ERROR_BAD_COMMIT = '<error>The commit indicated on the page "%s" is not correct</error>';
 
     /**
@@ -41,11 +38,6 @@ class DocsDiffCommand extends DocsTranslationCommand
         'Calculate and update the number of differences ' .
         'between the original and the translation documentation pages';
 
-    /**
-     * @param Documentation $page
-     * @param FileInterface $file
-     * @return void
-     */
     protected function each(Documentation $page, FileInterface $file): void
     {
         //
@@ -74,26 +66,17 @@ class DocsDiffCommand extends DocsTranslationCommand
         $page->translation->applyTranslateChanges($slice->count());
     }
 
-    /**
-     * @param FileInterface $file
-     * @return FileInterface
-     */
     protected function getSourceFile(FileInterface $file): FileInterface
     {
         $branch = $file->getBranch();
 
         return $this->source->getBranches()
-            ->first(fn(BranchInterface $b) => $b->getName() === $branch->getName())
+            ->first(fn(BranchInterface $b): bool => $b->getName() === $branch->getName())
             ->getFiles()
-            ->first(fn(FileInterface $f) => $f->getPathname() === $file->getPathname())
+            ->first(fn(FileInterface $f): bool => $f->getPathname() === $file->getPathname())
         ;
     }
 
-    /**
-     * @param Enumerable $commits
-     * @param string|null $needle
-     * @return Enumerable|null
-     */
     private function search(Enumerable $commits, ?string $needle): ?Enumerable
     {
         if ($needle === null) {
@@ -103,12 +86,12 @@ class DocsDiffCommand extends DocsTranslationCommand
         $found = false;
 
         $result = $commits
-            ->filter(static function (array $commit) use ($needle, &$found) {
+            ->filter(static function (array $commit) use ($needle, &$found): bool {
                 if ($found === false && $needle === $commit['sha']) {
                     $found = true;
                 }
 
-                return ! $found;
+                return !$found;
             });
 
         if ($found === false) {
@@ -118,11 +101,6 @@ class DocsDiffCommand extends DocsTranslationCommand
         return $result;
     }
 
-    /**
-     * @param Documentation $page
-     * @param Enumerable $history
-     * @return void
-     */
     private function writeCommitError(Documentation $page, Enumerable $history): void
     {
         $this->line('');

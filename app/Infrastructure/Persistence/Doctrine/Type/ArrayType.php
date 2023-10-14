@@ -36,8 +36,6 @@ abstract class ArrayType extends Type
 
     /**
      * @param TValue $value
-     *
-     * @return string
      */
     abstract protected function pack(mixed $value): string;
 
@@ -68,8 +66,6 @@ abstract class ArrayType extends Type
     }
 
     /**
-     * @param string $value
-     *
      * @return TValue
      */
     abstract protected function unpack(string $value): mixed;
