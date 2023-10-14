@@ -16,7 +16,7 @@ use Serafim\TFIDF\VectorizerInterface;
  */
 final readonly class KeywordsGenerator implements \IteratorAggregate
 {
-    private VectorizerInterface $vectorizer;
+    private Vectorizer $vectorizer;
     private DocumentMap $documents;
 
     /**
@@ -67,7 +67,10 @@ final readonly class KeywordsGenerator implements \IteratorAggregate
         return $queues;
     }
 
-    public function getIterator(): \Traversable
+    /**
+     * @return \Iterator<Documentation, iterable<array-key, Entry>>
+     */
+    public function getIterator(): \Iterator
     {
         foreach ($this->compute($this->vectorizer) as $document => $queue) {
             yield $this->documents->get($document) => $queue;

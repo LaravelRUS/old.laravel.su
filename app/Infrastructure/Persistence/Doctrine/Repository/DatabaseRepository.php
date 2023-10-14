@@ -26,7 +26,9 @@ abstract class DatabaseRepository extends EntityRepository
     }
 
     /**
-     * @return Collection<int<0, max>, T>
+     * @return Collection<array-key, T>
+     *
+     * @psalm-suppress all
      */
     public function all(): Collection
     {

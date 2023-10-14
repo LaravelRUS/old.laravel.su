@@ -35,6 +35,8 @@ abstract class GitObjectType extends Type
      * @param TValueObject $value
      *
      * @return non-empty-string|null
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string|null
     {
@@ -48,7 +50,7 @@ abstract class GitObjectType extends Type
     /**
      * @param non-empty-string|null $value
      *
-     * @return TValueObject|null
+     * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?GitObjectIdentifier
     {

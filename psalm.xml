@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <psalm
     errorLevel="5"
+    findUnusedCode="false"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    cacheDirectory="storage/app/.psalm.cache"
 >
     <projectFiles>
         <directory name="app" />
-        <directory name="libs" />
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>

@@ -114,9 +114,9 @@ return [
              | https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/architecture.html#middlewares
              |
              */
-            'middlewares' => [
-                Doctrine\DBAL\Logging\Middleware::class
-            ]
+            'middlewares' => env('APP_ENV') === 'local'
+                ? [Doctrine\DBAL\Logging\Middleware::class]
+                : [],
         ],
     ],
 

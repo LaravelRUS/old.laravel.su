@@ -56,7 +56,8 @@ class DocsDiffCommand extends DocsTranslationCommand
 
         $history = $this->getSourceFile($file)->getHistory();
 
-        $slice = $this->search($history, $page->translation->getTargetVersionId());
+        $needle = $page->translation->getTargetVersionId();
+        $slice = $this->search($history, $needle === null ? null : (string)$needle);
 
         //
         // Пропускаем, если коммит указанный для перевода не является

@@ -6,7 +6,6 @@ use Rector\CodeQuality\Rector\Concat\JoinStringConcatRector;
 use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\CodingStyle\Rector\Assign\SplitDoubleAssignRector;
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
-use Rector\CodingStyle\Rector\ClassMethod\UnSpreadOperatorRector;
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
@@ -20,13 +19,7 @@ use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $config): void {
-    $config->paths([
-        __DIR__ . '/app',
-        __DIR__ . '/libs/content-renderer/src',
-        __DIR__ . '/libs/github/src',
-        // Tests
-        __DIR__ . '/tests'
-    ]);
+    $config->paths([__DIR__ . '/app']);
 
     $config->sets([
         // CodeStyle
@@ -61,13 +54,6 @@ return static function (RectorConfig $config): void {
         //  - private readonly Collection $relation; // FAIL
         //
         ReadOnlyPropertyRector::class,
-
-        //
-        // This rector may break the code:
-        //  - public function __construct(Some ...$arg) { ... } // OK
-        //  + public function __construct(array $arg) { ... }   // BC FAIL
-        //
-        UnSpreadOperatorRector::class,
 
         // Totally pointless "improvements"
         CatchExceptionNameMatchingTypeRector::class,

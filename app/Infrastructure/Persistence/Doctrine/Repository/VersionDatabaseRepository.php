@@ -22,9 +22,6 @@ class VersionDatabaseRepository extends DatabaseRepository implements VersionRep
         parent::__construct($em, Version::class);
     }
 
-    /**
-     * @return Collection<array-key, Version>
-     */
     public function all(): Collection
     {
         return Collection::make($this->match(

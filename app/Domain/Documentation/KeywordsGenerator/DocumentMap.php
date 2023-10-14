@@ -49,7 +49,7 @@ final class DocumentMap implements \IteratorAggregate, \Countable
     }
 
     /**
-     * @return int<1, max>
+     * @return int<0, max>
      */
     public function count(): int
     {

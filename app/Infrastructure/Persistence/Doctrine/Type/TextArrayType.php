@@ -7,7 +7,7 @@ namespace App\Infrastructure\Persistence\Doctrine\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 /**
- * @template-extends ArrayType<string>
+ * @template-extends ArrayType<string|null>
  */
 class TextArrayType extends ArrayType
 {
@@ -33,7 +33,7 @@ class TextArrayType extends ArrayType
         };
     }
 
-    protected function unpack(string $value): mixed
+    protected function unpack(string $value): ?string
     {
         $value = \stripcslashes($value);
 

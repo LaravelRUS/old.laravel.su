@@ -16,6 +16,8 @@ abstract class ArrayType extends Type
      * @param iterable<TValue|null> $value
      *
      * @return non-empty-string|null
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): string|null
     {
@@ -43,6 +45,8 @@ abstract class ArrayType extends Type
      * @param non-empty-string $value
      *
      * @return list<TValue|null>|null
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?array
     {
