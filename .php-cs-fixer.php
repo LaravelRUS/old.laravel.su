@@ -6,12 +6,12 @@ $files = PhpCsFixer\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PER-CS1.0:risky' => true,
+        '@PER-CS2.0' => true,
+        '@PER-CS2.0:risky' => true,
         'strict_param' => true,
         'array_syntax' => [
             'syntax' => 'short',
         ],
     ])
-    ->setCacheFile(__DIR__ . '/storage/app/.php-cs-fixer.cache')
-    ->setFinder($files)
-;
+    ->setCacheFile(__DIR__ . '/storage/.php-cs-fixer.cache')
+    ->setFinder($files);

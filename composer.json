@@ -64,24 +64,23 @@
         }
     },
     "scripts": {
-        "test": [
-            "@test:unit",
-            "@test:functional"
-        ],
-        "test:unit": "phpunit --testdox --group=unit",
-        "test:functional": "phpunit --testdox --group=feature",
+        "test": ["@test:unit", "@test:functional", "@test:architecture"],
+        "test:unit": "phpunit --testdox --testsuite=unit",
+        "test:functional": "phpunit --testdox --testsuite=feature",
+        "test:architecture": "phpstan analyse -c phpstan.neon",
+
+        "linter": "@linter:check",
+        "linter:check": "psalm --no-cache",
+        "linter:fix": "psalm --no-cache --alter",
+
         "phpcs": "@phpcs:check",
-        "phpcs:check": [
-            "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run",
-            "rector --dry-run --config=rector.php"
-        ],
-        "phpcs:fix": [
-            "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes",
-            "rector --config=rector.php"
-        ],
-        "psalm": "@psalm:check",
-        "psalm:check": "psalm --no-cache",
-        "psalm:fix": "psalm --no-cache --alter",
+        "phpcs:check": "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run --verbose --diff",
+        "phpcs:fix": "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --verbose --diff",
+
+        "rector": "@rector:check",
+        "rector:check": "rector --dry-run --config=rector.php",
+        "rector:fix": "rector --config=rector.php",
+
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

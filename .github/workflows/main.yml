@@ -11,111 +11,6 @@ env:
 
 jobs:
   # ----------------------------------------------------------------------------
-  #   Security
-  # ----------------------------------------------------------------------------
-  security:
-    name: Security
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '8.2' ]
-        os: [ ubuntu-latest ]
-    steps:
-      - name: Set Git To Use LF
-        run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
-
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup PHP ${{ matrix.php }}
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2
-
-      - name: Validate Composer
-        run: composer validate
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Restore Composer Cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
-
-      - name: Install Dependencies
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer install --no-scripts --prefer-dist --no-interaction --no-progress
-
-      - name: Composer Audit
-        run: composer audit
-
-      - name: Security Advisories
-        run: composer require --dev roave/security-advisories:dev-latest --no-scripts
-
-  # ----------------------------------------------------------------------------
-  #   Static Analysis
-  # ----------------------------------------------------------------------------
-
-  psalm:
-    name: Psalm
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '8.2' ]
-        os: [ ubuntu-latest ]
-    steps:
-      - name: Set Git To Use LF
-        run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
-
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup PHP ${{ matrix.php }}
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          tools: composer:v2
-
-      - name: Validate Composer
-        run: composer validate
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Restore Composer Cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
-
-      - name: Install Dependencies
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer install --no-scripts --prefer-dist --no-interaction --no-progress
-
-      - name: Static Analysis
-        continue-on-error: true
-        run: vendor/bin/psalm --no-cache --show-info=true
-
-  # ----------------------------------------------------------------------------
   #   Execute Architecture Test Cases
   # ----------------------------------------------------------------------------
 
@@ -132,10 +27,8 @@ jobs:
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
-
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -144,30 +37,25 @@ jobs:
           tools: pecl, composer:v2
           ini-values: "memory_limit=-1"
           extensions: dom, libxml, mbstring
-
       - name: Validate Composer
         run: composer validate
-
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
       - name: Restore Composer Cache
         uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
-
       - name: Install Dependencies
         uses: nick-invision/retry@v2
         with:
           timeout_minutes: 5
           max_attempts: 5
           command: composer install --no-scripts --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
-
       - name: Execute Architecture Tests
-        run: vendor/bin/phpstan analyse -c phpstan.neon
+        run: composer test:architecture
 
   # ----------------------------------------------------------------------------
   #   Execute Unit Test Cases
@@ -186,10 +74,8 @@ jobs:
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
-
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -198,30 +84,25 @@ jobs:
           tools: pecl, composer:v2
           ini-values: "memory_limit=-1"
           extensions: dom, libxml, mbstring
-
       - name: Validate Composer
         run: composer validate
-
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
       - name: Restore Composer Cache
         uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
-
       - name: Install Dependencies
         uses: nick-invision/retry@v2
         with:
           timeout_minutes: 5
           max_attempts: 5
           command: composer install --no-scripts --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
-
       - name: Execute Unit Tests
-        run: vendor/bin/phpunit --testdox --testsuite unit
+        run: composer test:unit
 
   # ----------------------------------------------------------------------------
   #   Execute Feature Test Cases
@@ -263,10 +144,8 @@ jobs:
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
-
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Setup PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -275,36 +154,28 @@ jobs:
           tools: composer:v2
           ini-values: "memory_limit=-1"
           extensions: dom, libxml, mbstring, pdo, pdo_pgsql
-
       - name: Validate Composer
         run: composer validate
-
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
       - name: Restore Composer Cache
         uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
-
       - name: Install Dependencies
         uses: nick-invision/retry@v2
         with:
           timeout_minutes: 5
           max_attempts: 5
           command: composer install --prefer-dist --no-interaction --no-progress
-
-      - name: Execute "post-root-package-install" command
-        run: composer run-script post-root-package-install
-
-      - name: Execute "post-create-project-cmd" command
-        run: composer run-script post-create-project-cmd
-
       - name: Apply required permissions
         run: chmod -R 0777 storage bootstrap/cache
-
+      - name: Execute "post-root-package-install" command
+        run: composer run-script post-root-package-install
+      - name: Execute "post-create-project-cmd" command
+        run: composer run-script post-create-project-cmd
       - name: Execute Feature Tests
-        run: vendor/bin/phpunit --testdox --testsuite feature
+        run: composer test:functional
