@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.19.0.
+ * Generated for Laravel 10.28.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4801,7 +4801,7 @@
                     /**
          * 
          *
-         * @see \Sentry\Laravel\Features\ConsoleIntegration::setupInactive()
+         * @see \Sentry\Laravel\Features\ConsoleIntegration::onBootInactive()
          * @param string|null $monitorSlug
          * @param int|null $checkInMargin
          * @param int|null $maxRuntime
