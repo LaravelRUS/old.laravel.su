@@ -45,5 +45,3 @@ jobs:
           command: composer install --no-scripts --ignore-platform-reqs --prefer-dist --no-interaction --no-progress
       - name: Composer Audit
         run: composer audit
-      - name: Security Advisories
-        run: composer require --dev roave/security-advisories:dev-latest
