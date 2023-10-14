@@ -29,8 +29,7 @@ final class PriorityLimitedQueue implements \IteratorAggregate, \Countable
      */
     public function __construct(
         private readonly int $limit,
-    ) {
-    }
+    ) {}
 
     /**
      * @return -1|0|1

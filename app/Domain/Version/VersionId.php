@@ -6,6 +6,4 @@ namespace App\Domain\Version;
 
 use App\Domain\Shared\UuidIdentifier;
 
-final readonly class VersionId extends UuidIdentifier
-{
-}
+final readonly class VersionId extends UuidIdentifier {}

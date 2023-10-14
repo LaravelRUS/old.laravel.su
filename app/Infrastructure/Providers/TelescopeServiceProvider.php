@@ -62,7 +62,5 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    protected function gate(): void
-    {
-    }
+    protected function gate(): void {}
 }

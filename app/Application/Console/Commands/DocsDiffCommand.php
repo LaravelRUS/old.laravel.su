@@ -83,9 +83,9 @@ class DocsDiffCommand extends DocsTranslationCommand
         $branch = $file->getBranch();
 
         return $this->source->getBranches()
-            ->first(fn (BranchInterface $b) => $b->getName() === $branch->getName())
+            ->first(fn(BranchInterface $b) => $b->getName() === $branch->getName())
             ->getFiles()
-            ->first(fn (FileInterface $f) => $f->getPathname() === $file->getPathname())
+            ->first(fn(FileInterface $f) => $f->getPathname() === $file->getPathname())
         ;
     }
 

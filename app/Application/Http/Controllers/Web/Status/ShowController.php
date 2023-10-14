@@ -14,8 +14,7 @@ final readonly class ShowController
     public function __construct(
         private ViewFactoryInterface $views,
         private VersionRepositoryInterface $versions,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Version $version): ViewInterface
     {

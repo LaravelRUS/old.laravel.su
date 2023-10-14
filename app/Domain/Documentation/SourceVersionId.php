@@ -6,6 +6,4 @@ namespace App\Domain\Documentation;
 
 use App\Domain\Shared\GitObjectIdentifier;
 
-final readonly class SourceVersionId extends GitObjectIdentifier
-{
-}
+final readonly class SourceVersionId extends GitObjectIdentifier {}

@@ -12,8 +12,7 @@ final readonly class IndexController
 {
     public function __construct(
         private VersionRepositoryInterface $versions,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Redirector $redirector): RedirectResponse
     {

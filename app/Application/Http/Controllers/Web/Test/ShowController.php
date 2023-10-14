@@ -11,8 +11,7 @@ final readonly class ShowController
 {
     public function __construct(
         private ViewFactoryInterface $views,
-    ) {
-    }
+    ) {}
 
     public function __invoke(): ViewInterface
     {

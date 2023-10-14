@@ -12,8 +12,7 @@ final readonly class CreatedDateSynchronizer
 {
     public function __construct(
         private ClockInterface $clock,
-    ) {
-    }
+    ) {}
 
     public function prePersist(LifecycleEventArgs $e): void
     {

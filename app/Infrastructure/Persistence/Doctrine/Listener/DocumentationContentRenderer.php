@@ -15,8 +15,7 @@ final readonly class DocumentationContentRenderer
 {
     public function __construct(
         private FactoryInterface $factory,
-    ) {
-    }
+    ) {}
 
     private function getRendererForSource(Documentation $entity): ContentRendererInterface
     {

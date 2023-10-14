@@ -6,6 +6,4 @@ namespace App\Domain\Article;
 
 use App\Domain\Shared\UuidIdentifier;
 
-final readonly class ArticleId extends UuidIdentifier
-{
-}
+final readonly class ArticleId extends UuidIdentifier {}

@@ -12,8 +12,7 @@ final readonly class UpdatedDateSynchronizer
 {
     public function __construct(
         private ClockInterface $clock,
-    ) {
-    }
+    ) {}
 
     private function touch(object $entity): void
     {

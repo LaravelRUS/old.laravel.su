@@ -16,8 +16,7 @@ final readonly class ShowController
     public function __construct(
         private ViewFactoryInterface $factory,
         private ArticleRepositoryInterface $articles,
-    ) {
-    }
+    ) {}
 
     public function __invoke(string $urn): ViewInterface
     {

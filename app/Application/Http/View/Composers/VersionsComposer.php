@@ -11,8 +11,7 @@ readonly class VersionsComposer implements ViewComposerInterface
 {
     public function __construct(
         private VersionRepositoryInterface $versions
-    ) {
-    }
+    ) {}
 
     public function compose(View $view): void
     {
