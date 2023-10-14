@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'version' => env('APP_ENV') === 'production' ? trim(exec('git describe --tags')) : 'dev',
 
     /*
     |--------------------------------------------------------------------------
