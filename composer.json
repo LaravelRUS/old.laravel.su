@@ -17,7 +17,7 @@
         "doctrine/inflector": "^2.0",
         "guzzlehttp/guzzle": "^7.7",
         "happyr/doctrine-specification": "^2.0",
-        "laravel-doctrine/orm": "^2.0@dev",
+        "laravel-doctrine/orm": "^2.0",
         "laravel/framework": "^10.10",
         "laravel/tinker": "^2.8",
         "local/content-renderer": "^1.0",
@@ -116,6 +116,6 @@
             "dev-main": "2.x-dev"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
