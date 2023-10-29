@@ -29,7 +29,7 @@
 
 
 <div class="container my-3">
-    <div class="row bg-white py-4 px-5 rounded shadow">
+    <div class="row bg-body-tertiary py-4 px-5 rounded shadow">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
             <div class="col-md-auto mb-2 mb-md-0">
                 <a href="{{ route('home') }}">
@@ -41,7 +41,7 @@
                 <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
                 <li><a href="{{ route('feature') }}" class="nav-link px-3 link-body-emphasis">Возможности</a></li>
                 <li><a href="{{ route('discussion') }}" class="nav-link px-3 link-body-emphasis">Дискуссия</a></li>
-                <li><a href="#" class="nav-link px-3 link-body-emphasis position-relative">Ресурсы <span
+                <li><a href="{{ route('resources') }}" class="nav-link px-3 link-body-emphasis position-relative">Ресурсы <span
                             class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
                 </li>
             </ul>
@@ -52,12 +52,9 @@
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
                 @else
-
-                    <x-logout class="link-dark btn avatar avatar-sm text-bg-dark border border-primary-subtle p-0"
-                              formId="sign-out">
+                    <a href="{{ route('profile') }}" class="link-dark btn avatar avatar-sm text-bg-dark border border-tertiary-subtle p-0">
                         <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle">
-                    </x-logout>
-
+                    </a>
                 @endif
             </div>
         </header>
@@ -68,7 +65,7 @@
 @yield('content')
 
 
-<div class="bg-dark text-white mt-5" data-bs-theme="dark">
+<div class="bg-dark-subtle text-white mt-5" data-bs-theme="dark">
     <div class="container py-5">
         <footer class="row py-5 justify-content-between navbar-dark">
             <div class="col-4 mb-3">
@@ -109,22 +106,20 @@
                 <div class="navbar navbar-dark">
                     <ul class="nav flex-column navbar-nav">
                         <li class="nav-item mb-2"><a href="{{ route('status') }}" class="nav-link p-0 ">Статус переводов</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Исходный код</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Sentry</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Помощь проекту</a></li>
+                        <li class="nav-item mb-2"><a href="{{ asset('https://github.com/laravelRus') }}" class="nav-link p-0 ">Исходный код</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a></li>
+                        <li class="nav-item mb-2"><a href="{{ asset('https://vk.com/laravel_rus?w=app5727453_-53758340') }}" class="nav-link p-0">Помощь проекту</a></li>
                     </ul>
                 </div>
-
             </div>
 
             <div class="col-auto mb-3">
                 <p class="fw-normal text-white">Обучающие материалы</p>
                 <div class="navbar navbar-dark">
                     <ul class="nav flex-column navbar-nav">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Правила</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Исходники</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Sentry</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Помощь проекту</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('meets') }}" class="nav-link p-0 ">Конференции</a></li>
+                        <li class="nav-item mb-2"><a href="{{ asset('https://github.com/LaravelRUS/chat') }}" class="nav-link p-0 ">Правила</a></li>
+                        <li class="nav-item mb-2"><a href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}" class="nav-link p-0 ">Подкаст</a></li>
                     </ul>
                 </div>
             </div>
@@ -133,10 +128,12 @@
                 <p class="fw-normal text-white">Блоги разработчиков</p>
                 <div class="navbar navbar-dark">
                     <ul class="nav flex-column navbar-nav">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Правила</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Исходники</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Sentry</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Помощь проекту</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laravel Orchid</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laravel Idea</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">SleepingOwl Admin</a></li>
+                        <button data-controller="theme" data-action="click->theme#toggleTheme" class="btn btn-primary mt-3">
+                            <x-icon path="circle-half" class="me-1"/> Сменить тему
+                        </button>
                     </ul>
                 </div>
             </div>

@@ -21,6 +21,10 @@ Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/discussion', 'pages.discussion')->name('discussion');
 Route::view('/post', 'pages.post')->name('post');
 Route::view('/status', 'pages.status')->name('status');
+Route::view('/profile', 'pages.profile')->name('profile');
+Route::view('/advertising', 'pages.advertising')->name('advertising');
+Route::view('/resources', 'pages.resources')->name('resources');
+Route::view('/meets', 'pages.meets')->name('meets');
 
 Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 

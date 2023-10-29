@@ -583,7 +583,7 @@
 
         <div class="row row-cols-md-3 g-5">
             <div class="col">
-                <div class="p-5 bg-white rounded-4 shadow d-flex flex-column h-100">
+                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
                     <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
                     <p class="fw-normal m-0">
                         Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
@@ -592,7 +592,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="p-5 bg-white rounded-4 shadow d-flex flex-column h-100">
+                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
                     <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
                     <p class="fw-normal m-0">
                         Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
@@ -601,7 +601,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="p-5 bg-white rounded-4 shadow d-flex flex-column h-100">
+                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
                     <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
                     <p class="fw-normal m-0">
                         Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
@@ -626,7 +626,7 @@
                             <img src="/img/bird.svg" class="z-n1 user-select-none">
                         </figure>
 
-                        <div class="bg-body shadow text-center p-4 rounded-5 position-relative mb-5 mb-md-0">
+                        <div class="bg-body-tertiary shadow text-center p-4 rounded-5 position-relative mb-5 mb-md-0">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
@@ -655,7 +655,7 @@
 
                     <!-- Mentor list -->
                     <div class="col-md-6 mt-5 mt-md-0 d-none d-md-block">
-                        <div class="bg-body shadow p-4 rounded-5 d-inline-block position-relative">
+                        <div class="bg-body-tertiary shadow p-4 rounded-5 d-inline-block position-relative">
                             <!-- Icon -->
                             <div
                                 class="icon-lg bg-warning rounded-circle position-absolute top-0 start-100 translate-middle">
@@ -730,7 +730,7 @@
 
                     <!-- Review -->
                     <div class="col-md-7 mt-n6 mb-0 mb-md-5">
-                        <div class="bg-body shadow text-center p-5 rounded-5">
+                        <div class="bg-body-tertiary shadow text-center p-5 rounded-5">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
@@ -777,7 +777,7 @@
                     и вместе мы создадим превосходные веб-приложения!
                 </p>
 
-                <a href="#" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
             </div>
         </div> <!-- Row END -->
     </div>

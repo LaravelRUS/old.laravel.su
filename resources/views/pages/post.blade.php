@@ -4,7 +4,7 @@
 
 <div class="container my-5">
     <div class="row">
-        <div class="bg-white p-5 rounded">
+        <div class="bg-body-tertiary p-5 rounded">
             <div class="col-xxl-8 mx-auto">
 
                 <div class="post">
@@ -158,10 +158,10 @@
 
 <div class="container my-5">
 
-    <div class="bg-white shadow-sm p-5 rounded">
+    <div class="bg-body-tertiary shadow-sm p-5 rounded">
         <div class="row">
             <div class="col-xxl-8 mx-auto">
-                <div class="bg-white mb-4 px-5 py-4">
+                <div class="bg-body-tertiary mb-4 px-5 py-4">
 
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center">
@@ -421,7 +421,7 @@ UPDATE `payments` <span class="hljs-keyword">SET</span> `tmp_status` <span class
 
                 <p class="h5 mt-5 mb-3 ms-3">5 комментариев</p>
 
-                <div class="bg-white mb-4 px-5 py-4">
+                <div class="bg-body-tertiary mb-4 px-5 py-4">
                     <div class="my-4 d-flex">
                         <div class="avatar avatar-sm me-3">
                             <a href="#!"> <img class="avatar-img rounded-circle"

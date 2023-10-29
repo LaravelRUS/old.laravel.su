@@ -41,7 +41,7 @@
                     <a href="{{ $originalLink }}" target="_blank" class="link-body-emphasis text-decoration-none">Посмотреть оригинал</a>
                 </div>
 
-                <main class="bg-white p-5 rounded-5 shadow-sm">
+                <main class="bg-body-tertiary p-5 rounded-5 shadow-sm">
                     {!! $text !!}
                 </main>
             </div>

@@ -13,6 +13,8 @@ import 'bootstrap';
 window.Turbo = Turbo;
 const application = (window.application = Application.start());
 
+import ThemeController from "./controllers/theme_controller";
+application.register("theme", ThemeController);
 
 Prism.manual = true;
 

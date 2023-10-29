@@ -38,7 +38,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-xl-7 col-md-12 mx-auto">
-                <div class="bg-white mb-4 p-5">
+                <div class="bg-body-tertiary mb-4 p-5">
 
                     @foreach(range(1, 20) as $version)
                         <div class="position-relative">
