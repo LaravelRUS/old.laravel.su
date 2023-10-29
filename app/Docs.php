@@ -2,49 +2,68 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Blade;
+use App\Models\Document;
+use Exception;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
-use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
 
 class Docs
 {
+    /**
+     * Default version of Laravel documentation
+     */
     public const DEFAULT_VERSION = '8.x';
 
     /**
-     * @var string
+     * Array of supported versions
+     */
+    public const SUPPORT_VERSION = [
+        '8.x',
+    ];
+
+    /**
+     * @var string The version of the documentation.
      */
     protected $version;
 
     /**
-     * @var string
+     * @var string The path to the Markdown file.
      */
     protected $path;
 
     /**
-     * @var array
+     * @var array The array of variables extracted from the Markdown file's front matter.
      */
-    protected $variables = [];
+    protected array $variables = [];
 
     /**
-     * @var string
+     * @var string The content of the Markdown file.
      */
     protected $page;
 
     /**
-     * @param string $version
-     * @param string $path
+     * @var string The file name.
      */
-    public function __construct(string $version, string $path)
+    private string $file;
+
+    /**
+     * Create a new Docs instance.
+     *
+     * @param string $version The version of the Laravel documentation.
+     * @param string $file    The file name.
+     */
+    public function __construct(string $version, string $file)
     {
+        $this->file = $file . '.md';
         $this->version = $version;
-        $this->path = "/$version/$path.md";
+        $this->path = "/$version/$this->file";
 
         $this->page = Storage::disk('docs')->get($this->path);
 
+        // Abort the request if the page doesn't exist
         abort_if($this->page === null, 404);
 
         $variables = Str::of($this->page)->after('---')->before('---');
@@ -52,27 +71,35 @@ class Docs
     }
 
     /**
-     * @param string $view
+     * Get the rendered view of a documentation page.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @param string $view The view name.
+     *
+     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function view(string $view)
     {
-        $content = Str::of($this->page)->after('---')->after('---')->markdown();
+        $content = Str::of($this->page)
+            ->replace('{{version}}', $this->version)
+            ->replace('{note}','⚠️')
+            ->after('---')
+            ->after('---')
+            ->markdown();
 
         $all = collect()->merge($this->variables)->merge([
             'content' => $content,
-            'edit'    => $this->editLinkGitHub(),
+            'edit'    => $this->goToGitHub(),
         ]);
 
         return view($view, $all);
     }
 
     /**
-     * Get the documentation index page.
+     * Get the menu array for the documentation index page.
      *
-     * @return array
+     * @return array The menu array.
      */
     public function getMenu(): array
     {
@@ -88,9 +115,11 @@ class Docs
     }
 
     /**
-     * @return string|null
+     * Get the title of the documentation page.
+     *
+     * @return string|null The title of the documentation page.
      */
-    public function title()
+    public function title(): ?string
     {
         $title = (new Crawler(Str::of($this->page)->markdown()))->filterXPath('//h1');
 
@@ -98,9 +127,11 @@ class Docs
     }
 
     /**
-     * @param string $html
+     * Convert the HTML string to an array.
      *
-     * @return array
+     * @param string $html The HTML string.
+     *
+     * @return array The converted array.
      */
     public function docsToArray(string $html): array
     {
@@ -130,19 +161,85 @@ class Docs
         return $menu;
     }
 
+    /**
+     * Get all the versions of the documentation.
+     *
+     * @param string $version The version of the Laravel documentation.
+     *
+     * @return \Illuminate\Support\Collection A collection of Docs instances.
+     */
+    static public function every(string $version): \Illuminate\Support\Collection
+    {
+        $files = Storage::disk('docs')->allFiles($version);
+
+        return collect($files)
+            ->filter(fn(string $path) => Str::of($path)->endsWith('.md'))
+            ->map(fn(string $path) => Str::of($path)->after($version . '/')->before('.md'))
+            ->map(fn(string $path) => new static($version, $path));
+    }
 
     /**
-     * @return string
+     * Fetch the number of commits behind the current commit.
+     *
+     * @return int The number of commits behind.
      */
-    public function editLinkGitHub(): string
+    public function fetchBehind(): int
+    {
+        abort_if(!isset($this->variables['git']), new Exception("Document {$this->path} does not have a git hash"));
+
+        $response = Http::withBasicAuth('token', config('services.github.token'))
+            ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}");
+
+        return $response->collect()
+            ->takeUntil(fn($commit) => $commit['sha'] === $this->variables['git'])
+            ->count();
+    }
+
+    /**
+     * Get the URL to edit the page on GitHub.
+     *
+     * @return string The URL to edit the page on GitHub.
+     */
+    public function goToGitHub(): string
     {
         return "https://github.com/laravelRus/docs/edit/$this->path";
     }
 
+    /**
+     * Get the URL to the original Laravel documentation page.
+     *
+     * @return string The URL to the original Laravel documentation page.
+     */
     public function goToOriginal(): string
     {
         $urlPart = Str::of($this->path)->remove('.md');
 
         return "https://laravel.com/docs$urlPart";
+    }
+
+    /**
+     * Get the Document model for the documentation page.
+     *
+     * @return \App\Models\Document The Document model.
+     */
+    public function getModel(): Document
+    {
+        return Document::firstOrNew([
+            'version' => $this->version,
+            'file'    => $this->file,
+        ]);
+    }
+
+    /**
+     * Update the Document model with the latest information.
+     *
+     * @return void
+     */
+    public function update()
+    {
+        $this->getModel()->fill([
+            'behind'         => $this->fetchBehind(),
+            'current_commit' => $this->variables['git'],
+        ])->save();
     }
 }

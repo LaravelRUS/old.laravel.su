@@ -3,11 +3,8 @@
 @section('content')
 
     <div class="container my-5">
-
         <div class="col-xl-8 col-md-12 mx-auto">
-
-
-            <div class="p-5 mb-4 bg-body-secondary rounded-3 position-r elative">
+            <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
                 <ul class="nav flex-column">
                     <li class="nav-item mb-3"><a href="{{ route('post') }}" class="nav-link p-0 link-dark">Соблюдение принципов SOLID при работе с фреймворком Laravel</a></li>
                     <li class="nav-item mb-3"><a href="{{ route('post') }}" class="nav-link p-0 link-dark">Как начать работать с очередями в Laravel</a></li>
@@ -18,9 +15,7 @@
 
                 <a href="#" class="link-dark text-decoration-none">Показать ещё</a>
             </div>
-
         </div>
-
     </div>
 
 

@@ -20,6 +20,7 @@ Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/discussion', 'pages.discussion')->name('discussion');
 Route::view('/post', 'pages.post')->name('post');
+Route::view('/status', 'pages.status')->name('status');
 
 Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 
@@ -37,7 +38,8 @@ Route::get('/docs/{version}/{page?}', function (string $version, string $page = 
         'title'        => $title,
         'originalLink' => $originalLink,
     ]);
-})->name('docs');
+})->whereIn('version', Docs::SUPPORT_VERSION)
+    ->name('docs');
 
 
 /*

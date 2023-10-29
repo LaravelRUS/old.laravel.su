@@ -108,8 +108,8 @@
 
                 <div class="navbar navbar-dark">
                     <ul class="nav flex-column navbar-nav">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Правила</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Исходники</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('status') }}" class="nav-link p-0 ">Статус переводов</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Исходный код</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Sentry</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Помощь проекту</a></li>
                     </ul>
