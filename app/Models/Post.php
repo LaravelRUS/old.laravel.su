@@ -16,7 +16,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'user_id'
     ];
 
     public static function boot()

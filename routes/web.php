@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -46,6 +47,11 @@ Route::get('/docs/{version}/{page?}', function (string $version, string $page = 
     ->name('docs');
 
 
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::get('posts/edit/{post?}',[PostController::class,'edit'])->name('post.edit');
+        Route::post('posts/edit/{post?}',[PostController::class,'update'])->name('post.update');
+    });
 /*
 |--------------------------------------------------------------------------
 | Auth Web Routes
