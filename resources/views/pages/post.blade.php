@@ -12,12 +12,12 @@
                     <a class="text-decoration-none" href="#">
                         FEATURED POST
                     </a>
-                    <h1>Apple honors eight
-                        developers with annual Apple Design Awards</h1>
+                    <h1>Организация кода в Laravel. Личный опыт</h1>
 
 
-                    <p class="has-medium-font-size">Winners are recognized for outstanding app design,
-                                                    innovation, ingenuity, and technical achievement</p>
+                    <p class="has-medium-font-size">Hola Amigos! На связи Евгений Шмулевский, PHP-разработчик в Amiga. Начал заниматься программированием с
+                                                    2001 года, привет Basic и Express/Turbo Pascal. Веб-разработкой — с 2011 года, а профессионально в вебе с
+                                                    2013 года. Работал продолжительное время с Битрикс, а с 2018 начал осваивать Laravel. </p>
                     <figure>
                         <img src="https://themegenix.net/html/sarsa-html/assets/img/interior/interior_01.jpg" alt="Post Images">
                         <figcaption>The Apple Design Award trophy, created by the Apple Design team, is a symbol

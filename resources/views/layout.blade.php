@@ -27,6 +27,9 @@
 </head>
 <body>
 
+<div class="bg-primary text-center py-2">
+    Скоро увидимся! Билеты уже доступны на <a href="{{ route('meets') }}" class="text-white">сайте</a>.
+</div>
 
 <div class="container my-3">
     <div class="row bg-body-tertiary py-4 px-5 rounded shadow">
@@ -131,7 +134,7 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laravel Orchid</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Laravel Idea</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">SleepingOwl Admin</a></li>
-                        <button data-controller="theme" data-action="click->theme#toggleTheme" class="btn btn-primary mt-3">
+                        <button id="themeToggle" data-turbo-permanent data-controller="theme" data-action="click->theme#toggleTheme" class="btn btn-primary mt-3">
                             <x-icon path="circle-half" class="me-1"/> Сменить тему
                         </button>
                     </ul>
@@ -141,6 +144,16 @@
     </div>
 </div>
 
+
+{{-- Back to top --}}
+<div class="back-to-top-container back-to-top-container--intersecting d-none d-md-block"
+     data-controller="viewport-entrance-toggle"
+     data-viewport-entrance-toggle-class="back-to-top-container--intersecting">
+    <button class="back-to-top__button btn btn-primary d-inline-flex align-items-center" type="button" data-controller="scroll">
+        <x-icon path="bs.arrow-up" class="me-2"/>
+        Наверх
+    </button>
+</div>
 
 </body>
 </html>

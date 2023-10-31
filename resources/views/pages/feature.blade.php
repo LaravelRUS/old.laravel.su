@@ -41,7 +41,7 @@
                 <p class="mb-0">Элегантная и эффективная система роутинга для реализации любых адресов в
                                 приложении.</p>
             </div>
-            <div class="col-xl-8 text-center text-xl-start">
+            <div class="col-xl-8">
                     <div class="bg-body-tertiary p-5 rounded-5 shadow">
 
                         <p>
@@ -151,7 +151,7 @@
                                 приложении.</p>
             </div>
 
-            <div class="col-xl-8 text-center text-xl-start">
+            <div class="col-xl-8">
                 <div class="bg-body-tertiary p-5 rounded-5 shadow">
 
                     <p>
@@ -234,7 +234,7 @@
                                 приложении.</p>
             </div>
 
-            <div class="col-xl-8 text-center text-xl-start">
+            <div class="col-xl-8">
                 <div class="bg-body-tertiary p-5 rounded-5 shadow">
 
                     <p>

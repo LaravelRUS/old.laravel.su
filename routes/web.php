@@ -26,10 +26,11 @@ Route::view('/profile', 'pages.profile')->name('profile');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/meets', 'pages.meets')->name('meets');
+Route::view('/documentation-contribution-guide','pages.documentation-contribution-guide')->name('documentation-contribution-guide');
 
 Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 
-Route::get('/docs/{version}/{page?}', function (string $version, string $page = 'installation') {
+Route::get('/docs/{version?}/{page?}', function (string $version = Docs::DEFAULT_VERSION, string $page = 'installation') {
     $docs = new \App\Docs($version, $page);
 
     $menu  = $docs->getMenu();

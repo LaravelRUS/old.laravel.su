@@ -15,8 +15,8 @@
                     удовольствие. Счастливые разработчики пишут лучший код
                 </p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-primary btn-lg px-4">Начать читать!</button>
-                    <button type="button" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</button>
+                    <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Начать читать!</a>
+                    <a href="#" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</a>
                 </div>
             </div>
         </div>
@@ -29,8 +29,8 @@
         <div class="mb-3 text-uppercase fw-semibold ls-xl text-center">Ведущие компаний России доверяют Laravel</div>
         -->
         <div class="row text-center no-gutters pt-5" title="Ведущие компаний России доверяют Laravel">
-            <div class="col-12 col-md-12 col-lg-12 mx-auto" style="  filter: grayscale(100%)">
-                <div class="row company-usage">
+            <div class="col-12 col-md-12 col-lg-12 mx-auto">
+                <div class="row company-usage align-items-center">
                     <div class="col-8 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/zenit.svg">
                     </div>
@@ -436,7 +436,7 @@
 
 
 
-    <div class="bg-dark text-white">
+    <div class="bg-dark-subtle text-white" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <div class="container px-4 py-5 packages">
 
 
@@ -575,7 +575,7 @@
                     разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
                 </p>
 
-                <a href="#" class="link-body-emphasis fw-semibold">Присоединиться</a>
+                <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold">Присоединиться</a>
             </div>
             <!-- Left side END -->
         </div>

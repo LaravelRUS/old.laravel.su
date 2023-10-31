@@ -11,10 +11,27 @@ import 'prismjs/components/prism-haml';
 import 'bootstrap';
 
 window.Turbo = Turbo;
+
+document.addEventListener('turbo:before-frame-render', (event) => {
+    if (document.startViewTransition) {
+        event.preventDefault()
+
+        document.startViewTransition(() => {
+            event.detail.resume()
+        })
+    }
+})
+
+
 const application = (window.application = Application.start());
 
 import ThemeController from "./controllers/theme_controller";
+import ViewportEntranceToggleController from "./controllers/viewport-entrance-toggle_controller.js";
+import ScrollController from "./controllers/scroll_controller.js";
+
 application.register("theme", ThemeController);
+application.register("viewport-entrance-toggle", ViewportEntranceToggleController)
+application.register("scroll", ScrollController)
 
 import LoadMoreController from "./controllers/load-more_controller";
 application.register("load-more", LoadMoreController);
