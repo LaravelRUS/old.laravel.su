@@ -20,7 +20,7 @@ use App\Docs;
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/discussion', 'pages.discussion')->name('discussion');
-Route::view('/post', 'pages.post')->name('post');
+//Route::view('/post', 'pages.post')->name('post');
 Route::view('/status', 'pages.status')->name('status');
 Route::view('/profile', 'pages.profile')->name('profile');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
@@ -46,11 +46,13 @@ Route::get('/docs/{version}/{page?}', function (string $version, string $page = 
 })->whereIn('version', Docs::SUPPORT_VERSION)
     ->name('docs');
 
+Route::get('/posts',[PostController::class,'list'])->name('post');
+Route::post('/posts',[PostController::class,'more'])->name('post.load-more');
 
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('posts/edit/{post?}',[PostController::class,'edit'])->name('post.edit');
-        Route::post('posts/edit/{post?}',[PostController::class,'update'])->name('post.update');
+        Route::get('/posts/edit/{post?}',[PostController::class,'edit'])->name('post.edit');
+        Route::post('/posts/edit/{post?}',[PostController::class,'update'])->name('post.update');
     });
 /*
 |--------------------------------------------------------------------------

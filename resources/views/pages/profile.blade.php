@@ -53,7 +53,7 @@
                         Напишите первую статью, чтобы привлечь читателей
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-secondary">Создать запись</button>
+                        <a href="{{route('post.edit')}}" class="btn btn-secondary" >Создать запись</a>
                     </div>
                 </div>
             </div>

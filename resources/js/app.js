@@ -16,6 +16,10 @@ const application = (window.application = Application.start());
 import ThemeController from "./controllers/theme_controller";
 application.register("theme", ThemeController);
 
+import LoadMoreController from "./controllers/load-more_controller";
+application.register("load-more", LoadMoreController);
+
+
 Prism.manual = true;
 
 document.addEventListener("turbo:load", () => {
