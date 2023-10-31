@@ -16,7 +16,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'user_id'
     ];
 
     public static function boot()
@@ -41,5 +42,9 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function preview(){
+        return $this->content;
     }
 }
