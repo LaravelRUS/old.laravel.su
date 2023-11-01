@@ -6,7 +6,7 @@ input[type=reset],
     font-family: $font-family;
     border: none;
     outline: none;
-    border-radius: 2px;
+    border-radius: 3px;
     line-height: $ui-height;
     padding: 0 10px;
     display: block;
@@ -16,7 +16,7 @@ input[type=reset],
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
-    box-shadow: 0 0 0 1px darken($color-main, 20%);
+    box-shadow: 0 0 0 1px darken($color-main, 14%);
 
     &:hover {
         text-decoration: none;
@@ -26,5 +26,22 @@ input[type=reset],
 
     &:active {
         background: darken($color-main, 10%);
+        box-shadow: 0 0 0 1px darken($color-main, 24%);
+    }
+
+    &.button-outer {
+        background: rgba(#fff, 0);
+        color: darken($color-main, 14%);
+
+        &:hover {
+            background: rgba($color-text, .02);
+            color: darken($color-main, 20%);
+            box-shadow: 0 0 0 2px $color-main;
+        }
+
+        &:active {
+            background: rgba(darken($color-main, 10%), .1);
+            box-shadow: 0 0 0 1px darken($color-main, 24%);
+        }
     }
 }

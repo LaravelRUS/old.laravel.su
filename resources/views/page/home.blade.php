@@ -18,6 +18,30 @@
         </div>
     </section>
 
+    <section class="section moonshine">
+        <div class="container">
+            <article class="moonshine-description section-description">
+                <a href="https://moonshine.cutcode.dev" target="_blank" rel="nofollow"
+                   class="moonshine-description-github">
+                    <img src="/images/moonshine/website.png" alt="Moonshine Website" />
+                </a>
+                <h2>Moonshine Admin</h2>
+                <span>
+                    Moonshine &mdash; самостоятельное производство напитка в
+                    нелегальных условиях под покровом ночи :) Так получилось, что
+                    админка и была разработана ночью в свободное время под луной ;)
+                    <br /><br />
+                    Все уже готово для использования в ваших проектах!
+                </span>
+                <a href="https://moonshine.cutcode.dev" target="_blank" rel="nofollow"
+                   class="button button-outer">Вперёд!</a>
+            </article>
+
+            <img class="moonshine-image section-image"
+                 src="/images/moonshine/moonshine.png" alt="Moonshine Admin Panel" />
+        </div>
+    </section>
+
     <section class="section orchid">
         <div class="container">
             <article class="orchid-description section-description">
@@ -32,9 +56,12 @@
                     бизнес-приложений, чтобы разработчикам было легко реализовывать
                     красивые и элегантные интерфейсы без особых усилий.
                 </span>
+                <a href="https://orchid.software" target="_blank" rel="nofollow"
+                   class="button button-outer">Вот это да!</a>
             </article>
 
-            <img class="orchid-image section-image" src="/images/orchid/orchid.png?v2" alt="Orchid Admin Panel" />
+            <img class="orchid-image section-image"
+                 src="/images/orchid/orchid.png?v2" alt="Orchid Admin Panel" />
         </div>
     </section>
 
@@ -51,9 +78,12 @@
                     Прекрасное автозаполнение магии Laravel, навигация по коду, генераторы кода, автокомплит
                     валидаторов и роутов, и многое другое.
                 </span>
+                <a href="https://laravel-idea.com" target="_blank" rel="nofollow"
+                   class="button button-outer">Хочу себе!</a>
             </article>
 
-            <img class="idea-image section-image" src="/images/idea/idea.png" alt="Laravel IDEA Plugin" />
+            <img class="idea-image section-image"
+                 src="/images/idea/idea.png" alt="Laravel IDEA Plugin" />
         </div>
     </section>
 
@@ -70,9 +100,12 @@
                     пятилетнюю историю &mdash; эта система зарекомендовала себя как мощное решение для разработки
                     интерфейса любого уровня.
                 </span>
+                <a href="https://github.com/laravelrus/sleepingowladmin/" target="_blank" rel="nofollow"
+                   class="button button-outer">То что надо!</a>
             </article>
 
-            <img class="sleeping-owl-image section-image" src="/images/sleeping-owl/sleeping-owl.png" alt="SleepingOwl Admin Panel" />
+            <img class="sleeping-owl-image section-image"
+                 src="/images/sleeping-owl/sleeping-owl.png" alt="SleepingOwl Admin Panel" />
         </div>
     </section>
 @endsection

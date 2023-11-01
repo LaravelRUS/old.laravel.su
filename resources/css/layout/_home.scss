@@ -62,7 +62,7 @@
     line-height: 32px;
 
     .container {
-        padding: 160px 0;
+        padding: 120px 0;
         position: relative;
 
         span {
@@ -98,11 +98,48 @@
                 opacity: 0;
             }
         }
+
+        .button {
+            margin-top: 30px;
+            width: 140px;
+            line-height: 40px;
+        }
+    }
+
+    &.idea,
+    &.moonshine {
+        background: $color-dark-white url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9JzEyMScgd2lkdGg9JzEyMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNMSA2MGg2MGwtLjAyNC02MEg2MnY2MGg1OXYxSDYydjU5aC0xVjYxSDF6TTAgMGgxdjEyMUgwem0xIDEyMGgxMjB2MUgxeicgZmlsbD0nI0VGRjFGMycgZmlsbC1ydWxlPSdldmVub2RkJy8+PC9zdmc+) top center repeat fixed;
+
+        .container {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    &.orchid,
+    &.sleeping-owl {
+        background: #fff;
+    }
+
+    &.moonshine {
+        .moonshine-image {
+            left: 10px;
+        }
+
+        .moonshine-description {
+            .moonshine-description-market {
+                text-decoration: none;
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            .moonshine-image {
+                left: -210px;
+            }
+        }
     }
 
     &.orchid {
-        background: $color-dark-white url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyBoZWlnaHQ9JzEyMScgd2lkdGg9JzEyMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNMSA2MGg2MGwtLjAyNC02MEg2MnY2MGg1OXYxSDYydjU5aC0xVjYxSDF6TTAgMGgxdjEyMUgwem0xIDEyMGgxMjB2MUgxeicgZmlsbD0nI0VGRjFGMycgZmlsbC1ydWxlPSdldmVub2RkJy8+PC9zdmc+) top center repeat fixed;
-
         .orchid-image {
             right: -250px;
         }
@@ -121,13 +158,6 @@
     }
 
     &.idea {
-        background: #fff;
-
-        .container {
-            display: flex;
-            justify-content: flex-end;
-        }
-
         .idea-image {
             left: 10px;
         }
@@ -146,8 +176,6 @@
     }
 
     &.sleeping-owl {
-        background: $color-dark-white;
-
         .sleeping-owl-image {
             right: 10px;
         }
