@@ -28,10 +28,15 @@ const application = (window.application = Application.start());
 import ThemeController from "./controllers/theme_controller";
 import ViewportEntranceToggleController from "./controllers/viewport-entrance-toggle_controller.js";
 import ScrollController from "./controllers/scroll_controller.js";
+import FormLoadController from "./controllers/form-load_controller";
+import Clipboard from "./controllers/clipboard_controller";
+
 
 application.register("theme", ThemeController);
 application.register("viewport-entrance-toggle", ViewportEntranceToggleController)
 application.register("scroll", ScrollController)
+application.register("form-load", FormLoadController);
+application.register("clipboard", Clipboard);
 
 import LoadMoreController from "./controllers/load-more_controller";
 application.register("load-more", LoadMoreController);

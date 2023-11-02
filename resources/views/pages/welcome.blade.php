@@ -8,7 +8,7 @@
                      height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4">Создавайте элегантные веб-приложения с <span
+                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4">Создавайте элегантные приложения с <span
                         class="text-primary">Laravel</span></h1>
                 <p class="lead mb-4">
                     Мы верим, что процесс разработки наиболее продуктивен, когда работа с фреймворком приносит радость и
@@ -763,7 +763,7 @@
 
                 <span
                     class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
-                <h2 class="display-5 fw-semibold mb-4">Живое общение, новые знакомства и наставничество</h2>
+                <h2 class="display-5 fw-semibold mb-4">Живое общение, новые знакомства</h2>
                 <p>
                     Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
                     Наши активные чаты предоставят вам уникальную платформу для обмена опытом, нахождения вдохновения и
@@ -777,7 +777,11 @@
                     и вместе мы создадим превосходные веб-приложения!
                 </p>
 
-                <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                @guest
+                     <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                @else
+                    <a href="{{ route('feed') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                @endguest
             </div>
         </div> <!-- Row END -->
     </div>

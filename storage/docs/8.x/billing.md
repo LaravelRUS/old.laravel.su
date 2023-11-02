@@ -1,3 +1,8 @@
+---
+git: c4484e8211c714734a8b600c06a5de7328782065
+---
+
+
 # Laravel Cashier (Stripe)
 
 - [Введение](#introduction)

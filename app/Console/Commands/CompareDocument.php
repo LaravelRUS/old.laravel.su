@@ -28,6 +28,6 @@ class CompareDocument extends Command
      */
     public function handle()
     {
-        Docs::every('8.x')->every->update();
+        Docs::every('8.x')->each(fn(Docs $docs) => $docs->update());
     }
 }

@@ -27,7 +27,7 @@ class Docs
     /**
      * @var string The version of the documentation.
      */
-    protected $version;
+    public $version;
 
     /**
      * @var string The path to the Markdown file.
@@ -47,7 +47,12 @@ class Docs
     /**
      * @var string The file name.
      */
-    private string $file;
+    public string $file;
+
+    /**
+     * @var Document
+     */
+    protected $model;
 
     /**
      * Create a new Docs instance.
@@ -67,7 +72,12 @@ class Docs
         abort_if($this->page === null, 404);
 
         $variables = Str::of($this->page)->after('---')->before('---');
-        $this->variables = Yaml::parse($variables);
+
+        try {
+            $this->variables = Yaml::parse($variables);
+        }catch (\Throwable){
+
+        }
     }
 
     /**
@@ -84,6 +94,7 @@ class Docs
         $content = Str::of($this->page)
             ->replace('{{version}}', $this->version)
             ->replace('{note}','⚠️')
+            ->replace('{tip}','💡️')
             ->after('---')
             ->after('---')
             ->markdown();
@@ -145,7 +156,7 @@ class Docs
         $crawler->filter('ul > li')->each(function (Crawler $node) use (&$menu) {
             $subList = $node->filter('ul > li')->each(fn(Crawler $subNode) => [
                 'title' => $subNode->filter('a')->text(),
-                'href'  => $subNode->filter('a')->attr('href'),
+                'href'  => url($subNode->filter('a')->attr('href')),
             ]);
 
             if (empty($subList)) {
@@ -174,6 +185,7 @@ class Docs
 
         return collect($files)
             ->filter(fn(string $path) => Str::of($path)->endsWith('.md'))
+            ->filter(fn(string $path) => !Str::of($path)->endsWith(['readme.md', 'license.md']))
             ->map(fn(string $path) => Str::of($path)->after($version . '/')->before('.md'))
             ->map(fn(string $path) => new static($version, $path));
     }
@@ -185,7 +197,7 @@ class Docs
      */
     public function fetchBehind(): int
     {
-        abort_if(!isset($this->variables['git']), new Exception("Document {$this->path} does not have a git hash"));
+        throw_unless(isset($this->variables['git']), new Exception("Document {$this->path} does not have a git hash"));
 
         $response = Http::withBasicAuth('token', config('services.github.token'))
             ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}");
@@ -218,16 +230,49 @@ class Docs
     }
 
     /**
+     * @param string $version
+     * @param string $hash
+     *
+     * @return string
+     */
+    static public function compareLink(string $version, string $hash): string
+    {
+        $compactHash = Str::of($hash)->limit(7, '')->toString();
+
+        return "https://github.com/laravel/docs/compare/$version..$compactHash";
+    }
+
+    /**
      * Get the Document model for the documentation page.
      *
      * @return \App\Models\Document The Document model.
      */
     public function getModel(): Document
     {
-        return Document::firstOrNew([
-            'version' => $this->version,
-            'file'    => $this->file,
-        ]);
+        if ($this->model === null) {
+            $this->model = Document::firstOrNew([
+                'version' => $this->version,
+                'file'    => $this->file,
+            ]);
+        }
+
+        return $this->model;
+    }
+
+    /**
+     * @return int
+     */
+    public function behind():int
+    {
+        return $this->getModel()->behind;
+    }
+
+    /**
+     * @return string
+     */
+    public function isOlderVersion()
+    {
+        return $this->version !== static::DEFAULT_VERSION;
     }
 
     /**

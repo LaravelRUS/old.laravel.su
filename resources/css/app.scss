@@ -239,19 +239,52 @@ $btn-font-weight: 700;
     visibility: hidden;
 }
 
+.feature-icon-small {
+    width: 3rem;
+    height: 3rem;
+}
+
+.clipboard {
+    .copy-action {
+        display: inline;
+    }
+    .copy-done {
+        display: none;
+    }
+
+    &.done {
+        .copy-action {
+            display: none;
+        }
+        .copy-done {
+            display: inline;
+        }
+    }
+}
 
 
 
 
 
 
-
-// PORT FROM ORCHID NEED CHANGED (AND REMOVED)
+    // PORT FROM ORCHID NEED CHANGED (AND REMOVED)
 main, main div {
     line-height: 1.8em;
 
-    ul {
-        padding: 0 4rem;
+    ul:first-of-type {
+        list-style: none;
+        padding: 0 1rem;
+        ul {
+            list-style: square;
+            padding: 0 2.5rem;
+            a {
+                opacity: 0.7;
+            }
+        }
+        a {
+            @extend .link-body-emphasis;
+            text-decoration: none;
+        }
     }
 
     ol {
@@ -273,6 +306,10 @@ main, main div {
         > a {
             text-decoration: underline;
         }
+    }
+
+    code {
+        color:rgb(235, 68, 50);
     }
 }
 

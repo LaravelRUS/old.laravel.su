@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 use App\Docs;
 
 /*
@@ -19,74 +19,67 @@ use App\Docs;
 
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
-Route::view('/discussion', 'pages.discussion')->name('discussion');
-//Route::view('/post', 'pages.post')->name('post');
-Route::view('/status', 'pages.status')->name('status');
+Route::view('/post', 'pages.post')->name('post');
 Route::view('/profile', 'pages.profile')->name('profile');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/meets', 'pages.meets')->name('meets');
-Route::view('/documentation-contribution-guide','pages.documentation-contribution-guide')->name('documentation-contribution-guide');
+Route::view('/performance', 'pages.performance')->name('performance');
+Route::view('/team', 'pages.team')->name('team');
 
-Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 
-Route::get('/docs/{version?}/{page?}', function (string $version = Docs::DEFAULT_VERSION, string $page = 'installation') {
-    $docs = new \App\Docs($version, $page);
+Route::get('/feed', [PostController::class, 'list'])
+    ->name('feed');
 
-    $menu  = $docs->getMenu();
-    $title = $docs->title();
-    $text = $docs->view('particles.docs');
-    $originalLink = $docs->goToOriginal();
+Route::post('/feed', [PostController::class, 'list'])
+    ->middleware(\App\Http\Middleware\TurboStream::class);
 
-    return view('pages.docs', [
-        'text'         => $text,
-        'menu'         => $menu,
-        'title'        => $title,
-        'originalLink' => $originalLink,
-    ]);
-})->whereIn('version', Docs::SUPPORT_VERSION)
-    ->name('docs');
-
-Route::get('/posts',[PostController::class,'list'])->name('post');
-Route::post('/posts',[PostController::class,'more'])->name('post.load-more');
+/*
+Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->group(function () {
+    Route::post('/posts', [PostController::class, 'list'])->name('post.load-more');
+});
+*/
 
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('/posts/edit/{post?}',[PostController::class,'edit'])->name('post.edit');
-        Route::post('/posts/edit/{post?}',[PostController::class,'update'])->name('post.update');
+        Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('/posts/edit/{post?}', [PostController::class, 'update'])->name('post.update');
     });
+
+
 /*
 |--------------------------------------------------------------------------
-| Auth Web Routes
+| Authentication Routes
 |--------------------------------------------------------------------------
+|
+| This section contains the web routes related to authentication.
+| These routes handle user authentication and logout processes.
+|
 */
 
+Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
+Route::get('/auth/callback', [AuthController::class, 'callback'])->middleware('guest');
+Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('/auth/redirect', fn() => Socialite::driver('github')
-    ->scopes(['read:user'])
-    ->redirect())->name('login');
 
-Route::get('/auth/callback', function () {
-    $githubUser = Socialite::driver('github')->user();
+/*
+|--------------------------------------------------------------------------
+| Documentation Routes
+|--------------------------------------------------------------------------
+|
+| This section contains the web routes for accessing the documentation.
+| The routes handle redirects, display documentation pages, and provide related data.
+|
+*/
+Route::view('/documentation-contribution-guide', 'pages.documentation-contribution-guide')
+    ->name('documentation-contribution-guide');
 
-    $user = \App\Models\User::updateOrCreate([
-        'github_id' => $githubUser->getId(),
-    ], [
-        'name'     => $githubUser->getName(),
-        'email'    => $githubUser->getEmail(),
-        'avatar'   => $githubUser->getAvatar(),
-        'nickname' => $githubUser->getNickname(),
-    ]);
+Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 
-    \Illuminate\Support\Facades\Auth::login($user, true);
+Route::get('/status/{version?}', [DocsController::class, 'status'])
+    ->whereIn('version', Docs::SUPPORT_VERSION)
+    ->name('status');
 
-    return redirect()->route('home');
-});
-
-Route::post('/logout', function (Request $request) {
-    \Illuminate\Support\Facades\Auth::logout();
-
-    $request->session()->flush();
-
-    return redirect()->route('home');
-})->name('logout');
+Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
+    ->whereIn('version', Docs::SUPPORT_VERSION)
+    ->name('docs');

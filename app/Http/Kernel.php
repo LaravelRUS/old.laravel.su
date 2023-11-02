@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\SetDefaultVersionForUrl;
+use App\Http\Middleware\Turbo;
+use App\Http\Middleware\TurboRedirect;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,7 +39,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            SetDefaultVersionForUrl::class
+            SetDefaultVersionForUrl::class,
+            TurboRedirect::class,
+            Turbo::class,
         ],
 
         'api' => [

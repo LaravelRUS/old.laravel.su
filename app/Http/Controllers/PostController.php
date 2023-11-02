@@ -13,10 +13,10 @@ class PostController extends Controller
     {
         //нужно будет проверять аавтора, если пост существует
 
-        $title = $post->exists ? 'Редактирование' :'Новая статья';
+        $title = $post->exists ? 'Редактирование' : 'Новая статья';
         return view('post.edit', [
-            'title'             => $title,
-            'post'           => $post,
+            'title' => $title,
+            'post'  => $post,
         ]);
     }
 
@@ -25,43 +25,39 @@ class PostController extends Controller
         //нужно проверять аавтора, если пост существует
 
         $request->validate([
-            'title'       => 'required|string',
-            'content'     => 'required|string',
+            'title'   => 'required|string',
+            'content' => 'required|string',
         ]);
 
         $post->fill([
-            'title'       => $request->get('title'),
-            'content'     => $request->get('content'),
-            'user_id'     => $request->user()->id
+            'title'   => $request->get('title'),
+            'content' => $request->get('content'),
+            'user_id' => $request->user()->id,
         ])->save();
 
         //сюда поставить уведомление
 
-        return redirect()->route('post.edit',$post);//пока сюда
+        return redirect()->route('post.edit', $post);//пока сюда
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return string
+     */
     public function list(Request $request)
     {
+        $posts = Post::with('user')
+            ->orderBy('id', 'desc')
+            ->simplePaginate(5);
 
-        return view('post.list',[
-            'posts' => $this->getPosts( $request)
+        $test = view('post.list', [
+            'posts' => $posts,
+        ])->fragmentsIf(!$request->isMethodSafe(), [
+            "posts",
+            "more",
         ]);
+
+        return  $test;
     }
-
-    public function more(Request $request)
-    {
-        $posts = $this->getPosts( $request);
-        $view = view('post.list', ['posts'=>$posts])->fragment('post-list');
-
-        return Response::json([
-            'view' => $view,
-            'url' => $posts->nextPageUrl()
-        ]);
-    }
-
-
-    protected function getPosts(Request $request){
-        return Post::orderBy('created_at', 'desc')->paginate(2);
-    }
-
 }

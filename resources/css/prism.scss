@@ -49,10 +49,10 @@ code[class*="language-"]::mozselection {
     }
 }
 pre[class*="language-"] {
-    padding: 1em;
+    padding: 1em 1.5em;
     margin: .5em 0;
     overflow: auto;
-    background: #312e3e;
+    background: #171923;
 }
 :not(pre) > code[class*="language-"] {
     padding: .1em .3em;

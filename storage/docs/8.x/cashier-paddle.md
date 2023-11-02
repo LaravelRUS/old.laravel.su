@@ -1,3 +1,7 @@
+---
+git: bc890b36ef203f0dd3521da5466be50d7c016527
+---
+
 # Laravel Cashier (Paddle)
 
 - [Laravel Cashier (Paddle)](#laravel-cashier-paddle)
