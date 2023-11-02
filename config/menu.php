@@ -7,8 +7,9 @@ return [
         'links' => [
             'https://laravel.com/' => 'Laravel',
             'https://laravel-idea.com' => 'Laravel IDEA',
-            'https://sleepingowladmin.ru/' => 'SleepingOwl',
+            'https://moonshine-laravel.com' => 'Moonshine',
             'https://orchid.software/ru/' => 'Orchid',
+            'https://sleepingowladmin.ru/' => 'SleepingOwl',
             'https://t.me/laravelrus' => 'Telegram',
             'https://vk.com/laravel_rus' => 'VK',
             'https://discord.gg/c8gJfed' => 'Discord',
