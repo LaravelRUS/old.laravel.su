@@ -49,13 +49,13 @@ class PostController extends Controller
     {
         $posts = Post::with('user')
             ->orderBy('id', 'desc')
-            ->simplePaginate(5);
+            ->simplePaginate(2);
 
         $test = view('post.list', [
             'posts' => $posts,
-        ])->fragmentsIf(!$request->isMethodSafe(), [
+        ])->fragmentsIf($request->has('page'), [
             "posts",
-            "more",
+           // "more",
         ]);
 
         return  $test;

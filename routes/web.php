@@ -31,8 +31,10 @@ Route::view('/team', 'pages.team')->name('team');
 Route::get('/feed', [PostController::class, 'list'])
     ->name('feed');
 
-Route::post('/feed', [PostController::class, 'list'])
-    ->middleware(\App\Http\Middleware\TurboStream::class);
+//так из-за того что фрейм с lazy будет длеать get, а не post на адрес указанный в src
+Route::get('/feed/list', [PostController::class, 'list'])
+    ->middleware(\App\Http\Middleware\TurboRedirect::class)
+    ->name('feed.more');
 
 /*
 Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->group(function () {
