@@ -21,7 +21,7 @@
     <section class="section moonshine">
         <div class="container">
             <article class="moonshine-description section-description">
-                <a href="https://moonshine.cutcode.dev" target="_blank" rel="nofollow"
+                <a href="https://moonshine-laravel.com" target="_blank" rel="nofollow"
                    class="moonshine-description-github">
                     <img src="/images/moonshine/website.png" alt="Moonshine Website" />
                 </a>
@@ -33,7 +33,7 @@
                     <br /><br />
                     Все уже готово для использования в ваших проектах!
                 </span>
-                <a href="https://moonshine.cutcode.dev" target="_blank" rel="nofollow"
+                <a href="https://moonshine-laravel.com" target="_blank" rel="nofollow"
                    class="button button-outer">Вперёд!</a>
             </article>
 
