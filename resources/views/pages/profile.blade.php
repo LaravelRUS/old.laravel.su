@@ -15,7 +15,7 @@
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
                                 <img class="avatar-img rounded-circle border border-tertiary-subtle border-3"
-                                     src="{{ auth()->user()->avatar }}" alt="">
+                                     src="{{ auth()->user()?->avatar }}" alt="">
                             </div>
                         </div>
                         <div class="ms-sm-4 mt-sm-3">

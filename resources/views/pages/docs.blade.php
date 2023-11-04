@@ -44,8 +44,8 @@
             <div class="col-xl-9 text-center text-xl-start">
 
                 <div class="d-grid gap-3 d-md-flex justify-content-md-end mb-3">
-                    @if($docs->behind() > 0)
-                        <a href="{{ route('status', $docs->version) }}#{{$docs->file}}" class=""><span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">Перевод отстаёт на {{ $docs->behind() }} изменения</span></a>
+                    @if($docs->translationIsLagsBehind())
+                        <a href="{{ route('status', $docs->version) }}#{{$docs->file}}" class=""><span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">Перевод отстаёт на {{ $docs->countCommitsBehind() }} изменения</span></a>
                     @else
                         <span class="badge bg-success-subtle text-success rounded rounded-1 fs-6 fw-normal pe-none">Перевод актуален</span>
                     @endif

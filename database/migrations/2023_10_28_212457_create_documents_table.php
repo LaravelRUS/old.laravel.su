@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('version');
+            $table->string('version', 7);
             $table->string('file');
-            $table->integer('behind')->default(0);
-            $table->string('current_commit')->nullable();
-            $table->string('last_commit')->nullable();
+            $table->unsignedInteger('count_commits_behind')->default(0)->comment('count commits behind current');
+            $table->string('current_commit', 64)->nullable();
+            $table->string('last_commit', 64)->nullable();
             $table->timestamps();
 
 

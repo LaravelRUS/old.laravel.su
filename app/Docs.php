@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Document;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -83,13 +84,9 @@ class Docs
     /**
      * Get the rendered view of a documentation page.
      *
-     * @param string $view The view name.
-     *
-     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function view(string $view)
+    public function view(string $viewName): View
     {
         $content = Str::of($this->page)
             ->replace('{{version}}', $this->version)
@@ -104,7 +101,7 @@ class Docs
             'edit'    => $this->goToGitHub(),
         ]);
 
-        return view($view, $all);
+        return view($viewName, $all);
     }
 
     /**
@@ -254,12 +251,15 @@ class Docs
         return $this->model;
     }
 
-    /**
-     * @return int
-     */
-    public function behind(): int
+    public function countCommitsBehind(): int
     {
-        return $this->getModel()->behind;
+        return $this->getModel()->count_commits_behind;
+    }
+
+
+    public function translationIsLagsBehind(): bool
+    {
+        return $this->getModel()->behind > 0;
     }
 
     public function isOlderVersion(): bool
