@@ -17,6 +17,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "@editorjs/editorjs": "^2.28.2"
+        "@editorjs/editorjs": "^2.28.2",
+        "vite-plugin-prismjs": "^0.0.8"
     }
 }
