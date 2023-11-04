@@ -4,19 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Docs;
 use App\Models\Document;
+use Illuminate\Contracts\View\View;
 
 class DocsController extends Controller
 {
     /**
      * Show a documentation page.
      *
-     * @param string $version
-     * @param string $page
-     *
-     * @return \Illuminate\View\View
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function show(string $version = Docs::DEFAULT_VERSION, string $page = 'installation')
+    public function show(string $version = Docs::DEFAULT_VERSION, string $page = 'installation'): View
     {
         $docs = new Docs($version, $page);
 
@@ -28,15 +25,10 @@ class DocsController extends Controller
         ]);
     }
 
-    /**
-     * @param string $version
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function status(string $version = Docs::DEFAULT_VERSION)
+    public function status(string $version = Docs::DEFAULT_VERSION): View
     {
         $documents = Document::where('version', $version)
-            ->orderByDesc('behind')
+            ->orderByDesc('count_commits_behind')
             ->get();
 
         return view('pages.status', [

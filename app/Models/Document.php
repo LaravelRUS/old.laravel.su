@@ -18,7 +18,7 @@ class Document extends Model
         'id',
         'version',
         'file',
-        'behind',
+        'count_commits_behind',
         'current_commit',
         'last_commit',
     ];
@@ -28,6 +28,6 @@ class Document extends Model
      */
     protected $attributes = [
         'version' => Docs::DEFAULT_VERSION,
-        'behind'  => 0,
+        'count_commits_behind'  => 0,
     ];
 }

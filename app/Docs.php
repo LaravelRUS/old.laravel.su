@@ -259,7 +259,7 @@ class Docs
 
     public function translationIsLagsBehind(): bool
     {
-        return $this->getModel()->behind > 0;
+        return $this->getModel()->count_commits_behind > 0;
     }
 
     public function isOlderVersion(): bool
@@ -275,7 +275,7 @@ class Docs
     public function update()
     {
         $this->getModel()->fill([
-            'behind'         => $this->countCommitsBehindCurrent(),
+            'count_commits_behind' => $this->countCommitsBehindCurrent(),
             'current_commit' => $this->variables['git'],
         ])->save();
     }
