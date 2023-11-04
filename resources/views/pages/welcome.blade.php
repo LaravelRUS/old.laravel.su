@@ -15,8 +15,8 @@
                     удовольствие. Счастливые разработчики пишут лучший код
                 </p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-start">
-                    <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Начать читать!</a>
-                    <a href="#" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</a>
+                    <a href="{{ route('docs') }}" class="btn btn-primary btn-lg px-4">Начать читать!</a>
+                    <a href="{{ route('courses') }}" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</a>
                 </div>
             </div>
         </div>
@@ -575,7 +575,7 @@
                     разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
                 </p>
 
-                <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold">Присоединиться</a>
+                <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Присоединиться <x-icon path="bs.arrow-right"/></a>
             </div>
             <!-- Left side END -->
         </div>
@@ -639,15 +639,7 @@
                                     мне раскрыть свой потенциал и достичь высоких результатов.
                                 </p>
                             </blockquote>
-                            <!-- Rating -->
-                            <ul class="list-inline mb-2">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i
-                                        class="fas fa-star-half-alt text-warning"></i></li>
-                            </ul>
+
                             <!-- Info -->
                             <p class="mb-0 fw-semibold">Кирил Несмеянов</p>
                         </div>
@@ -743,15 +735,7 @@
                                     поддержку, знания и вдохновение.
                                 </p>
                             </blockquote>
-                            <!-- Rating -->
-                            <ul class="list-inline mb-2">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i
-                                        class="fas fa-star-half-alt text-warning"></i></li>
-                            </ul>
+
                             <!-- Info -->
                             <p class="mb-0 fw-semibold">Дмитрий Будко</p>
                         </div>
@@ -766,15 +750,8 @@
                 <h2 class="display-5 fw-semibold mb-4">Живое общение, новые знакомства</h2>
                 <p>
                     Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
-                    Наши активные чаты предоставят вам уникальную платформу для обмена опытом, нахождения вдохновения и
+                    Активное сообщество предоставляет вам уникальную платформу для обмена опытом, нахождения вдохновения и
                     наставничества с опытными профессионалами Laravel.
-                </p>
-
-                <p>
-                    У нас есть специализированные русскоязычные группы, которые
-                    позволят вам легко общаться и делиться знаниями с единомышленниками. Присоединяйтесь к нашему чату в
-                    Telegram
-                    и вместе мы создадим превосходные веб-приложения!
                 </p>
 
                 @guest

@@ -26,7 +26,10 @@ Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/meets', 'pages.meets')->name('meets');
 Route::view('/performance', 'pages.performance')->name('performance');
 Route::view('/team', 'pages.team')->name('team');
-
+Route::view('/packages', 'pages.packages')->name('packages');
+Route::view('/partners', 'pages.partners')->name('partners');
+Route::view('/courses', 'pages.courses')->name('courses');
+Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
 Route::get('/feed', [PostController::class, 'list'])
     ->name('feed');
@@ -59,7 +62,7 @@ Route::middleware(['auth'])
 
 Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::get('/auth/callback', [AuthController::class, 'callback'])->middleware('guest');
-Route::get('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 
 /*
