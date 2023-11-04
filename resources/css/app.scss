@@ -263,6 +263,20 @@ $btn-font-weight: 700;
 }
 
 
+.link-icon-animation {
+    svg {
+        transition: 340ms all;
+        padding-right: 0.1em;
+    }
+
+    &:hover {
+        svg {
+            padding-right: 0!important;
+        }
+    }
+}
+
+
 
 
 

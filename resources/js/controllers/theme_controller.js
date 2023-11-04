@@ -1,45 +1,49 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-    static targets = ["toggleButton"];
+    static targets = ["preferred"];
 
     connect() {
         // Устанавливаем начальное значение темы
-        const preferredTheme = this.getPreferredTheme();
+        const preferredTheme = this.getTheme();
         this.setTheme(preferredTheme);
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.toggleTheme());
     }
 
     // Функция для смены темы
     toggleTheme() {
-        const currentTheme = this.getTheme();
+        let theme = this.preferredTargets.find((element) => element.checked)?.value;
 
-        // Проверяем текущую тему и меняем на противоположную
-        if (currentTheme === "light") {
-            this.setTheme("dark");
-        } else {
-            this.setTheme("light");
+        if (theme === undefined) {
+            return;
         }
+
+        this.setTheme(theme);
     }
 
     // Получение текущей темы из localStorage
     getTheme() {
         const theme = localStorage.getItem("theme");
-        return theme ? theme : this.getPreferredTheme();
+
+        if (['dark', 'light'].includes(theme)) {
+            return theme;
+        }
+
+        return this.getPreferredTheme();
     }
 
     // Установка темы и сохранение в localStorage
     setTheme(theme) {
-        document.documentElement.setAttribute("data-bs-theme", theme);
         localStorage.setItem("theme", theme);
+
+        document.documentElement.setAttribute("data-bs-theme", this.getTheme());
+
+        this.preferredTargets.find((element) => element.value === theme)?.setAttribute('checked', true);
     }
 
     // Получение предпочитаемой темы
     getPreferredTheme() {
-        const storedTheme = localStorage.getItem("theme");
-        if (storedTheme) {
-            return storedTheme;
-        }
-
         return window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark"
             : "light";
