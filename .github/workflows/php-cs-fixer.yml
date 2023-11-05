@@ -1,0 +1,58 @@
+name: Check & fix styling
+
+on:
+  push: # (or pull requests)
+    paths:
+      - '.github/workflows/**'
+      - '**.php'
+      - 'app/**'
+      - 'tests/**'
+      - 'phpunit.xml'
+      - 'composer.json'
+      - 'composer.lock'
+      - 'resources/**'
+      - '.prettierrc.json'
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup PHP 🔧
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
+          tools: composer:v2
+        env:
+          COMPOSER_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Install Dependencies 🔧
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Run Pint
+        run: vendor/bin/pint
+
+      - name: Setup Node 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies 🔧
+        run: npm install
+
+      - name: Run Write
+        run:
+          npx prettier --write ./resources
+          npx prettier --write ./resources/**/*.blade.php
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Fixed code style
