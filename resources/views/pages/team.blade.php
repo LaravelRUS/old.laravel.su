@@ -4,20 +4,19 @@
 @section('content')
 
     <x-header image="/img/bird.svg">
-            <x-slot:sup>Каждый рок звезда</x-slot>
-                <x-slot:title>Мы делаем сообщество лучше.</x-slot>
+        <x-slot:sup>Каждый рок звезда</x-slot>
+        <x-slot:title>Мы делаем сообщество лучше.</x-slot>
 
-                <x-slot:description>
-                    Сообщество совершенствуется с каждым годом благодаря работе десятков добровольцев, вносящих большой и малый
-                    вклад. Каждый может помочь сделать эту платформу лучше, независимо от того, использует ли он ее с
-                    самого основания или начал только вчера.
-                </x-slot>
+        <x-slot:description>
+            Сообщество совершенствуется с каждым годом благодаря работе десятков добровольцев, вносящих большой и малый
+            вклад. Каждый может помочь сделать эту платформу лучше, независимо от того, использует ли он ее с
+            самого основания или начал только вчера.
+        </x-slot>
 
-                <x-slot:actions>
-                    <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Вернуться домой</a>
-                </x-slot>
+        <x-slot:actions>
+            <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Вернуться домой</a>
+        </x-slot>
     </x-header>
-
 
     <div class="container py-5">
         <div class="row text-center justify-content-center mb-5">
@@ -36,85 +35,96 @@
 
         <div class="row g-5 row-cols-6 text-center justify-content-center">
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&1">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&1">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&6">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&6">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&5">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&5">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&8">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&8">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&3">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&3">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&9">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&9">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&7">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&7">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&2">
-
-                <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
-                <p>Автор популярных пакетов</p>
-            </div>
-
-
-            <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&3">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&2">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&9">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&3">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&7">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&9">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>
             </div>
 
             <div class="col">
-                <img alt="image" class="img-fluid rounded-circle mb-3" src="https://xsgames.co/randomusers/avatar.php?g=male&2">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&7">
+
+                <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
+                <p>Автор популярных пакетов</p>
+            </div>
+
+            <div class="col">
+                <img alt="image" class="img-fluid rounded-circle mb-3"
+                    src="https://xsgames.co/randomusers/avatar.php?g=male&2">
 
                 <h6 class="my-2"><strong>Дмитрий Будко</strong></h6>
                 <p>Автор популярных пакетов</p>

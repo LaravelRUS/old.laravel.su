@@ -20,7 +20,6 @@ use App\Docs;
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/post', 'pages.post')->name('post');
-Route::view('/profile', 'pages.profile')->name('profile');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/meets', 'pages.meets')->name('meets');
@@ -42,6 +41,8 @@ Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->g
     Route::post('/posts', [PostController::class, 'list'])->name('post.load-more');
 });
 */
+
+Route::get('/p/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware(['auth'])
     ->group(function () {
@@ -86,3 +87,21 @@ Route::get('/status/{version?}', [DocsController::class, 'status'])
 Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
     ->whereIn('version', Docs::SUPPORT_VERSION)
     ->name('docs');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+|
+| TODO:
+|
+*/
+
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])
+    ->middleware('auth')
+    ->name('my');
+
+Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
+    ->name('profile');

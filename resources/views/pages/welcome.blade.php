@@ -5,7 +5,7 @@
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="/img/ivan.svg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
-                     height="500" loading="lazy">
+                    height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4">Создавайте элегантные приложения с <span
@@ -22,12 +22,10 @@
         </div>
     </div>
 
-
-
     <div class="container my-5">
         <!--
-        <div class="mb-3 text-uppercase fw-semibold ls-xl text-center">Ведущие компаний России доверяют Laravel</div>
-        -->
+            <div class="mb-3 text-uppercase fw-semibold ls-xl text-center">Ведущие компаний России доверяют Laravel</div>
+            -->
         <div class="row text-center no-gutters pt-5" title="Ведущие компаний России доверяют Laravel">
             <div class="col-12 col-md-12 col-lg-12 mx-auto">
                 <div class="row company-usage align-items-center">
@@ -59,17 +57,15 @@
         </div>
     </div>
 
-
     <div class="container py-5">
 
         <div class="row g-5 justify-content-center align-items-center">
 
-
             <!-- Right side START -->
             <div class="col-xl-6 text-center text-xl-start">
 
-                <span
-                    class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только фантазией</span>
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
+                    фантазией</span>
 
                 <!-- Title -->
                 <h2 class="display-5 fw-semibold mb-5">Реализовывайте потрясающие проекты.</h2>
@@ -79,57 +75,53 @@
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
+                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path
                                     d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Routing</h5>
                         <p class="mb-0">Элегантная и эффективная система роутинга для реализации любых адресов в
-                                        приложении.</p>
+                            приложении.</p>
                     </div>
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
+                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path
                                     d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Auth</h5>
                         <p class="mb-0">Аутентификация и авторизация позволяет настроить любой уровень прав и
-                                        доступа.</p>
+                            доступа.</p>
                     </div>
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
+                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                                 <path
                                     d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                             </svg>
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Eloquent ORM</h5>
@@ -138,17 +130,17 @@
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
+                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                                 <path
                                     d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
                             </svg>
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Validation</h5>
@@ -163,18 +155,18 @@
             <div class="col-lg-6 position-relative">
                 <!-- Svg Decoration -->
                 <figure class="position-absolute top-0 start-0 translate-middle z-index-1 ms-4">
-                    <svg class="text-primary animate-cube" width="46" height="53" viewBox="0 0 46 53" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
+                    <svg class="text-primary animate-cube" width="46" height="53" viewBox="0 0 46 53"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="m23.102 1 22.1 12.704v25.404M23.101 1l-22.1 12.704v25.404" stroke="currentColor"
-                              stroke-width="1.435" stroke-linejoin="bevel"></path>
+                            stroke-width="1.435" stroke-linejoin="bevel"></path>
                         <path d="m45.202 39.105-22.1 12.702L1 39.105" stroke="currentColor" stroke-width="1.435"
-                              stroke-linejoin="bevel"></path>
+                            stroke-linejoin="bevel"></path>
                         <path transform="matrix(.86698 .49834 .00003 1 1 13.699)" stroke="currentColor"
-                              stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
+                            stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
                         <path transform="matrix(.86698 -.49834 -.00003 1 23.102 26.402)" stroke="currentColor"
-                              stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
+                            stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
                         <path transform="matrix(.86701 -.49829 .86701 .49829 1 13.702)" stroke="currentColor"
-                              stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.491H0z"></path>
+                            stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.491H0z"></path>
                     </svg>
                 </figure>
 
@@ -409,7 +401,6 @@
                     </svg>
                 </figure>
 
-
                 <pre class="rounded-3 position-relative bg-dark p-4 text-white shadow language-php" tabindex="0"><code
                         class="language-php">Route::post('/task', function (Request $request) {
 
@@ -425,20 +416,15 @@
 });
 </code></pre>
 
-
             </div>
             <!-- Left side END -->
 
         </div>
 
-
     </div>
-
-
 
     <div class="bg-dark-subtle text-white" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <div class="container px-4 py-5 packages">
-
 
             <div class="row mb-5">
                 <div class="col-12 col-md-10 col-lg-7">
@@ -464,8 +450,7 @@
 
                 <div class="col-sm-6 col-lg-3">
                     <!-- Card -->
-                    <div
-                        class="card rounded-3 text-white bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow"
+                    <div class="card rounded-3 text-white bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow"
                         style="background-color: #312e3e;">
                         <!-- Card header -->
                         <div class="card-header bg-transparent p-0">
@@ -475,14 +460,14 @@
                         <div class="card-body p-0 mt-3">
                             <!-- Title -->
                             <h3 class="mb-2"><a href="#"
-                                                class="stretched-link link-light text-decoration-none">Orchid</a></h3>
+                                    class="stretched-link link-light text-decoration-none">Orchid</a></h3>
                             <small>
                                 Мощное и простое в использовании решение для создания административных панелей и
                                 бизнес-приложений.
                             </small>
                             <!-- Image -->
                             <img src="https://orchid.software/img/next/attachments.svg" class="opacity-5 mb-n5 mt-5"
-                                 alt="">
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -490,7 +475,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <!-- Card -->
                     <div class="card simple-gradient text-white bg-opacity-50 p-4 overflow-hidden h-100 shadow"
-                         style="background-color: #52545e">
+                        style="background-color: #52545e">
                         <!-- Card header -->
                         <div class="card-header bg-transparent p-0">
                             <h6>Среда Разработки</h6>
@@ -498,15 +483,16 @@
                         <!-- Card body -->
                         <div class="card-body p-0 mt-3">
                             <!-- Title -->
-                            <h3 class="mb-2"><a href="#" class="stretched-link link-light text-decoration-none">Laravel
-                                                                                                                IDEA</a>
+                            <h3 class="mb-2"><a href="#"
+                                    class="stretched-link link-light text-decoration-none">Laravel
+                                    IDEA</a>
                             </h3>
                             <small>
                                 Полный автокомплит полей и отношений практически во всех методах и функциях.
                             </small>
                             <!-- Image -->
-                            <img src="https://laravel-idea.com/img/logo.svg"
-                                 class="opacity-5 mb-n5 mt-5 d-block ms-auto" style="min-height: 120px" alt="">
+                            <img src="https://laravel-idea.com/img/logo.svg" class="opacity-5 mb-n5 mt-5 d-block ms-auto"
+                                style="min-height: 120px" alt="">
                         </div>
                     </div>
                 </div>
@@ -514,7 +500,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <!-- Card -->
                     <div class="card text-white bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow"
-                         style="background-color: #bf4545">
+                        style="background-color: #bf4545">
                         <!-- Card header -->
                         <div class="card-header bg-transparent p-0">
                             <h6>Надёжные Утилиты</h6>
@@ -523,11 +509,11 @@
                         <div class="card-body p-0 mt-3">
                             <!-- Title -->
                             <h3 class="mb-2"><a href="#"
-                                                class="stretched-link link-light text-decoration-none">CyberCog</a></h3>
+                                    class="stretched-link link-light text-decoration-none">CyberCog</a></h3>
                             <small>Полезные утилиты на каждый день</small>
                             <!-- Image -->
                             <img src="https://avatars.githubusercontent.com/u/5887416?s=200&v=4"
-                                 class="opacity-5 mb-n5 mt-5 d-block ms-auto rounded-4" alt="">
+                                class="opacity-5 mb-n5 mt-5 d-block ms-auto rounded-4" alt="">
                         </div>
                     </div>
                 </div>
@@ -543,7 +529,7 @@
                         <div class="card-body p-0 mt-3">
                             <!-- Title -->
                             <h3 class="mb-2"><a href="#"
-                                                class="stretched-link link-light text-decoration-none">Railt</a></h3>
+                                    class="stretched-link link-light text-decoration-none">Railt</a></h3>
                             <small class="lead">GraphQL Framework</small>
                             <!-- Image -->
                             <img src="assets/images/element/exam.svg" class="opacity-5 mb-n5" alt="">
@@ -555,14 +541,12 @@
         </div>
     </div>
 
-
     <div class="container mt-5 py-5">
 
         <div class="row g-5 justify-content-center align-items-end mb-5">
             <!-- Right side START -->
             <div class="col-xl-6 text-center text-xl-start">
-                <span
-                    class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
                 <!-- Title -->
                 <h2 class="display-5 fw-semibold mb-0">Агентства для разработки вашего проекта на Laravel</h2>
             </div>
@@ -575,11 +559,12 @@
                     разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
                 </p>
 
-                <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Присоединиться <x-icon path="bs.arrow-right"/></a>
+                <a href="{{ route('advertising') }}"
+                    class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Присоединиться <x-icon
+                        path="bs.arrow-right" /></a>
             </div>
             <!-- Left side END -->
         </div>
-
 
         <div class="row row-cols-md-3 g-5">
             <div class="col">
@@ -611,9 +596,7 @@
             </div>
         </div>
 
-
     </div>
-
 
     <div class="container mt-5 py-5">
         <div class="row g-4 g-lg-5 align-items-center justify-content-between">
@@ -630,7 +613,7 @@
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
-                                     src="https://xsgames.co/randomusers/avatar.php?g=male&4" alt="avatar">
+                                    src="https://xsgames.co/randomusers/avatar.php?g=male&4" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote class="px-3">
@@ -660,7 +643,7 @@
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-1"
-                                         src="https://xsgames.co/randomusers/avatar.php?g=male&2" alt="avatar">
+                                        src="https://xsgames.co/randomusers/avatar.php?g=male&2" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
@@ -674,7 +657,7 @@
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-1"
-                                         src="https://xsgames.co/randomusers/avatar.php?g=male&1" alt="avatar">
+                                        src="https://xsgames.co/randomusers/avatar.php?g=male&1" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
@@ -688,7 +671,7 @@
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-1"
-                                         src="https://xsgames.co/randomusers/avatar.php?g=male&3" alt="avatar">
+                                        src="https://xsgames.co/randomusers/avatar.php?g=male&3" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
@@ -705,17 +688,17 @@
                     <div class="col-4 mt-0 mt-xl-5 text-end position-relative z-index-1 d-none d-md-block">
                         <div class="">
                             <svg class="text-primary animate-cube" width="46" height="53" viewBox="0 0 46 53"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="m23.102 1 22.1 12.704v25.404M23.101 1l-22.1 12.704v25.404"
-                                      stroke="currentColor" stroke-width="1.435" stroke-linejoin="bevel"></path>
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m23.102 1 22.1 12.704v25.404M23.101 1l-22.1 12.704v25.404" stroke="currentColor"
+                                    stroke-width="1.435" stroke-linejoin="bevel"></path>
                                 <path d="m45.202 39.105-22.1 12.702L1 39.105" stroke="currentColor" stroke-width="1.435"
-                                      stroke-linejoin="bevel"></path>
+                                    stroke-linejoin="bevel"></path>
                                 <path transform="matrix(.86698 .49834 .00003 1 1 13.699)" stroke="currentColor"
-                                      stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
+                                    stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
                                 <path transform="matrix(.86698 -.49834 -.00003 1 23.102 26.402)" stroke="currentColor"
-                                      stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
+                                    stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.405H0z"></path>
                                 <path transform="matrix(.86701 -.49829 .86701 .49829 1 13.702)" stroke="currentColor"
-                                      stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.491H0z"></path>
+                                    stroke-width="1.435" stroke-linejoin="bevel" d="M0 0h25.491v25.491H0z"></path>
                             </svg>
                         </div>
                     </div>
@@ -726,7 +709,7 @@
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
-                                     src="https://xsgames.co/randomusers/avatar.php?g=male" alt="avatar">
+                                    src="https://xsgames.co/randomusers/avatar.php?g=male" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote>
@@ -745,8 +728,7 @@
             <div class="col-xl-5 order-1 text-center text-xl-start pe-xl-0">
                 <!-- Title -->
 
-                <span
-                    class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
                 <h2 class="display-5 fw-semibold mb-4">Живое общение, новые знакомства</h2>
                 <p>
                     Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
@@ -755,7 +737,7 @@
                 </p>
 
                 @guest
-                     <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @else
                     <a href="{{ route('feed') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @endguest
@@ -763,6 +745,3 @@
         </div> <!-- Row END -->
     </div>
 @endsection
-
-
-

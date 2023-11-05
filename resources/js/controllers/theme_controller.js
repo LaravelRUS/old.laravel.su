@@ -1,7 +1,7 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ["preferred"];
+    static targets = ['preferred'];
 
     connect() {
         // Устанавливаем начальное значение темы
@@ -24,7 +24,7 @@ export default class extends Controller {
 
     // Получение текущей темы из localStorage
     getTheme() {
-        const theme = localStorage.getItem("theme");
+        const theme = localStorage.getItem('theme');
 
         if (['dark', 'light'].includes(theme)) {
             return theme;
@@ -35,17 +35,15 @@ export default class extends Controller {
 
     // Установка темы и сохранение в localStorage
     setTheme(theme) {
-        localStorage.setItem("theme", theme);
+        localStorage.setItem('theme', theme);
 
-        document.documentElement.setAttribute("data-bs-theme", this.getTheme());
+        document.documentElement.setAttribute('data-bs-theme', this.getTheme());
 
         this.preferredTargets.find((element) => element.value === theme)?.setAttribute('checked', true);
     }
 
     // Получение предпочитаемой темы
     getPreferredTheme() {
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 }

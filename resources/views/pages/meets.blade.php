@@ -9,7 +9,6 @@
                 <div class="bg-dark-subtle dashed p-4 rounded position-relative">
                     <a href="#" class="position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
 
-
                     <div class="row g-4 justify-content-between align-items-center">
                         <div class="col-sm-7">
                             <div class="row g-3">
@@ -48,13 +47,12 @@
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Нельзя пропустить</span>
                 <h1 class="display-5 fw-bold mb-4">Ни одна PHP конференция не обойдется без Laravel</h1>
                 <p class="pe-5">
-                    Рассказать, что Laravel на столько популярен в мире PHP что нет какой-либо конференции, где не спикеры не упоминали Laravel
+                    Рассказать, что Laravel на столько популярен в мире PHP что нет какой-либо конференции, где не спикеры
+                    не упоминали Laravel
                 </p>
             </div>
         </div>
     </div>
-
-
 
     <div class="container py-5">
 
@@ -62,10 +60,9 @@
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
                     <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
+                        xmlns="http://www.w3.org/2000/svg">
                         <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                        <path
-                            d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
+                        <path d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
                             stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         <path
                             d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"

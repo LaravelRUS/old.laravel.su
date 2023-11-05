@@ -7,7 +7,7 @@ export default class extends Controller {
     connect() {
         this.element.addEventListener('click', (event) => {
             let element =
-                    document.querySelector(this.element.dataset.to) || document.body.getElementsByTagName('header')[0];
+                document.querySelector(this.element.dataset.to) || document.body.getElementsByTagName('header')[0];
 
             event.preventDefault();
 

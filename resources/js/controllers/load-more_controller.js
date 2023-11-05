@@ -1,14 +1,14 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
         url: {
             type: String,
-            default: null
+            default: null,
         },
         cursor: {
             type: String,
-            default: null
+            default: null,
         },
     };
 
@@ -17,19 +17,17 @@ export default class extends Controller {
     }
 
     connect() {
-        document.addEventListener("scroll", this.scroll);
+        document.addEventListener('scroll', this.scroll);
     }
 
     scroll() {
-
-        if (this.scrollReachedEnd &&  !this.hasLastPageTarget && this.urlValue!="") {
-            this.getNewPage()
+        if (this.scrollReachedEnd && !this.hasLastPageTarget && this.urlValue != '') {
+            this.getNewPage();
         }
     }
 
     getNewPage() {
-
-        if(this.urlValue == "null"){
+        if (this.urlValue == 'null') {
             return;
         }
         /*
@@ -49,8 +47,8 @@ export default class extends Controller {
         */
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", this.urlValue, true);
-        this.urlValue=""
+        xhr.open('POST', this.urlValue, true);
+        this.urlValue = '';
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.setRequestHeader('X-CSRF-Token', document.head.querySelector('[name~=csrf-token][content]').content);
         xhr.responseType = 'json';
@@ -59,14 +57,12 @@ export default class extends Controller {
 
         xhr.onload = () => {
             if (xhr.status != 200) {
-
             } else {
-                console.log(xhr.response)
+                console.log(xhr.response);
                 this.urlValue = xhr.response.url;
-                this.element.innerHTML+= xhr.response.view;
+                this.element.innerHTML += xhr.response.view;
             }
         };
-
     }
 
     get scrollReachedEnd() {
@@ -74,5 +70,4 @@ export default class extends Controller {
         const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
         return distanceFromBottom < 20; // adjust the number 20 yourself
     }
-
 }

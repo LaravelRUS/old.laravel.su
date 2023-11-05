@@ -1,5 +1,5 @@
 // scss-docs-start theme-color-variables
-$primary:       #F9322C;
+$primary: #f9322c;
 $dark: #212529;
 
 /*
@@ -20,28 +20,41 @@ $container-max-widths: (
     xl: 1120px,
 );
 
-$body-bg: #FAFAFA;
+$body-bg: #fafafa;
 $body-bg-dark: #171923;
 $body-tertiary-bg: #fff;
 $body-tertiary-bg-dark: #252a37;
 
 $dark-bg-subtle-dark: #111319;
 
+$border-radius: 1.625rem;
+$border-radius-sm: 0.25rem !default;
+$border-radius-lg: 0.5rem !default;
+$border-radius-xl: 1rem !default;
+$border-radius-xxl: 2rem !default;
+$border-radius-pill: 50rem !default;
 
-$border-radius:               1.625rem;
-$border-radius-sm:            .25rem !default;
-$border-radius-lg:            .5rem !default;
-$border-radius-xl:            1rem !default;
-$border-radius-xxl:           2rem !default;
-$border-radius-pill:          50rem !default;
-
-$font-family-sans-serif:      'Raleway', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:
+    'Raleway',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Noto Sans',
+    'Liberation Sans',
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji' !default;
 $btn-border-radius: 0.75rem;
-$border-width:                2px;
+$border-width: 2px;
 $btn-font-weight: 700;
 
-@import "bootstrap/scss/bootstrap";
-@import "prism";
+@import 'bootstrap/scss/bootstrap';
+@import 'prism';
 
 .header-top {
     background: #010409;
@@ -52,7 +65,7 @@ $btn-font-weight: 700;
 }
 
 // remove
-.logo{
+.logo {
     width: 40px;
     height: 40px;
     display: flex;
@@ -108,26 +121,6 @@ $btn-font-weight: 700;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .avatar {
     border-radius: 10em;
 }
@@ -144,28 +137,30 @@ $btn-font-weight: 700;
     height: 8rem;
 }
 
-.avatar-img{
+.avatar-img {
+    aspect-ratio: 1/1;
     max-width: 100%;
     object-fit: cover;
 }
 
-.card, .overflow-hidden {
+.card,
+.overflow-hidden {
     will-change: transform;
 }
 
-.packages img{
+.packages img {
     margin-bottom: -3rem !important;
     max-width: 100%;
     height: auto;
     opacity: 0.5;
 }
 
-.packages .card{
-    border: none!important;
+.packages .card {
+    border: none !important;
 }
 
 .simple-gradient {
-    background: linear-gradient(180deg,hsla(0,0%,100%,0),rgba(0,0,0,.25));
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), rgba(0, 0, 0, 0.25));
 }
 
 .company-usage img {
@@ -175,7 +170,7 @@ $btn-font-weight: 700;
     object-fit: contain;
 }
 
-.body-content pre{
+.body-content pre {
     color: #fff;
     background: #252a37;
     padding: 2em 1.5em;
@@ -188,7 +183,6 @@ $btn-font-weight: 700;
     position: relative;
 }
 
-
 .ticket-border:before {
     background: var(--bs-gray-900);
 }
@@ -197,7 +191,7 @@ $btn-font-weight: 700;
     height: 50px;
     border-radius: 50%;
     background: #fff;
-    content: "";
+    content: '';
     top: -50px;
     left: -25px;
     position: absolute;
@@ -208,13 +202,11 @@ $btn-font-weight: 700;
     height: 50px;
     border-radius: 50%;
     background: #fff;
-    content: "";
+    content: '';
     bottom: -50px;
     left: -25px;
     position: absolute;
 }
-
-
 
 .back-to-top-container {
     position: absolute;
@@ -262,7 +254,6 @@ $btn-font-weight: 700;
     }
 }
 
-
 .link-icon-animation {
     svg {
         transition: 340ms all;
@@ -271,18 +262,14 @@ $btn-font-weight: 700;
 
     &:hover {
         svg {
-            padding-right: 0!important;
+            padding-right: 0 !important;
         }
     }
 }
 
-
-
-
-
-
-    // PORT FROM ORCHID NEED CHANGED (AND REMOVED)
-main, main div {
+// PORT FROM ORCHID NEED CHANGED (AND REMOVED)
+main,
+main div {
     line-height: 1.8em;
 
     ul:first-of-type {
@@ -305,7 +292,10 @@ main, main div {
         padding: 0 1.5rem;
     }
 
-    .h2, .h3, h2, h3 {
+    .h2,
+    .h3,
+    h2,
+    h3 {
         margin-top: 1.5em;
         margin-bottom: 15px;
     }
@@ -323,10 +313,9 @@ main, main div {
     }
 
     code {
-        color:rgb(235, 68, 50);
+        color: rgb(235, 68, 50);
     }
 }
-
 
 main {
     line-height: 1.5em;
@@ -353,13 +342,17 @@ main {
         }
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         a {
             color: $black;
             text-decoration: none;
         }
     }
-
 
     h2 {
         margin-bottom: 1em !important;
@@ -375,12 +368,12 @@ main {
             transition: all 340ms;
             &:before {
                 transition: all 340ms;
-                content: "#";
+                content: '#';
                 margin-left: -1em;
                 position: absolute;
                 font-size: 1em;
                 color: $primary;
-                opacity: .5;
+                opacity: 0.5;
             }
 
             &:hover {
@@ -418,13 +411,13 @@ main {
         @extend .text-wrap;
         @extend .text-break;
 
-        &:before{
+        &:before {
             position: absolute;
             top: -0.5em;
             left: -0.3em;
             background-color: $gray-500;
             color: #fff;
-            content: "!";
+            content: '!';
             width: 1.5em;
             height: 1.5em;
             border-radius: 100%;
@@ -437,16 +430,12 @@ main {
             align-items: center;
             box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
         }
-        >p{
+        > p {
             margin-bottom: 0;
         }
 
         p:last-child {
             margin-bottom: 0;
         }
-
     }
-
 }
-
-

@@ -8,19 +8,19 @@
         <div class="bg-secondary-subtle p-5 rounded">
             <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5">
 
-                @foreach(range(0, 9) as $package)
+                @foreach (range(0, 9) as $package)
                     <div class="col">
                         <div class="bg-body-tertiary p-5 rounded h-100 position-relative text-wrap text-break">
 
                             <div class="row justify-content-between mb-4">
                                 <div class="col">
-                                <span class="badge bg-warning text-dark rounded-1">
-                                    Лучшая админка
-                                </span>
+                                    <span class="badge bg-warning text-dark rounded-1">
+                                        Лучшая админка
+                                    </span>
                                 </div>
 
                                 <div class="col-auto text-warning d-inline-flex align-items-center me-auto">
-                                    <x-icon path="bs.star" class="me-2"/>
+                                    <x-icon path="bs.star" class="me-2" />
                                     2324
                                 </div>
                             </div>
@@ -38,8 +38,8 @@
                             </p>
                             <p class="text-end mb-0">
                                 <a href="#"
-                                   class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
-                                    <x-icon path="bs.arrow-right"/>
+                                    class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
+                                    <x-icon path="bs.arrow-right" />
                                 </a>
                             </p>
                         </div>

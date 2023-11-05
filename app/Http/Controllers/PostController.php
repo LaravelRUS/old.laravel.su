@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Response;
 
 class PostController extends Controller
 {
+    /**
+     * @param \App\Models\Post $post
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function show(Post $post)
+    {
+        return view('post.show', [
+            'post'  => $post,
+        ]);
+    }
+
     public function edit(Post $post): View
     {
         //нужно будет проверять аавтора, если пост существует
@@ -53,10 +65,7 @@ class PostController extends Controller
 
         $test = view('post.list', [
             'posts' => $posts,
-        ])->fragmentsIf(!$request->isMethodSafe(), [
-            "posts",
-            "more",
-        ]);
+        ])->fragmentsIf(!$request->isMethodSafe());
 
         return  $test;
     }

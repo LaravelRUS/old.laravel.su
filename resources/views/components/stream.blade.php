@@ -1,11 +1,10 @@
 @props(['target', 'action', 'push'])
 
-
-@if(!request()->isMethodSafe() || request()->is('*/stream/*') || request()->is('stream/*'))
+@if (!request()->isMethodSafe() || request()->is('*/stream/*') || request()->is('stream/*'))
     @fragment($target)
         <turbo-stream target="{{ $target }}" action="{{ $action ?? 'replace' }}">
             <template>
-                @if(collect(['replace', 'update'])->contains($action ?? 'replace'))
+                @if (collect(['replace', 'update'])->contains($action ?? 'replace'))
                     <div {{ $attributes->merge(['id' => $target]) }}>
                         {!! $slot !!}
                     </div>

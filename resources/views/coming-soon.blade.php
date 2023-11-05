@@ -9,7 +9,8 @@
                 <div class="row justify-content-center mb-4">
                     <div class="col">
                         <div class="my-4">
-                            <img src="{{ asset('https://laravel.su/images/logo.png') }}" alt="{{ config('app.name') }}" height="40px">
+                            <img src="{{ asset('https://laravel.su/images/logo.png') }}" alt="{{ config('app.name') }}"
+                                height="40px">
                         </div>
                     </div>
                 </div>
@@ -29,7 +30,5 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection
