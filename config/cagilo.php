@@ -37,7 +37,8 @@ return [
     */
 
     'icons'       => [
-        'bs' => base_path('/vendor/twbs/bootstrap-icons/icons')
+        'bs' => base_path('/vendor/twbs/bootstrap-icons/icons'),
+        'l' => public_path('/elements')
     ],
 
     /*

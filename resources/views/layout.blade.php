@@ -96,18 +96,20 @@
 
                             <div class="navbar navbar-dark">
                                 <ul class="nav flex-column navbar-nav">
-                                    <li class="nav-item mb-2"><a href="{{ route('meets') }}" class="nav-link p-0">Конференции</a>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ route('meets') }}" class="nav-link p-0">Конференции</a>
                                     </li>
-                                    <li class="nav-item mb-2"><a href="{{ route('advertising') }}"
-                                            class="nav-link p-0">Партнёрство</a>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
                                     </li>
-                                    <li class="nav-item mb-2"><a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
                                     </li>
-                                    <li class="nav-item mb-2"><a href="{{ route('performance') }}"
-                                            class="nav-link p-0">Производительность</a>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ route('performance') }}" class="nav-link p-0">Производительность</a>
                                     </li>
-                                    <li class="nav-item mb-2"><a href="{{ route('status') }}" class="nav-link p-0">Статус
-                                            переводов</a>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
                                     </li>
                                 </ul>
                             </div>
@@ -117,13 +119,18 @@
                             <p class="fw-normal text-white">Обучающие материалы</p>
                             <div class="navbar navbar-dark">
                                 <ul class="nav flex-column navbar-nav">
-                                    <li class="nav-item mb-2"><a href="{{ asset('https://github.com/laravelRus') }}"
-                                            class="nav-link p-0">Исходный код</a></li>
-                                    <li class="nav-item mb-2"><a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
-                                            class="nav-link p-0">Правила</a></li>
-                                    <li class="nav-item mb-2"><a
-                                            href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}"
-                                            class="nav-link p-0">Подкаст</a></li>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ asset('https://github.com/laravelRus') }}" class="nav-link p-0">Исходный
+                                            код</a>
+                                    </li>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
+                                            class="nav-link p-0">Правила</a>
+                                    </li>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}"
+                                            class="nav-link p-0">Подкаст</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -132,13 +139,13 @@
                             {{-- <p class="fw-normal text-white">Блоги разработчиков</p> --}}
                             <div class="navbar navbar-dark">
                                 {{--
-                       <ul class="nav flex-column navbar-nav">
-                           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Orchid</a></li>
-                           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Idea</a></li>
-                           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">SleepingOwl Admin</a></li>
-                           <li class="nav-item mb-2"><a href="{{ asset('https://vk.com/laravel_rus?w=app5727453_-53758340') }}" class="nav-link p-0">Помощь проекту</a></li>
-                        </ul>
-                        --}}
+               <ul class="nav flex-column navbar-nav">
+                   <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Orchid</a></li>
+                   <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Idea</a></li>
+                   <li class="nav-item mb-2"><a href="#" class="nav-link p-0">SleepingOwl Admin</a></li>
+                   <li class="nav-item mb-2"><a href="{{ asset('https://vk.com/laravel_rus?w=app5727453_-53758340') }}" class="nav-link p-0">Помощь проекту</a></li>
+                </ul>
+                --}}
 
                                 <div class="nav flex-column">
                                     <form data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent

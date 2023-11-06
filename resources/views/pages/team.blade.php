@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <x-header image="/img/bird.svg">
+    <x-header image="/img/bird.svg" align="align-items-start">
         <x-slot:sup>Каждый рок звезда</x-slot>
         <x-slot:title>Мы делаем сообщество лучше.</x-slot>
 
@@ -13,11 +13,69 @@
             самого основания или начал только вчера.
         </x-slot>
 
-        <x-slot:actions>
-            <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Вернуться домой</a>
-        </x-slot>
+        <x-slot:content>
+            <div class="row gy-5 row-cols-lg-4 text-center justify-content-center">
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&1" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&6" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&5" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&8" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&3" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&9" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&7" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+
+                <div class="col">
+                    <img alt="image" class="img-fluid rounded-circle mb-3"
+                         src="https://xsgames.co/randomusers/avatar.php?g=male&2" style="filter:grayscale(100%)">
+
+                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                </div>
+            </div>
+        </x-slot:content>
+
     </x-header>
 
+    {{--
     <div class="container py-5">
         <div class="row text-center justify-content-center mb-5">
             <div class="col-8">
@@ -132,20 +190,16 @@
         </div>
 
     </div>
+    --}}
 
-    <div class="container py-5">
-        <div class="p-5 mt-5 bg-body-secondary rounded-4 d-flex align-items-center justify-content-between">
-            <div class="col-7">
-                <p class="display-6 fw-bold">Вы можете сделать это ещё изящнее уже сегодня.</p>
-                <p class="mb-0">
-                    В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
-                    ограничение скорости и пользовательские консольные команды.
-                </p>
-            </div>
 
-            <a href="{{ route('docs') }}" class="btn btn-outline-primary btn-lg px-4">
-                Внесите свой вклад на GitHub
-            </a>
-        </div>
-    </div>
+    <x-call-to-action link="{{ route('docs') }}" text="Внесите свой вклад на GitHub">
+        <x-slot:title>Вы можете сделать сообщество ещё лучше.</x-slot>
+
+        <x-slot:description>
+            В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
+            ограничение скорости и пользовательские консольные команды.
+        </x-slot>
+
+    </x-call-to-action>
 @endsection

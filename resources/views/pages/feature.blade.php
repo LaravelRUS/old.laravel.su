@@ -7,7 +7,7 @@
 
         <x-slot:description>
             «Из коробки» Laravel предлагает элегантные решения для множества функций, необходимых всем современным
-            веб-приложениям. Пришло время начать создавать потрясающие приложения!
+            приложениям. Пришло время начать создавать их!
         </x-slot>
     </x-header>
 
@@ -44,6 +44,23 @@
                             его стабильность и развитие.
                         </p>
                     </div>
+
+
+                    <pre class="rounded-3 position-relative bg-dark p-4 text-white shadow language-php mb-4" tabindex="0"><code
+                                class="language-php">Route::post('/task', function (Request $request) {
+
+     $request-&gt;validate([
+        'name' =&gt; 'required|max:255',
+     ])
+
+    $task = new Task;
+    $task-&gt;name = $request-&gt;name;
+    $task-&gt;save();
+
+    return redirect('/');
+});
+</code></pre>
+
 
                     <div class="mb-4">
                         <h5>Крутой Шаблонизатор Blade</h5>
@@ -87,8 +104,37 @@
                         сборки.
                     </p>
 
+
+                    <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
+                       definition:</p>
+
+                    <pre class="rounded-3 position-relative bg-dark p-4 text-white shadow language-php mb-4" tabindex="0"><code
+                            class="language-php">Route::get('/profile', ProfileController::class)
+    ->middleware('auth');
+</code></pre>
+
+
+                    <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
+                       facade:</p>
+
+                    <pre class="rounded-3 position-relative bg-dark p-4 text-white shadow language-php mb-4" tabindex="0"><code
+                            class="language-php">use Illuminate\Support\Facades\Auth;
+
+// Get the currently authenticated user...
+$user = Auth::user();
+</code></pre>
+
+                    <p>Of course, you may define your own authentication middleware, allowing you to customize the
+                       authentication process.</p>
+
+                    <p>For more information on Laravel's authentication features, check out the <a
+                            href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+
                 </div>
             </div>
+
+
+
         </div>
 
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
@@ -278,21 +324,16 @@
                 </div>
             </div>
         </div>
-
-        <div class="p-5 mt-5 bg-body-secondary rounded-4 d-flex align-items-center justify-content-between">
-            <div class="col-7">
-                <p class="display-6 fw-bold">Мы лишь прикоснулись к поверхности.</p>
-                <p class="mb-0">
-                    В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
-                    ограничение скорости и пользовательские консольные команды.
-                </p>
-            </div>
-
-            <a href="{{ route('docs') }}" class="btn btn-outline-primary btn-lg px-4">
-                Прочтите документацию
-            </a>
-        </div>
     </div>
+
+    <x-call-to-action link="{{ route('docs') }}" text="Внесите свой вклад на GitHub">
+        <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>
+
+        <x-slot:description>
+            В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
+            ограничение скорости и пользовательские консольные команды.
+        </x-slot>
+    </x-call-to-action>
 
     <div class="container py-5">
 

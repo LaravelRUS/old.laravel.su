@@ -10,9 +10,10 @@
 
                 <div class="mb-4">
 
+                    {{--
                     <input class="form-control form-control-lg" type="text" placeholder="Поиск по документации..."
                         aria-label=".form-control-lg example">
-
+--}}
                     <ul class="list-unstyled ps-0 py-4" id="docs-menu">
                         @foreach ($docs->getMenu() as $item)
                             <li class="mb-2">

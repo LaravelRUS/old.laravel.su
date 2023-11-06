@@ -10,20 +10,13 @@
 
                 @foreach (range(0, 9) as $package)
                     <div class="col">
-                        <div class="bg-body-tertiary p-5 rounded h-100 position-relative text-wrap text-break">
+                        <div class="bg-body-tertiary p-5 rounded h-100 position-relative text-wrap text-break position-relative">
 
-                            <div class="row justify-content-between mb-4">
-                                <div class="col">
-                                    <span class="badge bg-warning text-dark rounded-1">
-                                        Лучшая админка
-                                    </span>
-                                </div>
-
-                                <div class="col-auto text-warning d-inline-flex align-items-center me-auto">
-                                    <x-icon path="bs.star" class="me-2" />
-                                    2324
-                                </div>
-                            </div>
+                            @if($loop->index === 9)
+                                <span class="badge bg-warning text-dark rounded-end-3 position-absolute end-0 top-0">
+                                    Лучшая админка
+                                </span>
+                            @endif
 
                             <p class="fs-4">
                                 Orchid
@@ -31,17 +24,27 @@
 
                             <hr class="w-25">
 
-                            <p>
+                            <p class="line-clamp-5 small">
                                 Мощное и простое в использовании решение для создания административных панелей и
                                 бизнес-приложений
                                 {{ \Illuminate\Support\Str::random(100) }}
                             </p>
-                            <p class="text-end mb-0">
-                                <a href="#"
-                                    class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
-                                    <x-icon path="bs.arrow-right" />
-                                </a>
-                            </p>
+
+
+                            <div class="row justify-content-between">
+                                <div class="col-auto d-inline-flex align-items-center me-auto">
+                                    <x-icon path="bs.star-fill" class="me-2 text-warning" />
+                                    2324
+                                </div>
+                                <div class="col">
+                                    <p class="text-end mb-0">
+                                        <a href="#"
+                                           class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
+                                            <x-icon path="bs.arrow-right" />
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach

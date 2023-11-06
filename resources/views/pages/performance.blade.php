@@ -68,8 +68,10 @@
     <div class="container py-5">
         <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
-                <h2 class="fw-bold text-body-emphasis">Эффективное кэширование</h2>
+                <h2 class="fw-bold text-body-emphasis">Думаете PHP медленный?</h2>
                 <p class="text-body-secondary">
+
+                    https://benchmarksgame-team.pages.debian.net/benchmarksgame/measurements/php.html
                     Обеспечивает понимание запросов, поступающих в ваше приложение, исключений, записей журнала, запросов
                     к базе данных, заданий в очереди, почты, уведомлений, операций кэша, запланированных задач, дампов
                     переменных и многого другого.

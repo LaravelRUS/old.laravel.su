@@ -5,12 +5,40 @@
 
     <x-header image="/img/sign.svg">
         <x-slot:sup>Всё наглядно</x-slot>
-        <x-slot:title>Научитесь программировать</x-slot>
+        <x-slot:title>Учитесь с Laravel</x-slot>
 
         <x-slot:description>
-            Изучите широкий спектр навыков с помощью наших профессиональных руководств.
+            Независимо от того, являетесь ли вы новичком или уже используете Laravel, тут собраны учебные материалы,
+            которые помогут вам освоить фреймворк и разработку в целом.
         </x-slot>
     </x-header>
+
+    <div class="container py-5">
+        <div class="row align-items-md-stretch g-0 rounded-3 overflow-hidden">
+            <div class="col-md-6">
+                <div class="h-100 position-relative">
+                    <img src="https://i3.ytimg.com/vi/jQITs6C-GjU/maxresdefault.jpg" class="d-block h-100 w-100 object-fit-cover" style="aspect-ratio: 16/9;">
+                    <a href="#" class="position-absolute top-0 start-0 end-0 bottom-0 bg-black opacity-75">
+
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-secondary-subtle">
+                    <h2 class="mb-3">Начните работать с Laravel</h2>
+                    <p class="mb-3">
+                        Впервые здесь? Посмотрите наше краткое вводное видео о том, как загрузить и запустить новое
+                        приложение Laravel всего за две минуты!
+                    </p>
+
+                    <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        Посмотрите вступление
+                        <x-icon path="bs.arrow-right" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container py-5">
         <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5 py-5">
