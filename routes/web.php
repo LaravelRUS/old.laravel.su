@@ -103,5 +103,14 @@ Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index']
     ->middleware('auth')
     ->name('my');
 
+Route::get('/profile/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])
+    ->middleware('auth')
+    ->name('my.edit');
+
+Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])
+    ->middleware('auth')
+    ->middleware(\App\Http\Middleware\TurboStream::class)
+    ->name('my.update');
+
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');

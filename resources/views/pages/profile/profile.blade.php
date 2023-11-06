@@ -27,14 +27,13 @@
                         </div>
 
                         <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                            {{--
-                            <button class="btn btn-danger" type="button">
-                                <x-icon path="bs.pencil-fill" class="pe-1"/>
-                                Редактировать
-                            </button>
-                            --}}
 
                             @if ($isMyAccount)
+                                <a href="{{route('my.edit')}}" class="btn btn-danger">
+                                    <x-icon path="bs.pencil-fill" class="pe-1"/>
+                                    Редактировать
+                                </a>
+
                                 <x-logout class="btn btn-link" formId="sign-out">
                                     <x-icon path="bs.logout" class="pe-1" />
                                     Выйти из профиля

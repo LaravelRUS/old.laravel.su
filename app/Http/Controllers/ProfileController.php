@@ -21,10 +21,37 @@ class ProfileController extends Controller
             ->orderBy('id', 'desc')
             ->simplePaginate(5);
 
-        return view('pages.profile', [
+        return view('pages.profile.profile', [
             'user'        => $user,
             'isMyAccount' => $isMyAccount,
             'posts'       => $posts,
         ]);
+    }
+
+    public function edit(Request $request){
+
+        return view('pages.profile.edit', [
+            'user'        => $request->user(),
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'about'=> 'required|string'
+        ],
+            [],
+            [
+
+                'name'             => 'Имя',
+                'about' => 'О себе'
+            ]);
+
+        $request->user()->fill([
+            'name'  => $request->input('name'),
+            'about' => $request->input('about')
+        ])->save();
+        return $this->edit($request)->fragment('profile');
     }
 }
