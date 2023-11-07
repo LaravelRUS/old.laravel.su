@@ -16,6 +16,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $post->with('comments');
+
         return view('post.show', [
             'post'  => $post,
         ]);
@@ -59,7 +61,8 @@ class PostController extends Controller
      */
     public function list(Request $request)
     {
-        $posts = Post::with('user')
+        $posts = Post::with(['user'])
+            ->withCount('comments')
             ->orderBy('id', 'desc')
             ->simplePaginate(5);
 
