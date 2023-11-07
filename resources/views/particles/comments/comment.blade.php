@@ -12,14 +12,15 @@
                 <h6 class="m-0 me-2">{{ $comment->commenter->name }}</h6>
 
                 <div class="me-3 small opacity-50">
-                    <a href="{{ \Illuminate\Support\Facades\URL::current() }}#comment-{{ $comment->getKey() }}" class="link-body-emphasis text-decoration-none">
+                    <a href="{{ \Illuminate\Support\Facades\URL::current() }}#comment-{{ $comment->getKey() }}"
+                       class="link-body-emphasis text-decoration-none">
                         <time datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
                     </a>
 
                     @can('update', $comment)
                         ·
                         <a href="#" data-bs-toggle="modal" data-bs-target="#comment-modal-{{ $comment->getKey() }}"
-                                class="link-body-emphasis text-decoration-none">Редактировать
+                           class="link-body-emphasis text-decoration-none">Редактировать
                         </a>
                     @endcan
 
@@ -69,7 +70,8 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="submit"
-                                        class="btn btn-sm btn-outline-secondary text-uppercase">Обновить</button>
+                                        class="btn btn-sm btn-outline-secondary text-uppercase">Обновить
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -123,10 +125,10 @@
     @if($grouped_comments->has($comment->getKey()))
         <div class="{{ $indentationLevel <= $maxIndentationLevel ? 'ms-5' : '' }}">
             @foreach($grouped_comments[$comment->getKey()] as $child)
-                    @include('particles.comments.comment', [
-                        'comment' => $child,
-                        'grouped_comments' => $grouped_comments
-                    ])
+                @include('particles.comments.comment', [
+                    'comment' => $child,
+                    'grouped_comments' => $grouped_comments
+                ])
             @endforeach
         </div>
     @endif
