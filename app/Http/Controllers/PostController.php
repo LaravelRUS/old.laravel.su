@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Response;
+use  Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
+    public $action = "append";
+
     /**
      * @param \App\Models\Post $post
      *
@@ -19,13 +23,13 @@ class PostController extends Controller
         $post->with('comments');
 
         return view('post.show', [
-            'post'  => $post,
+            'post' => $post,
         ]);
     }
 
     public function edit(Post $post): View
     {
-        //нужно будет проверять аавтора, если пост существует
+        $this->authorize('isOwner', $post);
 
         $title = $post->exists ? 'Редактирование' : 'Новая статья';
         return view('post.edit', [
@@ -36,7 +40,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        //нужно проверять аавтора, если пост существует
+        $this->authorize('isOwner', $post);
 
         $request->validate([
             'title'   => 'required|string',
@@ -54,6 +58,19 @@ class PostController extends Controller
         return redirect()->route('post.edit', $post);//пока сюда
     }
 
+    public function delete(Request $request, Post $post)
+    {
+        $this->authorize('isOwner', $post);
+
+        $post->delete();
+        $this->action = "replace";
+
+        //сюда поставить уведомление
+
+        return $this->list($request);//пока сюда
+    }
+
+
     /**
      * @param \Illuminate\Http\Request $request
      *
@@ -63,13 +80,17 @@ class PostController extends Controller
     {
         $posts = Post::with(['user'])
             ->withCount('comments')
+            ->when($request->has('user_id'), fn(Builder $query) => $query->where('user_id', $request->get('user_id')))
             ->orderBy('id', 'desc')
-            ->simplePaginate(5);
+            ->cursorPaginate(3);
 
-        $test = view('post.list', [
-            'posts' => $posts,
+        $test = view('particles.posts.list', [
+            'posts'       => $posts,
+            'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
+            'action'      => $this->action
         ])->fragmentsIf(!$request->isMethodSafe());
 
-        return  $test;
+        return $test;
     }
+
 }

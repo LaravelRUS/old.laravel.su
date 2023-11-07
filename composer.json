@@ -10,7 +10,7 @@
         "doctrine/dbal": "^3.7",
         "guzzlehttp/guzzle": "^7.2",
         "jolicode/jolitypo": "^1.4",
-        "laravel/framework": "^10.10",
+        "laravel/framework": "^10.31",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
