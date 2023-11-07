@@ -30,6 +30,12 @@ php artisan migrate
 npm run dev
 ```
 
+## Переменные окружения
+```shell
+#Для сравнивания документации из Laravel
+GITHUB_ACCESS_TOKEN=
+```
+
 
 ## Связаться с нами
 

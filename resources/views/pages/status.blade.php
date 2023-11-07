@@ -48,7 +48,7 @@
                             <div class="d-flex align-items-start mb-4">
                                 <h5 class="mb-0 me-auto">{{ $doc->file }}</h5>
 
-                                @if($doc->translationIsLagsBehind())
+                                @if($doc->count_commits_behind > 0)
                                     <a href="{{ App\Docs::compareLink($doc->version, $doc->current_commit) }}" target="_blank" class="me-3 d-block">
                                         <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">Перевод отстаёт на {{ $doc->count_commits_behind }} изменения</span>
                                     </a>
