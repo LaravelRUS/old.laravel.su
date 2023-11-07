@@ -8,7 +8,7 @@
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-3 position-sticky top-0 py-3">
 
-                <div class="mb-4">
+                <div class="mb-4 d-flex align-items-stretch flex-column">
 
                     {{--
                     <input class="form-control form-control-lg" type="text" placeholder="Поиск по документации..."
@@ -42,6 +42,14 @@
                             </li>
                         @endforeach
                     </ul>
+
+
+                    <div class="bg-secondary-subtle rounded-3 py-5 px-4 text-center mt-auto">
+                        <img src="/img/upgrade.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
+                        <h6>Посмотрите краткое видео о том запустить новое приложение!</h6>
+                        <!-- Button -->
+                        <a class="btn w-100 btn-sm btn-primary" href="javascript: void(0);">Посмотреть онлайн</a>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-9 text-center text-xl-start">
