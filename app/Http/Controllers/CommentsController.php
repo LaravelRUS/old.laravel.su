@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function frameForArticles(Post $post)
+    {
+        return view('components.comments', [
+            'model' => $post,
+        ]);
+    }
 
     /**
      * @param \Illuminate\Http\Request $request

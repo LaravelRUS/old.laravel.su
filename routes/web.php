@@ -44,6 +44,8 @@ Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->g
 */
 
 Route::get('/p/{post:slug}', [PostController::class, 'show'])->name('post.show');
+Route::get('/comments/article/{post}', [CommentsController::class, 'frameForArticles'])->name('post.comments');
+
 
 Route::get('/comments', [CommentsController::class, 'list'])->name('comments.list');
 
