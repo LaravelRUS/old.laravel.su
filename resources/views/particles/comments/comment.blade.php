@@ -110,37 +110,24 @@
         @endcan
     </div>
 
-        <?php
+    <?php
         if (!isset($indentationLevel)) {
             $indentationLevel = 1;
         } else {
             $indentationLevel++;
         }
-        ?>
+    ?>
 
 
     {{-- Recursion for children --}}
-    @if($grouped_comments->has($comment->getKey()) && $indentationLevel <= $maxIndentationLevel)
-        {{-- TODO: Don't repeat code. Extract to a new file and include it. --}}
-        @foreach($grouped_comments[$comment->getKey()] as $child)
-            <div class="ms-5">
-                @include('particles.comments.comment', [
-                    'comment' => $child,
-                    'grouped_comments' => $grouped_comments
-                ])
-            </div>
-        @endforeach
+    @if($grouped_comments->has($comment->getKey()))
+        <div class="{{ $indentationLevel <= $maxIndentationLevel ? 'ms-5' : '' }}">
+            @foreach($grouped_comments[$comment->getKey()] as $child)
+                    @include('particles.comments.comment', [
+                        'comment' => $child,
+                        'grouped_comments' => $grouped_comments
+                    ])
+            @endforeach
+        </div>
     @endif
 </div>
-
-
-{{-- Recursion for children --}}
-@if($grouped_comments->has($comment->getKey()) && $indentationLevel > $maxIndentationLevel)
-    {{-- TODO: Don't repeat code. Extract to a new file and include it. --}}
-    @foreach($grouped_comments[$comment->getKey()] as $child)
-        @include('particles.comments.comment', [
-            'comment' => $child,
-            'grouped_comments' => $grouped_comments
-        ])
-    @endforeach
-@endif
