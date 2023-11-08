@@ -13,8 +13,12 @@ class Comment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    /**
+     * @var string[]
+     */
     protected $attributes = [
-       'commentable_type' => Post::class,
+        'commentable_type' => Post::class,
+        'commenter_type'   => User::class,
     ];
 
     /**
@@ -32,7 +36,8 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'comment', 'approved',
+        'comment',
+        'approved',
     ];
 
     /**

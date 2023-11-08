@@ -50,7 +50,7 @@
 
 
 
-    <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy">
+    <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
         <div class="container my-5">
             <div class="col-xxl-8 mx-auto">
                 <p class="h5 mt-5 mb-3 ms-3">

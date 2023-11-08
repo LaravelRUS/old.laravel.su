@@ -36,7 +36,9 @@
                                     @include('particles.comments.comment', [
                                         'comment' => $comment,
                                         'grouped_comments' => $grouped_comments,
-                                        'maxIndentationLevel' => $maxIndentationLevel ?? 3
+                                        'maxIndentationLevel' => $maxIndentationLevel ?? 3,
+                                        'reply' => $reply ?? null,
+                                        'edit' => $edit ?? null,
                                     ])
                                 @endforeach
                             @endif

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\TurboStream;
 use App\Docs;
 
 /*
@@ -44,22 +45,34 @@ Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->g
 */
 
 Route::get('/p/{post:slug}', [PostController::class, 'show'])->name('post.show');
-Route::get('/comments/article/{post}', [CommentsController::class, 'frameForArticles'])->name('post.comments');
+Route::get('/comments/article/{post}', [CommentsController::class, 'show'])
+    ->name('post.comments');
 
-
-Route::get('/comments', [CommentsController::class, 'list'])->name('comments.list');
 
 Route::middleware(['auth'])
     ->group(function () {
         Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
         Route::post('/posts/edit/{post?}', [PostController::class, 'update'])->name('post.update');
+    });
 
-        Route::post('comments', [CommentsController::class, 'store'])->name('comments.store')
-            ->middleware(\App\Http\Middleware\TurboStream::class);
 
-        Route::delete('comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
-        Route::put('comments/{comment}', [CommentsController::class, 'update'])->name('comments.update');
-        Route::post('comments/{comment}', [CommentsController::class, 'reply'])->name('comments.reply');
+Route::middleware(['auth', TurboStream::class])
+    ->prefix('comments')
+    ->group(function () {
+        Route::post('/', [CommentsController::class, 'store'])
+            ->name('comments.store');
+
+        Route::post('/{comment}', [CommentsController::class, 'reply'])
+            ->name('comments.reply');
+
+        Route::put('/{comment}', [CommentsController::class, 'update'])
+            ->name('comments.update');
+
+        Route::delete('/{comment}', [CommentsController::class, 'delete'])
+            ->name('comments.delete');
+
+        Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
+        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
     });
 
 

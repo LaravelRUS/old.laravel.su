@@ -17,13 +17,15 @@ trait HasComments
      */
     protected static function bootHasComments()
     {
+        /*
         static::deleted(function ($commentable) {
             $commentable->comments->every->delete();
             /*
             foreach ($commentable->comments as $comment) {
                 $comment->delete();
-            }*/
+            }
         });
+        */
     }
 
     /**
@@ -31,7 +33,7 @@ trait HasComments
      */
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable')->withTrashed();
     }
 
     /**

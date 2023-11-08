@@ -1,124 +1,111 @@
-<div id="comment-{{ $comment->getKey() }}">
-    <div class="my-4 d-flex">
-        <div class="avatar avatar-sm me-3">
-            <a href="#!">
-                <img class="avatar-img rounded-circle"
-                     src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
-            </a>
-        </div>
+<div id="comment-{{ $comment->getKey() }}" class="position-relative my-4">
 
-        <div class="w-100">
-            <div class="mb-2 d-flex">
-                <h6 class="m-0 me-2">{{ $comment->commenter->name }}</h6>
 
-                <div class="me-3 small opacity-50">
-                    <a href="{{ \Illuminate\Support\Facades\URL::current() }}#comment-{{ $comment->getKey() }}"
-                       class="link-body-emphasis text-decoration-none">
-                        <time datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
+    @if($comment->trashed())
+        <div class="alert alert-warning opacity-25">Сообщение было удалено</div>
+    @endif
+
+    @if(!$comment->trashed())
+        <div class="d-flex position-relative overflow-hidden">
+            <div class="avatar avatar-sm me-3">
+                <a href="#!">
+                    <img class="avatar-img rounded-circle"
+                         src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
+                </a>
+            </div>
+
+            <div class="w-100">
+                <div class="mb-2 d-flex">
+                    <h6 class="m-0 me-2">{{ $comment->commenter->name }}</h6>
+
+                    <div class="me-3 small opacity-50">
+                        <a href="#comment-{{ $comment->getKey() }}"
+                           class="link-body-emphasis text-decoration-none">
+                            <time
+                                datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
+                        </a>
+
+                        @can('update', $comment)
+                            ·
+                            <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post" class="link-body-emphasis text-decoration-none">Редактировать</a>
+                        @endcan
+
+                        @can('delete', $comment)
+                            · <a href="{{ route('comments.delete', $comment) }}"
+                                 class="link-body-emphasis text-decoration-none"
+                                 data-turbo-method="DELETE"
+                                 data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
+                                    Удалить
+                                </a>
+                        @endcan
+                    </div>
+
+                    {{--
+                    <div class="dropdown">
+                        <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <x-icon path="bs.three-dots"/>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                    --}}
+                </div>
+
+
+                @if($edit === $comment->getKey())
+                        <form method="POST" action="{{ route('comments.update', $comment->getKey()) }}"
+                              class="mb-1 d-flex flex-column position-relative">
+                            @method('PUT')
+                            <textarea required class="form-control mb-3" name="message" rows="3">{{ $comment->comment }}</textarea>
+                            <div
+                                class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
+                                <button type="submit" class="btn btn-primary">Ответить</button>
+                            </div>
+                        </form>
+                @else
+                    <p class="mb-1">{!! $comment->prettyComment() !!}</p>
+                @endif
+
+                <div class="d-flex align-items-center">
+                    <a class="d-flex align-items-center text-danger text-decoration-none me-4" href="#!">
+                        <x-icon path="bs.heart-fill"/>
+                        <span class="ms-2">12</span>
                     </a>
 
-                    @can('update', $comment)
-                        ·
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#comment-modal-{{ $comment->getKey() }}"
-                           class="link-body-emphasis text-decoration-none">Редактировать
-                        </a>
-                    @endcan
-
-                    @can('delete', $comment)
-                        · <a href="{{ route('comments.destroy', $comment) }}"
-                             class="link-body-emphasis text-decoration-none"
-                             data-turbo-method="DELETE"
-                             data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
-                                Удалить
-                            </a>
+                    @can('reply', $comment)
+                        @if($reply !== $comment->getKey())
+                            <a href="{{ route('comments.show.reply', $comment) }}" class="btn btn-light btn-sm"
+                               data-turbo-method="post">Ответить</a>
+                        @endif
                     @endcan
                 </div>
             </div>
-
-            <p class="mb-1">{!! $comment->prettyComment() !!}</p>
-
-            <div class="d-flex align-items-center">
-                <a class="d-flex align-items-center text-danger text-decoration-none me-4" href="#!">
-                    <x-icon path="bs.heart-fill"/>
-                    <span class="ms-2">12</span>
-                </a>
-
-                @can('reply', $comment)
-                    <a href="#" class="btn btn-light btn-sm" data-toggle="modal"
-                       data-target="#reply-modal-{{ $comment->getKey() }}">Ответить</a>
-                @endcan
-            </div>
-
         </div>
 
-
-        @can('update', $comment)
-            <div class="modal fade" id="comment-modal-{{ $comment->getKey() }}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form method="POST" action="{{ route('comments.update', $comment->getKey()) }}">
-                            @method('PUT')
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title">Временное редактирование</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <textarea required class="form-control" name="message"
-                                              rows="6">{{ $comment->comment }}</textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit"
-                                        class="btn btn-sm btn-outline-secondary text-uppercase">Обновить
-                                </button>
-                            </div>
-                        </form>
+        @if($reply === $comment->getKey())
+            @can('reply', $comment)
+                <form method="POST" action="{{ route('comments.reply', $comment->getKey()) }}"
+                      class="col-8 ms-auto my-2 d-flex flex-column position-relative">
+                    <textarea required class="form-control mb-3" name="message" rows="3"></textarea>
+                    <div
+                        class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
+                        <button type="submit" class="btn btn-primary">Ответить</button>
                     </div>
-                </div>
-            </div>
-        @endcan
+                </form>
+            @endcan
+        @endif
+    @endif
 
-        @can('reply', $comment)
-            <div class="modal fade" id="reply-modal-{{ $comment->getKey() }}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form method="POST" action="{{ route('comments.reply', $comment->getKey()) }}">
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title">@lang('comments::comments.reply_to_comment')</h5>
-                                <button type="button" class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="message">@lang('comments::comments.enter_your_message_here')</label>
-                                    <textarea required class="form-control" name="message" rows="3"></textarea>
-                                    <small
-                                        class="form-text text-muted">@lang('comments::comments.markdown_cheatsheet', ['url' => 'https://help.github.com/articles/basic-writing-and-formatting-syntax'])</small>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase"
-                                        data-dismiss="modal">@lang('comments::comments.cancel')</button>
-                                <button type="submit"
-                                        class="btn btn-sm btn-outline-success text-uppercase">@lang('comments::comments.reply')</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        @endcan
-    </div>
-
-    <?php
+        <?php
         if (!isset($indentationLevel)) {
             $indentationLevel = 1;
         } else {
             $indentationLevel++;
         }
-    ?>
+        ?>
 
 
     {{-- Recursion for children --}}
