@@ -29,7 +29,7 @@ Artisan::command('checkout-latest-docs', function () {
         ->every(fn(string $version) => Process::path(storage_path('docs/' . $version))->run('git pull'));
 
 
-    // Clone new version if not already present
+    // Clone a new version if not already present
     collect(Docs::SUPPORT_VERSION)
         ->filter(fn(string $version) => !Storage::disk('docs')->exists($version))
         ->every(fn(string $version) => Process::path(storage_path('docs'))
