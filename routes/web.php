@@ -3,7 +3,9 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\TurboStream;
 use App\Docs;
 
 /*
@@ -43,11 +45,34 @@ Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->g
 */
 
 Route::get('/p/{post:slug}', [PostController::class, 'show'])->name('post.show');
+Route::get('/comments/article/{post}', [CommentsController::class, 'show'])
+    ->name('post.comments');
+
 
 Route::middleware(['auth'])
     ->group(function () {
         Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
         Route::post('/posts/edit/{post?}', [PostController::class, 'update'])->name('post.update');
+    });
+
+
+Route::middleware(['auth', TurboStream::class])
+    ->prefix('comments')
+    ->group(function () {
+        Route::post('/', [CommentsController::class, 'store'])
+            ->name('comments.store');
+
+        Route::post('/{comment}', [CommentsController::class, 'reply'])
+            ->name('comments.reply');
+
+        Route::put('/{comment}', [CommentsController::class, 'update'])
+            ->name('comments.update');
+
+        Route::delete('/{comment}', [CommentsController::class, 'delete'])
+            ->name('comments.delete');
+
+        Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
+        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
     });
 
 
@@ -98,6 +123,10 @@ Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
 | TODO:
 |
 */
+
+Route::get('/user/{nickname}', function ($nickname){
+    return $nickname;
+})->name('user.show');
 
 Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])
     ->middleware('auth')

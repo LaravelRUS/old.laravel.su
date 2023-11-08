@@ -53,8 +53,27 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function gatNameAttribute(): Attribute
+    /**
+     * @return $this
+     */
+    public function gatNameAttribute(): static
     {
-        return $this->name ?? $this->github_name;
+        return $this->name ?? $this->github_name ?? 'Unknown';
+    }
+
+    /**
+     * Returns all comments that this user has made.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commenter');
+    }
+
+    /**
+     * Returns only approved comments that this user has made.
+     */
+    public function approvedComments()
+    {
+        return $this->morphMany(Comment::class, 'commenter')->where('approved', true);
     }
 }
