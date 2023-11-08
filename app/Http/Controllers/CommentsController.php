@@ -134,7 +134,9 @@ class CommentsController extends Controller
     {
         $this->authorize('delete', $comment);
 
-        $comment->delete();
+        $comment->children()->exists()
+            ? $comment->delete()
+            : $comment->forceDelete();
 
         return $this->show($comment->commentable);
     }

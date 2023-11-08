@@ -87,7 +87,7 @@ class Comment extends Model
      *
      * @return string
      */
-    protected function urlsToLink(string $text = null): string
+    protected function urlFromTextToHtmlUrl(string $text = null): string
     {
         return Str::of($text)
             ->replaceMatches('/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/u', fn ($url) => "<a href='$url[0]' target='_blank'>$url[0]</a> ");
@@ -98,7 +98,7 @@ class Comment extends Model
      *
      * @return string
      */
-    protected function mentionsToLink(string $text = null): string
+    protected function mentionedUserToHtmlUrl(string $text = null): string
     {
         return Str::of($text)
             ->replaceMatches('/\@([a-zA-Z0-9_]+)/u', function ($mention) {
@@ -126,8 +126,8 @@ class Comment extends Model
     {
         $safe = htmlspecialchars($this->comment ?? '', ENT_NOQUOTES, 'UTF-8');
 
-        $withLinks = $this->urlsToLink($safe);
-        $withMention = $this->mentionsToLink($withLinks);
+        $withLinks = $this->urlFromTextToHtmlUrl($safe);
+        $withMention = $this->mentionedUserToHtmlUrl($withLinks);
 
         return $this->nl2br($withMention);
     }
