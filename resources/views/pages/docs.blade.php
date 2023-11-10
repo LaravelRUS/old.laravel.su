@@ -6,7 +6,7 @@
     <div class="container my-5">
 
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-xl-3 position-sticky2 top-0 py-3">
+            <div class="col-xl-3 position-sticky top-0 py-3">
 
                 <div class="mb-4 d-flex align-items-stretch flex-column">
 
