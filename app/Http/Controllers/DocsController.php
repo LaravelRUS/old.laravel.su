@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Docs;
 use App\Models\Document;
-use Illuminate\Http\Request;
 
 class DocsController extends Controller
 {
@@ -14,19 +13,14 @@ class DocsController extends Controller
      * @param string $version
      * @param string $page
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View|
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function show(string $version = Docs::DEFAULT_VERSION, string $page = 'installation')
     {
         $docs = new Docs($version, $page);
 
-        $text = $docs->view('particles.docs');
-
-        return view('pages.docs', [
-            'docs'         => $docs,
-            'text'         => $text,
-        ]);
+        return $docs->view('pages.docs');
     }
 
     /**

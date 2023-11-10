@@ -22,6 +22,8 @@ class Docs
      */
     public const SUPPORT_VERSION = [
         '8.x',
+        '5.4',
+        '4.2'
     ];
 
     /**
@@ -93,13 +95,12 @@ class Docs
     {
         $content = Str::of($this->page)
             ->replace('{{version}}', $this->version)
-            ->replace('{note}','⚠️')
-            ->replace('{tip}','💡️')
             ->after('---')
             ->after('---')
             ->markdown();
 
         $all = collect()->merge($this->variables)->merge([
+            'docs'    => $this,
             'content' => $content,
             'edit'    => $this->goToGitHub(),
         ]);
@@ -120,7 +121,8 @@ class Docs
             ->after('---')
             ->after('---')
             ->replace('{{version}}', $this->version)
-            ->markdown()->toString();
+            ->markdown()
+            ->toString();
 
         return $this->docsToArray($html);
     }
@@ -197,7 +199,7 @@ class Docs
      */
     public function fetchBehind(): int
     {
-        throw_unless(isset($this->variables['git']), new Exception("Document {$this->path} does not have a git hash"));
+        throw_unless(isset($this->variables['git']), new Exception("The document {$this->path} is missing a Git hash"));
 
         $response = Http::withBasicAuth('token', config('services.github.token'))
             ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}");
