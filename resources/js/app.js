@@ -53,7 +53,7 @@ document.addEventListener('turbo:load', () => {
 
 
 
-window.testLolo = function highlightSupportPolicyTable() {
+window.highlightSupportPolicyTable = () => {
 
     function highlightCells(table) {
         const currentDate = new Date().valueOf();
@@ -98,5 +98,5 @@ function getCellDate(cell) {
 }
 
 document.addEventListener('turbo:load', () => {
-    window.testLolo();
+    window.highlightSupportPolicyTable();
 })
