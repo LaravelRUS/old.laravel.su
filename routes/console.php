@@ -33,7 +33,7 @@ Artisan::command('checkout-latest-docs', function () {
     collect(Docs::SUPPORT_VERSION)
         ->filter(fn(string $version) => !Storage::disk('docs')->exists($version))
         ->every(fn(string $version) => Process::path(storage_path('docs'))
-            ->run("git clone --single-branch --branch '$version' https://github.com/laravelRus/docs '$version'"));
+            ->run("git clone --single-branch --branch '$version' https://github.com/tabuna/docs '$version'"));
 
 })->purpose('Checkout the latest Laravel docs');
 
