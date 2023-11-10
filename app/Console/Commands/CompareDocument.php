@@ -28,6 +28,22 @@ class CompareDocument extends Command
      */
     public function handle()
     {
-        Docs::every('8.x')->each(fn(Docs $docs) => $docs->update());
+        collect(Docs::SUPPORT_VERSION)->each(fn(string $version) => $this->updateVersion($version));
+    }
+
+    /**
+     * @param string $version
+     *
+     * @return void
+     */
+    protected function updateVersion(string $version): void
+    {
+        Docs::every($version)->each(function (Docs $docs) {
+            try {
+                $docs->update();
+            } catch (\Exception $exception) {
+                $this->warn($exception->getMessage());
+            }
+        });
     }
 }
