@@ -67,10 +67,10 @@ window.highlightSupportPolicyTable = () => {
 
                 if (currentDate > securityDateCell) {
                     // End of life.
-                    versionCell.classList.add('bg-danger', 'support-policy-highlight');
+                    versionCell.classList.add('bg-danger', 'support-policy-highlight', 'bg-opacity-50');
                 } else if ((currentDate <= securityDateCell) && (currentDate > bugDateCell)) {
                     // Security fixes only.
-                    versionCell.classList.add('bg-warning', 'support-policy-highlight');
+                    versionCell.classList.add('bg-warning', 'support-policy-highlight', 'bg-opacity-50');
                 }
             }
         });
