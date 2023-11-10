@@ -72,7 +72,7 @@
                     @endif
 
                     <ul class="list-unstyled d-flex mb-0" id="version-choose">
-                        @foreach (\App\Docs::SUPPORT_VERSION as $version)
+                        @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
                             <li class="mx-2">
                                 <a href="{{ route('docs', ['version' => $version]) }}"
                                    class="{{ active(route('docs', ['version' => $version]).'*', 'active', 'link-body-emphasis') }}">

@@ -35,6 +35,6 @@ return [
         'token'         => env('GITHUB_ACCESS_TOKEN'),
         'client_id'     => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect'      => 'https://ru-laravel-project.test/auth/callback',
+        'redirect'      => env('GITHUB_REDIRECT'),
     ],
 ];

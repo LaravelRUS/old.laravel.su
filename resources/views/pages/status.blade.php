@@ -21,7 +21,7 @@
         <div class="col-xl-10 col-md-12 mx-auto">
             <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
                 <div class="row row-cols-md-4 g-3">
-                    @foreach (\App\Docs::SUPPORT_VERSION as $version)
+                    @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
                         <div class="col">
                             <a href="{{ route('status', ['version' => $version]) }}"
                                 class="{{ $current === $version ? 'link-primary' : 'link-body-emphasis' }} text-decoration-none">

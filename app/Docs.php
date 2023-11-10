@@ -20,7 +20,7 @@ class Docs
     /**
      * Array of supported versions
      */
-    public const SUPPORT_VERSION = [
+    public const SUPPORT_VERSIONS = [
         '8.x',
         '5.4',
         '4.2'

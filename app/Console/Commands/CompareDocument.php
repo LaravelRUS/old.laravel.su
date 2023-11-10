@@ -28,7 +28,7 @@ class CompareDocument extends Command
      */
     public function handle()
     {
-        collect(Docs::SUPPORT_VERSION)->each(fn(string $version) => $this->updateVersion($version));
+        collect(Docs::SUPPORT_VERSIONS)->each(fn(string $version) => $this->updateVersion($version));
     }
 
     /**
