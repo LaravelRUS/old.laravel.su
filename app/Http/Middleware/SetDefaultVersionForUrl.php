@@ -18,6 +18,7 @@ class SetDefaultVersionForUrl
     public function handle(Request $request, Closure $next): Response
     {
         URL::defaults(['version' => $request->route()->parameter('version', Docs::DEFAULT_VERSION)]);
+        URL::defaults(['page' => $request->route()->parameter('page', 'installation')]);
 
         return $next($request);
     }
