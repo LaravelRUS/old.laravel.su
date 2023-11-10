@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a81bb4e1d13a5ecd09e05de78cacbb5",
+    "content-hash": "b9c02776a4b6ceaf66c5d15271dddd37",
     "packages": [
         {
             "name": "brick/math",
@@ -1516,6 +1516,68 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "jolicode/jolitypo",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jolicode/JoliTypo.git",
+                "reference": "d85b1076486b6886f1a16943d032d11b9c06c78d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jolicode/JoliTypo/zipball/d85b1076486b6886f1a16943d032d11b9c06c78d",
+                "reference": "d85b1076486b6886f1a16943d032d11b9c06c78d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "lib-libxml": "*",
+                "org_heigl/hyphenator": "^2.6 || ^3.0",
+                "php": ">=7.4"
+            },
+            "conflict": {
+                "ext-apc": "3.1.11"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.3.2",
+                "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
+                "symfony/phpunit-bridge": "^5.4.8 || ^6.0",
+                "symfony/twig-bundle": "^4.4 || ^5.0 || ^6.0",
+                "symfony/yaml": "^4.4 || ^5.0 || ^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JoliTypo\\": "src/JoliTypo"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Damien Alexandre",
+                    "email": "dalexandre@jolicode.com",
+                    "homepage": "https://damienalexandre.fr/"
+                }
+            ],
+            "description": "Microtypography fixer for the web.",
+            "homepage": "https://github.com/jolicode/JoliTypo",
+            "keywords": [
+                "ellipsis",
+                "fixer",
+                "quote",
+                "smartquote",
+                "typography"
+            ],
+            "support": {
+                "issues": "https://github.com/jolicode/JoliTypo/issues",
+                "source": "https://github.com/jolicode/JoliTypo/tree/v1.4.0"
+            },
+            "time": "2022-12-22T08:29:45+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3193,6 +3255,58 @@
                 }
             ],
             "time": "2023-02-18T22:44:06+00:00"
+        },
+        {
+            "name": "org_heigl/hyphenator",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heiglandreas/Org_Heigl_Hyphenator.git",
+                "reference": "d8bcb8cefff21c9de3a77ec4de1750f0230a6494"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heiglandreas/Org_Heigl_Hyphenator/zipball/d8bcb8cefff21c9de3a77ec4de1750f0230a6494",
+                "reference": "d8bcb8cefff21c9de3a77ec4de1750f0230a6494",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7.2||^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^8.0||^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Org\\Heigl\\Hyphenator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Heigl",
+                    "email": "andreas@heigl.org",
+                    "homepage": "http://andreas.heigl.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Word-Hyphenation for PHP based on the TeX-Hyphenation algorithm",
+            "homepage": "http://github.com/heiglandreas/Org_Heigl_Hyphenator",
+            "keywords": [
+                "hyphenate",
+                "hyphenation"
+            ],
+            "support": {
+                "issues": "https://github.com/heiglandreas/Org_Heigl_Hyphenator/issues",
+                "source": "https://github.com/heiglandreas/Org_Heigl_Hyphenator/tree/v3.0.0"
+            },
+            "time": "2022-05-21T08:58:29+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -7123,6 +7237,77 @@
             "time": "2023-10-18T13:57:15+00:00"
         },
         {
+            "name": "laravel/telescope",
+            "version": "v4.17.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "64da53ee46b99ef328458eaed32202b51e325a11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/64da53ee46b99ef328458eaed32202b51e325a11",
+                "reference": "64da53ee46b99ef328458eaed32202b51e325a11",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^8.37|^9.0|^10.0",
+                "php": "^8.0",
+                "symfony/var-dumper": "^5.0|^6.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "laravel/octane": "^1.4",
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/",
+                    "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/telescope/issues",
+                "source": "https://github.com/laravel/telescope/tree/v4.17.2"
+            },
+            "time": "2023-11-01T14:01:06+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.6.6",
             "source": {
@@ -9174,7 +9359,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": ">=8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
