@@ -106,11 +106,11 @@ Route::view('/documentation-contribution-guide', 'pages.documentation-contributi
 Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
 
 Route::get('/status/{version?}', [DocsController::class, 'status'])
-    ->whereIn('version', Docs::SUPPORT_VERSION)
+    ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('status');
 
 Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
-    ->whereIn('version', Docs::SUPPORT_VERSION)
+    ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('docs');
 
 
