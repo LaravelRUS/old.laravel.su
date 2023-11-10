@@ -143,3 +143,14 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
+
+
+/*
+|--------------------------------------------------------------------------
+| PWA/iOS Manifest
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/manifest.json', fn() => response()->json(config('site.pwa')))
+    ->middleware('cache.headers:public;max_age=300;etag')
+    ->name('manifest');

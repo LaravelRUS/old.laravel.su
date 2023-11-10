@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-controller="theme" data-bs-theme="auto">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="view-transition" content="same-origin" />
 
-    <x-meta title="{!! View::getSection('title') !!}" description="{!! View::getSection('description') !!}" {{-- image="{{ asset('/img/external.png') }}" --}}
+    <x-meta
+            title="{{ View::getSection('title') ?  View::getSection('title') . ' | ' : '' }}{{ config('site.name') }}"
+            description="{{ View::getSection('description', config('site.description')) }}"
+        {{-- image="{{ asset('/img/external.png') }}" --}}
         {{-- csp="*.laravel.su *.gravatar.com *.githubusercontent.com" --}} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
