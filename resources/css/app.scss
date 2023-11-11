@@ -56,28 +56,11 @@ $btn-font-weight: 700;
 @import 'bootstrap/scss/bootstrap';
 @import 'prism';
 
-.header-top {
-    background: #010409;
-}
 
 .mt-n5 {
     margin-top: -3rem !important;
 }
 
-// remove
-.logo {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: 700;
-    background: $primary;
-    color: #010409;
-    position: relative;
-}
 
 .post {
     h1 {
@@ -146,21 +129,6 @@ $btn-font-weight: 700;
 .card,
 .overflow-hidden {
     will-change: transform;
-}
-
-.packages img {
-    margin-bottom: -3rem !important;
-    max-width: 100%;
-    height: auto;
-    opacity: 0.5;
-}
-
-.packages .card {
-    border: none !important;
-}
-
-.simple-gradient {
-    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), rgba(0, 0, 0, 0.25));
 }
 
 .company-usage img {

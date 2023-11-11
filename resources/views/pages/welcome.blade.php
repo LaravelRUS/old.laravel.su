@@ -77,6 +77,11 @@
         </div>
     </div>
 
+
+
+
+
+
     <div class="container py-5">
 
         <div class="row g-5 justify-content-center align-items-center">
@@ -96,7 +101,7 @@
                     <div class="col-sm-6">
                         <div class="mb-4">
                             <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
@@ -108,13 +113,13 @@
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Routing</h5>
                         <p class="mb-0">Элегантная и эффективная система роутинга для реализации любых адресов в
-                            приложении.</p>
+                                        приложении.</p>
                     </div>
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
                             <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
@@ -126,13 +131,13 @@
                         </div>
                         <h5 class="fs-4 mt-2  fw-semibold">Auth</h5>
                         <p class="mb-0">Аутентификация и авторизация позволяет настроить любой уровень прав и
-                            доступа.</p>
+                                        доступа.</p>
                     </div>
                     <!-- Item -->
                     <div class="col-sm-6">
                         <div class="mb-4">
                             <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
@@ -151,7 +156,7 @@
                     <div class="col-sm-6">
                         <div class="mb-4">
                             <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                                 <path
                                     d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
@@ -172,11 +177,12 @@
             <!-- Right side END -->
 
             <!-- Left side START -->
-            <div class="col-lg-6 position-relative">
-                <!-- Svg Decoration -->
-                <figure class="position-absolute top-0 start-0 translate-middle z-index-1 ms-4">
-                    <x-icon path="l.cube" width="46" height="53" fill="none"/>
-                </figure>
+            <div class="col-lg-6">
+
+                <div class="col-6 mx-auto">
+                    <img src="/img/gusli.svg" class="img-fluid">
+                </div>
+                <div class="position-relative">
 
                 <!-- Svg decoration -->
                 <figure class="position-absolute top-0 end-0 d-none d-md-block me-5">
@@ -197,13 +203,14 @@
     return redirect('/');
 });
 </code></pre>
-
+                </div>
             </div>
             <!-- Left side END -->
 
         </div>
 
     </div>
+
 
     <div class="bg-dark-subtle text-white" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <div class="container px-4 py-5 packages">
@@ -229,22 +236,27 @@
             </div> <!-- / .row -->
 
 
+            <div class="p-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="border-radius: 2rem;
+background: #1A1319!important;
+box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0, 0, 0, 0.09);">
 
-            <div class="p-5 bg-light-subtle bg-gradient rounded mb-5" style="background-color: #312e3e!important;">
-                <div class="m-3">
-                <div class="text-center mb-5">
-                    <div class="col-xl-7 mx-auto">
-                        <img src="https://orchid.software/img/next/logo-full.svg" class="img-fluid" height="60px">
-                    <h2 class="display-5 fw-semibold">Orchid</h2>
+                <img src="/img/ui/tentacle_bottom.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 mx-4 pe-none">
+                <img src="/img/ui/tentacle_top.svg" class="d-none d-xxl-block position-absolute top-0 start-0 mx-4 pe-none">
 
-                    <p>
-                        Мощное и простое в использовании решение для создания административных панелей и бизнес-приложений
-                    </p>
+                <div class="mx-xl-3 my-xl-5">
+                    <div class="text-xl-center mb-5">
+                        <div class="col-xl-7 mx-auto">
+                            <img src="https://orchid.software/img/next/logo-full.svg" class="mw-100 w-auto d-inline-block mb-4"
+                                 height="40px">
+                            <p class="mb-0">
+                                Мощное и простое в использовании решение для создания административных панелей и
+                                бизнес-приложений
+                            </p>
+                        </div>
                     </div>
-                </div>
 
 
-                    <div class="row row-cols-1 row-cols-sm-3 g-5">
+                    <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-3 g-5 mb-4">
                         <div class="col d-flex flex-column gap-2">
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
@@ -253,10 +265,11 @@
                                         <x-icon path="bs.collection"/>
                                     </div>
                                 </div>
-                            <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
+                                <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Мощная настраиваемая генерация кода позволяет быстро создавать каждую часть приложения Laravel
+                                Мощная настраиваемая генерация кода позволяет быстро создавать каждую часть приложения
+                                Laravel
                             </p>
                         </div>
                         <div class="col d-flex flex-column gap-2">
@@ -270,7 +283,8 @@
                                 <h4 class="fw-semibold mb-0 text-body-emphasis">Красноречивое завершение</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе разработки и поддержки.
+                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе
+                                разработки и поддержки.
                             </p>
                         </div>
                         <div class="col d-flex flex-column gap-2">
@@ -284,29 +298,38 @@
                                 <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе разработки и поддержки.
+                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе
+                                разработки и поддержки.
                             </p>
                         </div>
+                    </div>
+
+                    <div class="col-xl-3 text-center mx-auto">
+                        <a href="https://orchid.software" target="_blank" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
                     </div>
                 </div>
             </div>
 
 
-            <div class="p-5 bg-light-subtle bg-gradient rounded mb-5" style="background-color: #312e3e!important;">
-                <div class="m-3">
-                    <div class="text-center mb-5">
-                        <div class="col-xl-7 mx-auto">
-                            <img src="https://orchid.software/img/next/logo-full.svg" class="img-fluid" height="60px">
-                            <h2 class="display-5 fw-semibold">Orchid</h2>
+            <div class="p-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="background: #1A1319!important;">
 
-                            <p>
-                                Мощное и простое в использовании решение для создания административных панелей и бизнес-приложений
+                <img src="/img/ui/klubok.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 m-5 pe-none">
+                <img src="/img/ui/balalaika.svg" class="d-none d-xxl-block position-absolute top-0 start-0 m-5 pe-none">
+
+                <div class="mx-xl-3 my-xl-5">
+                    <div class="text-xl-center mb-5">
+                        <div class="col-xl-7 mx-auto">
+                            <img src="/img/laravelidea.svg" class="mw-100 w-auto d-inline-block mb-4"
+                                 height="40px">
+                            <p class="mb-0">
+                                Мощное и простое в использовании решение для создания административных панелей и
+                                бизнес-приложений
                             </p>
                         </div>
                     </div>
 
 
-                    <div class="row row-cols-1 row-cols-sm-3 g-5">
+                    <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-3 g-4 g-xxl-5 mb-4">
                         <div class="col d-flex flex-column gap-2">
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
@@ -315,13 +338,26 @@
                                         <x-icon path="bs.collection"/>
                                     </div>
                                 </div>
-                                <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
+                                <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Просматривайте и данные о запросах, базах данных, очередях и других аспектах
-                                вашего приложения. Это дает вам бесценное понимание производительности вашего приложения
-                                и
-                                помогает в принятии обоснованных решений для улучшения его работы
+                                Мощная настраиваемая генерация кода позволяет быстро создавать каждую часть приложения
+                                Laravel
+                            </p>
+                        </div>
+                        <div class="col d-flex flex-column gap-2">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <div
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        <x-icon path="bs.collection"/>
+                                    </div>
+                                </div>
+                                <h4 class="fw-semibold mb-0 text-body-emphasis">Красноречивое завершение</h4>
+                            </div>
+                            <p class="text-body-secondary">
+                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе
+                                разработки и поддержки.
                             </p>
                         </div>
                         <div class="col d-flex flex-column gap-2">
@@ -335,29 +371,14 @@
                                 <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Просматривайте и данные о запросах, базах данных, очередях и других аспектах
-                                вашего приложения. Это дает вам бесценное понимание производительности вашего приложения
-                                и
-                                помогает в принятии обоснованных решений для улучшения его работы
+                                Управление разрешениями, которое упрощает управление доступом пользователей в процессе
+                                разработки и поддержки.
                             </p>
                         </div>
-                        <div class="col d-flex flex-column gap-2">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                        <x-icon path="bs.collection"/>
-                                    </div>
-                                </div>
-                                <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
-                            </div>
-                            <p class="text-body-secondary">
-                                Просматривайте и данные о запросах, базах данных, очередях и других аспектах
-                                вашего приложения. Это дает вам бесценное понимание производительности вашего приложения
-                                и
-                                помогает в принятии обоснованных решений для улучшения его работы
-                            </p>
-                        </div>
+                    </div>
+
+                    <div class="col-xl-3 text-center mx-auto">
+                        <a href="https://laravel-idea.com" target="_blank" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
                     </div>
                 </div>
             </div>
@@ -521,7 +542,7 @@
     <div class="container mt-5 py-5">
         <div class="row g-4 g-lg-5 align-items-center justify-content-between">
             <div class="col-xl-7 order-2 order-xl-1">
-                <div class="row mt-0 mt-xl-5">
+                <div class="row mt-0 mt-xl-5 mb-xl-4">
                     <!-- Review -->
                     <div class="col-md-6 position-relative mb-0 mt-0 mt-md-5">
                         <!-- SVG -->

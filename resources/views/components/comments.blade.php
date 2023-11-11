@@ -6,7 +6,7 @@
     }
 @endphp
 
-<turbo-frame id="comments-frame">
+<turbo-frame id="comments-frame" data-turbo-temporary>
     <x-stream target="comments">
         <div class="container my-5">
 
