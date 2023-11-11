@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/knockout": "^3.4.72",
-    "axios": "^1.4",
+    "axios": "^1.6",
     "knockout": "^3.5",
     "reset-css": "^5.0"
   }
