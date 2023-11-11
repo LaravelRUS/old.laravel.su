@@ -1,10 +1,10 @@
 <?php
 
+use App\Docs;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Process;
-use App\Docs;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +21,18 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-
 Artisan::command('checkout-latest-docs', function () {
-    // Update existing clones
-    collect(Docs::SUPPORT_VERSION)
-        ->filter(fn(string $version) => Storage::disk('docs')->exists($version))
-        ->every(fn(string $version) => Process::path(storage_path('docs/' . $version))->run('git pull'));
+    $docsUrl = config('services.github.docs_repo_url');
 
+    // Update existing clones
+    collect(Docs::SUPPORT_VERSIONS)
+        ->filter(fn (string $version) => Storage::disk('docs')->exists($version))
+        ->every(fn (string $version) => Process::path(storage_path('docs/'.$version))->run('git pull'));
 
     // Clone a new version if not already present
-    collect(Docs::SUPPORT_VERSION)
-        ->filter(fn(string $version) => !Storage::disk('docs')->exists($version))
-        ->every(fn(string $version) => Process::path(storage_path('docs'))
-            ->run("git clone --single-branch --branch '$version' https://github.com/tabuna/docs '$version'"));
+    collect(Docs::SUPPORT_VERSIONS)
+        ->filter(fn (string $version) => ! Storage::disk('docs')->exists($version))
+        ->every(fn (string $version) => Process::path(storage_path('docs'))
+            ->run("git clone --single-branch --branch '$version' $docsUrl '$version'"));
 
 })->purpose('Checkout the latest Laravel docs');
-
