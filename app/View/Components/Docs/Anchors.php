@@ -2,8 +2,8 @@
 
 namespace App\View\Components\Docs;
 
-use Illuminate\View\Component;
 use Illuminate\Support\Str;
+use Illuminate\View\Component;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Anchors extends Component
@@ -26,8 +26,9 @@ class Anchors extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
      * @throws \DOMException
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
     {
@@ -36,17 +37,17 @@ class Anchors extends Component
         ]);
     }
 
-
     /**
      * @param $contents
      *
-     * @return array
      * @throws \DOMException
+     *
+     * @return array
      */
     private function findAnchors()
     {
         $crawler = new Crawler();
-        $crawler->addContent(mb_convert_encoding($this->content, "UTF-8"));
+        $crawler->addContent(mb_convert_encoding($this->content, 'UTF-8'));
 
         $anchors = [];
 
@@ -60,7 +61,6 @@ class Anchors extends Component
                 $text = $node->textContent;
                 $id = Str::slug($text);
 
-
                 $anchors[] = [
                     'text'  => $text,
                     'level' => $node->tagName,
@@ -71,13 +71,11 @@ class Anchors extends Component
                     $node->removeChild($node->firstChild);
                 }
 
-
                 $node->appendChild(new \DOMElement('a', e($text)));
-                $node->firstChild->setAttribute('href', '#' . $id);
+                $node->firstChild->setAttribute('href', '#'.$id);
                 $node->firstChild->setAttribute('name', $id);
             });
 
         return $anchors;
     }
-
 }
