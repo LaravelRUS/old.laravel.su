@@ -28,6 +28,6 @@ class Document extends Model
      */
     protected $attributes = [
         'version' => Docs::DEFAULT_VERSION,
-        'behind'  => 0,
+        'behind'  => null,
     ];
 }

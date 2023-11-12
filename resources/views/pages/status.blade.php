@@ -20,9 +20,9 @@
     <div class="container my-5">
         <div class="col-xl-10 col-md-12 mx-auto">
             <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
-                <div class="row row-cols-md-4 g-3">
+                <div class="row row-cols-md-4 g-3 justify-content-md-between text-center">
                     @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
-                        <div class="col">
+                        <div @class(['col', 'ms-auto' => !$loop->first])>
                             <a href="{{ route('status', ['version' => $version]) }}"
                                 class="{{ $current === $version ? 'link-primary' : 'link-body-emphasis' }} text-decoration-none">
                                 Laravel {{ $version }}

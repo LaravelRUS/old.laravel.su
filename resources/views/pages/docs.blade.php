@@ -58,8 +58,13 @@
 
                 <div class="d-grid gap-3 d-md-flex justify-content-md-end mb-3">
 
-
-                    @if ($docs->behind() > 0)
+                    @if($docs->behind() === null)
+                        <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="">
+                            <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
+                                Перевод не имеет метки
+                            </span>
+                        </a>
+                    @elseif ($docs->behind() > 0)
                         <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="">
                             <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
                                 Перевод отстаёт на {{ $docs->behind() }} изменения

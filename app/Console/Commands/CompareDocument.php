@@ -4,8 +4,6 @@ namespace App\Console\Commands;
 
 use App\Docs;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 
 class CompareDocument extends Command
 {
@@ -28,7 +26,7 @@ class CompareDocument extends Command
      */
     public function handle()
     {
-        collect(Docs::SUPPORT_VERSIONS)->each(fn(string $version) => $this->updateVersion($version));
+        collect(Docs::SUPPORT_VERSIONS)->each(fn (string $version) => $this->updateVersion($version));
     }
 
     /**

@@ -23,7 +23,7 @@ class Docs
     public const SUPPORT_VERSIONS = [
         '8.x',
         '5.4',
-        '4.2'
+        '4.2',
     ];
 
     /**
@@ -64,7 +64,7 @@ class Docs
      */
     public function __construct(string $version, string $file)
     {
-        $this->file = $file . '.md';
+        $this->file = $file.'.md';
         $this->version = $version;
         $this->path = "/$version/$this->file";
 
@@ -77,7 +77,7 @@ class Docs
 
         try {
             $this->variables = Yaml::parse($variables);
-        }catch (\Throwable){
+        } catch (\Throwable) {
 
         }
     }
@@ -87,9 +87,9 @@ class Docs
      *
      * @param string $view The view name.
      *
-     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
      */
     public function view(string $view)
     {
@@ -115,7 +115,7 @@ class Docs
      */
     public function getMenu(): array
     {
-        $page = Storage::disk('docs')->get($this->version . '/documentation.md');
+        $page = Storage::disk('docs')->get($this->version.'/documentation.md');
 
         $html = Str::of($page)
             ->after('---')
@@ -156,7 +156,7 @@ class Docs
         $menu = [];
 
         $crawler->filter('ul > li')->each(function (Crawler $node) use (&$menu) {
-            $subList = $node->filter('ul > li')->each(fn(Crawler $subNode) => [
+            $subList = $node->filter('ul > li')->each(fn (Crawler $subNode) => [
                 'title' => $subNode->filter('a')->text(),
                 'href'  => url($subNode->filter('a')->attr('href')),
             ]);
@@ -181,15 +181,15 @@ class Docs
      *
      * @return \Illuminate\Support\Collection A collection of Docs instances.
      */
-    static public function every(string $version): \Illuminate\Support\Collection
+    public static function every(string $version): \Illuminate\Support\Collection
     {
         $files = Storage::disk('docs')->allFiles($version);
 
         return collect($files)
-            ->filter(fn(string $path) => Str::of($path)->endsWith('.md'))
-            ->filter(fn(string $path) => !Str::of($path)->endsWith(['readme.md', 'license.md']))
-            ->map(fn(string $path) => Str::of($path)->after($version . '/')->before('.md'))
-            ->map(fn(string $path) => new static($version, $path));
+            ->filter(fn (string $path) => Str::of($path)->endsWith('.md'))
+            ->filter(fn (string $path) => ! Str::of($path)->endsWith(['readme.md', 'license.md']))
+            ->map(fn (string $path) => Str::of($path)->after($version.'/')->before('.md'))
+            ->map(fn (string $path) => new static($version, $path));
     }
 
     /**
@@ -205,7 +205,7 @@ class Docs
             ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}");
 
         return $response->collect()
-            ->takeUntil(fn($commit) => $commit['sha'] === $this->variables['git'])
+            ->takeUntil(fn ($commit) => $commit['sha'] === $this->variables['git'])
             ->count();
     }
 
@@ -237,11 +237,11 @@ class Docs
      *
      * @return string
      */
-    static public function compareLink(string $version, string $hash): string
+    public static function compareLink(string $version, string $hash): string
     {
         $compactHash = Str::of($hash)->limit(7, '')->toString();
 
-        return "https://github.com/laravel/docs/compare/$version..$compactHash";
+        return "https://github.com/laravel/docs/compare/$compactHash..$version";
     }
 
     /**
@@ -262,9 +262,9 @@ class Docs
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function behind():int
+    public function behind(): ?int
     {
         return $this->getModel()->behind;
     }

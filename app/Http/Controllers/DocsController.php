@@ -13,8 +13,9 @@ class DocsController extends Controller
      * @param string $version
      * @param string $page
      *
-     * @return \Illuminate\View\View|
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return \Illuminate\View\View|
      */
     public function show(string $version = Docs::DEFAULT_VERSION, string $page = 'installation')
     {
@@ -35,8 +36,8 @@ class DocsController extends Controller
             ->get();
 
         return view('pages.status', [
-            'current' => $version,
-            'documents' => $documents
+            'current'   => $version,
+            'documents' => $documents,
         ]);
     }
 }
