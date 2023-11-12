@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Docs;
 
-use Illuminate\View\Component;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
+use Illuminate\View\Component;
 use JoliTypo\Fixer;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -29,8 +29,9 @@ class Content extends Component implements Htmlable
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \App\View\Components\DocsContent
      * @throws \DOMException
+     *
+     * @return \App\View\Components\DocsContent
      */
     public function render()
     {
@@ -40,35 +41,44 @@ class Content extends Component implements Htmlable
     /**
      * @param $contents
      *
-     * @return string
      * @throws \DOMException
+     *
+     * @return string
      */
     private function modifyContent()
     {
         $crawler = new Crawler();
-        $crawler->addHtmlContent( mb_convert_encoding($this->content, "UTF-8"));
+        $crawler->addHtmlContent(mb_convert_encoding($this->content, 'UTF-8'));
         $this->content = $crawler->filterXpath('//body')->first()->html();
-
 
         $crawler->filter('blockquote')->each(function (Crawler $elm) {
             $tag = $elm->outerHtml();
 
             $html = $tag;
 
-            if(Str::of($tag)->contains('{note}')){
-                $html = Str::of($tag)
-                    ->replace('<blockquote>', '<blockquote class="docs-blockquote-note">')
-                    ->replace('{note}', '');
-            }
+            collect([
+                // docs-blockquote-note
+                '{note}'                          => 'docs-blockquote-note', // for 8.x
+                '<strong>Warning</strong>'        => 'docs-blockquote-note', // for 10.x
+                '<strong>Предупреждение</strong>' => 'docs-blockquote-note',
 
-            if(Str::of($tag)->contains('{tip}')){
-                $html = Str::of($tag)
-                    ->replace('<blockquote>', '<blockquote class="docs-blockquote-tip">')
-                    ->replace('{tip}', '');
-            }
+                // docs-blockquote-tip
+                '{tip}'                       => 'docs-blockquote-tip', // for 8.x
+                '<strong>Note</strong>'       => 'docs-blockquote-tip', // for 10.x
+                '<strong>Примечание</strong>' => 'docs-blockquote-tip', // for 10.x
+            ])
+                ->filter(fn(string $class, string $fragment) => Str::of($tag)->contains($fragment))
+                ->each(function (string $class, string $fragment) use ($tag, &$html) {
+
+                    $html = Str::of($tag)
+                        ->replace('<blockquote>', '<blockquote class="' . $class . '">')
+                        ->replace($fragment, '');
+                });
 
             $this->content = Str::of($this->content)->replace($tag, $html);
         });
+
+
 
         $crawler->filter('x-docs-banner')->each(function (Crawler $elm) {
             $tag = $elm->outerHtml();
@@ -76,7 +86,6 @@ class Content extends Component implements Htmlable
             $this->content = Str::of($this->content)
                 ->replace($tag, Blade::render($tag));
         });
-
 
         $crawler->filter('h1')->each(function (Crawler $elm) {
             $tag = $elm->outerHtml();
@@ -136,8 +145,9 @@ class Content extends Component implements Htmlable
     }
 
     /**
-     * @return string
      * @throws \DOMException
+     *
+     * @return string
      */
     public function toHtml(): string
     {
