@@ -4,23 +4,26 @@ namespace App;
 
 use App\Models\Document;
 use Exception;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
+use Illuminate\Support\Facades\Cache;
 
 class Docs
 {
     /**
      * Default version of Laravel documentation
      */
-    public const DEFAULT_VERSION = '8.x';
+    public const DEFAULT_VERSION = '10.x';
 
     /**
      * Array of supported versions
      */
     public const SUPPORT_VERSIONS = [
+        '10.x',
         '8.x',
         '5.4',
         '4.2',
@@ -201,12 +204,37 @@ class Docs
     {
         throw_unless(isset($this->variables['git']), new Exception("The document {$this->path} is missing a Git hash"));
 
-        $response = Http::withBasicAuth('token', config('services.github.token'))
-            ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}");
+        $response = $this->fetchGitHubDiff();
 
-        return $response->collect()
+        return $response
             ->takeUntil(fn ($commit) => $commit['sha'] === $this->variables['git'])
             ->count();
+    }
+
+    public function fetchLastCommit(): string
+    {
+        throw_unless(isset($this->variables['git']), new Exception("The document {$this->path} is missing a Git hash"));
+
+        $response = $this->fetchGitHubDiff();
+
+        return $response->pluck('sha')->first();
+    }
+
+    /**
+     * @param string|null $key
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    private function fetchGitHubDiff(string $key = null): Collection
+    {
+        $hash = sha1($this->page);
+
+        return Cache::remember("docs-diff-$this->version-$this->file-$hash",
+            now()->addHours(2),
+            fn() => Http::withBasicAuth('token', config('services.github.token'))
+                ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}")
+                ->collect($key)
+        );
     }
 
     /**
@@ -286,6 +314,7 @@ class Docs
     {
         $this->getModel()->fill([
             'behind'         => $this->fetchBehind(),
+            'last_commit'    => $this->fetchLastCommit(),
             'current_commit' => $this->variables['git'],
         ])->save();
     }

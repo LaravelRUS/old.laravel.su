@@ -36,6 +36,12 @@
 
     <div class="container my-5">
         <div class="row">
+            <div class="col-xl-7 col-md-12 mx-auto text-xl-end text-center">
+                <p class="mb-0">Актуально: {{ $documents->where('behind', 0)->count() }} из {{ $documents->count() }}</p>
+                <p>Изменений без обновления: {{ $documents->sum('behind') }}</p>
+            </div>
+
+
             <div class="col-xl-7 col-md-12 mx-auto">
                 <div class="bg-body-tertiary mb-4 p-5">
 
