@@ -8,7 +8,7 @@
             <h1 class="display-5 fw-bold text-body-emphasis mb-4">{!!  $title !!}</h1>
 
             @isset($description)
-                <p class="lead mb-4 pe-5">
+                <p class="lead mb-4 pe-xl-5">
                     {!!  $description !!}
                 </p>
             @endisset
@@ -24,7 +24,7 @@
                 {!! $content !!}
             @else
                 <img src="{{ $attributes->get('image', '/img/sign.svg') }}" alt="{{ strip_tags($title) }}"
-                     class="d-block mx-lg-auto img-fluid pe-none" width="700" height="500" loading="lazy">
+                     class="d-none d-sm-block mx-lg-auto img-fluid pe-none" width="700" height="500" loading="lazy">
             @endisset
         </div>
     </div>
