@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\ProfileCommentsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TurboStream;
 use App\Docs;
@@ -32,10 +33,13 @@ Route::view('/partners', 'pages.partners')->name('partners');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
-Route::get('/feed', [PostController::class, 'list'])
+Route::view('/feed', 'post.list')
     ->name('feed');
 
-Route::post('/feed', [PostController::class, 'list'])
+Route::get('/posts', [PostController::class, 'list'])
+    ->name('posts');
+
+Route::post('/posts', [PostController::class, 'list'])
     ->middleware(\App\Http\Middleware\TurboStream::class);
 
 /*
@@ -53,6 +57,9 @@ Route::middleware(['auth'])
     ->group(function () {
         Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
         Route::post('/posts/edit/{post?}', [PostController::class, 'update'])->name('post.update');
+        Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
+            ->middleware(\App\Http\Middleware\TurboStream::class)
+            ->name('post.delete');
     });
 
 
@@ -143,6 +150,31 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
+
+Route::get('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
+    ->name('profile.posts');
+
+Route::post('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
+    ->middleware(\App\Http\Middleware\TurboStream::class);
+
+
+Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileCommentsController::class,'show'])
+    ->name('profile.comments');
+
+
+Route::middleware(['auth', TurboStream::class])
+    ->prefix('/profile/comments')
+    ->group(function () {
+
+
+        Route::put('/{comment}', [ProfileCommentsController::class, 'update'])
+            ->name('profile.comments.update');
+
+        Route::delete('/{comment}', [ProfileCommentsController::class, 'delete'])
+            ->name('profile.comments.delete');
+
+        Route::post('/{comment}/edit', [ProfileCommentsController::class, 'showEdit'])->name('profile.comments.show.edit');
+    });
 
 
 /*
