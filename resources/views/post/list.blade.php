@@ -36,7 +36,7 @@
 
     <div class="container my-5">
         <div class="row">
-            <turbo-frame id="posts-frame" target="_top" src="{{ route('feed.articles') }}"/>
+            <turbo-frame id="posts-frame" target="_top" src="{{ route('posts') }}"/>
         </div>
     </div>
 @endsection

@@ -14,7 +14,7 @@
                     <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
-                            <div class="avatar avatar-xxl mt-n5 mb-3">
+                            <div class="avatar avatar-xxl mt-n5 mb-3 mx-auto">
                                 <img class="avatar-img rounded-circle border border-tertiary-subtle border-3"
                                     src="{{ $user->avatar }}" alt="">
                             </div>
@@ -28,26 +28,30 @@
                             <small class="opacity-75">На проекте с 23 мая 2022</small>
                         </div>
 
-                        <div class="d-flex flex-column my-3  ms-sm-auto ">
+
+                        <div class="d-flex flex-column my-3  ms-sm-auto">
 
 
                             @if ($isMyAccount)
-                                <x-logout class="btn btn-link" formId="sign-out">
-                                    <x-icon path="bs.logout" class="pe-1" />
-                                    Выйти из профиля
-                                </x-logout>
-                                <a href="{{route('my.edit')}}" class="btn btn-danger">
-                                    <x-icon path="bs.pencil-fill" class="pe-1"/>
-                                    Редактировать
-                                </a>
+                                <div class="d-flex">
+                                    <x-logout class="btn btn-link" formId="sign-out" title="Выйти">
+                                        <x-icon path="bs.door-closed"/>
+                                    </x-logout>
+                                    <a href="{{route('my.edit')}}" class="btn btn-danger">
+                                        <x-icon path="bs.pencil-fill" class="pe-1"/>
+                                        Редактировать
+                                    </a>
+                                </div>
                             @else
-                                <a href="https://github.com/{{$user->nickname}}" class="d-block mb-2">
-                                    <x-icon path="bs.github" width="1.5em" height="1.5em" class="pe-1"/>
+                                <a href="https://github.com/{{$user->nickname}}" class="d-block">
+                                    <x-icon path="bs.github" width="2em" height="2em"/>
                                 </a>
-
-
                             @endif
                         </div>
+                    </div>
+
+                    <div class="">
+                        {!!  \Illuminate\Support\Str::of($user->about)->markdown() !!}
                     </div>
 
                 </div>

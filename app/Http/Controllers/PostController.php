@@ -84,13 +84,11 @@ class PostController extends Controller
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
-        $test = view('particles.posts.list', [
+        return view('particles.posts.list', [
             'posts'       => $posts,
             'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
             'action'      => $this->action
         ])->fragmentsIf(!$request->isMethodSafe());
-
-        return $test;
     }
 
 }

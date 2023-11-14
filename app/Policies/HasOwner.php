@@ -7,7 +7,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;
 
-trait OwnerPolicy
+trait HasOwner
 {
     use HandlesAuthorization;
 

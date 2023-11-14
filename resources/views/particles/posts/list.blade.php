@@ -1,7 +1,7 @@
 <turbo-frame id="posts-frame" data-turbo-temporary>
-    <x-stream target="posts" action="{{$action}}" class="col-xl-8 col-md-12 mx-auto">
+    <x-stream target="posts" action="{{$action}}" class="col-xl-8 col-md-12 mx-auto hotwire-frame">
         @if($posts->isEmpty())
-            <div class="bg-body-tertiary rounded p-5">
+            <div class="bg-body-tertiary rounded p-5 rounded">
                 <div class="p-5">
                     @if ($isMyProfile)
                         <div class="text-center mb-3">
@@ -21,7 +21,7 @@
             </div>
         @else
             @foreach ($posts as $post)
-                <div class="bg-body-tertiary mb-4 px-5 py-4">
+                <div class="bg-body-tertiary mb-4 px-5 py-4 rounded">
 
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center">
@@ -59,13 +59,13 @@
                         </div>
                     </div>
 
-                    <div class="position-relative">
+                    <div class="position-relative post">
                         <a href="{{ route('post.show', $post) }}"
                            class="position-absolute start-0 end-0 top-0 bottom-0"></a>
 
                         <h4 class="mb-3">{{ $post->title }}</h4>
 
-                        <p>{{ $post->preview() }} </p>
+                        <p>{!!  \Illuminate\Support\Str::of($post->content)->markdown() !!}</p>
                     </div>
 
                     <div class="d-flex align-items-center mt-4">

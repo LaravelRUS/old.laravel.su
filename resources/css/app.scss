@@ -543,3 +543,18 @@ main {
     display: block;
 }
 
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hotwire-frame {
+    opacity: 0;
+    animation: fade-in 0.5s ease-in-out forwards;
+}
