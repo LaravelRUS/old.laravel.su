@@ -2,10 +2,9 @@
 
     <div class="d-flex position-relative overflow-hidden">
         <div class="avatar avatar-sm me-3">
-            <a href="#!">
                 <img class="avatar-img rounded-circle"
                      src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
-            </a>
+
         </div>
 
         <div class="w-100">
@@ -25,12 +24,12 @@
 
                     @can('update', $comment)
                         ·
-                        <a href="{{ route('profile.comments.show.edit', $comment) }}" data-turbo-method="post"
+                        <a href="{{ route('profile.comments.show.edit',  ['comment' => $comment, 'page' =>$comments->currentPage()]) }}" data-turbo-method="post"
                            class="link-body-emphasis text-decoration-none">Редактировать</a>
                     @endcan
 
                     @can('delete', $comment)
-                        · <a href="{{ route('profile.comments.delete', $comment) }}"
+                        · <a href="{{ route('profile.comments.delete', ['comment' => $comment, 'page' =>$comments->currentPage()]) }}"
                              class="link-body-emphasis text-decoration-none"
                              data-turbo-method="DELETE"
                              data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
@@ -42,7 +41,7 @@
 
 
             @if($edit === $comment->getKey())
-                <form method="POST" action="{{ route('profile.comments.update', $comment->getKey()) }}"
+                <form method="POST" action="{{ route('profile.comments.update',  ['comment' => $comment, 'page' =>$comments->currentPage()]) }}"
                       class="mb-1 d-flex flex-column position-relative">
                     @method('PUT')
                     <textarea required class="form-control mb-3" name="message"

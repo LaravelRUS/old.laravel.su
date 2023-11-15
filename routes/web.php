@@ -161,6 +161,9 @@ Route::post('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileContr
 Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileCommentsController::class,'show'])
     ->name('profile.comments');
 
+Route::post('/profile/{user:nickname}/comments', [ProfileCommentsController::class, 'show'])
+    ->middleware(\App\Http\Middleware\TurboStream::class);
+
 
 Route::middleware(['auth', TurboStream::class])
     ->prefix('/profile/comments')
