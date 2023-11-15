@@ -11,17 +11,14 @@
                     </div>
                     <form action="{{ route('post.update', $post) }}" method="post">
                         @csrf
-                        <label for="title" class="form-label">Заголовок</label>
-                        <input class="form-control mb-5" type="text" value="{{ old('title', $post->title) }}"
-                            id="title" name="title">
 
-                        <label for="content" class="form-label">Контент</label>
 
-                        <div data-controller="editor">
-                            <div id="editorjs"></div>
+                        <div class="bg-secondary-subtle">
+                        <input class="form-control border-0 p-5 pb-0 rounded-0" type="text" value="{{ old('title', $post->title) }}"
+                            id="title" name="title" placeholder="Заголовок" style="font-weight: 600;font-size: 2em;">
+
+                        <textarea id="content" name="content" placeholder="Контент" rows="10" class="form-control mb-5 border-0 p-5 rounded-0">{{ old('content', $post->content) }}</textarea>
                         </div>
-
-                        <textarea id="content" name="content" class="form-control mb-5">{{ old('content', $post->content) }}</textarea>
 
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                     </form>

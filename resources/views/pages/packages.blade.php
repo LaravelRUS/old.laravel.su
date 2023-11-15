@@ -5,7 +5,7 @@
 
     <div class="container py-5">
 
-        <div class="bg-secondary-subtle p-5 rounded">
+        <div class="bg-body-secondary p-5 rounded">
             <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5">
 
                 @foreach (range(0, 9) as $package)
@@ -24,7 +24,7 @@
 
                             <hr class="w-25">
 
-                            <p class="line-clamp-5 small">
+                            <p class="line-clamp o-50 line-clamp-5 small">
                                 Мощное и простое в использовании решение для создания административных панелей и
                                 бизнес-приложений
                                 {{ \Illuminate\Support\Str::random(100) }}

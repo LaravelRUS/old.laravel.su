@@ -48,7 +48,7 @@
                     @foreach ($documents as $doc)
                         <div class="position-relative" id="{{ $doc->file }}">
                             <div class="d-flex align-items-start mb-4">
-                                <h5 class="mb-0 me-auto">{{ $doc->file }}</h5>
+                                <h5 class="mb-0 me-auto user-select-all">{{ $doc->file }}</h5>
 
                                 @if ($doc->behind > 0)
                                     <a href="{{ App\Docs::compareLink($doc->version, $doc->current_commit) }}"
@@ -66,7 +66,7 @@
 
                             <div class="d-flex align-items-baseline mb-2 clipboard" data-controller="clipboard"
                                 data-clipboard-done-class="done">
-                                <span class="opacity-50 me-auto">Перевод ссылается:</span>
+                                <span class="opacity-50 me-auto pe-none">Перевод ссылается:</span>
                                 <small class="user-select-all me-2"
                                     data-clipboard-target="source">{{ $doc->current_commit }}</small>
                                 <a href="#" data-action="clipboard#copy" title="Скопировать в буфер обмена">
@@ -77,7 +77,7 @@
 
                             <div class="d-flex align-items-baseline mb-2 clipboard" data-controller="clipboard"
                                 data-clipboard-done-class="done">
-                                <span class="opacity-50 me-auto">Последний коммит:</span>
+                                <span class="opacity-50 me-auto pe-none">Последний коммит:</span>
                                 <small class="user-select-all me-2"
                                     data-clipboard-target="source">{{ $doc->last_commit }}</small>
                                 <a href="#" data-action="clipboard#copy" title="Скопировать в буфер обмена">

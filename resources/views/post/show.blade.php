@@ -11,11 +11,11 @@
 
                         <h1>{{ $post->title }}</h1>
 
-                        {!! $post->content !!}
+                        {!! \Illuminate\Support\Str::of($post->content)->markdown() !!}
                     </div>
 
                     <!-- Start Author  -->
-                    <div class="d-flex align-items-center justify-content-between px-5 mx-3 mt-3">
+                    <div class="d-flex align-items-center justify-content-between mt-5">
                         <div class="d-flex align-items-center">
 
                             <div class="avatar avatar-sm me-3">

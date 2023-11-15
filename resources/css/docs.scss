@@ -1,0 +1,265 @@
+// Usage in markdown files
+
+
+#collection-method-list > ul {
+    column-count: 3; -moz-column-count: 3; -webkit-column-count: 3; // Я думаю мы можем увеличь на больших экранах
+    column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    padding-left: 0;
+    list-style: none;
+    li{
+        padding-bottom: 0;
+    }
+}
+
+#collection-method-list a {
+    display: block;
+}
+
+
+// PORT FROM ORCHID NEED CHANGED (AND REMOVED)
+
+.anchors {
+    ul{
+        list-style: none;
+        padding: 0;
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        li.anchor-h3 {
+            margin-left: 1.5em;
+            //list-style: inside;
+        }
+
+        li.anchor-h4 {
+            margin-left: 2.5em;
+            //list-style: inside;
+        }
+    }
+    a {
+        opacity: 0.50;
+        @extend .link-body-emphasis;
+        transition: all 340ms ease;
+        text-decoration: none;
+        &:hover {
+            opacity: 1;
+        }
+        &:before{
+            content: "# ";
+        }
+    }
+}
+
+main,
+main div {
+    line-height: 1.8em;
+
+
+    *:last-child {
+        margin-bottom: 0!important;
+    }
+
+
+    ol {
+        padding: 0 1.5rem;
+    }
+
+    table{
+        @extend .table;
+        @extend .table-bordered;
+    }
+
+    .h2,
+    .h3,
+    h2,
+    h3 {
+        margin-top: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.6em;
+        margin-bottom: 1.5rem;
+        @extend .text-wrap;
+        @extend .text-break;
+
+        > a {
+            text-decoration: underline;
+        }
+
+        :empty {
+            display: none;
+        }
+    }
+
+    code {
+        color: rgb(235, 68, 50);
+    }
+}
+
+main {
+    line-height: 1.5em;
+    overflow: initial;
+
+    img {
+        display: block;
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: 0.5em;
+        margin: 0 auto;
+    }
+
+    picture {
+        &:after {
+            content: attr(alt);
+            text-align: center;
+            display: block;
+            @extend .text-muted;
+            font-size: 0.775em;
+            max-width: calc(66% - 48px);
+            margin: 1em auto 2em auto;
+            line-height: 1.5em;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        a {
+            @extend .link-body-emphasis;
+            text-decoration: none;
+            position: relative;
+        }
+    }
+
+    h2 {
+        margin-bottom: 1em !important;
+
+        a:target {
+            &:before {
+                transform: rotate(200deg);
+            }
+        }
+
+        a {
+            padding-left: 1em;
+            transition: all 340ms;
+            &:before {
+                transition: all 340ms;
+                content: '#';
+                margin-left: -1em;
+                position: absolute;
+                font-size: 1em;
+                color: $primary;
+                opacity: 0.5;
+            }
+
+            &:hover {
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    /*
+    p {
+        margin: 0 0 1em;
+    }
+
+     */
+
+    li {
+        padding-bottom: 0.33em;
+    }
+
+    pre {
+        border-radius: 0.8rem;
+        margin-bottom: 2em !important;
+    }
+
+    /*
+    .docs-blockquote-tip, .docs-blockquote-note {
+        display: flex;
+        align-items: center;
+
+        &:before {
+            color: #fff;
+            content: '!';
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            margin-right: 3em;
+        }
+    }
+
+     */
+
+    .docs-blockquote-tip {
+        background: transparentize($info, 0.85) !important;
+        //border: 1px solid transparentize($info, 0.5);
+        &:before {
+            background-color: transparentize($info, 0.65);
+            content: '💡️';
+        }
+    }
+
+    .docs-blockquote-note {
+        //border: 1px solid transparentize($danger, 0.5);
+        background: transparentize($danger, 0.90) !important;
+        &:before {
+            background-color: transparentize($danger, 0.65);
+            content: '⚠️';
+        }
+    }
+
+    blockquote {
+        //background: #F9F9FE;
+        @extend .bg-body;
+        @extend .shadow;
+        border-radius: 0.8rem;
+        padding: 1.5em;
+        position: relative;
+        margin: 2em 0;
+        @extend .text-wrap;
+        @extend .text-break;
+
+        &:before {
+            position: absolute;
+            top: -0.5em;
+            left: -0.3em;
+            background-color: $gray-500;
+            color: #fff;
+            content: '!';
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
+        }
+        > p {
+            margin-bottom: 0;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

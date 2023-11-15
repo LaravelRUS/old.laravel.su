@@ -488,15 +488,14 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
             <div class="col-xl-6 text-center text-xl-start">
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>
                 <!-- Title -->
-                <h2 class="display-5 fw-semibold mb-0">Агентства для разработки вашего проекта на Laravel</h2>
+                <h2 class="display-5 fw-semibold mb-0">Помощь в разработки вашего проекта на Laravel</h2>
             </div>
             <!-- Right side END -->
 
             <!-- Left side START -->
             <div class="col-lg-6 position-relative">
                 <p>
-                    Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
-                    разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
+                    Независимо от сложности вашего проекта эти кампании готовы помочь воплотить ваши идеи в элегантные приложения.
                 </p>
 
                 <a href="{{ route('advertising') }}"

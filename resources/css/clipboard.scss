@@ -1,0 +1,17 @@
+.clipboard {
+    .copy-action {
+        display: inline;
+    }
+    .copy-done {
+        display: none;
+    }
+
+    &.done {
+        .copy-action {
+            display: none;
+        }
+        .copy-done {
+            display: inline;
+        }
+    }
+}

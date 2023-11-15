@@ -1,0 +1,22 @@
+.back-to-top-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 1x; // MS Edge requires a nominal dimension
+    z-index: 20;
+}
+
+.back-to-top__button {
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.2s ease;
+}
+
+.back-to-top-container--intersecting .back-to-top__button {
+    opacity: 0;
+    visibility: hidden;
+}

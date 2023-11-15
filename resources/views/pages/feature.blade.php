@@ -11,6 +11,273 @@
         </x-slot>
     </x-header>
 
+
+    <div class="col-xl-5 mx-auto">
+        <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+            <div>
+                <div name="authentication" title="Authentication" icon="lock-closed">
+                    <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
+                       definition:</p>
+
+                    <pre><code language="php">
+            Route::get('/profile', ProfileController::class)
+                ->middleware('auth');
+        </code></pre>
+
+                    <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
+                       facade:</p>
+
+                    <pre><code language="php">
+            use Illuminate\Support\Facades\Auth;
+
+            // Get the currently authenticated user...
+            $user = Auth::user();
+        </code></pre>
+
+                    <p>Of course, you may define your own authentication middleware, allowing you to customize the
+                       authentication process.</p>
+
+                    <p>For more information on Laravel's authentication features, check out the <a
+                            href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+                </div>
+
+                <div name="authorization" title="Authorization" icon="identification">
+                    <p>You'll often need to check whether an authenticated user is authorized to perform a specific
+                       action. Laravel's model policies make it a breeze:</p>
+
+                    <pre><code language="bash">
+            php artisan make:policy UserPolicy
+        </code></pre>
+
+                    <p>Once you've defined your authorization rules in the generated policy class, you can authorize the
+                       user's request in your controller methods:</p>
+
+                    <pre><code language="php">
+            public function update(Request $request, Invoice $invoice)
+            {
+                Gate::authorize('update', $invoice);// [tl! focus]
+
+                $invoice->update(/* ... */);
+            }
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/authorization">Learn more</a></p>
+                </div>
+
+                <div name="eloquent" title="Eloquent ORM" icon="table-cells">
+                    <p>Scared of databases? Don't be. Laravel’s Eloquent ORM makes it painless to interact with your
+                       application's data, and models, migrations, and relationships can be quickly scaffolded:</p>
+
+                    <pre><code language="text">
+            php artisan make:model Invoice --migration
+        </code></pre>
+
+                    <p>Once you've defined your model structure and relationships, you can interact with your database
+                       using Eloquent's powerful, expressive syntax:</p>
+
+                    <pre><code language="php">
+            // Create a related model...
+            $user->invoices()->create(['amount' => 100]);
+
+            // Update a model...
+            $invoice->update(['amount' => 200]);
+
+            // Retrieve models...
+            $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
+
+            // Rich API for model interactions...
+            $invoices->each->pay();
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/eloquent">Learn more</a></p>
+                </div>
+
+                <div name="migrations" title="Database Migrations" icon="circle-stack">
+                    <p>Migrations are like version control for your database, allowing your team to define and share
+                       your application's database schema definition:</p>
+
+                    <pre><code language="php">
+            public function up(): void
+            {
+                Schema::create('flights', function (Blueprint $table) {
+                    $table->uuid()->primary();
+                    $table->foreignUuid('airline_id')->constrained();
+                    $table->string('name');
+                    $table->timestamps();
+                });
+            }
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/migrations">Learn more</a></p>
+                </div>
+
+                <div name="validation" title="Validation" icon="check-badge">
+                    <p>Laravel has over 90 powerful, built-in validation rules and, using Laravel Precognition, can
+                       provide live validation on your frontend:</p>
+
+                    <pre><code language="php">
+            public function update(Request $request)
+            {
+                $validated = $request->validate([// [tl! focus:start]
+                    'email' => 'required|email|unique:users',
+                    'password' => Password::required()->min(8)->uncompromised(),
+                ]);// [tl! focus:end]
+
+                $request->user()->update($validated);
+            }
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/validation">Learn more</a></p>
+                </div>
+
+                <div name="notifications" title="Notifications & Mail" icon="bell-alert">
+                    <p>Use Laravel to quickly send beautifully styled notifications to your users via email, Slack, SMS,
+                       in-app, and more:</p>
+
+                    <pre><code language="bash">
+            php artisan make:notification InvoicePaid
+        </code></pre>
+
+                    <p>Once you have generated a notification, you can easily send the message to one of your
+                       application's users:</p>
+
+                    <pre><code language="php">
+            $user->notify(new InvoicePaid($invoice));
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/notifications">Learn more</a></p>
+                </div>
+
+                <div name="storage" title="File Storage" icon="archive-box">
+                    <p>Laravel provides a robust filesystem abstraction layer, providing a single, unified API for
+                       interacting with local filesystems and cloud based filesystems like Amazon S3:</p>
+
+                    <pre><code language="php">
+            $path = $request->file('avatar')->store('s3');
+        </code></pre>
+
+                    <p>Regardless of where your files are stored, interact with them using Laravel's simple, elegant
+                       syntax:</p>
+
+                    <pre><code language="php">
+            $content = Storage::get('photo.jpg');
+
+            Storage::put('photo.jpg', $content);
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/filesystem">Learn more</a></p>
+                </div>
+
+                <div name="queues" title="Job Queues" icon="queue-list">
+                    <p>Laravel lets you to offload slow jobs to a background queue, keeping your web requests
+                       snappy:</p>
+
+                    <pre><code language="php">
+            $podcast = Podcast::create(/* ... */);
+
+            ProcessPodcast::dispatch($podcast)->onQueue('podcasts');// [tl! focus]
+        </code></pre>
+
+                    <p>You can run as many queue workers as you need to handle your workload:</p>
+
+                    <pre><code language="bash">
+            php artisan queue:work redis --queue=podcasts
+        </code></pre>
+
+                    <p>For more visibility and control over your queues, <a href="https://laravel.com/docs/horizon">Laravel
+                                                                                                                    Horizon</a>
+                       provides a beautiful dashboard and code-driven configuration for your Laravel-powered Redis
+                       queues.</p>
+
+                    <p><strong>Learn more</strong></p>
+                    <ul>
+                        <li><a href="https://laravel.com/docs/queues">Job Queues</a></li>
+                        <li><a href="https://laravel.com/docs/horizon">Laravel Horizon</a></li>
+                    </ul>
+                </div>
+
+                <div name="scheduling" title="Task Scheduling" icon="clock">
+                    <p>Schedule recurring jobs and commands with an expressive syntax and say goodbye to complicated
+                       configuration files:</p>
+
+                    <pre><code language="php">
+            $schedule->job(NotifySubscribers::class)->hourly();
+        </code></pre>
+
+                    <p>Laravel's scheduler can even handle multiple servers and offers built-in overlap prevention:</p>
+
+                    <pre><code language="php">
+            $schedule->job(NotifySubscribers::class)
+                ->dailyAt('9:00')
+                ->onOneServer();
+                ->withoutOverlapping();
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/scheduling">Learn more</a></p>
+                </div>
+
+                <div name="testing" title="Testing" icon="command-line">
+                    <p>Laravel is built for testing. From unit tests to browser tests, you’ll feel more confident in
+                       deploying your application:</p>
+
+                    <pre><code language="php">
+            $user = User::factory()->create();
+
+            $this->browse(fn (Browser $browser) => $browser
+                ->visit('/login')
+                ->type('email', $user->email)
+                ->type('password', 'password')
+                ->press('Login')
+                ->assertPathIs('/home')
+                ->assertSee("Welcome {$user->name}")
+            );
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/testing">Learn more</a></p>
+                </div>
+
+                <div name="events" title="Events & WebSockets" icon="arrows-right-left">
+                    <p>Laravel's events allow you to send and listen for events across your application, and listeners
+                       can easily be dispatched to a background queue:</p>
+
+                    <pre><code language="php">
+            OrderShipped::dispatch($order);
+        </code></pre>
+
+                    <pre><code language="php">
+            class SendShipmentNotification implements ShouldQueue
+            {
+                public function handle(OrderShipped $event): void
+                {
+                    // ...
+                }
+            }
+        </code></pre>
+
+                    <p>Your frontend application can even subscribe to your Laravel events using <a
+                            href="https://laravel.com/docs/broadcasting">Laravel Echo</a> and WebSockets, allowing you
+                       to build real-time, dynamic applications:</p>
+
+                    <pre><code language="javascript">
+            Echo.private(`orders.${orderId}`)
+                .listen('OrderShipped', (e) => {
+                    console.log(e.order);
+                });
+        </code></pre>
+
+                    <p><a href="https://laravel.com/docs/events">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <div class="container py-5">
 
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">

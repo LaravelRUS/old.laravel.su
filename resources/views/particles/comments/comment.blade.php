@@ -1,6 +1,5 @@
 <div id="comment-{{ $comment->getKey() }}" class="position-relative my-4">
 
-
     @if($comment->trashed())
         <div class="alert alert-warning opacity-25">Сообщение было удалено</div>
     @endif
