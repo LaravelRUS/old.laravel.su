@@ -47,13 +47,14 @@
                             </a>
                             <ul class="dropdown-menu">
                                 @can('isOwner',$post)
-                                    <li><a class="dropdown-item" href="{{route('post.edit',$post)}}">Редактировать</a>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('post.edit',$post)}}">Редактировать</a>
                                     </li>
 
-                                    <li><a class="dropdown-item" data-turbo-method="delete"
+                                    <li>
+                                        <a class="dropdown-item" data-turbo-method="delete"
                                            href="{{route('post.delete',request()->collect()->merge(['post' => $post])->all())}}">Удалить</a>
                                     </li>
-
                                 @endcan
                             </ul>
                         </div>
@@ -76,10 +77,16 @@
                             <span class="ms-2">~56</span>
                         </a>
 
-                        <a class="d-flex align-items-center text-body-secondary text-decoration-none" href="#!">
+                        <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
+                           href="{{ route('post.show', $post) }}">
                             <x-icon path="bs.chat"/>
                             <span class="ms-2">{{ $post->comments_count }}</span>
                         </a>
+
+                        <span class="d-flex align-items-center text-body-secondary text-decoration-none">
+                            <x-icon path="bs.clock"/>
+                            <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
+                        </span>
 
                         <span
                             class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>

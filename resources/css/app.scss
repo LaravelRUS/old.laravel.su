@@ -6,7 +6,7 @@ $primary: #f9322c;
 $dark: #212529;
 
 $body-secondary-bg: #EBEEF4;
-$body-secondary-bg-dark: shade-color($body-secondary-bg, 85);
+$body-secondary-bg-dark: #1A1E28;//shade-color($body-secondary-bg, 85);
 
 /*
 $secondary:     $gray-600 !default;
@@ -220,4 +220,67 @@ $utilities: (
 .hotwire-frame {
     opacity: 0;
     animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.thread {
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 1rem;
+        content: "";
+        width: 2px;
+        height: 100%;
+        background-color: rgb(234, 154, 154);//rgba($primary, .3)
+    }
+
+    .comment:last-child:before {
+            display: none;
+    }
+}
+
+.comment {
+    position: relative;
+    overflow: hidden;
+    &:before {
+        position: absolute;
+        display: block;
+        top: 3.5rem;
+        left: 1rem;
+        content: "";
+        width: 2px;
+        height: 100%;
+        background-color: rgb(234, 154, 154);//rgba($primary, .2)
+    }
+
+    /*
+    .comment-reply {
+        .comment {
+            :before{
+                position: relative;
+                display: block;
+                top: 57px;
+                content: "";
+                width: 23px;
+                height: 3px;
+                background-color: opacify($primary, 0.1);
+            }
+
+            :after{
+                position: absolute;
+                display: block;
+                top: 60px;
+                left: -36px;
+                content: "";
+                width: 3px;
+                height: calc(100% - 60px);
+                background-color: opacify($primary, 0.1);
+            }
+        }
+    }
+
+     */
 }

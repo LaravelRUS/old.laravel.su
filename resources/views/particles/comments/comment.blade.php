@@ -1,7 +1,16 @@
-<div id="comment-{{ $comment->getKey() }}" class="position-relative my-4">
+<div id="comment-{{ $comment->getKey() }}" class="comment mt-4">
 
     @if($comment->trashed())
-        <div class="alert alert-warning opacity-25">Сообщение было удалено</div>
+        <div class="d-flex position-relative overflow-hidden align-items-center mb-5">
+            <div class="avatar avatar-sm me-3">
+                    <img class="avatar-img rounded-circle"
+                         src="/img/ui/user-deleted.png" alt="Комментарий был удалён">
+            </div>
+
+            <div class="w-100 opacity-50">
+                <p class="mb-0">Сообщение было удалено</p>
+            </div>
+        </div>
     @endif
 
     @if(!$comment->trashed())
@@ -97,25 +106,24 @@
             @endcan
         @endif
     @endif
+</div>
 
-        <?php
+    <?php
         if (!isset($indentationLevel)) {
             $indentationLevel = 1;
         } else {
             $indentationLevel++;
         }
-        ?>
+    ?>
 
-
-    {{-- Recursion for children --}}
-    @if($grouped_comments->has($comment->getKey()))
-        <div class="{{ $indentationLevel <= $maxIndentationLevel ? 'ms-5' : '' }}">
-            @foreach($grouped_comments[$comment->getKey()] as $child)
-                @include('particles.comments.comment', [
-                    'comment' => $child,
-                    'grouped_comments' => $grouped_comments
-                ])
-            @endforeach
-        </div>
-    @endif
-</div>
+{{-- Recursion for children --}}
+@if($grouped_comments->has($comment->getKey()))
+    <div class="thread {{ $indentationLevel <= $maxIndentationLevel ? 'ps-5 comment-reply' : 'position-relative overflow-hidden' }}">
+        @foreach($grouped_comments[$comment->getKey()] as $child)
+            @include('particles.comments.comment', [
+                'comment' => $child,
+                'grouped_comments' => $grouped_comments
+            ])
+        @endforeach
+    </div>
+@endif
