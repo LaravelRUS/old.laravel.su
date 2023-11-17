@@ -5,36 +5,58 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileCommentsController extends Controller
 {
+    public string $action = 'append';
+
     /**
      * @param \App\Models\User $user
      * @param array            $data
      *
      * @return string
      */
-    public function show(User $user, array $data = [])
+    public function show(Request $request, User $user, array $data = [])
     {
+        $comments = $this->getComments($user);
+        $comments->withPath('/profile/'.$user->nickname.'/comments');
+
+        if ($request->get('page') > 1 && $comments->isEmpty())
+        {
+            $request->merge([
+                'page' => $comments->lastPage(),
+            ]);
+            $comments = $this->getComments($user);
+        }
+
+        $isMyAccount = $user->id === Auth::user()?->id;
         return view(
             'pages.profile.tabs.comments-tab',
             array_merge($data, [
-                'comments' => $user->comments()->latest()->get(),
+                'comments' => $comments,
                 'user'     => $user,
-                'active'   => 'comments'
+                'active'   => 'comments',
+                'action'    => $this->action,
+                'isMyAccount' => $isMyAccount
             ])
-        )->fragmentIf(!request()->isMethod('GET'), 'comments');
+        )->fragmentsIf(!request()->isMethod('GET'));
     }
 
+    protected function getComments(User $user){
+        return $comments = $user->comments()
+            ->orderBy('id', 'desc')
+            ->paginate(2);;
+    }
 
     /**
      * @param \App\Models\Comment $comment
      *
      * @return string
      */
-    public function showEdit(Comment $comment)
+    public function showEdit(Request $request,Comment $comment)
     {
-        return $this->show($comment->commenter, [
+        return $this->show($request,$comment->commenter, [
             'edit' => $comment->getKey(),
         ]);
     }
@@ -58,7 +80,7 @@ class ProfileCommentsController extends Controller
             'comment' => $request->message,
         ]);
 
-        return $this->show($comment->commenter);
+        return $this->show($request,$comment->commenter);
     }
 
     /**
@@ -66,7 +88,7 @@ class ProfileCommentsController extends Controller
      *
      * @return string
      */
-    public function delete(Comment $comment)
+    public function delete(Request $request, Comment $comment)
     {
         $this->authorize('delete', $comment);
 
@@ -74,7 +96,7 @@ class ProfileCommentsController extends Controller
             ? $comment->delete()
             : $comment->forceDelete();
 
-        return $this->show($comment->commenter);
+        return $this->show($request,$comment->commenter);
     }
 
 }

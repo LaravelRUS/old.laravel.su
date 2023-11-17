@@ -16,7 +16,7 @@
     @if(!$comment->trashed())
         <div class="d-flex position-relative overflow-hidden">
             <div class="avatar avatar-sm me-3">
-                <a href="#!">
+                <a href="{{route('profile',$comment->commenter)}}">
                     <img class="avatar-img rounded-circle"
                          src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
                 </a>
