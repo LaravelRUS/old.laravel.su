@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Casts\PostTypeEnum;
+use App\Casts\StatusEnum;
 use App\Models\Concerns\HasComments;
 use App\Models\Concerns\Taggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -22,7 +25,9 @@ class Post extends Model implements Feedable
         'title',
         'content',
         'slug',
-        'user_id'
+        'user_id',
+        'type',
+        'status'
     ];
 
     /**
@@ -32,6 +37,12 @@ class Post extends Model implements Feedable
         'title'   => 'string',
         'content' => 'string',
         'slug'    => 'string',
+        'type'    => PostTypeEnum::class,
+        'status'  => StatusEnum::class
+    ];
+
+    protected $attributes = [
+        'type' => PostTypeEnum::Article
     ];
 
     public static function boot()

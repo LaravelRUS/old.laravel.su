@@ -56,7 +56,9 @@ Route::get('/comments/article/{post}', [CommentsController::class, 'show'])
 Route::middleware(['auth'])
     ->group(function () {
         Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
-        Route::post('/posts/edit/{post?}', [PostController::class, 'update'])->name('post.update');
+        Route::post('/posts/edit/{post?}', [PostController::class, 'edit'])
+            ->middleware(\App\Http\Middleware\TurboStream::class);
+        Route::post('/posts/update/{post?}', [PostController::class, 'update'])->name('post.update');
         Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
             ->middleware(\App\Http\Middleware\TurboStream::class)
             ->name('post.delete');
