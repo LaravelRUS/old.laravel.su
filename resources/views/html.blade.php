@@ -12,6 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="view-transition" content="same-origin" />
 
+    <link rel="alternate" type="application/atom+xml" title="Новости" href="/rss/feed">
+
     <x-meta
             title="{{ View::getSection('title') ?  View::getSection('title') . ' | ' : '' }}{{ config('site.name') }}"
             description="{{ View::getSection('description', config('site.description')) }}"
