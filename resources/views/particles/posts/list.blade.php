@@ -66,7 +66,7 @@
 
                         <h4 class="mb-3">{{ $post->title }}</h4>
 
-                        <p>{!!  \Illuminate\Support\Str::of($post->content)->markdown() !!}</p>
+                        <div class="line-clamp line-clamp-5">{!!  \Illuminate\Support\Str::of($post->content)->markdown() !!}</div>
                     </div>
 
                     <div class="d-flex align-items-center mt-4">
