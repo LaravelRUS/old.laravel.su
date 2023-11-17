@@ -12,6 +12,7 @@
         "jolicode/jolitypo": "^1.4",
         "laravel/framework": "^10.31",
         "laravel/sanctum": "^3.2",
+        "laravel/scout": "^10.5",
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
         "symfony/dom-crawler": "^6.3",
