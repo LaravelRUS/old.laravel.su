@@ -15,6 +15,7 @@
         "laravel/scout": "^10.5",
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
+        "spatie/laravel-feed": "^4.3",
         "symfony/dom-crawler": "^6.3",
         "symfony/yaml": "^6.3",
         "twbs/bootstrap-icons": "^1.11",

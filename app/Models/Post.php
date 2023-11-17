@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Post extends Model
+class Post extends Model implements Feedable
 {
     use HasFactory, HasComments, Taggable, Searchable;
 
@@ -27,10 +29,9 @@ class Post extends Model
      * @var array
      */
     protected $casts = [
-        'type'    => 'string',
+        'title'   => 'string',
+        'content' => 'string',
         'slug'    => 'string',
-        'content' => 'array',
-        'options' => 'array',
     ];
 
     public static function boot()
@@ -62,7 +63,7 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author(): BelongsTo
+    public function author()
     {
         return $this->user();
     }
@@ -128,6 +129,28 @@ class Post extends Model
         // Customize the data array...
 
         return $array;
+    }
+
+    /**
+     * @return \App\Models\FeedItem
+     */
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary(Str::of($this->content)->markdown())
+            ->updated($this->updated_at)
+            ->link(route('feed', $this))
+            ->authorName($this->author->name);
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getFeedItems()
+    {
+        return static::orderBy('id', 'desc')->with('author')->limit(30)->get();
     }
 
     /**

@@ -186,3 +186,11 @@ Route::middleware(['auth', TurboStream::class])
 Route::get('/manifest.json', fn() => response()->json(config('site.pwa')))
     ->middleware('cache.headers:public;max_age=300;etag')
     ->name('manifest');
+
+/*
+|--------------------------------------------------------------------------
+| RSS
+|--------------------------------------------------------------------------
+*/
+
+Route::feeds();
