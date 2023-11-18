@@ -5,8 +5,6 @@
     {{-- текст для проверки переключения типов, т.к. сейчас в шаблонах формы одинаковые --}}
     ссылка
     <form action="{{ route('post.update', $post) }}" method="post">
-                        @csrf
-
 
                         <div class="bg-secondary-subtle">
                             <textarea data-controller="textarea-autogrow"

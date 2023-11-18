@@ -29,8 +29,7 @@
                     <div class="me-3 small opacity-50">
                         <a href="#comment-{{ $comment->getKey() }}"
                            class="link-body-emphasis text-decoration-none">
-                            <time
-                                datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
+                            <time datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
                         </a>
 
                         @can('update', $comment)
@@ -67,21 +66,24 @@
                         <form method="POST" action="{{ route('comments.update', $comment->getKey()) }}"
                               class="mb-1 d-flex flex-column position-relative">
                             @method('PUT')
-                            <textarea required class="form-control mb-3" name="message" rows="3">{{ $comment->comment }}</textarea>
+                            <textarea data-controller="textarea-autogrow"
+                                      data-textarea-autogrow-resize-debounce-delay-value="500"
+                                      required
+                                      class="form-control mb-3"
+                                      name="message"
+                                      rows="3">{{ $comment->comment }}</textarea>
                             <div
                                 class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
                                 <button type="submit" class="btn btn-primary">Ответить</button>
                             </div>
                         </form>
                 @else
-                    <p class="mb-1">{!! $comment->prettyComment() !!}</p>
+                    <p class="mb-1 text-wrap text-break">{!! $comment->prettyComment() !!}</p>
                 @endif
 
                 <div class="d-flex align-items-center">
-                    <a class="d-flex align-items-center text-danger text-decoration-none me-4" href="#!">
-                        <x-icon path="bs.heart-fill"/>
-                        <span class="ms-2">12</span>
-                    </a>
+
+                    <x-like :model="$comment"/>
 
                     @can('reply', $comment)
                         @if($reply !== $comment->getKey())
@@ -90,21 +92,29 @@
                         @endif
                     @endcan
                 </div>
+
+
+
+            @if($reply === $comment->getKey())
+                @can('reply', $comment)
+                    <form method="POST" action="{{ route('comments.reply', $comment->getKey()) }}"
+                          class="my-3 d-flex flex-column position-relative">
+                    <textarea
+                        data-controller="textarea-autogrow"
+                        data-textarea-autogrow-resize-debounce-delay-value="500"
+                        required
+                        class="form-control"
+                        name="message"
+                        rows="3"></textarea>
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
+                            <button type="submit" class="btn btn-primary">Ответить</button>
+                        </div>
+                    </form>
+                @endcan
+            @endif
             </div>
         </div>
 
-        @if($reply === $comment->getKey())
-            @can('reply', $comment)
-                <form method="POST" action="{{ route('comments.reply', $comment->getKey()) }}"
-                      class="col-8 ms-auto my-2 d-flex flex-column position-relative">
-                    <textarea required class="form-control mb-3" name="message" rows="3"></textarea>
-                    <div
-                        class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
-                        <button type="submit" class="btn btn-primary">Ответить</button>
-                    </div>
-                </form>
-            @endcan
-        @endif
     @endif
 </div>
 

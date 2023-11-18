@@ -1,6 +1,6 @@
-import * as Turbo from '@hotwired/turbo';
-import { Application } from '@hotwired/stimulus';
-import Prism from 'prismjs';
+import * as Turbo    from '@hotwired/turbo';
+import {Application} from '@hotwired/stimulus';
+import Prism         from 'prismjs';
 import 'prismjs/components/prism-php';
 
 import 'bootstrap';
@@ -19,12 +19,12 @@ document.addEventListener('turbo:before-frame-render', (event) => {
 
 const application = (window.application = Application.start());
 
-import ThemeController from './controllers/theme_controller';
+import ThemeController                  from './controllers/theme_controller';
 import ViewportEntranceToggleController from './controllers/viewport-entrance-toggle_controller.js';
-import ScrollController from './controllers/scroll_controller.js';
-import FormLoadController from './controllers/form-load_controller';
-import Clipboard from './controllers/clipboard_controller';
-import TextareaAutogrow from 'stimulus-textarea-autogrow'
+import ScrollController                 from './controllers/scroll_controller.js';
+import FormLoadController               from './controllers/form-load_controller';
+import Clipboard                        from './controllers/clipboard_controller';
+import TextareaAutogrow                 from 'stimulus-textarea-autogrow'
 
 application.register('theme', ThemeController);
 application.register('viewport-entrance-toggle', ViewportEntranceToggleController);
@@ -34,6 +34,7 @@ application.register('clipboard', Clipboard);
 application.register('textarea-autogrow', TextareaAutogrow)
 
 import LoadMoreController from './controllers/load-more_controller';
+
 application.register('load-more', LoadMoreController);
 
 Prism.manual = true;
@@ -48,12 +49,15 @@ document.addEventListener('turbo:load', () => {
     });
 });
 
+document.addEventListener('turbo:frame-load', () => {
+    [...document.querySelectorAll('pre code')].forEach((el) => {
+        if (el.getAttribute('class') === null) {
+            el.setAttribute('class', 'language-php');
+        }
 
-
-
-
-
-
+        Prism.highlightElement(el);
+    });
+});
 
 window.highlightSupportPolicyTable = () => {
 

@@ -12,7 +12,6 @@
                         </div>
 
                     @else
-
                         <div class="text-center mb-3">
                             Здесь еще нет публикаций
                         </div>
@@ -26,16 +25,16 @@
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-sm me-3">
-                                <a href="{{route('profile', $post->user)}}">
-                                    <img class="avatar-img rounded-circle" src="{{ $post->user->avatar }}"
-                                         alt="{{ $post->user->title }}">
+                                <a href="{{route('profile', $post->author)}}">
+                                    <img class="avatar-img rounded-circle" src="{{ $post->author->avatar }}"
+                                         alt="{{ $post->author->title }}">
                                 </a>
                             </div>
 
                             <div class="small">
                                 <h6 class="mb-0 me-4">
-                                    <a href="{{route('profile',$post->user)}}"
-                                       class="text-body-secondary text-decoration-none">{{ $post->user->name }}</a>
+                                    <a href="{{route('profile',$post->author)}}"
+                                       class="text-body-secondary text-decoration-none">{{ $post->author->name }}</a>
                                 </h6>
                                 <p class="mb-0 small">Разработчик laravel.su</p>
                             </div>
@@ -46,14 +45,14 @@
                                 <x-icon path="bs.three-dots"/>
                             </a>
                             <ul class="dropdown-menu">
-                                @can('isOwner',$post)
+                                @can('isOwner', $post)
                                     <li>
-                                        <a class="dropdown-item" href="{{route('post.edit',$post)}}">Редактировать</a>
+                                        <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
                                     </li>
 
                                     <li>
                                         <a class="dropdown-item" data-turbo-method="delete"
-                                           href="{{route('post.delete',request()->collect()->merge(['post' => $post])->all())}}">Удалить</a>
+                                           href="{{route('post.delete', request()->collect()->merge(['post' => $post])->all())}}">Удалить</a>
                                     </li>
                                 @endcan
                             </ul>
@@ -71,11 +70,7 @@
 
                     <div class="d-flex align-items-center mt-4">
 
-                        <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
-                           href="#!">
-                            <x-icon path="bs.heart"/>
-                            <span class="ms-2">~56</span>
-                        </a>
+                        <x-like :model="$post"/>
 
                         <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
                            href="{{ route('post.show', $post) }}">
@@ -88,8 +83,7 @@
                             <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
                         </span>
 
-                        <span
-                            class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>
+                        <span class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>
                     </div>
                 </div>
             @endforeach

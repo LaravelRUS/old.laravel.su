@@ -10,9 +10,6 @@
                         <h1>{{ $title }}</h1>
                     </div>
                     <form action="{{ route('post.update', $post) }}" method="post">
-                        @csrf
-
-
                         <div class="bg-secondary-subtle">
                             <textarea data-controller="textarea-autogrow"
                                       data-textarea-autogrow-resize-debounce-delay-value="500"

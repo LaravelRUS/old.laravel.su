@@ -16,13 +16,31 @@ class PostController extends Controller
     public $action = "append";
 
     /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
+     */
+    public function feed()
+    {
+        $popular = Post::withCount('likers')
+            ->withCount('comments')
+            ->orderBy('likers_count', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->cursorPaginate(5);
+
+        return view('post.list', [
+            'popular' => $popular,
+        ]);
+    }
+
+    /**
      * @param \App\Models\Post $post
      *
      * @return \Illuminate\Contracts\View\View
      */
     public function show(Post $post)
     {
-        $post->with('comments');
+        $post->load(['comments', 'author'])
+            ->loadCount('comments')
+            ->loadCount('likers');
 
         return view('post.show', [
             'post' => $post,
@@ -103,11 +121,14 @@ class PostController extends Controller
      */
     public function list(Request $request)
     {
-        $posts = Post::with(['user'])
+        $posts = Post::with(['author'])
             ->withCount('comments')
+            ->withCount('likers')
             ->when($request->has('user_id'), fn(Builder $query) => $query->where('user_id', $request->get('user_id')))
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
+
+        $posts = $request->user()->attachLikeStatus($posts);
 
         return view('particles.posts.list', [
             'posts'       => $posts,

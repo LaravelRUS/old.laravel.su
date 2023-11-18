@@ -16,6 +16,12 @@ class CommentsController extends Controller
      */
     public function show(Post $post, array $data = [])
     {
+        $post->load(['comments' => function ($query) {
+            $query->withCount('likers');
+        }]);
+
+        $post = auth()->user()->attachLikeStatus($post);
+
         return view('components.comments', array_merge($data, [
             'model' => $post,
         ]))

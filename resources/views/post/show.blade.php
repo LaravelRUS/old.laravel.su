@@ -20,13 +20,13 @@
 
                             <div class="avatar avatar-sm me-3">
                                 <a href="#!"> <img class="avatar-img rounded-circle"
-                                        src="https://xsgames.co/randomusers/avatar.php?g=male&amp;12" alt="">
+                                        src="{{ $post->author->avatar }}" alt="">
                                 </a>
                             </div>
 
                             <div class="small">
                                 <h6 class="mb-0 me-4">
-                                    <a href="#!" class="text-body-secondary text-decoration-none">Иван Сорокин</a>
+                                    <a href="#!" class="text-body-secondary text-decoration-none">{{ $post->author->name }}</a>
                                 </h6>
                             </div>
                         </div>
@@ -43,6 +43,24 @@
                         </div>
                     </div>
                     <!-- End Author  -->
+
+
+                    <div class="d-flex align-items-center mt-4">
+                        <x-like :model="$post"/>
+
+                        <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
+                           href="{{ route('post.show', $post) }}">
+                            <x-icon path="bs.chat"/>
+                            <span class="ms-2">{{ $post->comments_count }}</span>
+                        </a>
+
+                        <span class="d-flex align-items-center text-body-secondary text-decoration-none">
+                            <x-icon path="bs.clock"/>
+                            <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
+                        </span>
+
+                        <span class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>
+                    </div>
                 </div>
             </div>
         </div>

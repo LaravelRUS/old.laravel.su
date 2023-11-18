@@ -26,7 +26,7 @@
 
             <div class="bg-body-tertiary shadow-sm p-5 rounded">
                 <div class="row">
-                    <div class="col-12 col-xxl-8 mx-auto">
+                    <div class="col-12 col-xxl-8 mx-auto comments-wrapper">
 
 
                         @foreach($grouped_comments as $comment_id => $comments)

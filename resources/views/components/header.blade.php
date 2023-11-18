@@ -14,7 +14,7 @@
             @endisset
 
             @isset($actions)
-                <div class="d-grid gap-3 d-md-flex justify-content-md-start">
+                <div class="d-grid gap-3 d-md-flex justify-content-md-start align-items-baseline">
                     {!! $actions !!}
                 </div>
             @endisset

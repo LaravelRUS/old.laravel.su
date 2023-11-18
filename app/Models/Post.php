@@ -11,12 +11,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use Overtrue\LaravelLike\Traits\Likeable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
 class Post extends Model implements Feedable
 {
-    use HasFactory, HasComments, Taggable, Searchable;
+    use HasFactory, HasComments, Taggable, Searchable, Likeable;
 
     /**
      * @var string[]
@@ -172,6 +173,6 @@ class Post extends Model implements Feedable
      */
     public function estimatedReadingTime(int $wordsPerMinute = 100): int
     {
-        return ceil(Str::of($this->content)->wordCount() / $wordsPerMinute);
+        return ceil(Str::of($this->content)->matchAll("/\s+/")->count() / $wordsPerMinute);
     }
 }

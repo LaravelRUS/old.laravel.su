@@ -29,6 +29,7 @@ $container-max-widths: (
 $body-bg: #fafafa;
 $body-bg-dark: #171923;
 
+$body-emphasis-color-dark: #dee2e6;
 
 $body-tertiary-bg: #fff;
 $body-tertiary-bg-dark: #252a37;
@@ -43,7 +44,8 @@ $border-radius-xxl: 2rem !default;
 $border-radius-pill: 50rem !default;
 
 $font-family-sans-serif:
-    'Raleway',
+    //'Inter',
+    //'Raleway',
     system-ui,
     -apple-system,
     'Segoe UI',
@@ -93,10 +95,11 @@ $utilities: (
     @extend .text-break;
 
     h1 {
-        @extend .display-3;
+        @extend .display-5;
+        @extend .fw-bold;
+        @extend .text-body-emphasis;
+        @extend .mb-4;
         line-height: 1;
-        font-weight: 800;
-        margin: 0 0 2rem;
         text-wrap: balance!important;
     }
 
@@ -105,9 +108,25 @@ $utilities: (
         margin: 0 0 1rem;
     }
 
+    .h2,
+    .h3,
+    h2,
+    h3 {
+        margin-top: 1.5em;
+        margin-bottom: 1rem;
+    }
+
+    h4, h5, h6 {
+        margin-top: 1.25em;
+    }
+
+    table{
+        @extend .table;
+        @extend .table-bordered;
+    }
+
     p {
-        line-height: 2rem;
-        font-size: $font-size-lg;
+        line-height: 1.5rem;
         margin: 0 0 1.5rem;
     }
 
@@ -222,65 +241,72 @@ $utilities: (
     animation: fade-in 0.5s ease-in-out forwards;
 }
 
-.thread {
-    position: relative;
-    overflow: hidden;
-
-    &:before {
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 1rem;
-        content: "";
-        width: 2px;
-        height: 100%;
-        background-color: rgb(234, 154, 154);//rgba($primary, .3)
+.comments-wrapper {
+    textarea {
+        resize: none;
     }
 
-    .comment:last-child:before {
+    .thread {
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 1rem;
+            content: "";
+            width: 2px;
+            height: 100%;
+            background-color: rgba($gray-700, 0.2);
+        }
+
+        .comment:last-child:before {
             display: none;
-    }
-}
-
-.comment {
-    position: relative;
-    overflow: hidden;
-    &:before {
-        position: absolute;
-        display: block;
-        top: 3.5rem;
-        left: 1rem;
-        content: "";
-        width: 2px;
-        height: 100%;
-        background-color: rgb(234, 154, 154);//rgba($primary, .2)
-    }
-
-    /*
-    .comment-reply {
-        .comment {
-            :before{
-                position: relative;
-                display: block;
-                top: 57px;
-                content: "";
-                width: 23px;
-                height: 3px;
-                background-color: opacify($primary, 0.1);
-            }
-
-            :after{
-                position: absolute;
-                display: block;
-                top: 60px;
-                left: -36px;
-                content: "";
-                width: 3px;
-                height: calc(100% - 60px);
-                background-color: opacify($primary, 0.1);
-            }
         }
     }
 
-     */
+    .comment {
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            position: absolute;
+            display: block;
+            top: 3.5rem;
+            left: 1rem;
+            content: "";
+            width: 2px;
+            height: 100%;
+            background-color: rgba($gray-700, 0.2);
+        }
+
+        /*
+        .comment-reply {
+            .comment {
+                :before{
+                    position: relative;
+                    display: block;
+                    top: 57px;
+                    content: "";
+                    width: 23px;
+                    height: 3px;
+                    background-color: opacify($primary, 0.1);
+                }
+
+                :after{
+                    position: absolute;
+                    display: block;
+                    top: 60px;
+                    left: -36px;
+                    content: "";
+                    width: 3px;
+                    height: calc(100% - 60px);
+                    background-color: opacify($primary, 0.1);
+                }
+            }
+        }
+
+         */
+    }
 }

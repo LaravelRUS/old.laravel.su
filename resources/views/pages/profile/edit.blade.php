@@ -21,7 +21,6 @@
                         </div>
                         <div class="ms-sm-4 mt-sm-3 flex-grow-1">
                             <form action="{{ route('my.update') }}" method="post">
-                                @csrf
                                 <label for="name" class="form-label">Имя</label>
                                 <input class="form-control mb-5" type="text" value="{{ old('name', $user->name) }}"
                                        id="name" name="name">

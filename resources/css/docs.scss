@@ -77,6 +77,10 @@ main div {
         margin-bottom: 15px;
     }
 
+    h4, h5, h6 {
+        margin-top: 1.25em;
+    }
+
     p {
         font-size: 1em;
         line-height: 1.6em;
@@ -207,52 +211,56 @@ main {
      */
 
     .docs-blockquote-tip {
-        background: transparentize($info, 0.85) !important;
+        //background-color: #B4FFC5!important;
+        //background: transparentize($info, 0.85) !important;
         //border: 1px solid transparentize($info, 0.5);
         &:before {
-            background-color: transparentize($info, 0.65);
-            content: '💡️';
+            //background-color: transparentize($info, 0.65);
+            background-color: #8DF1A4;
+            background-image: url("/img/ui/info.svg");
+            content: '';
         }
     }
 
     .docs-blockquote-note {
         //border: 1px solid transparentize($danger, 0.5);
-        background: transparentize($danger, 0.90) !important;
+        //background: transparentize($danger, 0.90) !important;
         &:before {
-            background-color: transparentize($danger, 0.65);
-            content: '⚠️';
+            //background-color: transparentize($danger, 0.65);
+            background-color: #F1A58D;
+            background-image: url("/img/ui/warning.svg");
+            content: '';
         }
     }
 
     blockquote {
+        display: flex;
         //background: #F9F9FE;
         @extend .bg-body;
         @extend .shadow;
         border-radius: 0.8rem;
-        padding: 1.5em;
         position: relative;
         margin: 2em 0;
         @extend .text-wrap;
         @extend .text-break;
+        overflow: hidden;
+
+        p {
+            padding: 2rem 1.5rem;
+        }
 
         &:before {
-            position: absolute;
-            top: -0.5em;
-            left: -0.3em;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: solid 2.5rem #0000;
             background-color: $gray-500;
             color: #fff;
-            content: '!';
-            width: 1.5em;
-            height: 1.5em;
-            border-radius: 100%;
+            content: ' ';
+            @extend .col-xl-2;
             text-align: center;
             font-weight: 600;
             font-size: 1.5em;
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
         }
         > p {
             margin-bottom: 0;

@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ProfileCommentsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TurboStream;
+use App\Http\Controllers\LikeController;
 use App\Docs;
 
 /*
@@ -33,8 +34,8 @@ Route::view('/partners', 'pages.partners')->name('partners');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
-Route::view('/feed', 'post.list')
-    ->name('feed');
+
+Route::get('/feed', [PostController::class, 'feed'])->name('feed');
 
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
@@ -84,6 +85,26 @@ Route::middleware(['auth', TurboStream::class])
         Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
     });
 
+
+/*
+|--------------------------------------------------------------------------
+| User-Like Routes
+|--------------------------------------------------------------------------
+|
+| This section contains the web routes related to user likes.
+| These routes handle setting/unsetting likes for different entities.
+|
+*/
+
+Route::middleware('auth')
+    ->prefix('like')
+    ->group(function () {
+        Route::post('/post/{post}', [LikeController::class, 'togglePost'])
+            ->name('like.post');
+
+        Route::post('/comment/{comment}', [LikeController::class, 'toggleComment'])
+            ->name('like.comment');
+    });
 
 /*
 |--------------------------------------------------------------------------

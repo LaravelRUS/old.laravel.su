@@ -23,7 +23,7 @@
                     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
                         <li><a href="{{ route('feature') }}" class="nav-link px-3 link-body-emphasis">Возможности</a></li>
-                        <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Дискуссия</a></li>
+                        <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Трибуна</a></li>
                         <li><a href="{{ route('packages') }}" class="nav-link px-3 link-body-emphasis">Пакеты</a></li>
                         <li><a href="{{ route('resources') }}"
                                 class="nav-link px-3 link-body-emphasis position-relative">Ресурсы

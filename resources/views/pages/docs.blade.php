@@ -47,10 +47,10 @@
 
 
                     <div class="bg-secondary-subtle rounded-3 py-5 px-4 text-center mt-auto">
-                        <img src="/img/upgrade.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
+                        <img src="/img/sign.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
                         <h6>Посмотрите краткое видео о том запустить новое приложение!</h6>
                         <!-- Button -->
-                        <a class="btn w-100 btn-sm btn-primary" href="javascript: void(0);">Посмотреть онлайн</a>
+                        <a class="btn w-100 btn-sm btn-primary" href="{{ route('courses') }}">Посмотреть онлайн</a>
                     </div>
                 </div>
             </div>

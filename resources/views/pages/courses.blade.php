@@ -13,6 +13,123 @@
         </x-slot>
     </x-header>
 
+
+
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6 position-relative overflow-hidden">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8 position-relative">
+                            <h3 class="mb-1 fw-bold">Сертификат</h3>
+                            <p class="mb-3 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
+                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 position-relative overflow-hidden">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8 position-relative">
+                            <h3 class="mb-1 fw-bold">Лучше курсы</h3>
+                            <p class="mb-3 h5 fw-light lead">Запишитесь сейчас на самые популярные курсы.</p>
+                            <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+
+
+
+        <div class="row align-items-md-stretch g-5 rounded-3 overflow-hidden">
+            <div class="col-lg-8">
+                <div class="h-100 bg-body-tertiary rounded">
+                <div class="ratio ratio-16x9 rounded-top overflow-hidden">
+                    <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video"
+                            allowfullscreen></iframe>
+                </div>
+
+                    <div class="p-5">
+                        <h2 class="mb-3">Начните работать с Laravel</h2>
+                        <p class="mb-3">
+                            Впервые здесь? Посмотрите наше краткое вводное видео о том, как загрузить и запустить новое
+                            приложение Laravel всего за две минуты!
+                        </p>
+
+                        <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                            Посмотрите вступление
+                            <x-icon path="bs.arrow-right" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-2 d-flex align-items-baseline mx-3">
+                    Начинаем работать
+                    <span class="ms-auto">11 видео</span>
+                </div>
+
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline active"
+                           aria-current="true">
+                            Установка
+                            <span class="ms-auto">3:34</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Действия
+                            <span class="ms-auto">5:53</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Свойства
+                            <span class="ms-auto">7:40</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Маршрутизация
+                            <span class="ms-auto">4:22</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Прослойки
+                            <span class="ms-auto">6:15</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Контроллеры
+                            <span class="ms-auto">9:05</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Запросы и ответы
+                            <span class="ms-auto">8:30</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Представления
+                            <span class="ms-auto">5:45</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Шаблонизация Blade
+                            <span class="ms-auto">4:50</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Миграции Базы Данных
+                            <span class="ms-auto">7:25</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                            Посев Данных
+                            <span class="ms-auto">6:40</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action disabled text-center opacity-50" aria-disabled="true">Скоро</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container py-5">
         <div class="row align-items-md-stretch g-0 rounded-3 overflow-hidden">
             <div class="col-md-6">

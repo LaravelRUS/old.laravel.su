@@ -221,7 +221,7 @@
                     <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Пакеты сообщества</span>
 
                     <!-- Heading -->
-                    <h2 class="display-3 mb-3 lh-1">
+                    <h2 class="display-5 fw-semibold mb-4">
                         Великолепные дополнения
                     </h2>
 
