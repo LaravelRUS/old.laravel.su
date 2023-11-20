@@ -10,7 +10,7 @@ export default defineConfig({
             refresh: true,
         }),
         prismjsPlugin({
-            languages: ["php", "php-extras", "javascript", "sql", "shell", "bash", "markup", "html", "clike", "phpdoc"],
+            languages: ["php", "php-extras", "javascript", "json", "sql", "shell", "bash", "markup", "html", "clike", "phpdoc"],
             plugins: [],
             //theme: "twilight",
             css: false,

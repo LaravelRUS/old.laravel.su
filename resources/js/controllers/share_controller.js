@@ -20,18 +20,24 @@ export default class extends Controller {
     dialog(event) {
         event.preventDefault();
 
-        navigator
-            .share({
-                title: this.TitleValue,
-                url: this.UrlValue,
-            })
-            .then(() => {
-                console.log('Thanks for sharing!');
-            })
-            .catch(()=>{
-                navigator.clipboard.writeText(this.UrlValue);
-                console.error('Error sharing!');
-            });
+        try {
+            navigator
+                .share({
+                    title: this.titleValue,
+                    url: this.urlValue,
+                })
+                .then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                .catch(() => {
+                    navigator.clipboard.writeText(this.urlValue);
+                    console.error('Error sharing!');
+                });
+        }catch (e) {
+            console.error('Error sharing!');
+            console.warn(e);
+            navigator.clipboard.writeText(this.urlValue);
+        }
 
         return false;
     }

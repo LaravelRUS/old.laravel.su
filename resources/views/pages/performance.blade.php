@@ -229,4 +229,64 @@
         </div>
     </div>
 
+
+    <x-header image="/img/bird.svg">
+        <x-slot:sup>Лиды</x-slot>
+        <x-slot:title>Получайте более квалифицированных потенциальных клиентов</x-slot>
+
+        <x-slot:description>
+            Став партнером или избранным партнером, ваша компания будет занимать видное место на сайте, что позволит потенциальным клиентам легко найти вашу компанию.
+        </x-slot>
+    </x-header>
+
+    <x-header image="/img/bird.svg">
+        <x-slot:sup>Лиды</x-slot>
+        <x-slot:title>Повысьте авторитет вашего бизнеса</x-slot>
+
+        <x-slot:description>
+            Авторизованные партнеры Laravel пользуются значительным повышением доверия, позволяя вашим клиентам
+            чувствовать себя комфортно, поскольку они работают с авторитетным профессиональным агентством
+            разработки Laravel, имеющим прямой доступ к основной команде разработчиков Laravel.
+        </x-slot>
+    </x-header>
+
+
+    <x-header image="/img/bird.svg">
+        <x-slot:sup>Доверие</x-slot>
+        <x-slot:title>Подключитесь к современному подходу для PHP-проектов</x-slot>
+
+        <x-slot:description>
+            Laravel — лучший выбор для разработки современных приложений PHP и предоставляет решения для
+            создания надежных платформ и API. Наша обширная документация, обучающие видеоролики и инструменты
+            разработки произвели революцию в разработке PHP.
+        </x-slot>
+    </x-header>
+
+    <div class="container">
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <h3 class="fs-2 text-body-emphasis">150 млн+</h3>
+                <p>Установка фреймворка Laravel</p>
+            </div>
+            <div class="feature col">
+                <h3 class="fs-2 text-body-emphasis">150 млн+</h3>
+                <p>Установка фреймворка Laravel</p>
+            </div>
+            <div class="feature col">
+                <h3 class="fs-2 text-body-emphasis">150 млн+</h3>
+                <p>Установка фреймворка Laravel</p>
+            </div>
+        </div>
+    </div>
+
+    <x-header image="/img/bird.svg">
+        <x-slot:sup>Доверие</x-slot>
+        <x-slot:title>Как партнеры Laravel могут помочь</x-slot>
+
+        <x-slot:description>
+            Партнеры Laravel могут помочь с широким спектром проектов в области дизайна, разработки и маркетинга, в том
+            числе:
+        </x-slot>
+    </x-header>
+
 @endsection

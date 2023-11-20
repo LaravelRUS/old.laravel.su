@@ -30,7 +30,6 @@
 
                         <div class="d-flex flex-column my-3  ms-sm-auto">
 
-
                             @if ($user->id === Auth::user()?->id)
                                 <div class="d-flex mb-3 align-items-start">
                                     <x-logout class="btn btn-link" formId="sign-out" title="Выйти">
@@ -47,10 +46,7 @@
                                             Создать запись
                                         </a>
                                     </div>
-
                                 </div>
-
-
                             @else
                                 <a href="https://github.com/{{$user->nickname}}" class="d-block">
                                     <x-icon path="bs.github" width="2em" height="2em"/>

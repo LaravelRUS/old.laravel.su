@@ -28,14 +28,14 @@
 
                                 <label for="about" class="form-label ">О себе</label>
 
-                                <div data-controller="editor">
-                                    <div id="editorjs"></div>
-                                </div>
                                 <div class="mb-5">
                                     <textarea
                                         data-controller="textarea-autogrow"
                                         data-textarea-autogrow-resize-debounce-delay-value="500"
-                                        id="about" name="about" class="form-control p-5">{{ old('about', $user->about) }}</textarea>
+                                        rows="6"
+                                        id="about"
+                                        name="about"
+                                        class="form-control p-5">{{ old('about', $user->about) }}</textarea>
                                     <x-error field="about" class="invalid-feedback d-block mt-3"/>
                                 </div>
 
