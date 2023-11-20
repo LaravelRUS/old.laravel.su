@@ -32,15 +32,25 @@
 
 
                             @if ($isMyProfile)
-                                <div class="d-flex">
+                                <div class="d-flex mb-3 align-items-start">
                                     <x-logout class="btn btn-link" formId="sign-out" title="Выйти">
                                         <x-icon path="bs.door-closed"/>
                                     </x-logout>
-                                    <a href="{{route('my.edit')}}" class="btn btn-danger">
-                                        <x-icon path="bs.pencil-fill" class="pe-1"/>
-                                        Редактировать
-                                    </a>
+
+                                    <div class="d-inline-flex flex-column">
+                                        <a href="{{route('my.edit')}}" class="btn btn-danger mb-3">
+                                            <x-icon path="bs.pencil-fill" class="pe-1"/>
+                                            Редактировать
+                                        </a>
+                                        <a href="{{ route('post.edit') }}" class="btn btn-secondary d-inline-flex align-items-center">
+                                            <x-icon path="bs.plus" class="pe-1"/>
+                                            Создать запись
+                                        </a>
+                                    </div>
+
                                 </div>
+
+
                             @else
                                 <a href="https://github.com/{{$user->nickname}}" class="d-block">
                                     <x-icon path="bs.github" width="2em" height="2em"/>

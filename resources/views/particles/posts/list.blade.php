@@ -17,7 +17,7 @@
         </div>
 @else
     @foreach ($posts as $post)
-        <div class="bg-body-tertiary mb-4 px-5 py-4 rounded hotwire-frame">
+        <div id="post_{{ $post->getKey() }}" class="bg-body-tertiary mb-4 px-5 py-4 rounded hotwire-frame">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
                     <div class="avatar avatar-sm me-3">
@@ -48,10 +48,8 @@
 
                             <li>
                                 <a class="dropdown-item" data-turbo-method="delete"
-                                   href="{{route('post.delete', request()->collect()->merge([
-                                                    'post' => $post,
-                                                    //'isProfile' => $isProfile
-                                                    ])->all())}}">Удалить</a>
+                                   data-turbo-confirm="Вы уверены, что хотите удалить статью?"
+                                   href="{{route('post.delete', $post)}}">Удалить</a>
                             </li>
                         @endcan
                     </ul>

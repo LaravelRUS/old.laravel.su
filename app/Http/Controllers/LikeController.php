@@ -22,7 +22,7 @@ class LikeController
         return turbo_stream()
             ->target(dom_id($post, 'like'))
             ->action('replace')
-            ->view('particles.streams.like', ['model' => $post, 'route' => 'like.post']);
+            ->view('particles.streams.like', ['model' => $post]);
     }
 
     /**
@@ -38,6 +38,6 @@ class LikeController
         return turbo_stream()
             ->target(dom_id($comment, 'like'))
             ->action('replace')
-            ->view('particles.streams.like', ['model' => $comment, 'route' => 'like.comment']);
+            ->view('particles.streams.like', ['model' => $comment]);
     }
 }

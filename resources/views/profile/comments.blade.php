@@ -1,4 +1,4 @@
-@extends('pages.profile.base')
+@extends('profile.base')
 
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto mb-3">

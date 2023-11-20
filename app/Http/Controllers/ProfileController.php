@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +36,7 @@ class ProfileController extends Controller
 
         $posts = $request->user()->attachLikeStatus($posts);
 
-        return view('pages.profile.profile', [
+        return view('profile.profile', [
             'user'        => $user,
             'isMyProfile' => $isMyAccount,
             'posts'       => $posts,
@@ -52,16 +51,11 @@ class ProfileController extends Controller
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
         $comments->withPath('/profile/'.$user->nickname.'/comments');
-
-        if ($request->has('cursor')  && $comments->isEmpty())
-        {
-            return $comments->previousPageUrl() ? redirect($comments->previousPageUrl()) :
-                redirect()->route('profile.comments',$user);
-        }
+        $comments = $request->user()->attachLikeStatus($comments);
 
         $isMyAccount = $user->id === Auth::user()?->id;
         return view(
-            'pages.profile.comments',
+            'profile.comments',
             array_merge($data, [
                 'comments' => $comments,
                 'user'     => $user,
@@ -74,7 +68,7 @@ class ProfileController extends Controller
     public function awards(User $user, Request $request)
     {
         $isMyAccount = $user->id === $request->user()?->id;
-        return view('pages.profile.awards', [
+        return view('profile.awards', [
             'user'        => $user,
             'isMyProfile' => $isMyAccount,
             'active'      => 'awards'
@@ -88,7 +82,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('pages.profile.edit', [
+        return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
