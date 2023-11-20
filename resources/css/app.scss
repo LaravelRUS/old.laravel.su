@@ -90,6 +90,10 @@ $utilities: (
 @import 'docs';
 @import 'ticket';
 
+textarea {
+    resize: none;
+}
+
 
 .post {
     @extend .text-break;
@@ -242,9 +246,6 @@ $utilities: (
 }
 
 .comments-wrapper {
-    textarea {
-        resize: none;
-    }
 
     .thread {
         position: relative;

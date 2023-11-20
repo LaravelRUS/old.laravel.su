@@ -21,6 +21,7 @@
     "dependencies": {
         "@editorjs/editorjs": "^2.28.2",
         "stimulus-textarea-autogrow": "^4.1.0",
+        "textarea-editor": "^2.1.1",
         "vite-plugin-prismjs": "^0.0.8"
     }
 }

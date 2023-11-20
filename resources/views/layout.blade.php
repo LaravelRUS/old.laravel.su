@@ -116,16 +116,22 @@
                         </div>
 
                         <div class="col-6 col-md-auto">
-                            <p class="fw-normal text-white">Обучающие материалы</p>
+                            <p class="fw-normal text-white">Ресурсы</p>
                             <div class="navbar navbar-dark">
                                 <ul class="nav flex-column navbar-nav">
                                     <li class="nav-item mb-2">
-                                        <a href="{{ asset('https://github.com/laravelRus') }}" class="nav-link p-0">Исходный
-                                            код</a>
+                                        <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">Исходный код</a>
+                                    </li>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">Сообщить о проблеме</a>
                                     </li>
                                     <li class="nav-item mb-2">
                                         <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
                                             class="nav-link p-0">Правила</a>
+                                    </li>
+                                    <li class="nav-item mb-2">
+                                        <a href="{{ asset('/rss/feed') }}"
+                                           class="nav-link p-0">RSS</a>
                                     </li>
                                     <li class="nav-item mb-2">
                                         <a href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}"
