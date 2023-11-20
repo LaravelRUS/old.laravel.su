@@ -26,8 +26,6 @@ class ProfileController extends Controller
      */
     public function show(User $user, Request $request)
     {
-        $isMyAccount = $user->id === $request->user()?->id;
-
         $posts = $user->posts()
             ->withCount('comments')
             ->withCount('likers')
@@ -38,7 +36,6 @@ class ProfileController extends Controller
 
         return view('profile.profile', [
             'user'        => $user,
-            'isMyProfile' => $isMyAccount,
             'posts'       => $posts,
             'active'      => 'posts'
         ]);
@@ -53,24 +50,20 @@ class ProfileController extends Controller
         $comments->withPath('/profile/'.$user->nickname.'/comments');
         $comments = $request->user()->attachLikeStatus($comments);
 
-        $isMyAccount = $user->id === Auth::user()?->id;
         return view(
             'profile.comments',
             array_merge($data, [
                 'comments' => $comments,
                 'user'     => $user,
                 'active'   => 'comments',
-                'isMyProfile' => $isMyAccount
             ])
         );
     }
 
-    public function awards(User $user, Request $request)
+    public function awards(User $user)
     {
-        $isMyAccount = $user->id === $request->user()?->id;
         return view('profile.awards', [
             'user'        => $user,
-            'isMyProfile' => $isMyAccount,
             'active'      => 'awards'
         ]);
     }

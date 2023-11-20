@@ -3,7 +3,7 @@
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto mb-3">
         @if($comments->isEmpty())
-            @if ($isMyProfile)
+            @if ($user->id === Auth::user()?->id)
                 <div class="bg-body-tertiary rounded p-5 rounded">
                     <div class="p-5">
                         <div class="text-center mb-3">
@@ -26,13 +26,7 @@
         @else
             <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-3">
                 @foreach($comments as $comment)
-                    <x-comment :comment="$comment">
-                        <x-slot:content>
-                            <p class="mb-1 text-wrap text-break">{!! $comment->prettyComment() !!}</p>
-                        </x-slot:content>
-                    </x-comment>
-
-
+                    @include('comments.show')
                 @endforeach
             </div>
             {{ $comments->links() }}

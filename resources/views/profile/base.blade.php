@@ -31,7 +31,7 @@
                         <div class="d-flex flex-column my-3  ms-sm-auto">
 
 
-                            @if ($isMyProfile)
+                            @if ($user->id === Auth::user()?->id)
                                 <div class="d-flex mb-3 align-items-start">
                                     <x-logout class="btn btn-link" formId="sign-out" title="Выйти">
                                         <x-icon path="bs.door-closed"/>
