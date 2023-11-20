@@ -50,7 +50,7 @@
                                 <a class="dropdown-item" data-turbo-method="delete"
                                    href="{{route('post.delete', request()->collect()->merge([
                                                     'post' => $post,
-                                                    'isProfile' => $isProfile
+                                                    //'isProfile' => $isProfile
                                                     ])->all())}}">Удалить</a>
                             </li>
                         @endcan
@@ -69,7 +69,7 @@
 
             <div class="d-flex align-items-center mt-4">
 
-                <x-like :model="$post" route="like.post" />
+                <x-like :model="$post"/>
 
                 <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
                    href="{{ route('post.show', $post) }}">

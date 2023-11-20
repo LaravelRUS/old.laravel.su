@@ -62,14 +62,14 @@
             <div class="bg-body-tertiary  overflow-hidden px-5 py-3">
                 <div class="nav nav-underline">
                     <li class="nav-item me-2">
-                        <a class="nav-link @if($active == 'posts') active @endif"
+                        <a class="nav-link {{ active('profile') }}"
                            data-turbo-frame="navigation"
-                           href="{{route('profile',$user)}}"
+                           href="{{ route('profile',$user) }}"
 
                         >Статьи</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link @if($active == 'comments') active @endif"
+                        <a class="nav-link {{ active('profile.comments') }}"
                            data-turbo-frame="navigation"
                            href="{{route('profile.comments',$user)}}"
 

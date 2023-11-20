@@ -33,14 +33,9 @@ class ProfileController extends Controller
             ->withCount('comments')
             ->withCount('likers')
             ->orderBy('id', 'desc')
-            ->CursorPaginate(2);
-        $posts = $request->user()->attachLikeStatus($posts);
+            ->cursorPaginate(2);
 
-        if ($request->has('cursor')  && $posts->isEmpty())
-        {
-            return $posts->previousPageUrl() ? redirect($posts->previousPageUrl()) :
-                redirect()->route('profile',$user);
-        }
+        $posts = $request->user()->attachLikeStatus($posts);
 
         return view('pages.profile.profile', [
             'user'        => $user,

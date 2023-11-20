@@ -67,7 +67,7 @@
 
                 <div class="d-flex align-items-center">
 
-                    <x-like :model="$comment" route="like.comment" />
+                    <x-like :model="$comment"/>
 
                     @can('reply', $comment)
                         <a href="{{ route('comments.show.reply', $comment) }}" class="btn btn-link link-body-emphasis btn-sm"
