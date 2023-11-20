@@ -52,6 +52,14 @@
                                    href="{{route('post.delete', $post)}}">Удалить</a>
                             </li>
                         @endcan
+                            <li>
+                                <button class="dropdown-item"
+                                      data-controller="share"
+                                      data-share-title-value="{{$post->title}}"
+                                      data-share-url-value="{{ route('post.show', $post) }}"
+                                      data-action="click->share#dialog"
+                                >Поделиться</button>
+                            </li>
                     </ul>
                 </div>
             </div>

@@ -184,6 +184,9 @@ Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileCon
 Route::get('/profile/{user:nickname}/awards',[\App\Http\Controllers\ProfileController::class,'awards'])
     ->name('profile.awards');
 
+Route::get('/profile/{user:nickname}/events',[\App\Http\Controllers\ProfileController::class,'events'])
+    ->name('profile.events');
+
 
 /*
 |--------------------------------------------------------------------------

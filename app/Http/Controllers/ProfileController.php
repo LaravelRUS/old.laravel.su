@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Casts\PostTypeEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,20 +27,32 @@ class ProfileController extends Controller
      */
     public function show(User $user, Request $request)
     {
-        $posts = $user->posts()
+        return view('profile.profile', [
+            'user'        => $user,
+            'posts'       => $this->getPosts($user, PostTypeEnum::Article, $request->user()),
+        ]);
+    }
+
+    private function getPosts(User $owner, PostTypeEnum $type, User $user){
+        $posts =  $owner->posts()
+            ->type($type->value)
             ->withCount('comments')
             ->withCount('likers')
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
+        return $user->attachLikeStatus($posts);
+    }
 
-        $posts = $request->user()->attachLikeStatus($posts);
-
-        return view('profile.profile', [
+    public function events(User $user, Request $request)
+    {
+        return view('profile.events', [
             'user'        => $user,
-            'posts'       => $posts,
-            'active'      => 'posts'
+            'posts'       => $this->getPosts($user, PostTypeEnum::Event, $request->user()),
         ]);
     }
+
+
+
 
     public function comments(Request $request, User $user, array $data = [])
     {

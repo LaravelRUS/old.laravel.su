@@ -1,15 +1,12 @@
-@extends('layout')
+@extends('post.edit.base')
 
-@section('content')
-    <div class="container my-5">
-        <div class="row">
-            <div class="bg-body-tertiary p-5 rounded">
-                <div class="col-xxl-8 mx-auto">
+@section('form')
 
-                    <div class="post">
-                        <h1>{{ $title }}</h1>
-                    </div>
-                    <form action="{{ route('post.update', $post) }}" method="post">
+    {{-- текст для проверки переключения типов, т.к. сейчас в шаблонах формы одинаковые --}}
+    Событие
+    <form action="{{ route('post.update', $post) }}" method="post">
+
+
                         <div class="bg-secondary-subtle">
                             <textarea data-controller="textarea-autogrow"
                                       data-textarea-autogrow-resize-debounce-delay-value="500"
@@ -22,12 +19,11 @@
                                       name="content" placeholder="Контент" rows="10"
                                       class="form-control mb-5 border-0 p-5 rounded-0">{{ old('content', $post->content) }}</textarea>
                         </div>
+                        @if(!$isEditing)
+                            <input type="hidden" name="type" id="type" value="{{$post->type->value}}">
+                       @endif
 
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                     </form>
 
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
