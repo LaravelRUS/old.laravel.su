@@ -106,6 +106,9 @@ class PostController extends Controller
         $this->authorize('isOwner', $post);
 
         $post->delete();
+        if($request->boolean('isProfile')){
+            return redirect()->back();
+        }
         $this->action = "replace";
 
         //сюда поставить уведомление
@@ -144,6 +147,7 @@ class PostController extends Controller
                 'posts'       => $posts,
                 'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
                 'action'      => $this->action,
+                'isProfile'  => 'false'
             ])),
 
             turbo_stream()->replace('post-more', view('post.pagination', [

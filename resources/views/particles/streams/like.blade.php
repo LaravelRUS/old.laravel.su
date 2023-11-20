@@ -1,1 +1,1 @@
-<x-like :model="$model"/>
+<x-like :model="$model" :route="$route"/>
