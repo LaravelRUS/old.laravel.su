@@ -56,7 +56,10 @@ class CommentsController extends Controller
             'approved' => true,
         ])->save();
 
-       return $this->show($model);
+        return turbo_stream()
+            ->target('comments-wrapper')
+            ->action('append')
+            ->view('comments._comment', ['comment' => $comment]);
     }
 
     /**
@@ -66,9 +69,10 @@ class CommentsController extends Controller
      */
     public function showReply(Comment $comment)
     {
-        return $this->show($comment->commentable, [
-            'reply' => $comment->getKey(),
-        ]);
+        return turbo_stream()->replace(
+            dom_id($comment),
+            view('comments.reply', ['comment' => $comment])
+        );
     }
 
     /**
@@ -78,9 +82,10 @@ class CommentsController extends Controller
      */
     public function showEdit(Comment $comment)
     {
-        return $this->show($comment->commentable, [
-            'edit'  => $comment->getKey(),
-        ]);
+        return turbo_stream()->replace(
+            dom_id($comment),
+            view('comments.edit', ['comment' => $comment])
+        );
     }
 
     /**
@@ -107,7 +112,10 @@ class CommentsController extends Controller
         $reply->parent()->associate($comment);
         $reply->save();
 
-        return $this->show($comment->commentable);
+        return turbo_stream([
+            turbo_stream()->append(@dom_id($comment, 'thread'), view('comments._comment', ['comment' => $reply])),
+            turbo_stream()->update($comment),
+        ]);
     }
 
     /**
@@ -128,7 +136,7 @@ class CommentsController extends Controller
             'comment' => $request->message,
         ]);
 
-        return $this->show($comment->commentable);
+        return turbo_stream()->replace($comment);
     }
 
     /**
@@ -140,10 +148,14 @@ class CommentsController extends Controller
     {
         $this->authorize('delete', $comment);
 
-        $comment->children()->exists()
-            ? $comment->delete()
-            : $comment->forceDelete();
+        if ($comment->children()->exists()) {
+            $comment->delete();
 
-        return $this->show($comment->commentable);
+            return turbo_stream()->update($comment);
+        }
+
+        $comment->forceDelete();
+
+        return turbo_stream()->remove($comment);
     }
 }

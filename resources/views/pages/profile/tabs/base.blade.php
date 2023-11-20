@@ -5,12 +5,14 @@
                 <div class="nav nav-underline">
                     <li class="nav-item me-2">
                         <a class="nav-link @if($active == 'posts') active @endif"
+                           data-turbo-frame="navigation"
                            href="{{route('profile.posts',$user)}}"
                            data-turbo-frame="tabs-frame"
                         >Статьи</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link @if($active == 'comments') active @endif"
+                           data-turbo-frame="navigation"
                            href="{{route('profile.comments',$user)}}"
                            data-turbo-frame="tabs-frame"
                         >Комментариии</a>

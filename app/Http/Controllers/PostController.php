@@ -130,11 +130,26 @@ class PostController extends Controller
 
         $posts = $request->user()->attachLikeStatus($posts);
 
+        /*
         return view('particles.posts.list', [
             'posts'       => $posts,
             'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
             'action'      => $this->action
         ])->fragmentsIf(!$request->isMethodSafe());
+        */
+
+        return turbo_stream([
+            turbo_stream()->removeAll('.post-placeholder'),
+            turbo_stream()->append('posts-frame', view('particles.posts.list', [
+                'posts'       => $posts,
+                'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
+                'action'      => $this->action,
+            ])),
+
+            turbo_stream()->replace('post-more', view('post.pagination', [
+                'posts'       => $posts,
+            ])),
+        ]);
     }
 
 }

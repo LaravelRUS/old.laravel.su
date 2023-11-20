@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <x-header image="/img/sign.svg">
+    <x-header image="/img/porridge.svg">
         <x-slot:sup>Остаёмся на связи</x-slot>
         <x-slot:title>Статус перевода Laravel {{ $current }}</x-slot>
 

@@ -7,7 +7,6 @@
                 <!-- Cover image -->
                 <div class="rounded-top"
                     style="height:200px;background-image:url(https://images.unsplash.com/photo-1698434156086-918aa526b531?auto=format&fit=crop&q=80&w=2340&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-position: center; background-size: cover; background-repeat: no-repeat;">
-
                 </div>
                 <!-- Card body START -->
                 <div class="px-5">
@@ -59,7 +58,9 @@
 
         </div>
 
-        <turbo-frame id="tabs-frame" src="{{route('profile.posts',$user)}}" target="_top"/>
+        <turbo-frame id="tabs-frame" src="{{ route('profile.posts',$user) }}" target="_top"/>
+
+
     </div>
 
 @endsection

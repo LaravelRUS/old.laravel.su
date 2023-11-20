@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <x-header image="/img/sign.svg">
+    <x-header image="/img/tablecloth.svg">
         <x-slot:sup>Пакеты сообщества</x-slot>
         <x-slot:title>Великолепные дополнения</x-slot>
 
@@ -11,6 +11,7 @@
             Наша цель — помочь русскоязычному сообществу найти новые и полезные пакеты Laravel в одном месте.
         </x-slot>
 
+            {{--
         <x-slot:content>
             <div class="col-6 mx-auto">
                 <img src="/img/gusli.svg" class="img-fluid">
@@ -37,9 +38,10 @@ return response()->json([
 </code></pre>
             </div>
         </x-slot:content>
+--}}
 
         <x-slot:actions>
-            <a href="#" class="btn btn-primary btn-lg px-4">Предложить новый пакет</a>
+            <a href="#" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
             <a href="#"
                class="link-body-emphasis text-decoration-none link-icon-animation">Критерии
                 <x-icon path="bs.arrow-right" />

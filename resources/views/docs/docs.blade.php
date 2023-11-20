@@ -45,8 +45,7 @@
                         @endforeach
                     </ul>
 
-
-                    <div class="bg-secondary-subtle rounded-3 py-5 px-4 text-center mt-auto">
+                    <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto">
                         <img src="/img/sign.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
                         <h6>Посмотрите краткое видео о том запустить новое приложение!</h6>
                         <!-- Button -->

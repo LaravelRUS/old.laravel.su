@@ -4,7 +4,6 @@
         <div class="avatar avatar-sm me-3">
                 <img class="avatar-img rounded-circle"
                      src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
-
         </div>
 
         <div class="w-100">

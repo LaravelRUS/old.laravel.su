@@ -27,7 +27,6 @@
                         </div>
                     @endif
                 @else
-
                     <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-3">
                         @foreach($comments as $comment)
                             @include('pages.profile.tabs.particles.comments.comment', [
@@ -37,7 +36,6 @@
                         @endforeach
                     </div>
                     {{ $comments->links() }}
-
                 @endif
             </div>
 

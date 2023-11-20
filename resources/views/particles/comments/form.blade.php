@@ -17,7 +17,6 @@
                     rows="3"
                     placeholder="Написать комментарий..."></textarea>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
-                    <button type="button" class="btn btn-link">Отменить</button>
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </div>
             </div>

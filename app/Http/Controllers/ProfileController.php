@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index(Request $request)
+    {
+        return $this->show($request->user(), $request);
+    }
+
+    /**
      * @param \App\Models\User         $user
      * @param \Illuminate\Http\Request $request
      *
@@ -30,6 +40,11 @@ class ProfileController extends Controller
         ]);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
+     */
     public function edit(Request $request)
     {
         return view('pages.profile.edit', [

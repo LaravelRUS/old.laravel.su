@@ -21,7 +21,7 @@ class DocsController extends Controller
     {
         $docs = new Docs($version, $page);
 
-        return $docs->view('pages.docs');
+        return $docs->view('docs.docs');
     }
 
     /**
@@ -35,7 +35,7 @@ class DocsController extends Controller
             ->orderByDesc('behind')
             ->get();
 
-        return view('pages.status', [
+        return view('docs.status', [
             'current'   => $version,
             'documents' => $documents,
         ]);

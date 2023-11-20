@@ -21,7 +21,7 @@
             </div>
 
             @php
-                $grouped_comments = $comments->sortBy('created_at')->groupBy('child_id');
+                $grouped_comments = $comments->sortBy([['likers_count', 'desc'], 'created_at'])->groupBy('child_id');
             @endphp
 
             <div class="bg-body-tertiary shadow-sm p-5 rounded">
@@ -29,21 +29,22 @@
                     <div class="col-12 col-xxl-8 mx-auto comments-wrapper">
 
 
-                        @foreach($grouped_comments as $comment_id => $comments)
-                            {{-- Process parent nodes --}}
-                            @if($comment_id == '')
-                                @foreach($comments as $comment)
-                                    @include('particles.comments.comment', [
-                                        'comment' => $comment,
-                                        'grouped_comments' => $grouped_comments,
-                                        'maxIndentationLevel' => $maxIndentationLevel ?? 3,
-                                        'reply' => $reply ?? null,
-                                        'edit' => $edit ?? null,
-                                    ])
-                                @endforeach
-                            @endif
-                        @endforeach
-
+                        <div id="comments-wrapper">
+                            @foreach($grouped_comments as $comment_id => $comments)
+                                {{-- Process parent nodes --}}
+                                @if($comment_id == '')
+                                    @foreach($comments as $comment)
+                                        @include('comments._comment', [
+                                            'comment' => $comment,
+                                            'grouped_comments' => $grouped_comments,
+                                            'maxIndentationLevel' => $maxIndentationLevel ?? 3,
+                                            'reply' => $reply ?? null,
+                                            'edit' => $edit ?? null,
+                                        ])
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        </div>
 
                         @include('particles.comments.form', ['model' => $model])
                     </div>

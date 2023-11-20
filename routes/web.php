@@ -23,14 +23,12 @@ use App\Docs;
 
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
-Route::view('/post', 'pages.post')->name('post');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/meets', 'pages.meets')->name('meets');
 Route::view('/performance', 'pages.performance')->name('performance');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/packages', 'pages.packages')->name('packages');
-Route::view('/partners', 'pages.partners')->name('partners');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
@@ -66,7 +64,7 @@ Route::middleware(['auth'])
     });
 
 
-Route::middleware(['auth', TurboStream::class])
+Route::middleware(['auth'])
     ->prefix('comments')
     ->group(function () {
         Route::post('/', [CommentsController::class, 'store'])
@@ -130,7 +128,7 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 | The routes handle redirects, display documentation pages, and provide related data.
 |
 */
-Route::view('/documentation-contribution-guide', 'pages.documentation-contribution-guide')
+Route::view('/documentation-contribution-guide', 'docs.contribution')
     ->name('documentation-contribution-guide');
 
 Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
