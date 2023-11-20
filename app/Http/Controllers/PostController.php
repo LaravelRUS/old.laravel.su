@@ -106,11 +106,9 @@ class PostController extends Controller
         $this->authorize('isOwner', $post);
 
         $post->delete();
-        $this->action = "replace";
-
         //сюда поставить уведомление
 
-        return $this->list($request);//пока сюда
+        return turbo_stream()->remove($post);
     }
 
 
@@ -142,8 +140,6 @@ class PostController extends Controller
             turbo_stream()->removeAll('.post-placeholder'),
             turbo_stream()->append('posts-frame', view('particles.posts.list', [
                 'posts'       => $posts,
-                'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
-                'action'      => $this->action,
             ])),
 
             turbo_stream()->replace('post-more', view('post.pagination', [

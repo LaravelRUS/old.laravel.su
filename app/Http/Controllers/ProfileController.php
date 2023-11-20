@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -22,21 +22,49 @@ class ProfileController extends Controller
      * @param \App\Models\User         $user
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function show(User $user, Request $request)
     {
-        $isMyAccount = $user->id === $request->user()?->id;
-
-        $posts = $user->load('posts')
+        $posts = $user->posts()
+            ->withCount('comments')
+            ->withCount('likers')
             ->orderBy('id', 'desc')
-            ->simplePaginate(5);
+            ->cursorPaginate(2);
 
-        return view('pages.profile.profile', [
+        $posts = $request->user()->attachLikeStatus($posts);
+
+        return view('profile.profile', [
             'user'        => $user,
-            'isMyAccount' => $isMyAccount,
             'posts'       => $posts,
             'active'      => 'posts'
+        ]);
+    }
+
+    public function comments(Request $request, User $user, array $data = [])
+    {
+        $comments =  $user->comments()
+            ->withCount('likers')
+            ->orderBy('id', 'desc')
+            ->cursorPaginate(2);
+        $comments->withPath('/profile/'.$user->nickname.'/comments');
+        $comments = $request->user()->attachLikeStatus($comments);
+
+        return view(
+            'profile.comments',
+            array_merge($data, [
+                'comments' => $comments,
+                'user'     => $user,
+                'active'   => 'comments',
+            ])
+        );
+    }
+
+    public function awards(User $user)
+    {
+        return view('profile.awards', [
+            'user'        => $user,
+            'active'      => 'awards'
         ]);
     }
 
@@ -47,7 +75,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('pages.profile.edit', [
+        return view('profile.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -74,28 +102,4 @@ class ProfileController extends Controller
         return $this->edit($request)->fragment('profile');
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return string
-     */
-    public function postTab(Request $request, User $user)
-    {
-        return view('pages.profile.tabs.posts-tab', [
-            'user'        => $user,
-            'active'      => 'posts'
-        ])->fragmentsIf(!$request->isMethodSafe());
-    }
-
-    public function commentsTab(User $user, array $data = [])
-    {
-        return view(
-            'pages.profile.tabs.comments-tab',
-            array_merge($data, [
-                'user'   => $user,
-                'active' => 'comments'
-            ])
-        )
-            ->fragmentIf(!request()->isMethod('GET'), 'comments');
-    }
 }

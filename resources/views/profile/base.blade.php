@@ -31,16 +31,26 @@
                         <div class="d-flex flex-column my-3  ms-sm-auto">
 
 
-                            @if ($isMyAccount)
-                                <div class="d-flex">
+                            @if ($user->id === Auth::user()?->id)
+                                <div class="d-flex mb-3 align-items-start">
                                     <x-logout class="btn btn-link" formId="sign-out" title="Выйти">
                                         <x-icon path="bs.door-closed"/>
                                     </x-logout>
-                                    <a href="{{route('my.edit')}}" class="btn btn-danger">
-                                        <x-icon path="bs.pencil-fill" class="pe-1"/>
-                                        Редактировать
-                                    </a>
+
+                                    <div class="d-inline-flex flex-column">
+                                        <a href="{{route('my.edit')}}" class="btn btn-danger mb-3">
+                                            <x-icon path="bs.pencil-fill" class="pe-1"/>
+                                            Редактировать
+                                        </a>
+                                        <a href="{{ route('post.edit') }}" class="btn btn-secondary d-inline-flex align-items-center">
+                                            <x-icon path="bs.plus" class="pe-1"/>
+                                            Создать запись
+                                        </a>
+                                    </div>
+
                                 </div>
+
+
                             @else
                                 <a href="https://github.com/{{$user->nickname}}" class="d-block">
                                     <x-icon path="bs.github" width="2em" height="2em"/>
@@ -58,7 +68,36 @@
 
         </div>
 
-        <turbo-frame id="tabs-frame" src="{{ route('profile.posts',$user) }}" target="_top"/>
+        <div class="col-xl-8 col-md-12 mx-auto mt-5 mb-3">
+            <div class="bg-body-tertiary  overflow-hidden px-5 py-3">
+                <div class="nav nav-underline">
+                    <li class="nav-item me-2">
+                        <a class="nav-link {{ active('profile') }}"
+                           data-turbo-frame="navigation"
+                           href="{{ route('profile',$user) }}"
+
+                        >Статьи</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link {{ active('profile.comments') }}"
+                           data-turbo-frame="navigation"
+                           href="{{route('profile.comments',$user)}}"
+
+                        >Комментариии</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link @if($active == 'awards') active @endif"
+                           href="{{route('profile.awards',$user)}}"
+                        >Награды</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @yield('tab')
+        </div>
+
 
 
     </div>
