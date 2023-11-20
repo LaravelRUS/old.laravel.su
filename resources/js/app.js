@@ -24,6 +24,7 @@ import ViewportEntranceToggleController from './controllers/viewport-entrance-to
 import ScrollController                 from './controllers/scroll_controller.js';
 import FormLoadController               from './controllers/form-load_controller';
 import Clipboard                        from './controllers/clipboard_controller';
+import ShareController                  from './controllers/share_controller';
 import TextareaAutogrow                 from 'stimulus-textarea-autogrow'
 
 application.register('theme', ThemeController);
@@ -31,7 +32,8 @@ application.register('viewport-entrance-toggle', ViewportEntranceToggleControlle
 application.register('scroll', ScrollController);
 application.register('form-load', FormLoadController);
 application.register('clipboard', Clipboard);
-application.register('textarea-autogrow', TextareaAutogrow)
+application.register('textarea-autogrow', TextareaAutogrow);
+application.register('share', ShareController);
 
 import LoadMoreController from './controllers/load-more_controller';
 

@@ -86,9 +86,14 @@
                         >Комментариии</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link @if($active == 'awards') active @endif"
+                        <a class="nav-link {{ active('profile.awards') }}"
                            href="{{route('profile.awards',$user)}}"
                         >Награды</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link {{ active('profile.events') }}"
+                           href="{{route('profile.events',$user)}}"
+                        >События</a>
                     </li>
                 </div>
             </div>
