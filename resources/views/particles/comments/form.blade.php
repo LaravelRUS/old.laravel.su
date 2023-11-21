@@ -6,7 +6,6 @@
 @else
     <div class="border-top pt-4 mt-5">
         <form class="row g-3" action="{{ route('comments.store') }}" method="post">
-            <input type="hidden" name="commentable_type" value="\{{ get_class($model) }}" />
             <input type="hidden" name="commentable_id" value="{{ $model->getKey() }}" />
             <div class="col-12 position-relative">
                 <textarea
