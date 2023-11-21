@@ -13,26 +13,29 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('commenter_id')->nullable();
-            $table->string('commenter_type')->nullable();
-            $table->index(["commenter_id", "commenter_type"]);
-
-            $table->string("commentable_type");
-            $table->string("commentable_id");
-            $table->index(["commentable_type", "commentable_id"]);
-
-            $table->text('comment');
-
+            $table->unsignedBigInteger('post_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->text('content');
             $table->boolean('approved')->default(true);
-
-            $table->unsignedBigInteger('child_id')->nullable();
-            $table->foreign('child_id')
-                ->references('id')
-                ->on('comments')
-                ->onDelete('cascade');
-
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['approved', 'post_id']);
+            $table->index('post_id');
+            $table->index('parent_id');
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

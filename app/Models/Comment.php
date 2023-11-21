@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Docs;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Overtrue\LaravelLike\Traits\Likeable;
@@ -15,63 +16,63 @@ class Comment extends Model
     use HasFactory, SoftDeletes, Likeable;
 
     /**
-     * @var string[]
+     * @var string
      */
-    protected $attributes = [
-        'commentable_type' => Post::class,
-        'commenter_type'   => User::class,
-    ];
+    protected $table = 'comments';
 
     /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'commenter',
-    ];
-
-    /**
-     * The attributes that are mass assignable.
-     *
      * @var array
      */
     protected $fillable = [
-        'comment',
+        'post_id',
+        'user_id',
+        'parent_id',
+        'content',
         'approved',
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
-        'approved' => 'boolean',
+        'post_id'   => 'integer',
+        'user_id'   => 'integer',
+        'parent_id' => 'integer',
+        'approved'  => 'boolean',
     ];
 
     /**
-     * The user who posted the comment.
+     * Find a comment by post ID.
+     *
+     * @param int $postId
+     *
+     * @return mixed
      */
-    public function commenter()
+    public static function findByPostId(int $postId)
     {
-        return $this->morphTo();
+        $instance = new static();
+
+        return $instance->where('post_id', $postId)->get();
     }
 
     /**
-     * The model that was commented upon.
+     * Post relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function commentable()
+    public function post(): BelongsTo
     {
-        return $this->morphTo();
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
     /**
-     * Returns all comments that this comment is the parent of.
+     * Replies relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function children()
+    public function replies(): HasMany
     {
-        return $this->hasMany(static::class, 'child_id');
+        return $this->hasMany(static::class, 'parent_id');
     }
 
     /**
@@ -79,9 +80,60 @@ class Comment extends Model
      */
     public function parent()
     {
-        return $this->belongsTo(static::class, 'child_id');
+        return $this->belongsTo(static::class, 'parent_id');
     }
 
+    /**
+     * Verify if the current comment is approved.
+     *
+     * @return bool
+     */
+    public function isApproved(): bool
+    {
+        return $this->attributes['approved'] === 1 || $this->attributes['approved'] === true;
+    }
+
+    /**
+     * Verify if the current comment is a reply from another comment.
+     *
+     * @return bool
+     */
+    public function isReply(): bool
+    {
+        return $this->attributes['parent_id'] > 0;
+    }
+
+    /**
+     * Verify if the current comment has replies.
+     *
+     * @return bool
+     */
+    public function hasReplies(): bool
+    {
+        return count($this->replies) > 0;
+    }
+
+    /**
+     *   Author relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Where clause for only approved comments.
+     *
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeApproved(Builder $query): Builder
+    {
+        return $query->where('approved', 1);
+    }
 
     /**
      * @param string|null $text
@@ -125,7 +177,7 @@ class Comment extends Model
      */
     public function prettyComment(): string
     {
-        $safe = htmlspecialchars($this->comment ?? '', ENT_NOQUOTES, 'UTF-8');
+        $safe = htmlspecialchars($this->content ?? '', ENT_NOQUOTES, 'UTF-8');
 
         $withLinks = $this->urlFromTextToHtmlUrl($safe);
         $withMention = $this->mentionedUserToHtmlUrl($withLinks);

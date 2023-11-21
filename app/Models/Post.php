@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Casts\PostTypeEnum;
 use App\Casts\StatusEnum;
-use App\Models\Concerns\HasComments;
 use App\Models\Concerns\Taggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,9 +14,17 @@ use Overtrue\LaravelLike\Traits\Likeable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
+/**
+ *  Class Post
+ *
+ *  Single Table Inheritance (STI) model representing various types of content.
+ *  This class serves as the base model from which specific types of posts
+ *  inherit. The 'type' attribute is used to distinguish between different
+ *  post types in the single 'posts' table.
+ */
 class Post extends Model implements Feedable
 {
-    use HasFactory, HasComments, Taggable, Searchable, Likeable;
+    use HasFactory, Taggable, Searchable, Likeable;
 
     /**
      * @var string[]
@@ -120,6 +127,13 @@ class Post extends Model implements Feedable
         return $query->whereIn('type', $type);
     }
 
+    /**
+     * Returns all comments for this model.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->withTrashed();
+    }
 
     /**
      * @return mixed

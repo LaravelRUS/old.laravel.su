@@ -16,9 +16,12 @@ class CommentsController extends Controller
      */
     public function show(Post $post, array $data = [])
     {
-        $post->load(['comments' => function ($query) {
-            $query->withCount('likers');
-        }]);
+        $post->load([
+            'comments.author',
+            'comments' => function ($query) {
+                $query->withCount('likers');
+            },
+        ]);
 
         $post = auth()->user()->attachLikeStatus($post);
 
@@ -37,24 +40,15 @@ class CommentsController extends Controller
     {
         $this->authorize('create', Comment::class);
 
-        $request->validate([
-            'commentable_type' => 'required|sometimes|string',
-            'commentable_id'   => 'required|string|min:1',
-            'message'          => 'required|string',
+        $comment = new Comment([
+            'post_id' => $request->input('commentable_id'),
+            'content'  => $request->input('message'),
+            'approved' => true,
         ]);
 
-        $model = $request->commentable_type::findOrFail($request->commentable_id);
+        $request->user()->comments()->saveMany([$comment]);
 
-        $comment = new Comment();
-
-        $comment->commenter()->associate($request->user());
-
-        $comment->commentable()->associate($model);
-
-        $comment->fill([
-            'comment'  => $request->input('message'),
-            'approved' => true,
-        ])->save();
+        $comment->save();
 
         return turbo_stream()
             ->target('comments-wrapper')
@@ -90,7 +84,7 @@ class CommentsController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Comment      $comment
+     * @param \App\Models\Comment     $comment
      *
      * @return string
      */
@@ -103,14 +97,13 @@ class CommentsController extends Controller
         ]);
 
         $reply = new Comment([
-            'comment'  => $request->input('message'),
-            'approved' => true,
+            'content'   => $request->input('message'),
+            'parent_id' => $comment->id,
+            'post_id'   => $comment->post_id,
+            'approved'  => true,
         ]);
 
-        $reply->commenter()->associate($request->user());
-        $reply->commentable()->associate($comment->commentable);
-        $reply->parent()->associate($comment);
-        $reply->save();
+        $request->user()->comments()->saveMany([$reply]);
 
         return turbo_stream([
             turbo_stream()->append(@dom_id($comment, 'thread'), view('comments._comment', ['comment' => $reply])),
@@ -120,7 +113,7 @@ class CommentsController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Comment      $comment
+     * @param \App\Models\Comment     $comment
      *
      * @return string
      */
@@ -133,7 +126,7 @@ class CommentsController extends Controller
         ]);
 
         $comment->update([
-            'comment' => $request->message,
+            'content' => $request->message,
         ]);
 
         return turbo_stream()->replace($comment);
@@ -148,7 +141,7 @@ class CommentsController extends Controller
     {
         $this->authorize('delete', $comment);
 
-        if ($comment->children()->exists()) {
+        if ($comment->replies()->exists()) {
             $comment->delete();
 
             return turbo_stream()->update($comment);

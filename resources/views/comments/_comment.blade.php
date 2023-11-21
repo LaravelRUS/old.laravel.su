@@ -1,5 +1,4 @@
-@includeUnless($comment->trashed(), 'comments.show', ['comment' => $comment])
-
+@include('comments.show', ['comment' => $comment])
 
 <?php
 if (!isset($indentationLevel)) {
@@ -9,13 +8,11 @@ if (!isset($indentationLevel)) {
 }
 ?>
 
-
-
-    {{-- Recursion for children --}}
+{{-- Recursion for children --}}
 @if(isset($grouped_comments) && $grouped_comments->has($comment->getKey()))
     <div
         id="thread_comment_{{ $comment->getKey() }}"
-        class="thread {{ $indentationLevel <= 3 ? 'ps-5 comment-reply' : 'position-relative overflow-hidden' }}">
+        class="thread {{ $indentationLevel <= 3 ? 'ps-xl-5 ps-4 comment-reply' : 'position-relative overflow-hidden' }}">
         @foreach($grouped_comments[$comment->getKey()] as $child)
             @include('comments._comment', [
                 'comment' => $child,
@@ -24,7 +21,7 @@ if (!isset($indentationLevel)) {
         @endforeach
     </div>
 @else
-    <div id="thread_comment_{{ $comment->getKey() }}" class="thread {{ $indentationLevel <= 3 ? 'ps-5 comment-reply' : 'position-relative overflow-hidden' }}">
+    <div id="thread_comment_{{ $comment->getKey() }}" class="thread {{ $indentationLevel <= 3 ? 'ps-xl-5 ps-4 comment-reply' : 'position-relative overflow-hidden' }}">
     </div>
 @endif
 

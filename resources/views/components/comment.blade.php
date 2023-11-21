@@ -1,7 +1,7 @@
 <div id="comment_{{ $comment->getKey() }}" class="comment mt-4">
 
     @if($comment->trashed())
-        <div class="d-flex position-relative overflow-hidden align-items-center mb-5">
+        <div class="d-flex position-relative overflow-hidden align-items-center mb-xl-5 mb-3">
             <div class="avatar avatar-sm me-3">
                 <img class="avatar-img rounded-circle"
                      src="/img/ui/user-deleted.png" alt="Комментарий был удалён">
@@ -14,15 +14,15 @@
     @else
         <div class="d-flex position-relative overflow-hidden">
             <div class="avatar avatar-sm me-3">
-                <a href="{{  route('profile',$comment->commenter) }}">
+                <a href="{{  route('profile', $comment->author) }}">
                     <img class="avatar-img rounded-circle"
-                         src="{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name }}">
+                         src="{{ $comment->author->avatar }}" alt="{{ $comment->author->name }}">
                 </a>
             </div>
 
             <div class="w-100">
-                <div class="mb-2 d-flex">
-                    <h6 class="m-0 me-2">{{ $comment->commenter->name }}</h6>
+                <div class="mb-2 d-flex flex-column flex-md-row">
+                    <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
 
                     <div class="me-3 small opacity-50">
                         <a href="#comment-{{ $comment->getKey() }}"

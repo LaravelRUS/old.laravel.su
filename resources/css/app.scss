@@ -256,10 +256,22 @@ textarea {
             display: block;
             top: 0;
             left: 1rem;
-            content: "";
-            width: 2px;
-            height: 100%;
-            background-color: rgba($gray-700, 0.2);
+            //content: "";
+            //width: 2px;
+            //height: 100%;
+            //background-color: rgba($gray-700, 0.2);
+
+            border: solid 1px rgba($gray-700, 0.2);
+            content: '';
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            /* display: block; */
+            width: 0.75rem;
+            height: 1.5rem;
+            padding-bottom: 1em;
+            border-width: 0 0 1px 1px;
+            border-bottom-left-radius: 1rem;
+            border-color: rgba(73, 80, 87, 0.2);
         }
 
         .comment:last-child:before {
