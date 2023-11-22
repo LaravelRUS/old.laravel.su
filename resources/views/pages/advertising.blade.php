@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <x-header image="/img/bird.svg">
+    <x-header image="/img/ui/jewelry.svg">
         <x-slot:sup>Остаёмся на связи</x-slot>
         <x-slot:title>Партнерство</x-slot>
 
@@ -14,10 +14,10 @@
 
     <div class="container my-5">
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
-                    <h3 class="text-body-emphasis mb-3 display-5">Титульное партнерство</h3>
-                    <p class="text-muted">
+                    <h3 class=" mb-3 display-5 fw-bold">Титульное партнерство</h3>
+                    <p class="mb-0">
                         Титульное партнерство помещает вашу компанию как на домашнюю страницу, так и на страницу партнеров.
                         Вы
                         можете подписаться на этот пакет, войдя в систему или зарегистрировавшись и перейдя на страницу
@@ -27,17 +27,17 @@
 
                 <div class="col-xxl-5">
                     <div class="d-flex gap-2 mb-3 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                        <x-icon path="i.sun" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Ваш логотип и ссылка на главной странице.</p>
-                            <small class="opacity-50">Самая посещаемая страница на сайте.</small>
+                            <p class="mb-0 fw-bolder text-balance">Ваш логотип и ссылка на главной странице.</p>
+                            <small class="opacity-50 text-balance">Самая посещаемая страница на сайте.</small>
                         </div>
                     </div>
-                    <div class="d-flex gap-2 align-items-center">
-                        <x-icon path="bs.people" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                        <x-icon path="i.eye" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Более 1,5 млн показов каждый месяц</p>
-                            <small class="opacity-50">Самая посещаемая страница на сайте.</small>
+                            <p class="mb-0 fw-bolder text-balance">Более 54 тысяч показов каждый месяц</p>
+                            <small class="opacity-50 text-balance">Самая посещаемая страница на сайте.</small>
                         </div>
                     </div>
                 </div>
@@ -47,32 +47,32 @@
 
     <div class="container my-5">
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
-                    <h3 class="text-body-emphasis mb-3 display-5">Спонсорский контент</h3>
-                    <p class="text-muted">
+                    <h3 class=" mb-3 display-5 fw-bold">Спонсорский контент</h3>
+                    <p class="mb-0">
                         Спонсорский контент — лучший способ представить ваш продукт или услугу как можно большему
                         количеству разработчиков Laravel. Вы предоставите контент, а мы позаботимся обо всем остальном.
                     </p>
                 </div>
 
                 <div class="col-xxl-5">
-                    <div class="d-flex gap-2 mb-3 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 mb-3 align-items-center justify-content-between">
+                        <x-icon path="i.paper" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Специальная спонсорская статья о вашей компании или услуге.</p>
+                            <p class="mb-0 fw-bolder text-balance">Специальная спонсорская статья о вашей компании или услуге.</p>
                         </div>
                     </div>
-                    <div class="d-flex gap-2 mb-3 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 mb-3 align-items-center justify-content-between">
+                        <x-icon path="i.pin" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Статья выделена на главной странице на всю неделю.</p>
+                            <p class="mb-0 fw-bolder text-balance">Статья выделена на главной странице на всю неделю.</p>
                         </div>
                     </div>
-                    <div class="d-flex gap-2 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                        <x-icon path="i.envelope" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Рассылается всем подписчикам RSS и социальных сетей.</p>
+                            <p class="mb-0 fw-bolder text-balance">Рассылается всем подписчикам RSS и социальных сетей.</p>
                         </div>
                     </div>
                 </div>
@@ -82,26 +82,26 @@
 
     <div class="container my-5">
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
-                    <h3 class="text-body-emphasis mb-3 display-5">Подкаст</h3>
-                    <p class="text-muted">
+                    <h3 class=" mb-3 display-5 fw-bold">Подкаст</h3>
+                    <p class="mb-0">
                         Подкаст — идеальный способ повысить узнаваемость бренда с помощью аудио. В среднем
                         4500 загрузок на эпизод — это прекрасная возможность привлечь внимание разработчиков Laravel.
                     </p>
                 </div>
 
                 <div class="col-xxl-5">
-                    <div class="d-flex gap-2 mb-3 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 mb-3 align-items-center justify-content-between">
+                        <x-icon path="i.camera" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">1–2-минутное чтение ведущего во время выпуска.</p>
+                            <p class="mb-0 fw-bolder text-balance">1–2-минутное чтение ведущего во время выпуска.</p>
                         </div>
                     </div>
-                    <div class="d-flex gap-2 align-items-center">
-                        <x-icon path="bs.tv" width="5rem" height="5rem" class="me-3" />
+                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                        <x-icon path="i.link-fold" width="5rem" height="5rem" class="me-3" />
                         <div class="col-10">
-                            <p class="mb-0 lh-1">Ссылка и краткое описание в примечаниях к эпизодам.</p>
+                            <p class="mb-0 fw-bolder text-balance">Ссылка и краткое описание в примечаниях к эпизодам.</p>
                         </div>
                     </div>
                 </div>

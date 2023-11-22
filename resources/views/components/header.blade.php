@@ -5,7 +5,7 @@
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">{{ $sup }}</span>
             @endisset
 
-            <h1 class="display-5 fw-bold text-body-emphasis mb-4">{!!  $title !!}</h1>
+            <h1 class="display-5 fw-bold text-body-emphasis mb-4 text-balance">{!!  $title !!}</h1>
 
             @isset($description)
                 <p class="lead mb-4 pe-xl-5">

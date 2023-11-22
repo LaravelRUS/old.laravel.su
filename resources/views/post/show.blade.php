@@ -1,4 +1,6 @@
 @extends('layout')
+@section('title', $post->title)
+
 
 @section('content')
     <div class="container my-5">

@@ -15,7 +15,7 @@
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3">
-                                <img class="avatar-img rounded-circle border border-tertiary-subtle border-3"
+                                <img class="avatar-img rounded border border-tertiary-subtle border-3"
                                      src="{{ $user->avatar }}" alt="">
                             </div>
                         </div>
@@ -38,8 +38,6 @@
                                         class="form-control p-5">{{ old('about', $user->about) }}</textarea>
                                     <x-error field="about" class="invalid-feedback d-block mt-3"/>
                                 </div>
-
-
 
                                 <button type="submit" class="btn btn-primary mb-3">Сохранить</button>
                             </form>

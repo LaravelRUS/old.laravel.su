@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <circle cx="20" cy="20" r="6.79" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="20" y1="39" x2="20" y2="30.78" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="20" y1="9.22" x2="20" y2="1" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <g>
+    <line x1="25.36" y1="32.93" x2="24.13" y2="29.96" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+    <line x1="15.87" y1="10.04" x2="14.64" y2="7.07" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  </g>
+  <g>
+    <line x1="32.93" y1="25.36" x2="29.96" y2="24.13" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+    <line x1="10.04" y1="15.87" x2="7.07" y2="14.64" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  </g>
+  <g>
+    <line x1="32.93" y1="14.64" x2="29.96" y2="15.87" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+    <line x1="10.04" y1="24.13" x2="7.07" y2="25.36" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  </g>
+  <g>
+    <line x1="25.36" y1="7.07" x2="24.13" y2="10.04" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+    <line x1="15.87" y1="29.96" x2="14.64" y2="32.93" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  </g>
+  <line x1="33.44" y1="33.44" x2="27.62" y2="27.62" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="12.38" y1="12.38" x2="6.57" y2="6.56" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="39" y1="20" x2="30.78" y2="20" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="9.22" y1="20" x2="1" y2="20" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="33.44" y1="6.56" x2="27.62" y2="12.38" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="12.38" y1="27.62" x2="6.57" y2="33.44" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="24.9" y1="23.79" x2="18.25" y2="23.79" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="26.6" y1="20.19" x2="22.03" y2="20.19" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="25.1" y1="16.58" x2="22.86" y2="16.58" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+</svg>

@@ -15,8 +15,8 @@
     <link rel="alternate" type="application/atom+xml" title="Новости" href="/rss/feed">
 
     <x-meta
-            title="{{ View::getSection('title') ?  View::getSection('title') . ' | ' : '' }}{{ config('site.name') }}"
-            description="{{ View::getSection('description', config('site.description')) }}"
+            title="{!! View::getSection('title') ?  strip_tags(View::getSection('title')) . ' | ' : '' !!}{!! config('site.name') !!}"
+            description="{!!  View::getSection('description', config('site.description'))  !!}"
         {{-- image="{{ asset('/img/external.png') }}" --}}
         {{-- csp="*.laravel.su *.gravatar.com *.githubusercontent.com" --}} />
 

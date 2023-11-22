@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <path d="m1,15.09V5.26C1,2.91,2.91,1,5.26,1h9.83" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m24.91,1h9.83c2.35,0,4.26,1.91,4.26,4.26v9.83" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m1,24.91v9.83c0,2.35,1.91,4.26,4.26,4.26h9.83" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m24.91,39h9.83c2.35,0,4.26-1.91,4.26-4.26v-9.83" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m15.16,13.1c-5.83,1.89-8.46,6.71-8.46,6.71,0,0,4.06,7.47,13.3,7.47s13.3-7.47,13.3-7.47c0,0-2.63-4.82-8.46-6.71" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m15.71,13.1c-1.17,1.13-1.89,2.7-1.89,4.45,0,3.42,2.77,6.19,6.19,6.19s6.19-2.77,6.19-6.19c0-1.75-.73-3.32-1.89-4.45" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <circle cx="20" cy="17.55" r="2.5" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="25.54" y1="15.18" x2="24.25" y2="15.18" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="25.91" y1="17.83" x2="25.47" y2="17.83" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="7.58" y1="20.59" x2="10.59" y2="20.59" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="10.42" y1="23.74" x2="12.19" y2="23.74" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m25.25,13.1c4.37.16,6.61-3.13,6.61-3.13" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m28.87,14.96c2.5.09,3.78-1.79,3.78-1.79" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m31.52,17.1c.95.03,1.44-.68,1.44-.68" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <path d="m24.84,13.1c-1.42-.46-3.03-.76-4.84-.76s-3.41.29-4.84.75" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+</svg>

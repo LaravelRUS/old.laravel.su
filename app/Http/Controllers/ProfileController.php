@@ -112,7 +112,8 @@ class ProfileController extends Controller
             'name'  => $request->input('name'),
             'about' => $request->input('about')
         ])->save();
-        return $this->edit($request)->fragment('profile');
+
+        return redirect()->route('profile', $request->user());
     }
 
 }
