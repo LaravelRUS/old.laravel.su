@@ -45,9 +45,11 @@ class ProfileController extends Controller
 
     public function events(User $user, Request $request)
     {
+        $meets = $user->meets()->latest()
+            ->cursorPaginate(2);
         return view('profile.events', [
             'user'        => $user,
-            'posts'       => $this->getPosts($user, PostTypeEnum::Event, $request->user()),
+            'meets'       => $meets,
         ]);
     }
 
@@ -60,7 +62,9 @@ class ProfileController extends Controller
      */
     public function packages(User $user)
     {
-        $packages = $user->packages()->orderBy('stars', 'desc')->get();
+
+        $packages = $user->packages()->orderBy('stars', 'desc')
+            ->cursorPaginate(2);
 
         return view('profile.packages', [
             'packages' => $packages,

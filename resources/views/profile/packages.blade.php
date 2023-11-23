@@ -3,12 +3,21 @@
 @section('tab')
 
     <div class="col-xl-8 col-md-12 mx-auto">
-        @empty($packages)
+        @if($packages->isEmpty())
             <div class="bg-body-tertiary rounded p-5 rounded">
                 <div class="p-5">
-                    <div class="text-center mb-3">
-                        У пользователя ещё нет наград
-                    </div>
+                    @if ($user->id === Auth::user()?->id)
+                        <div class="text-center mb-3">
+                            Добавьте пакет
+                        </div>
+                        <div class="text-center">
+                            <a href="{{ route('packages.edit') }}" class="btn btn-secondary">Создать запись</a>
+                        </div>
+                    @else
+                        <div class="text-center mb-3">
+                            Нет пакетов
+                        </div>
+                    @endif
                 </div>
             </div>
         @else
@@ -46,6 +55,7 @@
                 @endforeach
             </div>
         @endif
+            {{ $packages->links() }}
 
     </div>
 @endsection

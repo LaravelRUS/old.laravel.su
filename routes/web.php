@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\MeetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
@@ -26,7 +27,6 @@ Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/performance', 'pages.performance')->name('performance');
 Route::view('/team', 'pages.team')->name('team');
-Route::view('/packages', 'pages.packages')->name('packages');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
@@ -110,14 +110,38 @@ Route::get('/meets', [MeetController::class, 'index'])->name('meets');
 Route::middleware(['auth'])
     ->prefix('meets')
     ->group(function () {
-        Route::post('/', [MeetController::class, 'store'])
-            ->name('meets.store');
+        Route::get('/edit/{meet?}', [MeetController::class, 'edit'])
+            ->name('meets.edit');
 
-        Route::put('/{comment}', [MeetController::class, 'update'])
+        Route::post('/{meet?}', [MeetController::class, 'update'])
             ->name('meets.update');
 
-        Route::delete('/{comment}', [MeetController::class, 'delete'])
+        Route::delete('/{meet}', [MeetController::class, 'delete'])
             ->name('meets.delete');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Packages Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/packages', [PackagesController::class, 'index'])->name('packages');
+
+Route::middleware(['auth'])
+    ->prefix('packages')
+    ->group(function () {
+        Route::get('/edit/{package?}', [PackagesController::class, 'edit'])
+            ->name('packages.edit');
+
+        Route::post('/{package?}', [PackagesController::class, 'update'])
+            ->name('packages.update');
+
+        Route::delete('/{package}', [PackagesController::class, 'delete'])
+            ->name('packages.delete');
     });
 
 
