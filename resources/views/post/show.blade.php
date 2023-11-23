@@ -8,13 +8,13 @@
             <div class="bg-body-tertiary p-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
-                    <div class="post">
+                    <main class="post">
                         <a class="text-decoration-none" href="#">Hotwire</a>
 
                         <h1>{{ $post->title }}</h1>
 
                         {!! \Illuminate\Support\Str::of($post->content)->markdown() !!}
-                    </div>
+                    </main>
 
                     <!-- Start Author  -->
                     <div class="d-flex align-items-center justify-content-between mt-5">

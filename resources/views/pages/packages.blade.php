@@ -54,37 +54,36 @@ return response()->json([
         <div class="bg-body-secondary p-5 rounded">
             <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5">
 
-                @foreach (range(0, 9) as $package)
+                @foreach (\App\Models\Package::get() as $package)
                     <div class="col">
                         <div class="bg-body-tertiary p-5 rounded h-100 position-relative text-wrap text-break position-relative">
 
+                            {{--
                             @if($loop->index === 9)
                                 <span class="badge bg-warning text-dark rounded-end-3 position-absolute end-0 top-0 mt-4">
                                     Лучшая админка
                                 </span>
                             @endif
+                            --}}
 
                             <p class="fs-4 fw-bolder">
-                                Orchid
+                                {{ $package->name }}
                             </p>
 
                             <hr class="w-25">
 
                             <p class="line-clamp o-50 line-clamp-5 small">
-                                Мощное и простое в использовании решение для создания административных панелей и
-                                бизнес-приложений
-                                {{ \Illuminate\Support\Str::random(100) }}
+                                {{ $package->description }}
                             </p>
-
 
                             <div class="row justify-content-between">
                                 <div class="col-auto d-inline-flex align-items-center me-auto">
                                     <x-icon path="bs.star-fill" class="me-2 text-warning" />
-                                    2324
+                                    {{ $package->stars }}
                                 </div>
                                 <div class="col">
                                     <p class="text-end mb-0">
-                                        <a href="#"
+                                        <a href="{{ $package->website }}"
                                            class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
                                             <x-icon path="bs.arrow-right" />
                                         </a>

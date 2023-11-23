@@ -71,6 +71,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns all packages that this user has made.
+     */
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
+
+    /**
      * Returns only approved comments that this user has made.
      */
     public function approvedComments()

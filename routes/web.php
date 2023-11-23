@@ -4,8 +4,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\MeetController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\TurboStream;
 use App\Http\Controllers\LikeController;
 use App\Docs;
 
@@ -24,7 +24,6 @@ Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
-Route::view('/meets', 'pages.meets')->name('meets');
 Route::view('/performance', 'pages.performance')->name('performance');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/packages', 'pages.packages')->name('packages');
@@ -32,36 +31,51 @@ Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
 
-Route::get('/feed', [PostController::class, 'feed'])->name('feed');
+/*
+|--------------------------------------------------------------------------
+| Post/Feed Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/feed', [PostController::class, 'feed'])
+    ->name('feed');
 
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
 
-Route::post('/posts', [PostController::class, 'list'])
-    ->middleware(\App\Http\Middleware\TurboStream::class);
+Route::post('/posts', [PostController::class, 'list']);
 
-/*
-Route::prefix('/stream')->middleware(\App\Http\Middleware\TurboStream::class)->group(function () {
-    Route::post('/posts', [PostController::class, 'list'])->name('post.load-more');
-});
-*/
-
-Route::get('/p/{post:slug}', [PostController::class, 'show'])->name('post.show');
-Route::get('/comments/article/{post}', [CommentsController::class, 'show'])
-    ->name('post.comments');
-
+Route::get('/p/{post:slug}', [PostController::class, 'show'])
+    ->name('post.show');
 
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])->name('post.edit');
-        Route::post('/posts/edit/{post?}', [PostController::class, 'edit'])
-            ->middleware(\App\Http\Middleware\TurboStream::class);
-        Route::post('/posts/update/{post?}', [PostController::class, 'update'])->name('post.update');
+        Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])
+            ->name('post.edit');
+
+        Route::post('/posts/edit/{post?}', [PostController::class, 'edit']);
+
+        Route::post('/posts/update/{post?}', [PostController::class, 'update'])
+            ->name('post.update');
+
         Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
-            ->middleware(\App\Http\Middleware\TurboStream::class)
             ->name('post.delete');
     });
 
+/*
+|--------------------------------------------------------------------------
+| Comments Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/comments/article/{post}', [CommentsController::class, 'show'])
+    ->name('post.comments');
 
 Route::middleware(['auth'])
     ->prefix('comments')
@@ -80,6 +94,30 @@ Route::middleware(['auth'])
 
         Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
         Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Meets Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/meets', [MeetController::class, 'index'])->name('meets');
+
+Route::middleware(['auth'])
+    ->prefix('meets')
+    ->group(function () {
+        Route::post('/', [MeetController::class, 'store'])
+            ->name('meets.store');
+
+        Route::put('/{comment}', [MeetController::class, 'update'])
+            ->name('meets.update');
+
+        Route::delete('/{comment}', [MeetController::class, 'delete'])
+            ->name('meets.delete');
     });
 
 
@@ -177,6 +215,8 @@ Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController
 Route::post('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
     ->middleware(\App\Http\Middleware\TurboStream::class);*/
 
+Route::get('/profile/{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
+    ->name('profile.packages');
 
 Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileController::class,'comments'])
     ->name('profile.comments');

@@ -13,7 +13,6 @@ use  Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
-    public $action = "append";
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
@@ -77,6 +76,12 @@ class PostController extends Controller
         ])->fragmentsIf(!$request->isMethodSafe());
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post         $post
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, Post $post)
     {
         $this->authorize('isOwner', $post);
@@ -86,8 +91,8 @@ class PostController extends Controller
             'content' => 'required|string',
             'type'    => [
                 $post->exists ? 'missing' : 'required',
-                Rule::enum(PostTypeEnum::class)
-            ]
+                Rule::enum(PostTypeEnum::class),
+            ],
         ]);
 
         $post->fill([
@@ -96,11 +101,15 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
         ])->save();
 
-        //сюда поставить уведомление
-
-        return redirect()->route('post.edit', $post);//пока сюда
+        return redirect()->route('post.show', $post);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post         $post
+     *
+     * @return \Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse
+     */
     public function delete(Request $request, Post $post)
     {
         $this->authorize('isOwner', $post);
@@ -127,14 +136,6 @@ class PostController extends Controller
             ->cursorPaginate(3);
 
         $posts = $request->user()->attachLikeStatus($posts);
-
-        /*
-        return view('particles.posts.list', [
-            'posts'       => $posts,
-            'isMyProfile' => $request->has('user_id') && $request->user()?->id == $request->get('user_id'),
-            'action'      => $this->action
-        ])->fragmentsIf(!$request->isMethodSafe());
-        */
 
         return turbo_stream([
             turbo_stream()->removeAll('.post-placeholder'),

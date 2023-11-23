@@ -52,32 +52,48 @@ class ProfileController extends Controller
     }
 
 
-
-
-    public function comments(Request $request, User $user, array $data = [])
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function packages(User $user)
     {
-        $comments =  $user->comments()
+        $packages = $user->packages()->orderBy('stars', 'desc')->get();
+
+        return view('profile.packages', [
+            'packages' => $packages,
+            'user'     => $user,
+        ]);
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function comments(Request $request, User $user)
+    {
+        $comments = $user->comments()
             ->withCount('likers')
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
-        $comments->withPath('/profile/'.$user->nickname.'/comments');
+
         $comments = $request->user()->attachLikeStatus($comments);
 
-        return view(
-            'profile.comments',
-            array_merge($data, [
-                'comments' => $comments,
-                'user'     => $user,
-                'active'   => 'comments',
-            ])
-        );
+        return view('profile.comments', [
+            'comments' => $comments,
+            'user'     => $user,
+        ]);
     }
 
     public function awards(User $user)
     {
         return view('profile.awards', [
             'user'        => $user,
-            'active'      => 'awards'
         ]);
     }
 

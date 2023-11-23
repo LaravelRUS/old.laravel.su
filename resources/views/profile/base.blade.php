@@ -65,25 +65,32 @@
                     <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile') }}"
                            data-turbo-frame="navigation"
-                           href="{{ route('profile',$user) }}"
+                           href="{{ route('profile', $user) }}"
 
                         >Статьи</a>
                     </li>
                     <li class="nav-item me-2">
+                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
+                           data-turbo-frame="navigation"
+                           href="{{ route('profile.packages', $user) }}"
+
+                        >Пакеты</a>
+                    </li>
+                    <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
                            data-turbo-frame="navigation"
-                           href="{{route('profile.comments',$user)}}"
+                           href="{{ route('profile.comments', $user) }}"
 
                         >Комментариии</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
-                           href="{{route('profile.awards',$user)}}"
+                           href="{{ route('profile.awards', $user) }}"
                         >Награды</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.events') }}"
-                           href="{{route('profile.events',$user)}}"
+                           href="{{ route('profile.events', $user) }}"
                         >События</a>
                     </li>
                 </div>

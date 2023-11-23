@@ -20,12 +20,14 @@
             </a>
         </div>
 
-        <div class="col text-center">
-            <a href="{{ route('profile', auth()->user()) }}" data-turbo-action="replace"
-               class="d-block text-muted avatar">
-                <img src="https://avatars.githubusercontent.com/u/5102591?v=4" class="avatar-img rounded-circle"
-                     width="32">
-            </a>
-        </div>
+        @auth
+            <div class="col text-center">
+                <a href="{{ route('profile', auth()->user()) }}" data-turbo-action="replace"
+                   class="d-block text-muted avatar">
+                    <img src="https://avatars.githubusercontent.com/u/5102591?v=4" class="avatar-img rounded-circle"
+                         width="32">
+                </a>
+            </div>
+        @endauth
     </div>
 </nav>

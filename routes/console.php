@@ -1,6 +1,9 @@
 <?php
 
 use App\Docs;
+use App\Jobs\UserAttributesCorrelation;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Process;
@@ -36,3 +39,10 @@ Artisan::command('checkout-latest-docs', function () {
             ->run("git clone --single-branch --branch '$version' $docsUrl '$version'"));
 
 })->purpose('Checkout the latest Laravel docs');
+
+
+Artisan::command('update-packages', function () {
+    \App\Models\Package::chunk(100, function (Collection $packages) {
+        $packages->each(fn($package) => \App\Jobs\UpdateStatusPackages::dispatch($package));
+    });
+})->purpose('Update information about users packages');

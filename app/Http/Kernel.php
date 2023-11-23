@@ -40,8 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             SetDefaultVersionForUrl::class,
-            TurboRedirect::class,
-            Turbo::class,
+            'cache.headers:private;must_revalidate;etag',
         ],
 
         'api' => [
