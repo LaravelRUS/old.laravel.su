@@ -1,11 +1,9 @@
-<div id="@domid($meet)" class="bg-body-tertiary p-5 rounded-5 shadow mb-5 hotwire-frame">
+<div id="@domid($meet)" class="bg-body-tertiary p-4 p-lg-5 rounded-5 shadow mb-4 hotwire-frame">
 
-    <div class="d-flex align-items-center justify-content-between mb-3">
-        <div class="d-flex flex-column align-items-start">
-            <span class="opacity-50">{{$meet->start_date}}</span>
-            <small class="opacity-50">{{$meet->address}}</small>
-        </div>
-        <div class="dropdown">
+    <div class="d-flex align-items-center justify-content-between">
+        <p class="mb-0 text-primary">{{ $meet->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</p>
+        @if(is_active('profile.meets'))
+            <div class="dropdown">
             <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
                aria-expanded="false">
                 <x-icon path="bs.three-dots"/>
@@ -33,13 +31,23 @@
                 </li>
             </ul>
         </div>
+        @endif
     </div>
 
-    <h5 class="my-3">{{$meet->name}}</h5>
-    <div class="line-clamp line-clamp-5">
-        {!!  \Illuminate\Support\Str::of($meet->description)->markdown() !!}
+    <div class="row align-items-center mb-3">
+        <div class="col">
+            <h5 class="mb-0">{{ $meet->name }}</h5>
+            <small class="opacity-50">{{ $meet->address ?? 'Онлайн' }} в {{ $meet->start_date->isoFormat('hh:mm', 'Do MMMM') }}</small>
+        </div>
     </div>
 
-    <a href="#" class="btn btn-outline-primary">Как это было</a>
+    <p>{{ $meet->description }}</p>
 
+    <div class="row">
+        <div class="col-12 col-sm-4 col-xl-3 mt-3 mt-sm-0">
+            <div class="d-grid">
+                <a class="btn btn-outline-danger" href="{{ $meet->link }}" target="_blank" rel="noopener">Подробнее</a>
+            </div>
+        </div>
+    </div>
 </div>
