@@ -6,7 +6,7 @@
                         Напишите первую статью, чтобы привлечь читателей
                     </div>
                     <div class="text-center">
-                        <a href="{{ route('post.edit') }}" class="btn btn-secondary">Создать запись</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-secondary">Создать запись</a>
                     </div>
                 @else
                     <div class="text-center mb-3">

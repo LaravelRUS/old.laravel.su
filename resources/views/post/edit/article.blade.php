@@ -3,7 +3,7 @@
 @section('form')
 
 
-    <form action="{{ route('post.update', $post) }}" method="post">
+    <form action="{{ $post->exists? route('post.update', $post) : route('post.create.save') }}" method="post">
 
         <textarea data-controller="textarea-autogrow"
                   data-textarea-autogrow-resize-debounce-delay-value="500"

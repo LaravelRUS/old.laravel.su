@@ -16,7 +16,8 @@
 
                     </div>
 
-                    <form action="{{ route('meets.update', $meet) }}" method="post">
+                    <form action="{{ $meet->exists ? route('meets.update', $meet) : route('meets.create.save') }}"
+                          method="post">
 
                         <textarea data-controller="textarea-autogrow"
                                   data-textarea-autogrow-resize-debounce-delay-value="500"

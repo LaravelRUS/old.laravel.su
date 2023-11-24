@@ -18,7 +18,7 @@ class MeetController extends Controller
             ->first();
 
         $actual = Meet::whereDate('start_date', '>=', now())
-            ->where('id', '!=', $most->id)
+            ->where('id', '!=', $most?->id)
             ->orderBy('start_date', 'asc')
             ->get();
 

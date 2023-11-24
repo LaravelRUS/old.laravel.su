@@ -5,23 +5,9 @@
         <div class="col-xl-8 col-md-12 mx-auto">
             <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
                 <div class="position-absolute d-none d-xxl-block bottom-0 end-0 m-4"><img src="/img/ui/popular-fire.svg"></div>
-                <ul class="nav flex-column col-xxl-10">
+                    @include('post.popular-list')
 
-                    @foreach($popular as $post)
-                        <li class="nav-item mb-3">
-                            <a href="{{ route('post.show', $post) }}" class="nav-link p-0 link-body-emphasis align-items-baseline">
-                                <span class="me-2">{{ $post->title }}</span>
 
-                                <small class="d-inline-flex align-items-center opacity-50">
-                                    <x-icon path="bs.chat"/>
-                                    <span class="ms-2">{{ $post->comments_count }}</span>
-                                </small>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-
-                <a href="#" class="link-body-emphasis text-decoration-none fw-bolder">Показать ещё</a>
             </div>
         </div>
     </div>

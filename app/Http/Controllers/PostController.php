@@ -23,12 +23,19 @@ class PostController extends Controller
             ->withCount('comments')
             ->orderBy('likers_count', 'desc')
             ->orderBy('created_at', 'desc')
-            ->cursorPaginate(5);
+            ->simplePaginate(5);//CursorPaginate не работает с withCount
 
-        return view('post.list', [
+        if(request()->isMethod('GET')){
+            return view('post.list', [
+                'popular' => $popular,
+            ]);
+        }
+        return view('post.popular-list', [
             'popular' => $popular,
-        ]);
+        ])->fragments();
+
     }
+
 
     /**
      * @param \App\Models\Post $post

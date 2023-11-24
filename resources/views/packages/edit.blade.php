@@ -16,7 +16,8 @@
 
                     </div>
 
-                    <form action="{{ route('packages.update', $pack) }}" method="post">
+                    <form action="{{ $pack->exists? route('packages.update', $pack) : route('packages.create.save')}}"
+                          method="post">
 
                         <textarea data-controller="textarea-autogrow"
                                   data-textarea-autogrow-resize-debounce-delay-value="500"
@@ -36,6 +37,19 @@
                                placeholder="Сайт"
                                value="{{ old('pack.website', $pack->website) }}" />
                         <x-error field="pack.website" class="invalid-feedback"/>
+
+
+                            <select id="type" name="pack[type]"
+                                    class="form-select form-select-sm mb-3"
+                                    style="outline: none!important;">
+                                <optgroup label="Категория">
+
+                                    @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                                        <option value="{{$type->value}}" @selected($pack->type  == $type)>{{$type->text()}}</option>
+                                    @endforeach
+                                </optgroup>
+                            </select>
+
 
                         <x-text-editor name="pack[description]" id="description" placeholder="Описание"
                                        :value="old('pack.description', $pack->description)"/>

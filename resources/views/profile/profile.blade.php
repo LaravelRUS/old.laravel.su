@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-xxl-auto">
-                    <a href="{{ route('post.edit') }}" class="btn btn-outline-primary">Новая запись</a>
+                    <a href="{{ route('post.create') }}" class="btn btn-outline-primary">Новая запись</a>
                 </div>
             </div>
         </div>

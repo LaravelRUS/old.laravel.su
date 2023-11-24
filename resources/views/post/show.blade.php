@@ -34,14 +34,33 @@
                         </div>
                         <div class="dropdown">
                             <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
-                                    class="bi bi-three-dots" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
-                                    </path>
-                                </svg>
+                               aria-expanded="false">
+                                <x-icon path="bs.three-dots"/>
                             </a>
+                            <ul class="dropdown-menu">
+                                @can('isOwner', $post)
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
+                                    </li>
+                                    {{--
+                                    у нас сейчас предусотрено только удатение статьи из списка,
+                                    надо или убрать это, или делать отдельный метод с редиректом после удаления статьи
+                                    <li>
+                                        <a class="dropdown-item" data-turbo-method="delete"
+                                           data-turbo-confirm="Вы уверены, что хотите удалить статью?"
+                                           href="{{route('post.delete', $post)}}">Удалить</a>
+                                    </li>
+                                    --}}
+                                @endcan
+                                <li>
+                                    <button class="dropdown-item"
+                                            data-controller="share"
+                                            data-share-title-value="{{$post->title}}"
+                                            data-share-url-value="{{ route('post.show', $post) }}"
+                                            data-action="click->share#dialog"
+                                    >Поделиться</button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <!-- End Author  -->

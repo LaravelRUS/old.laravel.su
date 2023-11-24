@@ -63,7 +63,9 @@ class ProfileController extends Controller
     public function packages(User $user)
     {
 
-        $packages = $user->packages()->orderBy('stars', 'desc')
+        $packages = $user->packages()
+            ->orderBy('stars', 'desc')
+            ->orderBy('created_at', 'desc')//нужно для курсора
             ->cursorPaginate(2);
 
         return view('profile.packages', [

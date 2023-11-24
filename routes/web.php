@@ -43,6 +43,10 @@ Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 Route::get('/feed', [PostController::class, 'feed'])
     ->name('feed');
 
+Route::post('/feed',[PostController::class,'feed'])
+    ->middleware(\App\Http\Middleware\TurboStream::class)
+    ->name('feed.popular');
+
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
 
@@ -53,12 +57,17 @@ Route::get('/p/{post:slug}', [PostController::class, 'show'])
 
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])
+
+        Route::get('/posts/create', [PostController::class, 'edit'])
+            ->name('post.create');
+
+        Route::post('/posts/create', [PostController::class, 'update'])
+            ->name('post.create.save');
+
+        Route::get('/posts/edit/{post}', [PostController::class, 'edit'])
             ->name('post.edit');
 
-        Route::post('/posts/edit/{post?}', [PostController::class, 'edit']);
-
-        Route::post('/posts/update/{post?}', [PostController::class, 'update'])
+        Route::post('/posts/update/{post}', [PostController::class, 'update'])
             ->name('post.update');
 
         Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
@@ -110,10 +119,16 @@ Route::get('/meets', [MeetController::class, 'index'])->name('meets');
 Route::middleware(['auth'])
     ->prefix('meets')
     ->group(function () {
-        Route::get('/edit/{meet?}', [MeetController::class, 'edit'])
+        Route::get('/create', [MeetController::class, 'edit'])
+            ->name('meets.create');
+
+        Route::post('/create', [MeetController::class, 'update'])
+            ->name('meets.create.save');
+
+        Route::get('/edit/{meet}', [MeetController::class, 'edit'])
             ->name('meets.edit');
 
-        Route::post('/{meet?}', [MeetController::class, 'update'])
+        Route::post('/{meet}', [MeetController::class, 'update'])
             ->name('meets.update');
 
         Route::delete('/{meet}', [MeetController::class, 'delete'])
@@ -134,10 +149,16 @@ Route::get('/packages', [PackagesController::class, 'index'])->name('packages');
 Route::middleware(['auth'])
     ->prefix('packages')
     ->group(function () {
-        Route::get('/edit/{package?}', [PackagesController::class, 'edit'])
+        Route::get('/create', [PackagesController::class, 'edit'])
+            ->name('packages.create');
+
+        Route::post('/create', [PackagesController::class, 'update'])
+            ->name('packages.create.save');
+
+        Route::get('/edit/{package}', [PackagesController::class, 'edit'])
             ->name('packages.edit');
 
-        Route::post('/{package?}', [PackagesController::class, 'update'])
+        Route::post('/{package}', [PackagesController::class, 'update'])
             ->name('packages.update');
 
         Route::delete('/{package}', [PackagesController::class, 'delete'])
@@ -232,12 +253,6 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
-
-/*Route::get('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
-    ->name('profile.posts');
-
-Route::post('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
-    ->middleware(\App\Http\Middleware\TurboStream::class);*/
 
 Route::get('/profile/{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
     ->name('profile.packages');

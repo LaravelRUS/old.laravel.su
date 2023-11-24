@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="col-xxl-auto">
-                    <a href="{{ route('meets.edit') }}" class="btn btn-outline-primary">Новая запись</a>
+                    <a href="{{ route('meets.create') }}" class="btn btn-outline-primary">Новая запись</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             Добавьте событие
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('meets.edit') }}" class="btn btn-secondary">Создать запись</a>
+                            <a href="{{ route('meets.create') }}" class="btn btn-secondary">Создать запись</a>
                         </div>
                     @else
                         <div class="text-center mb-3">
