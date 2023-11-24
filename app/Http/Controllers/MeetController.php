@@ -13,7 +13,24 @@ class MeetController extends Controller
 {
     public function index()
     {
-        return view('meet.index');
+        $most = Meet::whereDate('start_date', '>=', now())
+            ->orderBy('start_date', 'asc')
+            ->first();
+
+        $actual = Meet::whereDate('start_date', '>=', now())
+            ->where('id', '!=', $most->id)
+            ->orderBy('start_date', 'asc')
+            ->get();
+
+        $past = Meet::whereDate('start_date', '<', now())
+            ->orderBy('start_date', 'desc')
+            ->simplePaginate(5);
+
+        return view('meet.index', [
+            'most'   => $most,
+            'actual' => $actual,
+            'past'   => $past,
+        ]);
     }
 
     public function edit(Request $request, Meet $meet)

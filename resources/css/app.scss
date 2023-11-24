@@ -61,7 +61,8 @@ $font-family-sans-serif:
     'Segoe UI Symbol',
     'Noto Color Emoji';
 
-$headings-font-family: 'Raleway';
+$headings-font-family: 'Raleway', system-ui;
+$btn-font-family: 'Raleway', system-ui;
 
 $btn-border-radius: 0.75rem;
 $border-width: 2px;

@@ -43,7 +43,7 @@ class ProfileController extends Controller
         return $user->attachLikeStatus($posts);
     }
 
-    public function events(User $user, Request $request)
+    public function meets(User $user, Request $request)
     {
         $meets = $user->meets()->latest()
             ->cursorPaginate(2);

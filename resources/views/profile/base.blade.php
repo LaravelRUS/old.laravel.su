@@ -89,8 +89,8 @@
                         >Награды</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.events') }}"
-                           href="{{ route('profile.events', $user) }}"
+                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
+                           href="{{ route('profile.meets', $user) }}"
                         >События</a>
                     </li>
                 </div>

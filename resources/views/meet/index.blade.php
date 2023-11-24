@@ -3,60 +3,83 @@
 
 @section('content')
 
+    @if($past->currentPage() === 1)
+        <x-header>
+            <x-slot:sup>Нельзя пропустить</x-slot>
+            <x-slot:title>Не обойдется без Laravel</x-slot>
+            <x-slot:description>
+                Ни одна PHP конференция не обходится без упоминания Laravel.
+                Это самый популярный фреймворк в мире PHP.
+            </x-slot>
 
+            @if($most)
+                <x-slot:content>
+                    <div class="bg-dark-subtle dashed p-4 rounded position-relative">
+                        <a href="{{ $most->link }}" class="position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
 
-    <x-header>
-        <x-slot:sup>Нельзя пропустить</x-slot>
-        <x-slot:title>Ни одна PHP конференция не обойдется без Laravel</x-slot>
-        <x-slot:description>
-            Рассказать, что Laravel на столько популярен в мире PHP что нет какой-либо конференции, где не спикеры
-            не упоминали Laravel
-        </x-slot>
+                        <div class="row g-4 justify-content-between align-items-center">
+                            <div class="col-sm-7">
+                                <div class="row g-3">
 
-        <x-slot:content>
-            <div class="bg-dark-subtle dashed p-4 rounded position-relative">
-                <a href="#" class="position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
+                                    <div class="col-12">
+                                        <h4 class="mb-0">{{ $most->name }}</h4>
+                                    </div>
 
-                <div class="row g-4 justify-content-between align-items-center">
-                    <div class="col-sm-7">
-                        <div class="row g-3">
-
-                            <div class="col-12">
-                                <h4 class="mb-0">PHP Russia</h4>
+                                    <!-- Date -->
+                                    <div class="col-6">
+                                        <small class="text-muted">Дата</small>
+                                        <h6>{{ $most->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</h6>
+                                    </div>
+                                    <!-- Time -->
+                                    <div class="col-6">
+                                        <small class="text-muted">Время</small>
+                                        <h6>Начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</h6>
+                                    </div>
+                                    <!-- Address -->
+                                    <div class="col-12">
+                                        <small class="text-muted">Адрес</small>
+                                        <h6>{{ $most->address }}</h6>
+                                    </div>
+                                </div>
                             </div>
-
-                            <!-- Date -->
-                            <div class="col-6">
-                                <small class="text-muted">Дата</small>
-                                <h6>11 Ноября</h6>
-                            </div>
-                            <!-- Time -->
-                            <div class="col-6">
-                                <small class="text-muted">Время</small>
-                                <h6>Начало в 9 утра</h6>
-                            </div>
-                            <!-- Address -->
-                            <div class="col-12">
-                                <small class="text-muted">Адрес</small>
-                                <h6>Москва, Крокус Сити Хол</h6>
+                            <div class="col-sm-5 text-center">
+                                <div class="ticket-border">
+                                    <!-- QR code -->
+                                    <img class="img-fluid mx-auto user-select-none rounded" src="https://chart.googleapis.com/chart?cht=qr&chl={{ urlencode($most->link) }}&chs=500x500" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 text-center">
-                        <div class="ticket-border">
-                            <!-- QR code -->
-                            <img class="img-fluid mx-auto user-select-none" src="/img/qr-code.svg" alt="">
-                        </div>
+                </x-slot:content>
+            @endif
+        </x-header>
+
+        <div class="container py-5">
+            <div class="row row-cols-lg-3 gy-0 position-relative">
+                @foreach($actual as $meet)
+                    <div class="col position-relative">
+                        @if($loop->first)
+                            <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
+                                <x-icon path="l.cube" width="46" height="53" fill="none"/>
+                            </figure>
+                        @endif
+                        @include('particles.meet', ['meet' => $meet])
                     </div>
-                </div>
+                @endforeach
+
+                @if($actual->count() % 3 !== 0)
+                    <x-icon path="l.dots" class="text-primary opacity-2 opacity-25 col" height="400" width="100%" />
+
+                    @if($actual->count() % 4 === 0)
+                        <x-icon path="l.dots" class="text-primary opacity-2 opacity-25 col" height="400" width="100%" />
+                    @endif
+                @endif
             </div>
-        </x-slot:content>
-    </x-header>
-
+        </div>
+    @endif
 
 
     <div class="container py-5">
-
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
@@ -74,53 +97,14 @@
                 <p class="mb-0">Чтобы вы не сожалели о пропущенных конференциях, мы оставили записи с этих событий.</p>
             </div>
             <div class="col-xl-8 text-center text-xl-start">
-                <div class="bg-body-tertiary p-5 rounded-5 shadow mb-5">
-                    <span class="opacity-50">Ульяновск, Главклуб</span>
-                    <h5 class="my-3">Summer Merge</h5>
-                    <p>
-                        В этом году PHP Russia пройдет в рамках HighLoad++ 2022. 30 докладов, 2 круглых стола, ревью
-                        резюме, unconference и митапы. Поговорим о тестировании, качестве, лучших практиках, архитектуре
-                        и фреймворках, добавим хардкора.
-                    </p>
 
-                    <a href="#" class="btn btn-outline-primary">Как это было</a>
-                </div>
+                @foreach($past as $meet)
+                    <div class="col">
+                        @include('particles.meet', ['meet' => $meet])
+                    </div>
+                @endforeach
 
-                <div class="bg-body-tertiary p-5 rounded-5 shadow mb-5">
-                    <span class="opacity-50">Ульяновск, Главклуб</span>
-                    <h5 class="my-3">Summer Merge</h5>
-                    <p>
-                        В этом году PHP Russia пройдет в рамках HighLoad++ 2022. 30 докладов, 2 круглых стола, ревью
-                        резюме, unconference и митапы. Поговорим о тестировании, качестве, лучших практиках, архитектуре
-                        и фреймворках, добавим хардкора.
-                    </p>
-
-                    <a href="#" class="btn btn-outline-primary">Как это было</a>
-                </div>
-
-                <div class="bg-body-tertiary p-5 rounded-5 shadow mb-5">
-                    <span class="opacity-50">Ульяновск, Главклуб</span>
-                    <h5 class="my-3">Summer Merge</h5>
-                    <p>
-                        В этом году PHP Russia пройдет в рамках HighLoad++ 2022. 30 докладов, 2 круглых стола, ревью
-                        резюме, unconference и митапы. Поговорим о тестировании, качестве, лучших практиках, архитектуре
-                        и фреймворках, добавим хардкора.
-                    </p>
-
-                    <a href="#" class="btn btn-outline-primary">Как это было</a>
-                </div>
-
-                <div class="bg-body-tertiary p-5 rounded-5 shadow mb-5">
-                    <span class="opacity-50">Ульяновск, Главклуб</span>
-                    <h5 class="my-3">Summer Merge</h5>
-                    <p>
-                        В этом году PHP Russia пройдет в рамках HighLoad++ 2022. 30 докладов, 2 круглых стола, ревью
-                        резюме, unconference и митапы. Поговорим о тестировании, качестве, лучших практиках, архитектуре
-                        и фреймворках, добавим хардкора.
-                    </p>
-
-                    <a href="#" class="btn btn-outline-primary">Как это было</a>
-                </div>
+                {!! $past->links() !!}
             </div>
         </div>
 

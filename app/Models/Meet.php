@@ -23,6 +23,10 @@ class Meet extends Model
         'link',
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
