@@ -42,15 +42,14 @@ return response()->json([
 
         <x-slot:actions>
             <a href="#" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
-            <a href="#"
-               class="link-body-emphasis text-decoration-none link-icon-animation">Критерии
+            <a href="{{ route('ecosystem') }}"
+               class="link-body-emphasis text-decoration-none link-icon-animation">Экосистема
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>
     </x-header>
 
-    <div class="container py-5">
-
+    <x-container>
         <div class="bg-body-secondary p-5 rounded">
             <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5">
 
@@ -59,6 +58,7 @@ return response()->json([
                 @endforeach
             </div>
         </div>
-    </div>
+    </x-container>
+
 
 @endsection

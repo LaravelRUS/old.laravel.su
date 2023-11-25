@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="container my-5">
+    <x-container>
         <div class="row">
             <div class="bg-body-tertiary p-xxl-5 p-4 rounded">
                 <div class="col-xxl-8 mx-auto">
@@ -61,5 +61,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 @endsection

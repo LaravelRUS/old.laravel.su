@@ -17,7 +17,7 @@
         </div>
 @else
     @foreach ($posts as $post)
-        <div id="@domid($post)" class="bg-body-tertiary mb-4 px-5 py-4 rounded hotwire-frame">
+        <div id="@domid($post)" class="bg-body-tertiary mb-4 px-xxl-5 p-4 rounded hotwire-frame">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
                     <div class="avatar avatar-sm me-3">
@@ -83,12 +83,11 @@
                     <span class="ms-2">{{ $post->comments_count }}</span>
                 </a>
 
-                <span class="d-flex align-items-center text-body-secondary text-decoration-none">
-                    <x-icon path="bs.clock"/>
-                    <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
-                </span>
-
-                <span class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>
+                <time
+                    data-controller="tooltip"
+                    title="test!"
+                    class="text-body-secondary ms-auto user-select-none small"
+                    datetime="{{ $post->created_at->toISOString() }}">{{ $post->created_at->diffForHumans() }}</time>
             </div>
         </div>
     @endforeach

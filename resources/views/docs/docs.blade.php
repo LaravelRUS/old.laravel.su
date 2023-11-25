@@ -3,8 +3,7 @@
 
 @section('content')
 
-    <div class="container my-5">
-
+    <x-container>
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-3 position-sticky top-0 py-3">
 
@@ -106,5 +105,5 @@
                 </main>
             </div>
         </div>
-    </div>
+    </x-container>
 @endsection

@@ -21,7 +21,7 @@
 
 
 
-    <div class="container py-5">
+    <x-container>
         <div class="row text-left align-items-center pt-5 pb-md-5">
             <div class="col-4 col-md-5">
                 <img alt="image" class="img-fluid" src="/img/resources/tnspodcast.svg">
@@ -71,6 +71,6 @@
                 <p><a href="#">Перейти</a></p>
             </div>
         </div>
-    </div>
+    </x-container>
 
 @endsection

@@ -28,24 +28,25 @@ enum PackageTypeEnum: string
     public function text(): string
     {
         return match ($this) {
-            self::FileManagement       => 'File Management',
-            self::AuthAndPermission    => 'Auth & Permission',
-            self::DatabaseAndEloquent  => 'Database & Eloquent',
-            self::DebuggingAndDevTools => 'Debugging & Dev Tools',
-            self::DevOps               => 'Dev Ops',
-            self::Localization         => 'Localization',
+            self::FileManagement       => 'Управление файлами',
+            self::AuthAndPermission    => 'Аутентификация и разрешения',
+            self::DatabaseAndEloquent  => 'Базы данных и Eloquent',
+            self::DebuggingAndDevTools => 'Инструменты разработчика',
+            self::DevOps               => 'DevOps',
+            //self::Localization         => 'Локализация',
             self::API                  => 'API',
-            self::SEO                  => 'SEO',
-            self::Testing              => 'Testing',
-            self::Payment              => 'Payment',
-            self::Security             => 'Security',
-            self::Mail                 => 'mail',
-            self::ECommerce            => 'E-Commerce',
-            self::CMSAndAdminPanels    => 'CMS & Admin Panels',
-            self::CodeArchitecture     => 'Code Architecture',
-            self::Notifications        => 'Notifications',
-            self::UIAndBladeComponents => 'UI & Blade Components',
-            self::UtilitiesAndHelpers  => 'Utilities & Helpers',
+            //self::SEO                  => 'Оптимизация для поисковых систем (SEO)',
+            self::Testing              => 'Тестирование',
+            //self::Payment              => 'Платежи',
+            self::Security             => 'Безопасность',
+            //self::Mail                 => 'Почта',
+            self::ECommerce            => 'Интернет-торговля',
+            self::CMSAndAdminPanels    => 'CMS и панели администратора',
+            self::CodeArchitecture     => 'Архитектура кода',
+            self::Notifications        => 'Уведомления',
+            self::UIAndBladeComponents => 'UI и компоненты Blade',
+            self::UtilitiesAndHelpers  => 'Утилиты',
+
         };
     }
 

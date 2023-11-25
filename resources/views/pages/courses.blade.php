@@ -14,7 +14,6 @@
     </x-header>
 
 
-
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-6 position-relative overflow-hidden">
@@ -46,9 +45,6 @@
     </div>
 
     <div class="container py-5">
-
-
-
         <div class="row align-items-md-stretch g-5 rounded-3 overflow-hidden">
             <div class="col-lg-8">
                 <div class="h-100 bg-body-tertiary rounded">

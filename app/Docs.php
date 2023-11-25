@@ -137,7 +137,10 @@ class Docs
      */
     public function title(): ?string
     {
-        $title = (new Crawler(Str::of($this->page)->markdown()))->filterXPath('//h1');
+        $crawler = new Crawler();
+        $crawler->addHtmlContent(Str::of($this->page)->markdown());
+
+        $title = $crawler->filterXPath('//h1');
 
         return count($title) ? $title->text() : null;
     }

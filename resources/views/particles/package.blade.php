@@ -1,8 +1,8 @@
 <div id="@domid($package)" class="col">
     <div class="bg-body-tertiary p-5 rounded h-100 text-wrap text-break position-relative">
         <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="badge"
-                  style="background-color: {{$package->type->colorBg()}}; color: {{$package->type->colorText()}}">
+            <span class="badge text-white"
+                  style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 1em black;">
                 {{ $package->type->text() }}
             </span>
             @if(is_active('profile.packages'))

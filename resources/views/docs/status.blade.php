@@ -17,7 +17,7 @@
         </x-slot>
     </x-header>
 
-    <div class="container my-5">
+    <x-container>
         <div class="col-xl-10 col-md-12 mx-auto">
             <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
                 <div class="row row-cols-md-4 g-3 justify-content-md-between text-center">
@@ -32,9 +32,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container my-5">
+    <x-container>
         <div class="row">
             <div class="col-xl-7 col-md-12 mx-auto text-xl-end text-center">
                 <p class="mb-0">Актуально: {{ $documents->where('behind', 0)->count() }} из {{ $documents->count() }}</p>
@@ -95,7 +95,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
+    </x-container>
 
 @endsection

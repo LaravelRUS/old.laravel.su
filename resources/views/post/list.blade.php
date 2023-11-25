@@ -3,11 +3,9 @@
 @section('content')
     <div class="container my-5">
         <div class="col-xl-8 col-md-12 mx-auto">
-            <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
+            <div class="p-5 bg-body-secondary rounded-3 position-relative">
                 <div class="position-absolute d-none d-xxl-block bottom-0 end-0 m-4"><img src="/img/ui/popular-fire.svg"></div>
                     @include('post.popular-list')
-
-
             </div>
         </div>
     </div>
@@ -17,7 +15,7 @@
             <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
                 <turbo-frame id="posts-frame" target="_top" src="{{ route('posts') }}">
                     @foreach(range(0,2) as $placeholder)
-                        <div class="bg-body-tertiary mb-4 px-5 py-4 rounded post-placeholder">
+                        <div class="bg-body-tertiary mb-4 px-xl-5 p-4 rounded post-placeholder">
 
                             <span class="placeholder rounded col-6 mb-4"></span>
 

@@ -4,7 +4,7 @@
 
 <turbo-frame id="comments-frame" data-turbo-temporary>
     <x-stream target="comments">
-        <div class="container my-5">
+        <x-container>
             <div class="row">
                 <div class="col-xxl-8 mx-auto">
                     <p class="h5 mb-3 ms-3">
@@ -45,6 +45,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </x-container>
     </x-stream>
 </turbo-frame>

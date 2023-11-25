@@ -106,6 +106,9 @@
                                 <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
                             </li>
                             <li class="nav-item mb-2">
+                                <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
+                            </li>
+                            <li class="nav-item mb-2">
                                 <a href="{{ route('performance') }}" class="nav-link p-0">Производительность</a>
                             </li>
                             <li class="nav-item mb-2">
@@ -120,13 +123,14 @@
                     <div class="navbar navbar-dark">
                         <ul class="nav flex-column navbar-nav">
                             <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">Исходный
-                                                                                                                код</a>
+                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
+                                    Исходный код
+                                </a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">Сообщить
-                                                                                                                о
-                                                                                                                проблеме</a>
+                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
+                                    Сообщить о проблеме
+                                </a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
@@ -134,7 +138,7 @@
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('/rss/feed') }}"
-                                   class="nav-link p-0">RSS</a>
+                                   class="nav-link p-0">RSS Лента</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}"

@@ -14,7 +14,7 @@
         </x-slot>
     </x-header>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
 
@@ -63,9 +63,9 @@
                 <img src="https://laravel.com/img/docs/telescope-example.png" class="img-fluid">
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Думаете PHP медленный?</h2>
@@ -119,9 +119,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Оптимизация базы данных</h2>
@@ -173,9 +173,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Обработка задач в фоне</h2>
@@ -227,7 +227,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
 
     <x-header image="/img/bird.svg">
@@ -262,7 +262,7 @@
         </x-slot>
     </x-header>
 
-    <div class="container">
+    <x-container>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
             <div class="feature col">
                 <h3 class="fs-2 text-body-emphasis">150 млн+</h3>
@@ -277,7 +277,7 @@
                 <p>Установка фреймворка Laravel</p>
             </div>
         </div>
-    </div>
+    </x-container>
 
     <x-header image="/img/bird.svg">
         <x-slot:sup>Доверие</x-slot>
