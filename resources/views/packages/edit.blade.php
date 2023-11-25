@@ -16,7 +16,7 @@
 
                     </div>
 
-                    <form action="{{ $pack->exists? route('packages.update', $pack) : route('packages.create.save')}}"
+                    <form action="{{ $pack->exists? route('packages.update', $pack) : route('packages.store')}}"
                           method="post">
 
                         <textarea data-controller="textarea-autogrow"

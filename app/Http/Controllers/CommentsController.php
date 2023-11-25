@@ -27,8 +27,7 @@ class CommentsController extends Controller
 
         return view('components.comments', array_merge($data, [
             'model' => $post,
-        ]))
-            ->fragmentIf(!request()->isMethod('GET'), 'comments');
+        ]));
     }
 
     /**

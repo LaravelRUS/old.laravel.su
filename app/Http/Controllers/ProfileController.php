@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Casts\PostTypeEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -124,7 +123,6 @@ class ProfileController extends Controller
             ],
             [],
             [
-
                 'name'  => 'Имя',
                 'about' => 'О себе'
             ]

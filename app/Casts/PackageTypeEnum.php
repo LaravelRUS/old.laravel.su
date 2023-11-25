@@ -11,13 +11,13 @@ enum PackageTypeEnum: string
     case DatabaseAndEloquent = 'database-and-Eloquent';
     case DebuggingAndDevTools = 'debugging-and-dev-tools';
     case DevOps = 'dev-ops';
-    case Localization = 'localization';
+    //case Localization = 'localization';
     case API = 'api';
-    case SEO = 'seo';
+    //case SEO = 'seo';
     case Testing = 'testing';
-    case Payment = 'payment';
+    //case Payment = 'payment';
     case Security = 'security';
-    case Mail = 'mail';
+    //case Mail = 'mail';
     case ECommerce = 'e-commerce';
     case CMSAndAdminPanels = 'cms-and-admin-panels';
     case CodeArchitecture = 'code-architecture';

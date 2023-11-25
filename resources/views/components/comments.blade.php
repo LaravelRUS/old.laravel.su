@@ -3,7 +3,7 @@
 @endphp
 
 <turbo-frame id="comments-frame" data-turbo-temporary>
-    <x-stream target="comments">
+    <div id="comments">
         <x-container>
             <div class="row">
                 <div class="col-xxl-8 mx-auto">
@@ -46,5 +46,5 @@
                 </div>
             </div>
         </x-container>
-    </x-stream>
+    </div>
 </turbo-frame>

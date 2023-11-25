@@ -45,7 +45,6 @@ Route::get('/feed', [PostController::class, 'feed'])
     ->name('feed');
 
 Route::post('/feed',[PostController::class,'feed'])
-    ->middleware(\App\Http\Middleware\TurboStream::class)
     ->name('feed.popular');
 
 Route::get('/posts', [PostController::class, 'list'])
@@ -63,15 +62,17 @@ Route::middleware(['auth'])
             ->name('post.create');
 
         Route::post('/posts/create', [PostController::class, 'update'])
-            ->name('post.create.save');
+            ->name('post.store');
 
-        Route::get('/posts/edit/{post}', [PostController::class, 'edit'])
+        Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
+            ->can('owner', 'post')
             ->name('post.edit');
 
-        Route::post('/posts/update/{post}', [PostController::class, 'update'])
+        Route::post('/posts/{post}', [PostController::class, 'update'])
             ->name('post.update');
 
-        Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
+        Route::delete('/posts/{post}', [PostController::class, 'delete'])
+            ->can('owner', 'post')
             ->name('post.delete');
     });
 
@@ -97,13 +98,17 @@ Route::middleware(['auth'])
             ->name('comments.reply');
 
         Route::put('/{comment}', [CommentsController::class, 'update'])
+            ->can('update', 'comment')
             ->name('comments.update');
 
         Route::delete('/{comment}', [CommentsController::class, 'delete'])
+            ->can('delete','comment')
             ->name('comments.delete');
 
         Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
-        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
+        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])
+            ->can('edit', 'comment')
+            ->name('comments.show.edit');
     });
 
 /*
@@ -123,16 +128,19 @@ Route::middleware(['auth'])
         Route::get('/create', [MeetController::class, 'edit'])
             ->name('meets.create');
 
-        Route::post('/create', [MeetController::class, 'update'])
-            ->name('meets.create.save');
+        Route::post('/', [MeetController::class, 'update'])
+            ->name('meets.store');
 
-        Route::get('/edit/{meet}', [MeetController::class, 'edit'])
+        Route::get('/{meet}/edit', [MeetController::class, 'edit'])
+            ->can('owner', 'meet')
             ->name('meets.edit');
 
         Route::post('/{meet}', [MeetController::class, 'update'])
+            ->can('owner', 'meet')
             ->name('meets.update');
 
         Route::delete('/{meet}', [MeetController::class, 'delete'])
+            ->can('owner', 'meet')
             ->name('meets.delete');
     });
 
@@ -153,16 +161,19 @@ Route::middleware(['auth'])
         Route::get('/create', [PackagesController::class, 'edit'])
             ->name('packages.create');
 
-        Route::post('/create', [PackagesController::class, 'update'])
-            ->name('packages.create.save');
+        Route::post('/', [PackagesController::class, 'update'])
+            ->name('packages.store');
 
-        Route::get('/edit/{package}', [PackagesController::class, 'edit'])
+        Route::get('/{package}/edit', [PackagesController::class, 'edit'])
+            ->can('owner', 'package')
             ->name('packages.edit');
 
         Route::post('/{package}', [PackagesController::class, 'update'])
+            ->can('owner', 'package')
             ->name('packages.update');
 
         Route::delete('/{package}', [PackagesController::class, 'delete'])
+            ->can('owner', 'package')
             ->name('packages.delete');
     });
 
@@ -249,7 +260,6 @@ Route::get('/profile/edit', [\App\Http\Controllers\ProfileController::class, 'ed
 
 Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])
     ->middleware('auth')
-    ->middleware(\App\Http\Middleware\TurboStream::class)
     ->name('my.update');
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])

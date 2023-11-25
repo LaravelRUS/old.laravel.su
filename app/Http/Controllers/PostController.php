@@ -23,16 +23,23 @@ class PostController extends Controller
             ->withCount('comments')
             ->orderBy('likers_count', 'desc')
             ->orderBy('created_at', 'desc')
-            ->simplePaginate(5);//CursorPaginate не работает с withCount
+            ->simplePaginate(5);//CursorPaginate не работает с сортировкой по полю из withCount
+
 
         if(request()->isMethod('GET')){
             return view('post.list', [
                 'popular' => $popular,
             ]);
         }
-        return view('post.popular-list', [
-            'popular' => $popular,
-        ])->fragments();
+        return turbo_stream([
+            turbo_stream()->append('popular-list', view('post._popular_list', [
+                'popular' => $popular,
+            ])),
+
+            turbo_stream()->replace('popular-more', view('post._popular_pagination', [
+                'popular' => $popular,
+            ])),
+        ]);
 
     }
 

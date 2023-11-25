@@ -5,7 +5,10 @@
         <div class="col-xl-8 col-md-12 mx-auto">
             <div class="p-5 bg-body-secondary rounded-3 position-relative">
                 <div class="position-absolute d-none d-xxl-block bottom-0 end-0 m-4"><img src="/img/ui/popular-fire.svg"></div>
-                    @include('post.popular-list')
+                <div id="popular-list" class="flex-column col-xxl-10">
+                    @include('post._popular_list')
+                </div>
+                @include('post._popular_pagination')
             </div>
         </div>
     </div>
