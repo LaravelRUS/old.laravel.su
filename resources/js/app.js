@@ -28,6 +28,7 @@ import ShareController                  from './controllers/share_controller';
 import TextareaAutogrow                 from 'stimulus-textarea-autogrow'
 import TextareaEditor                   from './controllers/text-editor_controller';
 import Tooltip                          from './controllers/tooltip_controller';
+import Comment                          from './controllers/comment_controller';
 
 application.register('theme', ThemeController);
 application.register('viewport-entrance-toggle', ViewportEntranceToggleController);
@@ -38,11 +39,7 @@ application.register('textarea-autogrow', TextareaAutogrow)
 application.register('text-editor', TextareaEditor)
 application.register('share', ShareController);
 application.register('tooltip', Tooltip);
-
-
-import LoadMoreController from './controllers/load-more_controller';
-
-application.register('load-more', LoadMoreController);
+application.register('comment', Comment);
 
 Prism.manual = true;
 

@@ -80,7 +80,11 @@
                             <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
                         </span>
 
-                        <span class="text-body-secondary ms-auto user-select-none small">{{ $post->created_at->diffForHumans() }}</span>
+                        <time
+                            data-controller="tooltip"
+                            title="Опубликовано {{ $post->created_at->format('d.m.Y H:i') }}"
+                            class="text-body-secondary ms-auto user-select-none small"
+                            datetime="{{ $post->created_at->toISOString() }}">{{ $post->created_at->diffForHumans() }}</time>
                     </div>
                 </div>
             </div>

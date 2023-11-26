@@ -107,7 +107,7 @@ Route::middleware(['auth'])
 
         Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
         Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])
-            ->can('edit', 'comment')
+            ->can('update', 'comment')
             ->name('comments.show.edit');
     });
 

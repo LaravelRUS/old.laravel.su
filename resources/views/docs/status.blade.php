@@ -69,9 +69,10 @@
                                 <span class="opacity-50 me-auto pe-none">Перевод ссылается:</span>
                                 <small class="user-select-all me-2"
                                     data-clipboard-target="source">{{ $doc->current_commit }}</small>
-                                <a href="#" data-action="clipboard#copy" title="Скопировать в буфер обмена">
-                                    <x-icon path="bs.clipboard" class="copy-action" />
-                                    <x-icon path="bs.check2" class="copy-done" />
+                                <a href="#"
+                                   data-action="clipboard#copy">
+                                    <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                    <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
                                 </a>
                             </div>
 

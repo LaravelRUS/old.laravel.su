@@ -6,7 +6,7 @@ export default class extends Controller {
     static values = {
         title: {
             type: String,
-            default: this.elemet.getAttribute("title"),
+            default: '',
         },
     };
 
@@ -20,7 +20,7 @@ export default class extends Controller {
                 show: 500,
                 hide: 100,
             },
-            title: this.titleValue,
+            title: this.titleValue || this.element.getAttribute('title')
         });
     }
 
