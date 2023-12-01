@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('packagist_name')->unique();
             $table->string('website')->nullable();
+            $table->string('type');
             $table->bigInteger('downloads')->default(0);
             $table->bigInteger('stars')->default(0);
 

@@ -1,4 +1,4 @@
-<div class="container py-5">
+<x-container>
     <div class="p-5 bg-body-secondary rounded-4 d-flex align-items-center justify-content-between position-relative">
         <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
             <x-icon path="l.cube" width="46" height="53" fill="none"/>
@@ -16,4 +16,4 @@
             {{ $attributes->get('text', 'Перейти') }}
         </a>
     </div>
-</div>
+</x-container>

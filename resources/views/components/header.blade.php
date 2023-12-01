@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'container py-5']) }}>
+<x-container>
     <div class="row g-5 py-lg-5 {{ $attributes->get('align', 'align-items-center') }}">
         <div class="col-lg-6">
             @isset($sup)
@@ -28,4 +28,4 @@
             @endisset
         </div>
     </div>
-</div>
+</x-container>

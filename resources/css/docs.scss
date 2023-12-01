@@ -98,6 +98,7 @@ main div {
     }
 
     code {
+        @extend .text-nowrap;
         color: rgb(235, 68, 50);
     }
 }
@@ -184,6 +185,10 @@ main {
     pre {
         border-radius: 0.8rem;
         margin-bottom: 2em !important;
+
+        code {
+            white-space: inherit!important;
+        }
     }
 
     /*

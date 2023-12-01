@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <x-stream target="profile" >
-    <div class="container my-5">
+
+    <x-container>
         <div class="col-xl-8 col-md-12 mx-auto">
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
@@ -49,6 +49,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </x-stream>
+    </x-container>
+
 @endsection

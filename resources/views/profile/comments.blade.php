@@ -24,7 +24,7 @@
                 </div>
             @endif
         @else
-            <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-3">
+            <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-4">
                 @foreach($comments as $comment)
                     @include('comments.show')
                 @endforeach

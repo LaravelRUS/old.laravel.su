@@ -12,8 +12,7 @@
         </x-slot>
     </x-header>
 
-    <div class="container py-5">
-
+    <x-container>
         <div class="row">
             <div class="col-7 mx-auto">
                 <main>
@@ -102,6 +101,6 @@ original_docs&gt; git pull origin master
                 </main>
             </div>
         </div>
-    </div>
+    </x-container>
 
 @endsection

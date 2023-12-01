@@ -85,4 +85,10 @@ class User extends Authenticatable
     {
         return $this->morphMany(Comment::class, 'commenter')->where('approved', true);
     }
+
+    public function meets()
+    {
+        return $this->hasMany(Meet::class);
+    }
+
 }

@@ -25,7 +25,12 @@
                     <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
 
                     <div class="me-3 small opacity-50">
-                        <a href="#comment-{{ $comment->getKey() }}"
+                        <a
+                            @if(is_active('profile.comments'))
+                               href="{{route('post.show',$comment->post->slug)}}#comment-{{ $comment->getKey() }}"
+                           @else
+                               href="#comment-{{ $comment->getKey() }}"
+                           @endif
                            class="link-body-emphasis text-decoration-none">
                             <time
                                 datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="container my-5">
+    <x-container>
         <div class="col-xl-8 col-md-12 mx-auto">
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
@@ -89,8 +89,8 @@
                         >Награды</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.events') }}"
-                           href="{{ route('profile.events', $user) }}"
+                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
+                           href="{{ route('profile.meets', $user) }}"
                         >События</a>
                     </li>
                 </div>
@@ -100,9 +100,6 @@
         <div>
             @yield('tab')
         </div>
-
-
-
-    </div>
+    </x-container>
 
 @endsection

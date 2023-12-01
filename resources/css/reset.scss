@@ -1,0 +1,10 @@
+
+textarea {
+    resize: none;
+}
+
+
+.lead {
+    font-family: $headings-font-family;
+    @extend .text-balance;
+}

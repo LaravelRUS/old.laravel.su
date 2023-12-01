@@ -1,0 +1,52 @@
+@extends('layout')
+@section('title', 'Экосистема')
+
+@section('content')
+
+    <x-header image="/img/tablecloth.svg">
+        <x-slot:sup>Экосистема</x-slot>
+        <x-slot:title>Без корпоративной сложности.</x-slot>
+
+        <x-slot:description>
+            Обширная экосистема тщательно поддерживаемых пакетов гарантирует вашу готовность ко всему.
+        </x-slot>
+
+        <x-slot:actions>
+            <a href="{{ route('packages') }}"
+               class="link-body-emphasis text-decoration-none link-icon-animation">Посмотреть пакеты сообщества
+                <x-icon path="bs.arrow-right" />
+            </a>
+        </x-slot>
+
+    </x-header>
+
+    <x-container>
+        <div class="row row-cols-lg-3 g-5">
+            @foreach (App\Ecosystem::items() as $ecosystemItemId => $ecosystemItem)
+                <div class="col">
+                    <a href="{{ $ecosystemItem['href'] }}"
+                       class="d-flex align-items-stretch rounded link-body-emphasis text-decoration-none h-100 overflow-hidden bg-body-tertiary">
+                        <div class="p-4 bg-gradient d-flex align-items-center" style="background: {{ $ecosystemItem['color'] ?? '' }}">
+                            <img src="/img/ecosystem/{{ $ecosystemItemId }}.min.svg" alt="{{ $ecosystemItem['image-alt'] }}" width="48" height="48" class="relative">
+                        </div>
+                        <div class="p-4">
+                            <h5 class="mb-2 fw-bolder">{{ $ecosystemItem['name'] }}</h5>
+                            <div class="small">{{ $ecosystemItem['description'] }}</div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </x-container>
+
+
+    <x-call-to-action link="{{ route('docs') }}" text="Посмотреть документацию">
+        <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>
+
+        <x-slot:description>
+            В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
+            ограничение скорости и пользовательские консольные команды.
+        </x-slot>
+    </x-call-to-action>
+
+@endsection

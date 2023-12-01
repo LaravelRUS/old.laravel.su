@@ -47,7 +47,7 @@ class Anchors extends Component
     private function findAnchors()
     {
         $crawler = new Crawler();
-        $crawler->addContent(mb_convert_encoding($this->content, 'UTF-8'));
+        $crawler->addHtmlContent($this->content);
 
         $anchors = [];
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\MeetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
@@ -24,10 +25,10 @@ Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
-Route::view('/performance', 'pages.performance')->name('performance');
+Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/team', 'pages.team')->name('team');
-Route::view('/packages', 'pages.packages')->name('packages');
 Route::view('/courses', 'pages.courses')->name('courses');
+Route::view('/jobs', 'pages.jobs')->name('jobs');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
 
@@ -43,6 +44,9 @@ Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 Route::get('/feed', [PostController::class, 'feed'])
     ->name('feed');
 
+Route::post('/feed',[PostController::class,'feed'])
+    ->name('feed.popular');
+
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
 
@@ -53,15 +57,22 @@ Route::get('/p/{post:slug}', [PostController::class, 'show'])
 
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('/posts/edit/{post?}', [PostController::class, 'edit'])
+
+        Route::get('/posts/create', [PostController::class, 'edit'])
+            ->name('post.create');
+
+        Route::post('/posts/create', [PostController::class, 'update'])
+            ->name('post.store');
+
+        Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
+            ->can('owner', 'post')
             ->name('post.edit');
 
-        Route::post('/posts/edit/{post?}', [PostController::class, 'edit']);
-
-        Route::post('/posts/update/{post?}', [PostController::class, 'update'])
+        Route::post('/posts/{post}', [PostController::class, 'update'])
             ->name('post.update');
 
-        Route::delete('/posts/edit/{post}', [PostController::class, 'delete'])
+        Route::delete('/posts/{post}', [PostController::class, 'delete'])
+            ->can('owner', 'post')
             ->name('post.delete');
     });
 
@@ -87,13 +98,17 @@ Route::middleware(['auth'])
             ->name('comments.reply');
 
         Route::put('/{comment}', [CommentsController::class, 'update'])
+            ->can('update', 'comment')
             ->name('comments.update');
 
         Route::delete('/{comment}', [CommentsController::class, 'delete'])
+            ->can('delete','comment')
             ->name('comments.delete');
 
         Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
-        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])->name('comments.show.edit');
+        Route::post('/{comment}/edit', [CommentsController::class, 'showEdit'])
+            ->can('update', 'comment')
+            ->name('comments.show.edit');
     });
 
 /*
@@ -110,14 +125,56 @@ Route::get('/meets', [MeetController::class, 'index'])->name('meets');
 Route::middleware(['auth'])
     ->prefix('meets')
     ->group(function () {
-        Route::post('/', [MeetController::class, 'store'])
+        Route::get('/create', [MeetController::class, 'edit'])
+            ->name('meets.create');
+
+        Route::post('/', [MeetController::class, 'update'])
             ->name('meets.store');
 
-        Route::put('/{comment}', [MeetController::class, 'update'])
+        Route::get('/{meet}/edit', [MeetController::class, 'edit'])
+            ->can('owner', 'meet')
+            ->name('meets.edit');
+
+        Route::post('/{meet}', [MeetController::class, 'update'])
+            ->can('owner', 'meet')
             ->name('meets.update');
 
-        Route::delete('/{comment}', [MeetController::class, 'delete'])
+        Route::delete('/{meet}', [MeetController::class, 'delete'])
+            ->can('owner', 'meet')
             ->name('meets.delete');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Packages Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/packages', [PackagesController::class, 'index'])->name('packages');
+
+Route::middleware(['auth'])
+    ->prefix('packages')
+    ->group(function () {
+        Route::get('/create', [PackagesController::class, 'edit'])
+            ->name('packages.create');
+
+        Route::post('/', [PackagesController::class, 'update'])
+            ->name('packages.store');
+
+        Route::get('/{package}/edit', [PackagesController::class, 'edit'])
+            ->can('owner', 'package')
+            ->name('packages.edit');
+
+        Route::post('/{package}', [PackagesController::class, 'update'])
+            ->can('owner', 'package')
+            ->name('packages.update');
+
+        Route::delete('/{package}', [PackagesController::class, 'delete'])
+            ->can('owner', 'package')
+            ->name('packages.delete');
     });
 
 
@@ -179,7 +236,6 @@ Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
     ->name('docs');
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Profile Routes
@@ -203,17 +259,10 @@ Route::get('/profile/edit', [\App\Http\Controllers\ProfileController::class, 'ed
 
 Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])
     ->middleware('auth')
-    ->middleware(\App\Http\Middleware\TurboStream::class)
     ->name('my.update');
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
-
-/*Route::get('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
-    ->name('profile.posts');
-
-Route::post('/profile/{user:nickname}/posts',[\App\Http\Controllers\ProfileController::class,'postTab'])
-    ->middleware(\App\Http\Middleware\TurboStream::class);*/
 
 Route::get('/profile/{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
     ->name('profile.packages');
@@ -224,8 +273,8 @@ Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileCon
 Route::get('/profile/{user:nickname}/awards',[\App\Http\Controllers\ProfileController::class,'awards'])
     ->name('profile.awards');
 
-Route::get('/profile/{user:nickname}/events',[\App\Http\Controllers\ProfileController::class,'events'])
-    ->name('profile.events');
+Route::get('/profile/{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
+    ->name('profile.meets');
 
 
 /*

@@ -12,7 +12,7 @@
         </x-slot>
     </x-header>
 
-    <div class="container my-5">
+    <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
             <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
@@ -43,9 +43,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container my-5">
+    <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
             <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
@@ -78,9 +78,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container my-5">
+    <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
             <div class="row align-items-start g-5 justify-content-between">
                 <div class="col">
@@ -107,9 +107,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
@@ -133,9 +133,9 @@
                     <div class="mb-5">
                         <h6 class="fw-bolder mb-3">Что такое Laravel-сообщество?</h6>
                         <p class="text-muted">
-                            Это группа разработчиков, занимающихся разработкой на Laravel и
-                            связанных с ним технологий. В русскоязычном Laravel-сообществе вы найдете опытных
-                            программистов, статьи, уроки, новости, обсуждения и много полезной информации о Laravel.
+                            Это площадка для менеджеров, студентов, разработчиков и энтузиастов занимающихся разработкой на Laravel, PHP и
+                            связанных технологий. В русскоязычном Laravel-сообществе вы найдете опытных
+                            программистов, статьи, уроки, новости, обсуждения и много полезной информации.
                         </p>
                     </div>
 
@@ -204,9 +204,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 
-    <div class="container py-5">
+    <x-container>
         <div class="row g-5 justify-content-center">
 
             <div class="col-md-6">
@@ -234,6 +234,6 @@
             </div>
 
         </div>
-    </div>
+    </x-container>
 
 @endsection

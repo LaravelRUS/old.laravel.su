@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Casts\PostTypeEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -28,26 +27,38 @@ class ProfileController extends Controller
     public function show(User $user, Request $request)
     {
         return view('profile.profile', [
-            'user'        => $user,
-            'posts'       => $this->getPosts($user, PostTypeEnum::Article, $request->user()),
+            'user'  => $user,
+            'posts' => $this->getPosts($user, PostTypeEnum::Article, $request->user()),
         ]);
     }
 
-    private function getPosts(User $owner, PostTypeEnum $type, User $user){
-        $posts =  $owner->posts()
+    /**
+     * @param \App\Models\User        $owner
+     * @param \App\Casts\PostTypeEnum $type
+     * @param \App\Models\User        $user
+     *
+     * @return \Illuminate\Pagination\AbstractCursorPaginator|\Illuminate\Pagination\AbstractPaginator
+     */
+    private function getPosts(User $owner, PostTypeEnum $type, User $user)
+    {
+        $posts = $owner->posts()
             ->type($type->value)
             ->withCount('comments')
             ->withCount('likers')
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
+
         return $user->attachLikeStatus($posts);
     }
 
-    public function events(User $user, Request $request)
+    public function meets(User $user, Request $request)
     {
+        $meets = $user->meets()->latest()
+            ->cursorPaginate(2);
+
         return view('profile.events', [
-            'user'        => $user,
-            'posts'       => $this->getPosts($user, PostTypeEnum::Event, $request->user()),
+            'user'  => $user,
+            'meets' => $meets,
         ]);
     }
 
@@ -60,7 +71,11 @@ class ProfileController extends Controller
      */
     public function packages(User $user)
     {
-        $packages = $user->packages()->orderBy('stars', 'desc')->get();
+
+        $packages = $user->packages()
+            ->orderBy('stars', 'desc')
+            ->orderBy('created_at', 'desc')//нужно для курсора
+            ->cursorPaginate(2);
 
         return view('profile.packages', [
             'packages' => $packages,
@@ -93,7 +108,7 @@ class ProfileController extends Controller
     public function awards(User $user)
     {
         return view('profile.awards', [
-            'user'        => $user,
+            'user' => $user,
         ]);
     }
 
@@ -114,19 +129,18 @@ class ProfileController extends Controller
         $request->validate(
             [
                 'name'  => 'required|string',
-                'about' => 'sometimes|string'
+                'about' => 'sometimes|string',
             ],
             [],
             [
-
                 'name'  => 'Имя',
-                'about' => 'О себе'
+                'about' => 'О себе',
             ]
         );
 
         $request->user()->fill([
             'name'  => $request->input('name'),
-            'about' => $request->input('about')
+            'about' => $request->input('about'),
         ])->save();
 
         return redirect()->route('profile', $request->user());

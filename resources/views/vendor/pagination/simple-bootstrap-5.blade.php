@@ -1,15 +1,18 @@
 @if ($paginator->hasPages())
+    <div class="bg-body-tertiary mb-4 px-xxl-5 p-4 rounded">
     <nav role="navigation" aria-label="Pagination Navigation">
-        <ul class="pagination d-flex  align-items-sm-center justify-content-center">
+        <ul class="pagination d-flex mb-0 align-items-sm-center justify-content-between">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true">
-                    <span class="page-link"> << Назад</span>
+                    <span class="page-link rounded-3 btn">
+                         <x-icon path="bs.arrow-left"/>
+                    </span>
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">
-                        << Назад
+                    <a class="page-link rounded-3 btn" href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                        <x-icon path="bs.arrow-left"/>
                     </a>
                 </li>
             @endif
@@ -17,13 +20,18 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next">Вперёд >></a>
+                    <a class="page-link rounded-3 btn" href="{{ $paginator->nextPageUrl() }}" rel="next">
+                        <x-icon path="bs.arrow-right"/>
+                    </a>
                 </li>
             @else
                 <li class="page-item disabled" aria-disabled="true">
-                    <span class="page-link">Вперёд >></span>
+                    <span class="page-link rounded-3 btn">
+                        <x-icon path="bs.arrow-right"/>
+                    </span>
                 </li>
             @endif
         </ul>
     </nav>
+    </div>
 @endif

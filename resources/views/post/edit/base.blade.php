@@ -20,7 +20,7 @@
 
                         <div class="d-sm-flex flex-column text-sm-start mb-3">
                                 <h6 class="mb-0 h5 fw-bolder">{{ auth()->user()->name }}</h6>
-                                <form action="{{route('post.edit')}}" method="post">
+                                <form action="{{route('post.create')}}" method="post">
                                     <select id="select_type" name="select_type"
                                             class="form-select form-select-sm p-0 pe-3 border-0 bg-body-tertiary"
                                             style="outline: none!important;"
