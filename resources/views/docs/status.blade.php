@@ -3,6 +3,8 @@
 
 @section('content')
 
+
+
     <x-header image="/img/porridge.svg">
         <x-slot:sup>Остаёмся на связи</x-slot>
         <x-slot:title>Статус перевода Laravel {{ $current }}</x-slot>
@@ -37,8 +39,8 @@
     <x-container>
         <div class="row">
             <div class="col-xl-7 col-md-12 mx-auto text-xl-end text-center">
-                <p class="mb-0">Актуально: {{ $documents->where('behind', 0)->count() }} из {{ $documents->count() }}</p>
-                <p>Изменений без обновления: {{ $documents->sum('behind') }}</p>
+                <p class="mb-0">Актуально: {{ $documents->where('behind', 0)->count() }} из {{ $documents->count() }} <sup class="text-opacity-25">({{ round($documents->where('behind', 0)->count() / $documents->count() * 100, 2) }} %)</sup></p>
+                <p>Правок без обновления: ~{{ $documents->sum('behind') }}</p>
             </div>
 
 

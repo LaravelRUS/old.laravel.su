@@ -15,9 +15,20 @@ use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class PackagesController extends Controller
 {
-    public function index()
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
+     */
+    public function index(Request $request)
     {
-        return view('packages.index');
+        $packages = Package::when($request->has('type'), function ($query) use ($request) {
+            return $query->where('type', $request->input('type'));
+        })->paginate();
+
+        return view('packages.index', [
+            'packages' => $packages
+        ]);
     }
 
     public function edit(Request $request, Package $package)

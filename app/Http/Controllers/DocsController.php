@@ -33,6 +33,7 @@ class DocsController extends Controller
     {
         $documents = Document::where('version', $version)
             ->orderByDesc('behind')
+            ->orderBy('file')
             ->get();
 
         return view('docs.status', [

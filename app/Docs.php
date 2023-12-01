@@ -74,7 +74,10 @@ class Docs
         $this->page = Storage::disk('docs')->get($this->path);
 
         // Abort the request if the page doesn't exist
-        abort_if($this->page === null, 404);
+        abort_if(
+            $this->page === null && Document::where('file', $this->file)->exists(),
+            redirect(status: 300)->route('docs', ['version' => $version, 'page' => 'installation'])
+        );
 
         $variables = Str::of($this->page)->after('---')->before('---');
 

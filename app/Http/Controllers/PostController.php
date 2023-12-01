@@ -15,7 +15,7 @@ class PostController extends Controller
 {
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
+     * @return \Illuminate\Contracts\View\View|\Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse|null
      */
     public function feed()
     {
@@ -26,11 +26,12 @@ class PostController extends Controller
             ->simplePaginate(5);//CursorPaginate не работает с сортировкой по полю из withCount
 
 
-        if(request()->isMethod('GET')){
+        if (request()->isMethod('GET')) {
             return view('post.list', [
                 'popular' => $popular,
             ]);
         }
+
         return turbo_stream([
             turbo_stream()->append('popular-list', view('post._popular_list', [
                 'popular' => $popular,
@@ -40,7 +41,6 @@ class PostController extends Controller
                 'popular' => $popular,
             ])),
         ]);
-
     }
 
 
@@ -60,33 +60,34 @@ class PostController extends Controller
         ]);
     }
 
-    public function edit(Request $request,Post $post)
+    public function edit(Request $request, Post $post)
     {
         $this->authorize('isOwner', $post);
 
         $request->validate([
-            'select_type'    => [
+            'select_type' => [
                 'sometimes',
-                Rule::enum(PostTypeEnum::class)
-            ]
+                Rule::enum(PostTypeEnum::class),
+            ],
         ]);
 
-         $isEditing = $post->exists;
-         if($request->has('select_type') && !$isEditing){
-             $post->type = PostTypeEnum::from($request->input('select_type'));
-             $view = 'post.edit.'. $request->input('select_type');
-         }elseif($isEditing){
-             $view = 'post.edit.'. $post->type->value;
+        $isEditing = $post->exists;
+        if ($request->has('select_type') && !$isEditing) {
+            $post->type = PostTypeEnum::from($request->input('select_type'));
+            $view = 'post.edit.' . $request->input('select_type');
+        } else if ($isEditing) {
+            $view = 'post.edit.' . $post->type->value;
 
-         }else{
-             $view = 'post.edit.'.PostTypeEnum::Article->value;
-         }
+        } else {
+            $view = 'post.edit.' . PostTypeEnum::Article->value;
+        }
 
         $title = $isEditing ? 'Редактирование' : 'Новая статья';
+
         return view($view, [
-            'title' => $title,
-            'post'  => $post,
-            'isEditing' => $isEditing
+            'title'     => $title,
+            'post'      => $post,
+            'isEditing' => $isEditing,
         ])->fragmentsIf(!$request->isMethodSafe());
     }
 
@@ -154,11 +155,11 @@ class PostController extends Controller
         return turbo_stream([
             turbo_stream()->removeAll('.post-placeholder'),
             turbo_stream()->append('posts-frame', view('particles.posts.list', [
-                'posts'       => $posts,
+                'posts' => $posts,
             ])),
 
             turbo_stream()->replace('post-more', view('post.pagination', [
-                'posts'       => $posts,
+                'posts' => $posts,
             ])),
         ]);
     }

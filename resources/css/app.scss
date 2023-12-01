@@ -6,18 +6,7 @@ $primary: #f9322c;
 $dark: #212529;
 
 $body-secondary-bg: #EBEEF4;
-$body-secondary-bg-dark: #1A1E28;//shade-color($body-secondary-bg, 85);
-
-/*
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-900 !default;
-// scss-docs-end theme-color-variables
-*/
+$body-secondary-bg-dark: #1A1E28;
 
 $container-max-widths: (
     sm: 540px,
@@ -92,6 +81,7 @@ $utilities: (
 }
 
 @import 'bootstrap/scss/bootstrap';
+@import "reset";
 @import 'prism';
 @import 'back-to-top';
 @import 'clipboard';
@@ -100,17 +90,8 @@ $utilities: (
 
 
 
-textarea {
-    resize: none;
-}
-
 .text-balance {
     text-wrap: balance;
-}
-
-.lead {
-    font-family: $headings-font-family;
-    @extend .text-balance;
 }
 
 

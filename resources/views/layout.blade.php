@@ -21,14 +21,16 @@
                 </div>
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
+                    {{--
+                        <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
+                    --}}
                     <li><a href="{{ route('feature') }}" class="nav-link px-3 link-body-emphasis">Возможности</a></li>
                     <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Трибуна</a></li>
                     <li><a href="{{ route('packages') }}" class="nav-link px-3 link-body-emphasis">Пакеты</a></li>
+                    <li><a href="{{ route('jobs') }}" class="nav-link px-3 link-body-emphasis">Работа</a></li>
                     <li><a href="{{ route('resources') }}"
                            class="nav-link px-3 link-body-emphasis position-relative">Ресурсы
-                            <span
-                                class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
+                            <span class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
                     </li>
                 </ul>
 
@@ -87,8 +89,15 @@
                         </li>
                     </ul>
 
-                    <p class="small text-muted mb-0">Laravel является торговой маркой Taylor Otwell</p>
-                    <p class="small text-muted">2023 © Laravel Framework Russian Community</p>
+                    <p class="small text-muted mb-2">
+                        Веб-сайт является неофициальным ресурсом, посвященным Laravel. Мы объединяем разработчиков и
+                        энтузиастов, желающих обмениваться знаниями и опытом. Мы не имеем официального статуса от
+                        <a href="https://laravel.com" class="link-body-emphasis">Laravel</a> или Taylor Otwell.
+                    </p>
+                    <p class="small text-muted">
+                        Логотип Laravel и другие сопутствующие товарные знаки принадлежат их законным
+                        владельцам.
+                    </p>
                 </div>
 
                 <div class="col-6 col-md-auto">
@@ -109,10 +118,13 @@
                                 <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('performance') }}" class="nav-link p-0">Производительность</a>
+                                <a href="{{ route('packages') }}" class="nav-link p-0">Пакеты</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
+                                <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('courses') }}" class="nav-link p-0">Видео уроки</a>
                             </li>
                         </ul>
                     </div>
@@ -122,6 +134,12 @@
                     <p class="fw-normal text-white">Ресурсы</p>
                     <div class="navbar navbar-dark">
                         <ul class="nav flex-column navbar-nav">
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('docs') }}" class="nav-link p-0">Документация</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
+                            </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
                                     Исходный код

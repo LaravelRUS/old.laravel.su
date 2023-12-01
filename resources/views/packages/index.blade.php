@@ -50,12 +50,37 @@ return response()->json([
     </x-header>
 
     <x-container>
-        <div class="bg-body-secondary p-5 rounded">
-            <div class="row row-cols-lg-3 row-cols-md-6 row-cols-sm-12 align-items-center g-5">
-
-                @foreach (\App\Models\Package::get() as $package)
-                   @include('particles.package')
+        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+            <div class="col-xl-3 position-sticky top-0">
+                @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                    <div class="mb-4 position-relative">
+                        <div class="d-flex align-items-center">
+                            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                <x-icon path="bs.file"/>
+                            </div>
+                            <div class="ms-3 w-75">
+                                <a href="{{ route('packages', ['type' => $type]) }}" class="fs-6 fw-medium m-0 stretched-link link-body-emphasis text-decoration-none">
+                                    {{ $type->text() }}
+                                </a>
+                                <p class="small opacity-50 fw-normal m-0">
+                                    {{ \App\Models\Package::where('type', $type)->count() }} пакетов
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
+
+            </div>
+
+            <div class="col-xl-9">
+                <div class="bg-body-secondary p-5 rounded">
+                    <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 align-items-center g-5">
+
+                        @foreach ($packages as $package)
+                            @include('particles.package')
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </x-container>

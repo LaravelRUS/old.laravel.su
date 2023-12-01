@@ -4,7 +4,11 @@ namespace App;
 
 class Ecosystem
 {
-
+    /**
+     * Get the ecosystem items.
+     *
+     * @return array
+     */
     public static function items(): array
     {
         return [

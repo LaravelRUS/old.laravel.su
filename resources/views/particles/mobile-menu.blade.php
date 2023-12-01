@@ -15,8 +15,8 @@
         </div>
 
         <div class="col text-center position-relative">
-            <a href="{{ route('feed') }}" data-turbo-action="replace" class="d-block nav-link link-body-emphasis">
-                <x-icon path="bs.house" width="1.5em" height="1.5em"/>
+            <a href="{{ route('docs') }}" data-turbo-action="replace" class="d-block nav-link link-body-emphasis">
+                <x-icon path="bs.book-half" width="1.5em" height="1.5em"/>
             </a>
         </div>
 

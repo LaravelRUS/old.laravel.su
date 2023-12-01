@@ -28,35 +28,35 @@ enum PackageTypeEnum: string
     public function text(): string
     {
         return match ($this) {
-            self::FileManagement       => 'Управление файлами',
-            self::AuthAndPermission    => 'Аутентификация и разрешения',
-            self::DatabaseAndEloquent  => 'Базы данных и Eloquent',
+            self::FileManagement => 'Управление файлами',
+            self::AuthAndPermission => 'Аутентификация и разрешения',
+            self::DatabaseAndEloquent => 'Базы данных и Eloquent',
             self::DebuggingAndDevTools => 'Инструменты разработчика',
-            self::DevOps               => 'DevOps',
+            self::DevOps => 'DevOps',
             //self::Localization         => 'Локализация',
-            self::API                  => 'API',
+            self::API => 'API',
             //self::SEO                  => 'Оптимизация для поисковых систем (SEO)',
-            self::Testing              => 'Тестирование',
+            self::Testing => 'Тестирование',
             //self::Payment              => 'Платежи',
-            self::Security             => 'Безопасность',
+            self::Security => 'Безопасность',
             //self::Mail                 => 'Почта',
-            self::ECommerce            => 'Интернет-торговля',
-            self::CMSAndAdminPanels    => 'CMS и панели администратора',
-            self::CodeArchitecture     => 'Архитектура кода',
-            self::Notifications        => 'Уведомления',
+            self::ECommerce => 'Интернет-торговля',
+            self::CMSAndAdminPanels => 'CMS и панели администратора',
+            self::CodeArchitecture => 'Архитектура кода',
+            self::Notifications => 'Уведомления',
             self::UIAndBladeComponents => 'UI и компоненты Blade',
-            self::UtilitiesAndHelpers  => 'Утилиты',
+            self::UtilitiesAndHelpers => 'Утилиты',
 
         };
     }
 
     public function colorBg(): string
     {
-        return ColorText::Hex($this->text(),'21');//подобрать подходящее значение
+        return ColorText::Hex($this->text(), '21');//подобрать подходящее значение
     }
+
     public function colorText(): string
     {
         return ColorText::Hex($this->text());
     }
-
 }
