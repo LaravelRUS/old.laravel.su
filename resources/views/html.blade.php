@@ -15,9 +15,9 @@
     <link rel="alternate" type="application/atom+xml" title="Новости" href="/rss/feed">
 
     <x-meta
-            title="{!! View::getSection('title') ?  strip_tags(View::getSection('title')) . ' | ' : '' !!}{!! config('site.name') !!}"
+            title="{!! View::getSection('title') ?  strip_tags(View::getSection('title')) . ' | '. config('site.name') : config('site.name') !!}"
             description="{!!  View::getSection('description', config('site.description'))  !!}"
-        {{-- image="{{ asset('/img/external.png') }}" --}}
+         image="{!!  URL::signedRoute('cover', ['text' => View::getSection('title', config('site.description'))]) !!}"
         {{-- csp="*.laravel.su *.gravatar.com *.githubusercontent.com" --}} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

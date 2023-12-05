@@ -287,6 +287,11 @@ Route::get('/manifest.json', fn() => response()->json(config('site.pwa')))
     ->middleware('cache.headers:public;max_age=300;etag')
     ->name('manifest');
 
+
+Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image'])
+    ->middleware(['cache.headers:public;max_age=300;etag', 'signed'])
+    ->name('cover');
+
 /*
 |--------------------------------------------------------------------------
 | RSS

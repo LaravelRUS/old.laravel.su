@@ -19,68 +19,6 @@
             </x-slot>
     </x-header>
 
-    {{--
-    <div class="container py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="/img/ivan.svg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
-                     height="500" loading="lazy">
-            </div>
-            <div class="col-lg-6">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4">Создавайте элегантные приложения с <span
-                        class="text-primary">Laravel</span></h1>
-                <p class="lead mb-4">
-                    Мы верим, что процесс разработки наиболее продуктивен, когда работа с фреймворком приносит радость и
-                    удовольствие. Счастливые разработчики пишут лучший код
-                </p>
-                <div class="d-grid gap-3 d-md-flex justify-content-md-start">
-                    <a href="{{ route('docs') }}" class="btn btn-primary btn-lg px-4">Начать читать!</a>
-                    <a href="{{ route('courses') }}" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    --}}
-
-    <div class="container my-5">
-        <!--
-                            <div class="mb-3 text-uppercase fw-semibold ls-xl text-center">Ведущие компаний России доверяют Laravel</div>
-                            -->
-        <div class="row text-center no-gutters pt-5" title="Ведущие компаний России доверяют Laravel">
-            <div class="col-12 col-md-12 col-lg-12 mx-auto">
-                <div class="row company-usage align-items-center">
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/zenit.svg">
-                    </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/leroy-merlin.svg">
-                    </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/megafon.svg">
-                    </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/mts.svg">
-                    </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/eldorado.svg">
-                    </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/rifgosh.svg">
-                    </div>
-                    {{--
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/vkusno.svg">
-                    </div>
-                    --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
 
     <div class="container py-5">
 
@@ -341,8 +279,8 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                 <div class="col">
                     <div class="p-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="background: #1A1319!important;">
 
-                        <img src="/img/ui/klubok.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 m-5 pe-none">
-                        <img src="/img/ui/balalaika.svg" class="d-none d-xxl-block position-absolute top-0 start-0 m-5 pe-none">
+                        <img src="/img/ui/klubok.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 m-2 pe-none">
+                        <img src="/img/ui/balalaika.svg" class="d-none d-xxl-block position-absolute top-0 start-0 m-1 pe-none">
 
                         <div class="mx-xl-3 my-xl-5">
                             <div class="text-xl-center mb-5">
@@ -704,4 +642,59 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
             </div>
         </div> <!-- Row END -->
     </div>
+
+
+
+
+    <div class="container mt-5 py-5">
+
+        <div class="row g-5 justify-content-center align-items-end mb-5">
+            <div class="col-12 col-xl-6 text-center text-xl-start">
+                <span
+                    class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Это лишь некоторые из громких имен</span>
+                <h2 class="display-5 fw-semibold mb-4">Вы в хорошей кампании</h2>
+            </div>
+            <div class="col-lg-6 position-relative">
+                <p>
+                    За последние десятилетие Laravel привел бесчисленное количество компаний к миллионам пользователей и
+                    миллиардным рыночным оценкам.
+                </p>
+
+                <a href="{{ route('jobs') }}"
+                   class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Смотреть вакансии
+                    <x-icon path="bs.arrow-right" /></a>
+            </div>
+        </div>
+
+        <div class="row text-center no-gutters pt-5" title="Ведущие компаний России доверяют Laravel">
+            <div class="col-12 col-md-12 col-lg-12 mx-auto">
+                <div class="row company-usage align-items-center">
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/zenit.svg">
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/leroy-merlin.svg">
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/megafon.svg">
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/mts.svg">
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/eldorado.svg">
+                    </div>
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/rifgosh.svg">
+                    </div>
+                    {{--
+                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                        <img alt="image" class="img-fluid" src="/img/usage/vkusno.svg">
+                    </div>
+                    --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

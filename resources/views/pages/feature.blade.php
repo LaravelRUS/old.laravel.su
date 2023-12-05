@@ -2,610 +2,1052 @@
 
 @section('content')
     <x-header image="/img/sign.svg">
-        <x-slot:sup>Одна платформа, множество вариантов</x-slot>
-        <x-slot:title>Всё что нужно для достижения цели.</x-slot>
+        <x-slot:sup>Всё что нужно для достижения цели</x-slot>
+        <x-slot:title>Одна платформа, множество путей.</x-slot>
 
         <x-slot:description>
             «Из коробки» Laravel предлагает элегантные решения для множества функций, необходимых всем современным
-            приложениям. Пришло время начать создавать их!
+            приложениям. Пришло время создавать их!
         </x-slot>
     </x-header>
 
+    <x-container>
+        <section class="mb-5 pb-md-5">
+            <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                <div class="d-flex mb-4 align-items-baseline">
+                    <li class="d-flex gap-4 bg-secondary-subtle rounded  p-4">
+                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <div>
+                            <h5 class="mb-0">Inertia</h5>
+                            <small class="opacity-50">Усовершенствуйте Laravel с помощью React, Vue или Svelte</small>
+                        </div>
+                    </li>
+                    <li class="d-flex gap-4  p-4">
+                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <div>
+                            <h5 class="mb-0">Livewire</h5>
+                            <small class="opacity-50">Реактивные шаблоны, отображаемые на сервере, с помощью PHP</small>
+                        </div>
+                    </li>
+                    <li class="d-flex gap-4  p-4">
+                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <div>
+                            <h5 class="mb-0">SPA и мобильные приложения</h5>
+                            <small class="opacity-50">Создавайте мощные API быстрее, чем когда-либо</small>
+                        </div>
+                    </li>
+                </div>
 
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                <div class="col-lg-7">
+                    <h4>Laravel Inertia</h4>
+                    занимается маршрутизацией и передачей данных между серверной частью
+                    и внешним интерфейсом Laravel — нет необходимости создавать API или
+                    поддерживать два набора маршрутов. Легко
+                    передавайте данные из вашей базы данных непосредственно в реквизиты
+                    компонентов вашей внешней страницы,
+                    используя все функции Laravel под рукой в ​​одном фантастическом
+                    монорепозитории.
+                </div>
 
-            <div>
-                <div name="authentication" title="Authentication" icon="lock-closed">
-                    <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
-                       definition:</p>
+                <div class="row my-3">
+                    <div class="col-lg-6">
+                        <pre class="rounded-3"><code language="php">
+class UserController
+{
+    public function index()
+    {
+        $users = User::active()
+            ->orderByName()
+            ->get(['id', 'name', 'email']);
 
-                    <pre><code language="php">
-            Route::get('/profile', ProfileController::class)
-                ->middleware('auth');
-        </code></pre>
+        return Inertia::render('Users', [
+            'users' => $users,
+        ]);
+    }
+}
+                        </code></pre>
+                    </div>
+                    <div class="col-lg-6">
+                       <pre class="rounded-3"><code language="js">
+import Layout from './Layout'
 
-                    <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
-                       facade:</p>
+export default function Users({ users }) {
+  return (
+    <Layout>
+      {users.map(user => (
+        <Link href={route('users.show', user)}>
+          {user.name} ({user.email})
+        </Link>
+      ))}
+    </Layout>
+  )
+}
+                        </code></pre>
+                    </div>
+                </div>
 
-                    <pre><code language="php">
-            use Illuminate\Support\Facades\Auth;
+                <div class="row my-3">
+                    <div class="col-lg-6">
+                        <p>Inertia дает вам опыт разработчика и простоту создания многостраничного приложения,
+                           отображаемого на сервере, с пользовательским интерфейсом и оперативностью JavaScript SPA.</p>
 
-            // Get the currently authenticated user...
-            $user = Auth::user();
-        </code></pre>
+                        <p>Ваши внешние компоненты могут сосредоточиться на взаимодействии с пользователем, а не на
+                           вызовах API и манипулировании данными — больше не нужно вручную запускать HTTP-запросы и
+                           манипулировать ответами.
+                        </p>
+                        <p class="mb-0">Inertia даже предлагает рендеринг на стороне сервера при начальной загрузке страницы для
+                           приложений, которые получают выгоду от поисковой оптимизации.
+                        </p>
+                    </div>
 
-                    <p>Of course, you may define your own authentication middleware, allowing you to customize the
-                       authentication process.</p>
+                    <div class="col-lg-6">
+                        <div class="p-4 border rounded">
+                            <h6 class="fw-bolder">Как это работает?</h6>
 
-                    <p>For more information on Laravel's authentication features, check out the <a
-                            href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+                            <p>Первоначальная загрузка страницы вашего приложения вернет SPA на базе Inertia и реквизиты
+                               страницы в одном запросе. Последующие запросы от нажатия ссылок или отправки форм будут
+                               автоматически возвращать только те реквизиты страницы, которые необходимы.</p>
+
+                            <p class="mb-0">Когда вы развертываете новые ресурсы, Inertia автоматически выполнит
+                                            следующий запрос при полной
+                                            загрузке страницы, поэтому ваши пользователи будут иметь самые последние
+                                            ресурсы, не теряя ни
+                                            секунды.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="authentication" title="Authentication" icon="lock-closed">
-                    <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
-                       definition:</p>
-
-                    <pre><code language="php">
-            Route::get('/profile', ProfileController::class)
-                ->middleware('auth');
-        </code></pre>
-
-                    <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
-                       facade:</p>
-
-                    <pre><code language="php">
-            use Illuminate\Support\Facades\Auth;
-
-            // Get the currently authenticated user...
-            $user = Auth::user();
-        </code></pre>
-
-                    <p>Of course, you may define your own authentication middleware, allowing you to customize the
-                       authentication process.</p>
-
-                    <p>For more information on Laravel's authentication features, check out the <a
-                            href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+        <section class="mb-5 pb-md-5">
+            <div class="col-lg-8 my-5">
+                <div
+                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
+                    <x-icon path="bs.gear-fill"/>
                 </div>
+                <h2 class="display-5 fw-semibold mb-4">
+                    Погрузитесь прямо со старта.
+                </h2>
+                <p class="fw-normal">
+                    Независимо от того, предпочитаете ли вы Livewire или React,
+                    стартовые наборы Laravel позволят вам сразу же приступить к
+                    делу. За считанные минуты вы можете получить
+                    полнофункциональное приложение, сочетающее Laravel и Tailwind с
+                    выбранным вами интерфейсом.
+                </p>
+            </div>
+            <div class="bg-body-tertiary rounded-5 shadow overflow-hidden">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="w-75 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 48" class="h-12 max-w-full"
+                                     role="image">
+                                    <title>Laravel Breeze</title>
+                                    <circle fill="#fcbf24" cx="24" cy="24" r="24"></circle>
+                                    <path fill="#d97707"
+                                          d="M11.979 24l12.021-12.021 12.021 12.021-12.021 12.021z"></path>
+                                    <path fill="#fef3c7"
+                                          d="M41 7l-17 17v-12l5-5h12zm-17 17l17 17v-12l-5-5h-12zm-5 17l5-5v-12l-17 17h12zm-12-22l5 5h12l-17-17v12z"></path>
+                                    <path
+                                        d="M74.1 30.7h8v3.9h-12.1v-20.7h4.1v16.8zm21.2-10.9h3.9v14.8h-3.9v-1.7c-1.1 1.3-2.7 2.2-4.9 2.2-4 0-7.3-3.4-7.3-7.8s3.3-7.8 7.3-7.8c2.2 0 3.8.8 4.9 2.2v-1.9zm0 7.4c0-2.5-1.8-4.2-4.2-4.2-2.4 0-4.1 1.7-4.1 4.2s1.8 4.2 4.1 4.2c2.5 0 4.2-1.7 4.2-4.2zm11.2-4.9v-2.5h-3.9v14.8h3.9v-7.1c0-3.1 2.5-4 4.5-3.8v-4.3c-1.8.1-3.7.9-4.5 2.9zm17.6-2.5h3.9v14.8h-3.9v-1.7c-1.1 1.3-2.7 2.2-4.9 2.2-4 0-7.3-3.4-7.3-7.8s3.3-7.8 7.3-7.8c2.2 0 3.8.8 4.9 2.2v-1.9zm0 7.4c0-2.5-1.8-4.2-4.2-4.2-2.4 0-4.1 1.7-4.1 4.2s1.8 4.2 4.1 4.2c2.4 0 4.2-1.7 4.2-4.2zm13.5 3l-3.6-10.4h-4.2l5.7 14.8h4.4l5.7-14.8h-4.2l-3.8 10.4zm23.9-3c0 .6-.1 1.1-.1 1.6h-11.4c.5 2 2.2 2.8 4.2 2.8 1.5 0 2.7-.6 3.3-1.5l3.1 1.8c-1.4 2-3.6 3.2-6.5 3.2-5 0-8.2-3.4-8.2-7.8s3.2-7.8 7.9-7.8c4.5-.1 7.7 3.3 7.7 7.7zm-3.9-1.4c-.5-2.1-2.1-3-3.7-3-2.1 0-3.5 1.1-3.9 3h7.6zm6.5-12.8v21.6h3.9v-21.6h-3.9zM192.7 23.9c1.1-.4 1.9-1 2.5-1.8.6-.8.9-1.8.9-2.9 0-1.8-.6-3.1-1.8-4-1.2-.9-2.9-1.4-5-1.4h-8.3v20.8h8.5c2.2 0 4-.5 5.2-1.5 1.2-1 1.8-2.4 1.8-4.2 0-1.3-.3-2.4-1-3.3-.7-.8-1.6-1.4-2.8-1.7zm-9.9-8.6h6.1c3.5 0 5.2 1.3 5.2 3.9 0 1.3-.4 2.3-1.3 3-.9.7-2.2 1-3.9 1h-6.1v-7.9zm10.6 16.7c-.8.7-2.2 1-4 1h-6.6v-8.2h6.6c3.5 0 5.2 1.4 5.2 4.2 0 1.4-.4 2.4-1.2 3zm14-12.4c.5 0 .9 0 1.3.1l-.1 1.6c-.4-.1-.8-.1-1.4-.1-1.5 0-2.6.5-3.4 1.4-.7.9-1.1 2.1-1.1 3.4v8.6h-1.7v-10.6c0-1.5-.1-2.9-.2-4.1h1.7l.2 2.7c.4-1 1-1.8 1.8-2.3s1.8-.7 2.9-.7zm9.7 0c-1.4 0-2.6.3-3.6.9-1.1.6-1.9 1.5-2.5 2.7-.6 1.2-.9 2.5-.9 4 0 2.4.7 4.2 2 5.5s3.1 2 5.4 2c1.1 0 2.1-.2 3.1-.5 1-.4 1.9-.8 2.5-1.4l-.7-1.4c-1.5 1.2-3.1 1.8-4.9 1.8-1.8 0-3.1-.5-4.1-1.6-.9-1-1.4-2.5-1.4-4.5v-.1h11.4v-.4c0-2.2-.6-4-1.7-5.2-1-1.2-2.6-1.8-4.6-1.8zm-4.9 6.1c.2-1.5.8-2.6 1.6-3.4.9-.8 2-1.2 3.4-1.2s2.4.4 3.2 1.2c.8.8 1.2 1.9 1.3 3.4h-9.5zm21.2-6.1c-1.4 0-2.6.3-3.6.9-1.1.6-1.9 1.5-2.5 2.7-.6 1.2-.9 2.5-.9 4 0 2.4.7 4.2 2 5.5s3.1 2 5.4 2c1.1 0 2.1-.2 3.1-.5 1-.4 1.9-.8 2.5-1.4l-.7-1.4c-1.5 1.2-3.1 1.8-4.9 1.8-1.8 0-3.1-.5-4.1-1.6-.9-1-1.4-2.5-1.4-4.5v-.1h11.4v-.4c0-2.2-.6-4-1.7-5.2-1.1-1.2-2.6-1.8-4.6-1.8zm-5 6.1c.2-1.5.8-2.6 1.6-3.4.9-.8 2-1.2 3.4-1.2s2.4.4 3.2 1.2c.8.8 1.2 1.9 1.3 3.4h-9.5zm16.5 7.4h10.2v1.5h-12.5v-1.2l10-12h-9.6v-1.4h11.8v1.3l-9.9 11.8zm26.1-6v-.4c0-2.2-.6-4-1.7-5.2-1.1-1.2-2.6-1.9-4.6-1.9-1.4 0-2.6.3-3.6.9-1.1.6-1.9 1.5-2.5 2.7-.6 1.2-.9 2.5-.9 4 0 2.4.7 4.2 2 5.5s3.1 2 5.4 2c1.1 0 2.1-.2 3.1-.5 1-.4 1.9-.8 2.5-1.4l-.7-1.4c-1.5 1.2-3.1 1.8-4.9 1.8-1.8 0-3.1-.5-4.1-1.6-.9-1-1.4-2.5-1.4-4.5v-.1h11.4zm-9.6-4.8c.9-.8 2-1.2 3.4-1.2s2.4.4 3.2 1.2c.8.8 1.2 1.9 1.3 3.4h-9.5c.2-1.5.7-2.6 1.6-3.4z"
+                                        class="fill-gray-900"></path>
+                                </svg>
+                            </div>
 
-                <div name="authorization" title="Authorization" icon="identification">
-                    <p>You'll often need to check whether an authenticated user is authorized to perform a specific
-                       action. Laravel's model policies make it a breeze:</p>
+                            <p>Laravel Breeze — это легкий стартовый комплект, который включает в себя шаблоны
+                               управления
+                               профилями пользователей для аутентификации в стиле Tailwind.</p>
 
-                    <pre><code language="bash">
-            php artisan make:policy UserPolicy
-        </code></pre>
-
-                    <p>Once you've defined your authorization rules in the generated policy class, you can authorize the
-                       user's request in your controller methods:</p>
-
-                    <pre><code language="php">
-            public function update(Request $request, Invoice $invoice)
-            {
-                Gate::authorize('update', $invoice);// [tl! focus]
-
-                $invoice->update(/* ... */);
-            }
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/authorization">Learn more</a></p>
+                            <ul>
+                                <li>Регистрация пользователя и вход в систему</li>
+                                <li>Сброс пароля</li>
+                                <li>Подтверждение адреса электронной почты</li>
+                                <li>Управление профилями пользователей</li>
+                                <li>Blade или Inertia (с Vue или React)</li>
+                                <li>Дополнительная поддержка TypeScript</li>
+                                <li>Дополнительная поддержка темного режима</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 overflow-hidden">
+                        <img src="https://laravel.com/img/frontend/breeze-profile.png" class="mt-5 rounded-top-4"
+                             height="600px"/>
+                    </div>
                 </div>
+                <hr class="mt-0">
 
-                <div name="eloquent" title="Eloquent ORM" icon="table-cells">
-                    <p>Scared of databases? Don't be. Laravel’s Eloquent ORM makes it painless to interact with your
-                       application's data, and models, migrations, and relationships can be quickly scaffolded:</p>
+                <div class="p-5">
+                    <div class="row align-items-start">
+                        <div class="col-4">
+                            <p class="mb-0 opacity-50">
+                                Настраивать окружение для запуска Laravel может быть непростой задачей. Однако, мы
+                                предлагаем вам несколько простых и удобных способов, которые позволят вам быстро и легко
+                                запустить Laravel и сосредоточиться на разработке приложения.
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-flex flex-column gap-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        <x-icon path="bs.apple"/>
+                                    </div>
+                                    <h4 class="fw-semibold mb-0 text-body-emphasis">Laravel для Mac</h4>
+                                </div>
+                                <p class="mb-0">
+                                    Laravel Valet предоставляет простой и минималистичный
+                                    способ настройки вашей среды разработки для
+                                    запуска приложений, а также обеспечивает доступ к ним через <code>*.test</code>
+                                    домен.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-flex flex-column gap-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        <img src="/img/logos/docker.svg" class="img-fluid">
+                                    </div>
+                                    <h4 class="fw-semibold mb-0 text-body-emphasis">Laravel для Docker</h4>
+                                </div>
+                                <p class="mb-0">
+                                    Если вам нужна гибкость и изоляция, Laravel Sail предоставляет легкий
+                                    интерфейс командной строки для работы с Docker. Даже если у вас нет опыта работы с
+                                    Docker.
+                                </p>
+                            </div>
 
-                    <pre><code language="text">
-            php artisan make:model Invoice --migration
-        </code></pre>
-
-                    <p>Once you've defined your model structure and relationships, you can interact with your database
-                       using Eloquent's powerful, expressive syntax:</p>
-
-                    <pre><code language="php">
-            // Create a related model...
-            $user->invoices()->create(['amount' => 100]);
-
-            // Update a model...
-            $invoice->update(['amount' => 200]);
-
-            // Retrieve models...
-            $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
-
-            // Rich API for model interactions...
-            $invoices->each->pay();
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/eloquent">Learn more</a></p>
-                </div>
-
-                <div name="migrations" title="Database Migrations" icon="circle-stack">
-                    <p>Migrations are like version control for your database, allowing your team to define and share
-                       your application's database schema definition:</p>
-
-                    <pre><code language="php">
-            public function up(): void
-            {
-                Schema::create('flights', function (Blueprint $table) {
-                    $table->uuid()->primary();
-                    $table->foreignUuid('airline_id')->constrained();
-                    $table->string('name');
-                    $table->timestamps();
-                });
-            }
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/migrations">Learn more</a></p>
-                </div>
-
-                <div name="validation" title="Validation" icon="check-badge">
-                    <p>Laravel has over 90 powerful, built-in validation rules and, using Laravel Precognition, can
-                       provide live validation on your frontend:</p>
-
-                    <pre><code language="php">
-            public function update(Request $request)
-            {
-                $validated = $request->validate([// [tl! focus:start]
-                    'email' => 'required|email|unique:users',
-                    'password' => Password::required()->min(8)->uncompromised(),
-                ]);// [tl! focus:end]
-
-                $request->user()->update($validated);
-            }
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/validation">Learn more</a></p>
-                </div>
-
-                <div name="notifications" title="Notifications & Mail" icon="bell-alert">
-                    <p>Use Laravel to quickly send beautifully styled notifications to your users via email, Slack, SMS,
-                       in-app, and more:</p>
-
-                    <pre><code language="bash">
-            php artisan make:notification InvoicePaid
-        </code></pre>
-
-                    <p>Once you have generated a notification, you can easily send the message to one of your
-                       application's users:</p>
-
-                    <pre><code language="php">
-            $user->notify(new InvoicePaid($invoice));
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/notifications">Learn more</a></p>
-                </div>
-
-                <div name="storage" title="File Storage" icon="archive-box">
-                    <p>Laravel provides a robust filesystem abstraction layer, providing a single, unified API for
-                       interacting with local filesystems and cloud based filesystems like Amazon S3:</p>
-
-                    <pre><code language="php">
-            $path = $request->file('avatar')->store('s3');
-        </code></pre>
-
-                    <p>Regardless of where your files are stored, interact with them using Laravel's simple, elegant
-                       syntax:</p>
-
-                    <pre><code language="php">
-            $content = Storage::get('photo.jpg');
-
-            Storage::put('photo.jpg', $content);
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/filesystem">Learn more</a></p>
-                </div>
-
-                <div name="queues" title="Job Queues" icon="queue-list">
-                    <p>Laravel lets you to offload slow jobs to a background queue, keeping your web requests
-                       snappy:</p>
-
-                    <pre><code language="php">
-            $podcast = Podcast::create(/* ... */);
-
-            ProcessPodcast::dispatch($podcast)->onQueue('podcasts');// [tl! focus]
-        </code></pre>
-
-                    <p>You can run as many queue workers as you need to handle your workload:</p>
-
-                    <pre><code language="bash">
-            php artisan queue:work redis --queue=podcasts
-        </code></pre>
-
-                    <p>For more visibility and control over your queues, <a href="https://laravel.com/docs/horizon">Laravel
-                                                                                                                    Horizon</a>
-                       provides a beautiful dashboard and code-driven configuration for your Laravel-powered Redis
-                       queues.</p>
-
-                    <p><strong>Learn more</strong></p>
-                    <ul>
-                        <li><a href="https://laravel.com/docs/queues">Job Queues</a></li>
-                        <li><a href="https://laravel.com/docs/horizon">Laravel Horizon</a></li>
-                    </ul>
-                </div>
-
-                <div name="scheduling" title="Task Scheduling" icon="clock">
-                    <p>Schedule recurring jobs and commands with an expressive syntax and say goodbye to complicated
-                       configuration files:</p>
-
-                    <pre><code language="php">
-            $schedule->job(NotifySubscribers::class)->hourly();
-        </code></pre>
-
-                    <p>Laravel's scheduler can even handle multiple servers and offers built-in overlap prevention:</p>
-
-                    <pre><code language="php">
-            $schedule->job(NotifySubscribers::class)
-                ->dailyAt('9:00')
-                ->onOneServer();
-                ->withoutOverlapping();
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/scheduling">Learn more</a></p>
-                </div>
-
-                <div name="testing" title="Testing" icon="command-line">
-                    <p>Laravel is built for testing. From unit tests to browser tests, you’ll feel more confident in
-                       deploying your application:</p>
-
-                    <pre><code language="php">
-            $user = User::factory()->create();
-
-            $this->browse(fn (Browser $browser) => $browser
-                ->visit('/login')
-                ->type('email', $user->email)
-                ->type('password', 'password')
-                ->press('Login')
-                ->assertPathIs('/home')
-                ->assertSee("Welcome {$user->name}")
-            );
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/testing">Learn more</a></p>
-                </div>
-
-                <div name="events" title="Events & WebSockets" icon="arrows-right-left">
-                    <p>Laravel's events allow you to send and listen for events across your application, and listeners
-                       can easily be dispatched to a background queue:</p>
-
-                    <pre><code language="php">
-            OrderShipped::dispatch($order);
-        </code></pre>
-
-                    <pre><code language="php">
-            class SendShipmentNotification implements ShouldQueue
-            {
-                public function handle(OrderShipped $event): void
-                {
-                    // ...
-                }
-            }
-        </code></pre>
-
-                    <p>Your frontend application can even subscribe to your Laravel events using <a
-                            href="https://laravel.com/docs/broadcasting">Laravel Echo</a> and WebSockets, allowing you
-                       to build real-time, dynamic applications:</p>
-
-                    <pre><code language="javascript">
-            Echo.private(`orders.${orderId}`)
-                .listen('OrderShipped', (e) => {
-                    console.log(e.order);
-                });
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/events">Learn more</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </x-container>
 
 
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="authorization" title="Authorization" icon="identification">
-                    <p>You'll often need to check whether an authenticated user is authorized to perform a specific
-                       action. Laravel's model policies make it a breeze:</p>
-
-                    <pre><code language="bash">
-            php artisan make:policy UserPolicy
-        </code></pre>
-
-                    <p>Once you've defined your authorization rules in the generated policy class, you can authorize the
-                       user's request in your controller methods:</p>
-
-                    <pre><code language="php">
-            public function update(Request $request, Invoice $invoice)
-            {
-                Gate::authorize('update', $invoice);// [tl! focus]
-
-                $invoice->update(/* ... */);
-            }
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/authorization">Learn more</a></p>
+    <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
+        <x-container>
+            <div class="col-lg-11 mx-auto">
+                <div class="row g-5 py-5 row-cols-1 row-cols-lg-2">
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Маршрутизация</h3>
+                            <p>
+                                Маршрутизация (Routing) позволяет определить, как приложение должно отвечать на разные
+                                URL-адреса. Это позволяет легко настраивать маршруты для обработки запросов и
+                                определять, какие действия и контроллеры должны быть вызваны при поступлении запроса.
+                            </p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Шаблоны Blade</h3>
+                            <p>
+                                Вставляйте переменные, используйте условия, циклы и другие
+                                операции в шаблонах, что делает их более читабельными и удобными для разработки.
+                            </p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Authentication</h3>
+                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Authorization</h3>
+                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Artisan Console</h3>
+                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                            <x-icon path="bs.gear-fill" />
+                        </div>
+                        <div>
+                            <h3 class="fs-2 text-body-emphasis">Testing</h3>
+                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                            <a href="{{ route('packages') }}"
+                               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                                Подробнее
+                                <x-icon path="bs.arrow-right" /></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="eloquent" title="Eloquent ORM" icon="table-cells">
-                    <p>Scared of databases? Don't be. Laravel’s Eloquent ORM makes it painless to interact with your
-                       application's data, and models, migrations, and relationships can be quickly scaffolded:</p>
-
-                    <pre><code language="text">
-            php artisan make:model Invoice --migration
-        </code></pre>
-
-                    <p>Once you've defined your model structure and relationships, you can interact with your database
-                       using Eloquent's powerful, expressive syntax:</p>
-
-                    <pre><code language="php">
-            // Create a related model...
-            $user->invoices()->create(['amount' => 100]);
-
-            // Update a model...
-            $invoice->update(['amount' => 200]);
-
-            // Retrieve models...
-            $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
-
-            // Rich API for model interactions...
-            $invoices->each->pay();
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/eloquent">Learn more</a></p>
-                </div>
-            </div>
-        </div>
+        </x-container>
     </div>
 
 
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
+    <x-container>
 
-            <div>
-                <div name="migrations" title="Database Migrations" icon="circle-stack">
-                    <p>Migrations are like version control for your database, allowing your team to define and share
-                       your application's database schema definition:</p>
+        <section class="pb-md-5 mb-5">
+            <div class="col-lg-8 mb-5">
+                <div
+                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
+                    <x-icon path="bs.gear-fill"/>
+                </div>
+                <h2 class="display-5 fw-semibold mb-4">Удобная работа с данными</h2>
+                <p class="fw-normal">
+                    Laravel имеет мощные инструменты для работы с базами данных.
+                    Он поддерживает широкий спектр СУБД, включая MySQL, MariaDB, PostgreSQL, SQL Server и SQLite.
 
-                    <pre><code language="php">
-            public function up(): void
-            {
-                Schema::create('flights', function (Blueprint $table) {
-                    $table->uuid()->primary();
-                    $table->foreignUuid('airline_id')->constrained();
-                    $table->string('name');
-                    $table->timestamps();
-                });
-            }
-        </code></pre>
+                    Вот несколько ключевых возможностей для работы с базой данных в Laravel:
+                </p>
+            </div>
+            <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                <div class="row gx-md-5">
+                        <div class="col-lg-6">
+                            <h3 class="fw-semibold">Eloquent ORM</h3>
+                            <p>Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
+                               ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
+                               миграций и отношений между ними происходит в несколько простых шагов:</p>
 
-                    <p><a href="https://laravel.com/docs/migrations">Learn more</a></p>
+                            <pre><code language="text">
+    php artisan make:model Invoice --migration
+                        </code></pre>
+
+                            <p>После определения структуры модели и ее отношений, можно легко взаимодействовать с базой
+                               данных, используя мощный и выразительный синтаксис Eloquent:</p>
+
+                            <pre><code language="php">
+    // Создание связанной модели ...
+    $user->invoices()->create(['amount' => 100]);
+
+    // Обновление модели ...
+    $invoice->update(['amount' => 200]);
+
+    // Получение моделей ...
+    $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
+
+    // Удобный API для взаимодействия с моделями ...
+    $invoices->each->pay();
+                        </code></pre>
+
+                            <p><a href="https://laravel.com/docs/eloquent">Подробнее об Eloquent ORM</a></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="fw-semibold">Миграции базы данных</h3>
+
+                            <p>Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
+                               команде определить и поделиться структурой вашей базы данных:</p>
+
+                            <pre><code language="php">
+    public function up(): void
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table->uuid()->primary();
+            $table->foreignUuid('airline_id')->constrained();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+                        </code></pre>
+
+                                <p><a href="https://laravel.com/docs/migrations">Подробнее о миграциях базы данных</a></p>
+
+                            <img src="https://cycle-orm.dev/images/cycle/database.png" class="img-fluid">
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+
+        <section class="mb-5 pb-md-5">
+            <div class="col-lg-8 mb-5">
+                <div
+                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
+                    <x-icon path="bs.gear-fill"/>
+                </div>
+                <h2 class="display-5 fw-semibold mb-4">Максимальная эффективность</h2>
+                <p class="fw-normal">
+                    Позвольте своему приложению работать с максимальной эффективностью благодаря очередям в Laravel.
+                    Независимо от того, нужно ли обрабатывать длительные задачи, отправлять уведомления или обновлять
+                    данные, очереди позволят вам добиться максимальной пропускной способности и отзывчивости в вашем
+                    приложении.
+                </p>
+            </div>
+            <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                <div class="row gx-md-5">
+                    <div class="col-lg-6">
+                        <h3 class="fw-semibold">Job Queues</h3>
+                        <p>Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
+                           очередь, что помогает поддерживать отзывчивость веб-запросов. Пример использования:</p>
+
+                        <pre><code language="php">
+$podcast = Podcast::create(/* ... */);
+
+ProcessPodcast::dispatch($podcast)->onQueue('podcasts');
+                </code></pre>
+
+                        <p>Вы можете запускать столько рабочих процессов очередей, сколько необходимо, чтобы обработать
+                           вашу нагрузку:</p>
+
+                        <pre><code language="bash">
+php artisan queue:work redis --queue=podcasts
+                </code></pre>
+                    </div>
+                    <div class="col-lg-6 overflow-hidden">
+                        <img src="https://laravel.com/img/docs/horizon-example.png" class="img-fluid">
+
+                        <h3 class="fw-semibold">Horizon</h3>
+                        <p>Для более удобного контроля и отслеживания очередей в Laravel существует Laravel Horizon.
+                           Horizon предоставляет красивую панель управления и конфигурацию через код для ваших очередей,
+                           работающих на Redis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </x-container>
+
+{{--
+    <x-container>
+
+        <section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
+            <div class="col-lg-6">
+                <div
+                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
+                    <x-icon path="bs.gear-fill" />
+                </div>
+
+                <h2 class="display-5 mb-3 fw-semibold lh-sm">Telescope</h2>
+                <p class="lead fw-normal">
+                    Обеспечивает понимание запросов, поступающих в ваше приложение, исключений, записей журнала,
+                    запросов
+                    к базе данных, заданий в очереди, почты, уведомлений, операций кэша, запланированных задач, дампов
+                    переменных и многого другого.
+                </p>
+                <p class="d-flex justify-content-start lead fw-normal mb-md-0">
+                    <a href="#" class="icon-link icon-link-hover fw-semibold">Прочитать документацию</a>
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://laravel.com/img/docs/telescope-example.png" class="img-fluid mt-3 mx-auto">
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="authentication" title="Authentication" icon="lock-closed">
+                            <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
+                               definition:</p>
+
+                            <pre><code language="php">
+                    Route::get('/profile', ProfileController::class)
+                        ->middleware('auth');
+                </code></pre>
+
+                            <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
+                               facade:</p>
+
+                            <pre><code language="php">
+                    use Illuminate\Support\Facades\Auth;
+
+                    // Get the currently authenticated user...
+                    $user = Auth::user();
+                </code></pre>
+
+                            <p>Of course, you may define your own authentication middleware, allowing you to customize the
+                               authentication process.</p>
+
+                            <p>For more information on Laravel's authentication features, check out the <a
+                                    href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="authentication" title="Authentication" icon="lock-closed">
+                            <p>Authenticating users is as simple as adding an authentication middleware to your Laravel route
+                               definition:</p>
+
+                            <pre><code language="php">
+                    Route::get('/profile', ProfileController::class)
+                        ->middleware('auth');
+                </code></pre>
+
+                            <p>Once the user is authenticated, you can access the authenticated user via the <code>Auth</code>
+                               facade:</p>
+
+                            <pre><code language="php">
+                    use Illuminate\Support\Facades\Auth;
+
+                    // Get the currently authenticated user...
+                    $user = Auth::user();
+                </code></pre>
+
+                            <p>Of course, you may define your own authentication middleware, allowing you to customize the
+                               authentication process.</p>
+
+                            <p>For more information on Laravel's authentication features, check out the <a
+                                    href="https://laravel.com/docs/authentication">authentication documentation</a>.</p>
+                        </div>
+
+                        <div name="authorization" title="Authorization" icon="identification">
+                            <p>You'll often need to check whether an authenticated user is authorized to perform a specific
+                               action. Laravel's model policies make it a breeze:</p>
+
+                            <pre><code language="bash">
+                    php artisan make:policy UserPolicy
+                </code></pre>
+
+                            <p>Once you've defined your authorization rules in the generated policy class, you can authorize the
+                               user's request in your controller methods:</p>
+
+                            <pre><code language="php">
+                    public function update(Request $request, Invoice $invoice)
+                    {
+                        Gate::authorize('update', $invoice);// [tl! focus]
+
+                        $invoice->update(/* ... */);
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/authorization">Learn more</a></p>
+                        </div>
+
+                        <div name="eloquent" title="Eloquent ORM" icon="table-cells">
+                            <p>Scared of databases? Don't be. Laravel’s Eloquent ORM makes it painless to interact with your
+                               application's data, and models, migrations, and relationships can be quickly scaffolded:</p>
+
+                            <pre><code language="text">
+                    php artisan make:model Invoice --migration
+                </code></pre>
+
+                            <p>Once you've defined your model structure and relationships, you can interact with your database
+                               using Eloquent's powerful, expressive syntax:</p>
+
+                            <pre><code language="php">
+                    // Create a related model...
+                    $user->invoices()->create(['amount' => 100]);
+
+                    // Update a model...
+                    $invoice->update(['amount' => 200]);
+
+                    // Retrieve models...
+                    $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
+
+                    // Rich API for model interactions...
+                    $invoices->each->pay();
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/eloquent">Learn more</a></p>
+                        </div>
+
+                        <div name="migrations" title="Database Migrations" icon="circle-stack">
+                            <p>Migrations are like version control for your database, allowing your team to define and share
+                               your application's database schema definition:</p>
+
+                            <pre><code language="php">
+                    public function up(): void
+                    {
+                        Schema::create('flights', function (Blueprint $table) {
+                            $table->uuid()->primary();
+                            $table->foreignUuid('airline_id')->constrained();
+                            $table->string('name');
+                            $table->timestamps();
+                        });
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/migrations">Learn more</a></p>
+                        </div>
+
+                        <div name="validation" title="Validation" icon="check-badge">
+                            <p>Laravel has over 90 powerful, built-in validation rules and, using Laravel Precognition, can
+                               provide live validation on your frontend:</p>
+
+                            <pre><code language="php">
+                    public function update(Request $request)
+                    {
+                        $validated = $request->validate([// [tl! focus:start]
+                            'email' => 'required|email|unique:users',
+                            'password' => Password::required()->min(8)->uncompromised(),
+                        ]);// [tl! focus:end]
+
+                        $request->user()->update($validated);
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/validation">Learn more</a></p>
+                        </div>
+
+                        <div name="notifications" title="Notifications & Mail" icon="bell-alert">
+                            <p>Use Laravel to quickly send beautifully styled notifications to your users via email, Slack, SMS,
+                               in-app, and more:</p>
+
+                            <pre><code language="bash">
+                    php artisan make:notification InvoicePaid
+                </code></pre>
+
+                            <p>Once you have generated a notification, you can easily send the message to one of your
+                               application's users:</p>
+
+                            <pre><code language="php">
+                    $user->notify(new InvoicePaid($invoice));
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/notifications">Learn more</a></p>
+                        </div>
+
+                        <div name="storage" title="File Storage" icon="archive-box">
+                            <p>Laravel provides a robust filesystem abstraction layer, providing a single, unified API for
+                               interacting with local filesystems and cloud based filesystems like Amazon S3:</p>
+
+                            <pre><code language="php">
+                    $path = $request->file('avatar')->store('s3');
+                </code></pre>
+
+                            <p>Regardless of where your files are stored, interact with them using Laravel's simple, elegant
+                               syntax:</p>
+
+                            <pre><code language="php">
+                    $content = Storage::get('photo.jpg');
+
+                    Storage::put('photo.jpg', $content);
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/filesystem">Learn more</a></p>
+                        </div>
+
+                        <div name="queues" title="Job Queues" icon="queue-list">
+                            <p>Laravel lets you to offload slow jobs to a background queue, keeping your web requests
+                               snappy:</p>
+
+                            <pre><code language="php">
+                    $podcast = Podcast::create(/* ... */);
+
+                    ProcessPodcast::dispatch($podcast)->onQueue('podcasts');// [tl! focus]
+                </code></pre>
+
+                            <p>You can run as many queue workers as you need to handle your workload:</p>
+
+                            <pre><code language="bash">
+                    php artisan queue:work redis --queue=podcasts
+                </code></pre>
+
+                            <p>For more visibility and control over your queues, <a href="https://laravel.com/docs/horizon">Laravel
+                                                                                                                            Horizon</a>
+                               provides a beautiful dashboard and code-driven configuration for your Laravel-powered Redis
+                               queues.</p>
+
+                            <p><strong>Learn more</strong></p>
+                            <ul>
+                                <li><a href="https://laravel.com/docs/queues">Job Queues</a></li>
+                                <li><a href="https://laravel.com/docs/horizon">Laravel Horizon</a></li>
+                            </ul>
+                        </div>
+
+                        <div name="scheduling" title="Task Scheduling" icon="clock">
+                            <p>Schedule recurring jobs and commands with an expressive syntax and say goodbye to complicated
+                               configuration files:</p>
+
+                            <pre><code language="php">
+                    $schedule->job(NotifySubscribers::class)->hourly();
+                </code></pre>
+
+                            <p>Laravel's scheduler can even handle multiple servers and offers built-in overlap prevention:</p>
+
+                            <pre><code language="php">
+                    $schedule->job(NotifySubscribers::class)
+                        ->dailyAt('9:00')
+                        ->onOneServer();
+                        ->withoutOverlapping();
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/scheduling">Learn more</a></p>
+                        </div>
+
+                        <div name="testing" title="Testing" icon="command-line">
+                            <p>Laravel is built for testing. From unit tests to browser tests, you’ll feel more confident in
+                               deploying your application:</p>
+
+                            <pre><code language="php">
+                    $user = User::factory()->create();
+
+                    $this->browse(fn (Browser $browser) => $browser
+                        ->visit('/login')
+                        ->type('email', $user->email)
+                        ->type('password', 'password')
+                        ->press('Login')
+                        ->assertPathIs('/home')
+                        ->assertSee("Welcome {$user->name}")
+                    );
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/testing">Learn more</a></p>
+                        </div>
+
+                        <div name="events" title="Events & WebSockets" icon="arrows-right-left">
+                            <p>Laravel's events allow you to send and listen for events across your application, and listeners
+                               can easily be dispatched to a background queue:</p>
+
+                            <pre><code language="php">
+                    OrderShipped::dispatch($order);
+                </code></pre>
+
+                            <pre><code language="php">
+                    class SendShipmentNotification implements ShouldQueue
+                    {
+                        public function handle(OrderShipped $event): void
+                        {
+                            // ...
+                        }
+                    }
+                </code></pre>
+
+                            <p>Your frontend application can even subscribe to your Laravel events using <a
+                                    href="https://laravel.com/docs/broadcasting">Laravel Echo</a> and WebSockets, allowing you
+                               to build real-time, dynamic applications:</p>
+
+                            <pre><code language="javascript">
+                    Echo.private(`orders.${orderId}`)
+                        .listen('OrderShipped', (e) => {
+                            console.log(e.order);
+                        });
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/events">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="authorization" title="Authorization" icon="identification">
+                            <p>You'll often need to check whether an authenticated user is authorized to perform a specific
+                               action. Laravel's model policies make it a breeze:</p>
+
+                            <pre><code language="bash">
+                    php artisan make:policy UserPolicy
+                </code></pre>
+
+                            <p>Once you've defined your authorization rules in the generated policy class, you can authorize the
+                               user's request in your controller methods:</p>
+
+                            <pre><code language="php">
+                    public function update(Request $request, Invoice $invoice)
+                    {
+                        Gate::authorize('update', $invoice);// [tl! focus]
+
+                        $invoice->update(/* ... */);
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/authorization">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="eloquent" title="Eloquent ORM" icon="table-cells">
+                            <p>Scared of databases? Don't be. Laravel’s Eloquent ORM makes it painless to interact with your
+                               application's data, and models, migrations, and relationships can be quickly scaffolded:</p>
+
+                            <pre><code language="text">
+                    php artisan make:model Invoice --migration
+                </code></pre>
+
+                            <p>Once you've defined your model structure and relationships, you can interact with your database
+                               using Eloquent's powerful, expressive syntax:</p>
+
+                            <pre><code language="php">
+                    // Create a related model...
+                    $user->invoices()->create(['amount' => 100]);
+
+                    // Update a model...
+                    $invoice->update(['amount' => 200]);
+
+                    // Retrieve models...
+                    $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
+
+                    // Rich API for model interactions...
+                    $invoices->each->pay();
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/eloquent">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="migrations" title="Database Migrations" icon="circle-stack">
+                            <p>Migrations are like version control for your database, allowing your team to define and share
+                               your application's database schema definition:</p>
+
+                            <pre><code language="php">
+                    public function up(): void
+                    {
+                        Schema::create('flights', function (Blueprint $table) {
+                            $table->uuid()->primary();
+                            $table->foreignUuid('airline_id')->constrained();
+                            $table->string('name');
+                            $table->timestamps();
+                        });
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/migrations">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="validation" title="Validation" icon="check-badge">
+                            <p>Laravel has over 90 powerful, built-in validation rules and, using Laravel Precognition, can
+                               provide live validation on your frontend:</p>
+
+                            <pre><code language="php">
+                    public function update(Request $request)
+                    {
+                        $validated = $request->validate([// [tl! focus:start]
+                            'email' => 'required|email|unique:users',
+                            'password' => Password::required()->min(8)->uncompromised(),
+                        ]);// [tl! focus:end]
+
+                        $request->user()->update($validated);
+                    }
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/validation">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="notifications" title="Notifications & Mail" icon="bell-alert">
+                            <p>Use Laravel to quickly send beautifully styled notifications to your users via email, Slack, SMS,
+                               in-app, and more:</p>
+
+                            <pre><code language="bash">
+                    php artisan make:notification InvoicePaid
+                </code></pre>
+
+                            <p>Once you have generated a notification, you can easily send the message to one of your
+                               application's users:</p>
+
+                            <pre><code language="php">
+                    $user->notify(new InvoicePaid($invoice));
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/notifications">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                    <div>
+                        <div name="storage" title="File Storage" icon="archive-box">
+                            <p>Laravel provides a robust filesystem abstraction layer, providing a single, unified API for
+                               interacting with local filesystems and cloud based filesystems like Amazon S3:</p>
+
+                            <pre><code language="php">
+                    $path = $request->file('avatar')->store('s3');
+                </code></pre>
+
+                            <p>Regardless of where your files are stored, interact with them using Laravel's simple, elegant
+                               syntax:</p>
+
+                            <pre><code language="php">
+                    $content = Storage::get('photo.jpg');
+
+                    Storage::put('photo.jpg', $content);
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/filesystem">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="queues" title="Job Queues" icon="queue-list">
+                            <p>Laravel lets you to offload slow jobs to a background queue, keeping your web requests
+                               snappy:</p>
+
+                            <pre><code language="php">
+                    $podcast = Podcast::create(/* ... */);
+
+                    ProcessPodcast::dispatch($podcast)->onQueue('podcasts');// [tl! focus]
+                </code></pre>
+
+                            <p>You can run as many queue workers as you need to handle your workload:</p>
+
+                            <pre><code language="bash">
+                    php artisan queue:work redis --queue=podcasts
+                </code></pre>
+
+                            <p>For more visibility and control over your queues, <a href="https://laravel.com/docs/horizon">Laravel
+                                                                                                                            Horizon</a>
+                               provides a beautiful dashboard and code-driven configuration for your Laravel-powered Redis
+                               queues.</p>
+
+                            <p><strong>Learn more</strong></p>
+                            <ul>
+                                <li><a href="https://laravel.com/docs/queues">Job Queues</a></li>
+                                <li><a href="https://laravel.com/docs/horizon">Laravel Horizon</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                    <div>
+                        <div name="scheduling" title="Task Scheduling" icon="clock">
+                            <p>Schedule recurring jobs and commands with an expressive syntax and say goodbye to complicated
+                               configuration files:</p>
+
+                            <pre><code language="php">
+                    $schedule->job(NotifySubscribers::class)->hourly();
+                </code></pre>
+
+                            <p>Laravel's scheduler can even handle multiple servers and offers built-in overlap prevention:</p>
+
+                            <pre><code language="php">
+                    $schedule->job(NotifySubscribers::class)
+                        ->dailyAt('9:00')
+                        ->onOneServer();
+                        ->withoutOverlapping();
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/scheduling">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+
+                    <div>
+                        <div name="testing" title="Testing" icon="command-line">
+                            <p>Laravel is built for testing. From unit tests to browser tests, you’ll feel more confident in
+                               deploying your application:</p>
+
+                            <pre><code language="php">
+                    $user = User::factory()->create();
+
+                    $this->browse(fn (Browser $browser) => $browser
+                        ->visit('/login')
+                        ->type('email', $user->email)
+                        ->type('password', 'password')
+                        ->press('Login')
+                        ->assertPathIs('/home')
+                        ->assertSee("Welcome {$user->name}")
+                    );
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/testing">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 mx-auto">
+                <div class="bg-body-tertiary p-5 rounded-5 shadow">
+                    <div>
+                        <div name="events" title="Events & WebSockets" icon="arrows-right-left">
+                            <p>Laravel's events allow you to send and listen for events across your application, and listeners
+                               can easily be dispatched to a background queue:</p>
+
+                            <pre><code language="php">
+                    OrderShipped::dispatch($order);
+                </code></pre>
+
+                            <pre><code language="php">
+                    class SendShipmentNotification implements ShouldQueue
+                    {
+                        public function handle(OrderShipped $event): void
+                        {
+                            // ...
+                        }
+                    }
+                </code></pre>
+
+                            <p>Your frontend application can even subscribe to your Laravel events using <a
+                                    href="https://laravel.com/docs/broadcasting">Laravel Echo</a> and WebSockets, allowing you
+                               to build real-time, dynamic applications:</p>
+
+                            <pre><code language="javascript">
+                    Echo.private(`orders.${orderId}`)
+                        .listen('OrderShipped', (e) => {
+                            console.log(e.order);
+                        });
+                </code></pre>
+
+                            <p><a href="https://laravel.com/docs/events">Learn more</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="validation" title="Validation" icon="check-badge">
-                    <p>Laravel has over 90 powerful, built-in validation rules and, using Laravel Precognition, can
-                       provide live validation on your frontend:</p>
-
-                    <pre><code language="php">
-            public function update(Request $request)
-            {
-                $validated = $request->validate([// [tl! focus:start]
-                    'email' => 'required|email|unique:users',
-                    'password' => Password::required()->min(8)->uncompromised(),
-                ]);// [tl! focus:end]
-
-                $request->user()->update($validated);
-            }
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/validation">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="notifications" title="Notifications & Mail" icon="bell-alert">
-                    <p>Use Laravel to quickly send beautifully styled notifications to your users via email, Slack, SMS,
-                       in-app, and more:</p>
-
-                    <pre><code language="bash">
-            php artisan make:notification InvoicePaid
-        </code></pre>
-
-                    <p>Once you have generated a notification, you can easily send the message to one of your
-                       application's users:</p>
-
-                    <pre><code language="php">
-            $user->notify(new InvoicePaid($invoice));
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/notifications">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-            <div>
-                <div name="storage" title="File Storage" icon="archive-box">
-                    <p>Laravel provides a robust filesystem abstraction layer, providing a single, unified API for
-                       interacting with local filesystems and cloud based filesystems like Amazon S3:</p>
-
-                    <pre><code language="php">
-            $path = $request->file('avatar')->store('s3');
-        </code></pre>
-
-                    <p>Regardless of where your files are stored, interact with them using Laravel's simple, elegant
-                       syntax:</p>
-
-                    <pre><code language="php">
-            $content = Storage::get('photo.jpg');
-
-            Storage::put('photo.jpg', $content);
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/filesystem">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="queues" title="Job Queues" icon="queue-list">
-                    <p>Laravel lets you to offload slow jobs to a background queue, keeping your web requests
-                       snappy:</p>
-
-                    <pre><code language="php">
-            $podcast = Podcast::create(/* ... */);
-
-            ProcessPodcast::dispatch($podcast)->onQueue('podcasts');// [tl! focus]
-        </code></pre>
-
-                    <p>You can run as many queue workers as you need to handle your workload:</p>
-
-                    <pre><code language="bash">
-            php artisan queue:work redis --queue=podcasts
-        </code></pre>
-
-                    <p>For more visibility and control over your queues, <a href="https://laravel.com/docs/horizon">Laravel
-                                                                                                                    Horizon</a>
-                       provides a beautiful dashboard and code-driven configuration for your Laravel-powered Redis
-                       queues.</p>
-
-                    <p><strong>Learn more</strong></p>
-                    <ul>
-                        <li><a href="https://laravel.com/docs/queues">Job Queues</a></li>
-                        <li><a href="https://laravel.com/docs/horizon">Laravel Horizon</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-            <div>
-                <div name="scheduling" title="Task Scheduling" icon="clock">
-                    <p>Schedule recurring jobs and commands with an expressive syntax and say goodbye to complicated
-                       configuration files:</p>
-
-                    <pre><code language="php">
-            $schedule->job(NotifySubscribers::class)->hourly();
-        </code></pre>
-
-                    <p>Laravel's scheduler can even handle multiple servers and offers built-in overlap prevention:</p>
-
-                    <pre><code language="php">
-            $schedule->job(NotifySubscribers::class)
-                ->dailyAt('9:00')
-                ->onOneServer();
-                ->withoutOverlapping();
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/scheduling">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-
-            <div>
-                <div name="testing" title="Testing" icon="command-line">
-                    <p>Laravel is built for testing. From unit tests to browser tests, you’ll feel more confident in
-                       deploying your application:</p>
-
-                    <pre><code language="php">
-            $user = User::factory()->create();
-
-            $this->browse(fn (Browser $browser) => $browser
-                ->visit('/login')
-                ->type('email', $user->email)
-                ->type('password', 'password')
-                ->press('Login')
-                ->assertPathIs('/home')
-                ->assertSee("Welcome {$user->name}")
-            );
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/testing">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xl-5 mx-auto">
-        <div class="bg-body-tertiary p-5 rounded-5 shadow">
-            <div>
-                <div name="events" title="Events & WebSockets" icon="arrows-right-left">
-                    <p>Laravel's events allow you to send and listen for events across your application, and listeners
-                       can easily be dispatched to a background queue:</p>
-
-                    <pre><code language="php">
-            OrderShipped::dispatch($order);
-        </code></pre>
-
-                    <pre><code language="php">
-            class SendShipmentNotification implements ShouldQueue
-            {
-                public function handle(OrderShipped $event): void
-                {
-                    // ...
-                }
-            }
-        </code></pre>
-
-                    <p>Your frontend application can even subscribe to your Laravel events using <a
-                            href="https://laravel.com/docs/broadcasting">Laravel Echo</a> and WebSockets, allowing you
-                       to build real-time, dynamic applications:</p>
-
-                    <pre><code language="javascript">
-            Echo.private(`orders.${orderId}`)
-                .listen('OrderShipped', (e) => {
-                    console.log(e.order);
-                });
-        </code></pre>
-
-                    <p><a href="https://laravel.com/docs/events">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </x-container>
 
     <div class="container py-5">
 
@@ -921,6 +1363,7 @@ $user = Auth::user();
             </div>
         </div>
     </div>
+--}}
 
     <x-call-to-action link="{{ route('docs') }}" text="Посмотреть документацию">
         <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>

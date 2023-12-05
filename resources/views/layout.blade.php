@@ -28,8 +28,7 @@
                     <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Трибуна</a></li>
                     <li><a href="{{ route('packages') }}" class="nav-link px-3 link-body-emphasis">Пакеты</a></li>
                     <li><a href="{{ route('jobs') }}" class="nav-link px-3 link-body-emphasis">Работа</a></li>
-                    <li><a href="{{ route('resources') }}"
-                           class="nav-link px-3 link-body-emphasis position-relative">Ресурсы
+                    <li><a href="{{ route('courses') }}" class="nav-link px-3 link-body-emphasis position-relative">Курсы
                             <span class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
                     </li>
                 </ul>
@@ -124,7 +123,7 @@
                                 <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('courses') }}" class="nav-link p-0">Видео уроки</a>
+                                <a href="{{ route('resources') }}" class="nav-link p-0">Ресурсы</a>
                             </li>
                         </ul>
                     </div>
