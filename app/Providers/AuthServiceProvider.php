@@ -7,10 +7,12 @@ use App\Models\Comment;
 use App\Models\Meet;
 use App\Models\Package;
 use App\Models\Post;
+use App\Models\Position;
 use App\Policies\CommentPolicy;
 use App\Policies\MeetPolicy;
 use App\Policies\PackagePolicy;
 use App\Policies\PostPolicy;
+use App\Policies\PositionPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -22,9 +24,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Comment::class => CommentPolicy::class,
-        Meet::class => MeetPolicy::class,
-        Post::class => PostPolicy::class,
-        Package::class => PackagePolicy::class
+        Meet::class    => MeetPolicy::class,
+        Post::class    => PostPolicy::class,
+        Package::class => PackagePolicy::class,
+        Position::class => PositionPolicy::class
     ];
 
     /**
