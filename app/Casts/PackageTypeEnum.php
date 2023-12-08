@@ -59,4 +59,29 @@ enum PackageTypeEnum: string
     {
         return ColorText::Hex($this->text());
     }
+
+    public function icon(): string
+    {
+        return match ($this) {
+            self::FileManagement => 'bs.file-earmark-fill',
+            self::AuthAndPermission => 'bs.people-fill',
+            self::DatabaseAndEloquent => 'bs.database-fill',//'bs.server'
+            self::DebuggingAndDevTools => 'bs.bug-fill',
+            self::DevOps => 'bs.display',
+            //self::Localization         => 'bs.globe',
+            self::API => 'bs.cloud-fill',
+            //self::SEO                  => 'bs.search',
+            self::Testing => 'bs.gear-wide',
+            //self::Payment              => 'bs.credit-card-fill',
+            self::Security => 'bs.shield-shaded',
+            //self::Mail                 => 'bs.envelope-fill',
+            self::ECommerce => 'bs.bag-fill',
+            self::CMSAndAdminPanels => 'bs.window-stack',
+            self::CodeArchitecture => 'bs.file-earmark-code-fill',
+            self::Notifications => 'bs.bell-fill',
+            self::UIAndBladeComponents => 'bs.file-earmark-richtext-fill',
+            self::UtilitiesAndHelpers => 'bs.wrench-adjustable',
+
+        };
+    }
 }

@@ -28,7 +28,6 @@ Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/courses', 'pages.courses')->name('courses');
-Route::view('/jobs', 'pages.jobs')->name('jobs');
 Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
 
@@ -76,6 +75,44 @@ Route::middleware(['auth'])
             ->name('post.delete');
     });
 
+/*
+|--------------------------------------------------------------------------
+| Positions/Jobs Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/jobs', [\App\Http\Controllers\PositionsController::class, 'jobs'])
+    ->name('jobs');
+
+Route::get('/positions', [\App\Http\Controllers\PositionsController::class, 'list'])
+    ->name('positions');
+
+Route::get('/j/{position:slug}', [\App\Http\Controllers\PositionsController::class, 'show'])
+    ->name('position.show');
+
+Route::middleware(['auth'])
+    ->group(function () {
+
+        Route::get('/positions/create', [\App\Http\Controllers\PositionsController::class, 'edit'])
+            ->name('position.create');
+
+        Route::post('/positions', [\App\Http\Controllers\PositionsController::class, 'update'])
+            ->name('position.store');
+
+        Route::get('/positions/{position}/edit', [\App\Http\Controllers\PositionsController::class, 'edit'])
+            ->can('owner', 'position')
+            ->name('position.edit');
+
+        Route::post('/positions/{position}', [\App\Http\Controllers\PositionsController::class, 'update'])
+            ->name('position.update');
+
+        Route::delete('/positions/{position}', [\App\Http\Controllers\PositionsController::class, 'delete'])
+            ->can('owner', 'position')
+            ->name('position.delete');
+    });
 /*
 |--------------------------------------------------------------------------
 | Comments Routes

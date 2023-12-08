@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Casts\PackageTypeEnum;
+use App\Casts\SortEnum;
 use App\Models\Meet;
 use App\Models\Package;
 use App\Models\Post;
@@ -24,6 +25,14 @@ class PackagesController extends Controller
     {
         $packages = Package::when($request->has('type'), function ($query) use ($request) {
             return $query->where('type', $request->input('type'));
+        })->when($request->filled('q'), function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->get('q') . '%')
+                ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')
+                ->orWhere('description', 'like', '%' . $request->get('q') . '%');
+        })->when($request->get('sort') === SortEnum::Popular->value, function ($query){
+            $query->orderBy('stars');
+        },function ($query){
+            $query->latest();
         })->paginate();
 
         return view('packages.index', [
@@ -55,7 +64,7 @@ class PackagesController extends Controller
             'pack'                => 'required|array',
             'pack.name'           => 'required|string',
             'pack.description'    => 'required|string',
-            'pack.packagist_name' => 'required|string',
+            'pack.packagist_name' =>  ['string', 'required', Rule::unique(Package::class, 'packagist_name')->ignore($package->packagist_name)],
             'pack.website'        => 'sometimes|url',
             'pack.type'           => ['required', Rule::enum(PackageTypeEnum::class)]
         ]);

@@ -347,3 +347,21 @@ $utilities: (
         opacity: 0.5;
     }
 }
+.form-search {
+    overflow: hidden;
+    font-size: 1em;
+    line-height:1.5;
+    outline: none!important;
+    @extend .text-body-emphasis;
+    @extend .bg-body-secondary;
+    @extend .rounded-0;
+    @extend .border-0;
+
+    &::placeholder {
+        @extend .text-body-emphasis;
+        opacity: 0.5;
+    }
+}
+.bg-light-danger{
+    background-color: #FBDBD9 !important;
+}
