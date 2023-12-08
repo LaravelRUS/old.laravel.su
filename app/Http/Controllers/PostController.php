@@ -64,31 +64,9 @@ class PostController extends Controller
     {
         $this->authorize('isOwner', $post);
 
-        $request->validate([
-            'select_type' => [
-                'sometimes',
-                Rule::enum(PostTypeEnum::class),
-            ],
-        ]);
-
-        $isEditing = $post->exists;
-        if ($request->has('select_type') && !$isEditing) {
-            $post->type = PostTypeEnum::from($request->input('select_type'));
-            $view = 'post.edit.' . $request->input('select_type');
-        } else if ($isEditing) {
-            $view = 'post.edit.' . $post->type->value;
-
-        } else {
-            $view = 'post.edit.' . PostTypeEnum::Article->value;
-        }
-
-        $title = $isEditing ? 'Редактирование' : 'Новая статья';
-
-        return view($view, [
-            'title'     => $title,
+        return view('post.edit', [
             'post'      => $post,
-            'isEditing' => $isEditing,
-        ])->fragmentsIf(!$request->isMethodSafe());
+        ]);
     }
 
     /**
@@ -104,10 +82,7 @@ class PostController extends Controller
         $request->validate([
             'title'   => 'required|string',
             'content' => 'required|string',
-            'type'    => [
-                $post->exists ? 'missing' : 'required',
-                Rule::enum(PostTypeEnum::class),
-            ],
+
         ]);
 
         $post->fill([
