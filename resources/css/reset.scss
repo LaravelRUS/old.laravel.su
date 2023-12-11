@@ -1,3 +1,7 @@
+html, body {
+    will-change: transform, opacity;
+}
+
 
 textarea {
     resize: none;

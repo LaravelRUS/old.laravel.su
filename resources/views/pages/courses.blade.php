@@ -3,6 +3,170 @@
 
 @section('content')
 
+    <x-header image="/img/porridge.svg">
+        <x-slot:sup>Всё наглядно</x-slot>
+        <x-slot:title>Учитесь с Laravel</x-slot>
+
+        <x-slot:description>
+            Независимо от того, являетесь ли вы новичком или уже используете Laravel, тут собраны учебные материалы,
+            которые помогут вам освоить фреймворк и разработку в целом.
+        </x-slot>
+    </x-header>
+
+
+
+    <x-container>
+
+        <div class="row g-4">
+            <div class="col-8 mb-4">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8 position-relative">
+                            <h3 class="mb-2 fw-bold">Сертификат</h3>
+                            <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
+                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+                            <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0">
+                            <div class="row">
+                                <div class="col-sm-12 position-relative">
+                                    <h3 class="mb-2 fw-bold">Orchid</h3>
+                                    <p class="mb-5 fw-light">
+                                        В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
+                                        как взаимодействовать с Orchid и постройки UI с помощью PHP.
+                                    </p>
+                                    <a href="#" class="btn btn-primary mb-0">Построить админку</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100 position-relative overflow-hidden">
+                            <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                            <div class="row">
+                                <div class="col-sm-12 position-relative">
+                                    <h3 class="mb-2 fw-bold">Livewire</h3>
+                                    <p class="mb-5 fw-light">
+                                        Livewire быстро стал одним из самых популярных пакетов для создания приложений
+                                        Laravel. Он позволяет создавать динамические компоненты в PHP, что часто
+                                        приводит к тому, что вы можете полностью пропустить уровень JavaScript.
+                                    </p>
+                                    <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 mb-4">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+
+                    <ul class="d-grid gap-4 list-unstyled">
+                        <li class="d-flex gap-4 align-items-center">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Grid view</h5>
+                                Not into lists? Try the new grid view.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Bookmarks</h5>
+                                Save items you love for easy access later.
+                            </div>
+                        </li>
+                        <li class="d-flex gap-4">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Video embeds</h5>
+                                Share videos wherever you go.
+                            </div>
+                        </li>
+
+                        <li class="d-flex gap-4">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Video embeds</h5>
+                                Share videos wherever you go.
+                            </div>
+                        </li>
+
+                        <li class="d-flex gap-4">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Video embeds</h5>
+                                Share videos wherever you go.
+                            </div>
+                        </li>
+
+                        <li class="d-flex gap-4">
+                            <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
+                            <div>
+                                <h5 class="mb-0">Video embeds</h5>
+                                Share videos wherever you go.
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        {{--
+        <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100 my-5">
+            <div class="row flex-lg-row-reverse align-items-center g-4">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
+                    <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6 position-relative overflow-hidden">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8 position-relative">
+                            <h3 class="mb-2 fw-bold">Сертификат</h3>
+                            <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
+                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 position-relative overflow-hidden">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8 position-relative">
+                            <h3 class="mb-2 fw-bold">Лучше курсы</h3>
+                            <p class="mb-5 h5 fw-light lead">Запишитесь сейчас на самые популярные курсы.</p>
+                            <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        --}}
+    </x-container>
+
 
     <x-container>
         <div class="row align-items-md-stretch overflow-hidden">
@@ -87,35 +251,14 @@
         </div>
     </x-container>
 
-    <x-container>
-        <div class="row g-4">
-            <div class="col-lg-6 position-relative overflow-hidden">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
-                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
-                    <div class="row">
-                        <div class="col-sm-8 position-relative">
-                            <h3 class="mb-2 fw-bold">Сертификат</h3>
-                            <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
-                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <x-call-to-action link="{{ route('docs') }}" text="Посмотреть документацию">
+        <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>
 
-            <div class="col-lg-6 position-relative overflow-hidden">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
-                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
-                    <div class="row">
-                        <div class="col-sm-8 position-relative">
-                            <h3 class="mb-2 fw-bold">Лучше курсы</h3>
-                            <p class="mb-5 h5 fw-light lead">Запишитесь сейчас на самые популярные курсы.</p>
-                            <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </x-container>
+        <x-slot:description>
+            В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
+            ограничение скорости и пользовательские консольные команды.
+        </x-slot>
+    </x-call-to-action>
 
     {{--
         <x-header image="/img/porridge.svg">

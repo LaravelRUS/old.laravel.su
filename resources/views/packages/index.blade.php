@@ -89,7 +89,7 @@ return response()->json([
                             </div>
                             <div class="ms-3 w-75">
                                 <a href="{{ route('packages', ['type' => $type]) }}"
-                                   class="fs-6 fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if(request()->get('type')==$type->value) active @endif"
+                                   class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if(request()->get('type')==$type->value) active @endif"
                                 >
                                     {{ $type->text() }}
                                 </a>

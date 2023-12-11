@@ -1,20 +1,21 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller}   from '@hotwired/stimulus';
 import TextareaEditor from 'textarea-editor';
 
 export default class extends Controller {
     static targets = [
         'input',
     ];
+
     inputTargetConnected(input) {
         this.editor = new TextareaEditor(input);
     }
+
     format(e) {
         e.preventDefault();
         if (this.editor) {
             this.editor.toggle(e.params.format);
         }
     }
-
 
     chooseFiles() {
         const input = document.createElement('input');

@@ -87,7 +87,7 @@ $utilities: (
 @import 'clipboard';
 @import 'docs';
 @import 'ticket';
-
+@import 'transition';
 
 
 .text-balance {
@@ -229,22 +229,6 @@ $utilities: (
 }
 
 
-
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.hotwire-frame {
-    opacity: 0;
-    animation: fade-in 1s ease-in-out forwards;
-}
-
 .comments-wrapper {
 
     .thread {
@@ -277,6 +261,10 @@ $utilities: (
         .comment:last-child:before {
             display: none;
         }
+    }
+
+    * {
+        view-transition-name: frame;
     }
 
     .comment {

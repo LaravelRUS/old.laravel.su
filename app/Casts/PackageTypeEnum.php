@@ -7,7 +7,7 @@ use App\Services\ColorText;
 enum PackageTypeEnum: string
 {
     case FileManagement = 'file-management';
-    case AuthAndPermission = 'auth-and-permission';
+    //case AuthAndPermission = 'auth-and-permission';
     case DatabaseAndEloquent = 'database-and-Eloquent';
     case DebuggingAndDevTools = 'debugging-and-dev-tools';
     case DevOps = 'dev-ops';
@@ -21,7 +21,7 @@ enum PackageTypeEnum: string
     case ECommerce = 'e-commerce';
     case CMSAndAdminPanels = 'cms-and-admin-panels';
     case CodeArchitecture = 'code-architecture';
-    case Notifications = 'notifications';
+    //case Notifications = 'notifications';
     case UIAndBladeComponents = 'ui-and-blade-components';
     case UtilitiesAndHelpers = 'utilities-and-helpers';
 
@@ -29,7 +29,7 @@ enum PackageTypeEnum: string
     {
         return match ($this) {
             self::FileManagement => 'Управление файлами',
-            self::AuthAndPermission => 'Аутентификация и разрешения',
+            //self::AuthAndPermission => 'Аутентификация и разрешения',
             self::DatabaseAndEloquent => 'Базы данных и Eloquent',
             self::DebuggingAndDevTools => 'Инструменты разработчика',
             self::DevOps => 'DevOps',
@@ -43,7 +43,7 @@ enum PackageTypeEnum: string
             self::ECommerce => 'Интернет-торговля',
             self::CMSAndAdminPanels => 'CMS и панели администратора',
             self::CodeArchitecture => 'Архитектура кода',
-            self::Notifications => 'Уведомления',
+            //self::Notifications => 'Уведомления',
             self::UIAndBladeComponents => 'UI и компоненты Blade',
             self::UtilitiesAndHelpers => 'Утилиты',
 
@@ -64,7 +64,7 @@ enum PackageTypeEnum: string
     {
         return match ($this) {
             self::FileManagement => 'bs.file-earmark-fill',
-            self::AuthAndPermission => 'bs.people-fill',
+            //self::AuthAndPermission => 'bs.people-fill',
             self::DatabaseAndEloquent => 'bs.database-fill',//'bs.server'
             self::DebuggingAndDevTools => 'bs.bug-fill',
             self::DevOps => 'bs.display',
@@ -78,7 +78,7 @@ enum PackageTypeEnum: string
             self::ECommerce => 'bs.bag-fill',
             self::CMSAndAdminPanels => 'bs.window-stack',
             self::CodeArchitecture => 'bs.file-earmark-code-fill',
-            self::Notifications => 'bs.bell-fill',
+            //self::Notifications => 'bs.bell-fill',
             self::UIAndBladeComponents => 'bs.file-earmark-richtext-fill',
             self::UtilitiesAndHelpers => 'bs.wrench-adjustable',
 

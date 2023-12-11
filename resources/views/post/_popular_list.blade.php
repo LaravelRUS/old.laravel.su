@@ -1,5 +1,5 @@
 @foreach($popular as $post)
-    <div class=" mb-3">
+    <div class="mb-3">
         <a href="{{ route('post.show', $post) }}" class="nav-link p-0 link-body-emphasis align-items-baseline">
             <span class="me-2">{{ $post->title }}</span>
 

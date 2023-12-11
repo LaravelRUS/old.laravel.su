@@ -1,4 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
@@ -33,7 +33,7 @@ export default class extends Controller {
                     navigator.clipboard.writeText(this.urlValue);
                     console.error('Error sharing!');
                 });
-        }catch (e) {
+        } catch (e) {
             console.error('Error sharing!');
             console.warn(e);
             navigator.clipboard.writeText(this.urlValue);
