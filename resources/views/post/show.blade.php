@@ -9,15 +9,16 @@
                 <div class="col-xxl-8 mx-auto">
 
                     <main class="post">
+                        {{--
                         <a class="text-decoration-none" href="#">Hotwire</a>
-
+                        --}}
                         <h1>{{ $post->title }}</h1>
 
                         {!! \Illuminate\Support\Str::of($post->content)->markdown() !!}
                     </main>
 
                     <!-- Start Author  -->
-                    <div class="d-flex align-items-center justify-content-between mt-5">
+                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3">
                         <div class="d-flex align-items-center">
 
                             <div class="avatar avatar-sm me-3">

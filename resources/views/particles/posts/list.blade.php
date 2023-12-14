@@ -17,7 +17,7 @@
         </div>
 @else
     @foreach ($posts as $post)
-        <div id="@domid($post)" class="bg-body-tertiary mb-4 px-xxl-5 p-4 rounded hotwire-frame">
+        <div id="@domid($post)" class="bg-body-tertiary mb-4 p-xxl-5 p-4 rounded hotwire-frame">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
                     <div class="avatar avatar-sm me-3">

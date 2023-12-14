@@ -24,11 +24,11 @@
                 </div>
             @endif
         @else
-            <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-4">
-                @foreach($comments as $comment)
+            @foreach($comments as $comment)
+                <div class="bg-body-tertiary overflow-hidden px-5 py-3 rounded mb-4">
                     @include('comments.show')
-                @endforeach
-            </div>
+                </div>
+            @endforeach
             {{ $comments->links() }}
         @endif
     </div>

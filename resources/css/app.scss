@@ -353,3 +353,9 @@ $utilities: (
 .bg-light-danger{
     background-color: #FBDBD9 !important;
 }
+
+
+.post-placeholder {
+    opacity: 0; /* Скрываем содержимое плейсхолдера */
+    animation: fade-out 1s ease-in-out;
+}

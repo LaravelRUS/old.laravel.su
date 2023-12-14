@@ -6,18 +6,21 @@
                 data-controller="comment"
         >
             @method('PUT')
-            <textarea data-controller="textarea-autogrow"
+            <textarea
+                      data-comment-target="textarea"
+                      data-controller="textarea-autogrow"
                       data-textarea-autogrow-resize-debounce-delay-value="500"
                       required
                       minlength="3"
-                      data-action="keydown.enter->comment#send:prevent"
+                      data-action="keydown.enter->comment#send:prevent input->comment#toggleSubmitButton"
                       placeholder="Ваш комментарий"
                       class="form-control p-5"
                       name="message"
                       rows="1">{{ $comment->content }}</textarea>
             <div
                 class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
-                <button type="submit" class="btn btn-primary">Обновить</button>
+                <button type="submit" class="btn btn-primary fade"
+                        data-comment-target="button">Обновить</button>
             </div>
         </form>
     </x-slot:content>

@@ -125,7 +125,7 @@ class PostController extends Controller
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
-        $posts = $request->user()->attachLikeStatus($posts);
+        $request->user()?->attachLikeStatus($posts);
 
         return turbo_stream([
             turbo_stream()->removeAll('.post-placeholder'),

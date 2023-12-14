@@ -18,7 +18,7 @@
             <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
                 <turbo-frame id="posts-frame" target="_top" src="{{ route('posts') }}">
                     @foreach(range(0,2) as $placeholder)
-                        <div class="bg-body-tertiary mb-4 px-xl-5 p-4 rounded post-placeholder">
+                        <div class="bg-body-tertiary mb-4 p-xl-5 p-4 rounded post-placeholder">
 
                             <span class="placeholder rounded col-6 mb-4"></span>
 

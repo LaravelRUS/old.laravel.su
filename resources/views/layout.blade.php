@@ -86,6 +86,12 @@
                                 <x-icon path="bs.github" width="24" height="24"/>
                             </a>
                         </li>
+                        <li class="ms-3">
+                            <a class="link-body-emphasis" href="{{ asset('/rss/feed') }}"
+                               target="_blank">
+                                <x-icon path="bs.rss-fill" width="24" height="24"/>
+                            </a>
+                        </li>
                     </ul>
 
                     <p class="small text-muted mb-2">
@@ -122,9 +128,11 @@
                             <li class="nav-item mb-2">
                                 <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
                             </li>
+                            {{--
                             <li class="nav-item mb-2">
                                 <a href="{{ route('resources') }}" class="nav-link p-0">Ресурсы</a>
                             </li>
+                            --}}
                         </ul>
                     </div>
                 </div>
@@ -153,30 +161,12 @@
                                 <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
                                    class="nav-link p-0">Правила</a>
                             </li>
-                            <li class="nav-item mb-2">
-                                <a href="{{ asset('/rss/feed') }}"
-                                   class="nav-link p-0">RSS Лента</a>
-                            </li>
-                            <li class="nav-item mb-2">
-                                <a href="{{ asset('https://www.youtube.com/watch?v=jxtRs0GrhsY&list=PLM-y77GFP_D0Pd2bstscfHCuttLi6Z7Kd') }}"
-                                   class="nav-link p-0">Подкаст</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-12 col-md-auto">
-                    {{-- <p class="fw-normal text-white">Блоги разработчиков</p> --}}
                     <div class="navbar navbar-dark">
-                        {{--
-       <ul class="nav flex-column navbar-nav">
-           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Orchid</a></li>
-           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Laravel Idea</a></li>
-           <li class="nav-item mb-2"><a href="#" class="nav-link p-0">SleepingOwl Admin</a></li>
-           <li class="nav-item mb-2"><a href="{{ asset('https://vk.com/laravel_rus?w=app5727453_-53758340') }}" class="nav-link p-0">Помощь проекту</a></li>
-        </ul>
-        --}}
-
                         <div class="nav flex-column">
                             <form data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent
                                   class="btn-group" role="group" aria-label="Тема оформления" id="theme-checker-group">

@@ -21,7 +21,7 @@
             </div>
 
             <div class="w-100">
-                <div class="mb-2 d-flex flex-column flex-md-row">
+                <div class="mb-3 mt-1 d-flex flex-column flex-md-row">
                     <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
 
                     <div class="me-3 small opacity-50">

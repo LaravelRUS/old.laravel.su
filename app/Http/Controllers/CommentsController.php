@@ -23,7 +23,7 @@ class CommentsController extends Controller
             },
         ]);
 
-        $post = auth()->user()->attachLikeStatus($post);
+        auth()->user()?->attachLikeStatus($post);
 
         return view('components.comments', array_merge($data, [
             'model' => $post,

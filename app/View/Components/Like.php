@@ -23,7 +23,7 @@ class Like extends Component
         }
 
         if ($model->has_liked === null) {
-            auth()->user()->attachLikeStatus($model);
+            auth()->user()?->attachLikeStatus($model);
         }
 
         $this->model = $model;

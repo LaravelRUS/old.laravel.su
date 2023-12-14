@@ -11,6 +11,7 @@
                   data-controller="comment"
             >
                                     <textarea
+                                        data-comment-target="textarea"
                                         data-controller="textarea-autogrow"
                                         data-textarea-autogrow-resize-debounce-delay-value="500"
                                         required
@@ -19,11 +20,13 @@
                                         name="message"
                                         rows="3"
                                         minlength="3"
-                                        data-action="keydown.enter->comment#send:prevent"
+                                        data-action="keydown.enter->comment#send:prevent input->comment#toggleSubmitButton"
                                     ></textarea>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-3 mx-5">
+                    {{-- TODO:
                     <button type="button" class="btn btn-link">Отменить</button>
-                    <button type="submit" class="btn btn-primary">Ответить</button>
+                    --}}
+                    <button type="submit" class="btn btn-primary fade" data-comment-target="button">Ответить</button>
                 </div>
             </form>
         @endcan
