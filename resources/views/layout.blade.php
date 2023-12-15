@@ -58,13 +58,14 @@
         <div class="container py-5">
             <footer class="row py-md-5 g-4 justify-content-between navbar-dark">
                 <div class="col-12 col-md-4">
+                    {{--
                     <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
                         <img src="https://laravel.su/images/logo.png" style="
     object-fit: contain;
     height: 45px;">
                     </a>
-
-                    <ul class="nav justify-content-start align-items-center list-unstyled d-flex my-4">
+--}}
+                    <ul class="nav justify-content-start align-items-center list-unstyled d-flex mb-4">
                         <li class="">
                             <a href="#" class="link-body-emphasis">
                                 <x-icon path="bs.twitter" width="24" height="24"/>
@@ -106,18 +107,18 @@
                 </div>
 
                 <div class="col-6 col-md-auto">
-                    <p class="fw-normal text-white">Ресурсы комьюнити</p>
+                    <p class="fw-normal text-white">Ресурсы сообщества</p>
 
                     <div class="navbar navbar-dark">
                         <ul class="nav flex-column navbar-nav">
                             <li class="nav-item mb-2">
-                                <a href="{{ route('meets') }}" class="nav-link p-0">Конференции</a>
+                                <a href="{{ route('home') }}" class="nav-link p-0">Домашняя страница</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
+                                <a href="{{ route('feature') }}" class="nav-link p-0">Возможности</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
+                                <a href="{{ route('meets') }}" class="nav-link p-0">Мероприятия</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
@@ -138,11 +139,14 @@
                 </div>
 
                 <div class="col-6 col-md-auto">
-                    <p class="fw-normal text-white">Ресурсы</p>
+                    <p class="fw-normal text-white">Взаимодействие</p>
                     <div class="navbar navbar-dark">
                         <ul class="nav flex-column navbar-nav">
                             <li class="nav-item mb-2">
-                                <a href="{{ route('docs') }}" class="nav-link p-0">Документация</a>
+                                <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
@@ -159,7 +163,7 @@
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
-                                   class="nav-link p-0">Правила</a>
+                                   class="nav-link p-0">Правила сообщества</a>
                             </li>
                         </ul>
                     </div>

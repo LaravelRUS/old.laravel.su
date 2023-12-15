@@ -4,8 +4,8 @@
 @section('content')
 
 
-    <x-header image="/img/ui/jewelry.svg">
-        <x-slot:sup>Остаёмся на связи</x-slot>
+    <x-header image="/img/ui/job.svg">
+        <x-slot:sup>Примените таланты</x-slot>
         <x-slot:title>Работа</x-slot>
 
         <x-slot:description>

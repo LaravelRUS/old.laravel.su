@@ -9,7 +9,7 @@
             <x-slot:sup>Нельзя пропустить</x-slot>
             <x-slot:title>Не обойдется без Laravel</x-slot>
             <x-slot:description>
-                Ни одна PHP конференция не обходится без упоминания Laravel.
+                Ни одна PHP встреча не обходится без упоминания Laravel.
                 Это самый популярный фреймворк в мире PHP.
             </x-slot>
 

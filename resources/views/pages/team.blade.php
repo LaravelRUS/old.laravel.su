@@ -14,61 +14,61 @@
         </x-slot>
 
         <x-slot:content>
-            <div class="row gy-5 row-cols-lg-4 text-center justify-content-center">
+            <div class="row g-5 row-cols-lg-4 text-center justify-content-center">
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&1" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&6" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&5" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&8" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&3" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&9" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&7" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&2" style="filter:grayscale(100%)">
 
-                    <h6 class="mt-2"><strong>Дмитрий Будко</strong></h6>
+                    <h6 class="mt-2 small"><strong>Дмитрий Будко</strong></h6>
                 </div>
             </div>
         </x-slot:content>

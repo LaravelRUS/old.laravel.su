@@ -4,16 +4,19 @@
 @section('content')
 
     <x-header image="/img/tablecloth.svg">
-        <x-slot:sup>Экосистема</x-slot>
-        <x-slot:title>Без корпоративной сложности.</x-slot>
+        <x-slot:sup>Официальная экосистема</x-slot>
+        <x-slot:title>Без корпоративной сложности</x-slot>
 
         <x-slot:description>
             Обширная экосистема тщательно поддерживаемых пакетов гарантирует вашу готовность ко всему.
         </x-slot>
 
         <x-slot:actions>
+            @auth
+                <a href="{{route('packages.create')}}" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
+            @endauth
             <a href="{{ route('packages') }}"
-               class="link-body-emphasis text-decoration-none link-icon-animation">Посмотреть пакеты сообщества
+               class="link-body-emphasis text-decoration-none link-icon-animation">Пакеты сообщества
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>
@@ -31,7 +34,7 @@
                         </div>
                         <div class="p-4">
                             <h5 class="mb-2 fw-bolder">{{ $ecosystemItem['name'] }}</h5>
-                            <div class="small">{{ $ecosystemItem['description'] }}</div>
+                            <div class="small opacity-75">{{ $ecosystemItem['description'] }}</div>
                         </div>
                     </a>
                 </div>

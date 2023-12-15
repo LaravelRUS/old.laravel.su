@@ -41,7 +41,9 @@ return response()->json([
 --}}
 
         <x-slot:actions>
-            <a href="{{route('packages.create')}}" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
+            @auth
+                <a href="{{route('packages.create')}}" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
+            @endauth
             <a href="{{ route('ecosystem') }}"
                class="link-body-emphasis text-decoration-none link-icon-animation">Экосистема
                 <x-icon path="bs.arrow-right" />
