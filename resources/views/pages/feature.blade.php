@@ -38,53 +38,44 @@
                     </li>
                 </div>
 
-                <div class="col-lg-7">
-                    <h4>Laravel Inertia</h4>
-                    занимается маршрутизацией и передачей данных между серверной частью
-                    и внешним интерфейсом Laravel — нет необходимости создавать API или
-                    поддерживать два набора маршрутов. Легко
-                    передавайте данные из вашей базы данных непосредственно в реквизиты
-                    компонентов вашей внешней страницы,
-                    используя все функции Laravel под рукой в ​​одном фантастическом
-                    монорепозитории.
-                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h4>Laravel Inertia</h4>
+                        занимается маршрутизацией и передачей данных между серверной частью
+                        и внешним интерфейсом Laravel — нет необходимости создавать API или
+                        поддерживать два набора маршрутов. Легко
+                        передавайте данные из вашей базы данных непосредственно в реквизиты
+                        компонентов вашей внешней страницы,
+                        используя все функции Laravel под рукой в ​​одном фантастическом
+                        монорепозитории.
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <pre class="rounded-3 my-0"><code language="php">
+class UserController {
+  public function index() {
+    $users = User::active()
+                ->orderByName()
+                ->get([ 'id', 'name', 'email' ]);
 
-                <div class="row my-3">
-                    <div class="col-lg-6">
-                        <pre class="rounded-3"><code language="php">
-class UserController
-{
-    public function index()
-    {
-        $users = User::active()
-            ->orderByName()
-            ->get(['id', 'name', 'email']);
-
-        return Inertia::render('Users', [
-            'users' => $users,
-        ]);
-    }
+    return Inertia::render('Users', [
+      'users' = > $users,
+    ]);
+  }
 }
                         </code></pre>
-                    </div>
-                    <div class="col-lg-6">
-                       <pre class="rounded-3"><code language="js">
+                        <pre class="rounded-3 my-0"><code language="js">
 import Layout from './Layout'
 
-export default function Users({ users }) {
+    export default function Users({users }) {
   return (
-    <Layout>
-      {users.map(user => (
-        <Link href={route('users.show', user)}>
-          {user.name} ({user.email})
-        </Link>
-      ))}
-    </Layout>
-  )
+      <Layout>{users.map(user = > (<Link href = {route('users.show', user)}> {
+        user.name
+      }({user.email}) < / Link >))}</Layout>)
 }
                         </code></pre>
                     </div>
                 </div>
+
 
                 <div class="row my-3">
                     <div class="col-lg-6">
@@ -120,15 +111,12 @@ export default function Users({ users }) {
         </section>
 
         <section class="mb-5 pb-md-5">
-            <div class="col-lg-8 my-5">
-                <div
-                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
-                    <x-icon path="bs.gear-fill"/>
-                </div>
+            <div class="row">
+            <div class="col-lg-6 my-5">
                 <h2 class="display-5 fw-semibold mb-4">
                     Погрузитесь прямо со старта.
                 </h2>
-                <p class="fw-normal">
+                <p class="fw-normal mb-4 mb-lg-5">
                     Независимо от того, предпочитаете ли вы Livewire или React,
                     стартовые наборы Laravel позволят вам сразу же приступить к
                     делу. За считанные минуты вы можете получить
@@ -136,11 +124,17 @@ export default function Users({ users }) {
                     выбранным вами интерфейсом.
                 </p>
             </div>
+
+                <div class="col-lg-6">
+                    <img src="/img/ui/puzzle.svg" class="img-fluid d-block mx-auto">
+                </div>
+
+            </div>
             <div class="bg-body-tertiary rounded-5 shadow overflow-hidden">
                 <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="p-5">
-                            <div class="w-75 mb-3">
+                    <div class="col-lg-5">
+                        <div class="p-5 d-flex flex-column gap-4">
+                            <div class="w-75">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 48" class="h-12 max-w-full"
                                      role="image">
                                     <title>Laravel Breeze</title>
@@ -155,7 +149,7 @@ export default function Users({ users }) {
                                 </svg>
                             </div>
 
-                            <p>Laravel Breeze — это легкий стартовый комплект, который включает в себя шаблоны
+                            <p class="mb-0">Laravel Breeze — это легкий стартовый комплект, который включает в себя шаблоны
                                управления
                                профилями пользователей для аутентификации в стиле Tailwind.</p>
 
@@ -170,29 +164,30 @@ export default function Users({ users }) {
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6 overflow-hidden">
+                    <div class="col-lg-7 overflow-hidden">
                         <img src="https://laravel.com/img/frontend/breeze-profile.png" class="mt-5 rounded-top-4"
                              height="600px"/>
                     </div>
                 </div>
+                <div class="opacity-50">
                 <hr class="mt-0">
+                </div>
 
                 <div class="p-5">
                     <div class="row align-items-start">
                         <div class="col-4">
-                            <p class="mb-0 opacity-50">
-                                Настраивать окружение для запуска Laravel может быть непростой задачей. Однако, мы
-                                предлагаем вам несколько простых и удобных способов, которые позволят вам быстро и легко
+                            <div class="bg-secondary-subtle rounded p-4">
+                            <p class="mb-0 opacity-75">
+                                Настраивать окружение для новичка может быть непростой задачей.
+                                Однако, есть несколько простых и удобных способов быстро и легко
                                 запустить Laravel и сосредоточиться на разработке приложения.
                             </p>
+                        </div>
                         </div>
                         <div class="col-4">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                        <x-icon path="bs.apple"/>
-                                    </div>
+                                    <img src="/img/ui/apple.svg" class="img-fluid">
                                     <h4 class="fw-semibold mb-0 text-body-emphasis">Laravel для Mac</h4>
                                 </div>
                                 <p class="mb-0">
@@ -206,10 +201,7 @@ export default function Users({ users }) {
                         <div class="col-4">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
-                                    <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                                        <img src="/img/logos/docker.svg" class="img-fluid">
-                                    </div>
+                                    <img src="/img/ui/docker.svg" class="img-fluid">
                                     <h4 class="fw-semibold mb-0 text-body-emphasis">Laravel для Docker</h4>
                                 </div>
                                 <p class="mb-0">
@@ -229,15 +221,15 @@ export default function Users({ users }) {
 
     <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <x-container>
-            <div class="col-lg-11 mx-auto">
+            <div class="col-12">
                 <div class="row g-5 py-5 row-cols-1 row-cols-lg-2">
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.route" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Маршрутизация</h3>
-                            <p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Маршрутизация</h4>
+                            <p class="opacity-75 small mb-0">
                                 Маршрутизация (Routing) позволяет определить, как приложение должно отвечать на разные
                                 URL-адреса. Это позволяет легко настраивать маршруты для обработки запросов и
                                 определять, какие действия и контроллеры должны быть вызваны при поступлении запроса.
@@ -249,12 +241,12 @@ export default function Users({ users }) {
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.blade" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Шаблоны Blade</h3>
-                            <p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Шаблоны Blade</h4>
+                            <p class="opacity-75 small mb-0">
                                 Вставляйте переменные, используйте условия, циклы и другие
                                 операции в шаблонах, что делает их более читабельными и удобными для разработки.
                             </p>
@@ -265,12 +257,15 @@ export default function Users({ users }) {
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.authentication" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Authentication</h3>
-                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Authentication</h4>
+                            <p class="opacity-75 small mb-0">
+                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
+                                another sentence and probably just keep going until we run out of words.
+                            </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
                                 Подробнее
@@ -278,12 +273,15 @@ export default function Users({ users }) {
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.authorization" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Authorization</h3>
-                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Authorization</h4>
+                            <p class="opacity-75 small mb-0">
+                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
+                                another sentence and probably just keep going until we run out of words.
+                            </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
                                 Подробнее
@@ -291,12 +289,15 @@ export default function Users({ users }) {
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.terminal" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Artisan Console</h3>
-                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Artisan Console</h4>
+                            <p class="opacity-75 small mb-0">
+                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
+                                another sentence and probably just keep going until we run out of words.
+                            </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
                                 Подробнее
@@ -304,12 +305,15 @@ export default function Users({ users }) {
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
-                        <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                            <x-icon path="bs.gear-fill" />
+                        <div class="d-inline-flex align-items-center justify-content-center me-3">
+                            <x-icon path="i.tests" width="2.5rem" height="2.5rem" />
                         </div>
-                        <div>
-                            <h3 class="fs-2 text-body-emphasis">Testing</h3>
-                            <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <div class="d-flex flex-column gap-2">
+                            <h4 class="text-body-emphasis fw-bold mb-0">Testing</h4>
+                            <p class="opacity-75 small mb-0">
+                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
+                                another sentence and probably just keep going until we run out of words.
+                            </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
                                 Подробнее
@@ -325,118 +329,120 @@ export default function Users({ users }) {
     <x-container>
 
         <section class="pb-md-5 mb-5">
-            <div class="col-lg-8 mb-5">
-                <div
-                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
-                    <x-icon path="bs.gear-fill"/>
-                </div>
+
+            <div class="row g-5">
+            <div class="col-lg-6 mb-5">
                 <h2 class="display-5 fw-semibold mb-4">Удобная работа с данными</h2>
-                <p class="fw-normal">
+                <p class="fw-normal mb-4 mb-lg-5">
                     Laravel имеет мощные инструменты для работы с базами данных.
                     Он поддерживает широкий спектр СУБД, включая MySQL, MariaDB, PostgreSQL, SQL Server и SQLite.
 
                     Вот несколько ключевых возможностей для работы с базой данных в Laravel:
                 </p>
+
+                <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                    <h4 class="fw-bold">Eloquent ORM</h4>
+                    <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
+                       ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
+                       миграций и отношений между ними происходит в несколько простых шагов:</p>
+
+                    <pre><code language="text">php artisan make:model Invoice --migration</code></pre>
+
+                    <p class="mb-0">После определения структуры модели и ее отношений, можно легко взаимодействовать с базой
+                       данных, используя мощный и выразительный синтаксис Eloquent:</p>
+
+                    <pre><code language="php">// Создание связанной модели ...
+$user->invoices()->create(['amount' => 100]);
+
+// Обновление модели ...
+$invoice->update(['amount' => 200]);
+
+// Получение моделей ...
+$invoices = Invoice::unpaid()
+    ->where('amount', '>=', 100)
+    ->get();
+
+// Удобный API для взаимодействия ...
+$invoices->each->pay();</code></pre>
+                </div>
             </div>
-            <div class="bg-body-tertiary p-5 rounded-5 shadow">
-                <div class="row gx-md-5">
-                        <div class="col-lg-6">
-                            <h3 class="fw-semibold">Eloquent ORM</h3>
-                            <p>Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
-                               ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
-                               миграций и отношений между ними происходит в несколько простых шагов:</p>
+            <div class="col-lg-6">
+                <img src="/img/ui/data.svg" class="img-fluid img-fluid d-block mx-auto">
 
-                            <pre><code language="text">
-    php artisan make:model Invoice --migration
-                        </code></pre>
+                <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                    <h4 class="fw-bold mb-0">Миграции базы данных</h4>
 
-                            <p>После определения структуры модели и ее отношений, можно легко взаимодействовать с базой
-                               данных, используя мощный и выразительный синтаксис Eloquent:</p>
+                    <p class="mb-0">Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
+                       команде определить и поделиться структурой вашей базы данных:</p>
 
-                            <pre><code language="php">
-    // Создание связанной модели ...
-    $user->invoices()->create(['amount' => 100]);
+                    <pre><code language="php">// Создание таблицы "flights"
+Schema::create('flights', ...);
 
-    // Обновление модели ...
-    $invoice->update(['amount' => 200]);
+// Установите столбец primary ключа как UUID
+$table->uuid('id')->primary();
 
-    // Получение моделей ...
-    $invoices = Invoice::unpaid()->where('amount', '>=', 100)->get();
+// Установите ограничение внешнего ключа
+$table->foreignUuid('airline_id')
+    ->constrained();
 
-    // Удобный API для взаимодействия с моделями ...
-    $invoices->each->pay();
-                        </code></pre>
+// Добавьте столбец для названия рейса
+$table->string('name');
 
-                            <p><a href="https://laravel.com/docs/eloquent">Подробнее об Eloquent ORM</a></p>
-                        </div>
-                        <div class="col-lg-6">
-                            <h3 class="fw-semibold">Миграции базы данных</h3>
+// Добавьте временные метки
+$table->timestamps();
+</code></pre>
+                </div>
 
-                            <p>Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
-                               команде определить и поделиться структурой вашей базы данных:</p>
-
-                            <pre><code language="php">
-    public function up(): void
-    {
-        Schema::create('flights', function (Blueprint $table) {
-            $table->uuid()->primary();
-            $table->foreignUuid('airline_id')->constrained();
-            $table->string('name');
-            $table->timestamps();
-        });
-    }
-                        </code></pre>
-
-                                <p><a href="https://laravel.com/docs/migrations">Подробнее о миграциях базы данных</a></p>
-
-                            <img src="https://cycle-orm.dev/images/cycle/database.png" class="img-fluid">
-                        </div>
-                    </div>
+            </div>
             </div>
         </section>
 
 
         <section class="mb-5 pb-md-5">
-            <div class="col-lg-8 mb-5">
-                <div
-                    class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3  mb-3">
-                    <x-icon path="bs.gear-fill"/>
-                </div>
-                <h2 class="display-5 fw-semibold mb-4">Максимальная эффективность</h2>
-                <p class="fw-normal">
-                    Позвольте своему приложению работать с максимальной эффективностью благодаря очередям в Laravel.
-                    Независимо от того, нужно ли обрабатывать длительные задачи, отправлять уведомления или обновлять
-                    данные, очереди позволят вам добиться максимальной пропускной способности и отзывчивости в вашем
-                    приложении.
-                </p>
-            </div>
-            <div class="bg-body-tertiary p-5 rounded-5 shadow">
-                <div class="row gx-md-5">
-                    <div class="col-lg-6">
-                        <h3 class="fw-semibold">Job Queues</h3>
-                        <p>Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
+            <div class="row g-5">
+                <div class="col-lg-6 mb-5">
+                    <h2 class="display-5 fw-semibold mb-4">Максимальная эффективность</h2>
+                    <p class="fw-normal mb-4 mb-lg-5">
+                        Позвольте своему приложению работать с максимальной эффективностью благодаря очередям в Laravel.
+                        Независимо от того, нужно ли обрабатывать длительные задачи, отправлять уведомления или обновлять
+                        данные, очереди позволят вам добиться максимальной пропускной способности и отзывчивости в вашем
+                        приложении.
+                    </p>
+
+                    <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                        <h4 class="fw-bold">Job Queues</h4>
+                        <p class="mb-0">Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
                            очередь, что помогает поддерживать отзывчивость веб-запросов. Пример использования:</p>
 
                         <pre><code language="php">
 $podcast = Podcast::create(/* ... */);
 
-ProcessPodcast::dispatch($podcast)->onQueue('podcasts');
-                </code></pre>
+ProcessPodcast::dispatch($podcast)
+    ->onQueue('podcasts');
+        </code></pre>
 
-                        <p>Вы можете запускать столько рабочих процессов очередей, сколько необходимо, чтобы обработать
+                        <p class="mb-0">Вы можете запускать столько рабочих процессов очередей, сколько необходимо, чтобы обработать
                            вашу нагрузку:</p>
 
                         <pre><code language="bash">
 php artisan queue:work redis --queue=podcasts
-                </code></pre>
+        </code></pre>
                     </div>
-                    <div class="col-lg-6 overflow-hidden">
+            </div>
+                <div class="col-lg-6">
+                    <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-block mx-auto">
+
+                    <div class="bg-body-tertiary shadow rounded-5">
                         <img src="https://laravel.com/img/docs/horizon-example.png" class="img-fluid">
 
-                        <h3 class="fw-semibold">Horizon</h3>
-                        <p>Для более удобного контроля и отслеживания очередей в Laravel существует Laravel Horizon.
-                           Horizon предоставляет красивую панель управления и конфигурацию через код для ваших очередей,
-                           работающих на Redis.</p>
+                        <div class="d-flex flex-column gap-4 px-5 pb-5 pt-3">
+                            <h4 class="fw-bold">Horizon</h4>
+                            <p>
+                               Для более удобного контроля и отслеживания очередей в Laravel существует Laravel Horizon.
+                               Horizon предоставляет красивую панель управления и конфигурацию через код для ваших очередей,
+                               работающих на Redis.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
