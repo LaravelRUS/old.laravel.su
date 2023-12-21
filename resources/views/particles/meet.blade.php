@@ -1,4 +1,4 @@
-<div id="@domid($meet)" class="bg-body-tertiary p-4 p-lg-5 rounded-5 shadow mb-4 hotwire-frame">
+<div id="@domid($meet)" class="bg-body-tertiary p-4 p-lg-5 rounded shadow mb-4 hotwire-frame">
 
     <div class="d-flex align-items-center justify-content-between">
         <p class="mb-0 text-primary">{{ $meet->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</p>

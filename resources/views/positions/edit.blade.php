@@ -6,28 +6,24 @@
             <div class="bg-body-tertiary p-xxl-5 p-4 rounded">
                 <div class="col-xxl-8 mx-auto">
 
-                    <div class="d-flex position-relative align-items-center overflow-hidden mb-2">
-                        <div class="avatar avatar-sm me-3">
-                            <img class="avatar-img rounded-circle"
-                                 src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}">
-                        </div>
-
-                        <h6 class="mb-0 h5 fw-bolder">{{ auth()->user()->name }}</h6>
-
-                    </div>
+                    <x-profile :user="auth()->user()" class="mb-3"/>
 
                     <form action="{{ $position->exists? route('position.update', $position) : route('position.store')}}"
                           method="post">
 
-                            <label for="title"
-                                   class="form-label">Должность</label>
-                            <input type="text"
-                                   id="title" name="position[title]"
-                                   placeholder="Должность"
-                                   required
-                                   class="form-control mb-3"
-                                   value="{{ old('position.title', $position->title) }}">
+                        <textarea data-controller="textarea-autogrow"
+                                  data-textarea-autogrow-resize-debounce-delay-value="500"
+                                  id="title" name="position[title]"
+                                  placeholder="Заголовок" rows="1"
+                                  class="w-100 py-3 form-editor form-editor-title">{{ old('position.title', $position->title) }}</textarea>
 
+                        <x-text-editor name="position[description]" id="description" placeholder="Описание"
+                                       :value="old('position.description', $position->description)"/>
+                        <x-error field="position.description" class="invalid-feedback"/>
+
+
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col">
                             <label for="organization"
                                    class="form-label">Организация</label>
                         <input class="form-control mb-3" name="position[organization]" id="organization" type="text"
@@ -35,14 +31,17 @@
                                required
                                value="{{ old('position.organization', $position->organization) }}"/>
                         <x-error field="position.organization" class="invalid-feedback"/>
-
+                            </div>
+                            <div class="col">
                         <label for="organization"
                                class="form-label">Адрес</label>
                         <input class="form-control mb-3" name="position[address]" id="address" type="text"
-                               placeholder="Адрес"
+                               placeholder="Метро Краснозаводская"
                                required
                                value="{{ old('position.address', $position->address) }}"/>
                         <x-error field="position.address" class="invalid-feedback"/>
+                            </div>
+                        </div>
 
                         <label for="organization"
                                class="form-label">Зарплата</label>
@@ -70,7 +69,7 @@
                                 <label for="schedule"
                                        class="form-label">График</label>
                                 <select id="schedule" name="position[schedule]"
-                                        class="form-select form-select-sm mb-3"
+                                        class="form-select mb-3"
                                         style="outline: none!important;">
 
                                         @foreach(\App\Casts\ScheduleEnum::cases() as $schedule)
@@ -91,15 +90,24 @@
                                        value="{{ old('position.experience', $position->experience) }}"/>
                                 <x-error field="position.experience" class="invalid-feedback"/>
                             </div>
-
                         </div>
 
-                        <x-text-editor name="position[description]" id="description" placeholder="Описание"
-                                       :value="old('position.description', $position->description)"/>
-                        <x-error field="position.description" class="invalid-feedback"/>
 
 
-                        <button type="submit" class="btn btn-primary">Опубликовать</button>
+                        <div class="mt-3 d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary">
+                                {{ $position->exists ? "Обновить" : "Опубликовать" }}
+                            </button>
+
+                            @if($position->exists)
+                                <a class="btn btn-link ms-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                   data-turbo-confirm="Вы уверены, что хотите удалить вакансию?"
+                                   href="{{route('position.delete', $position)}}">
+                                    <x-icon path="bs.trash3" />
+                                    Удалить
+                                </a>
+                            @endif
+                        </div>
                     </form>
 
                 </div>

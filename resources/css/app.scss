@@ -26,7 +26,8 @@ $body-tertiary-bg-dark: #252a37;
 
 $dark-bg-subtle-dark: #111319;
 
-$border-radius: 1.625rem;
+//$border-radius: 1.625rem;
+$border-radius: 0.85rem;
 $border-radius-sm: 0.25rem !default;
 $border-radius-lg: 0.5rem !default;
 $border-radius-xl: 1rem !default;
@@ -277,7 +278,7 @@ $utilities: (
             top: 3.5rem;
             left: 1rem;
             content: "";
-            width: 2px;
+            width: 1px;
             height: 100%;
             background-color: rgba($gray-700, 0.2);
         }

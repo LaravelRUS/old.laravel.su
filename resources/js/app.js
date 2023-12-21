@@ -10,6 +10,7 @@ window.Turbo = Turbo;
 const application = (window.application = Application.start());
 
 
+/**
 const viewTransitionsHandler = (event) => {
     if (document.startViewTransition) {
         event.preventDefault();
@@ -22,6 +23,8 @@ const viewTransitionsHandler = (event) => {
 
 document.addEventListener("turbo:before-render", viewTransitionsHandler);
 document.addEventListener('turbo:before-frame-render', viewTransitionsHandler)
+*/
+
 
 const controllers = import.meta.globEager('./**/*_controller.js')
 registerControllers(application, controllers)

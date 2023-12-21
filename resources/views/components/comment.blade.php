@@ -21,49 +21,39 @@
             </div>
 
             <div class="w-100">
-                <div class="mb-3 mt-1 d-flex flex-column flex-md-row">
-                    <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
 
-                    <div class="me-3 small opacity-50">
+                <div class="mb-3 mt-1">
+                    <div class="d-flex flex-column flex-md-row">
+                        <h6 class="m-0 me-auto">{{ $comment->author->name }}</h6>
+
+                        <div class="me-3 small opacity-50">
+                            @can('update', $comment)
+                                <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post"
+                                   class="link-body-emphasis text-decoration-none">Редактировать</a>
+                            @endcan
+
+                            @can('delete', $comment)
+                                · <a href="{{ route('comments.delete', $comment) }}"
+                                     class="link-body-emphasis text-decoration-none"
+                                     data-turbo-method="DELETE"
+                                     data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
+                                        Удалить
+                                    </a>
+                            @endcan
+                        </div>
+                    </div>
+                    <div class="small opacity-50">
                         <a
                             @if(is_active('profile.comments'))
-                               href="{{route('post.show',$comment->post->slug)}}#comment-{{ $comment->getKey() }}"
-                           @else
-                               href="#comment-{{ $comment->getKey() }}"
-                           @endif
-                           class="link-body-emphasis text-decoration-none">
+                                href="{{route('post.show',$comment->post->slug)}}#comment_{{ $comment->getKey() }}"
+                            @else
+                                href="#comment_{{ $comment->getKey() }}"
+                            @endif
+                            class="link-body-emphasis text-decoration-none">
                             <time
                                 datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
                         </a>
-
-                        @can('update', $comment)
-                            ·
-                            <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post"
-                               class="link-body-emphasis text-decoration-none">Редактировать</a>
-                        @endcan
-
-                        @can('delete', $comment)
-                            · <a href="{{ route('comments.delete', $comment) }}"
-                                 class="link-body-emphasis text-decoration-none"
-                                 data-turbo-method="DELETE"
-                                 data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
-                                    Удалить
-                                </a>
-                        @endcan
                     </div>
-
-                    {{--
-                    <div class="dropdown">
-                        <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <x-icon path="bs.three-dots"/>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                    --}}
                 </div>
 
                 @isset($content)

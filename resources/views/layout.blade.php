@@ -5,22 +5,28 @@
         Скоро увидимся! Билеты уже доступны на <a href="{{ route('meets') }}" class="text-white">сайте</a>.
     </div>
 
-    <div class="container mt-md-3 mb-3 d-none d-md-block">
-        <div class="row bg-body-tertiary py-4 px-5 rounded shadow">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
-                <div class="col-md-auto mb-2 mb-md-0">
+
+    <div class="container mt-md-3 mb-3">
+        <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between">
+                <div class="col-md-auto d-lg-none me-3">
+                    <x-icon path="bs.list" width="2em" height="2em" />
+                </div>
+                <div class="col-md-auto me-auto me-lg-2">
                     @guest
                         <a href="{{ route('home') }}">
-                            <img src="https://laravel.su/images/logo.png" height="40">
+                            <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
+                            <img src="https://laravel.com/img/logomark.min.svg" height="40" class="d-inline d-lg-none">
                         </a>
                     @else
                         <a href="{{ route('feed') }}">
-                            <img src="https://laravel.su/images/logo.png" height="40">
+                            <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
+                            <img src="https://laravel.com/img/logomark.min.svg" height="40" class="d-inline d-lg-none">
                         </a>
                     @endif
                 </div>
 
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-none d-lg-flex">
                     {{--
                         <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
                     --}}
@@ -40,9 +46,14 @@
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
                     @else
                         <a href="{{ route('profile', auth()->user()) }}"
-                           class="link-dark btn avatar avatar-sm text-bg-dark border border-tertiary-subtle p-0">
+                           class="link-dark btn avatar avatar-sm text-bg-dark border border-tertiary-subtle p-0  position-relative">
                             <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle">
+
+                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
                         </a>
+
                     @endif
                 </div>
             </header>
@@ -201,6 +212,6 @@
     </div>
 
 
-    @include('particles.mobile-menu')
+    {{-- @include('particles.mobile-menu') --}}
     @include('particles.back-to-top')
 @endsection

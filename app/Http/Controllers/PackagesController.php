@@ -30,7 +30,7 @@ class PackagesController extends Controller
                 ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')
                 ->orWhere('description', 'like', '%' . $request->get('q') . '%');
         })->when($request->get('sort') === SortEnum::Popular->value, function ($query){
-            $query->orderBy('stars');
+            $query->orderByDesc('stars');
         },function ($query){
             $query->latest();
         })->paginate();

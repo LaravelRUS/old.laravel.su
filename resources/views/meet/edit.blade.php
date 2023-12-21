@@ -6,15 +6,7 @@
             <div class="bg-body-tertiary p-xxl-5 p-4 rounded">
                 <div class="col-xxl-8 mx-auto">
 
-                    <div class="d-flex position-relative align-items-center overflow-hidden mb-2">
-                        <div class="avatar avatar-sm me-3">
-                            <img class="avatar-img rounded-circle"
-                                 src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}">
-                        </div>
-
-                            <h6 class="mb-0 h5 fw-bolder">{{ auth()->user()->name }}</h6>
-
-                    </div>
+                    <x-profile :user="auth()->user()" class="mb-3"/>
 
                     <form action="{{ $meet->exists ? route('meets.update', $meet) : route('meets.store') }}"
                           method="post">

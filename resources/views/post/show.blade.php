@@ -3,9 +3,9 @@
 
 
 @section('content')
-    <div class="container my-5">
+<x-container>
         <div class="row">
-            <div class="bg-body-tertiary p-5 rounded">
+            <div class="bg-body-tertiary p-4 p-xxl-5 rounded z-1">
                 <div class="col-xxl-8 mx-auto">
 
                     <main class="post">
@@ -18,50 +18,29 @@
                     </main>
 
                     <!-- Start Author  -->
-                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3">
-                        <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
+                        <figure class="position-absolute top-0 end-0 translate-middle z-n1">
+                            <x-icon path="l.cube" width="46" height="53" fill="none"/>
+                        </figure>
 
-                            <div class="avatar avatar-sm me-3">
-                                <a href="#!"> <img class="avatar-img rounded-circle"
-                                        src="{{ $post->author->avatar }}" alt="">
+                        <x-profile :user="$post->author"/>
+
+
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn btn-secondary"
+                                    data-controller="share"
+                                    data-share-title-value="{{$post->title}}"
+                                    data-share-url-value="{{ route('post.show', $post) }}"
+                                    data-action="click->share#dialog"
+                                    title="Поделиться"
+                            >
+                                <x-icon path="bs.share-fill"/>
+                            </button>
+                            @can('isOwner', $post)
+                                <a class="btn btn-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
+                                    <x-icon path="bs.pencil-square"/>
                                 </a>
-                            </div>
-
-                            <div class="small">
-                                <h6 class="mb-0 me-4">
-                                    <a href="#!" class="text-body-secondary text-decoration-none">{{ $post->author->name }}</a>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                <x-icon path="bs.three-dots"/>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @can('isOwner', $post)
-                                    <li>
-                                        <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
-                                    </li>
-                                    {{--
-                                    у нас сейчас предусотрено только удатение статьи из списка,
-                                    надо или убрать это, или делать отдельный метод с редиректом после удаления статьи
-                                    <li>
-                                        <a class="dropdown-item" data-turbo-method="delete"
-                                           data-turbo-confirm="Вы уверены, что хотите удалить статью?"
-                                           href="{{route('post.delete', $post)}}">Удалить</a>
-                                    </li>
-                                    --}}
-                                @endcan
-                                <li>
-                                    <button class="dropdown-item"
-                                            data-controller="share"
-                                            data-share-title-value="{{$post->title}}"
-                                            data-share-url-value="{{ route('post.show', $post) }}"
-                                            data-action="click->share#dialog"
-                                    >Поделиться</button>
-                                </li>
-                            </ul>
+                            @endcan
                         </div>
                     </div>
                     <!-- End Author  -->
@@ -90,12 +69,12 @@
                 </div>
             </div>
         </div>
-    </div>
+</x-container>
 
 
 
     <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
-        <div class="container my-5">
+        <x-container>
             <div class="row">
                 <div class="col-xxl-8 mx-auto">
                     <p class="h5 mb-3 ms-3">
@@ -154,6 +133,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </x-container>
     </turbo-frame>
 @endsection

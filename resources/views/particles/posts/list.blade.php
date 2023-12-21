@@ -19,22 +19,9 @@
     @foreach ($posts as $post)
         <div id="@domid($post)" class="bg-body-tertiary mb-4 p-xxl-5 p-4 rounded hotwire-frame">
             <div class="d-flex align-items-center justify-content-between mb-3">
-                <div class="d-flex align-items-center">
-                    <div class="avatar avatar-sm me-3">
-                        <a href="{{route('profile', $post->author)}}">
-                            <img class="avatar-img rounded-circle" src="{{ $post->author->avatar }}"
-                                 alt="{{ $post->author->title }}">
-                        </a>
-                    </div>
 
-                    <div class="small">
-                        <h6 class="mb-0 me-4">
-                            <a href="{{route('profile',$post->author)}}"
-                               class="text-body-secondary text-decoration-none">{{ $post->author->name }}</a>
-                        </h6>
-                        <p class="mb-0 small">Разработчик laravel.su</p>
-                    </div>
-                </div>
+                <x-profile :user="$post->author"/>
+
                 <div class="dropdown">
                     <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
                        aria-expanded="false">

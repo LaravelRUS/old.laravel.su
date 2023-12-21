@@ -518,7 +518,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     <div class="col-md-6 position-relative mb-0 mt-0 mt-md-5">
                         <!-- SVG -->
                         <figure class="text-primary position-absolute top-0 start-0 translate-middle mb-3">
-                            <img src="/img/bird.svg" class="z-n1 user-select-none">
+                            <img src="/img/bird.svg" class="z-n1 user-select-none d-none d-xxl-block">
                         </figure>
 
                         <div class="bg-body-tertiary shadow text-center p-4 rounded-5 position-relative mb-5 mb-md-0">

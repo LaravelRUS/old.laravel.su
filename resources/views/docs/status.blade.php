@@ -56,8 +56,8 @@
                                     <a href="{{ App\Docs::compareLink($doc->version, $doc->current_commit) }}"
                                         target="_blank" class="me-3 d-block">
                                         <span
-                                            class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">Перевод
-                                            отстаёт на {{ $doc->behind }} изменения</span>
+                                            class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
+                                            Отстаёт на {{ $doc->behind }} изменения</span>
                                     </a>
                                 @else
                                     <span

@@ -14,12 +14,31 @@
                         aria-label=".form-control-lg example">
 --}}
 
-                    <div class="">
+                    <div class="d-flex align-items-center p-4 p-sm-0">
                         <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
                             @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
                                 <option value="{{ route('docs', ['version' => $version]) }}" @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version  }}</option>
                             @endforeach
                         </select>
+
+                        @if($docs->behind() === null)
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-secondary" title="Перевод не имеет метки">
+                                ●
+                            </a>
+                        @elseif ($docs->behind() > 0)
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-primary" title="Отстаёт на {{ $docs->behind() }} изменения">
+                                ●
+                            </a>
+                        @else
+                            <span class="mx-3 text-decoration-none text-success" title="Перевод актуален">
+                                ●
+                            </span>
+                        @endif
+
+                        <a href="{{ $docs->goToOriginal() }}" title="Посмотреть оригинал" target="_blank"
+                           class="link-body-emphasis text-decoration-none d-none d-md-block">
+                            <x-icon path="bs.translate" />
+                        </a>
                     </div>
 
                     <ul class="list-unstyled p-4 px-md-0">
@@ -63,12 +82,17 @@
 
                 <div class="d-flex align-items-center align-content-between gap-3 d-md-flex justify-content-md-end mb-3">
 
-                    <button class="btn btn-outline-primary icon-link d-md-none d-inline-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#docs-menu"
-                            aria-controls="docs-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-outline-primary icon-link d-md-none d-inline-flex" type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#docs-menu"
+                            aria-controls="docs-menu"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
                         <x-icon path="bs.list" class="me-1" />
                         Меню
                     </button>
 
+                    {{--
                     @if($docs->behind() === null)
                         <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="d-none d-md-block">
                             <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
@@ -78,7 +102,7 @@
                     @elseif ($docs->behind() > 0)
                         <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="d-none d-md-block">
                             <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
-                                Перевод отстаёт на {{ $docs->behind() }} изменения
+                                Отстаёт на {{ $docs->behind() }} изменения
                             </span>
                         </a>
                     @else
@@ -102,6 +126,7 @@
                         class="link-body-emphasis text-decoration-none d-none d-md-block">
                         <x-icon path="bs.translate" />
                     </a>
+                    --}}
                 </div>
 
                 <main class="bg-body-tertiary p-lg-5 p-3 rounded-5 shadow-sm documentations position-relative">
