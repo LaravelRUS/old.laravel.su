@@ -67,8 +67,7 @@ class PositionsController extends Controller
             'position.organization' => 'required|string',
             'position.salary_min'   => 'sometimes|numeric|nullable',
             'position.salary_max'   => 'sometimes|numeric|nullable',
-            'position.experience'   => 'sometimes|numeric|nullable',
-            'position.address'      => 'required|string',
+            'position.location'      => 'required|string',
             'position.schedule'     => [
                 'required', Rule::enum(ScheduleEnum::class),
             ],

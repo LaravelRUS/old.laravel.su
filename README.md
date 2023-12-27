@@ -91,13 +91,19 @@ GITHUB_REDIRECT=https://ваш_домен.test/auth/callback
 Для загрузки или обновления русскоязычной версии документации, пожалуйста, используйте команду Artisan:
 
 ```bash
-php artisan checkout-latest-docs
+php artisan app:checkout-latest-docs
 ```
 
 Чтобы отслеживать прогресс выполнения переводов, выполняйте следующую команду:
 
 ```bash
 php artisan app:compare-document
+```
+
+Чтобы обновить информацию о пакетах, выполните следующую команду:
+
+```bash
+php artisan app:update-packages
 ```
 
 Убедитесь, что перед использованием команд `artisan` вы находитесь в корневой директории вашего проекта.

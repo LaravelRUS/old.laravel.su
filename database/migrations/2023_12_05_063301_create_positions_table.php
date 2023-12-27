@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('slug')->unique();
-            $table->string('title');//должность
+            $table->string('title');
             $table->string('organization');
             $table->unsignedInteger('salary_min')->nullable();
             $table->unsignedInteger('salary_max')->nullable();
-            $table->unsignedInteger('experience')->nullable();
-            $table->string('address');
+            $table->string('location');
             $table->string('schedule');
             $table->text('description');
+            $table->string('contact');
 
             $table->boolean('approved')->default(true);
             $table->timestamps();

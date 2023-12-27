@@ -14,7 +14,9 @@
                         <textarea data-controller="textarea-autogrow"
                                   data-textarea-autogrow-resize-debounce-delay-value="500"
                                   id="name" name="meet[name]"
-                                  placeholder="Заголовок" rows="1"
+                                  placeholder="Заголовок"
+                                  required
+                                  rows="1"
                                   class="w-100 py-3 form-editor form-editor-title">{{ old('meet.name', $meet->name) }}</textarea>
 
                         <input class="form-control mb-3" name="meet[start_date]" id="start_date" type="datetime-local"
@@ -23,10 +25,10 @@
                                placeholder="Начало"/>
                         <x-error field="meet.start_date" class="invalid-feedback"/>
 
-                        <input class="form-control mb-3" name="meet[address]" id="address" type="text"
+                        <input class="form-control mb-3" name="meet[location]" id="location" type="text"
                                placeholder="Адрес"
-                               value="{{ old('meet.address', $meet->address) }}" />
-                        <x-error field="meet.address" class="invalid-feedback"/>
+                               value="{{ old('meet.location', $meet->location) }}" />
+                        <x-error field="meet.location" class="invalid-feedback"/>
 
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input"

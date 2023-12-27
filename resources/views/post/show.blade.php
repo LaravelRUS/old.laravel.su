@@ -8,13 +8,13 @@
             <div class="bg-body-tertiary p-4 p-xxl-5 rounded z-1">
                 <div class="col-xxl-8 mx-auto">
 
-                    <main class="post">
+                    <main class="post" data-controller="prism">
                         {{--
                         <a class="text-decoration-none" href="#">Hotwire</a>
                         --}}
                         <h1>{{ $post->title }}</h1>
 
-                        {!! \Illuminate\Support\Str::of($post->content)->markdown() !!}
+                        {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
                     </main>
 
                     <!-- Start Author  -->
@@ -36,6 +36,16 @@
                             >
                                 <x-icon path="bs.share-fill"/>
                             </button>
+
+
+                            <button class="btn btn-secondary clipboard" data-controller="clipboard"
+                                    data-action="clipboard#copy"
+                                    data-clipboard-done-class="done">
+                                    <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
+                                    <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                    <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                            </button>
+
                             @can('isOwner', $post)
                                 <a class="btn btn-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
                                     <x-icon path="bs.pencil-square"/>

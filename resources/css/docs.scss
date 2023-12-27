@@ -108,7 +108,7 @@ main {
     overflow: initial;
 
     img {
-        display: block;
+        display: block!important;
         max-width: 100%;
         object-fit: cover;
         border-radius: 0.5em;

@@ -8,8 +8,7 @@
         <a href="{{ route('login') }}" class="btn btn-outline-primary">Стать участником</a>
     </div>
 @else
-
-    <div class="border-top pt-4 mt-5">
+    <div class="border-top pt-4 mt-5" id="new-comment">
         <form class="row g-3"
               action="{{ route('comments.store') }}"
               method="post"
@@ -17,8 +16,9 @@
         >
             <input type="hidden" name="commentable_id" value="{{ $model->getKey() }}" />
             <div class="col-12 position-relative">
-                <label class="form-label">Ваш комментарий</label>
+                <label class="form-label" for="new-message">Ваш комментарий</label>
                 <textarea
+                    id="new-message"
                     data-comment-target="textarea"
                     data-controller="textarea-autogrow"
                     data-textarea-autogrow-resize-debounce-delay-value="500"

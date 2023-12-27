@@ -20,34 +20,33 @@
                                     @if(is_null($position->salary_min) && is_null($position->salary_max))
                                         не указана
                                     @endif
-                                    @if(!is_null($position->salary_min))
-                                        от {{ number_format($position->salary_min) }}
-                                    @endif
-                                    @if(!is_null($position->salary_max))
-                                        до {{ number_format($position->salary_max) }}
-                                    @endif
-                                </div>
-                                <div class="opacity-50 small">
-                                    Опыт работы: @if(!is_null($position->experience))
-                                        {{$position->experience}}
-                                    @else
-                                    не указан
+                                    @if (!is_null($position->salary_min) && !is_null($position->salary_max))
+                                        {{ $position->salary_min }} - {{ $position->salary_max }} ₽
+                                    @elseif (!is_null($position->salary_min))
+                                                                    от {{ $position->salary_min }} ₽
+                                    @elseif (!is_null($position->salary_max))
+                                                                    до {{ $position->salary_max }} ₽
                                     @endif
                                 </div>
+                                <div class="small opacity-50">{{$position->schedule->text()}}</div>
                                 <div class="small opacity-50">{{$position->organization}}</div>
                                 <span class="opacity-50 d-inline-flex align-items-center mb-3">
                                     <x-icon path="bs.geo-alt-fill" class="me-2"/>
-                                    {{$position->address}}
+                                    {{$position->location}}
                                   </span>
                             </div>
                         </div>
 
 
-
-                        <p>{{$position->schedule->text()}}</p>
-
-
                         {!! \Illuminate\Support\Str::of($position->description)->markdown() !!}
+
+
+                        <details>
+                            <summary class="btn btn-primary me-3">Показать контакты</summary>
+
+                            <span class="user-select-all">{{ $position->contact }}</span>
+                        </details>
+
                     </main>
 
 

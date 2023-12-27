@@ -59,7 +59,7 @@ class MeetController extends Controller
             'meet.name'        => 'required|string',
             'meet.description' => 'required|string',
             'meet.start_date'  => 'date|after:' . $dateMax,
-            'meet.address'     => 'required|string',
+            'meet.location'     => 'required|string',
             'meet.online'      => 'sometimes|boolean',
             'meet.link'        => 'required|url',
         ]);

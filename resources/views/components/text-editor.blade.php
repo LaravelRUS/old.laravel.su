@@ -5,7 +5,7 @@
     <div class="position-relative">
 
 
-        <div class="d-flex px-4 px-lg-5 border rounded-3 bg-light-subtle position-sticky top-0">
+        <div class="d-flex px-4 px-lg-5 border rounded-3 bg-light-subtle position-sticky top-0 z-1">
                 <x-text-editor-button label="Заголовок" format="header2" icon="type-h2"/>
                 <x-text-editor-button label="Жырный" format="bold" icon="type-bold"/>
                 <x-text-editor-button label="Курсив" format="italic" icon="type-italic"/>

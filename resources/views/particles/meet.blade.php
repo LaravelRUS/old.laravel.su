@@ -37,7 +37,7 @@
     <div class="row align-items-center mb-3">
         <div class="col">
             <h5 class="mb-0">{{ $meet->name }}</h5>
-            <small class="opacity-50">{{ $meet->address ?? 'Онлайн' }} в {{ $meet->start_date->isoFormat('hh:mm', 'Do MMMM') }}</small>
+            <small class="opacity-50">{{ $meet->location ?? 'Онлайн' }} в {{ $meet->start_date->isoFormat('hh:mm', 'Do MMMM') }}</small>
         </div>
     </div>
 

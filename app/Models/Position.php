@@ -22,23 +22,22 @@ class Position extends Model
         'organization',
         'salary_min',
         'salary_max',
-        'experience',
-        'address',
+        'location',
         'schedule',
+        'contact'
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'title'           => 'string',
-        'description'    => 'string',
+        'title'        => 'string',
+        'description'  => 'string',
         'organization' => 'string',
-        'address'        => 'string',
-        'schedule'           => ScheduleEnum::class,
+        'location'     => 'string',
+        'contact'      => 'string',
+        'schedule'     => ScheduleEnum::class,
     ];
-
-
 
     public static function boot()
     {

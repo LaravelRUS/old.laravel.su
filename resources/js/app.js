@@ -32,6 +32,7 @@ application.register('textarea-autogrow', TextareaAutogrow)
 
 Prism.manual = true;
 
+/*
 document.addEventListener('turbo:load', () => {
     [...document.querySelectorAll('pre code')].forEach((el) => {
         if (el.getAttribute('class') === null) {
@@ -51,4 +52,4 @@ document.addEventListener('turbo:frame-load', () => {
         Prism.highlightElement(el);
     });
 });
-
+*/

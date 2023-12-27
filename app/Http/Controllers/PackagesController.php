@@ -25,18 +25,19 @@ class PackagesController extends Controller
     {
         $packages = Package::when($request->has('type'), function ($query) use ($request) {
             return $query->where('type', $request->input('type'));
-        })->when($request->filled('q'), function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->get('q') . '%')
-                ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')
-                ->orWhere('description', 'like', '%' . $request->get('q') . '%');
-        })->when($request->get('sort') === SortEnum::Popular->value, function ($query){
-            $query->orderByDesc('stars');
-        },function ($query){
-            $query->latest();
-        })->paginate();
+        })
+            ->when($request->filled('q'), function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->get('q') . '%')
+                    ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')
+                    ->orWhere('description', 'like', '%' . $request->get('q') . '%');
+            })
+            ->when($request->get('sort') === SortEnum::Latest->value,
+                fn($query) => $query->latest(),
+                fn($query) => $query->orderByDesc('stars'))
+            ->paginate();
 
         return view('packages.index', [
-            'packages' => $packages
+            'packages' => $packages,
         ]);
     }
 
@@ -61,16 +62,18 @@ class PackagesController extends Controller
         $this->authorize('isOwner', $package);
 
         $request->validate([
-            'pack'                => 'required|array',
-            'pack.name'           => 'required|string',
-            'pack.description'    => 'required|string',
-            'pack.packagist_name' =>  ['string', 'required', Rule::unique(Package::class, 'packagist_name')->ignore($package->packagist_name)],
-            'pack.website'        => 'sometimes|url',
-            'pack.type'           => ['required', Rule::enum(PackageTypeEnum::class)]
+            'packagist_name' => ['string', 'required', Rule::unique(Package::class, 'packagist_name')->ignore($package->packagist_name)],
+            'type'           => ['required', Rule::enum(PackageTypeEnum::class)],
+        ], [
+            'packagist_name' => 'Пакет уже есть в каталоге или находиться на рассмотрении.',
         ]);
 
-        $package->fill(array_merge($request->get('pack'), ['user_id' => $request->user()->id]))
-            ->save();
+        $package->fill($request->all())->fill([
+            'name'        => $request->input('packagist_name'),
+            'description' => $request->input('packagist_name'),
+        ]);
+
+        $request->user()->packages()->saveMany([$package]);
 
         return redirect()->route('packages');
     }

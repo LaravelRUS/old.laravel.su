@@ -16,7 +16,7 @@
             @if($most)
                 <x-slot:content>
                     <div class="position-relative">
-                    <div class="bg-dark-subtle dashed p-4 rounded position-relative">
+                    <div class="bg-body-secondary dashed p-4 rounded position-relative">
                         <a href="{{ $most->link }}" class="position-absolute start-0 end-0 top-0 bottom-0 z-1"></a>
 
                         <div class="row g-4 justify-content-between align-items-center">
@@ -37,17 +37,17 @@
                                         <small class="text-muted">Время</small>
                                         <h6>Начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</h6>
                                     </div>
-                                    <!-- Address -->
+                                    <!-- location -->
                                     <div class="col-12">
                                         <small class="text-muted">Адрес</small>
-                                        <h6>{{ $most->address }}</h6>
+                                        <h6>{{ $most->location }}</h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-5 text-center">
                                 <div class="ticket-border">
                                     <!-- QR code -->
-                                    <img class="img-fluid mx-auto user-select-none rounded" src="https://chart.googleapis.com/chart?cht=qr&chl={{ urlencode($most->link) }}&chs=500x500" alt="">
+                                    <img class="img-fluid d-block mx-auto user-select-none rounded" src="https://chart.googleapis.com/chart?cht=qr&chl={{ urlencode($most->link) }}&chs=500x500" alt="">
                                 </div>
                             </div>
                         </div>

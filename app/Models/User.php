@@ -3,16 +3,26 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Orchid\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Orchid\Access\UserAccess;
+use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
+use Orchid\Filters\Types\Where;
+use Orchid\Filters\Types\WhereDateStartEnd;
+use Orchid\Metrics\Chartable;
+use Orchid\Screen\AsSource;
+use Orchid\Support\Facades\Dashboard;
 use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Liker;
+    use HasApiTokens, HasFactory, Notifiable, Liker, AsSource, Chartable, Filterable, UserAccess;
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +48,7 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
         'github_id',
+        'permissions',
     ];
 
     /**
@@ -46,8 +57,59 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'permissions'          => 'array',
+        'email_verified_at'    => 'datetime',
     ];
+
+    /**
+     * The attributes for which you can use filters in url.
+     *
+     * @var array
+     */
+    protected $allowedFilters = [
+        'id'         => Where::class,
+        'name'       => Like::class,
+        'email'      => Like::class,
+        'updated_at' => WhereDateStartEnd::class,
+        'created_at' => WhereDateStartEnd::class,
+    ];
+
+    /**
+     * The attributes for which can use sort in url.
+     *
+     * @var array
+     */
+    protected $allowedSorts = [
+        'id',
+        'name',
+        'email',
+        'updated_at',
+        'created_at',
+    ];
+
+    /**
+     * Throw an exception if email already exists, create admin user.
+     *
+     * @throws \Throwable
+     */
+    public static function createAdmin(string $name, string $email, string $password): void
+    {
+        throw_if(static::where('email', $email)->exists(), 'User exists');
+
+        static::create([
+            'name'        => $name,
+            'email'       => $email,
+            'permissions' => Dashboard::getAllowAllPermission(),
+        ]);
+    }
+
+    /**
+     * @return UserPresenter
+     */
+    public function presenter()
+    {
+        return new UserPresenter($this);
+    }
 
     public function posts()
     {
@@ -95,5 +157,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Position::class);
     }
-
 }

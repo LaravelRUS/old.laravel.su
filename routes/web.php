@@ -213,6 +213,20 @@ Route::middleware(['auth'])
             ->name('packages.delete');
     });
 
+/*
+|--------------------------------------------------------------------------
+| Laravel IDEA Routes
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::get('/idea', [\App\Http\Controllers\IdeaController::class, 'index'])->name('idea.index');
+        Route::post('/idea', [\App\Http\Controllers\IdeaController::class, 'store'])->name('idea.store');
+    });
 
 /*
 |--------------------------------------------------------------------------

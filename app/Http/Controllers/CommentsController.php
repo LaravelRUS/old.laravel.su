@@ -49,10 +49,20 @@ class CommentsController extends Controller
 
         $comment->save();
 
-        return turbo_stream()
-            ->target('comments-wrapper')
-            ->action('append')
-            ->view('comments._comment', ['comment' => $comment]);
+
+        return turbo_stream([
+            turbo_stream()
+                ->target('comments-wrapper')
+                ->action('append')
+                ->view('comments._comment', ['comment' => $comment]),
+
+            turbo_stream()
+                ->target('new-comment')
+                ->action('replace')
+                ->view('particles.comments.form', [
+                    'model' => $comment->post,
+                ]),
+        ]);
     }
 
     /**

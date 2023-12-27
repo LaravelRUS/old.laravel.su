@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <rect x="16.13" y="17" width="22.87" height="19" rx="3.66" ry="3.66" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <polyline points="23.64 21.74 20.01 26.65 23.42 31.26" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <polyline points="31.64 21.74 35.27 26.65 31.86 31.26" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <line x1="29.23" y1="23.93" x2="26.05" y2="29.07" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  <g>
+    <path d="m23.09,36.17c-1,1.69-2.85,2.83-4.96,2.83H6.79c-3.18,0-5.76-2.58-5.76-5.76V6.76C1.03,3.58,3.61,1,6.79,1h11.34c3.18,0,5.76,2.58,5.76,5.76v9.48" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+    <path d="m15.98,32H6.95c-1.06,0-1.92-.86-1.92-1.92V6.92c0-1.06.86-1.92,1.92-1.92h11.03c1.06,0,1.92.86,1.92,1.92v9.17" style="fill: none; stroke: #ff2d20; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;"/>
+  </g>
+</svg>

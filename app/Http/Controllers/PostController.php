@@ -25,10 +25,17 @@ class PostController extends Controller
             ->orderBy('created_at', 'desc')
             ->simplePaginate(5);//CursorPaginate не работает с сортировкой по полю из withCount
 
+        $posts = Post::with(['author'])
+            ->withCount('comments')
+            ->withCount('likers')
+            ->orderBy('id', 'desc')
+            ->cursorPaginate(3);
+
 
         if (request()->isMethod('GET')) {
-            return view('post.list', [
+            return view('post.index', [
                 'popular' => $popular,
+                'posts'   => $posts,
             ]);
         }
 
@@ -129,7 +136,7 @@ class PostController extends Controller
 
         return turbo_stream([
             turbo_stream()->removeAll('.post-placeholder'),
-            turbo_stream()->append('posts-frame', view('particles.posts.list', [
+            turbo_stream()->append('posts-frame', view('post.list', [
                 'posts' => $posts,
             ])),
 

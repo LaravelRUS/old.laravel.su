@@ -9,18 +9,30 @@
             «Из коробки» Laravel предлагает элегантные решения для множества функций, необходимых всем современным
             приложениям. Пришло время создавать их!
         </x-slot>
+
+
+        <x-slot:actions>
+
+            <a href="{{route('docs')}}" class="btn btn-primary btn-lg px-4">Документация разработчика</a>
+
+            <a href="{{ route('courses') }}"
+               class="link-body-emphasis text-decoration-none link-icon-animation">Курсы
+                <x-icon path="bs.arrow-right" />
+            </a>
+        </x-slot>
+
     </x-header>
 
-    <x-container>
+    <x-container data-controller="prism">
         <section class="mb-5 pb-md-5">
             <div class="bg-body-tertiary p-5 rounded-5 shadow"
                  data-controller="tabs"
-                 data-tabs-active-tab-class="bg-secondary-subtle"
+                 data-tabs-active-tab-class="bg-body-secondary"
                  data-tabs-index-value="1"
             >
                 <div class="d-flex mb-4 align-items-baseline">
                     <li class="d-flex gap-4 rounded p-4" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <x-icon path="i.inertia" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
@@ -29,7 +41,7 @@
                         </a>
                     </li>
                     <li class="d-flex gap-4 rounded p-4" id="second" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <x-icon path="i.livewire" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
@@ -38,7 +50,7 @@
                         </a>
                     </li>
                     <li class="d-flex gap-4 rounded p-4" id="third" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                        <x-icon path="bs.terminal" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                        <x-icon path="i.spa" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
@@ -103,19 +115,23 @@
                             монорепозитории.
                         </div>
                         <div class="col-12 col-lg-8">
-                            <pre class="rounded-3 my-0"><code language="php">
-    class UserController {
-      public function index() {
-        $users = User::active()
-                    ->orderByName()
-                    ->get([ 'id', 'name', 'email' ]);
 
-        return Inertia::render('Users', [
-          'users' = > $users,
-        ]);
-      }
-    }
-                            </code></pre>
+
+                            <pre class="rounded-3 my-0">
+                             <x-highlight language="php">
+                                class UserController {
+                                public function index() {
+                                $users = User::active()
+                                ->orderByName()
+                                ->get([ 'id', 'name', 'email' ]);
+
+                                return Inertia::render('Users', [
+                                'users' = > $users,
+                                ]);
+                                }
+                                }
+                            </x-highlight>
+                            </pre>
                             <pre class="rounded-3 my-0"><code language="js">
     import Layout from './Layout'
 
@@ -371,7 +387,7 @@ class UserController
                 <div class="p-5">
                     <div class="row align-items-start">
                         <div class="col-4">
-                            <div class="bg-secondary-subtle rounded p-4">
+                            <div class="bg-body-secondary rounded p-4">
                             <p class="mb-0 opacity-75">
                                 Настраивать окружение для новичка может быть непростой задачей.
                                 Однако, есть несколько простых и удобных способов быстро и легко
@@ -521,7 +537,7 @@ class UserController
     </div>
 
 
-    <x-container>
+    <x-container data-controller="prism">
 
         <section class="pb-md-5 mb-5">
 

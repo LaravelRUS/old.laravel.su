@@ -18,7 +18,7 @@ class Meet extends Model
         'name',
         'description',
         'start_date',
-        'address',
+        'location',
         'online',
         'link',
     ];

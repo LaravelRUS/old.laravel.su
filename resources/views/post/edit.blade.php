@@ -14,7 +14,9 @@
                     <textarea data-controller="textarea-autogrow"
                               data-textarea-autogrow-resize-debounce-delay-value="500"
                               id="title" name="title"
-                              placeholder="Заголовок" rows="1"
+                              placeholder="Заголовок"
+                              required
+                              rows="1"
                               class="w-100 py-3 form-editor form-editor-title">{{ old('title', $post->title) }}</textarea>
 
                         <x-text-editor name="content" id="content" placeholder="Текст публикации"

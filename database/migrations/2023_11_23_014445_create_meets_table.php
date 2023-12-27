@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->timestamp('start_date');
-            $table->string('address')->nullable();
+            $table->string('location')->nullable();
             $table->boolean('online')->default(false);
             $table->string('link')->nullable();
             $table->boolean('approved')->default(true);

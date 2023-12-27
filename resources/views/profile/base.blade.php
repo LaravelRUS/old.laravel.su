@@ -70,18 +70,18 @@
                         >Статьи</a>
                     </li>
                     <li class="nav-item me-2">
+                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
+                           data-turbo-frame="navigation"
+                           href="{{ route('profile.comments', $user) }}"
+
+                        >Комментарии</a>
+                    </li>
+                    <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
                            data-turbo-frame="navigation"
                            href="{{ route('profile.packages', $user) }}"
 
                         >Пакеты</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
-                           data-turbo-frame="navigation"
-                           href="{{ route('profile.comments', $user) }}"
-
-                        >Комментариии</a>
                     </li>
                     <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"

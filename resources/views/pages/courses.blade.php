@@ -72,15 +72,16 @@
                         <li class="d-flex gap-4 align-items-center">
                             <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
                             <div>
-                                <h5 class="mb-0">Grid view</h5>
-                                Not into lists? Try the new grid view.
+                                <h5 class="mb-0">Laravel Queue</h5>
+                                <small>В этом видео я расскажу чем может обернуться игнорирование свойства в очередях Laravel.</small>
                             </div>
                         </li>
                         <li class="d-flex gap-4">
                             <x-icon path="bs.heart" class="text-body-secondary flex-shrink-0" width="2em" height="2em" />
                             <div>
-                                <h5 class="mb-0">Bookmarks</h5>
-                                Save items you love for easy access later.
+                                <h5 class="mb-0">PHP Итераторы</h5>
+                                <small> Немного пробежимся по теории и на примере рассмотрим как их использовать.
+                                        В конце я дам самостоятельное задание для закрепление материала.</small>
                             </div>
                         </li>
                         <li class="d-flex gap-4">

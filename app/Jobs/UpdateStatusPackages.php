@@ -38,8 +38,11 @@ class UpdateStatusPackages implements ShouldQueue
             ]);
 
        $this->package->update([
-           'stars'     => $info['github_stars'],
-           'downloads' => $info['downloads']['total'],
+           'name'        => $info['name'],
+           'description' => $info['description'],
+           'stars'       => $info['github_stars'],
+           'downloads'   => $info['downloads']['total'],
+           'website'    => $info['repository'],
        ]);
     }
 }

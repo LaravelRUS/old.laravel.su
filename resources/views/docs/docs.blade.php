@@ -30,9 +30,9 @@
                                 ●
                             </a>
                         @else
-                            <span class="mx-3 text-decoration-none text-success" title="Перевод актуален">
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-success" title="Перевод актуален">
                                 ●
-                            </span>
+                            </a>
                         @endif
 
                         <a href="{{ $docs->goToOriginal() }}" title="Посмотреть оригинал" target="_blank"
@@ -129,7 +129,8 @@
                     --}}
                 </div>
 
-                <main class="bg-body-tertiary p-lg-5 p-3 rounded-5 shadow-sm documentations position-relative">
+                <main class="bg-body-tertiary p-lg-5 p-3 rounded-5 shadow-sm documentations position-relative"
+                data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
                         <div class="alert alert-warning rounded-1" role="alert">

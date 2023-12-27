@@ -52,82 +52,91 @@ return response()->json([
     </x-header>
 
     <x-container>
-        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-xl-3">
-                <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
-            </div>
-            <div class="col-xl-9">
-                <form class="row" action="{{route('packages')}}" method="GET">
-                    <div class="col-md-3 d-flex bg-body-secondary small px-3 py-2 rounded ms-auto">
+        <x-turbo-frame id="packages">
+            <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+                <div class="col-xl-3">
+                    <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
+                </div>
+                <div class="col-xl-9">
+                    <form class="row align-items-center justify-content-end" action="{{route('packages')}}" method="GET">
 
-                        <input name="q" type="text" class="form-search  d-inline-block" placeholder="Поиск">
-                        <button type="submit" class="text-dark fw-medium btn btn-link d-inline-flex align-items-center">
-                            <x-icon path="bs.search" class="ms-2" />
-                        </button>
+                        <div class="col-md-3 d-flex bg-body-secondary small px-3 py-2 rounded">
+                            <input name="q" type="text" class="form-search d-inline-block bg-body-secondary rounded"
+                                   placeholder="Поиск" value="{{ request()->query('q') }}">
 
-                    </div>
-                    <div class="col-auto d-flex bg-body-secondary small px-3 py-2 rounded ms-3">
-                        <select class="form-search fw-medium" name="sort" onchange="this.form.requestSubmit()">
-                            @foreach(\App\Casts\SortEnum::cases() as $sort)
-                                <option value="{{$sort->value}}"
-                                    @selected(request()->get('sort') == $sort->value)
-                                >
-                                        {{$sort->text()}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-xl-3 position-sticky top-0">
-                @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
-                    <div class="mb-4 position-relative">
-                        <div class="d-flex align-items-center">
-                            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center
-                            @if(request()->get('type')==$type->value) bg-light-danger @else bg-body-secondary @endif  text-danger fs-4 rounded-3">
-                                <x-icon path="{{$type->icon()}}"/>
-                            </div>
-                            <div class="ms-3 w-75">
-                                <a href="{{ route('packages', ['type' => $type]) }}"
-                                   class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if(request()->get('type')==$type->value) active @endif"
-                                >
-                                    {{ $type->text() }}
+                        @empty(!request()->query('q'))
+                                <a href="{{ route('packages') }}" class="btn btn-link icon-link text-secondary text-decoration-none">
+                                    <x-icon path="bs.x-lg"/>
                                 </a>
-                                <p class="small opacity-50 fw-normal m-0">
-                                    {{ \App\Models\Package::where('type', $type)->count() }} пакетов
-                                </p>
+                            @else
+                                <button type="submit" class="text-secondary fw-medium btn btn-link d-inline-flex align-items-center">
+                                    <x-icon path="bs.search" class="ms-2" />
+                                </button>
+                            @endif
+                        </div>
+                        <div class="col-auto d-flex bg-body-secondary small p-3 rounded ms-3">
+                            <select class="form-search fw-medium" name="sort" onchange="this.form.requestSubmit()">
+                                @foreach(\App\Casts\SortEnum::cases() as $sort)
+                                    <option value="{{$sort->value}}"
+                                        @selected(request()->get('sort') == $sort->value)
+                                    >
+                                            {{$sort->text()}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+                <div class="col-xl-3 position-sticky top-0">
+                    @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                        <div class="mb-4 position-relative">
+                            <div class="d-flex align-items-center">
+                                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center
+                                @if(request()->get('type')==$type->value) bg-light-danger @else bg-body-secondary @endif  text-danger fs-4 rounded-3">
+                                    <x-icon path="{{$type->icon()}}"/>
+                                </div>
+                                <div class="ms-3 w-75">
+                                    <a href="{{ route('packages', ['type' => $type]) }}"
+                                       class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if(request()->get('type')==$type->value) active @endif"
+                                    >
+                                        {{ $type->text() }}
+                                    </a>
+                                    <p class="small opacity-50 fw-normal m-0">
+                                        {{ \App\Models\Package::where('type', $type)->count() }} пакетов
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
-            </div>
+                </div>
 
-            <div class="col-xl-9">
-                    @if($packages->isEmpty())
-                    <div class=" bg-body-tertiary rounded p-5 rounded">
-                        <div class="p-5">
+                <div class="col-xl-9">
+                        @if($packages->isEmpty())
+                        <div class=" bg-body-tertiary rounded p-5 rounded">
+                            <div class="p-5">
 
-                            <div class="text-center mb-3">
-                                Пакеты не найдены
+                                <div class="text-center mb-3">
+                                    Пакеты не найдены
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @else
+                    @else
 
-                    <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-5">
+                        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-5">
 
-                        @foreach($packages as $package)
-                            @include('particles.package')
+                            @foreach($packages as $package)
+                                @include('particles.package')
 
-                        @endforeach
-                    </div>
-                @endif
+                            @endforeach
+                        </div>
+                    @endif
 
+                </div>
             </div>
-        </div>
+        </x-turbo-frame>
     </x-container>
 
 

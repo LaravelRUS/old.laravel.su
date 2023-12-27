@@ -24,7 +24,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('checkout-latest-docs', function () {
+Artisan::command('app:checkout-latest-docs', function () {
     $docsUrl = config('services.github.docs_repo_url');
 
     // Update existing clones
@@ -41,8 +41,8 @@ Artisan::command('checkout-latest-docs', function () {
 })->purpose('Checkout the latest Laravel docs');
 
 
-Artisan::command('update-packages', function () {
-    \App\Models\Package::chunk(100, function (Collection $packages) {
+Artisan::command('app:update-packages', function () {
+    \App\Models\Package::approved()->chunk(100, function (Collection $packages) {
         $packages->each(fn($package) => \App\Jobs\UpdateStatusPackages::dispatch($package));
     });
 })->purpose('Update information about users packages');

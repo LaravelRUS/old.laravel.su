@@ -3,8 +3,15 @@
 @section('content')
 
     <x-header image="/img/ivan.svg">
+
+        {{--
             <x-slot:title>
                 Создавайте элегантные приложения с
+                <span class="text-primary">Laravel</span>
+            </x-slot>
+        --}}
+            <x-slot:title>
+                Современный подход для PHP проектов с
                 <span class="text-primary">Laravel</span>
             </x-slot>
 
@@ -20,6 +27,91 @@
     </x-header>
 
 
+
+    <div class="container py-5">
+
+        <div class="row g-5 justify-content-center align-items-center">
+            <div class="col-xl-7 text-center text-xl-start me-auto">
+
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
+                    фантазией</span>
+
+                <h2 class="display-5 fw-semibold mb-5">Реализовывайте потрясающие проекты.</h2>
+            </div>
+
+            {{--
+            <div class="col mx-auto">
+                <img src="/img/gusli.svg" class="img-fluid d-block mx-auto">
+            </div>
+            --}}
+        </div>
+
+        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7">
+                    <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
+                    <p class="">
+                        Интуитивно понятный синтаксис и множество готовых компонентов, что
+                        сокращает время разработки. Мощные инструменты управляют базами данных, маршрутизацией,
+                        аутентификации и кэшированием,
+                        повышая производительность и масштабируемость приложения.
+                    </p>
+
+                    <a href="{{ route('feature') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        Основные возможности
+                        <x-icon path="bs.arrow-right" /></a>
+                </div>
+                <div class="col">
+                    <img src="/img/ui/web.svg" class="img-fluid d-block mx-auto">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7">
+                    <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>
+                    <p class="">
+                        Простое и понятное создание и управление ресурсами. Поддержка различных форматов ответов,
+                        включая JSON, делает его идеальным для RESTful API. Удобная валидация данных, обработка ошибок и
+                        прочие функции создают надежное и безопасное API.
+                    </p>
+                    <a href="{{ route('feature') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        Основные возможности
+                        <x-icon path="bs.arrow-right" /></a>
+                </div>
+                <div class="col">
+                    <img src="/img/ui/api.svg" class="img-fluid d-block mx-auto">
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-7">
+                    <h3 class="display-6 fw-semibold mb-4 text-balance">Консоль</h3>
+                    <p class="">
+                        Обеспечивает удобный доступ к вашим приложениям через командную
+                        строку, что позволяет быстро взаимодействовать с приложением.
+                        Автоматизируйте рутинные задачи, создавая пользовательские команды и выполняйте их!
+                    </p>
+                    <a href="{{ route('feature') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        Основные возможности
+                        <x-icon path="bs.arrow-right" /></a>
+                </div>
+                <div class="col">
+                    <img src="/img/ui/console.svg" class="img-fluid d-block mx-auto">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{{--
     <div class="container py-5">
 
         <div class="row g-5 justify-content-center align-items-center">
@@ -148,7 +240,7 @@
         </div>
 
     </div>
-
+--}}
 
     <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <div class="container px-4 py-5 packages">
