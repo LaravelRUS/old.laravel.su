@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Builder;
 
 class AuthController extends Controller
 {
@@ -39,10 +40,11 @@ class AuthController extends Controller
             'github_bio'  => $githubUser->getRaw()['bio'],
         ]);
 
-        $user->when(empty($user->name), function (User $user) {
-            $user->name = $user->github_name ?? $user->nickname;
-        })->save();
-
+        if (empty($user->name)) {
+            $user->fill([
+                'name' => $user->github_name ?? $user->nickname,
+            ])->save();
+        }
 
         Auth::login($user, true);
 
