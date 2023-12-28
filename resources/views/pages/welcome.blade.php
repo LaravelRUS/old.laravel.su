@@ -741,9 +741,9 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
     <div class="container mt-5 py-5">
 
         <div class="row g-lg-5 justify-content-center align-items-end mb-5">
-            <div class="col-12 col-xl-6 text-center text-xl-start">
+            <div class="col-12 col-xl-6">
                 <span
-                    class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Это лишь некоторые из громких имен</span>
+                    class="text-primary mb-md-3 d-block text-uppercase fw-semibold ls-xl">Это лишь некоторые из громких имен</span>
                 <h2 class="display-5 fw-semibold mb-4">Вы в хорошей кампании</h2>
             </div>
             <div class="col-lg-6 position-relative">
