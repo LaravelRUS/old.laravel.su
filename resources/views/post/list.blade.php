@@ -65,7 +65,7 @@
 @empty
     <div class="bg-body-tertiary rounded p-5 rounded">
         <div class="p-5">
-            @if ($user?->id === Auth::user()?->id)
+            @if (isset($user) && $user?->id === Auth::user()?->id)
                 <div class="text-center mb-3">
                     Напишите первую статью, чтобы привлечь читателей
                 </div>
