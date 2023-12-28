@@ -740,7 +740,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
     <div class="container mt-5 py-5">
 
-        <div class="row g-5 justify-content-center align-items-end mb-5">
+        <div class="row g-lg-5 justify-content-center align-items-end mb-5">
             <div class="col-12 col-xl-6 text-center text-xl-start">
                 <span
                     class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Это лишь некоторые из громких имен</span>
@@ -758,29 +758,29 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
             </div>
         </div>
 
-        <div class="row text-center no-gutters pt-5" title="Ведущие компаний России доверяют Laravel">
+        <div class="row text-center no-gutters pt-md-5" title="Ведущие компаний России доверяют Laravel">
             <div class="col-12 col-md-12 col-lg-12 mx-auto">
-                <div class="row company-usage align-items-center">
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                <div class="row gap-4 gap-md-0 company-usage align-items-center">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/zenit.svg">
                     </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/leroy-merlin.svg">
                     </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/megafon.svg">
                     </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/mts.svg">
                     </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/eldorado.svg">
                     </div>
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/rifgosh.svg">
                     </div>
                     {{--
-                    <div class="col-8 col-sm-5 col-md-2 m-auto">
+                    <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/vkusno.svg">
                     </div>
                     --}}
