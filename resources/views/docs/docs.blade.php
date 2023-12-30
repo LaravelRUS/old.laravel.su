@@ -4,7 +4,7 @@
 @section('content')
 
     <x-container>
-        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+        <div class="row g-0 g-md-3 g-xxl-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block">
 
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
@@ -78,10 +78,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 order-md-last order-first">
+            <div class="px-0 px-md-3 col-xl-9 order-md-last order-first">
 
-                <main class="bg-body-tertiary p-4 p-xxl-5 rounded documentations position-relative"
-                data-controller="prism">
+                <main class="bg-body-tertiary p-4 p-xxl-5 rounded documentations position-relative" data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
                         <div class="alert alert-warning rounded-1" role="alert">

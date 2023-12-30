@@ -101,6 +101,10 @@ main div {
         @extend .text-nowrap;
         color: rgb(235, 68, 50);
     }
+
+    #support-policy {
+       @extend .table-responsive;
+    }
 }
 
 main {
