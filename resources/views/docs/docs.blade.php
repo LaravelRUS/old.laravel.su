@@ -129,7 +129,7 @@
                     --}}
                 </div>
 
-                <main class="bg-body-tertiary p-lg-5 p-3 rounded-5 shadow-sm documentations position-relative"
+                <main class="bg-body-tertiary p-4 p-xxl-5 rounded documentations position-relative"
                 data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())

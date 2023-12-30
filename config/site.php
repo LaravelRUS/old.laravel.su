@@ -71,6 +71,9 @@ return [
                 'origin' => 'https://laravel.su',
             ],
             [
+                'origin' => 'https://laravel.orchid.software',
+            ],
+            [
                 'origin' => 'https://*.laravel.su',
             ],
         ],

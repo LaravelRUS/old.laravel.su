@@ -285,6 +285,10 @@ Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('docs');
 
+Route::get('nav/docs/{version?}', [DocsController::class, 'navigation'])
+    ->whereIn('version', Docs::SUPPORT_VERSIONS)
+    ->name('nav.docs');
+
 
 /*
 |--------------------------------------------------------------------------

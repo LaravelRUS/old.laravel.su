@@ -25,6 +25,23 @@ class DocsController extends Controller
     }
 
     /**
+     * Show a mobile navigation page.
+     *
+     * @param string $version
+     * @param string $page
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return \Illuminate\View\View|
+     */
+    public function navigation(string $version = Docs::DEFAULT_VERSION, string $page = 'installation')
+    {
+        $docs = new Docs($version, $page);
+
+        return $docs->view('docs.navigation');
+    }
+
+    /**
      * @param string $version
      *
      * @return \Illuminate\Contracts\View\View
