@@ -19,9 +19,9 @@
                         {{ $item['title'] }}
                     </h4>
 
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-2">
+                    <ul class="list-unstyled fw-normal pb-1 small ms-2 {{ $item['title'] === 'Пакеты' ? 'row row-cols-2' : '' }}">
                         @foreach ($item['list'] as $link)
-                            <li>
+                            <li class="col">
                                 <a href="{{ $link['href'] }}"
                                    class="{{ active(url($link['href']), 'active', 'link-body-emphasis') }} d-inline-flex text-decoration-none rounded p-2">
                                     {{ $link['title'] }}
