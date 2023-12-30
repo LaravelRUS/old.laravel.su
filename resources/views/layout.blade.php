@@ -1,7 +1,7 @@
 @extends('html')
 
 @section('body')
-    <div class="bg-primary text-bg-primary bg-gradient text-center py-2">
+    <div class="bg-primary text-bg-primary bg-gradient text-center py-2 d-none d-xxl-block">
         Скоро увидимся! Билеты уже доступны на <a href="{{ route('meets') }}" class="text-white">сайте</a>.
     </div>
 
