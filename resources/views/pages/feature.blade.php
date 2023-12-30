@@ -10,9 +10,7 @@
             приложениям. Пришло время создавать их!
         </x-slot>
 
-
         <x-slot:actions>
-
             <a href="{{route('docs')}}" class="btn btn-primary btn-lg px-4">Документация разработчика</a>
 
             <a href="{{ route('courses') }}"
@@ -25,7 +23,7 @@
 
     <x-container data-controller="prism">
         <section class="mb-5 pb-md-5">
-            <div class="bg-body-tertiary p-5 rounded-5 shadow"
+            <div class="bg-body-tertiary p-5 rounded shadow"
                  data-controller="tabs"
                  data-tabs-active-tab-class="bg-body-secondary"
                  data-tabs-index-value="1"
@@ -341,7 +339,7 @@ class UserController
                 </div>
 
             </div>
-            <div class="bg-body-tertiary rounded-5 shadow overflow-hidden">
+            <div class="bg-body-tertiary rounded shadow overflow-hidden">
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="p-5 d-flex flex-column gap-4">
@@ -551,7 +549,7 @@ class UserController
                     Вот несколько ключевых возможностей для работы с базой данных в Laravel:
                 </p>
 
-                <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                <div class="bg-body-tertiary p-5 rounded shadow d-flex flex-column gap-4">
                     <h4 class="fw-bold">Eloquent ORM</h4>
                     <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
                        ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
@@ -580,7 +578,7 @@ $invoices->each->pay();</code></pre>
             <div class="col-lg-6">
                 <img src="/img/ui/data.svg" class="img-fluid img-fluid d-block mx-auto">
 
-                <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                <div class="bg-body-tertiary p-5 rounded shadow d-flex flex-column gap-4">
                     <h4 class="fw-bold mb-0">Миграции базы данных</h4>
 
                     <p class="mb-0">Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
@@ -620,7 +618,7 @@ $table->timestamps();
                         приложении.
                     </p>
 
-                    <div class="bg-body-tertiary p-5 rounded-5 shadow d-flex flex-column gap-4">
+                    <div class="bg-body-tertiary p-5 rounded shadow d-flex flex-column gap-4">
                         <h4 class="fw-bold">Job Queues</h4>
                         <p class="mb-0">Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
                            очередь, что помогает поддерживать отзывчивость веб-запросов. Пример использования:</p>
@@ -643,7 +641,7 @@ php artisan queue:work redis --queue=podcasts
                 <div class="col-lg-6">
                     <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-block mx-auto">
 
-                    <div class="bg-body-tertiary shadow rounded-5">
+                    <div class="bg-body-tertiary shadow rounded">
                         <img src="https://laravel.com/img/docs/horizon-example.png" class="img-fluid">
 
                         <div class="d-flex flex-column gap-4 px-5 pb-5 pt-3">
