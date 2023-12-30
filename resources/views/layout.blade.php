@@ -40,7 +40,8 @@
                 </ul>
 
                 <div class="nav text-end">
-                    <a href="{{ route('docs') }}" class="nav-link link-body-emphasis">Документация</a>
+                    <a href="{{ route('docs') }}" class="nav-link link-body-emphasis d-none d-md-inline-flex">Документация</a>
+                    <a href="{{ route('nav.docs') }}" class="nav-link link-body-emphasis d-md-none">Документация</a>
 
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
