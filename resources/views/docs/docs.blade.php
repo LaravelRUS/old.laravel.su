@@ -5,7 +5,7 @@
 
     <x-container>
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-xl-3 position-sticky top-0 py-md-3 z-1">
+            <div class="col-xl-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block">
 
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
@@ -78,56 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9">
-
-                <div class="d-flex align-items-center align-content-between gap-3 d-md-flex justify-content-md-end mb-3">
-
-                    <button class="btn btn-outline-primary icon-link d-md-none d-inline-flex" type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#docs-menu"
-                            aria-controls="docs-menu"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <x-icon path="bs.list" class="me-1" />
-                        Меню
-                    </button>
-
-                    {{--
-                    @if($docs->behind() === null)
-                        <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="d-none d-md-block">
-                            <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
-                                Перевод не имеет метки
-                            </span>
-                        </a>
-                    @elseif ($docs->behind() > 0)
-                        <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="d-none d-md-block">
-                            <span class="badge bg-primary-subtle text-primary rounded rounded-1 fs-6 fw-normal">
-                                Отстаёт на {{ $docs->behind() }} изменения
-                            </span>
-                        </a>
-                    @else
-                        <span class="badge bg-success-subtle text-success rounded rounded-1 fs-6 fw-normal pe-none d-none d-md-block">
-                            Перевод актуален
-                        </span>
-                    @endif
-
-                    <ul class="list-unstyled d-flex mb-0" id="version-choose">
-                        @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
-                            <li class="mx-2">
-                                <a href="{{ route('docs', ['version' => $version]) }}"
-                                   class="{{ active(route('docs', ['version' => $version]).'*', 'active', 'link-body-emphasis') }}">
-                                    {{ $version  }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                    <a href="{{ $docs->goToOriginal() }}" title="Посмотреть оригинал" target="_blank"
-                        class="link-body-emphasis text-decoration-none d-none d-md-block">
-                        <x-icon path="bs.translate" />
-                    </a>
-                    --}}
-                </div>
+            <div class="col-xl-9 order-md-last order-first">
 
                 <main class="bg-body-tertiary p-4 p-xxl-5 rounded documentations position-relative"
                 data-controller="prism">

@@ -14,7 +14,7 @@
         </div>
         <ul class="list-unstyled">
             @foreach ($docs->getMenu() as $item)
-                <li class="{{ $loop->last ? '' : 'mb-5' }}">
+                <li class="{{ $loop->last ? '' : 'mb-4' }}">
                     <h4 class="d-flex align-items-center rounded border-0 text-body-secondary p-0 w-100 text-start">
                         {{ $item['title'] }}
                     </h4>
