@@ -72,9 +72,6 @@
                             </p>
                         </div>
                     </div>
-
-                    <img src="/img/ui/klubok.svg"
-                         class="d-none d-xxl-block position-absolute bottom-0 end-0 m-2 pe-none">
                 </div>
                 <div class="col">
                     <form action="{{ route('idea.store') }}" method="POST">
