@@ -4,7 +4,7 @@
 @section('content')
 
     <x-container>
-        <div class="row g-0 g-md-3 g-xxl-5 justify-content-center align-items-start position-relative mb-5">
+        <div class="row g-xxl-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block">
 
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
