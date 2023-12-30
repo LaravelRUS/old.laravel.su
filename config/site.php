@@ -86,11 +86,14 @@ return [
             '2778x1284' => '/pwa/splash/apple-splash-2778-1284.png', // TODO
         ],
         'icons'            => [
+            '192x192' => [
+                'path'    => '/favicon/android-chrome-192x192.png',
+                'purpose' => 'any maskable',
+            ],
             '512x512' => [
-                'path'    => '/icons/icon-512x512.png', // TODO
+                'path'    => '/favicon/android-chrome-512x512.png',
                 'purpose' => 'any maskable',
             ],
         ],
     ],
-
 ];
