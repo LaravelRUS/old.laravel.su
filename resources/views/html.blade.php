@@ -21,6 +21,7 @@
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
 
     <!-- PWA -->
+    <link rel="manifest" href="{{ route('manifest') }}">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#171923" media="(prefers-color-scheme: dark)">
