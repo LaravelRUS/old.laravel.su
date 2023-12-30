@@ -5,6 +5,7 @@
     <meta name="robots" content="noindex,nofollow">
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="google" content="notranslate">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport"
         content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no, viewport-fit=cover">
@@ -18,8 +19,6 @@
     <link rel="shortcut icon" href="/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#b91d47">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-
 
     <!-- PWA -->
     <meta name="color-scheme" content="light dark">
