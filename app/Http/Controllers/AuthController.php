@@ -36,7 +36,7 @@ class AuthController extends Controller
             'github_name' => $githubUser->getName(),
             'email'       => $githubUser->getEmail(),
             'avatar'      => $githubUser->getAvatar(),
-            'nickname'    => $githubUser->getNickname(),
+            'nickname'    => $githubUser->getNickname() ?? $githubUser->getName(),
             'github_bio'  => $githubUser->getRaw()['bio'],
         ]);
 
