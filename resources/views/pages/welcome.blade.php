@@ -323,11 +323,12 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
+                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Ваш код это PHP</h4>
                                     </div>
                                     <p class="text-body-secondary">
-                                        Мощная настраиваемая генерация кода позволяет быстро создавать каждую часть приложения
-                                        Laravel
+                                        Создавайте современные приложения, на 99% состоящие из PHP.
+                                        Сосредоточьтесь на самом важном: создании исключительных функций для ваших
+                                        пользователей.
                                     </p>
                                 </div>
                                 <div class="col d-flex flex-column gap-2">
@@ -338,11 +339,11 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Красноречивое завершение</h4>
+                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Пользовательский интерфейс</h4>
                                     </div>
                                     <p class="text-body-secondary">
-                                        Управление разрешениями, которое упрощает управление доступом пользователей в процессе
-                                        разработки и поддержки.
+                                        Широкий выбор потрясающих компонентов пользовательского
+                                        интерфейса, включая формы ввода, диалоги, сетки данных и визуализации.
                                     </p>
                                 </div>
                                 <div class="col d-flex flex-column gap-2">
@@ -380,8 +381,8 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <img src="/img/laravelidea.svg" class="mw-100 w-auto d-inline-block mb-4"
                                          height="40px">
                                     <p class="mb-0 text-balance">
-                                        Мощное и простое в использовании решение для создания административных панелей и
-                                        бизнес-приложений
+                                        Полезные дополнения для IDE, включая генерацию кода, автодополнение синтаксиса
+                                        Eloquent, автодополнение правил валидации и многое другое.
                                     </p>
                                 </div>
                             </div>
@@ -436,7 +437,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             </div>
 
                             <div class="col-xl-10 text-center mx-auto">
-                                <a href="https://laravel-idea.com" target="_blank" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
+                                <a href="{{ route('idea.index') }}" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
                             </div>
                         </div>
                     </div>

@@ -7,3 +7,12 @@ textarea {
     font-family: $headings-font-family;
     @extend .text-balance;
 }
+
+
+pre {
+    border-radius: 0.8rem;
+
+    code {
+        white-space: inherit!important;
+    }
+}

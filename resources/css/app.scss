@@ -16,7 +16,7 @@ $container-max-widths: (
 );
 
 $body-bg: #fafafa;
-$body-bg-dark: #171923;
+$body-bg-dark: #161822;//#171923;
 $body-color: #222;
 
 $body-emphasis-color-dark: #dee2e6;
@@ -24,7 +24,7 @@ $body-emphasis-color-dark: #dee2e6;
 $body-tertiary-bg: #fff;
 $body-tertiary-bg-dark: #252a37;
 
-$dark-bg-subtle-dark: #111319;
+$dark-bg-subtle-dark: #14161f;//#111319;
 
 //$border-radius: 1.625rem;
 $border-radius: 0.85rem;
@@ -159,6 +159,7 @@ $utilities: (
 }
 
 .avatar {
+    @extend .bg-body-secondary;
     border-radius: 10em;
 }
 .avatar-sm {
@@ -166,6 +167,7 @@ $utilities: (
 }
 .avatar-xl {
     width: 80px;
+    height: 80px;
     margin: 0 auto;
 }
 

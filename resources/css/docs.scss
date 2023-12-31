@@ -50,7 +50,7 @@
     }
 }
 
-main,
+main,.main,
 main div {
     line-height: 1.8em;
 
@@ -107,7 +107,7 @@ main div {
     }
 }
 
-main {
+main,.main {
     line-height: 1.5em;
     overflow: initial;
 
@@ -187,12 +187,7 @@ main {
     }
 
     pre {
-        border-radius: 0.8rem;
         margin-bottom: 2em !important;
-
-        code {
-            white-space: inherit!important;
-        }
     }
 
     /*
