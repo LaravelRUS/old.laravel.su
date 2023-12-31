@@ -545,62 +545,8 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
         </div>
     </div>
 
-    <div class="container mt-5 py-5">
 
-        <div class="row g-5 justify-content-center align-items-end mb-5">
-            <!-- Right side START -->
-            <div class="col-xl-6 text-center text-xl-start">
-                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Спонсоры</span>
-                <!-- Title -->
-                <h2 class="display-5 fw-semibold mb-0">Помощь в разработки вашего проекта на Laravel</h2>
-            </div>
-            <!-- Right side END -->
-
-            <!-- Left side START -->
-            <div class="col-lg-6 position-relative">
-                <p>
-                    Независимо от сложности вашего проекта эти кампании готовы помочь воплотить ваши идеи в элегантные приложения.
-                </p>
-
-                <a href="{{ route('advertising') }}"
-                    class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Присоединиться <x-icon
-                        path="bs.arrow-right" /></a>
-            </div>
-            <!-- Left side END -->
-        </div>
-
-        <div class="row row-cols-md-3 g-5">
-            <div class="col">
-                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
-                    <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-3 me-auto" height="48">
-                    <p class="fw-normal m-0">
-                        Входим в ТОП-3 рейтинга Рунета IT студий и самая большая команда в Москве (100+ человек) - штат
-                        проверенных специалистов.
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
-                    <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
-                    <p class="fw-normal m-0">
-                        Дизайн и технологии —
-                        лишь инструменты для решения бизнес-задач. Результат нашей работы — это продукт, сделанный
-                        вовремя и в рамках ожиданий заказчика.
-                    </p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-5 bg-body-tertiary rounded-4 shadow d-flex flex-column h-100">
-                    <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
-                    <p class="fw-normal m-0">
-                        Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
-                        разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    @include('particles.sponsors')
 
     <div class="container mt-5 py-5">
         <div class="row g-4 g-lg-5 align-items-center justify-content-between">
@@ -613,7 +559,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <img src="/img/bird.svg" class="z-n1 user-select-none d-none d-xxl-block">
                         </figure>
 
-                        <div class="bg-body-tertiary shadow text-center p-4 rounded-5 position-relative mb-5 mb-md-0">
+                        <div class="bg-body-tertiary text-center p-4 rounded position-relative mb-5 mb-md-0">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
@@ -634,7 +580,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
                     <!-- Mentor list -->
                     <div class="col-md-6 mt-5 mt-md-0 d-none d-md-block">
-                        <div class="bg-body-tertiary shadow p-4 rounded-5 d-inline-block position-relative">
+                        <div class="bg-body-tertiary p-4 rounded d-inline-block position-relative">
                             <!-- Icon -->
                             <div
                                 class="icon-lg bg-warning rounded-circle position-absolute top-0 start-100 translate-middle">
@@ -695,7 +641,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
                     <!-- Review -->
                     <div class="col-md-7 mt-n6 mb-0 mb-md-5">
-                        <div class="bg-body-tertiary shadow text-center p-5 rounded-5">
+                        <div class="bg-body-tertiary text-center p-5 rounded">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
@@ -715,7 +661,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div> <!-- Row END -->
             </div>
-            <div class="col-xl-5 order-1 text-center text-xl-start pe-xl-0">
+            <div class="col-xl-5 order-1 pe-xl-0">
                 <!-- Title -->
 
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Не только знания и ресурсы</span>

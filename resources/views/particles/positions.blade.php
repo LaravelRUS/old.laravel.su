@@ -1,7 +1,7 @@
 @forelse($positions as $position)
     <div class="col-12 position-relative" id="@domid($position)">
         <div
-            class="row bg-body-tertiary shadow rounded p-4 d-md-flex align-items-center justify-content-between position-relative">
+            class="row bg-body-tertiary rounded p-4 d-md-flex align-items-center justify-content-between position-relative">
 
             {{--
             <div class="d-flex align-items-center col-md-2">
@@ -55,7 +55,7 @@
     </div>
 @empty
     <div class="col-12">
-        <div class="bg-body-tertiary rounded shadow p-4 align-items-center justify-content-between
+        <div class="bg-body-tertiary rounded p-4 align-items-center justify-content-between
             position-relative">
 
             <div class="text-center">

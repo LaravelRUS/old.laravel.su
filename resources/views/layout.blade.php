@@ -7,7 +7,7 @@
 
 
     <div class="container mt-md-3 mb-3">
-        <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow">
+        <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow-sm">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-3">
                     <x-icon path="bs.list" width="2em" height="2em" />

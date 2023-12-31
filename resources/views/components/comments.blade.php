@@ -20,7 +20,7 @@
                     $grouped_comments = $comments->sortBy([['likers_count', 'desc'], 'created_at'])->groupBy('parent_id');
                 @endphp
 
-                <div class="bg-body-tertiary shadow-sm p-4 p-xl-5 rounded">
+                <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                     <div class="row">
                         <div class="col-12 col-xxl-8 mx-auto comments-wrapper">
 

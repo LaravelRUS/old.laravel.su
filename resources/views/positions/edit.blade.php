@@ -14,7 +14,7 @@
                         <textarea data-controller="textarea-autogrow"
                                   data-textarea-autogrow-resize-debounce-delay-value="500"
                                   id="title" name="position[title]"
-                                  placeholder="Заголовок"
+                                  placeholder="Название вакансии"
                                   required
                                   rows="1"
                                   class="w-100 py-3 form-editor form-editor-title">{{ old('position.title', $position->title) }}</textarea>
@@ -32,7 +32,7 @@
                                         <p>Название компании, так, как оно известно в сети (например,
                                            М.Видео). Это поможет кандидатам получить более полное представление о вашей компании.
                                         </p>
-                                        <p>Если ваша компания только начинает свой путь, укажите название сайта, например laravel.su,
+                                        <p class="mb-0">Если ваша компания только начинает свой путь, укажите название сайта, например laravel.su,
                                            вместо формализма "ООО Рога и Копыта".</p>
                                     </div>
                                 </div>
@@ -48,12 +48,12 @@
                                 <x-error field="position.organization" class="invalid-feedback"/>
 
                                 <div class="form-text">
-                                    <p>Некоторые примеры:</p>
+                                    <p class="small">Некоторые примеры:</p>
                                     <ul class="list-unstyled mb-0">
                                         <li class="mb-2"><span class="me-2">✅</span>Пятёрочка</li>
                                         <li class="mb-2"><span class="me-2">✅</span>assisted-mindfulness.com</li>
                                         <li class="mb-2"><span class="me-2">❌</span>ООО Энд-Медиа</li>
-                                        <li class="mb-2"><span class="me-2">❌</span>РемСезОблКон</li>
+                                        <li class=""><span class="me-2">❌</span>РемСезОблКон</li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                             Укажите, где будет проходить основная работа, что бы кандидаты могли оценить
                                             расстояние.
                                         </p>
-                                        <p>Если вакансия предполагает полностью удалённый формат работы, оставьте поле
+                                        <p class="mb-0">Если вакансия предполагает полностью удалённый формат работы, оставьте поле
                                            не заполненным.</p>
                                     </div>
                                 </div>
@@ -100,11 +100,11 @@
                                     <x-error field="position.location" class="invalid-feedback"/>
 
                                     <div class="form-text">
-                                        <p>Некоторые примеры:</p>
+                                        <p class="small">Некоторые примеры:</p>
                                         <ul class="list-unstyled mb-0">
                                             <li class="mb-2"><span class="me-2">✅</span>м. Красногвардейская</li>
                                             <li class="mb-2"><span class="me-2">✅</span>г. Липецк</li>
-                                            <li class="mb-2"><span class="me-2">❌</span>г. Тула, Улица Пушкинская, 27
+                                            <li class=""><span class="me-2">❌</span>г. Тула, Улица Пушкинская, 27
                                             </li>
                                         </ul>
                                     </div>
@@ -117,7 +117,7 @@
                             <div class="col mb-3">
                                 <div class="bg-body-secondary rounded p-4">
                                     <div class="form-text">
-                                        <p>
+                                        <p class="mb-0">
                                            Когда работодатель не указывает информацию о зарплате, потенциальный опытный кандитат
                                            с высокой долей вероятности будет считать её малооплачиваемой.
                                         </p>

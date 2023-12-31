@@ -21,7 +21,7 @@
                                         не указана
                                     @endif
                                     @if (!is_null($position->salary_min) && !is_null($position->salary_max))
-                                        {{ $position->salary_min }} - {{ $position->salary_max }} ₽
+                                        От {{ $position->salary_min }} - до {{ $position->salary_max }} ₽
                                     @elseif (!is_null($position->salary_min))
                                                                     от {{ $position->salary_min }} ₽
                                     @elseif (!is_null($position->salary_max))

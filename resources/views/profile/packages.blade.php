@@ -41,7 +41,7 @@
                 </div>
             </div>
         @else
-            <div class="row row-cols-sm-2 mb-4">
+            <div class="row g-4 row-cols-sm-2 mb-4">
 
                 @foreach ($packages as $package)
                     @include('particles.package')

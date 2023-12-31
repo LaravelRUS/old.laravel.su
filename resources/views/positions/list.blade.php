@@ -27,7 +27,7 @@
             @foreach(range(0,2) as $placeholder)
                 <div class="col-12 position-placeholder" >
                     <div
-                        class="row bg-body-tertiary shadow rounded p-4 d-md-flex align-items-center justify-content-between">
+                        class="row bg-body-tertiary rounded p-4 d-md-flex align-items-center justify-content-between">
 
                         <div class="d-flex align-items-center col-md-2">
                             <span class="placeholder rounded w-100"></span>
