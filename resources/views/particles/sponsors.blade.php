@@ -24,7 +24,7 @@
     <div class="row row-cols-md-3 g-5">
         <div class="col">
             <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100">
-                <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-3 me-auto" height="48">
+                <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal m-0">
                     Входим в ТОП-3 рейтинга Рунета IT студий и самая большая команда в Москве (100+ человек) - штат
                     проверенных специалистов.
@@ -33,21 +33,24 @@
         </div>
         <div class="col">
             <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100">
-                <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
-                <p class="fw-normal m-0">
-                    Дизайн и технологии —
-                    лишь инструменты для решения бизнес-задач. Результат нашей работы — это продукт, сделанный
-                    вовремя и в рамках ожиданий заказчика.
-                </p>
+                <a href="{{ route('idea.index') }}" class="link-body-emphasis text-decoration-none">
+                    <img src="/img/resources/tnspodcast.svg" class="d-block mb-4 me-auto" height="64">
+                    <p class="fw-normal m-0">
+                        Подкаст c зажигательными эпизоды, которые заставят
+                        задуматься и приведут к новым перспективам.
+                    </p>
+                </a>
             </div>
         </div>
         <div class="col">
             <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100">
-                <img src="/img/agency/kirschbaum.svg" class="d-block mb-3 me-auto" height="48">
-                <p class="fw-normal m-0">
-                    Независимо от сложности вашего проекта эти агентства обладают квалифицированными командами
-                    разработчиков, готовыми воплотить ваши идеи в элегантные приложения.
-                </p>
+                <a href="{{ route('idea.index') }}" class="link-body-emphasis text-decoration-none">
+                    <img src="https://laravel-idea.com/img/logo.svg" class="d-block mb-4 me-auto" height="64">
+                    <p class="fw-normal m-0">
+                        Laravel Idea — среда разработки на базе PhpStorm, ориентированная на эффективность и
+                        производительность.
+                    </p>
+                </a>
             </div>
         </div>
     </div>

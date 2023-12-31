@@ -93,7 +93,7 @@
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
-                    <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
+                    <svg width="56" class="border border-primary" height="56" viewBox="0 0 56 56" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
                         <path d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"

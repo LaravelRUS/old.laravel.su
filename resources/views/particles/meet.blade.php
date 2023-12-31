@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-12 col-sm-4 col-xl-3 mt-3 mt-sm-0">
             <div class="d-grid">
-                <a class="btn btn-outline-danger" href="{{ $meet->link }}" target="_blank" rel="noopener">Подробнее</a>
+                <a class="btn btn-outline-primary" href="{{ $meet->link }}" target="_blank" rel="noopener">Подробнее</a>
             </div>
         </div>
     </div>

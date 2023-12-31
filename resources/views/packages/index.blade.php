@@ -93,8 +93,8 @@ return response()->json([
                     @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
                         <div class="mb-4 position-relative">
                             <div class="d-flex align-items-center">
-                                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center
-                                @if(request()->get('type')==$type->value) bg-light-danger @else bg-body-secondary @endif  text-danger fs-4 rounded-3">
+                                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center fs-4 rounded-3
+                                 {{ request()->get('type')==$type->value ? 'bg-primary text-white' : 'bg-body-secondary text-primary' }}">
                                     <x-icon path="{{$type->icon()}}"/>
                                 </div>
                                 <div class="ms-3 w-75">
