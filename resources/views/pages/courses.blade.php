@@ -18,7 +18,7 @@
     <x-container>
 
         <div class="row g-4">
-            <div class="col-8 mb-4">
+            <div class="col-md-8 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
@@ -31,8 +31,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden
+                        ">
                             <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0">
                             <div class="row">
                                 <div class="col-sm-12 position-relative">
@@ -65,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="col-4 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
 
                     <ul class="d-grid gap-4 list-unstyled">

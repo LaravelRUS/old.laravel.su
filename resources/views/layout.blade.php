@@ -8,8 +8,8 @@
 
     <div class="container mt-md-3 mb-3">
         <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow-sm">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-between">
-                <div class="col-md-auto d-lg-none me-3">
+            <header class="d-flex flex-wrap align-items-center justify-content-between">
+                <div class="col-md-auto d-lg-none me-2 me-sm-3">
                     <x-icon path="bs.list" width="2em" height="2em" />
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
