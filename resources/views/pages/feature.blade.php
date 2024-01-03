@@ -25,10 +25,10 @@
         <section class="mb-5 pb-md-5">
             <div class="bg-body-tertiary p-5 rounded"
                  data-controller="tabs"
-                 data-tabs-active-tab-class="bg-body-secondary"
+                 data-tabs-active-tab-class="bg-md-body-secondary"
                  data-tabs-index-value="1"
             >
-                <div class="d-flex mb-4 align-items-baseline">
+                <div class="d-block d-md-flex mb-4 align-items-baseline">
                     <li class="d-flex gap-4 rounded p-4" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.inertia" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
@@ -99,219 +99,220 @@
                 </div>
 --}}
 
+                <div class="d-none d-md-block">
+                    <div class="d-none" data-tabs-target="panel">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4>Laravel Inertia</h4>
+                                занимается маршрутизацией и передачей данных между серверной частью
+                                и внешним интерфейсом Laravel — нет необходимости создавать API или
+                                поддерживать два набора маршрутов. Легко
+                                передавайте данные из вашей базы данных непосредственно в реквизиты
+                                компонентов вашей внешней страницы,
+                                используя все функции Laravel под рукой в ​​одном фантастическом
+                                монорепозитории.
+                            </div>
+                            <div class="col-12 col-lg-8">
 
-                <div class="d-none" data-tabs-target="panel">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h4>Laravel Inertia</h4>
-                            занимается маршрутизацией и передачей данных между серверной частью
-                            и внешним интерфейсом Laravel — нет необходимости создавать API или
-                            поддерживать два набора маршрутов. Легко
-                            передавайте данные из вашей базы данных непосредственно в реквизиты
-                            компонентов вашей внешней страницы,
-                            используя все функции Laravel под рукой в ​​одном фантастическом
-                            монорепозитории.
-                        </div>
-                        <div class="col-12 col-lg-8">
 
+                                <pre class="rounded-3 my-0">
+                                 <x-highlight language="php">
+                                    class UserController {
+                                    public function index() {
+                                    $users = User::active()
+                                    ->orderByName()
+                                    ->get([ 'id', 'name', 'email' ]);
 
-                            <pre class="rounded-3 my-0">
-                             <x-highlight language="php">
-                                class UserController {
-                                public function index() {
-                                $users = User::active()
-                                ->orderByName()
-                                ->get([ 'id', 'name', 'email' ]);
+                                    return Inertia::render('Users', [
+                                    'users' = > $users,
+                                    ]);
+                                    }
+                                    }
+                                </x-highlight>
+                                </pre>
+                                <pre class="rounded-3 my-0"><code language="js">
+        import Layout from './Layout'
 
-                                return Inertia::render('Users', [
-                                'users' = > $users,
-                                ]);
-                                }
-                                }
-                            </x-highlight>
-                            </pre>
-                            <pre class="rounded-3 my-0"><code language="js">
-    import Layout from './Layout'
-
-        export default function Users({users }) {
-      return (
-          <Layout>{users.map(user = > (<Link href={route('users.show', user)}> {
-            user.name
-          }({user.email}) < / Link >))}</Layout>)
-    }
-                            </code></pre>
-                        </div>
-                    </div>
-
-                    <div class="row my-3">
-                        <div class="col-lg-6">
-                            <p>Inertia дает вам опыт разработчика и простоту создания многостраничного приложения,
-                               отображаемого на сервере, с пользовательским интерфейсом и оперативностью JavaScript
-                               SPA.</p>
-
-                            <p>Ваши внешние компоненты могут сосредоточиться на взаимодействии с пользователем, а не на
-                               вызовах API и манипулировании данными — больше не нужно вручную запускать HTTP-запросы и
-                               манипулировать ответами.
-                            </p>
-                            <p class="mb-0">Inertia даже предлагает рендеринг на стороне сервера при начальной загрузке
-                                            страницы для
-                                            приложений, которые получают выгоду от поисковой оптимизации.
-                            </p>
+            export default function Users({users }) {
+          return (
+              <Layout>{users.map(user = > (<Link href={route('users.show', user)}> {
+                user.name
+              }({user.email}) < / Link >))}</Layout>)
+        }
+                                </code></pre>
+                            </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="p-4 border rounded">
-                                <h6 class="fw-bolder">Как это работает?</h6>
+                        <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p>Inertia дает вам опыт разработчика и простоту создания многостраничного приложения,
+                                   отображаемого на сервере, с пользовательским интерфейсом и оперативностью JavaScript
+                                   SPA.</p>
 
-                                <p>Первоначальная загрузка страницы вашего приложения вернет SPA на базе Inertia и
-                                   реквизиты
-                                   страницы в одном запросе. Последующие запросы от нажатия ссылок или отправки форм
-                                   будут
-                                   автоматически возвращать только те реквизиты страницы, которые необходимы.</p>
+                                <p>Ваши внешние компоненты могут сосредоточиться на взаимодействии с пользователем, а не на
+                                   вызовах API и манипулировании данными — больше не нужно вручную запускать HTTP-запросы и
+                                   манипулировать ответами.
+                                </p>
+                                <p class="mb-0">Inertia даже предлагает рендеринг на стороне сервера при начальной загрузке
+                                                страницы для
+                                                приложений, которые получают выгоду от поисковой оптимизации.
+                                </p>
+                            </div>
 
-                                <p class="mb-0">Когда вы развертываете новые ресурсы, Inertia автоматически выполнит
-                                                следующий запрос при полной
-                                                загрузке страницы, поэтому ваши пользователи будут иметь самые последние
-                                                ресурсы, не теряя ни
-                                                секунды.</p>
+                            <div class="col-lg-6">
+                                <div class="p-4 border rounded">
+                                    <h6 class="fw-bolder">Как это работает?</h6>
+
+                                    <p>Первоначальная загрузка страницы вашего приложения вернет SPA на базе Inertia и
+                                       реквизиты
+                                       страницы в одном запросе. Последующие запросы от нажатия ссылок или отправки форм
+                                       будут
+                                       автоматически возвращать только те реквизиты страницы, которые необходимы.</p>
+
+                                    <p class="mb-0">Когда вы развертываете новые ресурсы, Inertia автоматически выполнит
+                                                    следующий запрос при полной
+                                                    загрузке страницы, поэтому ваши пользователи будут иметь самые последние
+                                                    ресурсы, не теряя ни
+                                                    секунды.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div data-tabs-target="panel">
+                    <div data-tabs-target="panel">
 
 
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h4>Livewire</h4>
-                            Livewire is a modern way to build dynamic interfaces using server-rendered templates instead
-                            of a JavaScript framework. It combines the simplicity and speed of building a
-                            server-rendered application with the user experience of a JavaScript SPA. You have to see it
-                            to believe it.
-                        </div>
-                        <div class="col-12 col-lg-8">
-                            <pre class="rounded-3 my-0"><code language="php">
-use Livewire\Component;
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4>Livewire</h4>
+                                Livewire is a modern way to build dynamic interfaces using server-rendered templates instead
+                                of a JavaScript framework. It combines the simplicity and speed of building a
+                                server-rendered application with the user experience of a JavaScript SPA. You have to see it
+                                to believe it.
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <pre class="rounded-3 my-0"><code language="php">
+    use Livewire\Component;
 
-class Search extends Component
-{
-    public $search = '';
-
-    public function render()
+    class Search extends Component
     {
-        $users = User::search($this->search)->get();
+        public $search = '';
 
-        return view('livewire.search', [
-            'users' => $users,
-        ]);
+        public function render()
+        {
+            $users = User::search($this->search)->get();
+
+            return view('livewire.search', [
+                'users' => $users,
+            ]);
+        }
     }
-}
-                            </code></pre>
-                            <pre class="rounded-3 my-0">
-                                <code language="js">
-                                    @verbatim
-<div>
-    <input wire:model="search"
-           type="text"
-           placeholder="Search users..." />
+                                </code></pre>
+                                <pre class="rounded-3 my-0">
+                                    <code language="js">
+                                        @verbatim
+    <div>
+        <input wire:model="search"
+               type="text"
+               placeholder="Search users..." />
 
-    <ul>
-        @foreach ($users as $user)
-            <li>{{ $user->username }}</li>
-        @endforeach
-    </ul>
-</div>
-                                    @endverbatim
-                            </code></pre>
-                        </div>
-                    </div>
-
-                    <div class="row my-3">
-                        <div class="col-lg-6">
-                            <p>When using Livewire, you won't need JavaScript to manage the DOM or state - you'll just
-                               sprinkle it in for some thoughtful interactions. Alpine.js is the perfect light-weight
-                               JavaScript library to pair with your Livewire application.</p>
-
-                            <p class="mb-0">As the state of your Livewire component changes, your frontend will automatically be
-                               updated. But, Livewire doesn't stop there. Support for real-time validation, event
-                               handling, file downloads, authorization and more is included.
-                            </p>
-
-                            <p class="mb-0">
-                                Learn more
-                            </p>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="p-4 border rounded">
-                                <h6 class="fw-bolder">Как это работает?</h6>
-
-                                <p class="mb-0">Livewire renders your HTML on the server using the Blade templating language. It
-                                   automatically adds the JavaScript required to make the page reactive, and
-                                   automatically re-renders components and updates the DOM as data changes.</p>
+        <ul>
+            @foreach ($users as $user)
+                <li>{{ $user->username }}</li>
+            @endforeach
+        </ul>
+    </div>
+                                        @endverbatim
+                                </code></pre>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p>When using Livewire, you won't need JavaScript to manage the DOM or state - you'll just
+                                   sprinkle it in for some thoughtful interactions. Alpine.js is the perfect light-weight
+                                   JavaScript library to pair with your Livewire application.</p>
 
-                </div>
-                <div class="d-none" data-tabs-target="panel">
+                                <p class="mb-0">As the state of your Livewire component changes, your frontend will automatically be
+                                   updated. But, Livewire doesn't stop there. Support for real-time validation, event
+                                   handling, file downloads, authorization and more is included.
+                                </p>
 
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h4>Don't need a frontend? No problem.</h4>
-                            Laravel is the perfect back-end API for your JavaScript
-                            SPAs and mobile applications. You'll have access to all of Laravel's features while
-                            maintaining the frontend development workflow you're used to.
+                                <p class="mb-0">
+                                    Learn more
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="p-4 border rounded">
+                                    <h6 class="fw-bolder">Как это работает?</h6>
+
+                                    <p class="mb-0">Livewire renders your HTML on the server using the Blade templating language. It
+                                       automatically adds the JavaScript required to make the page reactive, and
+                                       automatically re-renders components and updates the DOM as data changes.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-12 col-lg-8">
-                            <pre class="rounded-3 my-0"><code language="php">
-class UserController
-{
-    public function index()
+
+
+                    </div>
+                    <div class="d-none" data-tabs-target="panel">
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4>Don't need a frontend? No problem.</h4>
+                                Laravel is the perfect back-end API for your JavaScript
+                                SPAs and mobile applications. You'll have access to all of Laravel's features while
+                                maintaining the frontend development workflow you're used to.
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                <pre class="rounded-3 my-0"><code language="php">
+    class UserController
     {
-        return User::active()
-            ->orderByName()
-            ->paginate(25, ['id', 'name', 'email']);
+        public function index()
+        {
+            return User::active()
+                ->orderByName()
+                ->paginate(25, ['id', 'name', 'email']);
+        }
     }
-}
-                            </code></pre>
-                            <pre class="rounded-3 my-0">
-                                <code language="js">
-                                    @verbatim
-{
-"data": [
+                                </code></pre>
+                                <pre class="rounded-3 my-0">
+                                    <code language="js">
+                                        @verbatim
     {
-    "id": 1,
-    "name": "Taylor Otwell",
-    "email": "taylor@laravel.com",
-    },
-    // ...
-    ],
-    "from": 1,
-    "to": 25,
-    "total": 50,
-    "per_page": 25,
-    "current_page": 1,
-    "last_page": 2,
-    "first_page_url": "https://api.laravel.app/users?page=1",
-    "last_page_url": "https://api.laravel.app/users?page=2",
-    "next_page_url": "https://api.laravel.app/users?page=2",
-    "prev_page_url": null,
-    "path": "https://api.laravel.app/users",
-}
-                                    @endverbatim
-                            </code></pre>
+    "data": [
+        {
+        "id": 1,
+        "name": "Taylor Otwell",
+        "email": "taylor@laravel.com",
+        },
+        // ...
+        ],
+        "from": 1,
+        "to": 25,
+        "total": 50,
+        "per_page": 25,
+        "current_page": 1,
+        "last_page": 2,
+        "first_page_url": "https://api.laravel.app/users?page=1",
+        "last_page_url": "https://api.laravel.app/users?page=2",
+        "next_page_url": "https://api.laravel.app/users?page=2",
+        "prev_page_url": null,
+        "path": "https://api.laravel.app/users",
+    }
+                                        @endverbatim
+                                </code></pre>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row my-3">
-                        <div class="col-lg-6">
-                            <p>For authentication, you may leverage Laravel's secure, cookie-based authentication. Or, you may use Laravel Sanctum or Laravel Passport if you're building a mobile application or your frontend is hosted separately from your back-end API.
-                            </p>
-                            <p class="mb-0">
-                            If your API operates at extreme scale, pair your Laravel application with Laravel Octane and Laravel Vapor to handle your traffic without breaking a sweat.
-                            </p>
+                        <div class="row my-3">
+                            <div class="col-lg-6">
+                                <p>For authentication, you may leverage Laravel's secure, cookie-based authentication. Or, you may use Laravel Sanctum or Laravel Passport if you're building a mobile application or your frontend is hosted separately from your back-end API.
+                                </p>
+                                <p class="mb-0">
+                                If your API operates at extreme scale, pair your Laravel application with Laravel Octane and Laravel Vapor to handle your traffic without breaking a sweat.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -335,7 +336,7 @@ class UserController
             </div>
 
                 <div class="col-lg-6">
-                    <img src="/img/ui/puzzle.svg" class="img-fluid d-block mx-auto">
+                    <img src="/img/ui/puzzle.svg" class="img-fluid d-none d-lg-block mx-auto">
                 </div>
 
             </div>
@@ -384,7 +385,7 @@ class UserController
 
                 <div class="p-5">
                     <div class="row align-items-start">
-                        <div class="col-4">
+                        <div class="col-lg-4 mb-3 mb-lg-0">
                             <div class="bg-body-secondary rounded p-4">
                             <p class="mb-0 opacity-75">
                                 Настраивать окружение для новичка может быть непростой задачей.
@@ -393,7 +394,7 @@ class UserController
                             </p>
                         </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4 mb-3 mb-lg-0">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="/img/ui/apple.svg" class="img-fluid">
@@ -407,7 +408,7 @@ class UserController
                                 </p>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4 mb-3 mb-lg-0">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="/img/ui/docker.svg" class="img-fluid">
@@ -431,7 +432,7 @@ class UserController
     <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <x-container>
             <div class="col-12">
-                <div class="row g-5 py-5 row-cols-1 row-cols-lg-2">
+                <div class="row g-4 g-md-5 py-5 row-cols-1 row-cols-lg-2">
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
                             <x-icon path="i.route" width="2.5rem" height="2.5rem" />
@@ -539,76 +540,76 @@ class UserController
 
         <section class="pb-md-5 mb-5">
 
-            <div class="row g-5">
-            <div class="col-lg-6 mb-5">
-                <h2 class="display-5 fw-semibold mb-4 text-balance">Удобная работа с данными</h2>
-                <p class="fw-normal mb-4 mb-lg-5 text-balance">
-                    Laravel имеет мощные инструменты для работы с базами данных.
-                    Он поддерживает широкий спектр СУБД, включая MySQL, MariaDB, PostgreSQL, SQL Server и SQLite.
+            <div class="row g-4 g-md-5">
+                <div class="col-lg-6 mb-5">
+                    <h2 class="display-5 fw-semibold mb-4 text-balance">Удобная работа с данными</h2>
+                    <p class="fw-normal mb-4 mb-lg-5 text-balance">
+                        Laravel имеет мощные инструменты для работы с базами данных.
+                        Он поддерживает широкий спектр СУБД, включая MySQL, MariaDB, PostgreSQL, SQL Server и SQLite.
 
-                    Вот несколько ключевых возможностей для работы с базой данных в Laravel:
-                </p>
+                        Вот несколько ключевых возможностей для работы с базой данных в Laravel:
+                    </p>
 
-                <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
-                    <h4 class="fw-bold">Eloquent ORM</h4>
-                    <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
-                       ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
-                       миграций и отношений между ними происходит в несколько простых шагов:</p>
+                    <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
+                        <h4 class="fw-bold">Eloquent ORM</h4>
+                        <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
+                           ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
+                           миграций и отношений между ними происходит в несколько простых шагов:</p>
 
-                    <pre><code language="text">php artisan make:model Invoice --migration</code></pre>
+                        <pre><code language="text">php artisan make:model Invoice --migration</code></pre>
 
-                    <p class="mb-0">После определения структуры модели и ее отношений, можно легко взаимодействовать с базой
-                       данных, используя мощный и выразительный синтаксис Eloquent:</p>
+                        <p class="mb-0">После определения структуры модели и ее отношений, можно легко взаимодействовать с базой
+                           данных, используя мощный и выразительный синтаксис Eloquent:</p>
 
-                    <pre><code language="php">// Создание связанной модели ...
-$user->invoices()->create(['amount' => 100]);
+                        <pre><code language="php">// Создание связанной модели ...
+    $user->invoices()->create(['amount' => 100]);
 
-// Обновление модели ...
-$invoice->update(['amount' => 200]);
+    // Обновление модели ...
+    $invoice->update(['amount' => 200]);
 
-// Получение моделей ...
-$invoices = Invoice::unpaid()
-    ->where('amount', '>=', 100)
-    ->get();
+    // Получение моделей ...
+    $invoices = Invoice::unpaid()
+        ->where('amount', '>=', 100)
+        ->get();
 
-// Удобный API для взаимодействия ...
-$invoices->each->pay();</code></pre>
+    // Удобный API для взаимодействия ...
+    $invoices->each->pay();</code></pre>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <img src="/img/ui/data.svg" class="img-fluid img-fluid d-block mx-auto">
+                <div class="col-lg-6">
+                    <img src="/img/ui/data.svg" class="img-fluid img-fluid d-none d-lg-block mx-auto">
 
-                <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
-                    <h4 class="fw-bold mb-0">Миграции базы данных</h4>
+                    <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
+                        <h4 class="fw-bold mb-0">Миграции базы данных</h4>
 
-                    <p class="mb-0">Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
-                       команде определить и поделиться структурой вашей базы данных:</p>
+                        <p class="mb-0">Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
+                           команде определить и поделиться структурой вашей базы данных:</p>
 
-                    <pre><code language="php">// Создание таблицы "flights"
-Schema::create('flights', ...);
+                        <pre><code language="php">// Создание таблицы "flights"
+    Schema::create('flights', ...);
 
-// Установите столбец primary ключа как UUID
-$table->uuid('id')->primary();
+    // Установите столбец primary ключа как UUID
+    $table->uuid('id')->primary();
 
-// Установите ограничение внешнего ключа
-$table->foreignUuid('airline_id')
-    ->constrained();
+    // Установите ограничение внешнего ключа
+    $table->foreignUuid('airline_id')
+        ->constrained();
 
-// Добавьте столбец для названия рейса
-$table->string('name');
+    // Добавьте столбец для названия рейса
+    $table->string('name');
 
-// Добавьте временные метки
-$table->timestamps();
-</code></pre>
+    // Добавьте временные метки
+    $table->timestamps();
+    </code></pre>
+                    </div>
+
                 </div>
-
-            </div>
             </div>
         </section>
 
 
         <section class="mb-5 pb-md-5">
-            <div class="row g-5">
+            <div class="row g-4 g-md-5">
                 <div class="col-lg-6 mb-5">
                     <h2 class="display-5 fw-semibold mb-4 text-balance">Максимальная эффективность</h2>
                     <p class="fw-normal mb-4 mb-lg-5 text-balance">
@@ -639,7 +640,7 @@ php artisan queue:work redis --queue=podcasts
                     </div>
             </div>
                 <div class="col-lg-6">
-                    <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-block mx-auto">
+                    <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-none d-lg-block mx-auto">
 
                     <div class="bg-body-tertiary rounded">
                         <img src="https://laravel.com/img/docs/horizon-example.png" class="img-fluid">
