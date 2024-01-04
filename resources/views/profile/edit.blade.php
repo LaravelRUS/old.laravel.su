@@ -18,17 +18,27 @@
                                 <img class="avatar-img rounded border border-tertiary-subtle border-3"
                                      src="{{ $user->avatar }}" alt="">
                             </div>
+
+                            <p class="small opacity-50">Аватар автоматически загружается при входе из вашего профиля на <a href="https://github.com" target="_blank">GitHub</a>.</p>
                         </div>
-                        <div class="ms-sm-4 mt-sm-3 flex-grow-1">
+                        <div class="ms-sm-4 mt-sm-4 flex-grow-1">
                             <form action="{{ route('my.update') }}" method="post">
-                                <label for="name" class="form-label">Имя</label>
-                                <input class="form-control mb-5" type="text" value="{{ old('name', $user->name) }}"
-                                       id="name" name="name">
-                                <x-error field="name" class="invalid-feedback d-block"/>
 
-                                <label for="about" class="form-label ">О себе</label>
 
-                                <div class="mb-5">
+                                <div class="mb-4">
+                                    <label for="name" class="form-label">Имя</label>
+                                    <input class="form-control" type="text" value="{{ old('name', $user->name) }}"
+                                           id="name" name="name">
+                                    <x-error field="name" class="invalid-feedback d-block"/>
+                                    <div class="form-text">Использование настоящего имени помогает установить личное
+                                                           взаимодействие и создать доверительную обстановку в
+                                                           профессиональной среде.
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-4">
+                                    <label for="about" class="form-label ">О себе</label>
                                     <textarea
                                         data-controller="textarea-autogrow"
                                         data-textarea-autogrow-resize-debounce-delay-value="500"
@@ -37,6 +47,38 @@
                                         name="about"
                                         class="form-control p-5">{{ old('about', $user->about) }}</textarea>
                                     <x-error field="about" class="invalid-feedback d-block mt-3"/>
+                                </div>
+
+
+                                <div class="mb-4">
+                                    <label for="theme-checker-auto" class="form-label d-block">Оформление</label>
+
+                                    <div data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent
+                                         class="btn-group mb-3" role="group" aria-label="Тема оформления" id="theme-checker-group-user-settings">
+                                        <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
+                                               name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
+                                        <label class="btn btn-outline-secondary" for="theme-checker-auto">
+                                            <x-icon path="bs.circle-half"/>
+                                        </label>
+
+                                        <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
+                                               name="theme-checker" id="theme-checker-light" autocomplete="off">
+                                        <label class="btn btn-outline-secondary" for="theme-checker-light">
+                                            <x-icon path="bs.sun-fill"/>
+                                        </label>
+
+                                        <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
+                                               name="theme-checker" id="theme-checker-dark" autocomplete="off">
+                                        <label class="btn btn-outline-secondary" for="theme-checker-dark">
+                                            <x-icon path="bs.moon-stars-fill"/>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-text">
+                                        Выберите тему, которая наиболее подходит вашим предпочтениям, или настройте
+                                        автоматическое переключение между дневной и ночной темами, чтобы интерфейс
+                                        адаптировался автоматически в соответствии с вашей системой.
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mb-3">Сохранить</button>

@@ -8,7 +8,7 @@
             <div class="bg-body-tertiary p-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
-                    <main class="post">
+                    <main class="post" data-controller="prism">
 
                         <div class="row mb-4 mb-xl-5">
                             <div class="col-12 col-lg-8">

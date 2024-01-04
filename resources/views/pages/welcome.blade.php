@@ -593,7 +593,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <div class="d-flex align-items-center mb-4">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-1"
+                                    <img class="avatar-img rounded-circle"
                                         src="https://xsgames.co/randomusers/avatar.php?g=male&2" alt="avatar">
                                 </div>
                                 <!-- Info -->
@@ -607,13 +607,13 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <div class="d-flex align-items-center mb-4">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-1"
-                                        src="https://xsgames.co/randomusers/avatar.php?g=male&1" alt="avatar">
+                                    <img class="avatar-img rounded-circle"
+                                        src="https://avatars.githubusercontent.com/dmitriy-afanasyev?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
-                                    <h6 class="mb-0">Елена Смирнова</h6>
-                                    <p class="mb-0 small">Переводчик волонтёр</p>
+                                    <h6 class="mb-0">Дмитрий Афанасьев</h6>
+                                    <p class="mb-0 small">Автор курсов по разработке</p>
                                 </div>
                             </div>
 
@@ -621,8 +621,8 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <div class="d-flex align-items-center">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-1"
-                                        src="https://xsgames.co/randomusers/avatar.php?g=male&3" alt="avatar">
+                                    <img class="avatar-img rounded-circle"
+                                        src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
