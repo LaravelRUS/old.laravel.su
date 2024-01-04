@@ -11,15 +11,17 @@
                 </div>
                 <!-- Card body START -->
                 <div class="px-5">
-                    <div class="d-sm-flex align-items-start text-center text-sm-start">
+                    <div class="d-sm-flex align-items-start">
                         <div>
                             <!-- Avatar -->
-                            <div class="avatar avatar-xxl mt-n5 mb-3">
+                            <div class="avatar avatar-xxl mt-n5 mb-3 mx-auto mx-lg-0">
                                 <img class="avatar-img rounded border border-tertiary-subtle border-3"
                                      src="{{ $user->avatar }}" alt="">
                             </div>
 
-                            <p class="small opacity-50">Аватар автоматически загружается при входе из вашего профиля на <a href="https://github.com" target="_blank">GitHub</a>.</p>
+                            <p class="small opacity-50 text-balance">Ваш аватар автоматически загружается при входе в профиль из
+                                                        вашего аккаунта на <a href="https://github.com" target="_blank">GitHub</a>.
+                            </p>
                         </div>
                         <div class="ms-sm-4 mt-sm-4 flex-grow-1">
                             <form action="{{ route('my.update') }}" method="post">
