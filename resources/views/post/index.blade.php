@@ -1,3 +1,4 @@
+@section('title', "Трибуна")
 @extends('layout')
 
 @section('content')

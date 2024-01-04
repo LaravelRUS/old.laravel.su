@@ -10,20 +10,24 @@
         <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow-sm">
             <header class="d-flex flex-wrap align-items-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
-                    <a href="{{ route('nav') }}">
-                        <x-icon path="bs.list" width="2em" height="2em" />
+                    <a href="{{ route('nav') }}" class="link-body-emphasis text-decoration-none d-flex align-items-center">
+                        {{--
+                        <x-icon path="bs.list" width="2em" height="2em" class="me-1" />
+--}}
+
+                        <img src="https://laravel.com/img/logomark.min.svg" height="32" class="me-2">
+
+                        {{ View::getSection('type') ? View::getSection('type') : View::getSection('title') }}
                     </a>
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
                     @guest
                         <a href="{{ route('home') }}">
                             <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
-                            <img src="https://laravel.com/img/logomark.min.svg" height="40" class="d-inline d-lg-none">
                         </a>
                     @else
                         <a href="{{ route('feed') }}">
                             <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
-                            <img src="https://laravel.com/img/logomark.min.svg" height="40" class="d-inline d-lg-none">
                         </a>
                     @endif
                 </div>
@@ -43,7 +47,9 @@
 
                 <div class="nav text-end">
                     <a href="{{ route('docs') }}" class="nav-link link-body-emphasis d-none d-md-inline-flex">Документация</a>
-                    <a href="{{ route('nav.docs') }}" class="nav-link link-body-emphasis d-md-none">Документация</a>
+                    <a href="{{ route('nav.docs') }}" class="nav-link link-body-emphasis d-md-none">
+                        <x-icon path="bs.book-half" height="1.5em" width="1.5em" />
+                    </a>
 
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>

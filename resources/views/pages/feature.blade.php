@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', "Возможности")
 
 @section('content')
     <x-header image="/img/sign.svg">

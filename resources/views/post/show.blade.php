@@ -1,4 +1,5 @@
 @extends('layout')
+@section('type', "Трибуна")
 @section('title', $post->title)
 
 

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Реклама')
+@section('title', 'Встречи')
 
 @section('content')
 

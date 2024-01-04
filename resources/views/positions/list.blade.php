@@ -1,4 +1,5 @@
 @extends('layout')
+@section('type', "Работа")
 @section('title', 'Поиск работы')
 
 @section('content')

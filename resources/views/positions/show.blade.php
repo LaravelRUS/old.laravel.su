@@ -1,11 +1,12 @@
 @extends('layout')
+@section('type', "Работа")
 @section('title', $position->title)
 
 
 @section('content')
     <div class="container my-5">
         <div class="row">
-            <div class="bg-body-tertiary p-5 rounded">
+            <div class="bg-body-tertiary p-4 p-xxl-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
                     <main class="post" data-controller="prism">

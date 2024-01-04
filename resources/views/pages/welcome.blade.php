@@ -1,4 +1,5 @@
 @extends('layout')
+@section('type', "Главная")
 
 @section('content')
 

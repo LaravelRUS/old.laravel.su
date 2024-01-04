@@ -1,4 +1,5 @@
 @extends('layout')
+@section('type', "Документация")
 @section('title', $docs->title())
 
 @section('content')
