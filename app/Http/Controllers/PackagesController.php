@@ -23,7 +23,7 @@ class PackagesController extends Controller
      */
     public function index(Request $request)
     {
-        $packages = Package::when($request->has('type'), function ($query) use ($request) {
+        $packages = Package::when($request->filled('type'), function ($query) use ($request) {
             return $query->where('type', $request->input('type'));
         })
             ->when($request->filled('q'), function ($query) use ($request) {

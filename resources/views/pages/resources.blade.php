@@ -22,7 +22,7 @@
 
 
     <x-container>
-        <div class="row text-left align-items-center pt-5 pb-md-5">
+        <div class="row text-left align-items-center pt-5 pb-md-5 ">
             <div class="col-4 col-md-5">
                 <img alt="image" class="img-fluid" src="/img/resources/tnspodcast.svg">
             </div>
@@ -75,7 +75,7 @@
 
 
     <x-container>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-4 g-md-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
 
                 <div class="mb-4">
@@ -89,7 +89,7 @@
                     <a href="#">Прочитать документацию</a>
                 </div>
 
-                <div class="row row-cols-1 row-cols-sm-2 g-5">
+                <div class="row row-cols-1 row-cols-sm-2 g-4 g-md-5">
                     <div class="col d-flex flex-column gap-2">
                         <div
                             class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
@@ -126,7 +126,7 @@
     </x-container>
 
     <x-container>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-4 g-md-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Думаете PHP медленный?</h2>
                 <p class="text-body-secondary">
@@ -182,7 +182,7 @@
     </x-container>
 
     <x-container>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-4 g-md-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Оптимизация базы данных</h2>
                 <p class="text-body-secondary">
@@ -236,7 +236,7 @@
     </x-container>
 
     <x-container>
-        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-4 g-md-5 py-5">
             <div class="col d-flex flex-column align-items-start gap-2">
                 <h2 class="fw-bold text-body-emphasis">Обработка задач в фоне</h2>
                 <p class="text-body-secondary">
