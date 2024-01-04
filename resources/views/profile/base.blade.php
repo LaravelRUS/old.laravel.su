@@ -22,7 +22,7 @@
                     @endif
                 </div>
                 <!-- Card body START -->
-                <div class="px-5">
+                <div class="px-5 mb-3 mb-xl-1">
                     <div class="d-sm-flex align-items-center text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
@@ -77,6 +77,13 @@
                         >Комментарии</a>
                     </li>
                     <li class="nav-item me-2">
+                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
+                           href="{{ route('profile.awards', $user) }}"
+                        >Награды</a>
+                    </li>
+
+                    {{--
+                    <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
                            data-turbo-frame="navigation"
                            href="{{ route('profile.packages', $user) }}"
@@ -93,6 +100,7 @@
                            href="{{ route('profile.meets', $user) }}"
                         >События</a>
                     </li>
+                    --}}
                 </div>
             </div>
         </div>
