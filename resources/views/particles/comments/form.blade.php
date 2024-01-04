@@ -1,14 +1,16 @@
 @guest
-    <div class="border-top pt-4 mt-5 d-flex flex-column align-items-center mx-auto col-xxl-8">
-        <p class="fw-bolder">Хотите присоединиться?</p>
+    <div class="p-4 p-xx-5 bg-body-secondary rounded-3 mt-5">
+        <div class="d-flex flex-column align-items-center mx-auto col-xxl-8">
+            <p class="fw-bolder">Хотите присоединиться?</p>
 
-        <p class="text-center">Вы должны быть авторизованы, чтобы добавить ответ в обсуждение.
-        К счастью, для этого достаточно двух кликов. Увидимся на другой стороне! 🌸</p>
+            <p class="text-center">Вы должны быть авторизованы, чтобы добавить ответ в обсуждение.
+            К счастью, для этого достаточно двух кликов. Увидимся на другой стороне! 🌸</p>
 
-        <a href="{{ route('login') }}" class="btn btn-outline-primary">Стать участником</a>
+            <a href="{{ route('login') }}" class="btn btn-outline-primary">Стать участником</a>
+        </div>
     </div>
 @else
-    <div class="border-top pt-4 mt-5" id="new-comment">
+    <div class="pt-4 mt-5" id="new-comment">
         <form class="row g-3"
               action="{{ route('comments.store') }}"
               method="post"
@@ -16,7 +18,6 @@
         >
             <input type="hidden" name="commentable_id" value="{{ $model->getKey() }}" />
             <div class="col-12 position-relative">
-                <label class="form-label" for="new-message">Ваш комментарий</label>
                 <textarea
                     id="new-message"
                     data-comment-target="textarea"

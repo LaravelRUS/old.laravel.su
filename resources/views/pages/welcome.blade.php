@@ -668,17 +668,25 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
                 <h2 class="display-5 fw-semibold mb-4 ">Живое общение, новые знакомства</h2>
-                <p >
+                <p>
                     Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
                     Активное сообщество предоставляет вам уникальную платформу для обмена опытом, нахождения вдохновения и
                     наставничества с опытными профессионалами Laravel.
                 </p>
 
+                <div class="d-grid gap-3 d-md-flex justify-content-center justify-content-lg-start align-items-baseline">
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @else
                     <a href="{{ route('feed') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @endguest
+
+                    <a href="{{ route('meets') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation d-none d-xxl-block">
+                        Встречи
+                        <x-icon path="bs.arrow-right" /></a>
+                </div>
+
             </div>
         </div> <!-- Row END -->
     </div>
