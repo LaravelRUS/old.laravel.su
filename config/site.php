@@ -64,7 +64,7 @@ return [
         'orientation'      => 'portrait',
         'scope'            => '/',
         'lang'             => 'ru',
-        'start_url'        => '/?source=pwa',
+        'start_url'        => '/feed?source=pwa',
         'capture_links'    => 'new-client',
         'url_handlers'     => [
             [
