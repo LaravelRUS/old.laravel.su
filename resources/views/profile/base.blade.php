@@ -82,7 +82,6 @@
                         >Награды</a>
                     </li>
 
-                    {{--
                     <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
                            data-turbo-frame="navigation"
@@ -91,16 +90,10 @@
                         >Пакеты</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
-                           href="{{ route('profile.awards', $user) }}"
-                        >Награды</a>
-                    </li>
-                    <li class="nav-item me-2">
                         <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
                            href="{{ route('profile.meets', $user) }}"
                         >События</a>
                     </li>
-                    --}}
                 </div>
             </div>
         </div>

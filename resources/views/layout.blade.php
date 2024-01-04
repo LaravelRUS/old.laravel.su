@@ -21,15 +21,9 @@
                     </a>
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
-                    @guest
-                        <a href="{{ route('home') }}">
-                            <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
-                        </a>
-                    @else
-                        <a href="{{ route('feed') }}">
-                            <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
-                        </a>
-                    @endif
+                    <a href="{{ route('home') }}">
+                        <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
+                    </a>
                 </div>
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-none d-lg-flex">
