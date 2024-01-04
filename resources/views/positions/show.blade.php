@@ -11,11 +11,11 @@
                     <main class="post">
 
                         <div class="row mb-4 mb-xl-5">
-                            <div class="col-8">
+                            <div class="col-12 col-lg-8">
                                 <h1 class="mb-0">{{ $position->title }}</h1>
                             </div>
 
-                            <div class="col-4 text-lg-end">
+                            <div class="col-12 col-lg-4 text-lg-end">
                                 <div class="fw-bold fs-5">
                                     @if(is_null($position->salary_min) && is_null($position->salary_max))
                                         не указана

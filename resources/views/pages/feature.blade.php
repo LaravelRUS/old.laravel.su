@@ -23,83 +23,43 @@
 
     <x-container data-controller="prism">
         <section class="mb-5 pb-md-5">
-            <div class="bg-body-tertiary p-5 rounded"
+            <div class="bg-body-tertiary p-4 p-xxl-5 rounded position-relative"
                  data-controller="tabs"
-                 data-tabs-active-tab-class="bg-md-body-secondary"
+                 data-tabs-active-tab-class="bg-body-secondary"
                  data-tabs-index-value="1"
             >
-                <div class="d-block d-md-flex mb-4 align-items-baseline">
-                    <li class="d-flex gap-4 rounded p-4" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
+                <div class="row d-flex mb-4 align-items-baseline">
+                    <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.inertia" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
                             <h5 class="mb-0">Inertia</h5>
-                            <small class="opacity-50">Усовершенствуйте Laravel с помощью React, Vue или Svelte</small>
+                            <small class="opacity-50 d-none d-lg-block">Усовершенствуйте Laravel с помощью React, Vue или Svelte</small>
                         </a>
                     </li>
-                    <li class="d-flex gap-4 rounded p-4" id="second" data-tabs-target="tab" data-action="click->tabs#change:prevent">
+                    <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="second" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.livewire" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
                             <h5 class="mb-0">Livewire</h5>
-                            <small class="opacity-50">Реактивные шаблоны, отображаемые на сервере, с помощью PHP</small>
+                            <small class="opacity-50 d-none d-lg-block">Реактивные шаблоны, построенные с помощью PHP</small>
                         </a>
                     </li>
-                    <li class="d-flex gap-4 rounded p-4" id="third" data-tabs-target="tab" data-action="click->tabs#change:prevent">
+                    <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="third" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.spa" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
                            class="text-body-secondary text-decoration-none"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                            <h5 class="mb-0">SPA и мобильные приложения</h5>
-                            <small class="opacity-50">Создавайте мощные API быстрее, чем когда-либо</small>
+                            <h5 class="mb-0">API</h5>
+                            <small class="opacity-50 d-none d-lg-block">Создавайте мощные API быстрее, чем когда-либо</small>
                         </a>
                     </li>
                 </div>
 
 
-{{--
-                <div data-controller="tabs" data-tabs-active-tab-class="-mb-px border-l border-t border-r rounded-t" data-tabs-index-value="1">
-                    <ul class="list-reset flex border-b">
-                        <li class="mr-1" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                            <a class="bg-white inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#" data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">First</a>
-                        </li>
-                        <li class="mr-1 -mb-px border-l border-t border-r rounded-t" id="second" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                            <a class="bg-white inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#" data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">Second</a>
-                        </li>
-                        <li class="mr-1" id="third" data-tabs-target="tab" data-action="click->tabs#change:prevent">
-                            <a class="bg-white inline-block py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold no-underline" href="#" data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">Third</a>
-                        </li>
-                    </ul>
-
-                    <div class="py-4 px-4 border-l border-b border-r d-none" data-tabs-target="panel">
-                        Tab panel 1
-                    </div>
-                    <div class="py-4 px-4 border-l border-b border-r" data-tabs-target="panel">
-                        Tab panel 2
-                    </div>
-                    <div class="py-4 px-4 border-l border-b border-r d-none" data-tabs-target="panel">
-                        Tab panel 3
-                    </div>
-
-                    <div class="mt-4">
-                        <a data-action="click->tabs#change:prevent" data-index="1" class="text-blue-500 underline" href="#">Change tab by data-index</a>
-                        <a data-action="click->tabs#change:prevent" data-id="third" class="text-blue-500 underline" href="#">Change tab by data-id</a>
-
-                        <span>or change by select</span>
-                        <select data-action="tabs#change" data-tabs-target="select">
-                            <option>First</option>
-                            <option>Second</option>
-                            <optgroup label="Works with optgroups">
-                                <option>Third</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
---}}
-
-                <div class="d-none d-md-block">
+                <div class="">
                     <div class="d-none" data-tabs-target="panel">
                         <div class="row">
                             <div class="col-lg-4">
@@ -259,10 +219,10 @@
 
                         <div class="row">
                             <div class="col-lg-4">
-                                <h4>Don't need a frontend? No problem.</h4>
-                                Laravel is the perfect back-end API for your JavaScript
-                                SPAs and mobile applications. You'll have access to all of Laravel's features while
-                                maintaining the frontend development workflow you're used to.
+                                <h4>Не нужен фронтенд? Нет проблем.</h4>
+                                Laravel - идеальное бэкенд API для ваших JavaScript SPA и мобильных приложений. Вы
+                                получите доступ ко всем функциям Laravel, сохраняя рабочий процесс разработки фронтенда,
+                                к которому вы привыкли.
                             </div>
                             <div class="col-12 col-lg-8">
                                 <pre class="rounded-3 my-0"><code language="php">
@@ -307,10 +267,15 @@
 
                         <div class="row my-3">
                             <div class="col-lg-6">
-                                <p>For authentication, you may leverage Laravel's secure, cookie-based authentication. Or, you may use Laravel Sanctum or Laravel Passport if you're building a mobile application or your frontend is hosted separately from your back-end API.
+                                <p>
+                                    Для аутентификации вы можете использовать надежную аутентификацию на основе куки в
+                                    Laravel. Или вы можете использовать Laravel Sanctum или Laravel Passport, если вы
+                                    разрабатываете мобильное приложение или ваш фронтенд размещен отдельно от бэкенд
+                                    API.
                                 </p>
                                 <p class="mb-0">
-                                If your API operates at extreme scale, pair your Laravel application with Laravel Octane and Laravel Vapor to handle your traffic without breaking a sweat.
+                                    Если ваше API работает в условиях больших нагрузок, сочетайте ваше приложение
+                                    Laravel с Laravel Octane и Laravel Vapor, чтобы обрабатывать ваш трафик без проблем.
                                 </p>
                             </div>
                         </div>

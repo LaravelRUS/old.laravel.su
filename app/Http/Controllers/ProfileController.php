@@ -35,11 +35,11 @@ class ProfileController extends Controller
     /**
      * @param \App\Models\User        $owner
      * @param \App\Casts\PostTypeEnum $type
-     * @param \App\Models\User        $user
+     * @param \App\Models\User|null   $user
      *
      * @return \Illuminate\Pagination\AbstractCursorPaginator|\Illuminate\Pagination\AbstractPaginator
      */
-    private function getPosts(User $owner, PostTypeEnum $type, User $user)
+    private function getPosts(User $owner, PostTypeEnum $type, ?User $user)
     {
         $posts = $owner->posts()
             ->type($type->value)
@@ -48,7 +48,9 @@ class ProfileController extends Controller
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
 
-        return $user->attachLikeStatus($posts);
+        $user?->attachLikeStatus($posts);
+
+        return $posts;
     }
 
     public function meets(User $user, Request $request)
@@ -97,7 +99,7 @@ class ProfileController extends Controller
             ->orderBy('id', 'desc')
             ->cursorPaginate(2);
 
-        $comments = $request->user()->attachLikeStatus($comments);
+        $request->user()?->attachLikeStatus($comments);
 
         return view('profile.comments', [
             'comments' => $comments,

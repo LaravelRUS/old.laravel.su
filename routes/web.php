@@ -30,6 +30,8 @@ Route::view('/team', 'pages.team')->name('team');
 Route::view('/courses', 'pages.courses')->name('courses');
 
 
+Route::view('nav', 'pages.navigation')->name('nav');
+
 /*
 |--------------------------------------------------------------------------
 | Post/Feed Routes

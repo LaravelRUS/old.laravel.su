@@ -161,6 +161,7 @@ $utilities: (
 .avatar {
     @extend .bg-body-secondary;
     border-radius: 10em;
+    height: 100%;
 }
 .avatar-sm {
     max-width: 40px;
@@ -357,9 +358,3 @@ $utilities: (
     background-color: #FBDBD9 !important;
 }
 
-@include media-breakpoint-up(md) {
-    .bg-md-body-secondary{
-        --bs-bg-opacity: 1;
-        background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important;
-    }
-}

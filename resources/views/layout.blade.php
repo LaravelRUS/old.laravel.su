@@ -10,7 +10,9 @@
         <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow-sm">
             <header class="d-flex flex-wrap align-items-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
-                    <x-icon path="bs.list" width="2em" height="2em" />
+                    <a href="{{ route('nav') }}">
+                        <x-icon path="bs.list" width="2em" height="2em" />
+                    </a>
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
                     @guest
