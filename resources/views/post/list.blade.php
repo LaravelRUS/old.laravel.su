@@ -34,11 +34,11 @@
             </div>
         </div>
 
-        <div class="position-relative post">
+        <div class="position-relative post overflow-hidden">
             <a href="{{ route('post.show', $post) }}"
                class="position-absolute start-0 end-0 top-0 bottom-0 z-2"></a>
 
-            <h4 class="mb-3">{{ $post->title }}</h4>
+            <h4 class="mb-3 mt-2">{{ $post->title }}</h4>
 
             <div class="line-clamp line-clamp-5" data-controller="prism">
                 {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
