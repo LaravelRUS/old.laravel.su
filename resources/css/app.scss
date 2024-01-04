@@ -159,9 +159,7 @@ $utilities: (
 }
 
 .avatar {
-    @extend .bg-body-secondary;
     border-radius: 10em;
-    height: 100%;
 }
 .avatar-sm {
     max-width: 40px;
