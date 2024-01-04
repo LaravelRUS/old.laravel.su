@@ -14,7 +14,7 @@
 
     <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-start g-5 justify-content-between">
+            <div class="row align-items-start g-4 g-md-5 justify-content-between">
                 <div class="col">
                     <h3 class="display-5 fw-semibold mb-4 text-balance">Титульное партнерство</h3>
                     <p class="mb-0">
@@ -44,7 +44,7 @@
 
     <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-start g-5 justify-content-between">
+            <div class="row align-items-start g-4 g-md-5 justify-content-between">
                 <div class="col">
                     <h3 class="display-5 fw-semibold mb-4 text-balance">Спонсорский контент</h3>
                     <p class="mb-0">
@@ -79,7 +79,7 @@
 
     <x-container>
         <div class="p-5 text-start bg-body-tertiary rounded-3">
-            <div class="row align-items-start g-5 justify-content-between">
+            <div class="row align-items-start g-4 g-md-5 justify-content-between">
                 <div class="col">
                     <h3 class="display-5 fw-semibold mb-4 text-balance">Подкаст</h3>
                     <p class="mb-0">
@@ -107,7 +107,7 @@
     </x-container>
 
     <x-container>
-        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+        <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 py-3">
                 <div class="mb-4">
                     <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56" fill="none"
@@ -127,7 +127,7 @@
 
 
 
-            <div class="row row-cols-sm-2 g-5">
+            <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
 
                 <div class="col">
                     <h6 class="fw-bolder mb-3">Что такое Laravel-сообщество?</h6>

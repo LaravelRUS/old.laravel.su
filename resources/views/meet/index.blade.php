@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-5 text-center">
-                                <div class="ticket-border">
+                                <div class="ticket-border ">
                                     <!-- QR code -->
                                     <img class="img-fluid d-block mx-auto user-select-none rounded" src="https://chart.googleapis.com/chart?cht=qr&chl={{ urlencode($most->link) }}&chs=500x500" alt="">
                                 </div>
@@ -65,7 +65,7 @@
         </x-header>
 
         <x-container>
-            <div class="row row-cols-lg-3 gy-0 position-relative">
+            <div class="row row-cols-1 row-cols-lg-3 g-4 position-relative">
                 @foreach($actual as $meet)
                     <div class="col position-relative">
                         @if($loop->first)
@@ -73,15 +73,15 @@
                                 <x-icon path="l.cube" width="46" height="53" fill="none"/>
                             </figure>
                         @endif
-                        @include('particles.meet', ['meet' => $meet])
+                        @include('particles.meet', ['meet' => $meet, 'loop' => $loop])
                     </div>
                 @endforeach
 
                 @if($actual->count() % 3 !== 0)
-                    <x-icon path="l.dots" class="text-primary opacity-2 opacity-25 col" height="400" width="100%" />
+                    <x-icon path="l.dots" class="d-none d-lg-block text-primary opacity-2 opacity-25 col" height="400" width="100%" />
 
                     @if($actual->count() % 4 === 0)
-                        <x-icon path="l.dots" class="text-primary opacity-2 opacity-25 col" height="400" width="100%" />
+                        <x-icon path="l.dots" class="d-none d-lg-block text-primary opacity-2 opacity-25 col" height="400" width="100%" />
                     @endif
                 @endif
             </div>
@@ -90,7 +90,7 @@
 
 
     <x-container>
-        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+        <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
                     <svg width="56" class="border border-primary" height="56" viewBox="0 0 56 56" fill="none"
@@ -110,7 +110,7 @@
 
                 @foreach($past as $meet)
                     <div class="col">
-                        @include('particles.meet', ['meet' => $meet])
+                        @include('particles.meet', ['meet' => $meet, 'loop' => $loop])
                     </div>
                 @endforeach
 

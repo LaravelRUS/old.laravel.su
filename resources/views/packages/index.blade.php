@@ -53,43 +53,69 @@ return response()->json([
 
     <x-container>
         <x-turbo-frame id="packages">
-            <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-                <div class="col-xl-3">
+            <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
+                <div class="col-md-4 col-xl-3 d-none d-md-block">
                     <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
                 </div>
-                <div class="col-xl-9">
-                    <form class="row align-items-center justify-content-end" action="{{route('packages')}}" method="GET">
+                <div class="col-md-8 col-xl-9">
+                    <form class="row g-1 align-items-center justify-content-md-end" action="{{route('packages')}}" method="GET">
 
-                        <div class="col-md-3 d-flex bg-body-secondary small px-3 py-2 rounded">
-                            <input name="q" type="text" class="form-search d-inline-block bg-body-secondary rounded"
-                                   placeholder="Поиск" value="{{ request()->query('q') }}">
+                        <div class="col-md-6 col-xl-3 mb-3 mb-md-0">
+                            <div class="d-flex justify-content-between bg-body-secondary small px-3 py-1 py-md-2 rounded">
+                                <input name="q" type="text" class="form-search d-inline-block bg-body-secondary rounded"
+                                       placeholder="Поиск" value="{{ request()->query('q') }}">
 
-                        @empty(!request()->query('q'))
-                                <a href="{{ route('packages') }}" class="btn btn-link icon-link text-secondary text-decoration-none">
-                                    <x-icon path="bs.x-lg"/>
-                                </a>
-                            @else
-                                <button type="submit" class="text-secondary fw-medium btn btn-link d-inline-flex align-items-center">
-                                    <x-icon path="bs.search" class="ms-2" />
-                                </button>
-                            @endif
+                                @empty(!request()->query('q'))
+                                    <a href="{{ route('packages') }}" class="btn btn-link icon-link text-secondary text-decoration-none">
+                                        <x-icon path="bs.x-lg"/>
+                                    </a>
+                                @else
+                                    <button type="submit" class="text-secondary fw-medium btn btn-link d-inline-flex align-items-center">
+                                        <x-icon path="bs.search" class="ms-2" />
+                                    </button>
+                                @endif
+                            </div>
                         </div>
-                        <div class="col-auto d-flex bg-body-secondary small p-3 rounded ms-3">
-                            <select class="form-search fw-medium" name="sort" onchange="this.form.requestSubmit()">
-                                @foreach(\App\Casts\SortEnum::cases() as $sort)
-                                    <option value="{{$sort->value}}"
-                                        @selected(request()->get('sort') == $sort->value)
-                                    >
+                        <div class="col-5 col-md-auto   ms-md-3">
+                            <div class="d-flex bg-body-secondary small px-3 py-2 py-md-3 rounded">
+                                <select class="form-search fw-medium" name="sort" onchange="this.form.requestSubmit()">
+                                    @foreach(\App\Casts\SortEnum::cases() as $sort)
+                                        <option value="{{$sort->value}}"
+                                            @selected(request()->get('sort') == $sort->value)
+                                        >
                                             {{$sort->text()}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-7  d-md-none">
+                            <div class="d-flex bg-body-secondary small px-3 py-2 rounded">
+                                <select class="form-search fw-medium" name="type" onchange="this.form.requestSubmit()">
+                                    <option
+                                        @selected( !request()->filled('type'))
+                                        value=""
+                                    >
+                                        Не выбрано
                                     </option>
-                                @endforeach
-                            </select>
+                                    @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                                        <option value="{{$type->value}}"
+                                            @selected( request()->get('type')==$type->value)
+                                        >
+                                            {{$type->text()}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
                     </form>
                 </div>
+
             </div>
-            <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-                <div class="col-xl-3 position-sticky top-0">
+            <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
+                <div class="col-md-4 col-xl-3 position-sticky top-0 d-none d-md-block">
                     @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
                         <div class="mb-4 position-relative">
                             <div class="d-flex align-items-center">
@@ -113,7 +139,7 @@ return response()->json([
 
                 </div>
 
-                <div class="col-xl-9">
+                <div class="col-md-8 col-xl-9">
                         @if($packages->isEmpty())
                         <div class=" bg-body-tertiary rounded p-5 rounded">
                             <div class="p-5">
@@ -125,7 +151,7 @@ return response()->json([
                         </div>
                     @else
 
-                        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-5">
+                        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-4 g-md-5">
 
                             @foreach($packages as $package)
                                 @include('particles.package')

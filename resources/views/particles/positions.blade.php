@@ -31,7 +31,7 @@
                     datetime="{{ $position->created_at->toISOString() }}">{{ $position->created_at->diffForHumans() }}</time>
             </div>
 
-            <div class="d-flex flex-column gap-2 col-md-3">
+            <div class="d-flex flex-column gap-2 col-md-3 mt-3 mt-md-0">
                 <span class="opacity-50 d-flex align-items-center">
                     <x-icon path="bs.geo-alt-fill" class="me-2"/>
                     {{$position->location}}

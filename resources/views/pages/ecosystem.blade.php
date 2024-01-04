@@ -24,7 +24,7 @@
     </x-header>
 
     <x-container>
-        <div class="row row-cols-lg-3 g-5">
+        <div class="row row-cols-lg-3 g-4 g-md-5">
             @foreach (App\Ecosystem::items() as $ecosystemItemId => $ecosystemItem)
                 <div class="col">
                     <a href="{{ $ecosystemItem['href'] }}"

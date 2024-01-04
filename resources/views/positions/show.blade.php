@@ -43,7 +43,7 @@
 
 
                         <details>
-                            <summary class="btn btn-primary me-3">Показать контакты</summary>
+                            <summary class="d-block d-md-inline-block btn btn-primary me-3">Показать контакты</summary>
 
                             <span class="user-select-all">{{ $position->contact }}</span>
                         </details>
@@ -52,7 +52,7 @@
 
 
                     <!-- Start Author  -->
-                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
+                    <div class="d-block d-sm-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
                         <figure class="position-absolute top-0 end-0 translate-middle z-n1">
                             <x-icon path="l.cube" width="46" height="53" fill="none"/>
                         </figure>
@@ -60,7 +60,7 @@
                         <x-profile :user="$position->author"/>
 
 
-                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <div class="btn-group mt-3 mt-sm-0" role="group" aria-label="Basic example">
                             <button class="btn btn-secondary"
                                     data-controller="share"
                                     data-share-title-value="{{$position->title}}"
