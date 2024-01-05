@@ -9,8 +9,8 @@
     <div class="small">
         <h6 class="mb-0 me-4">
             <a href="{{route('profile',$user)}}"
-               class="text-body-secondary text-decoration-none">{{ $user->name }}</a>
+               class="link-body-emphasis text-decoration-none">{{ $user->name }}</a>
         </h6>
-        <p class="mb-0 small">Разработчик laravel.su</p>
+        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->github_bio ?? 'Скрытый лист' }}</p>
     </div>
 </div>
