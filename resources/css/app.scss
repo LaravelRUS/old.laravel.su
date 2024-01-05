@@ -219,6 +219,7 @@ $utilities: (
     display: -webkit-box !important;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -356,3 +357,20 @@ $utilities: (
     background-color: #FBDBD9 !important;
 }
 
+
+.to-transparent {
+    background-image: linear-gradient(to top, var(--bs-tertiary-bg), rgb(var(--bs-tertiary-bg-rgb), 0%));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 10;
+    height: 8rem;
+}
+
+.post-preview-text {
+    max-height: 25rem;
+    overflow: hidden;
+    position: relative;
+}

@@ -40,9 +40,11 @@
 
             <h4 class="mb-3 mt-2">{{ $post->title }}</h4>
 
-            <div class="line-clamp line-clamp-5" data-controller="prism">
+            <div class="line-clamp line-clamp-5 post-preview-text" data-controller="prism">
                 {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
             </div>
+
+            <div class="to-transparent"></div>
         </div>
 
         <div class="d-flex align-items-center mt-4">

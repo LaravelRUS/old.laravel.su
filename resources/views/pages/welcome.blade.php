@@ -565,18 +565,18 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
-                                    src="https://xsgames.co/randomusers/avatar.php?g=male&4" alt="avatar">
+                                    src="https://avatars.githubusercontent.com/adamwathan?v=4" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote class="px-3">
                                 <p>
-                                    Laravel - мой надежный спутник в путешествии программиста, который помогает
-                                    мне раскрыть свой потенциал и достичь высоких результатов.
+                                    Я использую Laravel уже почти десять лет, и у меня никогда не возникало искушения
+                                    переключиться на что-то другое.
                                 </p>
                             </blockquote>
 
                             <!-- Info -->
-                            <p class="mb-0 fw-semibold">Кирил Несмеянов</p>
+                            <p class="mb-0 fw-semibold">Адам Ватан</p>
                         </div>
                     </div>
 
@@ -589,13 +589,13 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <i class="bi bi-shield-fill-check text-dark"></i>
                             </div>
                             <!-- Title -->
-                            <h6 class="mb-4"><span class="text-primary">150+</span> экспертов в Laravel разработке</h6>
+                            <h6 class="mb-4"><span class="text-primary">150+</span> профессионалов в Laravel разработке</h6>
                             <!-- Mentor Item -->
                             <div class="d-flex align-items-center mb-4">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
-                                        src="https://xsgames.co/randomusers/avatar.php?g=male&2" alt="avatar">
+                                        src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
@@ -669,9 +669,16 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
                 <h2 class="display-5 fw-semibold mb-4 ">Живое общение, новые знакомства</h2>
                 <p>
+                    Laravel предназначен для всех — независимо от того, занимаетесь ли вы программированием 20 лет или
+                    20 минут. Астронавтов-архитекторов и хакеров выходного дня.
+                    Для тех, у кого есть высшее образование, и для тех, кто бросил учебу ради своей мечты.
+                    Вместе мы создаем удивительные вещи.
+
+                    {{--
                     Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
                     Активное сообщество предоставляет вам уникальную платформу для обмена опытом, нахождения вдохновения и
                     наставничества с опытными профессионалами Laravel.
+                    --}}
                 </p>
 
                 <div class="d-grid gap-3 d-md-flex justify-content-center justify-content-lg-start align-items-baseline">
