@@ -186,7 +186,7 @@
                             приложение Laravel всего за две минуты!
                         </p>
 
-                        <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                             Посмотрите вступление
                             <x-icon path="bs.arrow-right" />
                         </a>
@@ -292,7 +292,7 @@
                             приложение Laravel всего за две минуты!
                         </p>
 
-                        <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                        <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                             Посмотрите вступление
                             <x-icon path="bs.arrow-right" />
                         </a>
@@ -325,7 +325,7 @@
                                     <small class="opacity-50 me-auto">Илья Чубаров</small>
                                     <p class="text-end mb-0">
                                         <a href="#"
-                                            class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
+                                            class="link-body-emphasis stretched-link icon-link icon-link-hover text-decoration-none">Перейти
                                             <x-icon path="bs.arrow-right" />
                                         </a>
                                     </p>

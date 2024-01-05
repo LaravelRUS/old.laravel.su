@@ -59,6 +59,10 @@ $border-width: 2px;
 $btn-font-weight: 700;
 
 $enable-negative-margins: true;
+$input-border-width: 0;
+$input-bg: var(--bs-secondary-bg);
+$input-padding-y: 0.5rem;
+$input-padding-x: 1rem;
 
 
 
@@ -183,15 +187,9 @@ $utilities: (
 
 .company-usage img {
     filter: grayscale(100%);
+    opacity: 0.8;
     height: 60px;
     object-fit: contain;
-}
-
-.body-content pre {
-    color: #fff;
-    background: #252a37;
-    padding: 2em 1.5em;
-    margin: 0 -3rem 2em -3rem;
 }
 
 
@@ -200,28 +198,13 @@ $utilities: (
     height: 3rem;
 }
 
-.link-icon-animation {
-    svg {
-        transition: 340ms all;
-        padding-right: 0.1em;
-    }
-
-    &:hover {
-        svg {
-            padding-right: 0 !important;
-        }
-    }
-}
-
-
 
 .line-clamp {
-    //display: -webkit-box !important;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 
 
 
@@ -365,8 +348,8 @@ $utilities: (
     bottom: 0;
     right: 0;
     pointer-events: none;
-    z-index: 10;
-    height: 8rem;
+    z-index: 2;
+    height: 4rem;
 }
 
 .post-preview-text {

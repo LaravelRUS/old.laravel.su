@@ -16,7 +16,7 @@
         <x-slot:actions>
             <a href="https://laravel-idea.com/" class="btn btn-primary btn-lg px-4">Перейти на сайт</a>
             <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea"
-               class="link-body-emphasis text-decoration-none link-icon-animation">Маркетплейс
+               class="link-body-emphasis text-decoration-none icon-link icon-link-hover">Маркетплейс
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>
@@ -25,7 +25,7 @@
 
     <x-container>
 
-        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xxl-5 bg-body-tertiary rounded-3 position-relative mb-4">
             <div class="row g-5">
                 <div class="col">
                     <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-4">
@@ -33,7 +33,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                         <x-icon path="bs.collection"/>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                         <x-icon path="bs.collection"/>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="me-3">
                                     <div
-                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                         <x-icon path="bs.collection"/>
                                     </div>
                                 </div>

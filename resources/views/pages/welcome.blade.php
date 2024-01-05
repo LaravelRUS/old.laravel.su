@@ -59,7 +59,7 @@
                     </p>
 
                     <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
@@ -79,7 +79,7 @@
                         прочие функции создают надежное и безопасное API.
                     </p>
                     <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
@@ -99,7 +99,7 @@
                         Автоматизируйте рутинные задачи, создавая пользовательские команды и выполняйте их!
                     </p>
                     <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
@@ -265,7 +265,7 @@
                     </p>
 
                     <a href="{{ route('packages') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Посмотреть все пакеты
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
@@ -320,7 +320,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -336,7 +336,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -351,7 +351,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -394,7 +394,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -409,7 +409,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -424,7 +424,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
                                             <div
-                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                                                class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                                                 <x-icon path="bs.collection"/>
                                             </div>
                                         </div>
@@ -689,7 +689,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                 @endguest
 
                     <a href="{{ route('meets') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation d-none d-xxl-block">
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
                         Встречи
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
@@ -716,7 +716,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                 </p>
 
                 <a href="{{ route('jobs') }}"
-                   class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Смотреть вакансии
+                   class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">Смотреть вакансии
                     <x-icon path="bs.arrow-right" /></a>
             </div>
         </div>

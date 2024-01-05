@@ -81,7 +81,7 @@
                                 <div class="bg-body-secondary rounded p-4">
                                 <small class="fw-bolder mb-3 d-block">Как выбрать подходящую категорию для вашего пакета?</small>
 
-                                <ul class="list-unstyled opacity-50 mb-0">
+                                <ul class="list-unstyled opacity-50 mb-0 small">
                                     <li class="mb-2">Изучите пакеты схожей функциональности и их выбранные категории.</li>
                                     <li class="mb-2">Выберите наиболее близкую категорию из имеющихся.</li>
                                     <li class="mb-0">Если точной категории нет, выберите более широкую.</li>

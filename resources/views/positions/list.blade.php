@@ -15,7 +15,7 @@
 
         <x-slot:actions>
             <a href="{{ route('position.create') }}"
-               class="link-body-emphasis text-decoration-none link-icon-animation">Опубликовать вакансию
+               class="link-body-emphasis text-decoration-none icon-link icon-link-hover">Опубликовать вакансию
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>

@@ -15,7 +15,7 @@
             </p>
 
             <a href="{{ route('advertising') }}"
-               class="link-body-emphasis fw-semibold text-decoration-none link-icon-animation">Присоединиться <x-icon
+               class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">Присоединиться <x-icon
                     path="bs.arrow-right" /></a>
         </div>
         <!-- Left side END -->
@@ -23,33 +23,42 @@
 
     <div class="row row-cols-lg-3 g-4 g-md-5">
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100">
+            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-4 me-sm-auto" height="64">
-                <p class="fw-normal m-0 text-center text-sm-start">
+                <p class="fw-normal text-center text-sm-start">
                     Входим в ТОП-3 рейтинга Рунета IT студий и самая большая команда в Москве (100+ человек) - штат
                     проверенных специалистов.
                 </p>
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
+                    Перейти
+                    <x-icon path="bs.arrow-right"/>
+                </a>
             </div>
+
         </div>
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded  h-100">
-                <a href="{{ route('idea.index') }}" class="d-flex flex-column link-body-emphasis text-decoration-none">
-                    <img src="/img/resources/tnspodcast.svg" class="d-block mb-4 me-sm-auto" height="64">
-                    <p class="fw-normal m-0 text-center text-sm-start">
-                        Подкаст c зажигательными эпизоды, которые заставят
-                        задуматься и приведут к новым перспективам.
-                    </p>
+            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+                <img src="/img/resources/tnspodcast.svg" class="d-block mb-4 me-sm-auto" height="64">
+                <p class="fw-normal text-center text-sm-start">
+                    Подкаст c зажигательными эпизоды, которые заставят
+                    задуматься и приведут к новым перспективам.
+                </p>
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
+                    Перейти
+                    <x-icon path="bs.arrow-right"/>
                 </a>
             </div>
         </div>
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded h-100">
-                <a href="{{ route('idea.index') }}" class="d-flex flex-column link-body-emphasis text-decoration-none">
-                    <img src="https://laravel-idea.com/img/logo.svg" class="d-block mb-4 me-sm-auto" height="64">
-                    <p class="fw-normal m-0 text-center text-sm-start">
-                        Laravel Idea — среда разработки на базе PhpStorm, ориентированная на эффективность и
-                        производительность.
-                    </p>
+            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+                <img src="https://laravel-idea.com/img/logo.svg" class="d-block mb-4 me-sm-auto" height="64">
+                <p class="fw-normal text-center text-sm-start">
+                    Laravel Idea — среда разработки на базе PhpStorm, ориентированная на эффективность и
+                    производительность.
+                </p>
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
+                    Перейти
+                    <x-icon path="bs.arrow-right"/>
                 </a>
             </div>
         </div>

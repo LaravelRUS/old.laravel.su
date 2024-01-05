@@ -3,7 +3,7 @@ import {Controller} from '@hotwired/stimulus';
 export default class extends Controller {
     static targets = ['preferred'];
 
-    connect() {
+    initialize() {
         // Устанавливаем начальное значение темы
         const preferredTheme = this.getTheme();
         this.setTheme(preferredTheme);

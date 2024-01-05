@@ -58,7 +58,7 @@
             <div class="col">
                 <p class="text-end mb-0">
                     <a href="{{ $package->website }}"
-                       class="link-body-emphasis stretched-link link-icon-animation text-decoration-none">Перейти
+                       class="link-body-emphasis stretched-link icon-link icon-link-hover text-decoration-none">Перейти
                         <x-icon path="bs.arrow-right"/>
                     </a>
                 </p>
