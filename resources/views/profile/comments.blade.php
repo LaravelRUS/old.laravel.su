@@ -5,7 +5,7 @@
         @if($comments->isEmpty())
             @if ($user->id === Auth::user()?->id)
                 <div class="bg-body-tertiary rounded p-5 rounded">
-                    <div class="p-5">
+                    <div class="p-md-5">
                         <div class="text-center mb-3">
                             Вы не написали ни одного комментария
                         </div>
@@ -16,7 +16,7 @@
                 </div>
             @else
                 <div class="bg-body-tertiary rounded p-5 rounded">
-                    <div class="p-5">
+                    <div class="p-md-5">
                         <div class="text-center mb-3">
                             Этот пользователь не оставил ни одного комментария
                         </div>

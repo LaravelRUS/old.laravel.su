@@ -28,7 +28,7 @@
 
                         <div class="row g-5">
 
-                            <div class="col-12 col-xxl-7">
+                            <div class="col-12 col-lg-7">
 
                                 <div class="mb-3">
                                     <label for="packagist_name" class="form-label">Основания для включения</label>
@@ -73,11 +73,14 @@
                                     </div>
                                 </div>
 
-
-                                <button type="submit" class="btn btn-primary">Опубликовать</button>
+                                <div class="d-block d-sm-inline-block">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        {{ $pack->exists ? "Обновить" : "Опубликовать" }}
+                                    </button>
+                                </div>
                             </div>
 
-                            <div class="col-12 col-xxl-5">
+                            <div class="col-12 col-lg-5 d-none d-lg-block">
                                 <div class="bg-body-secondary rounded p-4">
                                 <small class="fw-bolder mb-3 d-block">Как выбрать подходящую категорию для вашего пакета?</small>
 

@@ -27,7 +27,7 @@
 
         <div class="p-4 p-xxl-5 bg-body-tertiary rounded-3 position-relative mb-4">
             <div class="row g-5">
-                <div class="col">
+                <div class="col-xl">
                     <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-4">
                         <div class="col d-flex flex-column gap-2">
                             <div class="d-flex align-items-center">
@@ -83,7 +83,7 @@
                             будет обработан, мы отправим вам ключ.
                         </p>
 
-                        <div class="row">
+                        <div class="row row-cols-1 row-cols-sm-2">
                             <div class="col mb-3">
                                 <label for="first_name" class="form-label">Имя</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -95,7 +95,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row row-cols-1 row-cols-sm-2">
                             <div class="col mb-3">
                                 <label for="city" class="form-label">Город</label>
                                 <input type="text" class="form-control" id="city" name="city" required>
@@ -111,8 +111,11 @@
                             <label for="message" class="form-label">Расскажите о себе</label>
                             <textarea class="form-control" id="message" name="message" rows="4"></textarea>
                         </div>
+                        <div class="d-block d-sm-inline-block">
+                            <button type="submit" class="w-100 btn btn-primary">Отправить заявку</button>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+
                     </form>
 
                 </div>
