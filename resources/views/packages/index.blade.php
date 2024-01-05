@@ -141,11 +141,14 @@ return response()->json([
 
                 <div class="col-md-8 col-xl-9">
                         @if($packages->isEmpty())
-                        <div class=" bg-body-tertiary rounded p-5 rounded">
+                        <div class="bg-body-tertiary rounded p-5 rounded">
                             <div class="p-5">
+                                <div class="col-lg-7 mx-auto text-center mb-3">
 
-                                <div class="text-center mb-3">
-                                    Пакеты не найдены
+                                    <p class="mb-3 fs-4">¯\_(ツ)_/¯</p>
+
+                                    <p class="mb-0">Сейчас пакетов подходящих под требуемые условия не найдены.
+                                    Но в базе есть много других классных пакетов.</p>
                                 </div>
                             </div>
                         </div>

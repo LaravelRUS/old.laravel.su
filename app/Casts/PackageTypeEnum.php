@@ -16,7 +16,7 @@ enum PackageTypeEnum: string
     //case SEO = 'seo';
     case Testing = 'testing';
     //case Payment = 'payment';
-    case Security = 'security';
+    //case Security = 'security';
     //case Mail = 'mail';
     case ECommerce = 'e-commerce';
     case CMSAndAdminPanels = 'cms-and-admin-panels';
@@ -32,13 +32,13 @@ enum PackageTypeEnum: string
             //self::AuthAndPermission => 'Аутентификация и разрешения',
             self::DatabaseAndEloquent => 'Базы данных и Eloquent',
             self::DebuggingAndDevTools => 'Инструменты разработчика',
-            self::DevOps => 'DevOps',
+            self::DevOps => 'Обслуживание',
             //self::Localization         => 'Локализация',
             self::API => 'API',
             //self::SEO                  => 'Оптимизация для поисковых систем (SEO)',
             self::Testing => 'Тестирование',
             //self::Payment              => 'Платежи',
-            self::Security => 'Безопасность',
+            //self::Security => 'Безопасность',
             //self::Mail                 => 'Почта',
             self::ECommerce => 'Интернет-торговля',
             self::CMSAndAdminPanels => 'CMS и панели администратора',
@@ -73,7 +73,7 @@ enum PackageTypeEnum: string
             //self::SEO                  => 'bs.search',
             self::Testing => 'bs.gear-wide',
             //self::Payment              => 'bs.credit-card-fill',
-            self::Security => 'bs.shield-shaded',
+            //self::Security => 'bs.shield-shaded',
             //self::Mail                 => 'bs.envelope-fill',
             self::ECommerce => 'bs.bag-fill',
             self::CMSAndAdminPanels => 'bs.window-stack',

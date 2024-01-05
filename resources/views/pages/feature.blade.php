@@ -349,7 +349,7 @@
                 <hr class="mt-0">
                 </div>
 
-                <div class="p-5">
+                <div class="p-4 p-xl-5">
                     <div class="row align-items-start">
                         <div class="col-lg-4 mb-3 mb-lg-0">
                             <div class="bg-body-secondary rounded p-4">

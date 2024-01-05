@@ -34,7 +34,7 @@ class PackagesController extends Controller
             ->when($request->get('sort') === SortEnum::Latest->value,
                 fn($query) => $query->latest(),
                 fn($query) => $query->orderByDesc('stars'))
-            ->paginate(8);
+            ->paginate(6);
 
         return view('packages.index', [
             'packages' => $packages,
