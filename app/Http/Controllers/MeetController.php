@@ -13,16 +13,19 @@ class MeetController extends Controller
 {
     public function index()
     {
-        $most = Meet::whereDate('start_date', '>=', now())
+        $most = Meet::approved()
+            ->whereDate('start_date', '>=', now())
             ->orderBy('start_date', 'asc')
             ->first();
 
-        $actual = Meet::whereDate('start_date', '>=', now())
+        $actual = Meet::approved()
+            ->whereDate('start_date', '>=', now())
             ->where('id', '!=', $most?->id)
             ->orderBy('start_date', 'asc')
             ->get();
 
-        $past = Meet::whereDate('start_date', '<', now())
+        $past = Meet::approved()
+            ->whereDate('start_date', '<', now())
             ->orderBy('start_date', 'desc')
             ->simplePaginate(5);
 

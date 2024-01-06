@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Orchid\Screens\Package;
+namespace App\Orchid\Screens\Meet;
 
-use App\Casts\PackageTypeEnum;
-use App\Casts\PostTypeEnum;
-use App\Models\Package;
-use App\Models\User;
+use App\Models\Meet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
-use Orchid\Screen\Components\Cells\Number;
+use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Layouts\Modal;
 use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
@@ -33,7 +32,7 @@ class ListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'approved' => Package::with('author')
+            'approved' => Meet::with('author')
                 ->filters()
                 ->defaultSort('approved')
                 ->paginate(),
@@ -47,7 +46,7 @@ class ListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Управление пакетами';
+        return 'События';
     }
 
     /**
@@ -57,7 +56,7 @@ class ListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Этот раздел позволяет вам управлять каталогом пакетов, которые будут отображаться на веб-сайте.';
+        return '';
     }
 
     /**
@@ -85,31 +84,39 @@ class ListScreen extends Screen
                     ->width(200)
                     ->sort()
                     ->cantHide()
-                    ->render(function (Package $package) {
-                        return "<strong class='d-block'>$package->name</strong><span class='text-muted'>{$package->type->text()}</span>";
+                    ->render(function (Meet $meet) {
+                        return "<strong class='d-block'>$meet->name</strong>";
                     })->filter(Input::make()),
 
-                TD::make('description','Описание')
-                    ->width(300)->filter(Input::make()),
+                TD::make('location','Адрес')
+                    ->width(200)
+                    ->filter(Input::make()),
 
-                /*
-                TD::make('Статистика')
-                    ->width(120)
-                    ->render(function (Package $package) {
-                        return "<strong class='d-block'>⭐ $package->stars</strong><span class='text-muted'>✈️ $package->downloads</span>";
-                    }),
-                */
+                TD::make('start_date','Начало')
+                    ->usingComponent(DateTimeSplit::class)
+                    ->width(150)
+                ->sort(),
+
+                TD::make('Онлайн')
+                    ->width(100)
+                    ->render(function (Meet $meet) {
+                        if($meet->online==1){
+                            return  Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
+                        }
+                        return '-';
+                    })
+                ->sort(),
 
 
                 TD::make('approved', 'Статус')
                     ->width(130)
                     ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
-                    ->sort(),
+                ->sort(),
 
-                TD::make('Участник')
+                TD::make('Добавил')
                     ->sort()
                     ->cantHide()
-                    ->render(fn(Package $package) => new Persona($package->author->presenter())),
+                    ->render(fn(Meet $meet) => new Persona($meet->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -125,51 +132,62 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Package $package) => DropDown::make()
+                    ->render(fn(Meet $meet) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make("Веб-сайт")
-                                ->href($package->website ?? '')
+                                ->href($meet->link ?? '')
                                 ->target('_blank')
                                 ->icon('bs.box-arrow-up-right'),
 
                             ModalToggle::make(__('Edit'))
                                 ->icon('bs.pencil')
                                 ->modal('editModal')
-                                ->modalTitle($package->name)
+                                ->modalTitle($meet->name)
                                 ->method('update', [
-                                    'package' => $package,
+                                    'meet' => $meet,
                                 ])
                                 ->asyncParameters([
-                                    'package' => $package->id,
+                                    'meet' => $meet->id,
                                 ]),
 
                             Button::make(__('Delete'))
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'id' => $package->id,
+                                    'id' => $meet->id,
                                 ]),
                         ])),
             ]),
 
             Layout::modal('editModal', Layout::rows([
-                Input::make('package.name')
-                    ->title('Имя пакета')
-                    ->placeholder('Имя пакета')
-                    ->help('Имя пакета которое зарегистрировано на Packagist, например orchid/platform, также используется в файле composer.json вашего проекта.'),
+                Input::make('meet.name')
+                    ->title('Название события')
+                    ->placeholder('Название события'),
 
-                Select::make('package.type')
-                    ->title('Укажите категорию')
-                    ->fromEnum(PackageTypeEnum::class, 'text')
-                    ->help('Выберите наиболее подходящую категорию для вашего пакета.'),
+                DateTimer::make('meet.start_date')
+                    ->enableTime()
+                    ->title('Дата и время начала'),
 
-                Switcher::make('package.approved')
+                Input::make('meet.location')
+                    ->title('Место проведения')
+                    ->placeholder('Укажите адрес'),
+
+                Switcher::make('meet.online')
+                    ->sendTrueOrFalse()
+                    ->title('Онлайн'),
+
+                SimpleMDE::make('meet.description')
+                    ->title('Описание')
+                    ->placeholder('Добавьте краткое описание'),
+
+                Switcher::make('meet.approved')
                     ->sendTrueOrFalse()
                     ->title('Статус')
                     ->placeholder('Одобренный')
-                    ->help('Одобренные пакеты будут видны на сайте и получать автоматическое обновление'),
+                    ->help('Одобренные события будут отображаться на сайте'),
             ]))
+                ->size(Modal::SIZE_LG)
                 ->async('asyncGetData')
                 ->title('Информация')
                 ->applyButton('Обновить'),
@@ -177,39 +195,39 @@ class ListScreen extends Screen
     }
 
     /**
-     * @param string $welcome
+     * @param Meet $meet
      *
      * @return array
      */
-    public function asyncGetData(Package $package): array
+    public function asyncGetData(Meet $meet): array
     {
         return [
-            'package' => $package,
+            'meet' => $meet,
         ];
     }
 
     /**
-     * @param \App\Models\Package      $package
-     * @param \Illuminate\Http\Request $request
+     * @param Meet    $meet
+     * @param Request $request
      *
      * @return void
      */
-    public function update(Package $package, Request $request): void
+    public function update(Meet $meet, Request $request): void
     {
-        $package->forceFill($request->input('package'))->save();
+        $meet->forceFill($request->input('meet'))->save();
 
         Toast::info("Информация обновлена");
     }
 
     /**
-     * @param \App\Models\Package $package
+     * @param Meet $meet
      *
      * @return void
      */
-    public function remove(Package $package): void
+    public function remove(Meet $meet): void
     {
-        $package->delete();
+        $meet->delete();
 
-        Toast::info("Пакет удален");
+        Toast::info("Событие удалено");
     }
 }

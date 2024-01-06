@@ -102,3 +102,9 @@ Route::screen('packages', App\Orchid\Screens\Package\ListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Пакеты'));
+
+Route::screen('meets', App\Orchid\Screens\Meet\ListScreen::class)
+    ->name('platform.meets')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('События'));

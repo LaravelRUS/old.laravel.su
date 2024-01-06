@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
+use App\Models\Meet;
 use App\Models\Package;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
@@ -50,6 +51,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.packages')
                 ->badge(function () {
                     $waiting = Package::approved(false)->count();
+
+                    return $waiting > 0 ? $waiting : null;
+                }, Color::DANGER),
+
+            Menu::make('События')
+                ->icon('bs.box-seam')
+                ->route('platform.meets')
+                ->badge(function () {
+                    $waiting = Meet::approved(false)->count();
 
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),
