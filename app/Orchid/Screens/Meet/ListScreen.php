@@ -97,7 +97,7 @@ class ListScreen extends Screen
                     ->width(150)
                 ->sort(),
 
-                TD::make('Онлайн')
+                TD::make('online','Онлайн')
                     ->width(100)
                     ->render(function (Meet $meet) {
                         if($meet->online==1){
@@ -155,7 +155,7 @@ class ListScreen extends Screen
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'id' => $meet->id,
+                                    'meet' => $meet->id,
                                 ]),
                         ])),
             ]),

@@ -2,12 +2,14 @@
 
 use App\Docs;
 use App\Jobs\UserAttributesCorrelation;
+use App\Models\IdeaKey;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +47,13 @@ Artisan::command('app:update-packages', function () {
     \App\Models\Package::approved()->chunk(100, function (Collection $packages) {
         $packages->each(fn($package) => \App\Jobs\UpdateStatusPackages::dispatch($package));
     });
+})->purpose('Update information about users packages');
+
+//убрать после проверки
+Artisan::command('app:keys', function () {
+    for($i=0; $i<10; $i++){
+        $key = new IdeaKey;
+        $key->key =  Str::uuid();
+        $key->save();
+    }
 })->purpose('Update information about users packages');

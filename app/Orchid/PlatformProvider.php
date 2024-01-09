@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
+use App\Models\IdeaRequest;
 use App\Models\Meet;
 use App\Models\Package;
 use Orchid\Platform\Dashboard;
@@ -60,6 +61,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.meets')
                 ->badge(function () {
                     $waiting = Meet::approved(false)->count();
+
+                    return $waiting > 0 ? $waiting : null;
+                }, Color::DANGER),
+
+            Menu::make('Idea')
+                ->icon('bs.box-seam')
+                ->route('platform.idea')
+                ->badge(function () {
+                    $waiting = IdeaRequest::doesntHave('key')->count();
 
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),

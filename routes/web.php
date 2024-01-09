@@ -317,6 +317,9 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
     ->middleware('auth')
     ->name('my.update');
 
+Route::get('/profile/notifications/{id}',[\App\Http\Controllers\ProfileController::class,'read'])
+    ->name('profile.notifications.read');
+
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
 
@@ -331,6 +334,11 @@ Route::get('/profile/{user:nickname}/awards',[\App\Http\Controllers\ProfileContr
 
 Route::get('/profile/{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
     ->name('profile.meets');
+
+Route::get('/profile/{user:nickname}/notifications',[\App\Http\Controllers\ProfileController::class,'notifications'])
+    ->name('profile.notifications');
+
+
 
 
 /*
