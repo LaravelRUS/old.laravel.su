@@ -23,9 +23,10 @@ class PackagesController extends Controller
      */
     public function index(Request $request)
     {
-        $packages = Package::when($request->filled('type'), function ($query) use ($request) {
-            return $query->where('type', $request->input('type'));
-        })
+        $packages = Package::approved()
+            ->when($request->filled('type'), function ($query) use ($request) {
+                return $query->where('type', $request->input('type'));
+            })
             ->when($request->filled('q'), function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->get('q') . '%')
                     ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')

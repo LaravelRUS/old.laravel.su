@@ -321,7 +321,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.orchid1"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Ваш код это PHP</h4>
@@ -337,7 +337,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.orchid2"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Пользовательский интерфейс</h4>
@@ -352,7 +352,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.orchid3"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
@@ -395,7 +395,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.idea1"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
@@ -410,7 +410,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.idea2"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Красноречивое завершение</h4>
@@ -425,7 +425,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                         <div class="me-3">
                                             <div
                                                 class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                                                <x-icon path="bs.collection"/>
+                                                <x-icon path="i.idea3"/>
                                             </div>
                                         </div>
                                         <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>

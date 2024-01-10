@@ -17,6 +17,100 @@
 
     <x-container>
 
+
+        <div class="row g-4">
+            <div class="col-md-4 mb-4">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden mb-4 h-100">
+                    <h3 class="mb-2 fw-bold">Закладки</h3>
+                    <p class="mb-5 fw-light line-clamp line-clamp-3">
+                        Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
+                    </p>
+                    <a href="{{ route('courses') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                        Посмотреть курс
+                        <x-icon path="bs.arrow-right" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-8 mb-4">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4  h-100">
+                    <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h3 class="mb-2 fw-bold">Laravel с нуля</h3>
+                            <p class="mb-5 h5 fw-light lead">
+                                Твой путь к освоению мощного фреймворка с минимальными усилиями.
+                            </p>
+                            <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link">Начать обучение</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden h-100">
+                    <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
+                    <div class="h-100 d-flex flex-column">
+                        <h3 class="mb-2 fw-bold">Orchid</h3>
+                        <p class="mb-5 fw-light mb-auto line-clamp line-clamp-5">
+                            В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
+                            как построить админ панель с готовым пользовательским интерфейсом.
+                        </p>
+                        <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link ">Построить админку</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-100">
+                    <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
+                    <div class="h-100 d-flex flex-column">
+                        <h3 class="mb-2 fw-bold">Livewire</h3>
+                        <p class="mb-5 fw-light mb-auto line-clamp line-clamp-5">
+                            Создавайте динамические компоненты в PHP, и полностью игнорируйте уровень JavaScript.
+                        </p>
+                        <a {{ route('courses') }} class="btn btn-warning mb-0 stretched-link stretched-link ">Посмотреть курс</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="h-100 d-flex flex-column gap-4">
+                    <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-50">
+                            <h3 class="mb-2 fw-bold">Очереди</h3>
+                            <p class="mb-5 fw-light line-clamp line-clamp-3">
+                                Игнорирование <code>timeout</code>, дублирование задач и
+                                сохранение состояния программы. Предоставляются практические примеры.
+                            </p>
+                            <a href="{{ route('courses') }}"
+                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                                Посмотреть курс
+                                <x-icon path="bs.arrow-right" />
+                            </a>
+                    </div>
+                    <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-50">
+                            <h3 class="mb-2 fw-bold">PHP Итераторы</h3>
+                            <p class="mb-5 fw-light line-clamp line-clamp-3">
+                                В этом видео курсе представлено введение в использование итераторов в PHP, включая
+                                теорию, практические примеры и самостоятельное задание.
+                            </p>
+                            <a href="{{ route('courses') }}"
+                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                                Посмотреть курс
+                                <x-icon path="bs.arrow-right" />
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{--
         <div class="row g-4">
             <div class="col-md-8 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4">
@@ -25,7 +119,7 @@
                         <div class="col-sm-8 position-relative">
                             <h3 class="mb-2 fw-bold">Сертификат</h3>
                             <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
-                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
+                            <a {{ route('courses') }} class="btn btn-primary mb-0">Посмотреть программу</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +136,7 @@
                                         В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
                                         как взаимодействовать с Orchid и постройки UI с помощью PHP.
                                     </p>
-                                    <a href="#" class="btn btn-primary mb-0">Построить админку</a>
+                                    <a {{ route('courses') }} class="btn btn-primary mb-0">Построить админку</a>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +152,7 @@
                                         Laravel. Он позволяет создавать динамические компоненты в PHP, что часто
                                         приводит к тому, что вы можете полностью пропустить уровень JavaScript.
                                     </p>
-                                    <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
+                                    <a {{ route('courses') }} class="btn btn-warning mb-0">Посмотреть курс</a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +215,7 @@
                 </div>
             </div>
         </div>
-
+--}}
         {{--
         <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100 my-5">
             <div class="row flex-lg-row-reverse align-items-center g-4">
@@ -147,7 +241,7 @@
                         <div class="col-sm-8 position-relative">
                             <h3 class="mb-2 fw-bold">Сертификат</h3>
                             <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
-                            <a href="#" class="btn btn-primary mb-0">Посмотреть программу</a>
+                            <a {{ route('courses') }} class="btn btn-primary mb-0">Посмотреть программу</a>
                         </div>
                     </div>
                 </div>
@@ -160,7 +254,7 @@
                         <div class="col-sm-8 position-relative">
                             <h3 class="mb-2 fw-bold">Лучше курсы</h3>
                             <p class="mb-5 h5 fw-light lead">Запишитесь сейчас на самые популярные курсы.</p>
-                            <a href="#" class="btn btn-warning mb-0">Посмотреть курс</a>
+                            <a {{ route('courses') }} class="btn btn-warning mb-0">Посмотреть курс</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +263,7 @@
         --}}
     </x-container>
 
-
+{{--
     <x-container>
         <div class="row align-items-md-stretch overflow-hidden">
             <div class="col-lg-8">
@@ -201,48 +295,48 @@
                     </div>
 
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline active"
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline active"
                            aria-current="true">
                             Установка
                             <span class="ms-auto">3:34</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Действия
                             <span class="ms-auto">5:53</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Свойства
                             <span class="ms-auto">7:40</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Маршрутизация
                             <span class="ms-auto">4:22</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Прослойки
                             <span class="ms-auto">6:15</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Контроллеры
                             <span class="ms-auto">9:05</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Запросы и ответы
                             <span class="ms-auto">8:30</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Представления
                             <span class="ms-auto">5:45</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Шаблонизация Blade
                             <span class="ms-auto">4:50</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Миграции Базы Данных
                             <span class="ms-auto">7:25</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-baseline">
+                        <a {{ route('courses') }} class="list-group-item list-group-item-action d-flex align-items-baseline">
                             Посев Данных
                             <span class="ms-auto">6:40</span>
                         </a>
@@ -252,6 +346,7 @@
             </div>
         </div>
     </x-container>
+--}}
 
     <x-call-to-action link="{{ route('docs') }}" text="Посмотреть документацию">
         <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>
@@ -279,7 +374,7 @@
                 <div class="col-md-6">
                     <div class="h-100 position-relative">
                         <img src="https://i3.ytimg.com/vi/jQITs6C-GjU/maxresdefault.jpg" class="d-block h-100 w-100 object-fit-cover" style="aspect-ratio: 16/9;">
-                        <a href="#" class="position-absolute top-0 start-0 end-0 bottom-0 bg-black opacity-75">
+                        <a {{ route('courses') }} class="position-absolute top-0 start-0 end-0 bottom-0 bg-black opacity-75">
 
                         </a>
                     </div>
@@ -324,7 +419,7 @@
                                 <div class="d-flex align-items-baseline align-content-between">
                                     <small class="opacity-50 me-auto">Илья Чубаров</small>
                                     <p class="text-end mb-0">
-                                        <a href="#"
+                                        <a {{ route('courses') }}
                                             class="link-body-emphasis stretched-link icon-link icon-link-hover text-decoration-none">Перейти
                                             <x-icon path="bs.arrow-right" />
                                         </a>

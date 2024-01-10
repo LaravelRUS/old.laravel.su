@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
 use Orchid\Screen\AsSource;
 
 class Package extends Model
@@ -26,7 +27,6 @@ class Package extends Model
         'type',
         'downloads',
         'stars',
-        'approved',
     ];
 
     /**
@@ -39,7 +39,27 @@ class Package extends Model
         'website'        => 'string',
         'type'           => PackageTypeEnum::class,
     ];
+    protected $attributes = [
+        'approved'       => 0,
+    ];
 
+    /**
+     * @var array
+     */
+    protected $allowedFilters = [
+        'name' => Like::class,
+        'description' => Like::class,
+        'packagist_name' => Like::class,
+        'website'        => Like::class,
+    ];
+
+    protected $allowedSorts = [
+        'name',
+        'created_at',
+        'updated_at',
+        'stars',
+        'approved',
+    ];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

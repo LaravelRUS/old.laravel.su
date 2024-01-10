@@ -106,6 +106,33 @@ class ProfileController extends Controller
             'user'     => $user,
         ]);
     }
+    public function notifications(Request $request, User $user){
+        $notifications = $request->user()
+            ->notifications()
+            ->orderBy('read_at')
+            ->orderBy('created_at')
+            ->cursorPaginate(5);
+
+        return view('profile.notifications', [
+            'notifications' => $notifications,
+            'user'     => $user,
+        ]);
+    }
+
+    public function read(string $id, Request $request)
+    {
+        $notification = $request->user()
+            ->notifications()
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $notification->markAsRead();
+
+        return turbo_stream()->replace($notification)
+            ->view('particles.notification',['notification' => $notification]);
+    }
+
+
 
     public function awards(User $user)
     {

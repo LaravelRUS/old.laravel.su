@@ -11,6 +11,6 @@
             <a href="{{route('profile',$user)}}"
                class="link-body-emphasis text-decoration-none">{{ $user->name }}</a>
         </h6>
-        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->github_bio ?? 'Скрытый лист' }}</p>
+        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->about ?? $user->github_bio ?? 'Скрытый лист' }}</p>
     </div>
 </div>

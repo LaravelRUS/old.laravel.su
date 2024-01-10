@@ -94,6 +94,13 @@
                            href="{{ route('profile.meets', $user) }}"
                         >События</a>
                     </li>
+                    @if ($user->id === Auth::user()?->id)
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.notifications') }}"
+                               href="{{ route('profile.notifications', $user) }}"
+                            >Уведомления</a>
+                        </li>
+                    @endif
                 </div>
             </div>
         </div>

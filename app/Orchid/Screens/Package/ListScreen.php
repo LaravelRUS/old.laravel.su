@@ -81,15 +81,16 @@ class ListScreen extends Screen
         return [
             Layout::table('approved', [
 
-                TD::make('Название')
+                TD::make('name','Название')
                     ->width(200)
+                    ->sort()
                     ->cantHide()
                     ->render(function (Package $package) {
                         return "<strong class='d-block'>$package->name</strong><span class='text-muted'>{$package->type->text()}</span>";
-                    }),
+                    })->filter(Input::make()),
 
                 TD::make('description','Описание')
-                    ->width(300),
+                    ->width(300)->filter(Input::make()),
 
                 /*
                 TD::make('Статистика')
@@ -102,7 +103,8 @@ class ListScreen extends Screen
 
                 TD::make('approved', 'Статус')
                     ->width(130)
-                    ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает'),
+                    ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
+                    ->sort(),
 
                 TD::make('Участник')
                     ->sort()
@@ -127,7 +129,7 @@ class ListScreen extends Screen
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make("Веб-сайт")
-                                ->href($package->website)
+                                ->href($package->website ?? '')
                                 ->target('_blank')
                                 ->icon('bs.box-arrow-up-right'),
 
@@ -146,7 +148,7 @@ class ListScreen extends Screen
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'id' => $package->id,
+                                    'package' => $package->id,
                                 ]),
                         ])),
             ]),
