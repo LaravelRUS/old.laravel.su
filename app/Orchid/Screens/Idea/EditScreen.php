@@ -32,7 +32,6 @@ class EditScreen extends Screen
     public function query(IdeaRequest $ideaRequest): iterable
     {
         $ideaRequest->load(['user','key']);
-        //$ideaRequest->key()->delete();
 
 
         return [

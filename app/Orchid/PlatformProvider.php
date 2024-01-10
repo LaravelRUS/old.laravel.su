@@ -44,7 +44,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Лента постов')
                 ->icon('bs.collection')
-                ->route('platform.example')
+                ->route('platform.post')
                 ->badge(fn () => 6),
 
             Menu::make('Каталог пакетов')

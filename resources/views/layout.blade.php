@@ -54,9 +54,11 @@
                            class="avatar avatar-sm position-relative">
                             <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle border border-tertiary-subtle">
 
-                            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
-                                <span class="visually-hidden">New alerts</span>
-                            </span>
+                            @if(auth()->user()->unreadNotifications()->exists())
+                                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                            @endif
                         </a>
 
                     @endif

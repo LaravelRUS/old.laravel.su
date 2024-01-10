@@ -228,6 +228,9 @@ Route::middleware(['auth'])
     ->group(function () {
         Route::get('/idea', [\App\Http\Controllers\IdeaController::class, 'index'])->name('idea.index');
         Route::post('/idea', [\App\Http\Controllers\IdeaController::class, 'store'])->name('idea.store');
+        Route::get('/idea/{key}', [\App\Http\Controllers\IdeaController::class, 'key'])
+            ->can('owner', 'key')
+            ->name('idea.key');
     });
 
 /*
@@ -318,7 +321,13 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
     ->middleware('auth')
     ->name('my.update');
 
-Route::get('/profile/notifications/{id}',[\App\Http\Controllers\ProfileController::class,'read'])
+Route::get('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'index'])
+    ->name('profile.notifications');
+
+Route::post('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'readAll'])
+    ->name('profile.notifications.read.all');
+
+Route::get('/profile/notifications/{id}',[\App\Http\Controllers\NotificationsController::class,'read'])
     ->name('profile.notifications.read');
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
@@ -336,8 +345,7 @@ Route::get('/profile/{user:nickname}/awards',[\App\Http\Controllers\ProfileContr
 Route::get('/profile/{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
     ->name('profile.meets');
 
-Route::get('/profile/{user:nickname}/notifications',[\App\Http\Controllers\ProfileController::class,'notifications'])
-    ->name('profile.notifications');
+
 
 
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('message')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('idea_request');
+        Schema::dropIfExists('idea_requests');
     }
 };

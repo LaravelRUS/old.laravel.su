@@ -4,11 +4,13 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use App\Models\Comment;
+use App\Models\IdeaKey;
 use App\Models\Meet;
 use App\Models\Package;
 use App\Models\Post;
 use App\Models\Position;
 use App\Policies\CommentPolicy;
+use App\Policies\IdeaKeyPolicy;
 use App\Policies\MeetPolicy;
 use App\Policies\PackagePolicy;
 use App\Policies\PostPolicy;
@@ -27,7 +29,8 @@ class AuthServiceProvider extends ServiceProvider
         Meet::class    => MeetPolicy::class,
         Post::class    => PostPolicy::class,
         Package::class => PackagePolicy::class,
-        Position::class => PositionPolicy::class
+        Position::class => PositionPolicy::class,
+        IdeaKey::class => IdeaKeyPolicy::class
     ];
 
     /**

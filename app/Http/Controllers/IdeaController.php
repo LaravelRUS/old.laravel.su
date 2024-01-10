@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
 use Illuminate\Http\Request;
 
@@ -38,5 +39,8 @@ class IdeaController extends Controller
 
         return redirect()->route('idea.index')
             ->with('success', 'Your request has been sent');
+    }
+    public function key(IdeaKey $key, Request $request){
+        return view('idea.key', ['key' => $key ]);
     }
 }

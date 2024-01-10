@@ -39,11 +39,11 @@ class SiteChannel extends DatabaseChannel
      */
     protected function getData($notifiable, Notification $notification)
     {
-        if (method_exists($notification, 'toLaravelSu')) {
-            return is_array($data = $notification->toLaravelSu($notifiable))
+        if (method_exists($notification, 'toSite')) {
+            return is_array($data = $notification->toSite($notifiable))
                 ? $data : $data->data;
         }
 
-        throw new \RuntimeException('Notification is missing toLaravelSu method.');
+        throw new \RuntimeException('Notification is missing toSite method.');
     }
 }

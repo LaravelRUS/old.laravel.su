@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Casts\PostTypeEnum;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Response;
 use  Illuminate\Database\Eloquent\Builder;

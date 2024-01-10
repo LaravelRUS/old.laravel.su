@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
+use Orchid\Screen\AsSource;
 use Overtrue\LaravelLike\Traits\Likeable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
@@ -24,7 +27,7 @@ use Spatie\Feed\FeedItem;
  */
 class Post extends Model implements Feedable
 {
-    use HasFactory, Taggable, Searchable, Likeable;
+    use HasFactory, Taggable, Searchable, Likeable, AsSource, Filterable;
 
     /**
      * @var string[]
@@ -53,6 +56,19 @@ class Post extends Model implements Feedable
         'type' => PostTypeEnum::Article
     ];
 
+    /**
+     * @var array
+     */
+    protected $allowedFilters = [
+        'title' => Like::class,
+        'content' => Like::class,
+    ];
+
+    protected $allowedSorts = [
+        'title',
+        'created_at',
+        'updated_at',
+    ];
     public static function boot()
     {
         parent::boot();

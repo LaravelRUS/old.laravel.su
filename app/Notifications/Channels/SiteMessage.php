@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Notifications\Channels;
 
+use App\Casts\NotificationTypeEnum;
 use Carbon\Carbon;
 use Illuminate\Notifications\Messages\DatabaseMessage;
 
@@ -17,6 +18,7 @@ class SiteMessage extends DatabaseMessage
         parent::__construct($data);
 
         $this->data['time'] ??= Carbon::now();
+        $this->data['type'] ??= NotificationTypeEnum::Default;
     }
 
     /**
@@ -48,9 +50,10 @@ class SiteMessage extends DatabaseMessage
      *
      * @return $this
      */
-    public function action(string $action): self
+    public function action(string $action, string $text = null): self
     {
         $this->data['action'] = $action;
+        is_null($text) ?:  $this->data['action_text'] = $text;
 
         return $this;
     }
@@ -89,6 +92,20 @@ class SiteMessage extends DatabaseMessage
     {
         $this->data['useClipboard'] = true;
         $this->data['clipboardData'] = $value;
+
+        return $this;
+    }
+
+    public function img(string $src): self
+    {
+        $this->data['img'] = $src;
+
+        return $this;
+    }
+    public function setCommentAuthor(string $author): self
+    {
+        $this->data['type'] = NotificationTypeEnum::ReplyComment;
+        $this->data['author'] = $author;
 
         return $this;
     }

@@ -40,8 +40,11 @@ class ListScreen extends Screen
         return [
             'ideaRequests' => IdeaRequest::with(['user', 'key'])
                 ->filters()
-                //->defaultSort('key')
                 ->paginate(),
+            'metrics' => [
+                'unused_keys' =>  IdeaKey::where('activated',0)->count(),
+                'used_keys' => IdeaKey::where('activated',1)->count()
+            ]
         ];
     }
 
@@ -84,6 +87,13 @@ class ListScreen extends Screen
     public function layout(): iterable
     {
         return [
+
+            Layout::metrics([
+                'Выдано ключей:'              => 'metrics.used_keys',
+                'Не использовано ключей:'    => 'metrics.unused_keys',
+
+            ]),
+
             Layout::table('ideaRequests', [
 
                 TD::make('Пользователь')
@@ -118,8 +128,7 @@ class ListScreen extends Screen
                             return  Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
                         }
                         return '-';
-                    })
-                    ->sort(),
+                    }),
 
 
                 TD::make('created_at', __('Created'))

@@ -96,9 +96,13 @@
                     </li>
                     @if ($user->id === Auth::user()?->id)
                         <li class="nav-item me-2">
-                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.notifications') }}"
-                               href="{{ route('profile.notifications', $user) }}"
-                            >Уведомления</a>
+                            <a class="nav-link link-body-emphasis fw-normal position-relative {{ active('profile.notifications') }}"
+                               href="{{ route('profile.notifications') }}"
+                            >Уведомления
+                                @if(auth()->user()->unreadNotifications()->exists())
+                                    <b class="badge rounded-pill bg-primary col-auto ms-auto">{{auth()->user()->unreadNotifications()->count()}}</b>
+                                @endif
+                            </a>
                         </li>
                     @endif
                 </div>
