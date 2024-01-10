@@ -7,7 +7,7 @@ namespace App\Notifications\Channels;
 use Carbon\Carbon;
 use Illuminate\Notifications\Messages\DatabaseMessage;
 
-class LaravelSuMessage extends DatabaseMessage
+class SiteMessage extends DatabaseMessage
 {
     /**
      * @param array $data

@@ -544,7 +544,7 @@ class UserController
                         Вот несколько ключевых возможностей для работы с базой данных в Laravel:
                     </p>
 
-                    <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
+                    <div class="bg-body-tertiary p-4 p-xl-5 rounded d-flex flex-column gap-4">
                         <h4 class="fw-bold">Eloquent ORM</h4>
                         <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
                            ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
@@ -573,7 +573,7 @@ $invoices->each->pay();</code></pre>
                 <div class="col-lg-6">
                     <img src="/img/ui/data.svg" class="img-fluid img-fluid d-none d-lg-block mx-auto">
 
-                    <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
+                    <div class="bg-body-tertiary p-4 p-xl-5 rounded d-flex flex-column gap-4">
                         <h4 class="fw-bold mb-0">Миграции базы данных</h4>
 
                         <p class="mb-0">Миграции в Laravel - это аналог контроля версий для вашей базы данных. Они позволяют вашей
@@ -613,7 +613,7 @@ $table->timestamps();
                         приложении.
                     </p>
 
-                    <div class="bg-body-tertiary p-5 rounded d-flex flex-column gap-4">
+                    <div class="bg-body-tertiary p-4 p-xl-5 rounded d-flex flex-column gap-4">
                         <h4 class="fw-bold">Job Queues</h4>
                         <p class="mb-0">Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
                            очередь, что помогает поддерживать отзывчивость веб-запросов. Пример использования:</p>

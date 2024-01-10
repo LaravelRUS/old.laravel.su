@@ -7,8 +7,8 @@ use App\Models\IdeaKey;
 use App\Models\User;
 use App\Notifications\Channels\EmotionTrackerChannel;
 use App\Notifications\Channels\EmotionTrackerMessage;
-use App\Notifications\Channels\LaravelSuChannel;
-use App\Notifications\Channels\LaravelSuMessage;
+use App\Notifications\Channels\SiteChannel;
+use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
@@ -38,7 +38,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
      */
     public function via($notifiable)
     {
-        return [LaravelSuChannel::class];
+        return [SiteChannel::class];
     }
 
     /**
@@ -50,7 +50,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
      */
     public function toLaravelSu(User $user)
     {
-        return (new LaravelSuMessage())
+        return (new SiteMessage())
             ->title('Ваш запрос на получение ключа Laravel Idea одобрен')
             ->setUseClipboard($this->ideaKey->key);
     }

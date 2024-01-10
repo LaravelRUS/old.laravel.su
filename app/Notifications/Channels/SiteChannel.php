@@ -7,7 +7,7 @@ namespace App\Notifications\Channels;
 use Illuminate\Notifications\Channels\DatabaseChannel;
 use Illuminate\Notifications\Notification;
 
-class LaravelSuChannel extends DatabaseChannel
+class SiteChannel extends DatabaseChannel
 {
     /**
      * Build an array payload for the DatabaseNotification Model.
