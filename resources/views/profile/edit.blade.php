@@ -32,7 +32,7 @@
                                     <input class="form-control" type="text" value="{{ old('name', $user->name) }}"
                                            id="name" name="name">
                                     <x-error field="name" class="invalid-feedback d-block"/>
-                                    <div class="form-text">Использование настоящего имени помогает установить личное
+                                    <div class="form-text mt-2">Использование настоящего имени помогает установить личное
                                                            взаимодействие и создать доверительную обстановку в
                                                            профессиональной среде.
                                     </div>
@@ -47,8 +47,14 @@
                                         rows="6"
                                         id="about"
                                         name="about"
-                                        class="form-control p-5">{{ old('about', $user->about) }}</textarea>
+                                        class="form-control">{{ old('about', $user->about) }}</textarea>
                                     <x-error field="about" class="invalid-feedback d-block mt-3"/>
+
+                                    <div class="form-text mt-2">
+                                    Расскажите немного о себе, своем опыте работы.
+                                    Будет замечательно, если вы поделитесь своими проектами или достижениями, связанными
+                                    с разработкой на Laravel.
+                                    </div>
                                 </div>
 
 

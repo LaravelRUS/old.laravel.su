@@ -10,6 +10,7 @@ use App\Models\Package;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -87,21 +88,25 @@ class ListScreen extends Screen
 
                 TD::make('Пользователь')
                     ->cantHide()
+                    ->width(250)
                     ->render(fn(IdeaRequest $ideaRequest) => new Persona($ideaRequest->user->presenter())),
 
+                /*
                 TD::make('first_name','Имя')
                     ->width(150),
-                /*
                 TD::make('last_name','Фамилия')
                     ->width(150),
-                */
+
                 TD::make('city','Город')
                     ->width(150),
                 TD::make('email','email')
                     ->width(150),
+                */
 
 
                 TD::make('message','Сообщение')
+                    ->alignLeft()
+                    ->render(fn(IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(30))
                     ->width(300),
 
 
@@ -132,37 +137,11 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(IdeaRequest $ideaRequest) => DropDown::make()
-                        ->icon('bs.three-dots-vertical')
-                        ->list([
-
-                            Link::make('Просмотр')
-                                ->route('platform.idea.request', $ideaRequest->id)
-                                ->icon('bs.pencil'),
-
-                            Button::make(__('Delete'))
-                                ->icon('bs.trash3')
-                                ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
-                                ->method('remove', [
-                                    'id' => $ideaRequest->id,
-                                ]),
-                        ])),
+                    ->render(fn(IdeaRequest $ideaRequest) => Link::make('Просмотр')
+                        ->route('platform.idea.request', $ideaRequest->id)
+                        ->icon('bs.pencil')),
             ]),
 
         ];
-    }
-
-
-
-    /**
-     * @param IdeaRequest $ideaRequest
-     *
-     * @return void
-     */
-    public function remove(IdeaRequest $ideaRequest): void
-    {
-        $ideaRequest->delete();
-
-        Toast::info("Пакет удален");
     }
 }

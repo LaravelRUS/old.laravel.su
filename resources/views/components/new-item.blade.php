@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'bg-body-tertiary rounded overflow-hidden my-5 px-5 py-4 position-relative'])}}>
+<div {{ $attributes->merge(['class' => 'bg-body-tertiary rounded overflow-hidden my-5 px-5 py-4 position-relative'])->except(['user', 'link']) }}>
     <div class="row align-items-center">
         <div class="col-auto col">
             <div class="avatar avatar-sm">
@@ -13,7 +13,7 @@
         </div>
 
         <div class="col-xxl-auto col-8 col-sm-6 ms-auto text-end">
-            <a href="{{ $link}}" class="btn btn-outline-primary stretched-link">Новая запись</a>
+            <a href="{{ $link }}" class="btn btn-outline-primary stretched-link">Новая запись</a>
         </div>
     </div>
 </div>

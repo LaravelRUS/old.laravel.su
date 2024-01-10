@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Component;
 
 class Highlight extends Component
@@ -21,6 +22,8 @@ class Highlight extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.highlight');
+        return function (array $variables) {
+            return Blade::render('<pre class="rounded-3 my-0"><code {{ $attributes }}>{{ \Illuminate\Support\Str::of($slot)->trim() }}</code></pre>', $variables);
+        };
     }
 }

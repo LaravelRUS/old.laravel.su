@@ -63,9 +63,9 @@
                 <div class="">
                     <div class="d-none" data-tabs-target="panel">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <h4>Laravel Inertia</h4>
-                                <p>занимается маршрутизацией и передачей данных между серверной частью
+                                <p>Занимается маршрутизацией и передачей данных между серверной частью
                                 и внешним интерфейсом Laravel — нет необходимости создавать API или
                                 поддерживать два набора маршрутов. Легко
                                 передавайте данные из вашей базы данных непосредственно в реквизиты
@@ -73,36 +73,49 @@
                                 используя все функции Laravel под рукой в ​​одном фантастическом
                                 монорепозитории.</p>
                             </div>
-                            <div class="col-12 col-lg-8">
+                        </div>
 
+                        <div class="row">
+                            <div class="col-lg-6">
+       <pre class="rounded-3 my-0 h-100"><code language="js">
+class UserController
+{
+    public function index()
+    {
+        $users = User::active()
+            ->orderByName()
+            ->get(['id', 'name', 'email']);
 
-                                <pre class="rounded-3 my-0">
-                                 <x-highlight language="php">
-                                    class UserController {
-                                    public function index() {
-                                    $users = User::active()
-                                    ->orderByName()
-                                    ->get([ 'id', 'name', 'email' ]);
-
-                                    return Inertia::render('Users', [
-                                    'users' = > $users,
-                                    ]);
-                                    }
-                                    }
-                                </x-highlight>
+        return Inertia::render('Users', [
+            'users' => $users,
+        ]);
+    }
+}
+           </code>
                                 </pre>
-                                <pre class="rounded-3 my-0"><code language="js">
-        import Layout from './Layout'
+                            </div>
+                            <div class="col-12 col-lg-6">
 
-            export default function Users({users }) {
-          return (
-              <Layout>{users.map(user = > (<Link href={route('users.show', user)}> {
-                user.name
-              }({user.email}) < / Link >))}</Layout>)
-        }
+
+
+                                <pre class="rounded-3 my-0 h-100"><code language="js">
+import Layout from './Layout'
+
+export default function Users({ users }) {
+  return (
+    <Layout>
+      {users.map(user => (
+        <Link href={route('users.show', user)}>
+          {user.name} ({user.email})
+        </Link>
+      ))}
+    </Layout>
+  )
+}
                                 </code></pre>
                             </div>
                         </div>
+
 
                         <div class="row my-3">
                             <div class="col-lg-6">
@@ -143,63 +156,70 @@
 
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <h4>Livewire</h4>
-                                Livewire is a modern way to build dynamic interfaces using server-rendered templates instead
-                                of a JavaScript framework. It combines the simplicity and speed of building a
-                                server-rendered application with the user experience of a JavaScript SPA. You have to see it
-                                to believe it.
+                                <p>Современный способ создания динамических интерфейсов с использованием
+                                   серверных шаблонов вместо JavaScript-фреймворков. Он сочетает в себе простоту и
+                                   быстроту разработки серверного приложения с пользовательским опытом JavaScript SPA
+                                   (Single Page Application). Вам нужно увидеть это, чтобы поверить.</p>
                             </div>
-                            <div class="col-12 col-lg-8">
-                                <pre class="rounded-3 my-0"><code language="php">
-    use Livewire\Component;
+                        </div>
 
-    class Search extends Component
+                        <div class="row">
+                            <div class="col-lg-6">
+    <pre class="rounded-3 my-0 h-100"><code language="php">
+use Livewire\Component;
+
+class Search extends Component
+{
+    public $search = '';
+
+    public function render()
     {
-        public $search = '';
+        $users = User::search($this->search)->get();
 
-        public function render()
-        {
-            $users = User::search($this->search)->get();
-
-            return view('livewire.search', [
-                'users' => $users,
-            ]);
-        }
+        return view('livewire.search', [
+            'users' => $users,
+        ]);
     }
+}
                                 </code></pre>
-                                <pre class="rounded-3 my-0">
-                                    <code language="js">
-                                        @verbatim
-    <div>
-        <input wire:model="search"
-               type="text"
-               placeholder="Search users..." />
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <pre class="rounded-3 my-0 h-100">
+                                    <code language="html">
+<?php echo <<<'HTML'
 
-        <ul>
-            @foreach ($users as $user)
-                <li>{{ $user->username }}</li>
-            @endforeach
-        </ul>
-    </div>
-                                        @endverbatim
+                                <div>
+                                    <input wire:model="search"
+                                        type="text"
+                                        placeholder="Search users..." />
+
+                                    <ul>
+                                        @foreach ($users as $user)
+                                            <li>{{ $user->username }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            HTML; ?>
                                 </code></pre>
                             </div>
                         </div>
 
                         <div class="row my-3">
                             <div class="col-lg-6">
-                                <p>When using Livewire, you won't need JavaScript to manage the DOM or state - you'll just
-                                   sprinkle it in for some thoughtful interactions. Alpine.js is the perfect light-weight
-                                   JavaScript library to pair with your Livewire application.</p>
-
-                                <p class="mb-0">As the state of your Livewire component changes, your frontend will automatically be
-                                   updated. But, Livewire doesn't stop there. Support for real-time validation, event
-                                   handling, file downloads, authorization and more is included.
+                                <p>
+                                    При использовании Livewire вам не нужен JavaScript для управления DOM или состоянием
+                                    - вы просто добавите его для некоторых продуманных взаимодействий. Alpine.js -
+                                    идеальная легковесная JavaScript-библиотека для сочетания с вашим приложением на
+                                    Livewire.
                                 </p>
 
                                 <p class="mb-0">
-                                    Learn more
+                                    По мере изменения состояния вашего компонента Livewire, ваш фронтенд автоматически
+                                    будет обновляться. Но Livewire не останавливается на этом. Поддержка реального
+                                    времени для проверки данных, обработки событий, загрузки файлов, авторизации и
+                                    многого другого включена.
                                 </p>
                             </div>
 
@@ -207,9 +227,12 @@
                                 <div class="p-4 border rounded">
                                     <h6 class="fw-bolder">Как это работает?</h6>
 
-                                    <p class="mb-0">Livewire renders your HTML on the server using the Blade templating language. It
-                                       automatically adds the JavaScript required to make the page reactive, and
-                                       automatically re-renders components and updates the DOM as data changes.</p>
+                                    <p class="mb-0">
+                                        Livewire отрисовывает ваш HTML на сервере с использованием языка шаблонов Blade.
+                                        Он автоматически добавляет необходимый JavaScript, чтобы страница стала
+                                        реактивной, а также автоматически перерисовывает компоненты и обновляет DOM при
+                                        изменении данных.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -219,50 +242,53 @@
                     <div class="d-none" data-tabs-target="panel">
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <h4>Не нужен фронтенд? Нет проблем.</h4>
-                                Laravel - идеальное бэкенд API для ваших JavaScript SPA и мобильных приложений. Вы
+                                <p>Laravel - идеальное бэкенд API для ваших JavaScript SPA и мобильных приложений. Вы
                                 получите доступ ко всем функциям Laravel, сохраняя рабочий процесс разработки фронтенда,
-                                к которому вы привыкли.
+                                к которому вы привыкли.</p>
                             </div>
-                            <div class="col-12 col-lg-8">
-                                <pre class="rounded-3 my-0"><code language="php">
-    class UserController
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <pre class="rounded-3 h-100 my-0"><code language="php">
+class UserController
+{
+    public function index()
     {
-        public function index()
-        {
-            return User::active()
-                ->orderByName()
-                ->paginate(25, ['id', 'name', 'email']);
-        }
+        return User::active()
+            ->orderByName()
+            ->paginate(25, ['id', 'name', 'email']);
     }
+}
                                 </code></pre>
-                                <pre class="rounded-3 my-0">
-                                    <code language="js">
-                                        @verbatim
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <pre class="rounded-3 h-100 my-0">
+                                    <code language="js">@verbatim
+{
+"data": [
     {
-    "data": [
-        {
         "id": 1,
         "name": "Taylor Otwell",
         "email": "taylor@laravel.com",
-        },
-        // ...
-        ],
-        "from": 1,
-        "to": 25,
-        "total": 50,
-        "per_page": 25,
-        "current_page": 1,
-        "last_page": 2,
-        "first_page_url": "https://api.laravel.app/users?page=1",
-        "last_page_url": "https://api.laravel.app/users?page=2",
-        "next_page_url": "https://api.laravel.app/users?page=2",
-        "prev_page_url": null,
-        "path": "https://api.laravel.app/users",
-    }
-                                        @endverbatim
-                                </code></pre>
+    },
+    // ...
+],
+"from": 1,
+"to": 25,
+"total": 50,
+"per_page": 25,
+"current_page": 1,
+"last_page": 2,
+"first_page_url": "https://api.laravel.app/users?page=1",
+"last_page_url": "https://api.laravel.app/users?page=2",
+"next_page_url": "https://api.laravel.app/users?page=2",
+"prev_page_url": null,
+"path": "https://api.laravel.app/users",
+}@endverbatim</code></pre>
                             </div>
                         </div>
 
@@ -274,10 +300,12 @@
                                     разрабатываете мобильное приложение или ваш фронтенд размещен отдельно от бэкенд
                                     API.
                                 </p>
-                                <p class="mb-0">
-                                    Если ваше API работает в условиях больших нагрузок, сочетайте ваше приложение
-                                    Laravel с Laravel Octane и Laravel Vapor, чтобы обрабатывать ваш трафик без проблем.
-                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                            <p class="mb-0 opacity-50">
+                                Если ваше API работает в условиях больших нагрузок, сочетайте ваше приложение
+                                Laravel с Laravel Octane и Laravel Vapor, чтобы обрабатывать ваш трафик без проблем.
+                            </p>
                             </div>
                         </div>
                     </div>
@@ -401,7 +429,7 @@
                 <div class="row g-4 g-md-5 py-5 row-cols-1 row-cols-lg-2">
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.route" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/route.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Маршрутизация</h4>
@@ -418,7 +446,7 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.blade" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/blade.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Шаблоны Blade</h4>
@@ -434,7 +462,7 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.authentication" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/authentication.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Authentication</h4>
@@ -450,7 +478,7 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.authorization" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/authorization.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Authorization</h4>
@@ -466,7 +494,7 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.terminal" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/terminal.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Artisan Console</h4>
@@ -482,7 +510,7 @@
                     </div>
                     <div class="col d-flex align-items-start">
                         <div class="d-inline-flex align-items-center justify-content-center me-3">
-                            <x-icon path="i.tests" width="2.5rem" height="2.5rem" />
+                            <img src="/icons/tests.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Testing</h4>

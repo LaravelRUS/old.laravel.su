@@ -12,6 +12,7 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
+use Orchid\Screen\Sight;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -44,7 +45,7 @@ class EditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Edit Request';
+        return 'Просмотр заявки';
     }
 
     /**
@@ -64,10 +65,10 @@ class EditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
-                ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                ->canSee(is_null($this->ideaRequest->key))
+                ->confirm( "Удаление заявки будет окончательным и необратимым действием. Вся информация, связанная с этой заявкой, будет безвозвратно удалена из системы.")
                 ->method('remove'),
         ];
     }
@@ -78,35 +79,16 @@ class EditScreen extends Screen
     public function layout(): iterable
     {
         return [
-
-            Layout::block(Layout::rows([
-                    Input::make('ideaRequest.first_name')
-                        ->readonly()
-                        ->title('Имя'),
-                    Input::make('ideaRequest.key.key')
-                        ->readonly()
-                        ->title('Ключ'),
-
-                    Input::make('ideaRequest.last_name')
-                        ->readonly()
-                        ->title('Фамилия'),
-
-
-
-                    Input::make('ideaRequest.email')
-                        ->readonly()
-                        ->title('email'),
-
-                    Input::make('ideaRequest.city')
-                        ->readonly()
-                        ->title('город'),
-
-                    TextArea::make('ideaRequest.message')
-                        ->readonly()
-                        ->title('сообщение'),
-                    ]))
+            Layout::block(Layout::legend('ideaRequest', [
+                Sight::make('first_name', 'Имя'),
+                Sight::make('last_name', 'Фамилия'),
+                Sight::make('email', 'Электронная почта'),
+                Sight::make('city', 'Город'),
+                Sight::make('message', 'Сообщение'),
+                Sight::make('key.key', 'Ключ'),
+            ]))
                 ->title(__('Данные запроса'))
-                ->description(__(''))
+                ->description("Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, выделите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.")
                 ->commands(
                     Button::make(__('Принять и выдать ключ'))
                         ->type(Color::SUCCESS)
@@ -122,14 +104,18 @@ class EditScreen extends Screen
      */
     public function accept(IdeaRequest $ideaRequest)
     {
-        $key = IdeaKey::whereNull('user_id')->whereNull('request_id')->first();
+        $key = IdeaKey::whereNull('user_id')
+            ->whereNull('request_id')
+            ->first();
+
         $key->forceFill([
             'user_id' => $ideaRequest->user_id,
             'request_id' => $ideaRequest->id,
             'activated' => 1
         ])->save();
-        $ideaRequest->user->notify(new IdeaRequestAcceptedNotification($key));
 
+
+        $ideaRequest->user->notify(new IdeaRequestAcceptedNotification($key));
 
         Toast::info("Информация обновлена");
 

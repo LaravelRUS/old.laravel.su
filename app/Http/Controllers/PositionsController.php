@@ -19,7 +19,14 @@ class PositionsController extends Controller
      */
     public function jobs()
     {
-        return view('positions.list',);
+        $positions = Position::with(['author'])
+            ->whereDate('created_at','>=',now()->subMonth())
+            ->orderBy('id', 'desc')
+            ->cursorPaginate(3);
+
+        return view('positions.index', [
+            'positions' => $positions,
+        ]);
     }
 
 
@@ -115,7 +122,7 @@ class PositionsController extends Controller
             turbo_stream()->removeAll('.position-placeholder'),
             turbo_stream()->append(
                 'positions-frame',
-                view('particles.positions', [
+                view('positions.list', [
                     'positions' => $positions,
                 ])
             ),
