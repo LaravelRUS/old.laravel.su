@@ -22,7 +22,7 @@
             </div>
 
             <div class="d-flex align-items-center justify-content-between   d-md-block mt-3 mt-md-0 col-md-3">
-                <span class="badge bg-primary rounded-pill">{{$position->schedule->text()}}</span>
+                <span class="badge bg-secondary rounded-pill">{{$position->schedule->text()}}</span>
 
                 <time
                     data-controller="tooltip"

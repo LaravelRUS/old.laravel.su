@@ -127,7 +127,7 @@ export default function Users({ users }) {
                                    вызовах API и манипулировании данными — больше не нужно вручную запускать HTTP-запросы и
                                    манипулировать ответами.
                                 </p>
-                                <p class="mb-0">Inertia даже предлагает рендеринг на стороне сервера при начальной загрузке
+                                <p class="mb-lg-0">Inertia даже предлагает рендеринг на стороне сервера при начальной загрузке
                                                 страницы для
                                                 приложений, которые получают выгоду от поисковой оптимизации.
                                 </p>
@@ -215,7 +215,7 @@ class Search extends Component
                                     Livewire.
                                 </p>
 
-                                <p class="mb-0">
+                                <p class="mb-lg-0">
                                     По мере изменения состояния вашего компонента Livewire, ваш фронтенд автоматически
                                     будет обновляться. Но Livewire не останавливается на этом. Поддержка реального
                                     времени для проверки данных, обработки событий, загрузки файлов, авторизации и
@@ -302,7 +302,7 @@ class UserController
                                 </p>
                             </div>
                             <div class="col-lg-6">
-                            <p class="mb-0 opacity-50">
+                            <p class="bg-body-secondary rounded p-4 mb-0">
                                 Если ваше API работает в условиях больших нагрузок, сочетайте ваше приложение
                                 Laravel с Laravel Octane и Laravel Vapor, чтобы обрабатывать ваш трафик без проблем.
                             </p>
@@ -467,8 +467,7 @@ class UserController
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Authentication</h4>
                             <p class="opacity-75 small mb-0">
-                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                another sentence and probably just keep going until we run out of words.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -483,8 +482,7 @@ class UserController
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Authorization</h4>
                             <p class="opacity-75 small mb-0">
-                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                another sentence and probably just keep going until we run out of words.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -499,8 +497,7 @@ class UserController
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Artisan Console</h4>
                             <p class="opacity-75 small mb-0">
-                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                another sentence and probably just keep going until we run out of words.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -515,8 +512,7 @@ class UserController
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Testing</h4>
                             <p class="opacity-75 small mb-0">
-                                Paragraph of text beneath the heading to explain the heading. We'll add onto it with
-                                another sentence and probably just keep going until we run out of words.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">

@@ -38,19 +38,19 @@
 
     <x-container>
         <div class="row">
-            <div class="col-xl-7 col-md-12 mx-auto text-xl-end text-center">
+            <div class="col-xl-8 col-md-12 mx-auto text-xl-end text-center">
                 <p class="mb-0">Актуально: {{ $documents->where('behind', 0)->count() }} из {{ $documents->count() }} <sup class="text-opacity-25">({{ round($documents->where('behind', 0)->count() / $documents->count() * 100, 2) }} %)</sup></p>
                 <p>Правок без обновления: ~{{ $documents->sum('behind') }}</p>
             </div>
 
 
-            <div class="col-xl-7 col-md-12 mx-auto">
-                <div class="bg-body-tertiary mb-4 p-5">
+            <div class="col-xl-8 col-md-12 mx-auto">
+                <div class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded">
 
                     @foreach ($documents as $doc)
                         <div class="position-relative" id="{{ $doc->file }}">
-                            <div class="d-flex align-items-start mb-4">
-                                <h5 class="mb-0 me-auto user-select-all">{{ $doc->file }}</h5>
+                            <div class="d-flex flex-column flex-lg-row align-items-start mb-4">
+                                <h5 class="mb-lg-0 me-auto user-select-all">{{ $doc->file }}</h5>
 
                                 @if ($doc->behind > 0)
                                     <a href="{{ App\Docs::compareLink($doc->version, $doc->current_commit) }}"
@@ -69,7 +69,7 @@
                             <div class="d-flex align-items-baseline mb-2 clipboard" data-controller="clipboard"
                                 data-clipboard-done-class="done">
                                 <span class="opacity-50 me-auto pe-none">Перевод ссылается:</span>
-                                <small class="user-select-all me-2"
+                                <small class="user-select-all me-2 col-4 col-md-auto text-truncate"
                                     data-clipboard-target="source">{{ $doc->current_commit }}</small>
                                 <a href="#"
                                    data-action="clipboard#copy">
@@ -81,7 +81,7 @@
                             <div class="d-flex align-items-baseline mb-2 clipboard" data-controller="clipboard"
                                 data-clipboard-done-class="done">
                                 <span class="opacity-50 me-auto pe-none">Последний коммит:</span>
-                                <small class="user-select-all me-2"
+                                <small class="user-select-all me-2 col-4 col-md-auto text-truncate"
                                     data-clipboard-target="source">{{ $doc->last_commit }}</small>
                                 <a href="#" data-action="clipboard#copy" title="Скопировать в буфер обмена">
                                     <x-icon path="bs.clipboard" class="copy-action" />
