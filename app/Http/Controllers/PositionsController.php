@@ -65,9 +65,9 @@ class PositionsController extends Controller
     {
 
         $this->authorize('isOwner', $position);
-        //dd($request->get('vacancy'));
 
-        $validatedData = $request->validate([
+
+        $request->validate([
             'position'              => 'required|array',
             'position.title'        => 'required|string',
             'position.description'  => 'required|string',

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('idea_keys', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->text('key');
             $table->boolean('activated')->default(false);
             $table->unsignedBigInteger('user_id')->nullable();

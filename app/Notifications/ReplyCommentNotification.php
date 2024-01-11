@@ -3,7 +3,9 @@
 namespace App\Notifications;
 
 use App\Casts\FriendlyHugsType;
+use App\Models\Comment;
 use App\Models\IdeaKey;
+use App\Models\Post;
 use App\Models\User;
 use App\Notifications\Channels\EmotionTrackerChannel;
 use App\Notifications\Channels\EmotionTrackerMessage;
@@ -13,20 +15,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class IdeaRequestAcceptedNotification extends Notification implements ShouldQueue
+class ReplyCommentNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private IdeaKey $ideaKey;
+    private User $author;
+    private Comment $comment;
+    private Post $post;
 
     /**
      * FriendlyHugs constructor.
      *
      * @param IdeaKey $ideaKey
      */
-    public function __construct(IdeaKey $ideaKey)
+    public function __construct(User $author, Comment $comment, Post $post)
     {
-        $this->ideaKey = $ideaKey;
+        $this->author = $author;
+        $this->comment = $comment;
+        $this->post = $post;
     }
 
     /**
@@ -50,9 +56,12 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
      */
     public function toSite(User $user)
     {
+        $url  = route('post.show',$this->post).'#'.dom_id($this->comment);
         return (new SiteMessage())
-            ->title('Бесплатный ключ Laravel IDEA доступен')
-            ->action(route('idea.key', $this->ideaKey), 'по ссылке');
+            ->title('ответил на ваш комментарий')
+            ->setCommentAuthor($this->author->name)
+            ->img($this->author->avatar)
+            ->action($url, $this->post->title);
     }
 
     /**

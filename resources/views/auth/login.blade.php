@@ -7,12 +7,13 @@
         <div class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-5">
-                    <div class="d-flex flex-column align-items-start gap-4">
-                        <h3 class="fw-bold text-body-emphasis text-balance text-center text-lg-start">
+                    <div class="d-flex flex-column align-items-md-start gap-4">
+                        <h3 class="fw-bold text-body-emphasis text-balance">
                             Чтобы учавствовать в сообществе, войдите в учетную запись.
                         </h3>
 
-                        <a href="{{ route('auth.login') }}" name="button" type="submit" class="btn btn-lg btn-primary icon-link">
+                        <a href="{{ route('auth.login') }}" name="button" type="submit"
+                           class="d-flex d-md-inline-flex justify-content-center justify-content-md-start btn btn-lg btn-primary icon-link">
                             <x-icon path="bs.github" class="auth-google-icon"/>
                             <span class="auth-google-text">Войти через GitHub</span>
                         </a>
