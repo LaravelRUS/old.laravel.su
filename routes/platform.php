@@ -132,3 +132,16 @@ Route::screen('post/{post}/edit', App\Orchid\Screens\Post\EditScreen::class)
     ->breadcrumbs(fn (Trail $trail,$post) => $trail
         ->parent('platform.post')
         ->push($post->title, route('platform.post.edit',$post)));
+
+
+Route::screen('position', App\Orchid\Screens\Position\ListScreen::class)
+    ->name('platform.position')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Вакансии'));
+
+Route::screen('position/{position}/edit', App\Orchid\Screens\Position\EditScreen::class)
+    ->name('platform.position.edit')
+    ->breadcrumbs(fn (Trail $trail,$position) => $trail
+        ->parent('platform.position')
+        ->push($position->title, route('platform.position.edit',$position)));

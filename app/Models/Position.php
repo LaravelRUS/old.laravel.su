@@ -3,14 +3,18 @@
 namespace App\Models;
 
 use App\Casts\ScheduleEnum;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use Orchid\Filters\Filterable;
+use Orchid\Filters\Types\Like;
+use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use HasFactory;
+    use HasFactory, AsSource, Filterable;
 
     /**
      * @var string[]
@@ -38,6 +42,34 @@ class Position extends Model
         'contact'      => 'string',
         'schedule'     => ScheduleEnum::class,
     ];
+
+    protected $attributes = [
+        'approved'       => 0,
+    ];
+    /**
+     * @var array
+     */
+    protected $allowedFilters = [
+        'title' => Like::class,
+        'description' => Like::class,
+        'organization' => Like::class,
+        'location' => Like::class,
+        'contact' => Like::class,
+    ];
+
+    protected $allowedSorts = [
+        'title',
+        'description',
+        'organization',
+        'salary_min',
+        'salary_max',
+        'location',
+        'schedule',
+        'contact',
+        'approved'
+    ];
+
+
 
     public static function boot()
     {
@@ -70,5 +102,17 @@ class Position extends Model
     public function author()
     {
         return $this->user();
+    }
+
+    /**
+     * Get only posts with a custom status.
+     *
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeApproved(Builder $query, bool $approved = true): Builder
+    {
+        return $query->where('approved', $approved);
     }
 }

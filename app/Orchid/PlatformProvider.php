@@ -7,6 +7,7 @@ namespace App\Orchid;
 use App\Models\IdeaRequest;
 use App\Models\Meet;
 use App\Models\Package;
+use App\Models\Position;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -61,6 +62,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.meets')
                 ->badge(function () {
                     $waiting = Meet::approved(false)->count();
+
+                    return $waiting > 0 ? $waiting : null;
+                }, Color::DANGER),
+
+            Menu::make('Вакансии')
+                ->icon('bs.box-seam')
+                ->route('platform.position')
+                ->badge(function () {
+                    $waiting = Position::approved(false)->count();
 
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),

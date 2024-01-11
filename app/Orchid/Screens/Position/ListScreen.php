@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Orchid\Screens\Post;
+namespace App\Orchid\Screens\Position;
 
-
+use App\Models\Position;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Persona;
@@ -26,7 +27,7 @@ class ListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'posts' => Post::with('author')
+            'positions' => Position::with('author')
                 ->filters()
                 ->defaultSort('created_at')
                 ->paginate(),
@@ -40,7 +41,7 @@ class ListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Лента постов';
+        return 'Вакансии';
     }
 
     /**
@@ -72,28 +73,39 @@ class ListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::table('posts', [
+            Layout::table('positions', [
 
                 TD::make('title','Заголовок')
+                    ->width(350)
+                    ->sort()
+                    ->cantHide()
+                    ->render(function (Position $position) {
+                        return "<strong class='d-block'>$position->title</strong>
+                                <p class='text-muted'>". Str::of($position->description)->markdown()->stripTags()->words(20)."</p>";
+                    })->filter(Input::make()),
+
+                TD::make('organization','Организвция')
                     ->width(200)
                     ->sort()
                     ->cantHide()
-                    ->render(function (Post $post) {
-                        return "<strong class='d-block'>$post->title</strong>";
-                    })->filter(Input::make()),
+                    ->filter(Input::make()),
 
-                TD::make('content','Содержимое')
-                    ->width(400)
+                TD::make('location','Локация')
+                    ->width(150)
+                    ->sort()
                     ->cantHide()
-                    ->render(function (Post $post) {
-                        return  Str::of($post->content)->markdown()->stripTags()->words(20);
-                    })->filter(Input::make()),
+                    ->filter(Input::make()),
 
+
+                TD::make('approved', 'Статус')
+                    ->width(130)
+                    ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
+                    ->sort(),
 
 
                 TD::make('Добавил')
                     ->cantHide()
-                    ->render(fn(Post $post) => new Persona($post->author->presenter())),
+                    ->render(fn(Position $position) => new Persona($position->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -102,6 +114,7 @@ class ListScreen extends Screen
                     ->sort(),
 
                 TD::make('updated_at', 'Последнее обновление')
+                    ->defaultHidden()
                     ->usingComponent(DateTimeSplit::class)
                     ->align(TD::ALIGN_RIGHT)
                     ->sort(),
@@ -109,18 +122,18 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Post $post) => DropDown::make()
+                    ->render(fn(Position $position) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make(__('Edit'))
-                                ->route('platform.post.edit', $post->id)
+                                ->route('platform.position.edit', $position->id)
                                 ->icon('bs.pencil'),
 
                             Button::make(__('Delete'))
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'post' => $post->id,
+                                    'post' => $position->id,
                                 ]),
                         ])),
             ]),
@@ -130,14 +143,14 @@ class ListScreen extends Screen
 
 
     /**
-     * @param Post $post
+     * @param Position $position
      *
      * @return void
      */
-    public function remove(Post $post): void
+    public function remove(Position $position): void
     {
-        $post->delete();
+        $position->delete();
 
-        Toast::info("Пост удален");
+        Toast::info("Вакансия удалена");
     }
 }

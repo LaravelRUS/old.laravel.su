@@ -66,7 +66,6 @@ class EditScreen extends Screen
         return [
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
-                ->canSee(is_null($this->post->key))
                 ->confirm( "Удаление публикации будет окончательным и необратимым действием. Вся информация, связанная с этой публикацией, будет безвозвратно удалена из системы.")
                 ->method('remove'),
         ];
