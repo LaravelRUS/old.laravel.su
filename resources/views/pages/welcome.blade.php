@@ -32,7 +32,7 @@
     <x-container class="py-5">
 
         <div class="row g-4 g-md-5 justify-content-center align-items-center">
-            <div class="col-xl-7 text-center text-lg-start me-auto">
+            <div class="col-xl-7 me-auto">
 
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
                     фантазией</span>
@@ -49,7 +49,7 @@
 
         <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7 text-center text-sm-start">
+                <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
                     <p class="">
                         Интуитивно понятный синтаксис и множество готовых компонентов, что
@@ -71,7 +71,7 @@
 
         <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7 text-center text-sm-start">
+                <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>
                     <p class="">
                         Простое и понятное создание и управление ресурсами. Поддержка различных форматов ответов,
@@ -91,7 +91,7 @@
 
         <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7 text-center text-sm-start">
+                <div class="col-md-7 ">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Консоль</h3>
                     <p class="">
                         Обеспечивает удобный доступ к вашим приложениям через командную
@@ -250,7 +250,7 @@
 
             <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
                 <!-- Right side START -->
-                <div class="col-lg-6 text-center text-lg-start">
+                <div class="col-lg-6">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Пакеты сообщества</span>
                     <!-- Title -->
                     <h2 class="display-5 fw-semibold  mb-0">Великолепные дополнения</h2>
@@ -258,7 +258,7 @@
                 <!-- Right side END -->
 
                 <!-- Left side START -->
-                <div class="col-lg-6 position-relative text-center text-sm-start">
+                <div class="col-lg-6 position-relative ">
                     <p>
                         Пришло время начать создавать потрясающие сервисы и перестать тратить время на поиск пакетов и
                         изобретать велосипед.
@@ -307,7 +307,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <div class="col-xl-10 mx-auto">
                                     <img src="https://orchid.software/img/next/logo-full.svg" class="mw-100 w-auto d-inline-block mb-4"
                                          height="40px">
-                                    <p class="mb-0 text-balance text-center text-sm-start text-xl-center">
+                                    <p class="mb-0 text-balance text-start text-xl-center">
                                         Мощное и простое в использовании решение для создания административных панелей и
                                         бизнес-приложений
                                     </p>
@@ -381,7 +381,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <div class="col-xl-10 mx-auto">
                                     <img src="/img/laravelidea.svg" class="mw-100 w-auto d-inline-block mb-4"
                                          height="40px">
-                                    <p class="mb-0 text-balance text-center text-sm-start text-xl-center">
+                                    <p class="mb-0 text-balance text-start text-xl-center">
                                         Полезные дополнения для IDE, включая генерацию кода, автодополнение синтаксиса
                                         Eloquent, автодополнение правил валидации и многое другое.
                                     </p>
@@ -663,7 +663,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div> <!-- Row END -->
             </div>
-            <div class="col-xl-5 order-1 pe-xl-0 text-center text-lg-start">
+            <div class="col-xl-5 order-1 pe-xl-0">
                 <!-- Title -->
 
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
@@ -681,11 +681,11 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     --}}
                 </p>
 
-                <div class="d-grid gap-3 d-md-flex justify-content-center justify-content-lg-start align-items-baseline">
+                <div class="gap-3 d-block d-md-flex justify-content-center justify-content-md-start align-items-baseline">
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                    <a href="{{ route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @else
-                    <a href="{{ route('feed') }}" class="btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+                    <a href="{{ route('feed') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
                 @endguest
 
                     <a href="{{ route('meets') }}"
@@ -706,10 +706,10 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
         <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
             <div class="col-12 col-lg-6">
                 <span
-                    class="text-primary mb-md-3 d-block text-uppercase fw-semibold ls-xl text-center text-lg-start">Это лишь некоторые из громких имен</span>
-                <h2 class="display-5 fw-semibold mb-4 mb-lg-0 text-center text-lg-start">Вы в хорошей компании</h2>
+                    class="text-primary mb-md-3 d-block text-uppercase fw-semibold ls-xl">Это лишь некоторые из громких имен</span>
+                <h2 class="display-5 fw-semibold mb-4 mb-lg-0">Вы в хорошей компании</h2>
             </div>
-            <div class="col-lg-6 position-relative text-center text-sm-start">
+            <div class="col-lg-6 position-relative">
                 <p>
                     За последние десятилетие Laravel привел бесчисленное количество компаний к миллионам пользователей и
                     миллиардным рыночным оценкам.

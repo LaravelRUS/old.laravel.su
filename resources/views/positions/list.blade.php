@@ -48,7 +48,7 @@
             </div>
 
             <div class="col-md-2 mt-3 mt-md-0 text-center text-md-end">
-                <a href="{{route('position.show', $position)}}" class="btn stretched-link btn-primary w-full ms-md-1">Посмотреть</a>
+                <a href="{{route('position.show', $position)}}" class="d-block d-md-inline-block btn stretched-link btn-primary w-full ms-md-1">Посмотреть</a>
             </div>
 
         </div>
