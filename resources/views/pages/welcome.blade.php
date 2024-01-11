@@ -37,7 +37,7 @@
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
                     фантазией</span>
 
-                <h2 class="display-5 fw-semibold mb-5">Реализовывайте потрясающие проекты.</h2>
+                <h2 class="display-5 fw-semibold mb-5">Реализуйте потрясающие проекты.</h2>
             </div>
 
             {{--
@@ -690,7 +690,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
                     <a href="{{ route('meets') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
-                        Встречи
+                        Ближайшие встречи
                         <x-icon path="bs.arrow-right" /></a>
                 </div>
 
@@ -707,7 +707,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
             <div class="col-12 col-lg-6">
                 <span
                     class="text-primary mb-md-3 d-block text-uppercase fw-semibold ls-xl text-center text-lg-start">Это лишь некоторые из громких имен</span>
-                <h2 class="display-5 fw-semibold mb-4 mb-lg-0 text-center text-lg-start">Вы в хорошей кампании</h2>
+                <h2 class="display-5 fw-semibold mb-4 mb-lg-0 text-center text-lg-start">Вы в хорошей компании</h2>
             </div>
             <div class="col-lg-6 position-relative text-center text-sm-start">
                 <p>

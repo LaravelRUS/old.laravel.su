@@ -8,8 +8,8 @@
     --}}
 
 
-    <div class="container mt-md-3 mb-3">
-        <div class="row bg-body-tertiary py-2 px-3 py-lg-4 px-lg-5 rounded shadow-sm">
+    <div class="container mt-md-4 mb-3">
+        <div class="my-2 my-lg-4">
             <header class="d-flex flex-wrap align-items-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
                     <a href="{{ route('nav') }}" class="link-body-emphasis text-decoration-none d-flex align-items-center">
@@ -51,8 +51,8 @@
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
                     @else
                         <a href="{{ route('profile', auth()->user()) }}"
-                           class="link-dark btn avatar avatar-sm text-bg-dark border border-tertiary-subtle p-0  position-relative">
-                            <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle">
+                           class="avatar avatar-sm position-relative">
+                            <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle border border-tertiary-subtle">
 
                             <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
                                 <span class="visually-hidden">New alerts</span>

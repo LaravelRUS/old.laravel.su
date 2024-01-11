@@ -27,7 +27,7 @@
 
                         <div class="row row-cols-1 row-cols-md-2 mb-3">
                             <div class="col mb-3">
-                                <div class="bg-body-secondary rounded p-4">
+                                <div class="bg-body rounded p-4">
                                     <div class="form-text">
                                         <p>Укажите название компании, так, как оно известно в сети (например,
                                            М.Видео). Это поможет кандидатам получить более полное представление о вашей компании.
@@ -61,7 +61,7 @@
 
                         <div class="row row-cols-1 row-cols-md-2 mb-3">
                             <div class="col mb-3">
-                                <div class="bg-body-secondary rounded p-4">
+                                <div class="bg-body rounded p-4">
                                     <div class="form-text">
                                         <p>
                                             Не все кандитаты готовы ездить на работу в офис по 2 часа в одну сторону.
@@ -115,7 +115,7 @@
 
                         <div class="row row-cols-1 row-cols-md-2 mb-3">
                             <div class="col mb-3">
-                                <div class="bg-body-secondary rounded p-4">
+                                <div class="bg-body rounded p-4">
                                     <div class="form-text">
                                         <p class="mb-0">
                                            Когда работодатель не указывает информацию о зарплате, потенциальный опытный кандитат

@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="col-12 col-lg-5 d-none d-lg-block">
-                                <div class="bg-body-secondary rounded p-4">
+                                <div class="bg-body rounded p-4">
                                 <small class="fw-bolder mb-3 d-block">Как выбрать подходящую категорию для вашего пакета?</small>
 
                                 <ul class="list-unstyled opacity-50 mb-0 small">

@@ -260,7 +260,8 @@ Route::middleware('auth')
 |
 */
 
-Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
+Route::view('/login', 'auth.login')->middleware('guest')->name('login');
+Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('auth.login');
 Route::get('/auth/callback', [AuthController::class, 'callback'])->middleware('guest');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
