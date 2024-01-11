@@ -221,7 +221,7 @@ main,.main {
         &:before {
             //background-color: transparentize($info, 0.65);
             background-color: #8DF1A4;
-            background-image: url("/img/ui/info.svg");
+            background-image: url("$image/ui/info.svg");
             content: '';
         }
     }
@@ -232,7 +232,7 @@ main,.main {
         &:before {
             //background-color: transparentize($danger, 0.65);
             background-color: #F1A58D;
-            background-image: url("/img/ui/warning.svg");
+            background-image: url("$image/ui/warning.svg");
             content: '';
         }
     }
