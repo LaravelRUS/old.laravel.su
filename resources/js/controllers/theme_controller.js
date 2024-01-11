@@ -5,14 +5,12 @@ export default class extends Controller {
 
     initialize() {
         // Устанавливаем начальное значение темы
-        const preferredTheme = this.getPreferredTheme();
-        this.setThemeBody(preferredTheme);
+        this.setThemeBody(this.getThemeValue());
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.toggleTheme());
     }
 
     // Функция для смены темы
     toggleTheme() {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.toggleTheme());
-
         let theme = this.preferredTargets.find((element) => element.checked)?.value;
 
         if (theme === undefined) {
@@ -24,9 +22,19 @@ export default class extends Controller {
     }
 
     // Получение текущей темы из localStorage
-    getTheme() {
+    getThemeValue() {
         const theme = localStorage.getItem('theme');
 
+        if (theme === null) {
+            return 'auto';
+        }
+
+        return theme;
+    }
+
+
+    // Получение текущей темы из localStorage
+    getTheme(theme) {
         if (['dark', 'light'].includes(theme)) {
             return theme;
         }
@@ -40,7 +48,7 @@ export default class extends Controller {
     }
 
     setThemeBody(theme) {
-        document.documentElement.setAttribute('data-bs-theme', this.getTheme());
+        document.documentElement.setAttribute('data-bs-theme', this.getTheme(theme));
         this.preferredTargets.find((element) => element.value === theme)?.setAttribute('checked', true);
     }
 
