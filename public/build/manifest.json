@@ -1,19 +1,19 @@
 {
   "public/img/ui/info.svg": {
-    "file": "assets/info-g_uO_4Da.svg",
+    "file": "assets/info-98d2f1eb.svg",
     "src": "public/img/ui/info.svg"
   },
   "public/img/ui/warning.svg": {
-    "file": "assets/warning-zFvV_XK2.svg",
+    "file": "assets/warning-5fe3beca.svg",
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-B0rarqPQ.css",
+    "file": "assets/app-a0597898.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
   "resources/js/app.js": {
-    "file": "assets/app-HRcW03Tz.js",
+    "file": "assets/app-261dc4a2.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
