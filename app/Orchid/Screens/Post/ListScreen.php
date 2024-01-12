@@ -28,7 +28,7 @@ class ListScreen extends Screen
         return [
             'posts' => Post::with('author')
                 ->filters()
-                ->defaultSort('created_at')
+                ->defaultSort('created_at','desc')
                 ->paginate(),
         ];
     }

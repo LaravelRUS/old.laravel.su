@@ -18,12 +18,8 @@ class NotificationsController extends Controller
 
     public function index(Request $request)
     {
-        //$request->user()->notify(new IdeaRequestAcceptedNotification(IdeaKey::find(1)));
-
-        //$request->user()->notify(new ReplyCommentNotification(User::find(1), Comment::find(29), Post::find(56)));
         $notifications = $request->user()
             ->notifications()
-            //->orderBy('read_at')
             ->orderBy('created_at')
             ->cursorPaginate(5);
 

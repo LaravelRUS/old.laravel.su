@@ -88,8 +88,11 @@
                                         адаптировался автоматически в соответствии с вашей системой.
                                     </div>
                                 </div>
+                                <div class="d-flex d-md-inline-block">
+                                    <button type="submit" class="btn btn-primary mb-3 w-100">Сохранить</button>
+                                </div>
 
-                                <button type="submit" class="btn btn-primary mb-3">Сохранить</button>
+
                             </form>
                         </div>
 

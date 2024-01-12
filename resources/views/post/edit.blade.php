@@ -22,22 +22,18 @@
                         <x-text-editor name="content" id="content" placeholder="Текст публикации"
                                        :value="old('content', $post->content)"/>
 
-                        <div class="mt-3   row @if($post->exists) row-cols-2 @else row-cols-1 @endif align-items-center justify-content-between">
-                            <div class="col col-sm-auto">
-                                <button type="submit" class="btn btn-primary @if(!$post->exists) w-100 @endif">
-                                    {{ $post->exists ? "Обновить" : "Опубликовать" }}
-                                </button>
-                            </div>
+                        <div class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">
+                                {{ $post->exists ? "Обновить" : "Опубликовать" }}
+                            </button>
 
                             @if($post->exists)
-                            <div class="col text-end">
-                                <a class="btn btn-link ms-auto icon-link text-decoration-none" data-turbo-method="delete"
-                                   data-turbo-confirm="Вы уверены, что хотите удалить запись?"
+                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                   data-turbo-confirm="Вы уверены, что хотите удалить вакансию?"
                                    href="{{route('post.delete', $post)}}">
                                     <x-icon path="bs.trash3" />
                                     Удалить
                                 </a>
-                            </div>
                             @endif
                         </div>
                     </form>
