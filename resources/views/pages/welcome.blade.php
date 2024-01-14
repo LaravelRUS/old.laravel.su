@@ -398,11 +398,10 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea1"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Завершение правил валидации</h4>
+                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Генерация кода</h4>
                                     </div>
                                     <p class="text-body-secondary">
-                                        Мощная настраиваемая генерация кода позволяет быстро создавать каждую часть приложения
-                                        Laravel
+                                        Мощная настраиваемая генерация кода для Laravel, автозаполнение полей и завершение отношений.
                                     </p>
                                 </div>
                                 <div class="col d-flex flex-column gap-2">
@@ -413,11 +412,10 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea2"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Красноречивое завершение</h4>
+                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Eloquent завершение</h4>
                                     </div>
                                     <p class="text-body-secondary">
-                                        Управление разрешениями, которое упрощает управление доступом пользователей в процессе
-                                        разработки и поддержки.
+                                        Полное автозаполнение полей и отношений, автоматическое создание фабрики ресурсов для баз данных.
                                     </p>
                                 </div>
                                 <div class="col d-flex flex-column gap-2">
@@ -428,11 +426,10 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea3"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
+                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Полезные помощники</h4>
                                     </div>
                                     <p class="text-body-secondary">
-                                        Управление разрешениями, которое упрощает управление доступом пользователей в процессе
-                                        разработки и поддержки.
+                                        Сотни полезных помощников, включая маршруты, валидацию, настройки и переводы, завершение имен шлюзов, поддержка Blade и многое другое.
                                     </p>
                                 </div>
                             </div>
