@@ -38,7 +38,7 @@ class EditScreen extends Screen
 
         return [
             'position'       => $position,
-            'position.schedule' => $position->schedule?->value,
+            //'position.schedule' => $position->schedule?->value,
         ];
     }
 
@@ -96,7 +96,7 @@ class EditScreen extends Screen
                         ->title('Локация'),
 
                     Select::make('position.schedule')
-                        ->options($this->getSchedules())
+                        ->fromEnum(ScheduleEnum::class, 'text')
                         ->title('Формат'),
 
                     Input::make('position.contact')
@@ -172,13 +172,6 @@ class EditScreen extends Screen
         Toast::info('Вакансия удалена');
 
         return redirect()->route('platform.position');
-    }
-
-    public function getSchedules(): array
-    {
-        return collect(ScheduleEnum::cases())
-            ->mapWithKeys(fn (ScheduleEnum $schedule) => [$schedule->value => $schedule->text()])
-            ->all();
     }
 
 }

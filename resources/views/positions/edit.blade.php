@@ -160,13 +160,13 @@
                         </div>
 
 
-                        <div class="mt-3 d-flex align-items-center">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">
                                 {{ $position->exists ? "Обновить" : "Опубликовать" }}
                             </button>
 
                             @if($position->exists)
-                                <a class="btn btn-link ms-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить вакансию?"
                                    href="{{route('position.delete', $position)}}">
                                     <x-icon path="bs.trash3" />

@@ -39,6 +39,7 @@ class ListScreen extends Screen
     {
         return [
             'ideaRequests' => IdeaRequest::with(['user', 'key'])
+                ->defaultSort('created_at','desc')
                 ->filters()
                 ->paginate(),
             'metrics' => [

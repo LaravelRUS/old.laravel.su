@@ -29,7 +29,7 @@ class ListScreen extends Screen
         return [
             'positions' => Position::with('author')
                 ->filters()
-                ->defaultSort('created_at')
+                ->defaultSort('approved')
                 ->paginate(),
         ];
     }
