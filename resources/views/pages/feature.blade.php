@@ -64,7 +64,7 @@
                     <div class="d-none" data-tabs-target="panel">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Laravel Inertia</h4>
+                                <h4>Inertia</h4>
                                 <p>Занимается маршрутизацией и передачей данных между серверной частью
                                 и внешним интерфейсом Laravel — нет необходимости создавать API или
                                 поддерживать два набора маршрутов. Легко
@@ -186,10 +186,9 @@ class Search extends Component
                                 </code></pre>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <pre class="rounded-3 my-0 h-100">
+                                <pre class="rounded-3 my-0 h-100 language-html" tabindex="0">
                                     <code language="html">
-<?php echo <<<'HTML'
-
+<?php echo __(<<<'HTML'
                                 <div>
                                     <input wire:model="search"
                                         type="text"
@@ -201,7 +200,7 @@ class Search extends Component
                                         @endforeach
                                     </ul>
                                 </div>
-                            HTML; ?>
+                            HTML); ?>
                                 </code></pre>
                             </div>
                         </div>

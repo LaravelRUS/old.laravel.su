@@ -8,12 +8,12 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-a0597898.css",
+    "file": "assets/app-b25e325f.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
   "resources/js/app.js": {
-    "file": "assets/app-261dc4a2.js",
+    "file": "assets/app-50a76154.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

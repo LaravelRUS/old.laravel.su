@@ -17,7 +17,7 @@
             @else
                 <div class="bg-body-tertiary rounded p-5 rounded">
                     <div class="p-md-5">
-                        <div class="text-center mb-3">
+                        <div class="text-center mb-0">
                             Этот пользователь не оставил ни одного комментария
                         </div>
                     </div>

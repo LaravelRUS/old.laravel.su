@@ -11,7 +11,7 @@ export default defineConfig({
             refresh: true,
         }),
         prismjsPlugin({
-            languages: ["php", "php-extras", "javascript", "json", "sql", "shell", "bash", "markup", "html", "clike", "phpdoc", "yml", "nginx", "sass", "scss", "css", "ini"],
+            languages: ["html", "php", "php-extras", "javascript", "json", "sql", "shell", "bash", "markup", "clike", "phpdoc", "yml", "nginx", "sass", "scss", "css", "ini"],
             plugins: [],
             //theme: "twilight",
             css: false,

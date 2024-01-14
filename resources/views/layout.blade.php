@@ -44,7 +44,7 @@
                 <div class="nav text-end">
                     <a href="{{ route('docs') }}" class="nav-link link-body-emphasis d-none d-md-inline-flex">Документация</a>
                     <a href="{{ route('nav.docs') }}" class="nav-link link-body-emphasis d-md-none">
-                        <x-icon path="bs.book-half" height="1.5em" width="1.5em" />
+                        <x-icon path="i.docs" height="1.5em" width="1.5em" />
                     </a>
 
                     @guest

@@ -93,15 +93,10 @@
         <div class="row g-4 g-md-5 justify-content-center align-items-start  position-relative mb-5">
             <div class="d-none d-xl-block col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
-                    <svg width="56" class="border border-primary" height="56" viewBox="0 0 56 56" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                        <path d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                            stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path
-                            d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                            stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
+                        <x-icon path="i.previous_meetings"/>
+                    </div>
                 </div>
                 <h5 class="fs-4 mt-2  fw-semibold">Прошедшие конференции</h5>
                 <p class="mb-0">Чтобы вы не сожалели о пропущенных конференциях, мы оставили записи с этих событий.</p>
@@ -109,15 +104,10 @@
 
             <div class="d-xl-none top-0 py-3">
                 <div class="mb-4">
-                    <svg width="56" class="border border-primary" height="56" viewBox="0 0 56 56" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                        <path d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                              stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path
-                            d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                            stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
+                        <x-icon path="i.previous_meetings"/>
+                    </div>
                 </div>
                 <h5 class="fs-4 mt-2  fw-semibold">Прошедшие конференции</h5>
                 <p class="mb-0">Чтобы вы не сожалели о пропущенных конференциях, мы оставили записи с этих событий.</p>

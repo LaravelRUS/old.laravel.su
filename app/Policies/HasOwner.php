@@ -21,6 +21,10 @@ trait HasOwner
      */
     public function owner(User $user, Model $model)
     {
+        if (!$model->exists) {
+            return Response::allow();
+        }
+
         return $user->id === $model->user_id
             ? Response::allow()
             : Response::denyAsNotFound();
@@ -36,6 +40,10 @@ trait HasOwner
      */
     public function isOwner(User $user, Model $model): bool
     {
+        if (!$model->exists) {
+            return true;
+        }
+
         return $user->id === $model->user_id;
     }
 }

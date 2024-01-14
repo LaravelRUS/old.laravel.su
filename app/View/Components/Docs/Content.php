@@ -79,7 +79,6 @@ class Content extends Component implements Htmlable
         });
 
 
-
         $crawler->filter('x-docs-banner')->each(function (Crawler $elm) {
             $tag = $elm->outerHtml();
 
@@ -91,6 +90,12 @@ class Content extends Component implements Htmlable
             $tag = $elm->outerHtml();
 
             $this->content = Str::of($this->content)->replace($tag, '');
+        });
+
+        $crawler->filter('table')->each(function (Crawler $elm) {
+            $tag = $elm->outerHtml();
+
+            $this->content = Str::of($this->content)->replace($tag, '<div class="table-responsive">'.$tag.'</div>');
         });
 
         $crawler

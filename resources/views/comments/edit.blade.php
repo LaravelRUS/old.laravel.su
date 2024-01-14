@@ -2,7 +2,7 @@
     <x-slot:content>
         <form method="POST"
               action="{{ route('comments.update', $comment->getKey()) }}"
-              class="mb-3 d-flex flex-column position-relative"
+              class="mb-3 d-flex flex-column position-relative me-2"
                 data-controller="comment"
         >
             @method('PUT')

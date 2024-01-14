@@ -75,7 +75,7 @@
                     <a href="{{ route('post.create') }}" class="btn btn-secondary">Создать запись</a>
                 </div>
             @else
-                <div class="text-center mb-3">
+                <div class="text-center mb-0">
                     Здесь еще нет публикаций
                 </div>
             @endif

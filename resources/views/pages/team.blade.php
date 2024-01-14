@@ -14,7 +14,7 @@
         </x-slot>
 
         <x-slot:content>
-            <div class="row g-4 g-md-5 row-cols-2 row-cols-lg-4 text-center justify-content-center">
+            <div class="row g-4 g-md-5 row-cols-3 row-cols-lg-4 text-center justify-content-center">
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
                          src="https://xsgames.co/randomusers/avatar.php?g=male&1" style="filter:grayscale(100%)">
