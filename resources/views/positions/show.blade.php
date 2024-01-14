@@ -6,7 +6,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row">
-            <div class="bg-body-tertiary p-4 p-xxl-5 rounded">
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
                     <main class="post" data-controller="prism">
@@ -52,7 +52,7 @@
 
 
                     <!-- Start Author  -->
-                    <div class="d-block d-sm-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
+                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
                         <figure class="position-absolute top-0 end-0 translate-middle z-n1">
                             <x-icon path="l.cube" width="46" height="53" fill="none"/>
                         </figure>
@@ -60,16 +60,27 @@
                         <x-profile :user="$position->author"/>
 
 
-                        <div class="btn-group mt-3 mt-sm-0" role="group" aria-label="Basic example">
-                            <button class="btn btn-secondary"
-                                    data-controller="share"
-                                    data-share-title-value="{{$position->title}}"
-                                    data-share-url-value="{{ route('position.show', $position) }}"
-                                    data-action="click->share#dialog"
-                                    title="Поделиться"
-                            >
-                                <x-icon path="bs.share-fill"/>
-                            </button>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <x-device phone="true" tablet="true">
+                                <button class="btn btn-secondary"
+                                        data-controller="share"
+                                        data-share-title-value="{{$position->title}}"
+                                        data-share-url-value="{{ route('position.show', $position) }}"
+                                        data-action="click->share#dialog"
+                                        title="Поделиться"
+                                >
+                                    <x-icon path="bs.share-fill"/>
+                                </button>
+                            </x-device>
+                            <x-device desktop="true">
+                                <button class="btn btn-secondary clipboard" data-controller="clipboard"
+                                        data-action="clipboard#copy"
+                                        data-clipboard-done-class="done">
+                                    <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
+                                    <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                    <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                                </button>
+                            </x-device>
                             @can('isOwner', $position)
                                 <a class="btn btn-secondary" href="{{route('position.edit', $position)}}" title="Редактировать">
                                     <x-icon path="bs.pencil-square"/>

@@ -23,7 +23,7 @@
                     data-comment-target="textarea"
                     data-controller="textarea-autogrow"
                     data-textarea-autogrow-resize-debounce-delay-value="500"
-                    class="form-control p-5"
+                    class="form-control p-4"
                     name="message"
                     rows="3"
                     minlength="3"

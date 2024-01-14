@@ -1,6 +1,6 @@
 // Usage in markdown files
 
-
+/*
 #collection-method-list > ul {
     column-count: 3; -moz-column-count: 3; -webkit-column-count: 3; // Я думаю мы можем увеличь на больших экранах
     column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
@@ -14,8 +14,43 @@
 #collection-method-list a {
     display: block;
 }
+*/
 
+.docs-column-list, .docs-column-list-2, .docs-column-list-1 {
+    ul{
+        column-count: 1; -moz-column-count: 1; -webkit-column-count: 1; // Я думаю мы можем увеличь на больших экранах
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+        padding-left: 0;
+        list-style: none;
+        li{
+            padding-bottom: 0;
+        }
+    }
 
+    a {
+        display: block;
+    }
+}
+@include media-breakpoint-up(md) {
+    .docs-column-list {
+        ul{
+            column-count: 2 !important; -moz-column-count: 2 !important; -webkit-column-count: 2 !important;
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .docs-column-list {
+        ul{
+            column-count: 3 !important; -moz-column-count: 3 !important; -webkit-column-count: 3 !important;
+        }
+    }
+    .docs-column-list-2 {
+        ul{
+            column-count: 2 !important; -moz-column-count: 2 !important; -webkit-column-count: 2 !important;
+        }
+    }
+}
 // PORT FROM ORCHID NEED CHANGED (AND REMOVED)
 
 .anchors {

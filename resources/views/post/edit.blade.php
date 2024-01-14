@@ -3,7 +3,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row">
-            <div class="bg-body-tertiary p-xxl-5 p-4 rounded">
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
                     <x-profile :user="auth()->user()" class="mb-3"/>

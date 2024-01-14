@@ -47,7 +47,7 @@
             --}}
         </div>
 
-        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="p-4 p-xxl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7 ">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Консоль</h3>
@@ -296,7 +296,7 @@
 
             <div class="row">
                 <div class="col">
-                    <div class="p-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="border-radius: 2rem;
+                    <div class="p-4 p-xl-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="border-radius: 2rem;
 background: #1A1319!important;
 box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0, 0, 0, 0.09);">
                         <img src="/img/ui/tentacle_bottom.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 mx-4 pe-none">
@@ -371,7 +371,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="background: #1A1319!important;">
+                    <div class="p-4 p-xl-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="background: #1A1319!important;">
 
                         <img src="/img/ui/klubok.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 m-2 pe-none">
                         <img src="/img/ui/balalaika.svg" class="d-none d-xxl-block position-absolute top-0 start-0 m-1 pe-none">

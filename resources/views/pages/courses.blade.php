@@ -20,7 +20,7 @@
 
         <div class="row g-4">
             <div class="col-md-4 mb-4">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden mb-4 h-100">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
                     <h3 class="mb-2 fw-bold">Закладки</h3>
                     <p class="mb-5 fw-light line-clamp line-clamp-3">
                         Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-md-8 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4  h-100">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8">
@@ -54,7 +54,7 @@
 
         <div class="row">
             <div class="col-lg-4 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden h-100">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-2 fw-bold">Orchid</h3>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-100">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-2 fw-bold">Livewire</h3>
@@ -81,7 +81,7 @@
 
             <div class="col-lg-4 mb-4">
                 <div class="h-100 d-flex flex-column gap-4">
-                    <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-50">
+                    <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-2 fw-bold">Очереди</h3>
                             <p class="mb-5 fw-light line-clamp line-clamp-3">
                                 Игнорирование <code>timeout</code>, дублирование задач и
@@ -93,7 +93,7 @@
                                 <x-icon path="bs.arrow-right" />
                             </a>
                     </div>
-                    <div class="bg-secondary rounded-3 bg-opacity-10 p-5 position-relative overflow-hidden h-50">
+                    <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-2 fw-bold">PHP Итераторы</h3>
                             <p class="mb-5 fw-light line-clamp line-clamp-3">
                                 В этом видео курсе представлено введение в использование итераторов в PHP, включая
