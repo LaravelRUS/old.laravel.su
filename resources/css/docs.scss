@@ -254,7 +254,6 @@ main,.main {
         }
 
 
-
         &:before {
             background-position: center;
             background-size: contain;
@@ -268,6 +267,15 @@ main,.main {
             font-weight: 600;
             font-size: 1.5em;
         }
+
+        @include media-breakpoint-down(md) {
+            &:before {
+                border: solid 2rem #0000;
+                width: 30%;
+                flex: 0 0 auto;
+            }
+        }
+
         > p {
             margin-bottom: 0;
         }

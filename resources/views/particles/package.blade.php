@@ -1,5 +1,5 @@
 <div id="@domid($package)" class="col">
-    <div class="d-flex flex-column justify-content-between bg-body-tertiary p-5 rounded h-100 text-wrap text-break  position-relative">
+    <div class="d-flex flex-column justify-content-between bg-body-tertiary p-4 p-xl-5 rounded h-100 text-wrap text-break  position-relative">
 
         <div class="d-flex align-items-center justify-content-between mb-2 text-balance">
         <span class="badge text-white"

@@ -46,7 +46,7 @@ class ListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'События';
+        return 'Мероприятия';
     }
 
     /**
@@ -162,8 +162,8 @@ class ListScreen extends Screen
 
             Layout::modal('editModal', Layout::rows([
                 Input::make('meet.name')
-                    ->title('Название события')
-                    ->placeholder('Название события'),
+                    ->title('Название мероприятия')
+                    ->placeholder('Название мероприятия'),
 
                 DateTimer::make('meet.start_date')
                     ->enableTime()
@@ -185,7 +185,7 @@ class ListScreen extends Screen
                     ->sendTrueOrFalse()
                     ->title('Статус')
                     ->placeholder('Одобренный')
-                    ->help('Одобренные события будут отображаться на сайте'),
+                    ->help('Одобренные мероприятия будут отображаться на сайте'),
             ]))
                 ->size(Modal::SIZE_LG)
                 ->async('asyncGetData')

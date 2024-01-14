@@ -56,11 +56,10 @@
 
                             @if(auth()->user()->unreadNotifications()->exists())
                                 <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
+                                    <span class="visually-hidden">Есть не прочитанные уведомления</span>
                                 </span>
                             @endif
                         </a>
-
                     @endif
                 </div>
             </header>

@@ -34,13 +34,22 @@ class IdeaController extends Controller
 
         $ideaRequest = new IdeaRequest();
         $ideaRequest->fill($request->all())->forceFill([
-            'user_id'    => $request->user()->id,
+            'user_id' => $request->user()->id,
         ])->save();
 
         return redirect()->route('idea.index')
             ->with('success', 'Your request has been sent');
     }
-    public function key(IdeaKey $key, Request $request){
-        return view('idea.key', ['key' => $key ]);
+
+    /**
+     * @param \App\Models\IdeaKey      $key
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function key(IdeaKey $key)
+    {
+        return view('idea.key', [
+            'key' => $key
+        ]);
     }
 }

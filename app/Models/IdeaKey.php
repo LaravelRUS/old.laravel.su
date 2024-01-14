@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IdeaKey extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory, HasUuids;
 
     public function user()
     {

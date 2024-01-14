@@ -26,3 +26,37 @@ pre {
     height: 2px;
     background-color: $primary;
 }
+
+@include media-breakpoint-down(md) {
+    .vertical-overflow {
+        white-space: nowrap;
+        margin-left: -15vw;
+        margin-right: -15vw;
+        overflow: auto !important;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        flex-wrap: inherit;
+
+        > div {
+            padding: 0 !important;
+        }
+
+        > div:last-child {
+            margin-right: 0 !important;
+        }
+
+        &::before {
+            content: '';
+            padding-left: 15vw; /* smallest size that is cross browser */
+        }
+
+        &::after {
+            content: '';
+            padding-right: 15vw; /* smallest size that is cross browser */
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

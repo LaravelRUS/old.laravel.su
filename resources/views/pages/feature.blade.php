@@ -465,9 +465,12 @@ class UserController
                             <img src="/icons/authentication.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
-                            <h4 class="text-body-emphasis fw-bold mb-0">Authentication</h4>
+                            <h4 class="text-body-emphasis fw-bold mb-0">Аутентификация</h4>
                             <p class="opacity-75 small mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
+                                Аутентификация (Authentication) в Laravel предоставляет простой и удобный способ
+                                проверки подлинности пользователей. С помощью встроенных функций аутентификации вы
+                                можете легко добавить систему регистрации, входа и выхода из системы на свой веб-сайт
+                                Laravel.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -480,9 +483,11 @@ class UserController
                             <img src="/icons/authorization.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
-                            <h4 class="text-body-emphasis fw-bold mb-0">Authorization</h4>
+                            <h4 class="text-body-emphasis fw-bold mb-0">Авторизация</h4>
                             <p class="opacity-75 small mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
+                                Авторизация (Authorization) в Laravel позволяет контролировать доступ пользователей к
+                                определенным ресурсам или действиям. Это позволяет легко определить, какие пользователи
+                                имеют право выполнять определенные операции в вашем приложении.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -497,7 +502,10 @@ class UserController
                         <div class="d-flex flex-column gap-2">
                             <h4 class="text-body-emphasis fw-bold mb-0">Artisan Console</h4>
                             <p class="opacity-75 small mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
+                                Вы можете создавать миграции, запускать тесты, управлять
+                                базой данных, генерировать код и многое другое с помощью Artisan. Команды Artisan
+                                упрощают разработку, улучшают производительность и помогают взаимодействовать с вашим
+                                приложением Laravel из командной строки.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
@@ -510,9 +518,12 @@ class UserController
                             <img src="/icons/tests.svg">
                         </div>
                         <div class="d-flex flex-column gap-2">
-                            <h4 class="text-body-emphasis fw-bold mb-0">Testing</h4>
+                            <h4 class="text-body-emphasis fw-bold mb-0">Тестирование</h4>
                             <p class="opacity-75 small mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est magna. Nulla ac posuere massa, ac placerat tellus.
+                                Встроенная система тестирования Laravel, использующая PHPUnit, обеспечивает удобные инструменты для
+                                создания и выполнения тестовых сценариев. Вы можете тестировать маршруты, контроллеры,
+                                модели и другие компоненты вашего приложения, чтобы гарантировать их работоспособность и
+                                соответствие ожиданиям.
                             </p>
                             <a href="{{ route('packages') }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">

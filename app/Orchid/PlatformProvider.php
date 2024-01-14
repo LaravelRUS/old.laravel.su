@@ -57,8 +57,8 @@ class PlatformProvider extends OrchidServiceProvider
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),
 
-            Menu::make('События')
-                ->icon('bs.box-seam')
+            Menu::make('Мероприятия')
+                ->icon('bs.people')
                 ->route('platform.meets')
                 ->badge(function () {
                     $waiting = Meet::approved(false)->count();
@@ -67,7 +67,7 @@ class PlatformProvider extends OrchidServiceProvider
                 }, Color::DANGER),
 
             Menu::make('Вакансии')
-                ->icon('bs.box-seam')
+                ->icon('bs.briefcase')
                 ->route('platform.position')
                 ->badge(function () {
                     $waiting = Position::approved(false)->count();
