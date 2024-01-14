@@ -721,7 +721,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
             </div>
         </div>
 
-        <div class="row text-center no-gutters pt-md-5" title="Ведущие компаний России доверяют Laravel">
+        <div class="row text-center no-gutters pt-md-5 overflow-hidden" title="Ведущие компаний России доверяют Laravel">
             <div class="col-12 col-md-12 col-lg-12 mx-auto">
                 <div class="row gap-4 gap-md-0 company-usage align-items-center vertical-overflow">
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
