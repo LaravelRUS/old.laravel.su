@@ -24,14 +24,14 @@
     <x-container>
         <turbo-frame id="positions-frame"
                      target="_top"
-                     class="row g-4 g-md-5"
+                     class="row g-4"
                      autoscroll="nearest"
                      data-autoscroll-block="nearest"
                      data-autoscroll-behavior="smooth">
             @include('positions.list')
         </turbo-frame>
 
-        <div class="row g-4 g-md-5">
+        <div class="row g-4">
             @include('positions.pagination')
         </div>
     </x-container>

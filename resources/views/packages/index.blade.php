@@ -155,7 +155,7 @@ return response()->json([
                         </div>
                     @else
 
-                        <div class="row row-cols-lg-2 row-cols-1 g-4 g-md-5">
+                        <div class="row row-cols-lg-2 row-cols-1 g-4">
 
                             @foreach($packages as $package)
                                 @include('particles.package')
