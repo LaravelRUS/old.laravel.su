@@ -16,7 +16,7 @@
 
     <x-container>
 
-        <div class="p-4 p-xxl-5 bg-body-tertiary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
             <div class="row gx-5 gy-4 gy-md-5">
                 <div class="col-md-6">
                     <p class="mb-0">

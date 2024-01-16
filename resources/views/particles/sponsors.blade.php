@@ -21,9 +21,9 @@
         <!-- Left side END -->
     </div>
 
-    <div class="row row-cols-lg-3 g-4 g-md-5">
+    <div class="row row-cols-lg-3 row-cols-1 g-4 g-md-5">
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Входим в ТОП-3 рейтинга Рунета IT студий и самая большая команда в Москве (100+ человек) - штат
@@ -37,7 +37,7 @@
 
         </div>
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="/img/resources/tnspodcast.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Подкаст c зажигательными эпизоды, которые заставят
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="p-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="https://laravel-idea.com/img/logo.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Laravel Idea — среда разработки на базе PhpStorm, ориентированная на эффективность и

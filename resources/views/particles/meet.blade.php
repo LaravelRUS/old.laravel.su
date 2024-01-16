@@ -1,5 +1,5 @@
 <div id="@domid($meet)"
-     class="d-flex flex-column justify-content-between bg-body-tertiary p-4 p-lg-5 rounded mb-4 hotwire-frame
+     class="d-flex flex-column justify-content-between bg-body-tertiary p-4 p-xl-5 rounded mb-4 hotwire-frame
      @if(isset($loop) && ($loop->iteration <= (3*intdiv($loop->count,3))))
      h-100
      @endif

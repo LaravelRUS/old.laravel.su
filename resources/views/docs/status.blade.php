@@ -21,7 +21,7 @@
 
     <x-container>
         <div class="col-xl-10 col-md-12 mx-auto">
-            <div class="p-5 mb-4 bg-body-secondary rounded-3 position-relative">
+            <div class="p-4 p-xl-5 mb-4 bg-body-secondary rounded-3 position-relative">
                 <div class="row row-cols-md-4 g-3 justify-content-md-between text-center">
                     @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
                         <div @class(['col', 'ms-auto' => !$loop->first])>

@@ -60,7 +60,7 @@ return response()->json([
                 <div class="col-md-8 col-xl-9">
                     <form class="row g-1 align-items-center justify-content-md-end" action="{{route('packages')}}" method="GET">
 
-                        <div class="col-md-6 col-xl-3 mb-3 mb-md-0">
+                        <div class="col-md-6 col-xl-3 mb-2 mb-md-0">
                             <div class="d-flex justify-content-between bg-body-secondary small px-3 py-1 py-md-2 rounded">
                                 <input name="q" type="text" class="form-search d-inline-block bg-body-secondary rounded"
                                        placeholder="Поиск" value="{{ request()->query('q') }}">
@@ -76,28 +76,14 @@ return response()->json([
                                 @endif
                             </div>
                         </div>
-                        <div class="col-5 col-md-auto   ms-md-3">
-                            <div class="d-flex bg-body-secondary small px-3 py-2 py-md-3 rounded">
-                                <select class="form-search fw-medium" name="sort" onchange="this.form.requestSubmit()">
-                                    @foreach(\App\Casts\SortEnum::cases() as $sort)
-                                        <option value="{{$sort->value}}"
-                                            @selected(request()->get('sort') == $sort->value)
-                                        >
-                                            {{$sort->text()}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="col-7  d-md-none">
+                        <div class="col-12  d-md-none mb-2 mb-md-0">
                             <div class="d-flex bg-body-secondary small px-3 py-2 rounded">
-                                <select class="form-search fw-medium" name="type" onchange="this.form.requestSubmit()">
+                                <select class="form-search fw-medium w-100" name="type" onchange="this.form.requestSubmit()">
                                     <option
                                         @selected( !request()->filled('type'))
                                         value=""
                                     >
-                                        Не выбрано
+                                        Категории
                                     </option>
                                     @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
                                         <option value="{{$type->value}}"
@@ -110,6 +96,21 @@ return response()->json([
                             </div>
 
                         </div>
+                        <div class="col-12 col-md-auto ms-md-3">
+                            <div class="d-flex bg-body-secondary small px-3 py-2 py-md-3 rounded">
+                                <select class="form-search fw-medium w-100" name="sort" onchange="this.form.requestSubmit()">
+                                    @foreach(\App\Casts\SortEnum::cases() as $sort)
+                                        <option value="{{$sort->value}}"
+                                            @selected(request()->get('sort') == $sort->value)
+                                        >
+                                            {{$sort->text()}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
                     </form>
                 </div>
 
@@ -141,8 +142,8 @@ return response()->json([
 
                 <div class="col-md-8 col-xl-9">
                         @if($packages->isEmpty())
-                        <div class="bg-body-tertiary rounded p-5 rounded">
-                            <div class="p-5">
+                        <div class="bg-body-tertiary rounded p-md-5 rounded">
+                            <div class="p-4 p-md-5">
                                 <div class="col-lg-7 mx-auto text-center mb-3">
 
                                     <p class="mb-3 fs-4">¯\_(ツ)_/¯</p>
@@ -154,11 +155,10 @@ return response()->json([
                         </div>
                     @else
 
-                        <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-4 g-md-5">
+                        <div class="row row-cols-lg-2 row-cols-1 g-4 g-md-5">
 
                             @foreach($packages as $package)
                                 @include('particles.package')
-
                             @endforeach
                         </div>
                     @endif

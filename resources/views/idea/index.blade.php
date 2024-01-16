@@ -25,7 +25,7 @@
 
     <x-container>
 
-        <div class="p-4 p-xxl-5 bg-body-tertiary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
             <div class="row g-5">
                 <div class="col-xl-6">
                     <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-4">

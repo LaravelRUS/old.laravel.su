@@ -24,7 +24,7 @@
 
     <x-container data-controller="prism">
         <section class="mb-5 pb-md-5">
-            <div class="bg-body-tertiary p-4 p-xxl-5 rounded position-relative"
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative"
                  data-controller="tabs"
                  data-tabs-active-tab-class="bg-body-secondary"
                  data-tabs-index-value="1"
@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
        <pre class="rounded-3 my-0 h-100"><code language="js">
 class UserController
@@ -165,7 +165,7 @@ export default function Users({ users }) {
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
     <pre class="rounded-3 my-0 h-100"><code language="php">
 use Livewire\Component;
@@ -186,21 +186,23 @@ class Search extends Component
                                 </code></pre>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <pre class="rounded-3 my-0 h-100 language-html" tabindex="0">
-                                    <code language="html">
-<?php echo __(<<<'HTML'
-                                <div>
-                                    <input wire:model="search"
-                                        type="text"
-                                        placeholder="Search users..." />
+                                <pre class="rounded-3 my-0 h-100" tabindex="0">
+                                    <code language="php" class="language-markup">
+                                        <script type="text/plain">
+@verbatim
+<div>
+    <input wire:model="search"
+        type="text"
+        placeholder="Search users..." />
 
-                                    <ul>
-                                        @foreach ($users as $user)
-                                            <li>{{ $user->username }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            HTML); ?>
+    <ul>
+        @foreach ($users as $user)
+            <li>{{ $user->username }}</li>
+        @endforeach
+    </ul>
+</div>
+@endverbatim
+                                            </script>
                                 </code></pre>
                             </div>
                         </div>
@@ -250,7 +252,7 @@ class Search extends Component
                         </div>
 
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
                                 <pre class="rounded-3 h-100 my-0"><code language="php">
 class UserController
@@ -378,7 +380,7 @@ class UserController
 
                 <div class="p-4 p-xl-5">
                     <div class="row align-items-start">
-                        <div class="col-lg-4 mb-3 mb-lg-0">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
                             <div class="bg-body-secondary rounded p-4">
                             <p class="mb-0 opacity-75">
                                 Настраивать окружение для новичка может быть непростой задачей.
@@ -387,7 +389,7 @@ class UserController
                             </p>
                         </div>
                         </div>
-                        <div class="col-lg-4 mb-3 mb-lg-0">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="/img/ui/apple.svg" class="img-fluid">
@@ -401,7 +403,7 @@ class UserController
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-4 mb-3 mb-lg-0">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
                             <div class="d-flex flex-column gap-4">
                                 <div class="d-flex align-items-center gap-3">
                                     <img src="/img/ui/docker.svg" class="img-fluid">
