@@ -58,7 +58,7 @@
     </div>
 @empty
     <div class="col-12">
-        <div class="bg-body-tertiary rounded p-4 align-items-center justify-content-between
+        <div class="bg-body-tertiary rounded p-4 p-md-5 align-items-center justify-content-between
             position-relative">
 
             <div class="text-center">

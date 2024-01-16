@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
        <pre class="rounded-3 my-0 h-100"><code language="js">
 class UserController
@@ -165,7 +165,7 @@ export default function Users({ users }) {
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
     <pre class="rounded-3 my-0 h-100"><code language="php">
 use Livewire\Component;
@@ -186,21 +186,23 @@ class Search extends Component
                                 </code></pre>
                             </div>
                             <div class="col-12 col-lg-6">
-                                <pre class="rounded-3 my-0 h-100 language-html" tabindex="0">
-                                    <code language="html">
-<?php echo __(<<<'HTML'
-                                <div>
-                                    <input wire:model="search"
-                                        type="text"
-                                        placeholder="Search users..." />
+                                <pre class="rounded-3 my-0 h-100" tabindex="0">
+                                    <code language="php" class="language-markup">
+                                        <script type="text/plain">
+@verbatim
+<div>
+    <input wire:model="search"
+        type="text"
+        placeholder="Search users..." />
 
-                                    <ul>
-                                        @foreach ($users as $user)
-                                            <li>{{ $user->username }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            HTML); ?>
+    <ul>
+        @foreach ($users as $user)
+            <li>{{ $user->username }}</li>
+        @endforeach
+    </ul>
+</div>
+@endverbatim
+                                            </script>
                                 </code></pre>
                             </div>
                         </div>
@@ -250,7 +252,7 @@ class Search extends Component
                         </div>
 
 
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-lg-6">
                                 <pre class="rounded-3 h-100 my-0"><code language="php">
 class UserController

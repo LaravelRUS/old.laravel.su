@@ -47,7 +47,7 @@
             --}}
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 mb-xl-5">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 mb-xl-5">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>
@@ -92,7 +92,7 @@
         <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7 ">
-                    <h3 class="display-6 fw-semibold mb-4 text-balance">Консоль</h3>
+                    <h3 class="display-6 fw-semibold mb-4 text-balance mb-xl-5">Консоль</h3>
                     <p class="">
                         Обеспечивает удобный доступ к вашим приложениям через командную
                         строку, что позволяет быстро взаимодействовать с приложением.
@@ -294,7 +294,7 @@
             </div> <!-- / .row -->
                    --}}
 
-            <div class="row">
+            <div class="row g-4 g-md-5">
                 <div class="col">
                     <div class="p-4 p-xl-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="border-radius: 2rem;
 background: #1A1319!important;

@@ -142,8 +142,8 @@ return response()->json([
 
                 <div class="col-md-8 col-xl-9">
                         @if($packages->isEmpty())
-                        <div class="bg-body-tertiary rounded p-5 rounded">
-                            <div class="p-5">
+                        <div class="bg-body-tertiary rounded p-md-5 rounded">
+                            <div class="p-4 p-md-5">
                                 <div class="col-lg-7 mx-auto text-center mb-3">
 
                                     <p class="mb-3 fs-4">¯\_(ツ)_/¯</p>
