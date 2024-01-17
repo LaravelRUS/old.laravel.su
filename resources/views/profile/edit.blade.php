@@ -88,6 +88,31 @@
                                         адаптировался автоматически в соответствии с вашей системой.
                                     </div>
                                 </div>
+                                <div class="mb-4 "
+                                     data-controller="webpush"
+                                     data-webpush-error-supported-value="{{ __('app.common.webpush.error.supported') }}"
+                                     data-webpush-error-permission-value="{{ __('app.common.webpush.error.permission') }}">
+                                    <label class="form-label d-block">Уведомления</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input me-3" type="checkbox"
+                                               data-controller="control-native-reminder"
+                                               data-action="change->webpush#switching"
+                                               role="switch"
+                                               value="0"
+                                               id="native_notifiable"
+                                               name="native_notifiable"
+                                            checked>
+                                        <label for="native_notifiable" class="form-check-label small">Push</label>
+
+                                    </div>
+
+
+                                    <div class="form-text">
+                                        {{--
+                                        тут будет какое-нибудь описание
+                                        --}}
+                                    </div>
+                                </div>
                                 <div class="d-flex d-md-inline-block">
                                     <button type="submit" class="btn btn-primary mb-3 w-100">Сохранить</button>
                                 </div>

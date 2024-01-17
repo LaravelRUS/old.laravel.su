@@ -2,37 +2,32 @@
 
 namespace App\Notifications;
 
-use App\Casts\FriendlyHugsType;
 use App\Models\Comment;
 use App\Models\IdeaKey;
 use App\Models\Post;
 use App\Models\User;
-use App\Notifications\Channels\EmotionTrackerChannel;
-use App\Notifications\Channels\EmotionTrackerMessage;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\WebPush\WebPushChannel;
+use NotificationChannels\WebPush\WebPushMessage;
 
 class ReplyCommentNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private User $author;
-    private Comment $comment;
-    private Post $post;
+    private Comment $reply;
 
     /**
      * FriendlyHugs constructor.
      *
-     * @param IdeaKey $ideaKey
+     * @param Comment $reply
      */
-    public function __construct(User $author, Comment $comment, Post $post)
+    public function __construct(Comment $reply)
     {
-        $this->author = $author;
-        $this->comment = $comment;
-        $this->post = $post;
+        $this->reply = $reply;
     }
 
     /**
@@ -42,9 +37,12 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      *
      * @return array
      */
-    public function via($notifiable)
+    public function via(User $user)
     {
-        return [SiteChannel::class];
+        return [
+            SiteChannel::class,
+            WebPushChannel::class
+        ];
     }
 
     /**
@@ -56,12 +54,26 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        $url  = route('post.show',$this->post).'#'.dom_id($this->comment);
+        $url  = route('post.show',$this->reply->post).'#'.dom_id($this->reply);
         return (new SiteMessage())
             ->title('ответил на ваш комментарий')
-            ->setCommentAuthor($this->author->name)
-            ->img($this->author->avatar)
-            ->action($url, $this->post->title);
+            ->setCommentAuthor($this->reply->author->name)
+            ->img($this->reply->author->avatar)
+            ->action($url, $this->reply->post->title);
+    }
+    public function toWebPush($notifiable, $notification)
+    {
+        $url  = route('post.show',$this->reply->post).'#'.dom_id($this->reply);
+        return (new WebPushMessage)
+            ->title('Пользователь '.$this->reply->author->name.' ответил на ваш комментарий')
+            ->icon($this->reply->author->avatar)
+            //->body('Пользователь '.$this->author->name." ответил на ваш комментарий")
+            ->action('посмотреть',$url)
+            ->vibrate([300, 200, 300])
+            ->options([
+                'TTL'     => 86400, // in seconds - 24 hours,
+                'urgency' => 'high',
+            ]);
     }
 
     /**

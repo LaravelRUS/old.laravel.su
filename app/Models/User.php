@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use NotificationChannels\WebPush\HasPushSubscriptions;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -22,7 +23,7 @@ use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Liker, AsSource, Chartable, Filterable, UserAccess;
+    use HasApiTokens, HasFactory, Notifiable, Liker, AsSource, Chartable, Filterable, UserAccess, HasPushSubscriptions;
 
     /**
      * The attributes that are mass assignable.

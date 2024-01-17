@@ -348,7 +348,8 @@ Route::get('/profile/{user:nickname}/meets',[\App\Http\Controllers\ProfileContro
 
 
 
-
+Route::post('/push', [\App\Http\Controllers\PushController::class, 'store'])->name('push.store');
+Route::post('/push/unsubscribe', [\App\Http\Controllers\PushController::class, 'unsubscribe'])->name('push.unsubscribe');
 
 /*
 |--------------------------------------------------------------------------
