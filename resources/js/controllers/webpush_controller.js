@@ -1,7 +1,11 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
+        key: {
+            type: String,
+            default: 'BLc3xxVvQg8Q6Hlj-tIpllTBydYs08zcFCqriRrja_0QfdUWlHvQ1I_WAQjDe3to0p8K2aF1pcs9zknZF2N1tmA',
+        },
         errorSupported: {
             type: String,
             default: 'Push messaging is not supported',
@@ -11,31 +15,49 @@ export default class extends Controller {
             default: 'Permission denied',
         },
     };
+
+    static targets = [
+        "status"
+    ]
+
     connect() {
-
-            this.checkSubscription();
-
+        this.checkSubscription();
     }
-    switching() {
 
-        if(document.getElementById('native_notifiable').checked){
+    switching() {
+        if (this.statusTarget.checked) {
             this.request();
-        }else{
+        } else {
             this.disablePushNotifications();
         }
     }
 
-    checkSubscription()
-    {
-        let switcher = document.getElementById('native_notifiable');
+    checkSubscription() {
+        let switcher = this.statusTarget;
         navigator.serviceWorker.ready.then(registration => {
             registration.pushManager.getSubscription().then(subscription => {
-                console.log(subscription);
-                if ( subscription === null) {
-                    switcher.checked=false;
+                if (!subscription) {
+                    switcher.checked = false;
                     return;
                 }
-                switcher.checked=true;
+
+                fetch('/push/check', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        endpoint: subscription.endpoint
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        switcher.checked = data.exists;
+                    })
+                    .catch((error) => {
+                        switcher.checked = false;
+                    });
             })
         });
 
@@ -97,9 +119,7 @@ export default class extends Controller {
     subscribeUser(register) {
         const options = {
             userVisibleOnly: true,
-            applicationServerKey: this.urlBase64ToUint8Array(
-                'BE3lWGN-j0tamAkNA2Q-6DYCILTnZj5Q2kQaIByqdgDf0P9zZEhvCvZ0l-i1Z8LcIiDHUmX8RPdVEc1cos6wD50'
-            ),
+            applicationServerKey: this.urlBase64ToUint8Array(this.keyValue),
         };
 
         register.pushManager
@@ -110,38 +130,6 @@ export default class extends Controller {
             .catch((error) => {
                 console.log('Error subscribing to push notifications:', error);
             });
-    }
-
-    // Subscribe the user
-    disablePushNotifications() {
-        navigator.serviceWorker.ready.then(registration => {
-            registration.pushManager.getSubscription().then(subscription => {
-                if (!subscription) {
-                    return;
-                }
-
-                subscription.unsubscribe().then(() => {
-                    const token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
-                    fetch('/push/unsubscribe', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': token
-                        },
-                        body: JSON.stringify({
-                            endpoint: subscription.endpoint
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Success:', data);
-                        })
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                })
-            });
-        });
     }
 
     // Convert a base64 string to a Uint8Array
@@ -159,17 +147,46 @@ export default class extends Controller {
         return outputArray;
     }
 
+    // Subscribe the user
+    disablePushNotifications() {
+        navigator.serviceWorker.ready.then(registration => {
+            registration.pushManager.getSubscription().then(subscription => {
+                if (!subscription) {
+                    return;
+                }
+
+                subscription.unsubscribe().then(() => {
+                    fetch('/push/unsubscribe', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content')
+                        },
+                        body: JSON.stringify({
+                            endpoint: subscription.endpoint
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                })
+            });
+        });
+    }
+
     // Store the push subscription in the backend
     storePushSubscription(subscription) {
-        const token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
-
         fetch('/push', {
             method: 'POST',
             body: JSON.stringify(subscription),
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': token,
+                'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content'),
             },
         })
             .then((response) => {

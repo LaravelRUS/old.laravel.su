@@ -41,7 +41,7 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
     {
         return [
             SiteChannel::class,
-            WebPushChannel::class
+            WebPushChannel::class,
         ];
     }
 
@@ -54,21 +54,28 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        $url  = route('post.show',$this->reply->post).'#'.dom_id($this->reply);
+        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
         return (new SiteMessage())
             ->title('ответил на ваш комментарий')
             ->setCommentAuthor($this->reply->author->name)
             ->img($this->reply->author->avatar)
             ->action($url, $this->reply->post->title);
     }
-    public function toWebPush($notifiable, $notification)
+
+    /**
+     * @param \App\Models\User $user
+     *
+     * @return \NotificationChannels\WebPush\WebPushMessage
+     */
+    public function toWebPush(User $user)
     {
-        $url  = route('post.show',$this->reply->post).'#'.dom_id($this->reply);
+        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
+
         return (new WebPushMessage)
-            ->title('Пользователь '.$this->reply->author->name.' ответил на ваш комментарий')
+            ->title('Пользователь ' . $this->reply->author->name . ' ответил на ваш комментарий')
             ->icon($this->reply->author->avatar)
             //->body('Пользователь '.$this->author->name." ответил на ваш комментарий")
-            ->action('посмотреть',$url)
+            ->action('посмотреть', $url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

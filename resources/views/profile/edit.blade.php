@@ -90,19 +90,19 @@
                                 </div>
                                 <div class="mb-4 "
                                      data-controller="webpush"
-                                     data-webpush-error-supported-value="{{ __('app.common.webpush.error.supported') }}"
-                                     data-webpush-error-permission-value="{{ __('app.common.webpush.error.permission') }}">
-                                    <label class="form-label d-block">Уведомления</label>
+                                     data-webpush-error-supported-value="Push-сообщения не поддерживаются на этом устройстве"
+                                     data-webpush-error-permission-value="Доступ запрещён">
+                                    <label class="form-label d-block">Push-уведомления</label>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input me-3" type="checkbox"
-                                               data-controller="control-native-reminder"
+                                        <input class="form-check-input me-3"
+                                               type="checkbox"
                                                data-action="change->webpush#switching"
+                                               data-webpush-target="status"
                                                role="switch"
                                                value="0"
-                                               id="native_notifiable"
                                                name="native_notifiable"
                                             checked>
-                                        <label for="native_notifiable" class="form-check-label small">Push</label>
+                                        <label for="native_notifiable" class="form-check-label small">Включить на этом устройстве</label>
 
                                     </div>
 

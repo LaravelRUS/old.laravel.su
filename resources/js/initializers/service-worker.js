@@ -4,10 +4,10 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/serviceworker.js').then(
         (registration) => {
-            window.EmotioServiceWorker = registration;
-            console.log('ET: ServiceWorker registration successful with scope: ', registration.scope);
+            window.LaravelServiceWorker = registration;
+            console.log('Laravel.su: ServiceWorker registration successful with scope: ', registration.scope);
         },
-        (err) => console.log('ET: ServiceWorker registration failed: ', err)
+        (err) => console.log('Laravel.su: ServiceWorker registration failed: ', err)
     );
 
     navigator.serviceWorker.getRegistrations().then((registrations) => {
