@@ -90,6 +90,8 @@ Route::get('/jobs', [\App\Http\Controllers\PositionsController::class, 'jobs'])
 
 Route::get('/positions', [\App\Http\Controllers\PositionsController::class, 'list'])
     ->name('positions');
+Route::get('/positions/latest', [\App\Http\Controllers\PositionsController::class, 'latest'])
+    ->name('positions.latest');
 
 Route::get('/j/{position:slug}', [\App\Http\Controllers\PositionsController::class, 'show'])
     ->name('position.show');

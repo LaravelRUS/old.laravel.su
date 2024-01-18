@@ -155,7 +155,7 @@ class Comment extends Model
     {
         return Str::of($text)
             ->replaceMatches('/\@([a-zA-Z0-9_]+)/u', function ($mention) {
-                $href = route('user.show', $mention[1]);
+                $href = route('user.show', $mention[1]);// над наверное заменить на route('profile', $mention[1])
                 $name = Str::of($mention[0])->trim();
 
                 return "<a href='$href' class='text-decoration-none'>$name</a>";
@@ -183,5 +183,16 @@ class Comment extends Model
         $withMention = $this->mentionedUserToHtmlUrl($withLinks);
 
         return $this->nl2br($withMention);
+    }
+
+
+    public function getMentionedUsers()
+    {
+       $usersNikNames  = Str::of($this->content)->matchAll('/\@([a-zA-Z0-9_]+)/u');
+       if($usersNikNames->isEmpty()){
+           return collect();
+       }
+       return User::whereIn('nickname', $usersNikNames)->get();
+
     }
 }

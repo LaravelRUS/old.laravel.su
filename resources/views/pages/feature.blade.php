@@ -437,7 +437,7 @@ class UserController
                                 URL-адреса. Это позволяет легко настраивать маршруты для обработки запросов и
                                 определять, какие действия и контроллеры должны быть вызваны при поступлении запроса.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'routing']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>
@@ -453,7 +453,7 @@ class UserController
                                 Вставляйте переменные, используйте условия, циклы и другие
                                 операции в шаблонах, что делает их более читабельными и удобными для разработки.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'blade']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>
@@ -471,7 +471,7 @@ class UserController
                                 можете легко добавить систему регистрации, входа и выхода из системы на свой веб-сайт
                                 Laravel.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'authentication']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>
@@ -488,7 +488,7 @@ class UserController
                                 определенным ресурсам или действиям. Это позволяет легко определить, какие пользователи
                                 имеют право выполнять определенные операции в вашем приложении.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'authorization']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>
@@ -506,7 +506,7 @@ class UserController
                                 упрощают разработку, улучшают производительность и помогают взаимодействовать с вашим
                                 приложением Laravel из командной строки.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'artisan']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>
@@ -524,7 +524,7 @@ class UserController
                                 модели и другие компоненты вашего приложения, чтобы гарантировать их работоспособность и
                                 соответствие ожиданиям.
                             </p>
-                            <a href="{{ route('packages') }}"
+                            <a href="{{ route('docs',['page'=>'testing']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
                                 <x-icon path="bs.arrow-right" /></a>

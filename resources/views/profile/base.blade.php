@@ -61,53 +61,117 @@
                     </div>
                 </div>
 
-                <div class="nav nav-underline px-xxl-5 px-4">
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile') }}"
-                           data-turbo-frame="navigation"
-                           href="{{ route('profile', $user) }}"
 
-                        >Статьи</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
-                           data-turbo-frame="navigation"
-                           href="{{ route('profile.comments', $user) }}"
-
-                        >Комментарии</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
-                           href="{{ route('profile.awards', $user) }}"
-                        >Награды</a>
-                    </li>
-
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
-                           data-turbo-frame="navigation"
-                           href="{{ route('profile.packages', $user) }}"
-
-                        >Пакеты</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
-                           href="{{ route('profile.meets', $user) }}"
-                        >События</a>
-                    </li>
-                    @if ($user->id === Auth::user()?->id)
+                <div class="d-none d-md-block px-xxl-5 px-1 ">
+                    <div class="nav nav-underline  vertical-overflow">
                         <li class="nav-item me-2">
-                            <a class="nav-link link-body-emphasis fw-normal position-relative {{ active('profile.notifications') }}"
-                               href="{{ route('profile.notifications') }}"
-                            >Уведомления
-                                @if(auth()->user()->unreadNotifications()->exists())
-                                    <b class="badge rounded-pill bg-primary col-auto ms-auto">{{auth()->user()->unreadNotifications()->count()}}</b>
-                                @endif
-                            </a>
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile', $user) }}"
+
+                            >Статьи</a>
                         </li>
-                    @endif
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile.comments', $user) }}"
+
+                            >Комментарии</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
+                               href="{{ route('profile.awards', $user) }}"
+                            >Награды</a>
+                        </li>
+
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile.packages', $user) }}"
+
+                            >Пакеты</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
+                               href="{{ route('profile.meets', $user) }}"
+                            >События</a>
+                        </li>
+                        @if ($user->id === Auth::user()?->id)
+                            <li class="nav-item me-2">
+                                <a class="nav-link link-body-emphasis fw-normal position-relative {{ active('profile.notifications') }}"
+                                   href="{{ route('profile.notifications') }}"
+                                >Уведомления
+                                    @if(auth()->user()->unreadNotifications()->exists())
+                                        <b class="badge rounded-pill bg-primary col-auto ms-auto">{{auth()->user()->unreadNotifications()->count()}}</b>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
+    </x-container>
+
+        <div class="d-md-none">
+            <div class="bg-body-tertiary overflow-hidden mb-4">
+
+                <div class="px-xxl-5 px-1 ">
+                    <div class="nav nav-underline  vertical-overflow">
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile', $user) }}"
+
+                            >Статьи</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.comments') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile.comments', $user) }}"
+
+                            >Комментарии</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
+                               href="{{ route('profile.awards', $user) }}"
+                            >Награды</a>
+                        </li>
+
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
+                               data-turbo-frame="navigation"
+                               href="{{ route('profile.packages', $user) }}"
+
+                            >Пакеты</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link link-body-emphasis fw-normal {{ active('profile.meets') }}"
+                               href="{{ route('profile.meets', $user) }}"
+                            >События</a>
+                        </li>
+                        @if ($user->id === Auth::user()?->id)
+                            <li class="nav-item me-2">
+                                <a class="nav-link link-body-emphasis fw-normal position-relative {{ active('profile.notifications') }}"
+                                   href="{{ route('profile.notifications') }}"
+                                >Уведомления
+                                    @if(auth()->user()->unreadNotifications()->exists())
+                                        <b class="badge rounded-pill bg-primary col-auto ms-auto">{{auth()->user()->unreadNotifications()->count()}}</b>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    <x-container>
+
 
         <div>
             @yield('tab')

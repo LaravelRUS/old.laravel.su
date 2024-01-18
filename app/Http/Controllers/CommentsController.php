@@ -6,8 +6,11 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Notifications\CommentNotification;
 use App\Notifications\IdeaRequestAcceptedNotification;
+use App\Notifications\MentionNotification;
+use App\Notifications\Remind;
 use App\Notifications\ReplyCommentNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class CommentsController extends Controller
 {
@@ -53,6 +56,7 @@ class CommentsController extends Controller
         $comment->save();
 
         $comment->post->author->notify(new CommentNotification($comment));
+        Notification::send($comment->getMentionedUsers(), new MentionNotification($comment));
 
 
         return turbo_stream([
@@ -118,7 +122,9 @@ class CommentsController extends Controller
         ]);
 
         $request->user()->comments()->saveMany([$reply]);
+
         $comment->post->author->notify(new ReplyCommentNotification($reply));
+        Notification::send($comment->getMentionedUsers(), new MentionNotification($reply));
 
         return turbo_stream([
             turbo_stream()->append(@dom_id($comment, 'thread'), view('comments._comment', ['comment' => $reply])),
