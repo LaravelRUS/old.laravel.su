@@ -65,7 +65,7 @@
         </x-header>
 
         <x-container>
-            <div class="row row-cols-1 row-cols-lg-3 g-4 g-md-5 position-relative">
+            <div class="row row-cols-1 row-cols-lg-3 g-4 position-relative">
                 @foreach($actual as $meet)
                     <div class="col position-relative">
                         @if($loop->first)
@@ -90,7 +90,7 @@
 
 
     <x-container>
-        <div class="row g-4 g-md-5 justify-content-center align-items-start  position-relative mb-5">
+        <div class="row g-4 justify-content-center align-items-start  position-relative mb-5">
             <div class="d-none d-xl-block col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
                     <div

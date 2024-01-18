@@ -1,5 +1,5 @@
 @forelse ($posts as $post)
-    <div id="@domid($post)" class="bg-body-tertiary mb-4 mb-xl-5 p-4 p-xl-5 rounded hotwire-frame">
+    <div id="@domid($post)" class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded hotwire-frame">
         <div class="d-flex align-items-center justify-content-between mb-3">
 
             <x-profile :user="$post->author"/>

@@ -88,6 +88,31 @@
                                         адаптировался автоматически в соответствии с вашей системой.
                                     </div>
                                 </div>
+                                <div class="mb-4 "
+                                     data-controller="webpush"
+                                     data-webpush-error-supported-value="Push-сообщения не поддерживаются на этом устройстве"
+                                     data-webpush-error-permission-value="Доступ запрещён">
+                                    <label class="form-label d-block">Push-уведомления</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input me-3"
+                                               type="checkbox"
+                                               data-action="change->webpush#switching"
+                                               data-webpush-target="status"
+                                               role="switch"
+                                               value="0"
+                                               name="native_notifiable"
+                                            checked>
+                                        <label for="native_notifiable" class="form-check-label small">Включить на этом устройстве</label>
+
+                                    </div>
+
+
+                                    <div class="form-text">
+                                        {{--
+                                        тут будет какое-нибудь описание
+                                        --}}
+                                    </div>
+                                </div>
                                 <div class="d-flex d-md-inline-block">
                                     <button type="submit" class="btn btn-primary mb-3 w-100">Сохранить</button>
                                 </div>

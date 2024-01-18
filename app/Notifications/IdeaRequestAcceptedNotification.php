@@ -12,6 +12,8 @@ use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\WebPush\WebPushChannel;
+use NotificationChannels\WebPush\WebPushMessage;
 
 class IdeaRequestAcceptedNotification extends Notification implements ShouldQueue
 {
@@ -36,10 +38,14 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
      *
      * @return array
      */
-    public function via($notifiable)
+    public function via(User $user)
     {
-        return [SiteChannel::class];
+        return [
+            SiteChannel::class,
+            WebPushChannel::class
+       ];
     }
+
 
     /**
      * Get the app representation of the notification.
@@ -53,6 +59,20 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
         return (new SiteMessage())
             ->title('Бесплатный ключ Laravel IDEA доступен')
             ->action(route('idea.key', $this->ideaKey), 'по ссылке');
+    }
+
+    public function toWebPush($notifiable, $notification)
+    {
+        return (new WebPushMessage)
+            ->title('Бесплатный ключ Laravel IDEA доступен')
+            //->icon($this->author->avatar)
+            //->body('Пользователь '.$this->author->name."ответил на ваш комментарий")
+            ->action('Посмотреть',route('idea.key', $this->ideaKey))
+            ->vibrate([300, 200, 300])
+            ->options([
+                'TTL'     => 86400, // in seconds - 24 hours,
+                'urgency' => 'high',
+            ]);
     }
 
     /**

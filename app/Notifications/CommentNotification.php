@@ -14,20 +14,20 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 
-class ReplyCommentNotification extends Notification implements ShouldQueue
+class CommentNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private Comment $reply;
+    private Comment $comment;
 
     /**
      * FriendlyHugs constructor.
      *
-     * @param Comment $reply
+     * @param IdeaKey $ideaKey
      */
-    public function __construct(Comment $reply)
+    public function __construct(Comment $comment)
     {
-        $this->reply = $reply;
+        $this->comment = $comment;
     }
 
     /**
@@ -41,7 +41,7 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
     {
         return [
             SiteChannel::class,
-            WebPushChannel::class,
+            WebPushChannel::class
         ];
     }
 
@@ -54,12 +54,12 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
+        $url  = route('post.show',$this->comment->post).'#'.dom_id($this->comment);
         return (new SiteMessage())
-            ->title('ответил на ваш комментарий')
-            ->setCommentAuthor($this->reply->author->name)
-            ->img($this->reply->author->avatar)
-            ->action($url, $this->reply->post->title);
+            ->title('оставил комментарий к вашей публикации')
+            ->setCommentAuthor($this->comment->author->name)
+            ->img($this->comment->author->avatar)
+            ->action($url, $this->comment->post->title);
     }
 
     /**
@@ -69,13 +69,13 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toWebPush(User $user)
     {
-        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
+        $url = route('post.show', $this->comment->post) . '#' . dom_id($this->comment);
 
         return (new WebPushMessage)
-            ->title('Пользователь ' . $this->reply->author->name . ' ответил на ваш комментарий')
-            ->icon($this->reply->author->avatar)
-            //->body('Пользователь '.$this->author->name." ответил на ваш комментарий")
-            ->action('посмотреть', $url)
+            ->title('Комментарий к ваше публикации')
+            ->icon($this->comment->author->avatar)
+            ->body('Пользователь '.$this->comment->author->name."оставил комментарий к вашей публикации")
+            ->action('посмотреть',$url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

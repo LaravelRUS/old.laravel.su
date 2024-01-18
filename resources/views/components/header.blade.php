@@ -1,5 +1,5 @@
 <x-container>
-    <div class="row g-4 g-md-5 py-lg-5 justify-content-center {{ $attributes->get('align', 'align-items-center') }}">
+    <div class="row g-md-4 g-md-5 px-4 px-lg-0 py-lg-5 justify-content-center {{ $attributes->get('align', 'align-items-center') }}">
         <div class="col-lg-6">
             @isset($sup)
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">{{ $sup }}</span>

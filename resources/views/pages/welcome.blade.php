@@ -47,7 +47,7 @@
             --}}
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 mb-xl-5">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 mb-xl-5">
+        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
             <div class="row g-4 g-md-5 align-items-center">
                 <div class="col-md-7">
                     <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>

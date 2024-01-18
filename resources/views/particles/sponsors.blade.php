@@ -21,7 +21,7 @@
         <!-- Left side END -->
     </div>
 
-    <div class="row row-cols-lg-3 row-cols-1 g-4 g-md-5">
+    <div class="row row-cols-lg-3 row-cols-1 g-4">
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-4 me-auto" height="64">
