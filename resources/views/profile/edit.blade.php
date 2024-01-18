@@ -100,6 +100,7 @@
                                                data-webpush-target="status"
                                                role="switch"
                                                value="0"
+                                               id="native_notifiable"
                                                name="native_notifiable"
                                             checked>
                                         <label for="native_notifiable" class="form-check-label small">Включить на этом устройстве</label>
