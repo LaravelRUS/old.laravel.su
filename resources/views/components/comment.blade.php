@@ -26,21 +26,7 @@
                     <div class="d-flex flex-column flex-md-row">
                         <h6 class="m-0 me-auto">{{ $comment->author->name }}</h6>
 
-                        <div class="me-3 small opacity-50">
-                            @can('update', $comment)
-                                <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post"
-                                   class="link-body-emphasis text-decoration-none">Редактировать</a>
-                            @endcan
 
-                            @can('delete', $comment)
-                                · <a href="{{ route('comments.delete', $comment) }}"
-                                     class="link-body-emphasis text-decoration-none"
-                                     data-turbo-method="DELETE"
-                                     data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
-                                        Удалить
-                                    </a>
-                            @endcan
-                        </div>
                     </div>
                     <div class="small opacity-50">
                         <a
@@ -50,8 +36,10 @@
                                 href="#comment_{{ $comment->getKey() }}"
                             @endif
                             class="link-body-emphasis text-decoration-none">
+                            {{ '@'.$comment->author->nickname}} ·
                             <time
                                 datetime="{{ now()->toISOString() }}">{{ $comment->created_at->diffForHumans() }}</time>
+
                         </a>
                     </div>
                 </div>
@@ -63,6 +51,21 @@
                 <div class="d-flex align-items-center">
 
                     <x-like :model="$comment"/>
+
+                        @can('update', $comment)
+                            <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post"
+                               class="btn btn-link link-body-emphasis btn-sm">Редактировать</a>
+                        @endcan
+
+                        @can('delete', $comment)
+                            · <a href="{{ route('comments.delete', $comment) }}"
+                                 class="btn btn-link link-body-emphasis btn-sm"
+                                 data-turbo-method="DELETE"
+                                 data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
+                                Удалить
+                            </a>
+                        @endcan
+
 
                     @can('reply', $comment)
                         <a href="{{ route('comments.show.reply', $comment) }}" class="btn btn-link link-body-emphasis btn-sm"

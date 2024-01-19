@@ -136,4 +136,19 @@ class PositionsController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\View|\Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse|null
+     */
+    public function latest()
+    {
+        $positions = Position::with(['author'])
+            ->whereDate('created_at','>=',now()->subMonth())
+            ->orderBy('id', 'desc')
+            ->limit(3)->get();
+
+        return view('positions.latest', [
+            'positions' => $positions,
+        ]);
+    }
+
 }
