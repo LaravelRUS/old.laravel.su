@@ -146,6 +146,9 @@
                             <li class="nav-item mb-2">
                                 <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
                             </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('pastebin') }}" class="nav-link p-0">Pastebin</a>
+                            </li>
                             {{--
                             <li class="nav-item mb-2">
                                 <a href="{{ route('resources') }}" class="nav-link p-0">Ресурсы</a>
