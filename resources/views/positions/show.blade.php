@@ -18,16 +18,7 @@
 
                             <div class="col-12 col-lg-4 text-lg-end">
                                 <div class="fw-bold fs-5">
-                                    @if(is_null($position->salary_min) && is_null($position->salary_max))
-                                        не указана
-                                    @endif
-                                    @if (!is_null($position->salary_min) && !is_null($position->salary_max))
-                                        От {{ $position->salary_min }} - до {{ $position->salary_max }} ₽
-                                    @elseif (!is_null($position->salary_min))
-                                                                    от {{ $position->salary_min }} ₽
-                                    @elseif (!is_null($position->salary_max))
-                                                                    до {{ $position->salary_max }} ₽
-                                    @endif
+                                    {{ $position->presenter()->salary() }}
                                 </div>
                                 <div class="small opacity-50">{{$position->schedule->text()}}</div>
                                 <div class="small opacity-50">{{$position->organization}}</div>

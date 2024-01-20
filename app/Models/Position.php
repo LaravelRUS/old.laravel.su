@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\ScheduleEnum;
+use App\Orchid\Presenters\PositionPresenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -114,5 +115,13 @@ class Position extends Model
     public function scopeApproved(Builder $query, bool $approved = true): Builder
     {
         return $query->where('approved', $approved);
+    }
+
+    /**
+     * @return \App\Orchid\Presenters\PositionPresenter
+     */
+    public function presenter(): PositionPresenter
+    {
+        return new PositionPresenter($this);
     }
 }

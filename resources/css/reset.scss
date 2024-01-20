@@ -60,3 +60,12 @@ pre {
         }
     }
 }
+
+
+[contenteditable=true]:not(:focus):empty:before,
+[contenteditable=true]:not(:focus) code:empty:before {
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block;
+    color: rgba(255, 255, 255, 0.45);
+}

@@ -85,13 +85,15 @@ return [
         'splash'           => [
             '2778x1284' => '/pwa/splash/apple-splash-2778-1284.png', // TODO
         ],
-        'icons'            => [
-            '192x192' => [
-                'path'    => '/favicon/android-chrome-192x192.png',
+        'icons' => [
+            [
+                'src'     => '/favicon/android-chrome-192x192.png',
+                'sizes'   => '192x192',
                 'purpose' => 'any maskable',
             ],
-            '512x512' => [
-                'path'    => '/favicon/android-chrome-512x512.png',
+            [
+                'src'     => '/favicon/android-chrome-512x512.png',
+                'sizes'   => '512x512',
                 'purpose' => 'any maskable',
             ],
         ],

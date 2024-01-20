@@ -18,6 +18,7 @@ use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
+use Orchid\Screen\Fields\Code;
 use Orchid\Support\Facades\Dashboard;
 use Overtrue\LaravelLike\Traits\Liker;
 
@@ -139,6 +140,14 @@ class User extends Authenticatable
     public function packages()
     {
         return $this->hasMany(Package::class);
+    }
+
+    /**
+     * Returns all codeSnippets that this user has made.
+     */
+    public function codeSnippets()
+    {
+        return $this->hasMany(CodeSnippet::class);
     }
 
     /**

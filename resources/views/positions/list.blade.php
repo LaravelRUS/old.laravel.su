@@ -37,14 +37,8 @@
                     {{$position->location}}
                 </span>
                     <span class="d-flex fw-medium">
-                    @if (!is_null($position->salary_min) && !is_null($position->salary_max))
-                            {{ $position->salary_min }} - {{ $position->salary_max }} ₽
-                        @elseif (!is_null($position->salary_min))
-                            от {{ $position->salary_min }} ₽
-                        @elseif (!is_null($position->salary_max))
-                            до {{ $position->salary_max }} ₽
-                        @endif
-                </span>
+                        {{ $position->presenter()->salary() }}
+                    </span>
                 </div>
 
                 <div class="col-md-2 mt-3 mt-md-0 text-center text-md-end">
