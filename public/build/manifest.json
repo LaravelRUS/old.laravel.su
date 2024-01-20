@@ -8,12 +8,19 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-1fb7d263.css",
+    "file": "assets/app-2ea9389c.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-6b1fe032.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-51519097.js",
+    "css": [
+      "assets/app-6b1fe032.css"
+    ],
+    "file": "assets/app-c59699b3.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
