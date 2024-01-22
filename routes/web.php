@@ -8,6 +8,7 @@ use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\MeetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
+use App\Http\Middleware\RedirectToBanPage;
 use App\Docs;
 
 /*
@@ -32,6 +33,8 @@ Route::view('/courses', 'pages.courses')->name('courses');
 
 Route::view('nav', 'pages.navigation')->name('nav');
 
+Route::view('/ban','pages.ban')->name('ban');
+
 /*
 |--------------------------------------------------------------------------
 | Post/Feed Routes
@@ -55,24 +58,27 @@ Route::get('/posts', [PostController::class, 'list'])
 Route::get('/p/{post:slug}', [PostController::class, 'show'])
     ->name('post.show');
 
-Route::middleware(['auth'])
+Route::middleware(['auth',RedirectToBanPage::class])
     ->group(function () {
 
         Route::get('/posts/create', [PostController::class, 'edit'])
+            ->can('create','App\Models\Post')
             ->name('post.create');
 
         Route::post('/posts/create', [PostController::class, 'update'])
+            ->can('create','App\Models\Position')
             ->name('post.store');
 
         Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
-            ->can('owner', 'post')
+            ->can('update', 'post')
             ->name('post.edit');
 
         Route::post('/posts/{post}', [PostController::class, 'update'])
+            ->can('update', 'post')
             ->name('post.update');
 
         Route::delete('/posts/{post}', [PostController::class, 'delete'])
-            ->can('owner', 'post')
+            ->can('delete', 'post')
             ->name('post.delete');
     });
 
@@ -96,24 +102,27 @@ Route::get('/positions/latest', [\App\Http\Controllers\PositionsController::clas
 Route::get('/j/{position:slug}', [\App\Http\Controllers\PositionsController::class, 'show'])
     ->name('position.show');
 
-Route::middleware(['auth'])
+Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
 
         Route::get('/positions/create', [\App\Http\Controllers\PositionsController::class, 'edit'])
+            ->can('create','App\Models\Position')
             ->name('position.create');
 
         Route::post('/positions', [\App\Http\Controllers\PositionsController::class, 'update'])
+            ->can('create','App\Models\Position')
             ->name('position.store');
 
         Route::get('/positions/{position}/edit', [\App\Http\Controllers\PositionsController::class, 'edit'])
-            ->can('owner', 'position')
+            ->can('update', 'position')
             ->name('position.edit');
 
         Route::post('/positions/{position}', [\App\Http\Controllers\PositionsController::class, 'update'])
+            ->can('update', 'position')
             ->name('position.update');
 
         Route::delete('/positions/{position}', [\App\Http\Controllers\PositionsController::class, 'delete'])
-            ->can('owner', 'position')
+            ->can('delete', 'position')
             ->name('position.delete');
     });
 /*
@@ -162,25 +171,27 @@ Route::middleware(['auth'])
 
 Route::get('/meets', [MeetController::class, 'index'])->name('meets');
 
-Route::middleware(['auth'])
+Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('meets')
     ->group(function () {
         Route::get('/create', [MeetController::class, 'edit'])
+            ->can('create','App\Models\Meet')
             ->name('meets.create');
 
         Route::post('/', [MeetController::class, 'update'])
+            ->can('create','App\Models\Meet')
             ->name('meets.store');
 
         Route::get('/{meet}/edit', [MeetController::class, 'edit'])
-            ->can('owner', 'meet')
+            ->can('update', 'meet')
             ->name('meets.edit');
 
         Route::post('/{meet}', [MeetController::class, 'update'])
-            ->can('owner', 'meet')
+            ->can('update', 'meet')
             ->name('meets.update');
 
         Route::delete('/{meet}', [MeetController::class, 'delete'])
-            ->can('owner', 'meet')
+            ->can('delete', 'meet')
             ->name('meets.delete');
     });
 
@@ -195,25 +206,27 @@ Route::middleware(['auth'])
 
 Route::get('/packages', [PackagesController::class, 'index'])->name('packages');
 
-Route::middleware(['auth'])
+Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('packages')
     ->group(function () {
         Route::get('/create', [PackagesController::class, 'edit'])
+            ->can('create','App\Models\Package')
             ->name('packages.create');
 
         Route::post('/', [PackagesController::class, 'update'])
+            ->can('create','App\Models\Package')
             ->name('packages.store');
 
         Route::get('/{package}/edit', [PackagesController::class, 'edit'])
-            ->can('owner', 'package')
+            ->can('basicActions', 'package')
             ->name('packages.edit');
 
         Route::post('/{package}', [PackagesController::class, 'update'])
-            ->can('owner', 'package')
+            ->can('update', 'package')
             ->name('packages.update');
 
         Route::delete('/{package}', [PackagesController::class, 'delete'])
-            ->can('owner', 'package')
+            ->can('delete', 'package')
             ->name('packages.delete');
     });
 
@@ -226,7 +239,7 @@ Route::middleware(['auth'])
 |
 */
 
-Route::middleware(['auth'])
+Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
         Route::get('/idea', [\App\Http\Controllers\IdeaController::class, 'index'])->name('idea.index');
         Route::post('/idea', [\App\Http\Controllers\IdeaController::class, 'store'])->name('idea.store');

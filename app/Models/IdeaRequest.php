@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
+use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 
 class IdeaRequest extends Model
 {
-    use HasFactory, Filterable, asSource;
+    use HasFactory, Filterable, asSource, Chartable;
 
     /**
      * @var string[]

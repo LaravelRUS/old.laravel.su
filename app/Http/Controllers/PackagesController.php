@@ -44,7 +44,7 @@ class PackagesController extends Controller
 
     public function edit(Request $request, Package $package)
     {
-        $this->authorize('isOwner', $package);
+        $this->authorize('update', $package);
 
         return view('packages.edit', [
             'pack' => $package,
@@ -60,7 +60,7 @@ class PackagesController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        $this->authorize('isOwner', $package);
+        $this->authorize('update', $package);
 
         $request->validate([
             'packagist_name' => ['string', 'required', Rule::unique(Package::class, 'packagist_name')->ignore($package->packagist_name)],
@@ -87,7 +87,7 @@ class PackagesController extends Controller
      */
     public function delete( Package $pack)
     {
-        $this->authorize('isOwner', $pack);
+        $this->authorize('delete', $pack);
 
         $pack->delete();
         //сюда поставить уведомление

@@ -8,6 +8,14 @@ use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
 {
+    public function before(User $user, string $ability): bool|null
+    {
+        if ($user->banned) {
+            return false;
+        }
+
+        return null;
+    }
     /**
      * Determine whether the user can view any models.
      */
@@ -45,6 +53,10 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
+        if( $user->hasAccess('site.content'))
+        {
+            return true;
+        }
         return $user->getKey() == $comment->user_id;
     }
 

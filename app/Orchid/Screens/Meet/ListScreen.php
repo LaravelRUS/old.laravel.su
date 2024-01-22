@@ -59,6 +59,12 @@ class ListScreen extends Screen
         return '';
     }
 
+    public function permission(): ?iterable
+    {
+        return [
+            'site.content',
+        ];
+    }
     /**
      * The screen's action buttons.
      *

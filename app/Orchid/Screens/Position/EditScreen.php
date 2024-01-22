@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\SimpleMDE;
@@ -38,7 +39,6 @@ class EditScreen extends Screen
 
         return [
             'position'       => $position,
-            //'position.schedule' => $position->schedule?->value,
         ];
     }
 
@@ -57,7 +57,12 @@ class EditScreen extends Screen
     {
         return '';
     }
-
+    public function permission(): ?iterable
+    {
+        return [
+            'site.content',
+        ];
+    }
 
     /**
      * The screen's action buttons.
@@ -67,6 +72,10 @@ class EditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
+            Link::make('Посмотреть')
+                ->href(route('position.show',$this->position))
+                ->target('_blank')
+                ->icon('bs.eye'),
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->confirm( "Удаление вакансии будет окончательным и необратимым действием.")

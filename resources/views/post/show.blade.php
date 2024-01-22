@@ -50,7 +50,7 @@
                                 </button>
                             </x-device>
 
-                            @can('isOwner', $post)
+                            @can('update', $post)
                                 <a class="btn btn-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
                                     <x-icon path="bs.pencil-square"/>
                                 </a>

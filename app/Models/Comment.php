@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Orchid\Metrics\Chartable;
 use Overtrue\LaravelLike\Traits\Likeable;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes, Likeable;
+    use HasFactory, SoftDeletes, Likeable, Chartable;
 
     /**
      * @var string

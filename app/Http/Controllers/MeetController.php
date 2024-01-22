@@ -38,7 +38,7 @@ class MeetController extends Controller
 
     public function edit(Request $request, Meet $meet)
     {
-        $this->authorize('isOwner', $meet);
+        $this->authorize('update', $meet);
 
         return view('meet.edit', [
             'meet' => $meet,
@@ -54,7 +54,7 @@ class MeetController extends Controller
      */
     public function update(Request $request, Meet $meet)
     {
-        $this->authorize('isOwner', $meet);
+        $this->authorize('update', $meet);
         $dateMax = now()->toDateString();
 
         $request->validate([
@@ -85,7 +85,7 @@ class MeetController extends Controller
      */
     public function delete( Meet $meet)
     {
-        $this->authorize('isOwner', $meet);
+        $this->authorize('delete', $meet);
 
         $meet->delete();
         //сюда поставить уведомление

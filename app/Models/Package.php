@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
+use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 
 class Package extends Model
 {
-    use HasFactory, AsSource, Filterable;
+    use HasFactory, AsSource, Filterable, Chartable;
 
     /**
      * @var string[]

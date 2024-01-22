@@ -67,7 +67,7 @@ class PostController extends Controller
 
     public function edit(Request $request, Post $post)
     {
-        $this->authorize('isOwner', $post);
+        $this->authorize('update', $post);
 
         return view('post.edit', [
             'post'      => $post,
@@ -82,7 +82,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $this->authorize('isOwner', $post);
+        $this->authorize('update', $post);
 
         $request->validate([
             'title'   => 'required|string',
@@ -107,7 +107,7 @@ class PostController extends Controller
      */
     public function delete(Request $request, Post $post)
     {
-        $this->authorize('isOwner', $post);
+        $this->authorize('delete', $post);
 
         $post->delete();
         //сюда поставить уведомление

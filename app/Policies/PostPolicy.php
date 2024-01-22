@@ -4,5 +4,6 @@ namespace App\Policies;
 
 class PostPolicy
 {
-    use HasOwner;
+    use HasBasePolicy;
+
 }
