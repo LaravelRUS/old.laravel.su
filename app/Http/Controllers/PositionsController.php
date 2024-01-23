@@ -46,7 +46,7 @@ class PositionsController extends Controller
 
     public function edit(Request $request, Position $position)
     {
-        $this->authorize('isOwner', $position);
+        $this->authorize('update', $position);
 
         return view('positions.edit', [
 
@@ -64,7 +64,7 @@ class PositionsController extends Controller
     public function update(Request $request, Position $position)
     {
 
-        $this->authorize('isOwner', $position);
+        $this->authorize('update', $position);
 
 
         $request->validate([
@@ -96,7 +96,7 @@ class PositionsController extends Controller
      */
     public function delete(Request $request, Position $position)
     {
-        $this->authorize('isOwner', $position);
+        $this->authorize('delete', $position);
 
         $position->delete();
         //сюда поставить уведомление

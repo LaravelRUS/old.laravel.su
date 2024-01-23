@@ -72,7 +72,7 @@
                                     <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
                                 </button>
                             </x-device>
-                            @can('isOwner', $position)
+                            @can('update', $position)
                                 <a class="btn btn-secondary" href="{{route('position.edit', $position)}}" title="Редактировать">
                                     <x-icon path="bs.pencil-square"/>
                                 </a>

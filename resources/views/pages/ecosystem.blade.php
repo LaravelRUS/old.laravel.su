@@ -16,7 +16,7 @@
                 <a href="{{route('packages.create')}}" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
             @endauth
             <a href="{{ route('packages') }}"
-               class="link-body-emphasis text-decoration-none icon-link icon-link-hover">Пакеты сообщества
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Пакеты сообщества
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>

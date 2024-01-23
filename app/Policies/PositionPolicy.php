@@ -4,5 +4,5 @@ namespace App\Policies;
 
 class PositionPolicy
 {
-    use HasOwner;
+    use HasBasePolicy;
 }

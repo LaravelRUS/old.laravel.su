@@ -64,6 +64,11 @@ class UserListLayout extends Table
                     ->icon('bs.three-dots-vertical')
                     ->list([
 
+                        Link::make('Посмотреть на сайте')
+                            ->href( route('profile',$user))
+                            ->target('_blank')
+                            ->icon('bs.eye'),
+
                         Link::make(__('Edit'))
                             ->route('platform.systems.users.edit', $user->id)
                             ->icon('bs.pencil'),

@@ -38,12 +38,13 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            Menu::make('Get Started')
+            Menu::make('Статистика')
                 ->icon('bs.book')
                 ->title('Навигация')
                 ->route(config('platform.index')),
 
             Menu::make('Лента постов')
+                ->permission('site.content')
                 ->icon('bs.collection')
                 ->route('platform.post')
                 ->badge(fn () => 6),
@@ -51,6 +52,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Каталог пакетов')
                 ->icon('bs.box-seam')
                 ->route('platform.packages')
+                ->permission('site.content')
                 ->badge(function () {
                     $waiting = Package::approved(false)->count();
 
@@ -60,6 +62,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Мероприятия')
                 ->icon('bs.people')
                 ->route('platform.meets')
+                ->permission('site.content')
                 ->badge(function () {
                     $waiting = Meet::approved(false)->count();
 
@@ -69,6 +72,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Вакансии')
                 ->icon('bs.briefcase')
                 ->route('platform.position')
+                ->permission('site.content')
                 ->badge(function () {
                     $waiting = Position::approved(false)->count();
 
@@ -143,6 +147,9 @@ class PlatformProvider extends OrchidServiceProvider
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
+
+            ItemPermission::group('Данные')
+                ->addPermission('site.content', 'Контент'),
         ];
     }
 }

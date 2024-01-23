@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
+use App\Models\Comment;
+use App\Models\IdeaKey;
+use App\Models\IdeaRequest;
+use App\Models\Meet;
+use App\Models\Package;
+use App\Models\Position;
+use App\Models\Post;
+use App\Models\User;
+use App\Orchid\Layouts\BasicIndicators;
+use Carbon\Carbon;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
 
 class PlatformScreen extends Screen
 {
@@ -16,13 +25,23 @@ class PlatformScreen extends Screen
      */
     public function query(): iterable
     {
+        $start = Carbon::now()->subDays(30);
+        $end = Carbon::now();
         return [
-            'metrics' => [
-                'sales'    => ['value' => number_format(6851), 'diff' => 10.08],
-                'visitors' => ['value' => number_format(24668), 'diff' => -30.76],
-                'orders'   => ['value' => number_format(10000), 'diff' => 0],
-                'total'    => number_format(65661),
+            'basicIndicators'                => [
+                User::countByDays($start,$end)->toChart('Пользователи'),
+                Comment::countByDays($start,$end)->toChart('комментарии'),
             ],
+            'content'                => [
+                Post::countByDays($start, $end)->toChart('Посты'),
+                Meet::countByDays($start,$end)->toChart('Мероприятия'),
+                Package::countByDays($start,$end)->toChart('Пакеты'),
+                Position::countByDays($start,$end)->toChart('Вакансии'),
+            ],
+            'idea' => [
+                IdeaRequest::countByDays($start,$end)->toChart('Запросы ключей'),
+                IdeaKey::where('activated',1)->countByDays($start,$end,'updated_at')->toChart('Выданные ключи')
+            ]
         ];
     }
 
@@ -31,7 +50,7 @@ class PlatformScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Get Started';
+        return 'Статистика';
     }
 
     /**
@@ -39,7 +58,7 @@ class PlatformScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Welcome to your Orchid application.';
+        return '';
     }
 
     /**
@@ -60,16 +79,19 @@ class PlatformScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('platform::partials.update-assets'),
+            BasicIndicators::make('basicIndicators')
+                ->description('График отображает количество зарегистрированных пользователей и оставленных комментариев по дням')
+                ->title('Пользователи'),
 
-            Layout::metrics([
-                'Sales Today'    => 'metrics.sales',
-                'Visitors Today' => 'metrics.visitors',
-                'Pending Orders' => 'metrics.orders',
-                'Total Earnings' => 'metrics.total',
-            ]),
+            BasicIndicators::make('content')
+                ->title('Контент')
+                ->description('Количество новых стаей,пакетов,мероприятий и вакансий по дням'),
 
-            Layout::view('platform::partials.welcome'),
+            BasicIndicators::make('idea')
+                ->description('количество запросов и выданных ключей Laravel Idea по дням')
+                ->title('Idea'),
+
+
         ];
     }
 }

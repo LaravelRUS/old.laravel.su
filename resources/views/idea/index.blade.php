@@ -15,7 +15,7 @@
             <x-slot:actions>
                 <a href="https://laravel-idea.com/" class="btn btn-primary btn-lg px-4">Перейти на сайт</a>
                 <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea"
-                   class="link-body-emphasis text-decoration-none icon-link icon-link-hover">
+                   class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                         Маркетплейс
                         <x-icon path="bs.arrow-right"/>
                 </a>

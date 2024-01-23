@@ -60,6 +60,13 @@ class ListScreen extends Screen
         return 'Этот раздел позволяет вам управлять каталогом пакетов, которые будут отображаться на веб-сайте.';
     }
 
+    public function permission(): ?iterable
+    {
+        return [
+            'site.content',
+        ];
+    }
+
     /**
      * The screen's action buttons.
      *

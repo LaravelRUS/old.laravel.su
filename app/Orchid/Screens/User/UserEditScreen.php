@@ -16,6 +16,7 @@ use Orchid\Access\Impersonation;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
@@ -74,6 +75,11 @@ class UserEditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
+            Link::make('Посмотреть на сайте')
+                ->canSee($this->user->exists)
+                ->href($this->user->exists ? route('profile',$this?->user) : "")
+                ->target('_blank')
+                ->icon('bs.eye'),
             Button::make(__('Impersonate user'))
                 ->icon('bg.box-arrow-in-right')
                 ->confirm(__('You can revert to your original state by logging out.'))
@@ -150,7 +156,7 @@ class UserEditScreen extends Screen
 
         $user
             ->fill($request->collect('user')->except(['password', 'permissions', 'roles'])->toArray())
-            ->forceFill(['permissions' => $permissions])
+            ->forceFill(['permissions' => $permissions, 'banned' => $request->boolean('user.banned')])
             ->save();
 
         $user->replaceRoles($request->input('user.roles'));

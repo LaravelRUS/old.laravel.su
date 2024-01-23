@@ -13,12 +13,14 @@
                         <x-icon path="bs.three-dots"/>
                     </a>
                     <ul class="dropdown-menu">
-                        @can('isOwner', $package)
+                        @can('update', $package)
                             <li>
                                 <a class="dropdown-item"
                                    href="{{route('packages.edit', $package)}}">Редактировать</a>
                             </li>
+                        @endcan
 
+                        @can('delete')
                             <li>
                                 <a class="dropdown-item" data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить статью?"

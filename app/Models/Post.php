@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
+use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 use Overtrue\LaravelLike\Traits\Likeable;
 use Spatie\Feed\Feedable;
@@ -27,7 +28,7 @@ use Spatie\Feed\FeedItem;
  */
 class Post extends Model implements Feedable
 {
-    use HasFactory, Taggable, Searchable, Likeable, AsSource, Filterable;
+    use HasFactory, Taggable, Searchable, Likeable, AsSource, Filterable, Chartable;
 
     /**
      * @var string[]

@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Fields\TextArea;
@@ -55,6 +56,14 @@ class EditScreen extends Screen
         return '';
     }
 
+    public function permission(): ?iterable
+    {
+        return [
+            'site.content',
+        ];
+    }
+
+
 
     /**
      * The screen's action buttons.
@@ -64,10 +73,16 @@ class EditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
+            Link::make('Посмотреть на сайте')
+                ->href(route('post.show',$this->post))
+                ->target('_blank')
+                ->icon('bs.eye'),
+
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->confirm( "Удаление публикации будет окончательным и необратимым действием. Вся информация, связанная с этой публикацией, будет безвозвратно удалена из системы.")
                 ->method('remove'),
+
         ];
     }
 

@@ -64,6 +64,13 @@ class ListScreen extends Screen
         return [];
     }
 
+    public function permission(): ?iterable
+    {
+        return [
+            'site.content',
+        ];
+    }
+
     /**
      * The screen's layout elements.
      *
@@ -125,6 +132,11 @@ class ListScreen extends Screen
                     ->render(fn(Position $position) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
+                            Link::make('Посмотреть на сайте')
+                                ->href( route('position.show',$position))
+                                ->target('_blank')
+                                ->icon('bs.eye'),
+
                             Link::make(__('Edit'))
                                 ->route('platform.position.edit', $position->id)
                                 ->icon('bs.pencil'),

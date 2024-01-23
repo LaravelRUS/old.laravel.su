@@ -15,7 +15,7 @@
             <a href="{{route('docs')}}" class="btn btn-primary btn-lg px-4">Для разработчика</a>
 
             <a href="{{ route('courses') }}"
-               class="link-body-emphasis text-decoration-none icon-link icon-link-hover">Курсы для новичков
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Курсы для новичков
                 <x-icon path="bs.arrow-right" />
             </a>
         </x-slot>

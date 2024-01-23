@@ -9,6 +9,13 @@
             <a href="{{ route('login') }}" class="btn btn-outline-primary">Стать участником</a>
         </div>
     </div>
+@elseif(Auth::user()->cannot('create', App\Models\Comment::class))
+
+    <div class="p-4 p-xx-5 bg-body-secondary rounded-3 mt-5">
+        <div class="d-flex flex-column align-items-center mx-auto col-xxl-8">
+            <p class="fw-bolder">Вы не можете оставить комментарий(</p>
+        </div>
+    </div>
 @else
     <div class="pt-4 mt-5" id="new-comment">
         <form class="row g-3"

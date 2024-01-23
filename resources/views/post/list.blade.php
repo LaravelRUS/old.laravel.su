@@ -10,10 +10,12 @@
                     <x-icon path="bs.three-dots"/>
                 </a>
                 <ul class="dropdown-menu">
-                    @can('isOwner', $post)
+                    @can('update', $post)
                         <li>
                             <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
                         </li>
+                    @endcan
+                    @can('delete',$post)
 
                         <li>
                             <a class="dropdown-item" data-turbo-method="delete"
@@ -21,6 +23,7 @@
                                href="{{route('post.delete', $post)}}">Удалить</a>
                         </li>
                     @endcan
+
                     <li>
                         <button class="dropdown-item"
                                 data-controller="share"
