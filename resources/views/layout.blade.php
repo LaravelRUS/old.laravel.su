@@ -12,14 +12,16 @@
         <div class="my-2 my-lg-4">
             <header class="d-flex flex-wrap align-items-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
-                    <a href="{{ route('nav') }}" class="link-body-emphasis text-decoration-none d-flex align-items-center">
+                    <a href="{{ route('nav') }}" class="nav-link link-body-emphasis text-decoration-none d-flex align-items-center">
                         {{--
                         <x-icon path="bs.list" width="2em" height="2em" class="me-1" />
 --}}
 
-                        <img src="https://laravel.com/img/logomark.min.svg" height="32" class="me-2">
-
+                        <x-icon path="i.logo" height="1.5em" width="1.5em" class="me-2" />
+                        <x-icon path="i.menu" height="1.5em" width="1.5em" />
+                        {{--
                         {{ View::getSection('type') ? View::getSection('type') : View::getSection('title') }}
+                        --}}
                     </a>
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
@@ -47,18 +49,22 @@
                         <x-icon path="i.docs" height="1.5em" width="1.5em" />
                     </a>
 
+                    <a href="{{ route('profile.notifications') }}" class="nav-link link-body-emphasis position-relative">
+                        <x-icon path="i.bell" height="1.5em" width="1.5em" />
+
+                        @if(auth()->user() == null || auth()->user()->unreadNotifications()->exists())
+                            <span class="position-absolute bottom-0 start-70 translate-middle p-1 bg-primary rounded-circle">
+                              <span class="visually-hidden">Есть не прочитанные уведомления</span>
+                        </span>
+                        @endif
+                    </a>
+
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
                     @else
                         <a href="{{ route('profile', auth()->user()) }}"
                            class="avatar avatar-sm position-relative">
                             <img src="{{ auth()->user()->avatar }}" class="avatar-img rounded-circle border border-tertiary-subtle">
-
-                            @if(auth()->user()->unreadNotifications()->exists())
-                                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-light-subtle rounded-circle">
-                                    <span class="visually-hidden">Есть не прочитанные уведомления</span>
-                                </span>
-                            @endif
                         </a>
                     @endif
                 </div>
