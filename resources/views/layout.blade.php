@@ -17,8 +17,8 @@
                         <x-icon path="bs.list" width="2em" height="2em" class="me-1" />
 --}}
 
-                        <x-icon path="i.logo" height="1.5em" width="1.5em" class="me-2" />
-                        <x-icon path="i.menu" height="1.5em" width="1.5em" />
+                        <x-icon path="i.logo" height="2em" width="2em" class="me-2" />
+                        <x-icon path="i.menu" height="2em" width="2em" />
                         {{--
                         {{ View::getSection('type') ? View::getSection('type') : View::getSection('title') }}
                         --}}
