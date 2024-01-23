@@ -10,7 +10,7 @@ use Orchid\Screen\AsSource;
 
 class IdeaRequest extends Model
 {
-    use HasFactory, Filterable, asSource, Chartable;
+    use HasFactory, Filterable, AsSource, Chartable;
 
     /**
      * @var string[]

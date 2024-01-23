@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'Laravel Framework Russian Community',
+    'name' => 'Laravel Russian Community',
 
     /*
     |--------------------------------------------------------------------------
