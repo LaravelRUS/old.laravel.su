@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Casts\PackageTypeEnum;
 use App\Casts\SortEnum;
-use App\Models\Meet;
 use App\Models\Package;
-use App\Models\Post;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -77,8 +75,12 @@ class PackagesController extends Controller
 
         $request->user()->packages()->saveMany([$package]);
 
-        Toast::success('Ваш запрос принят и будет проверен модератором.')
-            ->disableAutoHide();
+        if($package->approved){
+            Toast::success('Изменения успешно сохранены.')->disableAutoHide();
+        }else{
+            Toast::success('Ваш запрос принят и будет проверен модератором.')
+                ->disableAutoHide();
+        }
 
         return redirect()->route('packages');
     }
@@ -86,16 +88,17 @@ class PackagesController extends Controller
     /**
      * @param Package $pack
      *
-     * @return MultiplePendingTurboStreamResponse|PendingTurboStreamResponse
+     * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function delete( Package $pack)
+    public function delete(Request $request, Package $package)
     {
-        $this->authorize('delete', $pack);
+        $this->authorize('delete', $package);
 
-        $pack->delete();
-        //сюда поставить уведомление
+        $package->delete();
 
-        return turbo_stream()->remove($pack);
+        Toast::success('Пакет удалён.')->disableAutoHide();
+
+        return redirect()->route('profile.packages', $request->user());
     }
 }

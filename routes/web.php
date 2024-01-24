@@ -218,7 +218,7 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->name('packages.store');
 
         Route::get('/{package}/edit', [PackagesController::class, 'edit'])
-            ->can('basicActions', 'package')
+            ->can('update', 'package')
             ->name('packages.edit');
 
         Route::post('/{package}', [PackagesController::class, 'update'])

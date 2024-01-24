@@ -6,6 +6,7 @@ use App\Models\Meet;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Toast;
 use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
 use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
@@ -74,22 +75,30 @@ class MeetController extends Controller
         ]))
             ->save();
 
+        if($meet->approved){
+            Toast::success('Изменения успешно сохранены.')->disableAutoHide();
+        }else{
+            Toast::success('Ваш запрос принят и будет проверен модератором.')
+                ->disableAutoHide();
+        }
+
         return redirect()->route('meets');
     }
 
     /**
      * @param Meet $meet
      *
-     * @return MultiplePendingTurboStreamResponse|PendingTurboStreamResponse
+     * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function delete( Meet $meet)
+    public function delete(Request $request, Meet $meet)
     {
         $this->authorize('delete', $meet);
 
         $meet->delete();
-        //сюда поставить уведомление
 
-        return turbo_stream()->remove($meet);
+        Toast::success('Событие удалено.')->disableAutoHide();
+
+        return redirect()->route('profile.meets',  $request->user());
     }
 }

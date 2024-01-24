@@ -8,7 +8,7 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-2ea9389c.css",
+    "file": "assets/app-0f4a892b.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
@@ -20,7 +20,7 @@
     "css": [
       "assets/app-6b1fe032.css"
     ],
-    "file": "assets/app-fa33973d.js",
+    "file": "assets/app-ae35e2d2.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

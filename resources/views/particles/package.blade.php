@@ -19,14 +19,15 @@
                                    href="{{route('packages.edit', $package)}}">Редактировать</a>
                             </li>
                         @endcan
-
-                        @can('delete')
+                        {{--
+                        @can('delete', $package)
                             <li>
                                 <a class="dropdown-item" data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить статью?"
                                    href="{{route('packages.delete', $package)}}">Удалить</a>
                             </li>
                         @endcan
+                        --}}
                         <li>
                             <button class="dropdown-item"
                                     data-controller="share"

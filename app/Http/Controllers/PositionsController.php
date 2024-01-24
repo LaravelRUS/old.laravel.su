@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Orchid\Support\Facades\Toast;
 use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
 use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
@@ -84,6 +85,13 @@ class PositionsController extends Controller
         $position->fill(array_merge($request->get('position'), ['user_id' => $request->user()->id]))
             ->save();
 
+        if($position->approved){
+            Toast::success('Изменения успешно сохранены.')->disableAutoHide();
+        }else{
+            Toast::success('Ваш запрос принят и будет проверен модератором.')
+                ->disableAutoHide();
+        }
+
         return redirect()->route('position.show', $position);
     }
 
@@ -91,7 +99,7 @@ class PositionsController extends Controller
      * @param Request  $request
      * @param Position $position
      *
-     * @return MultiplePendingTurboStreamResponse|PendingTurboStreamResponse
+     * @return RedirectResponse
      * @throws AuthorizationException
      */
     public function delete(Request $request, Position $position)
@@ -99,9 +107,10 @@ class PositionsController extends Controller
         $this->authorize('delete', $position);
 
         $position->delete();
-        //сюда поставить уведомление
 
-        return turbo_stream()->remove($position);
+        Toast::success('Вакансия удалена.')->disableAutoHide();
+
+        return redirect()->route('jobs');
     }
 
 

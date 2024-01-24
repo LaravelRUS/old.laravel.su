@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Response;
 use  Illuminate\Database\Eloquent\Builder;
+use Orchid\Support\Facades\Toast;
 
 class PostController extends Controller
 {
@@ -96,6 +94,9 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
         ])->save();
 
+
+        Toast::success('Изменения успешно сохранены.')->disableAutoHide();
+
         return redirect()->route('post.show', $post);
     }
 
@@ -103,16 +104,17 @@ class PostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Post         $post
      *
-     * @return \Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete(Request $request, Post $post)
     {
         $this->authorize('delete', $post);
 
         $post->delete();
-        //сюда поставить уведомление
 
-        return turbo_stream()->remove($post);
+        Toast::success('Публикация удалена.')->disableAutoHide();
+
+        return redirect()->route('feed');
     }
 
 

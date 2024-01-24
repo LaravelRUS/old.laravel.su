@@ -72,10 +72,9 @@ class MentionNotification extends Notification implements ShouldQueue
         $url = route('post.show', $this->comment->post) . '#' . dom_id($this->comment);
 
         return (new WebPushMessage)
-            ->title('Вас упомянули')
+            ->title('Пользователь '.$this->comment->author->name." упомянул вас в комментарии")
             ->icon($this->comment->author->avatar)
-            ->body('Пользователь '.$this->comment->author->name." упомянул вас в комментарии")
-            ->action('посмотреть',$url)
+            ->action('Посмотреть',$url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

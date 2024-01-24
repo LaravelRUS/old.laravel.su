@@ -15,6 +15,7 @@
                             <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
                         </li>
                     @endcan
+                    {{--
                     @can('delete',$post)
 
                         <li>
@@ -23,6 +24,7 @@
                                href="{{route('post.delete', $post)}}">Удалить</a>
                         </li>
                     @endcan
+                    --}}
 
                     <li>
                         <button class="dropdown-item"

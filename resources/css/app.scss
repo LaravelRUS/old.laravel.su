@@ -182,6 +182,7 @@ $utilities: (
 .avatar-img {
     aspect-ratio: 1/1;
     max-width: 100%;
+    min-width: 40px;
     object-fit: cover;
 }
 
