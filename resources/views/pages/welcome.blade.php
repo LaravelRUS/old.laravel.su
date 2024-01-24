@@ -566,7 +566,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             </div>
                             <!-- Content -->
                             <blockquote class="px-3">
-                                <p>
+                                <p class="text-balance">
                                     Я использую Laravel уже почти десять лет, и у меня никогда не возникало искушения
                                     переключиться на что-то другое.
                                 </p>
@@ -644,18 +644,19 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
-                                    src="https://xsgames.co/randomusers/avatar.php?g=male" alt="avatar">
+                                    src="https://laravel.com/images/testimonials/tony-lea.jpg" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote>
-                                <p>
+                                <p class="text-balance">
                                     Laravel - <span class="text-primary">лучшее сообщество</span>, в котором находишь
                                     поддержку, знания и вдохновение.
+                                    Всё это также мне стать лучшим разработчиком 🤙
                                 </p>
                             </blockquote>
 
                             <!-- Info -->
-                            <p class="mb-0 fw-semibold">Дмитрий Будко</p>
+                            <p class="mb-0 fw-semibold">Тони Ли</p>
                         </div>
                     </div>
                 </div> <!-- Row END -->

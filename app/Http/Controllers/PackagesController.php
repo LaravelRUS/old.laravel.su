@@ -11,6 +11,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Orchid\Support\Facades\Toast;
 use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
 use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
@@ -75,6 +76,9 @@ class PackagesController extends Controller
         ]);
 
         $request->user()->packages()->saveMany([$package]);
+
+        Toast::success('Ваш запрос принят и будет проверен модератором.')
+            ->disableAutoHide();
 
         return redirect()->route('packages');
     }
