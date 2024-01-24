@@ -5,7 +5,7 @@
 
     <x-header image="/img/bird.svg" align="align-items-start">
         <x-slot:sup>Каждый рок звезда</x-slot>
-        <x-slot:title>Мы делаем сообщество лучше.</x-slot>
+        <x-slot:title>Все делают сообщество лучше.</x-slot>
 
         <x-slot:description>
             Сообщество совершенствуется с каждым годом благодаря работе десятков добровольцев, вносящих большой и малый
