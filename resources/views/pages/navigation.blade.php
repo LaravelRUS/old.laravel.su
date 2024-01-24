@@ -4,90 +4,105 @@
 
     <div class="p-5 mh-100 mw-100 d-flex flex-column">
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start mb-3">
-            <x-icon path="i.home" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+        <div class="col">
             <a href="{{ route('home') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Главная</h5>
-                <small class="opacity-50">
-                    Общие сведения о фреймворке Laravel и его окружении
-                </small>
-            </a>
-        </li>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.home" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start mb-3">
-            <x-icon path="i.possibility" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                <span>
+                    <h5 class="mb-0">Главная</h5>
+                    <small class="opacity-50">
+                        Общие сведения о фреймворке Laravel и его окружении
+                    </small>
+                </span>
+            </a>
+        </div>
+
+        <div class="col">
             <a href="{{ route('feature') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Возможности</h5>
-                <small class="opacity-50">
-                    С Laravel вы можете реализовать всё, что угодно
-                </small>
-            </a>
-        </li>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.possibility" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start mb-3">
-            <x-icon path="i.tribune" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                <span>
+                    <h5 class="mb-0">Возможности</h5>
+                    <small class="opacity-50">
+                        С Laravel вы можете реализовать всё, что угодно
+                    </small>
+                </span>
+            </a>
+        </div>
+
+        <div class="col">
             <a href="{{ route('feed') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Трибуна</h5>
-                <small class="opacity-50">
-                    Интересные статьи и общение на важные для сообщества темы
-                </small>
-            </a>
-        </li>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.tribune" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start mb-3">
-            <x-icon path="i.package" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                <span>
+                    <h5 class="mb-0">Трибуна</h5>
+                    <small class="opacity-50">
+                        Интересные статьи и общение на важные для сообщества темы
+                    </small>
+                </span>
+            </a>
+        </div>
+
+
+        <div class="col">
             <a href="{{ route('packages') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Пакеты</h5>
-                <small class="opacity-50">
-                    Подборка инструментов, облегчающих вашу работу
-                </small>
-            </a>
-        </li>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.package" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start mb-3">
-            <x-icon path="i.jobs" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+                <span>
+                    <h5 class="mb-0">Пакеты</h5>
+                    <small class="opacity-50">
+                        Подборка инструментов, облегчающих вашу работу
+                    </small>
+                </span>
+            </a>
+        </div>
+
+        <div class="col">
             <a href="{{ route('jobs') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Работа</h5>
-                <small class="opacity-50">
-                    Вакансии подобранные для специалистов Laravel
-                </small>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.jobs" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+
+                <span>
+                    <h5 class="mb-0">Работа</h5>
+                    <small class="opacity-50">
+                        Вакансии подобранные для специалистов Laravel
+                    </small>
+                </span>
             </a>
-        </li>
+        </div>
 
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start">
-            <x-icon path="i.courses" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+        <div class="col">
             <a href="{{ route('courses') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Курсы</h5>
-                <small class="opacity-50">
-                    Наилучший способ изучать Laravel на русском языке
-                </small>
-            </a>
-        </li>
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.courses" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
 
-        <li class="col d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start">
-            <x-icon path="i.meets" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
-            <a href="{{ route('meets') }}"
-               class="text-body-secondary text-decoration-none"
-               data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
-                <h5 class="mb-0">Встречи</h5>
-                <small class="opacity-50">
-                    Конференции, собрания, митапы с ведущими специалистами
-                </small>
+                <span>
+                    <h5 class="mb-0">Курсы</h5>
+                    <small class="opacity-50">
+                        Наилучший способ изучать Laravel на русском языке
+                    </small>
+                </span>
             </a>
-        </li>
+        </div>
+
+        <div class="col">
+            <a href="{{ route('meets') }}"
+               class="d-flex gap-4 rounded p-3 p-xxl-4 align-items-center align-items-start text-body-secondary text-decoration-none">
+                <x-icon path="i.meets" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
+
+                <span>
+                    <h5 class="mb-0">Встречи</h5>
+                    <small class="opacity-50">
+                        Конференции, собрания, митапы с ведущими специалистами
+                    </small>
+                </span>
+            </a>
+        </div>
 
         <hr class="w-75">
 
