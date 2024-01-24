@@ -19,14 +19,15 @@
                             <a class="dropdown-item" href="{{route('meets.edit', $meet)}}">Редактировать</a>
                         </li>
                     @endcan
-
-                    @can('delete')
+                    {{--
+                    @can('delete', $meet)
                         <li>
                             <a class="dropdown-item" data-turbo-method="delete"
                                data-turbo-confirm="Вы уверены, что хотите удалить мероприятие?"
                                href="{{route('meets.delete', $meet)}}">Удалить</a>
                         </li>
                     @endcan
+                    --}}
                     <li>
                         <button class="dropdown-item"
                                 data-controller="share"

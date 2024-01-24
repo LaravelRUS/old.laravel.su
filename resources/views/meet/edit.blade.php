@@ -72,10 +72,20 @@
                         <x-text-editor name="meet[description]" id="description" placeholder="Добавьте краткое описание"
                                        :value="old('meet.description', $meet->description)"/>
 
-                        <div class="d-block d-sm-inline-block">
-                            <button type="submit" class="btn btn-primary w-100">
+
+                        <div class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">
                                 {{ $meet->exists ? "Обновить" : "Опубликовать" }}
                             </button>
+
+                            @if($meet->exists)
+                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                   data-turbo-confirm="Вы уверены, что хотите удалить публикацию?"
+                                   href="{{route('meets.delete', $meet)}}">
+                                    <x-icon path="bs.trash3" />
+                                    Удалить
+                                </a>
+                            @endif
                         </div>
                     </form>
 

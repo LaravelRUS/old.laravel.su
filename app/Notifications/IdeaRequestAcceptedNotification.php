@@ -65,7 +65,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
     {
         return (new WebPushMessage)
             ->title('Бесплатный ключ Laravel IDEA доступен')
-            //->icon($this->author->avatar)
+            ->icon(asset('icons/logo.svg'))
             //->body('Пользователь '.$this->author->name."ответил на ваш комментарий")
             ->action('Посмотреть',route('idea.key', $this->ideaKey))
             ->vibrate([300, 200, 300])

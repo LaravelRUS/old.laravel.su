@@ -74,8 +74,7 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
         return (new WebPushMessage)
             ->title('Пользователь ' . $this->reply->author->name . ' ответил на ваш комментарий')
             ->icon($this->reply->author->avatar)
-            //->body('Пользователь '.$this->author->name." ответил на ваш комментарий")
-            ->action('посмотреть', $url)
+            ->action('Посмотреть', $url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

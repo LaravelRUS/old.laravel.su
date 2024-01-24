@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Casts\PostTypeEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Toast;
 
 class ProfileController extends Controller
 {
@@ -145,6 +146,11 @@ class ProfileController extends Controller
             'name'  => $request->input('name'),
             'about' => $request->input('about'),
         ])->save();
+
+
+        Toast::success('Ваш запрос принят и будет проверен модератором.')
+                ->disableAutoHide();
+
 
         return redirect()->route('profile', $request->user());
     }

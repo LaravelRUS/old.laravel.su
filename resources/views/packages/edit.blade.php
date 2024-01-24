@@ -72,12 +72,6 @@
                                        Выберите наиболее подходящую категорию для вашего пакета.
                                     </div>
                                 </div>
-
-                                <div class="d-block d-sm-inline-block">
-                                    <button type="submit" class="btn btn-primary w-100">
-                                        {{ $pack->exists ? "Обновить" : "Опубликовать" }}
-                                    </button>
-                                </div>
                             </div>
 
                             <div class="col-12 col-lg-5 d-none d-lg-block">
@@ -91,6 +85,20 @@
                                 </ul>
                                 </div>
                             </div>
+                        </div>
+                        <div class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">
+                                {{ $pack->exists ? "Обновить" : "Опубликовать" }}
+                            </button>
+
+                            @if($pack->exists)
+                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                   data-turbo-confirm="Вы уверены, что хотите удалить публикацию?"
+                                   href="{{route('packages.delete', $pack)}}">
+                                    <x-icon path="bs.trash3" />
+                                    Удалить
+                                </a>
+                            @endif
                         </div>
 
                         {{--

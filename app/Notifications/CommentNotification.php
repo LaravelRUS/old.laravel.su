@@ -72,9 +72,9 @@ class CommentNotification extends Notification implements ShouldQueue
         $url = route('post.show', $this->comment->post) . '#' . dom_id($this->comment);
 
         return (new WebPushMessage)
-            ->title('Комментарий к ваше публикации')
+            ->title('Пользователь '.$this->comment->author->name." оставил комментарий к вашей публикации")
             ->icon($this->comment->author->avatar)
-            ->body('Пользователь '.$this->comment->author->name."оставил комментарий к вашей публикации")
+            //->body('Пользователь '.$this->comment->author->name." оставил комментарий к вашей публикации")
             ->action('посмотреть',$url)
             ->vibrate([300, 200, 300])
             ->options([
