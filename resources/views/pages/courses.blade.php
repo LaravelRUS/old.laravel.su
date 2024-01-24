@@ -19,7 +19,7 @@
 
 
         <div class="row g-4">
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-md-4">
                 <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
                     <h3 class="mb-2 fw-bold">Закладки</h3>
                     <p class="mb-5 fw-light line-clamp line-clamp-3">

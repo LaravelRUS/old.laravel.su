@@ -14,7 +14,7 @@ class CodeSnippetController extends Controller
      */
     public function show(CodeSnippet $snippet)
     {
-        return view('code.index', [
+        return view('pastebin.index', [
             'content' => $snippet->content
         ]);
     }

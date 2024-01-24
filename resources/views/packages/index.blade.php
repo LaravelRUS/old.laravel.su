@@ -53,7 +53,7 @@ return response()->json([
 
     <x-container>
         <x-turbo-frame id="packages">
-            <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
+            <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-xl-5 mb-3">
                 <div class="col-md-4 col-xl-3 d-none d-md-block">
                     <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
                 </div>

@@ -69,3 +69,7 @@ pre {
     display: block;
     color: rgba(255, 255, 255, 0.45);
 }
+
+[contenteditable="true"]:focus {
+    outline: none!important;
+}

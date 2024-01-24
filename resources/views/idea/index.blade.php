@@ -26,7 +26,7 @@
     <x-container>
 
         <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
-            <div class="row g-5">
+            <div class="row g-xxl-5">
                 <div class="col-xl-6">
                     <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-4">
                         <div class="col d-flex flex-column gap-2">
@@ -55,8 +55,7 @@
                                 <h4 class="fw-semibold mb-0 text-body-emphasis">Eloquent завершение</h4>
                             </div>
                             <p class="text-body-secondary">
-                                Полное автозаполнение полей и отношений, автоматическое создание фабрики ресурсов и баз
-                                данных JSON.
+                                Полное автозаполнение полей и отношений, автоматическое создание фабрики ресурсов и баз данных.
                             </p>
                         </div>
                         <div class="col d-flex flex-column gap-2">
