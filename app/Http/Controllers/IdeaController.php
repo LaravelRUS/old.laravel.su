@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Toast;
 
 class IdeaController extends Controller
 {
@@ -33,12 +34,14 @@ class IdeaController extends Controller
         ]);
 
         $ideaRequest = new IdeaRequest();
+
         $ideaRequest->fill($request->all())->forceFill([
             'user_id' => $request->user()->id,
         ])->save();
 
-        return redirect()->route('idea.index')
-            ->with('success', 'Your request has been sent');
+        Toast::success('Ваш запрос принят и будет проверен модератором. При одобрении вы получите уведомление.')->disableAutoHide();
+
+        return redirect()->route('idea.index');
     }
 
     /**

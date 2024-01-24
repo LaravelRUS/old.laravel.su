@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
                     <a href="{{ route('home') }}">
-                        <img src="https://laravel.su/images/logo.png" height="40" class="d-lg-inline d-none">
+                        <img src="/img/logo.svg" height="40" class="d-lg-inline d-none">
                     </a>
                 </div>
 
@@ -227,6 +227,7 @@
     </div>
 
 
+    @include('particles.toast')
     {{-- @include('particles.mobile-menu') --}}
     @include('particles.back-to-top')
 @endsection

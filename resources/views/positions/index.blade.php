@@ -6,7 +6,7 @@
 
     <x-header image="/img/ui/job.svg">
         <x-slot:sup>Примените таланты</x-slot>
-        <x-slot:title>Работа</x-slot>
+        <x-slot:title>Работа не волк, в лес не убежит</x-slot>
 
         <x-slot:description>
             Передайте проект на аутсорсинг или привлеките экспертов Laravel в свою существующую команду.

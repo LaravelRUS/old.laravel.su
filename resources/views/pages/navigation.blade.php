@@ -110,6 +110,9 @@
 
         <ul class="nav flex-column navbar-nav">
             <li class="nav-item mb-2">
+                <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
+            </li>
+            <li class="nav-item mb-2">
                 <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
             </li>
             <li class="nav-item mb-2">
@@ -136,7 +139,6 @@
                    class="nav-link p-0">Правила сообщества</a>
             </li>
         </ul>
-
 
         <p class="small text-muted mb-2 mt-5">
             Веб-сайт является неофициальным ресурсом, посвященным Laravel. Мы объединяем разработчиков и

@@ -10,7 +10,7 @@
                 <a href="{{route('profile.notifications.read.all')}}"
                    data-turbo-method="post"
                    class="link-primary fw-semibold text-decoration-none text-end">
-                    Пометить все как прочитанные
+                    Прочитать все
                 </a>
             </div>
             <div class="bg-body-tertiary rounded overflow-hidden mb-4 p-4 p-xl-5">
