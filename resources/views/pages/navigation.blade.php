@@ -1,4 +1,5 @@
 @extends('html')
+@section('title', 'Навигация по сайту')
 
 @section('body')
 
