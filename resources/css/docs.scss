@@ -320,3 +320,14 @@ main,.main {
         }
     }
 }
+
+.doc-navigation {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    max-height: 100vh;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

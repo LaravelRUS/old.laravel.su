@@ -6,7 +6,7 @@
 
     <x-container>
         <div class="row g-xxl-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-md-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block">
+            <div class="col-md-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block doc-navigation">
 
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
