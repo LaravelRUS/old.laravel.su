@@ -89,6 +89,17 @@
     @endif
 
 
+    <x-call-to-action link="{{ route('meets.create') }}" text="Опубликовать мероприятие">
+        <x-slot:title>Устраиваете встречу?</x-slot>
+
+        <x-slot:description>
+            Просто заполните форму с деталями: название, дата и время проведения, место, темы и другие подробности. Мы
+            опубликуем информацию на странице конференций, чтобы все могли узнать о вашем мероприятии.
+        </x-slot>
+
+    </x-call-to-action>
+
+
     <x-container>
         <div class="row g-4 justify-content-center align-items-start  position-relative mb-5">
             <div class="d-none d-xl-block col-xl-4 position-sticky top-0 py-3">

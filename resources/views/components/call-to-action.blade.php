@@ -7,7 +7,7 @@
 
         <div class="col-lg-7">
             <p class="display-6 fw-bold">{!!  $title !!}</p>
-            <p class="mb-lg-0">
+            <p class="mb-lg-0 text-balance">
                 {!!  $description !!}
             </p>
         </div>

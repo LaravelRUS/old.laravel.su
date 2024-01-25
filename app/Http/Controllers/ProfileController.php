@@ -148,9 +148,7 @@ class ProfileController extends Controller
         ])->save();
 
 
-        Toast::success('Ваш запрос принят и будет проверен модератором.')
-                ->disableAutoHide();
-
+        Toast::success('Профиль был обновлён.');
 
         return redirect()->route('profile', $request->user());
     }
