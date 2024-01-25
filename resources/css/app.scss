@@ -357,4 +357,8 @@ $utilities: (
     max-height: 25rem;
     overflow: hidden;
     position: relative;
+
+    pre {
+        overflow: hidden!important;
+    }
 }
