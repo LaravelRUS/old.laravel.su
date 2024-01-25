@@ -26,11 +26,11 @@
             <div class="col-md-4 mb-md-4">
                 <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
                     <h3 class="mb-2 fw-bold">Закладки</h3>
-                    <p class="mb-5 fw-light line-clamp line-clamp-3">
+                    <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                         Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
                     </p>
                     <a href="{{ route('courses') }}"
-                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                         Посмотреть курс
                         <x-icon path="bs.arrow-right" />
                     </a>
@@ -43,10 +43,10 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <h3 class="mb-2 fw-bold">Laravel с нуля</h3>
-                            <p class="mb-5 h5 fw-light lead">
+                            <p class="mb-4 fw-light mb-md-auto h5 lead">
                                 Твой путь к освоению мощного фреймворка с минимальными усилиями.
                             </p>
-                            <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link">Начать обучение</a>
+                            <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link  mt-4">Начать обучение</a>
                         </div>
                     </div>
                 </div>
@@ -62,11 +62,11 @@
                     <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-2 fw-bold">Orchid</h3>
-                        <p class="mb-5 fw-light mb-auto line-clamp line-clamp-5">
+                        <p class="mb-4 fw-light mb-md-auto line-clamp line-clamp-5">
                             В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
                             как построить админ панель с готовым пользовательским интерфейсом.
                         </p>
-                        <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link ">Построить админку</a>
+                        <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link mt-4">Построить админку</a>
                     </div>
                 </div>
             </div>
@@ -75,10 +75,10 @@
                     <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-2 fw-bold">Livewire</h3>
-                        <p class="mb-5 fw-light mb-auto line-clamp line-clamp-5">
+                        <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-5">
                             Создавайте динамические компоненты в PHP, и полностью игнорируйте уровень JavaScript.
                         </p>
-                        <a {{ route('courses') }} class="btn btn-warning mb-0 stretched-link stretched-link ">Посмотреть курс</a>
+                        <a {{ route('courses') }} class="btn btn-warning mb-0 stretched-link stretched-link mt-4">Посмотреть курс</a>
                     </div>
                 </div>
             </div>
@@ -87,24 +87,24 @@
                 <div class="h-100 d-flex flex-column gap-4">
                     <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-2 fw-bold">Очереди</h3>
-                            <p class="mb-5 fw-light line-clamp line-clamp-3">
+                            <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 Игнорирование <code>timeout</code>, дублирование задач и
                                 сохранение состояния программы. Предоставляются практические примеры.
                             </p>
                             <a href="{{ route('courses') }}"
-                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link  mt-4">
                                 Посмотреть курс
                                 <x-icon path="bs.arrow-right" />
                             </a>
                     </div>
                     <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-2 fw-bold">PHP Итераторы</h3>
-                            <p class="mb-5 fw-light line-clamp line-clamp-3">
+                            <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 В этом видео курсе представлено введение в использование итераторов в PHP, включая
                                 теорию, практические примеры и самостоятельное задание.
                             </p>
                             <a href="{{ route('courses') }}"
-                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link ">
+                               class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                                 Посмотреть курс
                                 <x-icon path="bs.arrow-right" />
                             </a>
