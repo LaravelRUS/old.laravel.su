@@ -19,7 +19,7 @@
                         </a>
 
                         <div class="text-opacity-50 small col-lg-7">
-                            Создавая учетную запись, вы соглашаетесь с <a target="_blank" href="https://github.com/LaravelRUS/chat">правилами</a>.
+                            Создавая учетную запись, вы соглашаетесь с <a href="{{ route('rules') }}">правилами</a>.
                         </div>
                     </div>
                 </div>

@@ -199,8 +199,8 @@
             </div>
             --}}
         </div>
-        <div class="px-4">
-            <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
+
+        <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
 
                 <div class="col">
                     <h6 class="fw-bolder mb-3">Что такое Laravel-сообщество?</h6>
@@ -274,7 +274,7 @@
                 </div>
 
             </div>
-        </div>
+
     </x-container>
 
     {{--

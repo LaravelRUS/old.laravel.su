@@ -188,7 +188,7 @@
                                 </a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/LaravelRUS/chat') }}"
+                                <a href="{{ route('rules') }}"
                                    class="nav-link p-0">Правила сообщества</a>
                             </li>
                         </ul>

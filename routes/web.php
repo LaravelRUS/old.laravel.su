@@ -28,6 +28,7 @@ Route::view('/advertising', 'pages.advertising')->name('advertising');
 Route::view('/resources', 'pages.resources')->name('resources');
 Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/team', 'pages.team')->name('team');
+Route::view('/rules', 'pages.rules')->name('rules');
 Route::view('/courses', 'pages.courses')->name('courses');
 
 
@@ -337,12 +338,15 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
     ->name('my.update');
 
 Route::get('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'index'])
+    ->middleware('auth')
     ->name('profile.notifications');
 
 Route::post('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'readAll'])
+    ->middleware('auth')
     ->name('profile.notifications.read.all');
 
 Route::get('/profile/notifications/{id}',[\App\Http\Controllers\NotificationsController::class,'read'])
+    ->middleware('auth')
     ->name('profile.notifications.read');
 
 Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
