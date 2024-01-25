@@ -4,24 +4,25 @@
 @section('content')
 
     <x-header image="/img/ui/key.svg">
-        <x-slot:sup>всё наглядно</x-slot>
-            <x-slot:title>
-                Бесплатный ключ Laravel IDEA для наших пользователей
-                </x-slot>
+        <x-slot:sup>Вас запрос одобрен</x-slot>
+        <x-slot:title>
+            Ваш персональный ключ
+        </x-slot>
 
-                <x-slot:description>
-                    Lorem ipsum dolor sit amet consectetur. Euismod in nunc sed nunc duis proin arcu arcu.
-                    </x-slot>
+        <x-slot:description>
+            Приступайте к созданию магии с помощью Laravel IDEA и достигайте невероятных высот в области веб-разработки!
+       </x-slot>
     </x-header>
 
     <x-container>
 
         <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
-            <div class="row gx-5 gy-4 gy-md-5">
+            <div class="row gy-4 align-items-end">
                 <div class="col-md-6">
-                    <p class="mb-0">
-                        Русскоязычные участники из России, Белоруссии и Украины имеют возможность
-                        получить бесплатный ключ.
+                    <p class="mb-0 text-balance">
+                        Поздравляем! Ваш запрос был одобрен. Вы сможете использовать бесплатный ключ для Laravel IDEA и
+                        раскрыть свой потенциал в разработке. Теперь у вас есть возможность создавать великолепные
+                        проекты с помощью мощного инструмента.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -30,7 +31,7 @@
                                 data-action="clipboard#copy"
                                 data-clipboard-done-class="done">
 
-                            Копировать в буффер обмена
+                            Копировать в буфер обмена
 
                             <span class="d-none"
                                   data-clipboard-target="source">{{ $key->key }}</span>
@@ -43,10 +44,8 @@
 
             </div>
                 <div class="col-12">
-                    <div class="p-4 bg-body-secondary rounded text-break">
-
+                    <div class="p-4 bg-body-secondary rounded text-break user-select-all">
                         {{$key->key}}
-
                     </div>
                 </div>
             </div>

@@ -3,36 +3,28 @@
         @forelse($packages as $package)
             <div id="@domid($package)" class="col-4">
                 <div class="d-flex flex-column justify-content-between bg-body-secondary p-4 p-xl-5 rounded h-100 text-wrap text-break  position-relative">
-                    <div>
-                        <div class="d-flex align-items-center justify-content-between mb-2 text-balance">
-                            <span class="badge text-white"
+
+                        <div class="d-flex align-items-center d-md-block">
+                            <span class="badge text-white rounded-pill"
                                   style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 1em black;">
                                 {{ $package->type->text() }}
                             </span>
                         </div>
 
-                        <p class="fs-4 fw-bolder mb-2">
-                            {{ $package->name }}
-                        </p>
+                        <div class="mt-2 mb-auto">
+                            <a href="{{ $package->website }}" class="h5 link-body-emphasis stretched-link text-decoration-none mb-2 d-block">
+                                {{ $package->name }}
+                            </a>
 
+                            <p class="line-clamp opacity-50 line-clamp-4 small text-balance">
+                                {{ $package->description }}
+                            </p>
+                        </div>
 
-                        <p class="line-clamp o-50 line-clamp-5 small">
-                            {{ $package->description }}
-                        </p>
-                    </div>
-
-
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between mt-3">
                         <div class="col-auto d-inline-flex align-items-center me-auto">
                             <x-icon path="bs.star-fill" class="me-2 text-warning"/>
                             {{ $package->stars }}
-                        </div>
-                        <div class="col">
-                            <p class="text-end mb-0">
-                                <a href="{{ $package->website }}"
-                                   class="stretched-link">
-                                </a>
-                            </p>
                         </div>
                     </div>
                 </div>
