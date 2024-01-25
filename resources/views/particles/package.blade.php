@@ -7,37 +7,35 @@
             {{ $package->type->text() }}
         </span>
             @if(is_active('profile.packages'))
-                <div class="dropdown position-relative z-3">
-                    <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <x-icon path="bs.three-dots"/>
-                    </a>
-                    <ul class="dropdown-menu">
-                        @can('update', $package)
-                            <li>
-                                <a class="dropdown-item"
-                                   href="{{route('packages.edit', $package)}}">Редактировать</a>
-                            </li>
-                        @endcan
-                        {{--
-                        @can('delete', $package)
-                            <li>
-                                <a class="dropdown-item" data-turbo-method="delete"
-                                   data-turbo-confirm="Вы уверены, что хотите удалить статью?"
-                                   href="{{route('packages.delete', $package)}}">Удалить</a>
-                            </li>
-                        @endcan
-                        --}}
-                        <li>
-                            <button class="dropdown-item"
+                <div class="position-relative z-3">
+                    @can('update', $package)
+                        <a class="btn btn-link link-secondary" href="{{route('packages.edit', $package)}}" title="Редактировать">
+                            <x-icon path="bs.pencil-square"/>
+                        </a>
+                    @else
+
+                        <x-device phone="true" tablet="true">
+                            <button class="btn btn-link link-secondary"
                                     data-controller="share"
                                     data-share-title-value="{{$package->name}}"
                                     data-share-url-value="{{ $package->website }}"
                                     data-action="click->share#dialog"
-                            >Поделиться
+                                    title="Поделиться"
+                            >
+                                <x-icon path="bs.share-fill"/>
                             </button>
-                        </li>
-                    </ul>
+                        </x-device>
+                        <x-device desktop="true">
+                            <button class="btn btn-link link-secondary clipboard" data-controller="clipboard"
+                                    data-action="clipboard#copy"
+                                    data-clipboard-done-class="done">
+                                <span class="d-none" data-clipboard-target="source">{{ $package->website }}</span>
+                                <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                            </button>
+                        </x-device>
+
+                    @endcan
                 </div>
             @endif
         </div>

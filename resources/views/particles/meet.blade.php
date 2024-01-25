@@ -8,37 +8,36 @@
         <div class="d-flex align-items-center justify-content-between">
             <p class="mb-0 text-primary">{{ $meet->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</p>
             @if(is_active('profile.meets'))
-                <div class="dropdown">
-                <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    <x-icon path="bs.three-dots"/>
-                </a>
-                <ul class="dropdown-menu">
+                <div >
                     @can('update', $meet)
-                        <li>
-                            <a class="dropdown-item" href="{{route('meets.edit', $meet)}}">Редактировать</a>
-                        </li>
+                        <a class="btn btn-link link-secondary" href="{{route('meets.edit', $meet)}}" title="Редактировать">
+                            <x-icon path="bs.pencil-square"/>
+                        </a>
+                    @else
+
+                        <x-device phone="true" tablet="true">
+                            <button class="btn btn-link link-secondary"
+                                    data-controller="share"
+                                    data-share-title-value="{{$meet->name}}"
+                                    data-share-url-value="{{ $meet->link }}"
+                                    data-action="click->share#dialog"
+                                    title="Поделиться"
+                            >
+                                <x-icon path="bs.share-fill"/>
+                            </button>
+                        </x-device>
+                        <x-device desktop="true">
+                            <button class="btn btn-link link-secondary clipboard" data-controller="clipboard"
+                                    data-action="clipboard#copy"
+                                    data-clipboard-done-class="done">
+                                <span class="d-none" data-clipboard-target="source">{{ $meet->link }}</span>
+                                <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                            </button>
+                        </x-device>
+
                     @endcan
-                    {{--
-                    @can('delete', $meet)
-                        <li>
-                            <a class="dropdown-item" data-turbo-method="delete"
-                               data-turbo-confirm="Вы уверены, что хотите удалить мероприятие?"
-                               href="{{route('meets.delete', $meet)}}">Удалить</a>
-                        </li>
-                    @endcan
-                    --}}
-                    <li>
-                        <button class="dropdown-item"
-                                data-controller="share"
-                                data-share-title-value="{{$meet->title}}"
-                                data-share-url-value="{{ $meet->link }}"
-                                data-action="click->share#dialog"
-                        >Поделиться
-                        </button>
-                    </li>
-                </ul>
-            </div>
+                </div>
             @endif
         </div>
 

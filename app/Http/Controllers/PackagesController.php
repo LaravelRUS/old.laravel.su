@@ -101,4 +101,16 @@ class PackagesController extends Controller
 
         return redirect()->route('profile.packages', $request->user());
     }
+
+    public function latest()
+    {
+        $packages = Package::approved()
+            ->whereDate('created_at','>=',now()->subMonth())
+            ->inRandomOrder()
+            ->limit(3)->get();
+
+        return view('packages.latest', [
+            'packages' => $packages,
+        ]);
+    }
 }

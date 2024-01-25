@@ -60,7 +60,10 @@
                     </a>
 
                     @guest
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary">Войти</a>
+                        <a href="{{ route('login') }}"
+                           class="avatar avatar-sm position-relative">
+                            <img src="{{ asset('img/ui/avatar.png')}}" class="avatar-img rounded-circle border border-tertiary-subtle">
+                        </a>
                     @else
                         <a href="{{ route('profile', auth()->user()) }}"
                            class="avatar avatar-sm position-relative">

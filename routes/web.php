@@ -207,6 +207,9 @@ Route::middleware(['auth', RedirectToBanPage::class])
 
 Route::get('/packages', [PackagesController::class, 'index'])->name('packages');
 
+Route::get('/packages/latest', [PackagesController::class, 'latest'])
+    ->name('packages.latest');
+
 Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('packages')
     ->group(function () {

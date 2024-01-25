@@ -3,6 +3,38 @@
         <div class="d-flex align-items-center justify-content-between mb-3">
 
             <x-profile :user="$post->author"/>
+            <div>
+                @can('update', $post)
+                    <a class="btn btn-link link-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
+                        <x-icon path="bs.pencil-square"/>
+                    </a>
+                 @else
+
+                    <x-device phone="true" tablet="true">
+                        <button class="btn btn-link link-secondary"
+                                data-controller="share"
+                                data-share-title-value="{{$post->title}}"
+                                data-share-url-value="{{ route('post.show', $post) }}"
+                                data-action="click->share#dialog"
+                                title="Поделиться"
+                        >
+                            <x-icon path="bs.share-fill"/>
+                        </button>
+                    </x-device>
+                    <x-device desktop="true">
+                        <button class="btn btn-link link-secondary clipboard" data-controller="clipboard"
+                                data-action="clipboard#copy"
+                                data-clipboard-done-class="done">
+                            <span class="d-none" data-clipboard-target="source">{{ route('post.show', $post) }}</span>
+                            <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                            <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                        </button>
+                    </x-device>
+
+                @endcan
+            </div>
+
+            {{--
 
             <div class="dropdown">
                 <a href="#" class="text-secondary btn btn-link py-1 px-2" data-bs-toggle="dropdown"
@@ -15,16 +47,6 @@
                             <a class="dropdown-item" href="{{route('post.edit', $post)}}">Редактировать</a>
                         </li>
                     @endcan
-                    {{--
-                    @can('delete',$post)
-
-                        <li>
-                            <a class="dropdown-item" data-turbo-method="delete"
-                               data-turbo-confirm="Вы уверены, что хотите удалить статью?"
-                               href="{{route('post.delete', $post)}}">Удалить</a>
-                        </li>
-                    @endcan
-                    --}}
 
                     <li>
                         <button class="dropdown-item"
@@ -37,6 +59,7 @@
                     </li>
                 </ul>
             </div>
+        --}}
         </div>
 
         <div class="position-relative post overflow-hidden">
