@@ -45,7 +45,7 @@
 
             <h4 class="mb-3 mt-2">{{ $post->title }}</h4>
 
-            <div class="line-clamp line-clamp-5 post-preview-text" data-controller="prism line-clamp">
+            <div class="post-preview-text" data-controller="prism line-clamp">
                 {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
             </div>
 
