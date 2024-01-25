@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="line-clamp line-clamp-5">{{ $meet->description }}</div>
+        <div class="line-clamp line-clamp-5 mb-3">{{ $meet->description }}</div>
     </div>
 
 
