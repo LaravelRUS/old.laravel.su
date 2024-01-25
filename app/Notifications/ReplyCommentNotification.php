@@ -72,7 +72,8 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
         $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
 
         return (new WebPushMessage)
-            ->title('Пользователь ' . $this->reply->author->name . ' ответил на ваш комментарий')
+            ->title('Ответ на комментарий')
+            ->body($this->reply->content)
             ->icon($this->reply->author->avatar)
             ->action('Посмотреть', $url)
             ->vibrate([300, 200, 300])
