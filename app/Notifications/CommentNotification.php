@@ -75,7 +75,7 @@ class CommentNotification extends Notification implements ShouldQueue
             ->title('Новый комментарий')
             ->icon($this->comment->author->avatar)
             ->body($this->comment->content)
-            ->action('посмотреть',$url)
+            ->action('Посмотреть',$url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,
