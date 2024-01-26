@@ -549,10 +549,10 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
     <div class="container mt-5 py-5">
         <div class="row g-4 g-md-5 align-items-center justify-content-between">
-            <div class="col-xl-7 order-2 order-xl-1">
+            <div class="col-xl-7 col-md-6 order-2 order-md-1">
                 <div class="row mt-0 mt-xl-5 mb-xl-4">
                     <!-- Review -->
-                    <div class="col-md-6 position-relative mb-0 mt-0 mt-md-5">
+                    <div class="col-xl-6 position-relative mb-0 mt-0 mt-md-5 d-none d-xl-block">
                         <!-- SVG -->
                         <figure class="text-primary position-absolute top-0 start-0 translate-middle mb-3">
                             <img src="/img/bird.svg" class="z-n1 user-select-none d-none d-xxl-block">
@@ -578,7 +578,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
 
                     <!-- Mentor list -->
-                    <div class="col-md-6 mt-5 mt-md-0 d-none d-md-block">
+                    <div class="col-12 col-xl-6 mt-5 mt-md-0 d-none d-md-block">
                         <div class="bg-body-tertiary p-4 rounded d-inline-block position-relative">
                             <!-- Icon -->
                             <div
@@ -632,7 +632,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div> <!-- Row END -->
 
-                <div class="row mt-5 mt-xl-0">
+                <div class="row mt-5 mt-xl-0 d-none d-xl-flex">
                     <!-- Rating -->
                     <div class="col-4 mt-0 mt-xl-5 text-end position-relative z-index-1 d-none d-md-block">
                         <x-icon path="l.cube" width="46" height="53" fill="none"/>
@@ -661,7 +661,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div> <!-- Row END -->
             </div>
-            <div class="col-xl-5 order-1 pe-xl-0">
+            <div class="col-xl-5 col-md-6 order-1 pe-xl-0">
                 <!-- Title -->
 
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
