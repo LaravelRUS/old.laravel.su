@@ -26,9 +26,9 @@ class CoverController extends Controller
             $width = 1920;
             $height = 1080;
 
-            $start_x = 100;
+            $start_x = 230;
             $start_y = $height / 2 + 30;
-            $max_len = 28;
+            $max_len = 24;
 
             $mbWrap = new MbString();
             $textWrap = $mbWrap->wordWrap($text, $max_len);
@@ -48,7 +48,7 @@ class CoverController extends Controller
 
                 $image->text($line, $start_x, round($y), fn(AbstractFont $font) => $font->file(public_path('fonts/cover.ttf'))
                     ->size($font_size)
-                    ->color('#fff')
+                    ->color('#222222')
                     ->align('left')
                     ->valign('center'));
 
