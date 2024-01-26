@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meet;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use  Illuminate\Database\Eloquent\Builder;
@@ -21,17 +22,24 @@ class PostController extends Controller
             ->orderBy('created_at', 'desc')
             ->simplePaginate(5);//CursorPaginate не работает с сортировкой по полю из withCount
 
-        $posts = Post::with(['author'])
-            ->withCount('comments')
-            ->withCount('likers')
-            ->orderBy('id', 'desc')
-            ->cursorPaginate(3);
-
 
         if (request()->isMethod('GET')) {
+
+            $posts = Post::with(['author'])
+                ->withCount('comments')
+                ->withCount('likers')
+                ->orderBy('id', 'desc')
+                ->cursorPaginate(3);
+
+            $most = Meet::approved()
+                ->whereDate('start_date', '>=', now())
+                ->orderBy('start_date', 'asc')
+                ->first();
+
             return view('post.index', [
                 'popular' => $popular,
                 'posts'   => $posts,
+                'most'    => $most,
             ]);
         }
 

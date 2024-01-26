@@ -14,6 +14,34 @@
         </div>
    </x-container>
 
+
+   @empty(!$most)
+   <x-container>
+       <div class="row">
+           <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
+               <div class="d-flex flex-md-row flex-column px-4 px-xl-5 py-3 bg-body-secondary rounded position-relative align-items-md-center">
+                   <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
+                    <x-icon path="i.tickets" width="2em" height="2em"/>
+
+                   <div class="ms-md-4 mt-3 mt-md-0">
+                       <h5 class="mb-0">{{ $most->name }}</h5>
+                       <time class="small">{{ $most->start_date->isoFormat('DD MMMM', 'Do MMMM') }}, начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</time>
+                       <small class="opacity-50 d-block">{{ $most->location }}</small>
+                   </div>
+
+                   <div class="ms-auto d-none d-md-block">
+                       <a href="{{ $most->link }}" class="link-body-emphasis stretched-link text-decoration-none icon-link icon-link-hover">
+                           Принять участие
+                           <x-icon path="bs.arrow-right"/>
+                       </a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </x-container>
+   @endempty
+
+
    <x-container>
         <div class="row">
             <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
