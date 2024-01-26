@@ -23,7 +23,7 @@
                    <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <x-icon path="i.tickets" width="2em" height="2em"/>
 
-                   <div class="ms-md-4 mt-3 mt-md-0">
+                   <div class="ms-md-4 mt-3 mt-md-0 col-md-6">
                        <h5 class="mb-0">{{ $most->name }}</h5>
                        <time class="small">{{ $most->start_date->isoFormat('DD MMMM', 'Do MMMM') }}, начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</time>
                        <small class="opacity-50 d-block">{{ $most->location }}</small>
