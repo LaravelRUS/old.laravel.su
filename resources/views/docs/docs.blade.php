@@ -73,7 +73,7 @@
 
                     <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block">
                         <img src="/img/sign.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
-                        <h6>Посмотрите краткое видео о том запустить новое приложение!</h6>
+                        <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6>
                         <!-- Button -->
                         <a class="btn w-100 btn-sm btn-primary" href="{{ route('courses') }}">Посмотреть онлайн</a>
                     </div>

@@ -41,4 +41,6 @@
         </form>
     </x-container>
 
+    @include('particles.positions')
+
 @endsection
