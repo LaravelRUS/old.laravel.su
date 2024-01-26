@@ -183,6 +183,10 @@ class ListScreen extends Screen
                     ->sendTrueOrFalse()
                     ->title('Онлайн'),
 
+                Input::make('meet.link')
+                    ->type('url')
+                    ->title('Ссылка'),
+
                 SimpleMDE::make('meet.description')
                     ->title('Описание')
                     ->placeholder('Добавьте краткое описание'),
