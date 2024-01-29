@@ -4,7 +4,7 @@
         <div class="d-flex position-relative overflow-hidden align-items-center mb-xl-5 mb-3">
             <div class="avatar avatar-sm me-3">
                 <img class="avatar-img rounded-circle"
-                     src="/img/ui/user-deleted.png" alt="Комментарий был удалён">
+                     src="/img/ui/avatar.png" alt="Комментарий был удалён">
             </div>
 
             <div class="w-100 opacity-50">
