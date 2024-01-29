@@ -74,7 +74,6 @@
                     <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block">
                         <img src="/img/sign.svg" alt="..." class="img-fluid mb-4" width="160" height="160">
                         <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6>
-                        <!-- Button -->
                         <a class="btn w-100 btn-sm btn-primary" href="{{ route('courses') }}">Посмотреть онлайн</a>
                     </div>
                 </div>
@@ -84,9 +83,9 @@
                 <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
-                        <div class="alert alert-warning rounded-1" role="alert">
-                            ⚠️ Вы просматриваете документ для прошлой версии.
-                            Рассмотрите возможность обновления вашего проекта до {{ \App\Docs::DEFAULT_VERSION }}.
+                        <div class="alert alert-warning rounded-2" role="alert">
+                            <p class="mb-0">⚠️ Вы просматриваете документ для прошлой версии.</p>
+                            Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
                         </div>
                     @endif
 

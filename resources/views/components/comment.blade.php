@@ -8,7 +8,7 @@
             </div>
 
             <div class="w-100 opacity-50">
-                <p class="mb-0">Сообщение было удалено</p>
+                <p class="mb-0">Сообщение было удалено за нарушение <a href="{{ route('rules') }}" class="link-body-emphasis">правил</a>.</p>
             </div>
         </div>
     @else

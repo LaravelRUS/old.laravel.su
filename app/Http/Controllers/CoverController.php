@@ -35,7 +35,7 @@ class CoverController extends Controller
 
             $lines = Str::of($textWrap)->explode("\n");
 
-            $font_size = min(110 - $lines->count() * 5, 110);
+            $font_size = min(100 - $lines->count() * 5, 100);
             $font_height = min(75 - $lines->count() * 5, 75);
 
             $y = round($start_y - ((count($lines) - 1) * $font_height));

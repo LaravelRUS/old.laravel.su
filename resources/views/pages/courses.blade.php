@@ -25,7 +25,7 @@
         <div class="row g-4">
             <div class="col-md-4 mb-md-4">
                 <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
-                    <h3 class="mb-2 fw-bold">Закладки</h3>
+                    <h3 class="mb-3 fw-bold">Закладки</h3>
                     <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                         Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
                     </p>
@@ -42,11 +42,11 @@
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h3 class="mb-2 fw-bold">Laravel с нуля</h3>
+                            <h3 class="mb-3 fw-bold">Laravel с нуля</h3>
                             <p class="mb-4 fw-light mb-md-auto h5 lead">
                                 Твой путь к освоению мощного фреймворка с минимальными усилиями.
                             </p>
-                            <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link  mt-4">Начать обучение</a>
+                            <a href="#" class="btn btn-primary mb-0 stretched-link mt-4 disabled" >Скоро {{-- Начать обучение--}}</a>
                         </div>
                     </div>
                 </div>
@@ -61,12 +61,14 @@
                 <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
-                        <h3 class="mb-2 fw-bold">Orchid</h3>
+                        <h3 class="mb-3 fw-bold">Orchid</h3>
                         <p class="mb-4 fw-light mb-md-auto line-clamp line-clamp-5">
                             В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
                             как построить админ панель с готовым пользовательским интерфейсом.
                         </p>
-                        <a {{ route('courses') }} class="btn btn-primary mb-0 stretched-link mt-4">Построить админку</a>
+                        <a href="https://youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ&si=KERSYOr8_2YvcPDV"
+                           target="_blank"
+                           class="btn btn-primary mb-0 stretched-link mt-4">Построить админку</a>
                     </div>
                 </div>
             </div>
@@ -74,11 +76,13 @@
                 <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
-                        <h3 class="mb-2 fw-bold">Livewire</h3>
+                        <h3 class="mb-3 fw-bold">Livewire</h3>
                         <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-5">
                             Создавайте динамические компоненты в PHP, и полностью игнорируйте уровень JavaScript.
                         </p>
-                        <a {{ route('courses') }} class="btn btn-warning mb-0 stretched-link stretched-link mt-4">Посмотреть курс</a>
+                        <a href="https://www.youtube.com/playlist?list=PLM-y77GFP_D0Dan4oTbsseQGM6lFGbmUQ"
+                           target="_blank"
+                           class="btn btn-warning mb-0 stretched-link stretched-link mt-4">Посмотреть курс</a>
                     </div>
                 </div>
             </div>
@@ -86,32 +90,76 @@
             <div class="col-lg-4 mb-4">
                 <div class="h-100 d-flex flex-column gap-4">
                     <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
-                            <h3 class="mb-2 fw-bold">Очереди</h3>
+                            <h3 class="mb-3 fw-bold">Очереди</h3>
                             <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 Игнорирование <code>timeout</code>, дублирование задач и
                                 сохранение состояния программы. Предоставляются практические примеры.
                             </p>
-                            <a href="{{ route('courses') }}"
+                            <a href="https://youtube.com/playlist?list=PLM-y77GFP_D04J1DYprCCashJQHxtJed4&si=SlSjGYJRLZ5jSeg5"
+                               target="_blank"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link  mt-4">
                                 Посмотреть курс
                                 <x-icon path="bs.arrow-right" />
                             </a>
                     </div>
                     <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
-                            <h3 class="mb-2 fw-bold">PHP Итераторы</h3>
+                            <h3 class="mb-3 fw-bold">PHP Итераторы</h3>
                             <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 В этом видео курсе представлено введение в использование итераторов в PHP, включая
                                 теорию, практические примеры и самостоятельное задание.
                             </p>
-                            <a href="{{ route('courses') }}"
+                            <a href="https://youtu.be/cPpEHTWDFv4?si=t3eB5KsYNQu99VpE"
+                               target="_blank"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                                Посмотреть курс
+                                Посмотреть видео
                                 <x-icon path="bs.arrow-right" />
                             </a>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-8 mb-4">
+                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
+                    <img src="/img/ui/tutorials.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений. <small class="small d-block">С примерами на Laravel.</small></h3>
+                            <p class="mb-4 fw-light mb-md-auto h5 lead">
+                                Проекты бывают разные. К некоторым хорошо придутся определённые шаблоны и практики. Для
+                                других они будут излишни.
+                            </p>
+                            <a
+                                href="https://github.com/adelf/acwa_book_ru"
+                                target="_blank"
+                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                                Читать книгу
+                                <x-icon path="bs.arrow-right" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-md-4">
+                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
+                    <h3 class="mb-3 fw-bold">Закладки</h3>
+                    <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
+                        Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
+                    </p>
+                    <a href="{{ route('courses') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                        Посмотреть курс
+                        <x-icon path="bs.arrow-right" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
 
 
         {{--
@@ -121,7 +169,7 @@
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
-                            <h3 class="mb-2 fw-bold">Сертификат</h3>
+                            <h3 class="mb-3 fw-bold">Сертификат</h3>
                             <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
                             <a {{ route('courses') }} class="btn btn-primary mb-0">Посмотреть программу</a>
                         </div>
@@ -135,7 +183,7 @@
                             <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0">
                             <div class="row">
                                 <div class="col-sm-12 position-relative">
-                                    <h3 class="mb-2 fw-bold">Orchid</h3>
+                                    <h3 class="mb-3 fw-bold">Orchid</h3>
                                     <p class="mb-5 fw-light">
                                         В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
                                         как взаимодействовать с Orchid и постройки UI с помощью PHP.
@@ -150,7 +198,7 @@
                             <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                             <div class="row">
                                 <div class="col-sm-12 position-relative">
-                                    <h3 class="mb-2 fw-bold">Livewire</h3>
+                                    <h3 class="mb-3 fw-bold">Livewire</h3>
                                     <p class="mb-5 fw-light">
                                         Livewire быстро стал одним из самых популярных пакетов для создания приложений
                                         Laravel. Он позволяет создавать динамические компоненты в PHP, что часто
@@ -243,7 +291,7 @@
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
-                            <h3 class="mb-2 fw-bold">Сертификат</h3>
+                            <h3 class="mb-3 fw-bold">Сертификат</h3>
                             <p class="mb-5 h5 fw-light lead">Получите сертификат для вас как профессионала.</p>
                             <a {{ route('courses') }} class="btn btn-primary mb-0">Посмотреть программу</a>
                         </div>
@@ -256,7 +304,7 @@
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
-                            <h3 class="mb-2 fw-bold">Лучше курсы</h3>
+                            <h3 class="mb-3 fw-bold">Лучше курсы</h3>
                             <p class="mb-5 h5 fw-light lead">Запишитесь сейчас на самые популярные курсы.</p>
                             <a {{ route('courses') }} class="btn btn-warning mb-0">Посмотреть курс</a>
                         </div>

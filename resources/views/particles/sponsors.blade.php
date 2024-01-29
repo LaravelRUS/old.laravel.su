@@ -10,8 +10,8 @@
 
         <!-- Left side START -->
         <div class="col-lg-6 position-relative">
-            <p>
-                Независимо от сложности вашего проекта эти кампании готовы помочь воплотить ваши идеи в элегантные приложения.
+            <p class="text-balance">
+                Независимо от сложности проекта эти кампании помогают сообществу и всем его участникам воплощать идеи в элегантные приложения.
             </p>
 
             <a href="{{ route('advertising') }}"
@@ -21,15 +21,15 @@
         <!-- Left side END -->
     </div>
 
-    <div class="row row-cols-lg-3 row-cols-1 g-4">
+    <div class="row row-cols-lg-3 row-cols-1 g-4 sponsors">
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
-                <img src="https://appfox.ru/local/templates/custom/images/elements/logo.svg" class="d-block mb-4 me-auto" height="64">
+                <img src="/img/sponsors/am.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
-                    Входим в ТОП-3 рейтинга Рунета IT студий и самая большая команда в Москве (100+ человек) - штат
-                    проверенных специалистов.
+                    Инструменты для управления эмоциями, которые помогают людям контролировать свою жизнь и лучше понимать себя.
                 </p>
-                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
+                   href="https://assisted-mindfulness.com/">
                     Перейти
                     <x-icon path="bs.arrow-right"/>
                 </a>
@@ -38,27 +38,30 @@
         </div>
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
-                <img src="/img/resources/tnspodcast.svg" class="d-block mb-4 me-auto" height="64">
+                <img src="/img/sponsors/soidet.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Подкаст c зажигательными эпизоды, которые заставят
                     задуматься и приведут к новым перспективам.
                 </p>
-                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
+                   href="https://www.youtube.com/@agoalofalife/videos">
                     Перейти
                     <x-icon path="bs.arrow-right"/>
                 </a>
             </div>
         </div>
-        <div class="col">
-            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
-                <img src="https://laravel-idea.com/img/logo.svg" class="d-block mb-4 me-auto" height="64">
-                <p class="fw-normal">
-                    Laravel Idea — среда разработки на базе PhpStorm, ориентированная на эффективность и
-                    производительность.
-                </p>
-                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto" href="{{ route('idea.index') }}">
-                    Перейти
-                    <x-icon path="bs.arrow-right"/>
+        <div class="col d-none d-lg-block">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative d-flex bg-opacity-75 opacity-50 align-items-center">
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none d-block text-center my-auto" href="{{ route('advertising') }}">
+
+                    <span class="d-block mb-3">
+                         <x-icon path="i.sun" width="3rem" height="3rem"></x-icon>
+                        {{--
+                        <x-icon path="bs.patch-plus-fill" width="3rem" height="3rem"></x-icon>
+                        --}}
+                    </span>
+
+                    Присоединится
                 </a>
             </div>
         </div>

@@ -30,6 +30,7 @@ Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/rules', 'pages.rules')->name('rules');
 Route::view('/courses', 'pages.courses')->name('courses');
+Route::view('/leaderboard', 'pages.leaderboard')->name('leaderboard');
 
 
 Route::view('nav', 'pages.navigation')->name('nav');
@@ -100,7 +101,7 @@ Route::get('/positions', [\App\Http\Controllers\PositionsController::class, 'lis
 Route::get('/positions/latest', [\App\Http\Controllers\PositionsController::class, 'latest'])
     ->name('positions.latest');
 
-Route::get('/j/{position:slug}', [\App\Http\Controllers\PositionsController::class, 'show'])
+Route::get('/jobs/{position:slug}', [\App\Http\Controllers\PositionsController::class, 'show'])
     ->name('position.show');
 
 Route::middleware(['auth', RedirectToBanPage::class])
@@ -352,19 +353,19 @@ Route::get('/profile/notifications/{id}',[\App\Http\Controllers\NotificationsCon
     ->middleware('auth')
     ->name('profile.notifications.read');
 
-Route::get('/profile/{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
+Route::get('/@{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
 
-Route::get('/profile/{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
+Route::get('/@{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
     ->name('profile.packages');
 
-Route::get('/profile/{user:nickname}/comments',[\App\Http\Controllers\ProfileController::class,'comments'])
+Route::get('/@{user:nickname}/comments',[\App\Http\Controllers\ProfileController::class,'comments'])
     ->name('profile.comments');
 
-Route::get('/profile/{user:nickname}/awards',[\App\Http\Controllers\ProfileController::class,'awards'])
+Route::get('/@{user:nickname}/awards',[\App\Http\Controllers\ProfileController::class,'awards'])
     ->name('profile.awards');
 
-Route::get('/profile/{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
+Route::get('/@{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
     ->name('profile.meets');
 
 
@@ -399,7 +400,7 @@ Route::get('/manifest.json', fn() => response()->json(config('site.pwa')))
 
 
 Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image'])
-    ->middleware(['cache.headers:public;max_age=300;etag', 'signed'])
+    ->middleware(['cache.headers:public;max_age=300;etag'])
     ->name('cover');
 
 /*

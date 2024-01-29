@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', $user->name)
 
 @section('content')
     <x-container>

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Пакеты')
+@section('title', 'Пакеты сообщества')
 
 @section('content')
 

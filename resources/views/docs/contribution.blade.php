@@ -1,21 +1,23 @@
 @extends('layout')
-@section('title', 'Реклама')
+@section('title', 'Как правильно переводить документацию Laravel')
 
 @section('content')
 
-    <x-header image="/img/sign.svg">
-        <x-slot:sup>Нельзя пропустить</x-slot>
-        <x-slot:title>Как правильно переводить документацию Laravel</x-slot>
+    <x-header image="/img/ui/tutorials.svg">
+        <x-slot:sup>Следуйте инструкции</x-slot>
+        <x-slot:title>Как переводить документацию</x-slot>
 
         <x-slot:description>
-            Мы стараемся следить бла-бла бла
+            Мы рады каждому, кто желает помочь улучшить и актуализировать перевод документации. Независимо от того,
+            хотите ли вы исправить опечатку или дополнить перевод новым разделом, ваш вклад всегда приветствуется!
         </x-slot>
     </x-header>
 
     <x-container>
         <div class="row">
-            <div class="col-7 mx-auto">
-                <main>
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
+                <div class="col-xxl-8 mx-auto">
+                <main data-controller="prism">
                     <p>Оригинал англоязычной документации находится по адресу <a
                             href="https://github.com/laravel/docs">https://github.com/laravel/docs</a>.
                     </p>
@@ -99,6 +101,7 @@ original_docs&gt; git pull origin master
                         одного файла во время одного коммита.</p>
 
                 </main>
+            </div>
             </div>
         </div>
     </x-container>
