@@ -324,7 +324,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.orchid1"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Ваш код это PHP</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Ваш код это PHP</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Создавайте современные приложения, на 99% состоящие из PHP.
@@ -340,7 +340,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.orchid2"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Пользовательский интерфейс</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Пользовательский интерфейс</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Широкий выбор потрясающих компонентов пользовательского
@@ -355,7 +355,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.orchid3"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Глубокие погружение</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Глубокие погружение</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Управление разрешениями, которое упрощает управление доступом пользователей в процессе
@@ -398,7 +398,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea1"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Генерация кода</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Генерация кода</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Мощная настраиваемая генерация кода для Laravel, автозаполнение полей и завершение отношений.
@@ -412,7 +412,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea2"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Eloquent завершение</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Eloquent завершение</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Полное автозаполнение полей и отношений, автоматическое создание фабрики ресурсов для баз данных.
@@ -426,7 +426,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                                 <x-icon path="i.idea3"/>
                                             </div>
                                         </div>
-                                        <h4 class="fw-semibold mb-0 text-body-emphasis">Полезные помощники</h4>
+                                        <p class="h4 fw-semibold mb-0 text-body-emphasis">Полезные помощники</p>
                                     </div>
                                     <p class="text-body-secondary">
                                         Сотни полезных помощников, включая маршруты, валидацию, настройки и переводы, завершение имен шлюзов, поддержка Blade и многое другое.
@@ -561,7 +561,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                         <div class="bg-body-tertiary text-center p-4 rounded position-relative mb-5 mb-md-0">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
-                                <img class="avatar-img rounded-circle"
+                                <img class="avatar-img rounded-circle" loading="lazy"
                                     src="https://avatars.githubusercontent.com/adamwathan?v=4" alt="avatar">
                             </div>
                             <!-- Content -->
@@ -592,6 +592,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
+                                         loading="lazy"
                                         src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
@@ -606,6 +607,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
+                                         loading="lazy"
                                         src="https://avatars.githubusercontent.com/dmitriy-afanasyev?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
@@ -620,6 +622,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
+                                         loading="lazy"
                                         src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
@@ -644,6 +647,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
+                                     loading="lazy"
                                     src="https://laravel.com/images/testimonials/tony-lea.jpg" alt="avatar">
                             </div>
                             <!-- Content -->

@@ -16,6 +16,7 @@
             <div class="avatar avatar-sm me-3">
                 <a href="{{  route('profile', $comment->author) }}">
                     <img class="avatar-img rounded-circle"
+                         loading="lazy"
                          src="{{ $comment->author->avatar }}" alt="{{ $comment->author->name }}">
                 </a>
             </div>
