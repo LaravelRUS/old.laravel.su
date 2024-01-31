@@ -30,6 +30,7 @@ Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/rules', 'pages.rules')->name('rules');
 Route::view('/courses', 'pages.courses')->name('courses');
+Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/leaderboard', 'pages.leaderboard')->name('leaderboard');
 
 

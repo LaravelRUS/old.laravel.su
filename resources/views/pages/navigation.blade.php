@@ -126,11 +126,6 @@
             </li>
             <li class="nav-item mb-2">
                 <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
-                    Исходный код
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
                     Сообщить о проблеме
                 </a>
             </li>

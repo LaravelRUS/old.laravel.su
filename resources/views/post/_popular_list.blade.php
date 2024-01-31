@@ -4,7 +4,7 @@
             <span class="me-2">{{ $post->title }}</span>
 
             <small class="d-inline-flex align-items-center opacity-50">
-                <x-icon path="bs.chat"/>
+                <x-icon path="i.comment"/>
                 <span class="ms-2">{{ $post->comments_count }}</span>
             </small>
         </a>

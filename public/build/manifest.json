@@ -1,14 +1,14 @@
 {
   "public/img/ui/info.svg": {
-    "file": "assets/info-98d2f1eb.svg",
+    "file": "assets/info-585685a0.svg",
     "src": "public/img/ui/info.svg"
   },
   "public/img/ui/warning.svg": {
-    "file": "assets/warning-5fe3beca.svg",
+    "file": "assets/warning-ba4021c9.svg",
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-607aa6ee.css",
+    "file": "assets/app-743f74dc.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },

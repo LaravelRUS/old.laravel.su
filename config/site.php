@@ -98,4 +98,23 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | RSS Feed
+    |--------------------------------------------------------------------------
+    |
+    | Англоязычные источники новостей по Laravel, которые будут формировать ленту
+    |
+    */
+
+    'rss' => [
+        'https://adamcampbell.dev/rss.xml',
+        'https://feed.laravel-news.com/',
+        'https://blog.jetbrains.com/phpstorm/feed/',
+        'https://blog.oussama-mater.tech/rss.xml',
+        'https://davorminchorov.com/feed/articles',
+        'https://freek.dev/feed',
+    ],
+
 ];

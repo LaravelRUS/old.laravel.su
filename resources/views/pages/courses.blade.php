@@ -46,7 +46,7 @@
                             <p class="mb-4 fw-light mb-md-auto h5 lead">
                                 Твой путь к освоению мощного фреймворка с минимальными усилиями.
                             </p>
-                            <a href="#" class="btn btn-primary mb-0 stretched-link mt-4 disabled" >Скоро {{-- Начать обучение--}}</a>
+                            <a href="#" class="btn btn-primary mb-0 stretched-link mt-4 disabled" >В процессе создания {{-- Начать обучение--}}</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
 
             <div class="col-md-8 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
-                    <img src="/img/ui/tutorials.svg" class="position-absolute w-50 bottom-0 end-0">
+                    <img src="/img/ui/book.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="row">
                         <div class="col-sm-7">
                             <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений. <small class="small d-block">С примерами на Laravel.</small></h3>

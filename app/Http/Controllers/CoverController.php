@@ -18,16 +18,16 @@ class CoverController extends Controller
      */
     public function image(Request $request)
     {
-        $text = $request->input('text', config('site.name'));
+        $text = Str::limit($request->input('text', config('site.name')),60);
 
-        $key = "cover-" . sha1($text) . Str::random(100);
+        $key = "cover-" . sha1($text) . Str::random(1002);
 
         $data = Cache::remember($key, now()->addHours(4), function () use ($text) {
             $width = 1920;
             $height = 1080;
 
             $start_x = 230;
-            $start_y = $height / 2 + 30;
+            $start_y = $height / 2 + 40;
             $max_len = 24;
 
             $mbWrap = new MbString();

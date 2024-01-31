@@ -63,24 +63,24 @@ enum PackageTypeEnum: string
     public function icon(): string
     {
         return match ($this) {
-            self::FileManagement => 'bs.file-earmark-fill',
+            self::FileManagement => 'i.files',
             //self::AuthAndPermission => 'bs.people-fill',
-            self::DatabaseAndEloquent => 'bs.database-fill',//'bs.server'
-            self::DebuggingAndDevTools => 'bs.bug-fill',
-            self::DevOps => 'bs.display',
+            self::DatabaseAndEloquent => 'i.database',//'bs.server'
+            self::DebuggingAndDevTools => 'i.devtools',
+            self::DevOps => 'i.maintenance',
             //self::Localization         => 'bs.globe',
-            self::API => 'bs.cloud-fill',
+            self::API => 'i.api',
             //self::SEO                  => 'bs.search',
-            self::Testing => 'bs.gear-wide',
+            self::Testing => 'i.testing',
             //self::Payment              => 'bs.credit-card-fill',
             //self::Security => 'bs.shield-shaded',
             //self::Mail                 => 'bs.envelope-fill',
-            self::ECommerce => 'bs.bag-fill',
-            self::CMSAndAdminPanels => 'bs.window-stack',
-            self::CodeArchitecture => 'bs.file-earmark-code-fill',
+            self::ECommerce => 'i.internet-market',
+            self::CMSAndAdminPanels => 'i.cms',
+            self::CodeArchitecture => 'i.code',
             //self::Notifications => 'bs.bell-fill',
-            self::UIAndBladeComponents => 'bs.file-earmark-richtext-fill',
-            self::UtilitiesAndHelpers => 'bs.wrench-adjustable',
+            self::UIAndBladeComponents => 'i.ui',
+            self::UtilitiesAndHelpers => 'i.utilities',
 
         };
     }

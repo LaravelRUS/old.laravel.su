@@ -7,7 +7,7 @@
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
                 <div class="rounded-top"
-                     style="height:200px;background-image:url(https://images.unsplash.com/photo-1698434156086-918aa526b531?auto=format&fit=crop&q=80&w=2340&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                     style="height:200px;background-image:url('/img/profile.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div>
                 <!-- Card body START -->
                 <div class="px-5">
@@ -66,19 +66,19 @@
                                         <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
                                         <label class="btn btn-outline-secondary" for="theme-checker-auto">
-                                            <x-icon path="bs.circle-half"/>
+                                            <x-icon path="i.theme-auto"/>
                                         </label>
 
                                         <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-light" autocomplete="off">
                                         <label class="btn btn-outline-secondary" for="theme-checker-light">
-                                            <x-icon path="bs.sun-fill"/>
+                                            <x-icon path="i.theme-light"/>
                                         </label>
 
                                         <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-dark" autocomplete="off">
                                         <label class="btn btn-outline-secondary" for="theme-checker-dark">
-                                            <x-icon path="bs.moon-stars-fill"/>
+                                            <x-icon path="i.theme-dark"/>
                                         </label>
                                     </div>
 

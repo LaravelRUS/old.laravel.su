@@ -7,16 +7,16 @@
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
                 <div class="rounded-top d-flex"
-                    style="height:200px;background-image:url(https://images.unsplash.com/photo-1698434156086-918aa526b531?auto=format&fit=crop&q=80&w=2340&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    style="height:200px;background-image:url('/img/profile.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 
                     @if ($user->id === Auth::user()?->id)
                         <div class="d-flex mb-3 align-items-start p-4 ms-auto">
-                            <a href="{{route('my.edit')}}" class="btn btn-primary me-2">
-                                <x-icon path="bs.gear-fill"/>
+                            <a href="{{route('my.edit')}}" class="btn btn-secondary me-2">
+                                <x-icon path="i.gear"/>
                             </a>
 
                             <x-logout class="btn btn-secondary d-flex align-items-center fw-normal" formId="sign-out" title="Выйти">
-                                <x-icon path="bs.box-arrow-right" class="me-2"/>
+                                <x-icon path="i.logout" class="me-2"/>
                                 Выйти
                             </x-logout>
                         </div>
@@ -33,10 +33,10 @@
                             </div>
                         </div>
                         <div class="ms-sm-4 mt-sm-3">
-                            <h1 class="mb-0 h5 fw-bolder">
+                            <h1 class="mb-0 h5 fw-bolder" title="Участник с {{ $user->created_at->isoFormat('MMMM YYYY', 'Do MMMM') }}">
                                 {{ $user->name }}
                             </h1>
-                            <small class="opacity-75">Участник с {{ $user->created_at->isoFormat('MMMM YYYY', 'Do MMMM') }}</small>
+                            <small class="opacity-75 text-balance d-block">{{ $user->about ?? $user->github_bio }}</small>
                         </div>
 
 

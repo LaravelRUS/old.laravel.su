@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a class="link-body-emphasis" href="{{ asset('https://github.com/laravelRus') }}"
+                            <a class="link-body-emphasis" href="{{ asset('https://github.com/laravel-russia') }}"
                                target="_blank">
                                 <x-icon path="bs.github" width="24" height="24"/>
                             </a>
@@ -182,13 +182,12 @@
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
-                                    Исходный код
+                                    Сообщить о проблеме
                                 </a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
-                                    Сообщить о проблеме
-                                </a>
+                                <a href="{{ route('assets') }}"
+                                   class="nav-link p-0">Графические материалы</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ route('rules') }}"
@@ -206,19 +205,19 @@
                                 <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
                                        name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
                                 <label class="btn btn-outline-secondary" for="theme-checker-auto">
-                                    <x-icon path="bs.circle-half"/>
+                                    <x-icon path="i.theme-auto"/>
                                 </label>
 
                                 <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
                                        name="theme-checker" id="theme-checker-light" autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="theme-checker-light">
-                                    <x-icon path="bs.sun-fill"/>
+                                    <x-icon path="i.theme-light"/>
                                 </label>
 
                                 <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
                                        name="theme-checker" id="theme-checker-dark" autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="theme-checker-dark">
-                                    <x-icon path="bs.moon-stars-fill"/>
+                                    <x-icon path="i.theme-dark"/>
                                 </label>
                             </form>
                         </div>
