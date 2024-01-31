@@ -32,7 +32,7 @@ Artisan::command('app:checkout-latest-docs', function () {
     // Update existing clones
     collect(Docs::SUPPORT_VERSIONS)
         ->filter(fn (string $version) => Storage::disk('docs')->exists($version))
-        ->every(fn (string $version) => Process::path(storage_path('docs/'.$version))->run('git pull'));
+        ->every(fn (string $version) => Process::path(storage_path('docs/'.$version))->run('git reset --hard HEAD && git pull'));
 
     // Clone a new version if not already present
     collect(Docs::SUPPORT_VERSIONS)
