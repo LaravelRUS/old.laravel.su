@@ -69,7 +69,7 @@
             <h4 class="mb-3 mt-2">{{ $post->title }}</h4>
 
             <div class="post-preview-text" data-controller="prism line-clamp">
-                {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
+                <x-posts.content :content="$post->content"/>
             </div>
 
             <div class="to-transparent"></div>

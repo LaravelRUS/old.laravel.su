@@ -15,7 +15,7 @@
                         --}}
                         <h1>{{ $post->title }}</h1>
 
-                        {!! \Illuminate\Support\Str::of($post->content)->markdown(['html_input' => 'strip']) !!}
+                        <x-posts.content :content="$post->content"/>
                     </main>
 
                     <!-- Start Author  -->

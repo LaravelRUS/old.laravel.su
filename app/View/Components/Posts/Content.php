@@ -1,18 +1,16 @@
 <?php
 
-namespace App\View\Components\Docs;
+namespace App\View\Components\Posts;
 
 use App\View\Modifications\BladeComponentModifier;
 use App\View\Modifications\ImageAltModifier;
-use App\View\Modifications\HeaderLinksModifier;
 use App\View\Modifications\BlockquoteColorModifier;
-use App\View\Modifications\RemoveFirstHeaderModifier;
 use App\View\Modifications\ResponsiveTableModifier;
+use App\View\Modifications\TestModifier;
 use App\View\Modifications\TypografModifier;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\View\Component;
-use Symfony\Component\DomCrawler\Crawler;
 
 class Content extends Component implements Htmlable
 {
@@ -48,16 +46,21 @@ class Content extends Component implements Htmlable
      */
     public function toHtml(): string
     {
-        $crawler = new Crawler();
-        $crawler->addHtmlContent(mb_convert_encoding($this->content, 'UTF-8'));
-        $content = $crawler->filterXpath('//body')->first()->html();
+        $content = \Illuminate\Support\Str::of($this->content)
+            ->stripTags(['x-github', 'x-youtube', 'code'])
+            ->markdown([
+                'allow_unsafe_links' => false,
+                //'html_input'         => 'escape',
+                'max_nesting_level'  => 20,
+            ])
+            ->toString();
+
 
         return app(Pipeline::class)
             ->send($content)
             ->through([
+                TestModifier::class,
                 BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
-                RemoveFirstHeaderModifier::class, // Удаляет h1 заголовок
-                HeaderLinksModifier::class, // Добавляет ссылки для заголовков
                 ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
                 BladeComponentModifier::class, // Применяет компоненты blade
                 ImageAltModifier::class, // Добавляет alt к картинкам
