@@ -11,7 +11,9 @@
     </div>
 
     <div class="col-md-2">
-        <a href="https://www.youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ" target="_blank"
-           class="btn btn-dark stretched-link">Перейти</a>
+        <a href="{{ $link }}" target="_blank" rel="noopener" class="link-body-emphasis stretched-link text-decoration-none icon-link icon-link-hover">
+            Перейти
+            <x-icon path="bs.arrow-right"/>
+        </a>
     </div>
 </div>
