@@ -78,8 +78,8 @@
                                     data-clipboard-target="source">{{ $doc->current_commit }}</small>
                                 <a href="#"
                                    data-action="clipboard#copy">
-                                    <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
-                                    <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                                    <x-icon path="i.copy" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                    <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано" />
                                 </a>
                             </div>
 
@@ -89,8 +89,8 @@
                                 <small class="user-select-all me-2 col-4 col-md-auto text-truncate"
                                     data-clipboard-target="source">{{ $doc->last_commit }}</small>
                                 <a href="#" data-action="clipboard#copy" title="Скопировать в буфер обмена">
-                                    <x-icon path="bs.clipboard" class="copy-action" />
-                                    <x-icon path="bs.check2" class="copy-done" />
+                                    <x-icon path="i.copy" class="copy-action" />
+                                    <x-icon path="i.copy-fill" class="copy-done" />
                                 </a>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
             <div>
                 @can('update', $post)
                     <a class="btn btn-link link-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
-                        <x-icon path="bs.pencil-square"/>
+                        <x-icon path="i.edit"/>
                     </a>
                  @else
 
@@ -26,8 +26,8 @@
                                 data-action="clipboard#copy"
                                 data-clipboard-done-class="done">
                             <span class="d-none" data-clipboard-target="source">{{ route('post.show', $post) }}</span>
-                            <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
-                            <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                            <x-icon path="i.copy" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                            <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано" />
                         </button>
                     </x-device>
 

@@ -32,9 +32,9 @@
                            data-clipboard-target="source">{{ url()->current() }}</small>
                     <a href="#"
                        data-action="clipboard#copy">
-                        <x-icon path="bs.clipboard" class="copy-action" data-controller="tooltip"
+                        <x-icon path="i.copy" class="copy-action" data-controller="tooltip"
                                 title="Скопировать в буфер"/>
-                        <x-icon path="bs.check2" class="copy-done" data-controller="tooltip" title="Скопировано"/>
+                        <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано"/>
                     </a>
                 </div>
             </div>

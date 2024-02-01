@@ -73,3 +73,20 @@ pre {
 [contenteditable="true"]:focus {
     outline: none!important;
 }
+
+
+img{
+    color-scheme: var(--bs-color-scheme);
+}
+
+@include color-mode(light) {
+    img{
+        color-scheme: light!important;
+    }
+}
+
+@include color-mode(dark) {
+    img{
+        color-scheme: dark!important;
+    }
+}

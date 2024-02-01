@@ -47,10 +47,10 @@ class Content extends Component implements Htmlable
     public function toHtml(): string
     {
         $content = \Illuminate\Support\Str::of($this->content)
-            ->stripTags(['x-github', 'x-youtube', 'code'])
+            //->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
             ->markdown([
                 'allow_unsafe_links' => false,
-                //'html_input'         => 'escape',
+                'html_input'         => 'escape',
                 'max_nesting_level'  => 20,
             ])
             ->toString();

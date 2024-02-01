@@ -175,23 +175,23 @@
                                 <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
-                            </li>
-                            <li class="nav-item mb-2">
-                                <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
-                            </li>
-                            <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
-                                    Сообщить о проблеме
-                                </a>
-                            </li>
-                            <li class="nav-item mb-2">
                                 <a href="{{ route('assets') }}"
                                    class="nav-link p-0">Графические материалы</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ route('rules') }}"
                                    class="nav-link p-0">Правила сообщества</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
+                                    Сообщить о проблеме
+                                </a>
                             </li>
                         </ul>
                     </div>

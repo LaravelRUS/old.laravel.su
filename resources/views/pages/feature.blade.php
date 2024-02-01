@@ -643,7 +643,7 @@ php artisan queue:work redis --queue=podcasts
                     <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-none d-lg-block mx-auto">
 
                     <div class="bg-body-tertiary rounded">
-                        <img src="https://laravel.com/img/docs/horizon-example.png" class="img-fluid">
+                        <img src="/img/ecosystem/horizon.png" class="img-fluid rounded-top">
 
                         <div class="d-flex flex-column gap-4 px-5 pb-5 pt-3">
                             <h4 class="fw-bold">Horizon</h4>

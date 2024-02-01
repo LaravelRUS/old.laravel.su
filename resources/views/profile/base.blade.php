@@ -7,7 +7,7 @@
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
                 <div class="rounded-top d-flex"
-                    style="height:200px;background-image:url('/img/profile.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    style="height:200px;background-image:url('/img/ui/background-profile.svg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 
                     @if ($user->id === Auth::user()?->id)
                         <div class="d-flex mb-3 align-items-start p-4 ms-auto">

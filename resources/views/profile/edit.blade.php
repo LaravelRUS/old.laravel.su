@@ -7,7 +7,7 @@
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
                 <div class="rounded-top"
-                     style="height:200px;background-image:url('/img/profile.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                     style="height:200px;background-image:url('/img/ui/background-profile.svg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div>
                 <!-- Card body START -->
                 <div class="px-5">

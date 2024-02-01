@@ -35,6 +35,7 @@
                                     <ul class="list-unstyled">
                                         <li class="mb-2"><span class="me-2">✅</span>Laravel Russian Community</li>
                                         <li class="mb-2"><span class="me-2">✅</span>Русскоязычное сообщество Laravel</li>
+                                        <li class="mb-2"><span class="me-2">✅</span>Laravel на русском</li>
                                     </ul>
                                 </div>
                             </div>
@@ -82,8 +83,8 @@
                         опасных и сложных задач, связанных с риском и требующих героических усилий. Он проходит через
                         испытания, которые делают его достойным статуса "царевича".</p>
 
-                        <div class="row">
-                            <div class="col">
+                        <div class="row g-4">
+                            <div class="col mb-3">
                                 <a href="/img/ivan.svg" download
                                    class="bg-black p-5 rounded d-block">
                                     <img src="/img/ivan.svg" height="150">
@@ -91,10 +92,42 @@
                             </div>
 
 
-                            <div class="col">
+                            <div class="col mb-3">
                                 <a href="/img/ivan.svg" download
                                    class="bg-white p-5 rounded d-block">
                                     <img src="/img/ivan.svg" height="150">
+                                </a>
+                            </div>
+                        </div>
+
+                        <p>Вариации:</p>
+
+                        <div class="row row-cols-2 g-4">
+                            <div class="col mb-3">
+                                <a href="/img/assets/avatar1.svg" download
+                                   class="bg-white p-5 rounded d-block">
+                                    <img src="img/assets/avatar1.svg" height="150">
+                                </a>
+                            </div>
+
+                            <div class="col mb-3">
+                                <a href="/img/assets/avatar2.svg" download
+                                   class="bg-white p-5 rounded d-block">
+                                    <img src="img/assets/avatar2.svg" height="150">
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a href="/img/assets/avatar3.svg" download
+                                   class="bg-white p-5 rounded d-block">
+                                    <img src="img/assets/avatar3.svg" height="150">
+                                </a>
+                            </div>
+
+                            <div class="col">
+                                <a href="/img/assets/avatar4.svg" download
+                                   class="bg-white p-5 rounded d-block">
+                                    <img src="img/assets/avatar4.svg" height="150">
                                 </a>
                             </div>
                         </div>

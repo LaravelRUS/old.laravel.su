@@ -1,7 +1,7 @@
 @guest
     <div class="p-4 p-xx-5 bg-body-secondary rounded-3 mt-5">
         <div class="d-flex flex-column align-items-center mx-auto col-xxl-8">
-            <img src="/img/ui/discuss.svg" class="img-fluid d-block mx-auto mb-3">
+            <img src="/img/ui/discuss.svg" class="d-block mx-auto mb-3" height="64">
             <p class="fw-bolder">Присоединяйтесь к обсуждениям!</p>
 
             <p class="text-center">Вы должны быть авторизованы, чтобы добавить ответ в обсуждение.

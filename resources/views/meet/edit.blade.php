@@ -82,7 +82,7 @@
                                 <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить публикацию?"
                                    href="{{route('meets.delete', $meet)}}">
-                                    <x-icon path="bs.trash3" />
+                                    <x-icon path="i.delete" />
                                     Удалить
                                 </a>
                             @endif
