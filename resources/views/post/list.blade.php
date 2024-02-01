@@ -68,7 +68,7 @@
 
             <h4 class="mb-3 mt-2">{{ $post->title }}</h4>
 
-            <div class="post-preview-text" data-controller="prism line-clamp">
+            <div class="post post-preview-text" data-controller="prism line-clamp">
                 <x-posts.content :content="$post->content"/>
             </div>
 
