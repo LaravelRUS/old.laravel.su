@@ -189,7 +189,7 @@ class Search extends Component
 <!-- html комментарии, в которые обёрнут код ниже - часть синтаксиса плагина unescaped-markup,
 не удалять, не добавлять пробелы или бругие символы между тогом code и комментарием -->
                                 <pre class="rounded-3 my-0 h-100 language-markup" tabindex="0">
-                                    <code language="html" class="language-html"><!-- @verbatim
+                                    <code language="html" class="language-html"><!--@verbatim
 <div>
     <input wire:model="search"
         type="text"
