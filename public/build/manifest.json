@@ -1,4 +1,8 @@
 {
+  "public/img/ui/background-profile.svg": {
+    "file": "assets/background-profile-622b93b0.svg",
+    "src": "public/img/ui/background-profile.svg"
+  },
   "public/img/ui/info.svg": {
     "file": "assets/info-585685a0.svg",
     "src": "public/img/ui/info.svg"
@@ -8,7 +12,7 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-b56f29f9.css",
+    "file": "assets/app-42889d40.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
