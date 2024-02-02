@@ -16,6 +16,14 @@ class BladeComponentModifier extends HTMLModifier
      */
     public function handle(string $content, \Closure $next)
     {
+        foreach (['github', 'youtube'] as $tag)
+        {
+            $content = $this->replaceToBladeComponent($content, $tag);
+        }
+
+
+/*
+
         $this->crawler($content)->filter('x-docs-banner, x-github, x-youtube')->each(function (Crawler $elm) use (&$content) {
             $tag = $elm->outerHtml();
 
@@ -25,8 +33,38 @@ class BladeComponentModifier extends HTMLModifier
             $content = Str::of($content)
                 ->replace($tag, Blade::render($tag));
         });
-
+*/
 
         return $next($content);
+    }
+
+    /**
+     * @param string $content
+     * @param string $tag
+     *
+     * @return string
+     */
+    protected function replaceToBladeComponent(string $content, string $tag): string
+    {
+        if (!Str::contains($content, '[!'. $tag)) {
+            return $content;
+        }
+
+        $test = Str::of($content)->betweenFirst('[!'.$tag, ']')->toString();
+
+
+        if ($test === $content) {
+            return $content;
+        }
+
+        try {
+            $blade = Blade::render('<x-'.$tag . html_entity_decode($test) . '/>');
+        }catch (\Throwable $e){
+            $blade = 'Ошибка при рендере компонента';
+        }
+
+        $content = Str::replace('[!'.$tag . $test . ']', $blade, $content);
+
+        return $this->replaceToBladeComponent($content, $tag);
     }
 }
