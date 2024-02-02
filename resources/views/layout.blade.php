@@ -93,17 +93,12 @@
 --}}
                     <ul class="nav justify-content-start align-items-center list-unstyled d-flex mb-4">
                         <li class="">
-                            <a href="#" class="link-body-emphasis">
-                                <x-icon path="bs.twitter" width="24" height="24"/>
+                            <a href="https://vk.com/laravel_rus" class="link-body-emphasis">
+                                <x-icon path="i.vk" width="24" height="24"/>
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a class="link-body-emphasis" href="#">
-                                <x-icon path="bs.youtube" width="24" height="24"/>
-                            </a>
-                        </li>
-                        <li class="ms-3">
-                            <a class="link-body-emphasis" href="#">
+                            <a href="https://t.me/laravelrus" class="link-body-emphasis">
                                 <x-icon path="bs.telegram" width="24" height="24"/>
                             </a>
                         </li>
@@ -113,6 +108,15 @@
                                 <x-icon path="bs.github" width="24" height="24"/>
                             </a>
                         </li>
+
+
+                        <li class="ms-3">
+                            <a href="https://youtube.com" class="link-body-emphasis">
+                                <x-icon path="bs.youtube" width="24" height="24"/>
+                            </a>
+                        </li>
+
+
                         <li class="ms-3">
                             <a class="link-body-emphasis" href="{{ asset('/rss/feed') }}"
                                target="_blank">

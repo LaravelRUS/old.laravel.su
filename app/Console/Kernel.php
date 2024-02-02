@@ -15,6 +15,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
+        $schedule->command('app:checkout-latest-docs')->daily();
+        $schedule->command('app:compare-document')->daily();
+        $schedule->command('app:update-packages')->daily();
+
         //вот не знаю, оо тут нужно или нет?
         $schedule->command('model:prune', [
             '--model' => [
