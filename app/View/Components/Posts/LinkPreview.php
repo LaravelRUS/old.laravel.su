@@ -5,29 +5,17 @@ namespace App\View\Components\Posts;
 use App\MetaParser;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\View\Component;
 
 class LinkPreview extends Component
 {
-    public string|null $title;
-    public string|null $description;
-    public string|null $image;
-    public string $link;
-
     /**
      * Create a new component instance.
      */
-    public function __construct(string $link)
+    public function __construct(public string $link)
     {
-        $html = Http::timeout(30)->get($link)->body();
-
-        $parse = new MetaParser($html, $link);
-
-        $this->link = $link;
-        $this->title = $parse->title();
-        $this->description = $parse->description();
-        $this->image = $parse->image();
     }
 
     /**
@@ -35,6 +23,18 @@ class LinkPreview extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.posts.link-preview');
+        return Cache::remember('preview-' . sha1($this->link), now()->addWeek(), function () {
+
+            $html = Http::timeout(30)->get($this->link)->body();
+
+            $parse = new MetaParser($html, $this->link);
+
+            return view('components.posts.link-preview', [
+                'link'        => $this->link,
+                'title'       => $parse->title(),
+                'description' => $parse->description(),
+                'image'       => $parse->image(),
+            ])->render();
+        });
     }
 }
