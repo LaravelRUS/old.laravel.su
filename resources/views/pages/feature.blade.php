@@ -186,10 +186,9 @@ class Search extends Component
                                 </code></pre>
                             </div>
                             <div class="col-12 col-lg-6">
-<!-- html комментарии, в которые обёрнут код ниже - часть синтаксиса плагина unescaped-markup,
-не удалять, не добавлять пробелы или бругие символы между тогом code и комментарием -->
-                                <pre class="rounded-3 my-0 h-100 language-markup" tabindex="0">
-                                    <code language="html" class="language-html"><!--@verbatim
+
+@php
+$livewireViewCode = <<<'HTML'
 <div>
     <input wire:model="search"
         type="text"
@@ -200,8 +199,16 @@ class Search extends Component
             <li>{{ $user->username }}</li>
         @endforeach
     </ul>
-</div>@endverbatim
-                                --></code></pre>
+</div>
+HTML;
+@endphp
+
+<!-- html комментарии, в которые обёрнут код ниже - часть синтаксиса плагина unescaped-markup,
+не удалять, не добавлять пробелы или бругие символы между тогом code и комментарием -->
+                            <pre class="rounded-3 my-0 h-100 language-markup" tabindex="0">
+
+<code language="html" class="language-html">{{ \Illuminate\Support\Str::of($livewireViewCode)->trim() }}</code>
+                            </pre>
                             </div>
                         </div>
 

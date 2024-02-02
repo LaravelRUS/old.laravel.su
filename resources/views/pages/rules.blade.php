@@ -37,6 +37,11 @@
                    должна восприниматься вами с рассудительностью и уважением, примите ее к сведению и поблагодарите
                    критика за вклад, независимо от вашей позиции.</p>
 
+
+                <x-posts.link-preview link="https://symfony.com/"/>
+                <x-posts.link-preview link="https://www.php.net/manual/en/function.strip-tags.php"/>
+                <x-posts.link-preview link="https://orchid.software"/>
+
                 <h2>Контент</h2>
 
                 <p>Русскоязычное сообщество Laravel состоит из тысяч пользователей различного возраста, вероисповедания, а так же
