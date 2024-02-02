@@ -127,6 +127,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title('Ссылки')
                 ->icon('bs.box-arrow-up-right')
                 ->url(config('app.url'))
+                ->active(config('app.url'))
                 ->target('_blank'),
 
             Menu::make('GitHub')

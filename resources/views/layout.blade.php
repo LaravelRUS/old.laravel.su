@@ -155,9 +155,6 @@
                             <li class="nav-item mb-2">
                                 <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
                             </li>
-                            <li class="nav-item mb-2">
-                                <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
-                            </li>
                             {{--
                             <li class="nav-item mb-2">
                                 <a href="{{ route('resources') }}" class="nav-link p-0">Ресурсы</a>
@@ -189,10 +186,15 @@
                                 <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
                             </li>
                             <li class="nav-item mb-2">
+                                <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
+                            </li>
+                            {{--
+                            <li class="nav-item mb-2">
                                 <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
                                     Сообщить о проблеме
                                 </a>
                             </li>
+                            --}}
                         </ul>
                     </div>
                 </div>

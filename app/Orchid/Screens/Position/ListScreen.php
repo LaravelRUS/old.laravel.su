@@ -87,7 +87,7 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Position $position) {
-                        return "<strong class='d-block'>$position->title</strong>
+                        return "<strong class='d-block'>".e($position->title)."</strong>
                                 <p class='text-muted'>". Str::of($position->description)->markdown()->stripTags()->words(20)."</p>";
                     })->filter(Input::make()),
 

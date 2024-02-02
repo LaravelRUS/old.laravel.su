@@ -6,9 +6,7 @@
         <div class="col-xl-8 col-md-12 mx-auto">
             <div class="bg-body-tertiary rounded overflow-hidden mb-4">
                 <!-- Cover image -->
-                <div class="rounded-top"
-                     style="height:200px;background-image:url('/img/ui/background-profile.svg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                </div>
+                <div class="rounded-top profile-cover"></div>
                 <!-- Card body START -->
                 <div class="px-5">
                     <div class="d-sm-flex align-items-start">

@@ -369,3 +369,13 @@ $utilities: (
         height: 64px;
     }
 }
+
+
+.profile-cover {
+    height: 200px;
+    background-image: url('$image/ui/background-profile.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+}

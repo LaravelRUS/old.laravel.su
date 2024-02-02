@@ -91,7 +91,7 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Meet $meet) {
-                        return "<strong class='d-block'>$meet->name</strong>";
+                        return "<strong class='d-block'>".e($meet->name)."</strong>";
                     })->filter(Input::make()),
 
                 TD::make('location','Адрес')

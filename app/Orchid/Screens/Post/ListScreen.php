@@ -86,14 +86,14 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Post $post) {
-                        return "<strong class='d-block'>$post->title</strong>";
+                        return "<strong class='d-block'>".e($post->title)."</strong>";
                     })->filter(Input::make()),
 
                 TD::make('content','Содержимое')
                     ->width(400)
                     ->cantHide()
                     ->render(function (Post $post) {
-                        return  Str::of($post->content)->markdown()->stripTags()->words(20);
+                        return Str::of($post->content)->markdown()->stripTags()->words(20);
                     })->filter(Input::make()),
 
 
