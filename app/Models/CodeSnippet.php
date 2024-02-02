@@ -18,6 +18,9 @@ class CodeSnippet extends Model
         'content',
     ];
 
+    /**
+     * @return mixed
+     */
     public function prunable()
     {
         return static::where('created_at', '<=', now()->subMonth());

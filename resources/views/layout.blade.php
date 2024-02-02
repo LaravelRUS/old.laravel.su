@@ -187,7 +187,7 @@
                                 <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('team') }}" class="nav-link p-0">Команда</a>
+                                <a href="{{ route('contributors') }}" class="nav-link p-0">Участники</a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>

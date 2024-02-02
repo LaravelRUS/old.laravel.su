@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Команда')
+@section('title', 'Участники')
 
 @section('content')
 
@@ -14,6 +14,7 @@
         </x-slot>
 
         <x-slot:content>
+
             <div class="row g-4 g-md-5 row-cols-3 row-cols-lg-3 text-center justify-content-center"  style="filter:grayscale(100%)">
 
                 <div class="col">
