@@ -16,8 +16,7 @@ class BladeComponentModifier extends HTMLModifier
      */
     public function handle(string $content, \Closure $next)
     {
-        foreach (['github', 'youtube', 'link'] as $tag)
-        {
+        foreach (['github', 'youtube', 'link'] as $tag) {
             $content = $this->replaceToBladeComponent($content, $tag);
         }
 
@@ -46,12 +45,11 @@ class BladeComponentModifier extends HTMLModifier
      */
     protected function replaceToBladeComponent(string $content, string $tag): string
     {
-        if (!Str::contains($content, '[!'. $tag)) {
+        if (!Str::containsAll($content, ['[!'. $tag, ']'])) {
             return $content;
         }
 
         $test = Str::of($content)->betweenFirst('[!'.$tag, ']')->toString();
-
 
         if ($test === $content) {
             return $content;
