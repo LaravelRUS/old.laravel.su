@@ -277,9 +277,9 @@ class UserController
 {
   "data": [
       {
-          "id": 1,
-          "name": "Taylor Otwell",
-          "email": "taylor@laravel.com",
+        "id": 1,
+        "name": "Taylor Otwell",
+        "email": "taylor@laravel.com",
       },
       // ...
   ],
