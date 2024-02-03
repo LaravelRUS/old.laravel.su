@@ -273,27 +273,27 @@ class UserController
                             </div>
                             <div class="col-12 col-lg-6">
                                 <pre class="rounded-3 h-100 my-0">
-                                    <code language="js">@verbatim
+                                    <code language="json">@verbatim
 {
-"data": [
-    {
-        "id": 1,
-        "name": "Taylor Otwell",
-        "email": "taylor@laravel.com",
-    },
-    // ...
-],
-"from": 1,
-"to": 25,
-"total": 50,
-"per_page": 25,
-"current_page": 1,
-"last_page": 2,
-"first_page_url": "https://api.laravel.app/users?page=1",
-"last_page_url": "https://api.laravel.app/users?page=2",
-"next_page_url": "https://api.laravel.app/users?page=2",
-"prev_page_url": null,
-"path": "https://api.laravel.app/users",
+  "data": [
+      {
+          "id": 1,
+          "name": "Taylor Otwell",
+          "email": "taylor@laravel.com",
+      },
+      // ...
+  ],
+  "from": 1,
+  "to": 25,
+  "total": 50,
+  "per_page": 25,
+  "current_page": 1,
+  "last_page": 2,
+  "first_page_url": "https://api.laravel.app/users?page=1",
+  "last_page_url": "https://api.laravel.app/users?page=2",
+  "next_page_url": "https://api.laravel.app/users?page=2",
+  "prev_page_url": null,
+  "path": "https://api.laravel.app/users",
 }@endverbatim</code></pre>
                             </div>
                         </div>
