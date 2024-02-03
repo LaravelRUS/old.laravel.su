@@ -372,10 +372,16 @@ $utilities: (
 
 
 .profile-cover {
-    height: 200px;
+    height: 150px;
     background-image: url('$image/ui/background-profile.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #fafafa;
+}
+
+@include media-breakpoint-up(md) {
+    .profile-cover {
+        height: 200px;
+    }
 }

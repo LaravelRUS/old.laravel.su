@@ -12,9 +12,15 @@ export default class extends Controller {
 
     format(e) {
         e.preventDefault();
-        if (this.editor) {
-            this.editor.toggle(e.params.format);
+        if (!this.editor) {
+            return;
         }
+
+        if (Array.isArray(e.params.format)) {
+            return this.editor.toggle(...e.params.format);
+        }
+
+        this.editor.toggle(e.params.format);
     }
 
     chooseFiles() {

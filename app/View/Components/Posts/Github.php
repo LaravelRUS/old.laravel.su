@@ -4,6 +4,7 @@ namespace App\View\Components\Posts;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\Component;
 
 class Github extends Component
@@ -22,5 +23,29 @@ class Github extends Component
     public function render(): View|Closure|string
     {
         return view('components.posts.github');
+    }
+
+    /**
+     * Determine if the component should be rendered.
+     *
+     * @return bool
+     */
+    public function shouldRender()
+    {
+        $validator = Validator::make([
+            'link'        => $this->link,
+            'title'       => $this->title,
+            'description' => $this->description,
+        ], [
+            'link'        => 'required|url',
+            'title'       => 'required|string',
+            'description' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return false;
+        }
+
+        return true;
     }
 }

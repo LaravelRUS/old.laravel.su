@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\Component;
 
 class LinkPreview extends Component
@@ -36,5 +37,25 @@ class LinkPreview extends Component
                 'image'       => $parse->image(),
             ])->render();
         });
+    }
+
+    /**
+     * Determine if the component should be rendered.
+     *
+     * @return bool
+     */
+    public function shouldRender()
+    {
+        $validator = Validator::make([
+            'link'        => $this->link,
+        ], [
+            'link'        => 'required|url',
+        ]);
+
+        if ($validator->fails()) {
+            return false;
+        }
+
+        return true;
     }
 }

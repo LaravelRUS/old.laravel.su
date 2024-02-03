@@ -10,7 +10,7 @@
                 <x-text-editor-button label="Курсив" format="italic" icon="type-italic"/>
                 <x-text-editor-button label="Цитата" format="blockquote" icon="quote"/>
                 <x-text-editor-button label="Код" format="code" icon="code-slash"/>
-                <x-text-editor-button label="Ссылка" format="link" icon="link"/>
+                <x-text-editor-button label="Ссылка" format="{!! json_encode(['link', 'https://']) !!}" icon="link"/>
                 <x-text-editor-button label="Список" format="unorderedList" icon="list-ul"/>
                 <x-text-editor-button label="Нумерованный список" format="orderedList" icon="list-ol"/>
                 <x-text-editor-button label="Упоминание" format="{!! json_encode(['prefix'=>'@'])  !!}" icon="at"/>

@@ -10,11 +10,11 @@
 
                     @if ($user->id === Auth::user()?->id)
                         <div class="d-flex mb-3 align-items-start p-4 ms-auto">
-                            <a href="{{route('my.edit')}}" class="btn btn-secondary me-2">
+                            <a href="{{route('my.edit')}}" class="btn btn-secondary me-2 d-flex-inline align-items-center">
                                 <x-icon path="i.gear"/>
                             </a>
 
-                            <x-logout class="btn btn-secondary d-flex align-items-center fw-normal" formId="sign-out" title="Выйти">
+                            <x-logout class="btn btn-secondary d-flex-inline align-items-center fw-normal" formId="sign-out" title="Выйти">
                                 <x-icon path="i.logout" class="me-2"/>
                                 Выйти
                             </x-logout>

@@ -63,20 +63,20 @@
                                          class="btn-group mb-3" role="group" aria-label="Тема оформления" id="theme-checker-group-user-settings">
                                         <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
-                                        <label class="btn btn-outline-secondary" for="theme-checker-auto">
-                                            <x-icon path="i.theme-auto"/>
+                                        <label class="btn btn-outline-secondary d-inline-flex align-items-center py-2" for="theme-checker-auto">
+                                            <x-icon path="i.theme-auto" class="my-1" width="1rem" height="1rem" />
                                         </label>
 
                                         <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-light" autocomplete="off">
-                                        <label class="btn btn-outline-secondary" for="theme-checker-light">
-                                            <x-icon path="i.theme-light"/>
+                                        <label class="btn btn-outline-secondary d-inline-flex align-items-center" for="theme-checker-light">
+                                            <x-icon path="i.theme-light" class="my-1" width="1rem" height="1rem" />
                                         </label>
 
                                         <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
                                                name="theme-checker" id="theme-checker-dark" autocomplete="off">
-                                        <label class="btn btn-outline-secondary" for="theme-checker-dark">
-                                            <x-icon path="i.theme-dark"/>
+                                        <label class="btn btn-outline-secondary d-inline-flex align-items-center" for="theme-checker-dark">
+                                            <x-icon path="i.theme-dark" class="my-1" width="1rem" height="1rem" />
                                         </label>
                                     </div>
 

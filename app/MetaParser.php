@@ -96,7 +96,7 @@ class MetaParser
             })
                 ->first();
 
-            if (!empty($image)) {
+            if (!empty($image) && filter_var($image, FILTER_VALIDATE_URL) !== false) {
                 return $image;
             }
 
@@ -113,7 +113,7 @@ class MetaParser
     public function favicon(): ?string
     {
         try {
-            return collect([
+            $favicon = collect([
                 "//link[@rel='apple-touch-icon'][@type='image/png'][@sizes='256x256']",
                 "//link[@rel='apple-touch-icon',type='image/png',sizes='180x180']",
                 "//link[@rel='apple-touch-icon',type='image/png',sizes='152x152']",
@@ -130,6 +130,12 @@ class MetaParser
                 return $crawler->attr('href');
             })
                 ->first();
+
+            if (!empty($favicon) && filter_var($favicon, FILTER_VALIDATE_URL) !== false) {
+                return $favicon;
+            }
+
+            return null;
         } catch (\Exception $exception) {
             return null;
         }
