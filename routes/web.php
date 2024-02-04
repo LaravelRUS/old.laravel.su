@@ -39,6 +39,19 @@ Route::view('/ban','pages.ban')->name('ban');
 
 /*
 |--------------------------------------------------------------------------
+| Open Quiz
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+Route::get('open', [\App\Http\Controllers\OpenQuizController::class, 'index'])
+    ->name('quiz.open');
+
+Route::any('goronich', [\App\Http\Controllers\OpenQuizController::class, 'goronich'])
+    ->name('quiz.goronich');
+/*
+|--------------------------------------------------------------------------
 | Post/Feed Routes
 |--------------------------------------------------------------------------
 |

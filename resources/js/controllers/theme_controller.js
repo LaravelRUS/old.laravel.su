@@ -2,7 +2,6 @@ import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = ['preferred'];
-
     initialize() {
         // Устанавливаем начальное значение темы
         this.setThemeBody(this.getThemeValue());

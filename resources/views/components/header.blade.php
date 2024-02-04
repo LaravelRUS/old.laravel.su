@@ -1,7 +1,4 @@
 <x-container>
-    <style>
-        .svg-accent { fill: blue }
-    </style>
     <div class="row g-md-5 py-lg-5 justify-content-center {{ $attributes->get('align', 'align-items-center') }}">
         <div class="col-lg-6">
             @isset($sup)
