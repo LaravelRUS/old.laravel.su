@@ -1,5 +1,5 @@
 @extends('html')
-@section('title', 'Добро пожаловать')
+@section('title', 'Раскрой секреты своего ремесла')
 
 @section('body')
 
@@ -9,13 +9,21 @@ $evalWrongWay = base64_encode("Уважай мгновения, которые �
 $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но взгляд нужно в другую сторону.');
 @endphp
 
-<x-header image="/img/ivan.svg">
+
+<x-container>
+    <img src="/img/ui/items.svg">
+</x-container>
+
+<x-header>
     <x-slot:sup>Будь как дома, путник</x-slot>
     <x-slot:title>Раскрой секреты своего ремесла</x-slot>
 
     <x-slot:description>
         Добро пожаловать в увлекательную игру-квест!
     </x-slot>
+
+    <x-slot:content>
+    </x-slot:content>
 </x-header>
 
 <!--
@@ -26,10 +34,15 @@ $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но вз�
 
 
 <x-container>
-    <div class="bg-body-secondary p-5 rounded">
-    <div class="row g-5 justify-content-center" data-controller="open-quiz">
+
+    <div class="row g-5 pb-lg-5 align-items-center" data-controller="open-quiz">
         <div class="col-md-6">
-            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5">
+            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative">
+                <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
+                    <img src="/img/ui/chest.svg" height="130">
+                </figure>
+
+
                 <p>Вновь приветствую тебя, путник, я - мастер.</p>
 
                 <p>Многие годы я посвятил своему ремеслу и оттачивал свои навыки.
@@ -43,18 +56,23 @@ $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но вз�
 
             </div>
 
-            <p class="mt-auto">
-                <img alt="image" height="50" class="rounded-circle"
-                     src="/img/avatars/avatar2.svg">
-                <strong class="ms-3">Неизвестный мастер</strong> <small class="opacity-50 ">- Добродушный дедушка</small>
-            </p>
+            <div class="mt-auto">
+                <div class="d-flex align-items-center">
+                    <img alt="image" height="50" class="rounded-circle"
+                         src="/img/avatars/avatar2.svg">
+                    <div class="ms-3 lh-1">
+                        <div class="fw-bolder mb-1">Неизвестный мастер</div>
+                        <small class="opacity-50">Добродушный дедушка</small>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-6">
             <main class="post position-relative opacity-50 d-flex flex-column h-100">
 
 
-                <pre class="rounded-3 position-relative overflow-hidden p-4 text-white shadow language-php mt-auto" tabindex="0"><code
+                <pre class="rounded position-relative overflow-hidden p-4 language-php mt-auto" tabindex="0"><code
                         class="language-php" title="<?php echo "<?php eval(base64_decode($evalWrongWay))"?>">// Позволь оценить эстетику твоего мастерства
 // Выполни код:
 {{ \Illuminate\Support\Str::of($evalWrongWay)->explode('/')->map(fn($line) => "$line/")->join("\n") }}
@@ -64,12 +82,13 @@ $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но вз�
 
         <div class="col-6">
 
+            {{--
             <img src="/img/gusli.svg" class="img-fluid d-block ms-auto">
-
+--}}
             <main class="post position-relative opacity-50">
 
 
-                <pre class="rounded-3 position-relative overflow-hidden p-4 text-white shadow language-php" tabindex="0"><code
+                <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0"><code
                         class="language-php">// Информация о Горыныче
 return response()->json([
     'status'   => 'Охраняет'
@@ -83,20 +102,26 @@ return response()->json([
 
 
         <div class="col-md-6">
-            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5">
-
+            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative">
                 <p>Ах, я вижу, что ты стойкий и добрый человек.</p>
 
-                <p class="mb-0">По этому в помощь тебе я оставила несколько <abbr title="Открой летопись и используй один-один">подсказок</abbr>, но помни, что ты должен пройти свой путь <span
-                        class="text-decoration-underline">самостоятельно</span>. Это поможет тебе по-настоящему ощутить радость открытия и достижения.
+                <p class="mb-0">По этому в помощь тебе я оставила несколько <abbr
+                        title="Используй один-один">подсказок</abbr>, но помни, что есть события которые будут сбивать тебя с пути.
                 </p>
             </div>
 
-            <p class="mt-auto">
-                <img alt="image" height="50" class="rounded-circle"
-                     src="/img/avatars/avatar.svg">
-                <strong class="ms-3">Василиса</strong> <small class="opacity-50">- Внучка мастера</small>
-            </p>
+            <div class="mt-auto">
+                <div class="d-inline-flex align-items-center"
+                     title="Что подсказку? Так быстро? Думаю тебе стоит открыть летопись и посмотреть все предупреждения.">
+                    <img alt="image" height="50" class="rounded-circle"
+                         src="/img/avatars/avatar.svg">
+                    <div class="ms-3 lh-1">
+                        <div class="fw-bolder mb-1">Василиса</div>
+                        <small class="opacity-50">Внучка мастера</small>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 
@@ -110,36 +135,70 @@ return response()->json([
 
         <div class="col-md-6 position-relative">
 
-            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5">
-                <p>Будь настойчивым и внимательным, чтобы раскрыть все загадки и достичь успеха. Отправляйся в путь!</p>
-            </div>
+            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative">
+                <p>Будь настойчивым и внимательным, чтобы раскрыть все загадки и достичь успеха.</p>
+                <p class="mb">Отправляйся в путь!</p>
 
-            <p class="mt-auto">
-                <img alt="image" height="50" class="rounded-circle"
-                     src="/img/avatars/avatar2.svg">
-                <strong class="ms-3">Неизвестный мастер</strong> <small class="opacity-50">- Добродушный дедушка</small>
-            </p>
-        </div>
-
-        <div class="col-md-6 position-relative">
-
-
-            <div class="p-4 border rounded h-100">
-                <h6 class="fw-bolder">Скажи как будешь готов, ладно?</h6>
-                <p>
-                    Как только ты почувствуешь готовность взять на себя вызов, нажми на кнопку:
-                </p>
-                <details>
+                <details class="mb-0">
                     <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet">Я готов начать!</summary>
-                    <p class="user-select-all mb-0 mt-3">Ты уже начал! Продолжай.</p>
+                    <span class="user-select-all mb-0 mt-3">Ты уже начал! Продолжай.</span>
                 </details>
             </div>
+
+            <div class="mt-auto">
+                <div class="d-flex align-items-center">
+                    <img alt="image" height="50" class="rounded-circle"
+                         src="/img/avatars/avatar2.svg">
+                    <div class="ms-3 lh-1">
+                        <div class="fw-bolder mb-1">Неизвестный мастер</div>
+                        <small class="opacity-50">Добродушный дедушка</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 position-relative">
+            <img src="/img/ivan.svg" class="d-block img-fluid p-5">
         </div>
 
     </div>
-    </div>
+
 </x-container>
 
+
+
+{{--
+<x-container>
+    <div class="p-4 p-xl-5 bg-body-secondary rounded-4 position-relative" data-controller="open-quiz">
+        <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
+            <x-icon path="l.cube" width="46" height="53" fill="none"/>
+        </figure>
+
+
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <p class="display-6 fw-bold">Скажи как будешь готов, ладно?</p>
+                <p class="mb-3 text-balance">
+                    Как только ты почувствуешь готовность взять на себя вызов, нажми на кнопку:
+                </p>
+
+                <details>
+                    <summary class="d-block d-md-inline-block btn btn-primary me-3"
+                             data-action="click->open-quiz#greet">Я готов начать!
+                    </summary>
+                    <span class="user-select-all mb-0 mt-3">Ты уже начал! Продолжай.</span>
+                </details>
+            </div>
+
+            <div class="col-lg-3">
+                <img src="/img/ui/chest.svg" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+</x-container>
+--}}
 
 <x-container>
     <hr class="w-25 my-5">
@@ -161,7 +220,7 @@ return response()->json([
 
             <p class="small text-muted mb-2">
                 <span class="text-primary me-1">*</span>
-                Что бы не портить игру себе или коллегам, пожалуйста не раскрывайте уже пройденные этапы в общих телеграм чатах или других
+                Что бы не портить игру себе или коллегам, пожалуйста не раскрывайте тайны уже пройденных этапов в общих телеграм чатах или других
                 группах. Пусть каждый пройдет свой путь самостоятельно.
             </p>
         </div>
@@ -196,6 +255,10 @@ return response()->json([
 
     </div>
 </x-container>
+
+
+
+
 
 {{--
 <x-container>
