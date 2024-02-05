@@ -423,3 +423,8 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 */
 
 Route::feeds();
+
+
+Route::get('/info', function () {
+    phpinfo();
+});
