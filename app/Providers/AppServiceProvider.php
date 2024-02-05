@@ -27,14 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        try {
-            DB::connection('sqlite')->statement(
-                'PRAGMA synchronous = OFF;'
-            );
-        } catch (\Throwable $throwable) {
-            return;
-        }
-
         Paginator::useBootstrapFive();
 
         Blade::component('github', Github::class);
