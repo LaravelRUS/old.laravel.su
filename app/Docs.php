@@ -102,7 +102,7 @@ class Docs
         );
 
 
-        $variables = Str::of($this->content())
+        $variables = Str::of($raw)
             ->after('---')
             ->before('---');
 
