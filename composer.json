@@ -10,7 +10,7 @@
         "doctrine/dbal": "^3.7",
         "guzzlehttp/guzzle": "^7.2",
         "hotwired/turbo-laravel": "^1.12",
-        "intervention/image": "^2.7",
+        "intervention/image": "^3.3",
         "jolicode/jolitypo": "^1.4",
         "laminas/laminas-stdlib": "^3.18",
         "laravel-notification-channels/webpush": "^7.1",
