@@ -10,6 +10,7 @@ use App\View\Modifications\TestModifier;
 use App\View\Modifications\TypografModifier;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 
 class Content extends Component implements Htmlable
@@ -46,26 +47,28 @@ class Content extends Component implements Htmlable
      */
     public function toHtml(): string
     {
-        $content = \Illuminate\Support\Str::of($this->content)
-            //->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
-            ->markdown([
-                'allow_unsafe_links' => false,
-                'html_input'         => 'escape',
-                'max_nesting_level'  => 20,
-            ])
-            ->toString();
+        return Cache::remember('post-content-' . sha1($this->content), now()->addWeek(), function () {
+            $content = \Illuminate\Support\Str::of($this->content)
+                //->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
+                ->markdown([
+                    'allow_unsafe_links' => false,
+                    'html_input'         => 'escape',
+                    'max_nesting_level'  => 20,
+                ])
+                ->toString();
 
 
-        return app(Pipeline::class)
-            ->send($content)
-            ->through([
-                TestModifier::class,
-                BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
-                ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
-                BladeComponentModifier::class, // Применяет компоненты blade
-                ImageAltModifier::class, // Добавляет alt к картинкам
-                TypografModifier::class, // Применяет типограф к тексту
-            ])
-            ->thenReturn();
+            return app(Pipeline::class)
+                ->send($content)
+                ->through([
+                    TestModifier::class,
+                    BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
+                    ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
+                    BladeComponentModifier::class, // Применяет компоненты blade
+                    ImageAltModifier::class, // Добавляет alt к картинкам
+                    TypografModifier::class, // Применяет типограф к тексту
+                ])
+                ->thenReturn();
+        });
     }
 }

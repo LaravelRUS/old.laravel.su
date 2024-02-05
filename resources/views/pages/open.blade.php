@@ -126,13 +126,9 @@ return response()->json([
 
             <div class="p-4 border rounded h-100">
                 <h6 class="fw-bolder">Скажи как будешь готов, ладно?</h6>
-
-
                 <p>
                     Как только ты почувствуешь готовность взять на себя вызов, нажми на кнопку:
                 </p>
-
-
                 <details>
                     <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet">Я готов начать!</summary>
                     <p class="user-select-all mb-0 mt-3">Ты уже начал! Продолжай.</p>
