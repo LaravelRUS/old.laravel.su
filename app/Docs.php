@@ -134,16 +134,18 @@ class Docs
      */
     public function getMenu(): array
     {
-        $page = Storage::disk('docs')->get($this->version.'/documentation.md');
+        return Cache::remember("doc-navigation-" . $this->version, now()->addHours(2), function () {
+            $page = Storage::disk('docs')->get($this->version . '/documentation.md');
 
-        $html = Str::of($page)
-            ->after('---')
-            ->after('---')
-            ->replace('{{version}}', $this->version)
-            ->markdown()
-            ->toString();
+            $html = Str::of($page)
+                ->after('---')
+                ->after('---')
+                ->replace('{{version}}', $this->version)
+                ->markdown()
+                ->toString();
 
-        return $this->docsToArray($html);
+            return $this->docsToArray($html);
+        });
     }
 
     /**
