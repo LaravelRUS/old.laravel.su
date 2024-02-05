@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Docs;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 use Symfony\Component\DomCrawler\Crawler;
@@ -46,36 +47,42 @@ class Anchors extends Component
      */
     private function findAnchors()
     {
-        $crawler = new Crawler();
-        $crawler->addHtmlContent($this->content);
+        return Cache::remember('doc-anchors-'. sha1($this->content), now()->addHours(2), function (){
 
-        $anchors = [];
 
-        $crawler
-            ->filter('h2,h3')
-            ->each(function ($elm) use (&$anchors) {
+            $crawler = new Crawler();
+            $crawler->addHtmlContent($this->content);
 
-                /** @var Crawler $elm */
-                /** @var \DOMElement $node */
-                $node = $elm->getNode(0);
-                $text = $node->textContent;
-                $id = Str::slug($text);
+            $anchors = [];
 
-                $anchors[] = [
-                    'text'  => $text,
-                    'level' => $node->tagName,
-                    'id'    => $id,
-                ];
+            $crawler
+                ->filter('h2,h3')
+                ->each(function ($elm) use (&$anchors) {
 
-                while ($node->hasChildNodes()) {
-                    $node->removeChild($node->firstChild);
-                }
+                    /** @var Crawler $elm */
+                    /** @var \DOMElement $node */
+                    $node = $elm->getNode(0);
+                    $text = $node->textContent;
+                    $id = Str::slug($text);
 
-                $node->appendChild(new \DOMElement('a', e($text)));
-                $node->firstChild->setAttribute('href', '#'.$id);
-                $node->firstChild->setAttribute('name', $id);
-            });
+                    $anchors[] = [
+                        'text'  => $text,
+                        'level' => $node->tagName,
+                        'id'    => $id,
+                    ];
 
-        return $anchors;
+                    while ($node->hasChildNodes()) {
+                        $node->removeChild($node->firstChild);
+                    }
+
+                    $node->appendChild(new \DOMElement('a', e($text)));
+                    $node->firstChild->setAttribute('href', '#'.$id);
+                    $node->firstChild->setAttribute('name', $id);
+                });
+
+            return $anchors;
+
+        });
+
     }
 }
