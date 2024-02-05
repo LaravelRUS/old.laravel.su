@@ -72,13 +72,15 @@ class Docs
         $this->path = "/$version/$this->file";
 
 
-        $variables = Str::of($this->content())->after('---')->before('---');
+        $this->content();
+    }
 
-        try {
-            $this->variables = Yaml::parse($variables);
-        } catch (\Throwable) {
-
-        }
+    /**
+     * @return array
+     */
+    public function variables(): array
+    {
+        return $this->variables;
     }
 
     /**
@@ -90,13 +92,31 @@ class Docs
             return $this->content;
         }
 
-        $this->content = Cache::remember('doc-file-'.$this->path, now()->addMinutes(30), fn () => Storage::disk('docs')->get($this->path));
+
+        $raw = Cache::remember('doc-file-'.$this->path, now()->addMinutes(30), fn () => Storage::disk('docs')->get($this->path));
 
         // Abort the request if the page doesn't exist
         abort_if(
-            $this->content === null && Document::where('file', $this->file)->exists(),
+            $raw === null && Document::where('file', $this->file)->exists(),
             redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
         );
+
+
+        $variables = Str::of($this->content())
+            ->after('---')
+            ->before('---');
+
+        try {
+            $this->variables = Yaml::parse($variables);
+        } catch (\Throwable) {
+
+        }
+
+        $this->content = Str::of($raw)
+            ->replace('{{version}}', $this->version)
+            ->after('---')
+            ->after('---')
+            ->markdown();
 
         return $this->content;
     }
@@ -112,15 +132,9 @@ class Docs
      */
     public function view(string $view)
     {
-        $content = Str::of($this->content())
-            ->replace('{{version}}', $this->version)
-            ->after('---')
-            ->after('---')
-            ->markdown();
-
         $all = collect()->merge($this->variables)->merge([
             'docs'    => $this,
-            'content' => $content,
+            'content' => $this->content(),
             'edit'    => $this->goToGitHub(),
         ]);
 
@@ -156,7 +170,7 @@ class Docs
     public function title(): ?string
     {
         $crawler = new Crawler();
-        $crawler->addHtmlContent(Str::of($this->content())->markdown());
+        $crawler->addHtmlContent($this->content());
 
         $title = $crawler->filterXPath('//h1');
 
