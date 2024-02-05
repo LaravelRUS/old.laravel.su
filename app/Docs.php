@@ -47,7 +47,7 @@ class Docs
     /**
      * @var string The content of the Markdown file.
      */
-    protected $page;
+    protected $content;
 
     /**
      * @var string The file name.
@@ -71,21 +71,34 @@ class Docs
         $this->version = $version;
         $this->path = "/$version/$this->file";
 
-        $this->page = Storage::disk('docs')->get($this->path);
 
-        // Abort the request if the page doesn't exist
-        abort_if(
-            $this->page === null && Document::where('file', $this->file)->exists(),
-            redirect(status: 300)->route('docs', ['version' => $version, 'page' => 'installation'])
-        );
-
-        $variables = Str::of($this->page)->after('---')->before('---');
+        $variables = Str::of($this->content())->after('---')->before('---');
 
         try {
             $this->variables = Yaml::parse($variables);
         } catch (\Throwable) {
 
         }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function content(): ?string
+    {
+        if($this->content !== null){
+            return $this->content;
+        }
+
+        $this->content = Cache::remember('doc-file-'.$this->path, now()->addMinutes(30), fn () => Storage::disk('docs')->get($this->path));
+
+        // Abort the request if the page doesn't exist
+        abort_if(
+            $this->content === null && Document::where('file', $this->file)->exists(),
+            redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
+        );
+
+        return $this->content;
     }
 
     /**
@@ -99,7 +112,7 @@ class Docs
      */
     public function view(string $view)
     {
-        $content = Str::of($this->page)
+        $content = Str::of($this->content())
             ->replace('{{version}}', $this->version)
             ->after('---')
             ->after('---')
@@ -141,7 +154,7 @@ class Docs
     public function title(): ?string
     {
         $crawler = new Crawler();
-        $crawler->addHtmlContent(Str::of($this->page)->markdown());
+        $crawler->addHtmlContent(Str::of($this->content())->markdown());
 
         $title = $crawler->filterXPath('//h1');
 
@@ -233,7 +246,7 @@ class Docs
      */
     private function fetchGitHubDiff(string $key = null): Collection
     {
-        $hash = sha1($this->page);
+        $hash = sha1($this->content());
 
         return Cache::remember("docs-diff-$this->version-$this->file-$hash",
             now()->addHours(2),
