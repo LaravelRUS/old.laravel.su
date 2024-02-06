@@ -153,7 +153,7 @@ return response()->json([
 
                 <details class="mb-0">
                     <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet" disabled>Я готов начать!</summary>
-                    <span class="user-select-all mb-0 mt-3" title="Вместе с Василисой ты найдешь путь, который приведет тебя к цели.">Ты уже начал! Исследуй.</span>
+                    <span class="user-select-all mb-0 mt-3" title="Вместе с Василисой ты найдешь путь, который приведет тебя к цели.">Игра началась, с чего начнёшь?</span>
                 </details>
             </div>
 

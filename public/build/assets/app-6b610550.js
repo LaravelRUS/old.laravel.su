@@ -48,6 +48,7 @@ var ko=Object.defineProperty;var Po=(r,e,t)=>e in r?ko(r,e,{enumerable:!0,config
 Весьма впечатляюще, не так ли? Интересно, способен ли он, подобно римскому императору, одновременно выполнять три задачи?
 Это весьма любопытный вопрос, открывающий нам множество возможностей для размышлений.
 
+<%%%%|==========>
 Все иди от сюда, больше тебе нечего тут делать!
 `)}}F(Gn,"targets",["output"]);const Qa=Object.freeze(Object.defineProperty({__proto__:null,default:Gn},Symbol.toStringTag,{value:"Module"}));var Us=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{};function Za(r){return r&&r.__esModule&&Object.prototype.hasOwnProperty.call(r,"default")?r.default:r}var Yn={exports:{}};(function(r){var e=typeof window<"u"?window:typeof WorkerGlobalScope<"u"&&self instanceof WorkerGlobalScope?self:{};/**
  * Prism: Lightweight, robust, elegant syntax highlighting
