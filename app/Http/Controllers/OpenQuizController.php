@@ -19,14 +19,13 @@ class OpenQuizController extends Controller
         // Формируем строку для выполнения
         $evalWrongWay = sprintf('eval(base64_decode(%s));', var_export(base64_encode($evalWrongWayText), true));
 
-        $helpCaesarCipher = (new \App\CaesarCipher(11, 'en'))
-            ->encrypt(route('quiz.goronich'));
+        $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
 
         return response(view('pages.open', [
             'evalWrongWay' => $evalWrongWay,
             'helpCaesarCipher' => $helpCaesarCipher
         ]))->withHeaders([
-            'X-Goronich-Key' => (new \App\CaesarCipher(11, 'en'))->encrypt('laravel.su/open/now'),
+            'X-Goronich-Key' => (new \App\CaesarCipher(11, 'en'))->encrypt(route('quiz.goronich')),
         ]);
     }
 

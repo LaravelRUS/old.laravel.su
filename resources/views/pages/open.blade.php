@@ -3,11 +3,6 @@
 
 @section('body')
 
-@php
-
-$helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
-@endphp
-
 <x-container>
     <img src="/img/ui/items.svg" class="pe-none">
 </x-container>
