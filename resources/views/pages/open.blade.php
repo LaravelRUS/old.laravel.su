@@ -4,27 +4,40 @@
 @section('body')
 
 @php
-$evalWrongWay = base64_encode("Уважай мгновения, которые потратил тут и обрати взор назад. Загляни в прошлое с благодарностью и мудростью, чтобы найти новый путь вперед.");
 
-$helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но взгляд нужно в другую сторону.');
+$helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
 @endphp
 
-
 <x-container>
-    <img src="/img/ui/items.svg">
+    <img src="/img/ui/items.svg" class="pe-none">
 </x-container>
 
 <x-header>
-    <x-slot:sup>Будь как дома, путник</x-slot>
+    <x-slot:sup>Стань первооткрывателем</x-slot>
     <x-slot:title>Раскрой секреты своего ремесла</x-slot>
 
     <x-slot:description>
-        Добро пожаловать в увлекательную игру-квест!
+        Получите награду войдя первым в обновлённое сообщество.
+        Событие ограничено временем - не упустите шанс, начните прямо сейчас!
     </x-slot>
 
     <x-slot:content>
     </x-slot:content>
+
+        {{--
+    <x-slot:actions>
+        <a href="https://old.laravel.su"
+           title="У меня нет времени на игры!"
+           class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
+            Не сейчас, к документации
+            <x-icon path="bs.arrow-right"/>
+        </a>
+    </x-slot:actions>
+    --}}
 </x-header>
+
+
+
 
 <!--
 <x-container>
@@ -69,13 +82,12 @@ $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но вз�
         </div>
 
         <div class="col-6">
-            <main class="post position-relative opacity-50 d-flex flex-column h-100">
+            <main class="post position-relative quiz-code-hover d-flex flex-column h-100">
 
 
                 <pre class="rounded position-relative overflow-hidden p-4 language-php mt-auto" tabindex="0"><code
-                        class="language-php" title="<?php echo "<?php eval(base64_decode($evalWrongWay))"?>">// Позволь оценить эстетику твоего мастерства
-// Выполни код:
-{{ \Illuminate\Support\Str::of($evalWrongWay)->explode('/')->map(fn($line) => "$line/")->join("\n") }}
+                        class="language-php" title="Василиса: Вперед, смельчак!">// Позволь оценить эстетику твоего мастерства
+{{ collect(str_split($evalWrongWay, 55))->implode("\r\n")  }}
 </code></pre>
             </main>
         </div>
@@ -85,10 +97,10 @@ $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Верно, но вз�
             {{--
             <img src="/img/gusli.svg" class="img-fluid d-block ms-auto">
 --}}
-            <main class="post position-relative opacity-50">
+            <main class="post position-relative quiz-code-hover">
 
 
-                <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0"><code
+                <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0" title="Василиса: Я уверена, что это не просто случайность. Это находка имеет смысл."><code
                         class="language-php">// Информация о Горыныче
 return response()->json([
     'status'   => 'Охраняет'
@@ -140,8 +152,8 @@ return response()->json([
                 <p class="mb">Отправляйся в путь!</p>
 
                 <details class="mb-0">
-                    <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet">Я готов начать!</summary>
-                    <span class="user-select-all mb-0 mt-3">Ты уже начал! Продолжай.</span>
+                    <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet" disabled>Я готов начать!</summary>
+                    <span class="user-select-all mb-0 mt-3" title="Вместе с Василисой ты найдешь путь, который приведет тебя к цели.">Ты уже начал! Исследуй.</span>
                 </details>
             </div>
 
@@ -159,7 +171,7 @@ return response()->json([
 
 
         <div class="col-md-6 position-relative">
-            <img src="/img/ivan.svg" class="d-block img-fluid p-5">
+            <img src="/img/ivan.svg" class="d-block img-fluid p-5 pe-none">
         </div>
 
     </div>
@@ -201,7 +213,14 @@ return response()->json([
 --}}
 
 <x-container>
-    <hr class="w-25 my-5">
+
+    <p class="small text-muted mb-2 pt-5">
+        Нет времени на игры сейчас?<br> Перейти к <a href="https://old.laravel.su" class="text-decoration-none">документации</a>.
+    </p>
+
+    <div class="d-flex align-items-center mb-5">
+        <code class="opacity-75 h5 text-primary" title="Возьми меч в руки."><%%%%|==========></code>
+    </div>
 
     <div class="row">
         <div class="col-12 col-md-4">
@@ -218,10 +237,10 @@ return response()->json([
                 </li>
             </ul>
 
-            <p class="small text-muted mb-2">
+            <p class="small text-muted mb-2 text-balance">
                 <span class="text-primary me-1">*</span>
                 Что бы не портить игру себе или коллегам, пожалуйста не раскрывайте тайны уже пройденных этапов в общих телеграм чатах или других
-                группах. Пусть каждый пройдет свой путь самостоятельно.
+                группах.
             </p>
         </div>
 

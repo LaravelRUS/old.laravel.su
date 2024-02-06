@@ -23,6 +23,11 @@ use Illuminate\Support\Str;
 */
 
 Artisan::command('inspire', function () {
+
+    $test = \Illuminate\Support\Facades\Http::delete(route('quiz.goronich'));
+
+    dd($test->header('X-Vasilisa-Say'),$test->body());
+
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 

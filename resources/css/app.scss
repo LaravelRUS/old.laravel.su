@@ -385,3 +385,14 @@ $utilities: (
         height: 200px;
     }
 }
+
+
+.quiz-code-hover {
+    opacity: 0.25!important;
+    filter: blur(2px);
+    transition: all 350ms ease-in-out;
+    &:hover {
+        opacity: 1!important;
+        filter: blur(0);
+    }
+}

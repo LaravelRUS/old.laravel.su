@@ -2,6 +2,8 @@ import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
 
+    static targets = [ "output" ];
+
     /**
      * @type {number}
      */
@@ -14,6 +16,9 @@ export default class extends Controller {
      * @param event
      */
     greet(event) {
+
+        event.target.classList.add('disabled');
+
         let dragon = `
                                                   .~))>>
                                                  .~)>>
@@ -50,50 +55,20 @@ export default class extends Controller {
                                               ~~~~
 
 
-Вы прерываете мой покой!`;
+Вы прерываете мой покой!
 
-        let greeting = `
 Я - Мистический дракон и не собираюсь вмешиваться в твое испытание.
 Однако, по просьбе Василисы, я согласился помочь, хотя, должен признать, что это не особо вдохновляет меня.
-Вместо этого давай поговорим о чем-то более интересном.`;
+Вместо этого давай поговорим о чем-то более интересном.
 
-        let story = `
 У меня есть дальний родственник - Змей Горыныч, который обладает тремя головами!
 Весьма впечатляюще, не так ли? Интересно, способен ли он, подобно римскому императору, одновременно выполнять три задачи?
-Это весьма любопытный вопрос, открывающий нам множество возможностей для размышлений."
-        `;
+Это весьма любопытный вопрос, открывающий нам множество возможностей для размышлений.
 
-        let bye = `
 Все иди от сюда, больше тебе нечего тут делать!
-        `;
+`;
 
-        let angryBye = `
-Я сказал иди отсюда!`;
 
-        if(this.step === 0) {
-            console.warn(dragon);
-        }
-
-        if(this.step === 1) {
-            console.warn(greeting);
-        }
-
-        if(this.step === 2) {
-            console.warn(story);
-        }
-
-        if(this.step > 2) {
-            console.warn(bye);
-        }
-
-        if(this.step > 4) {
-            console.warn(angryBye);
-        }
-
-        if(this.step > 5) {
-            alert('Хватит! Ты меня разозлил!');
-        }
-
-        this.step++;
+        console.warn(dragon);
     }
 }
