@@ -153,7 +153,7 @@ return response()->json([
 
                 <details class="mb-0">
                     <summary class="d-block d-md-inline-block btn btn-primary me-3" data-action="click->open-quiz#greet" disabled>Я готов начать!</summary>
-                    <span class="user-select-all mb-0 mt-3" title="Вместе с Василисой ты найдешь путь, который приведет тебя к цели.">Игра началась, с чего начнёшь?</span>
+                    <span class="user-select-all mb-0 mt-3" title="Вместе с Василисой ты найдешь путь, который приведет тебя к цели.">Игра началась, начинай поиски.</span>
                 </details>
             </div>
 
@@ -239,7 +239,7 @@ return response()->json([
 
             <p class="small text-muted mb-2 text-balance">
                 <span class="text-primary me-1">*</span>
-                Что бы не портить игру себе или коллегам, пожалуйста не раскрывайте тайны уже пройденных этапов в общих телеграм чатах или других
+                Что бы не впечатления от игры коллегам, пожалуйста не раскрывайте тайны уже пройденных этапов в общих телеграм чатах или других
                 группах.
             </p>
         </div>
