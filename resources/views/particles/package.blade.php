@@ -53,7 +53,7 @@
 
         <div class="row justify-content-between">
             <div class="col-auto d-inline-flex align-items-center me-auto">
-                <x-icon path="bs.star-fill" class="me-2 text-warning"/>
+                <x-icon path="i.star-fill" class="me-2 text-warning"/>
                 {{ $package->stars }}
             </div>
             <div class="col">
