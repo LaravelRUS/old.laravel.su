@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="mb-0 ms-3 text-balance">
-                    <div class="d-block fw-bolder fs-5">Первоооткрыватель</div>
+                    <div class="d-block fw-bolder fs-5">Первооткрыватель</div>
                     Первым преодолел все загадки на пути к обновлённому сайту
                 </div>
             </div>
