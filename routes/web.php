@@ -25,7 +25,7 @@ use App\Docs;
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
-Route::view('/resources', 'pages.resources')->name('resources');
+Route::view('/why-laravel', 'pages.why-laravel')->name('why-laravel');
 Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/contributors', 'pages.contributors')->name('contributors');
 Route::view('/rules', 'pages.rules')->name('rules');

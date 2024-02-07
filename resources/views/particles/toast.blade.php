@@ -9,7 +9,7 @@
             <div class="toast-body p-3 d-flex">
                 <p class="mb-0">
                     <span class="text-{type}">
-                        <x-orchid-icon path="bs.circle-fill" class="me-2"/>
+                        <x-orchid-icon path="i.circle-fill" class="me-2"/>
                     </span>
                     {message}
                 </p>
@@ -27,7 +27,7 @@
             <div class="toast-body p-3 d-flex">
                 <p class="mb-0 me-1">
                     <span class="text-{{ session(\Orchid\Alert\Toast::SESSION_LEVEL) }}">
-                        <x-orchid-icon path="bs.circle-fill" class="me-2"/>
+                        <x-orchid-icon path="i.circle-fill" class="me-2"/>
                     </span>
 
                     {!! session(\Orchid\Alert\Toast::SESSION_MESSAGE) !!}

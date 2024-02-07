@@ -140,7 +140,7 @@ $utilities: (
     }
 
     img {
-        @extend .bg-light;
+        @extend .bg-body-secondary;
         @extend .rounded;
         width: 100%;
         min-height: 200px;
