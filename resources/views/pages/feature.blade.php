@@ -16,7 +16,7 @@
 
             <a href="{{ route('courses') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Обучение
-                <x-icon path="bs.arrow-right" />
+                <x-icon path="i.arrow-right" class="bi" />
             </a>
         </x-slot>
 
@@ -447,7 +447,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'routing']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
@@ -463,7 +463,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'blade']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
@@ -481,7 +481,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'authentication']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
@@ -498,7 +498,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'authorization']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
@@ -516,7 +516,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'artisan']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                     <div class="col d-flex align-items-start">
@@ -534,7 +534,7 @@ class UserController
                             <a href="{{ route('docs',['page'=>'testing']) }}"
                                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                                 Подробнее
-                                <x-icon path="bs.arrow-right" /></a>
+                                <x-icon path="i.arrow-right" class="bi" /></a>
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
                                     data-action="click->share#dialog"
                                     title="Поделиться"
                             >
-                                <x-icon path="bs.share-fill"/>
+                                <x-icon path="i.share"/>
                             </button>
                         </x-device>
                         <x-device desktop="true">
@@ -60,7 +60,7 @@
                 <p class="text-end mb-0">
                     <a href="{{ $package->website }}"
                        class="link-body-emphasis stretched-link icon-link icon-link-hover text-decoration-none">Перейти
-                        <x-icon path="bs.arrow-right"/>
+                        <x-icon path="i.arrow-right" class="bi"/>
                     </a>
                 </p>
             </div>

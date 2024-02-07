@@ -25,7 +25,7 @@
            title="У меня нет времени на игры!"
            class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
             Не сейчас, к документации
-            <x-icon path="bs.arrow-right"/>
+            <x-icon path="i.arrow-right" class="bi"/>
         </a>
     </x-slot:actions>
     --}}

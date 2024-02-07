@@ -4,6 +4,6 @@
     <button class="back-to-top__button btn btn-primary d-inline-flex align-items-center" type="button"
         data-controller="scroll">
         Наверх
-        <x-icon path="bs.arrow-up" class="ms-2" />
+        <x-icon path="i.angle-up" class="ms-2" />
     </button>
 </div>

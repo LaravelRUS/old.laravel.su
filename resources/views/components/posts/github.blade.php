@@ -13,7 +13,7 @@
     <div class="col-md-2">
         <a href="{{ $link }}" target="_blank" rel="noopener" class="link-body-emphasis stretched-link text-decoration-none icon-link icon-link-hover">
             Перейти
-            <x-icon path="bs.arrow-right"/>
+            <x-icon path="i.arrow-right" class="bi"/>
         </a>
     </div>
 </div>

@@ -32,7 +32,7 @@
                     <a href="{{ route('courses') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                         Посмотреть курс
-                        <x-icon path="bs.arrow-right" />
+                        <x-icon path="i.arrow-right" class="bi" />
                     </a>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                                target="_blank"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link  mt-4">
                                 Посмотреть курс
-                                <x-icon path="bs.arrow-right" />
+                                <x-icon path="i.arrow-right" class="bi" />
                             </a>
                     </div>
                     <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
@@ -112,7 +112,7 @@
                                target="_blank"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                                 Посмотреть видео
-                                <x-icon path="bs.arrow-right" />
+                                <x-icon path="i.arrow-right" class="bi" />
                             </a>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                                 target="_blank"
                                 class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                                 Читать книгу
-                                <x-icon path="bs.arrow-right" />
+                                <x-icon path="i.arrow-right" class="bi" />
                             </a>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <a href="{{ route('courses') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                         Посмотреть курс
-                        <x-icon path="bs.arrow-right" />
+                        <x-icon path="i.arrow-right" class="bi" />
                     </a>
                 </div>
             </div>
@@ -334,7 +334,7 @@
 
                         <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                             Посмотрите вступление
-                            <x-icon path="bs.arrow-right" />
+                            <x-icon path="i.arrow-right" class="bi" />
                         </a>
                     </div>
                 </div>
@@ -441,7 +441,7 @@
 
                         <a href="{{ route('advertising') }}" class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                             Посмотрите вступление
-                            <x-icon path="bs.arrow-right" />
+                            <x-icon path="i.arrow-right" class="bi" />
                         </a>
                     </div>
                 </div>
@@ -473,7 +473,7 @@
                                     <p class="text-end mb-0">
                                         <a {{ route('courses') }}
                                             class="link-body-emphasis stretched-link icon-link icon-link-hover text-decoration-none">Перейти
-                                            <x-icon path="bs.arrow-right" />
+                                            <x-icon path="i.arrow-right" class="bi" />
                                         </a>
                                     </p>
                                 </div>

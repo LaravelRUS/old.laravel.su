@@ -61,7 +61,7 @@
                     <a href="{{ route('feature') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
-                        <x-icon path="bs.arrow-right" /></a>
+                        <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
                 <div class="d-none d-sm-flex col">
                     <img src="/img/ui/web.svg" class="img-fluid d-block mx-auto">
@@ -81,7 +81,7 @@
                     <a href="{{ route('feature') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
-                        <x-icon path="bs.arrow-right" /></a>
+                        <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
                 <div class="d-none d-sm-flex col">
                     <img src="/img/ui/api.svg" class="img-fluid d-block mx-auto">
@@ -101,7 +101,7 @@
                     <a href="{{ route('feature') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Основные возможности
-                        <x-icon path="bs.arrow-right" /></a>
+                        <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
                 <div class="d-none d-sm-flex col">
                     <img src="/img/ui/console.svg" class="img-fluid d-block mx-auto">
@@ -267,7 +267,7 @@
                     <a href="{{ route('packages') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
                         Посмотреть все пакеты
-                        <x-icon path="bs.arrow-right" /></a>
+                        <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
                 <!-- Left side END -->
             </div>
@@ -693,7 +693,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     <a href="{{ route('meets') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
                         Ближайшие встречи
-                        <x-icon path="bs.arrow-right" /></a>
+                        <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
 
             </div>
@@ -719,7 +719,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
 
                 <a href="{{ route('jobs') }}"
                    class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">Смотреть вакансии
-                    <x-icon path="bs.arrow-right" /></a>
+                    <x-icon path="i.arrow-right" class="bi" /></a>
             </div>
         </div>
 

@@ -13,15 +13,8 @@
             <header class="d-flex flex-wrap align-items-center justify-content-between">
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
                     <a href="{{ route('nav') }}" class="nav-link link-body-emphasis text-decoration-none d-flex align-items-center">
-                        {{--
-                        <x-icon path="bs.list" width="2em" height="2em" class="me-1" />
---}}
-
                         <x-icon path="i.logo" height="2em" width="2em" class="me-2" />
                         <x-icon path="i.menu" height="2em" width="2em" />
-                        {{--
-                        {{ View::getSection('type') ? View::getSection('type') : View::getSection('title') }}
-                        --}}
                     </a>
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
@@ -84,13 +77,6 @@
         <div class="container py-5">
             <footer class="row py-md-5 g-4 justify-content-between navbar-dark">
                 <div class="col-12 col-md-4">
-                    {{--
-                    <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                        <img src="https://laravel.su/images/logo.png" style="
-    object-fit: contain;
-    height: 45px;">
-                    </a>
---}}
                     <ul class="nav justify-content-start align-items-center list-unstyled d-flex mb-4">
                         <li class="">
                             <a href="https://vk.com/laravel_rus" class="link-body-emphasis">
@@ -159,11 +145,6 @@
                             <li class="nav-item mb-2">
                                 <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
                             </li>
-                            {{--
-                            <li class="nav-item mb-2">
-                                <a href="{{ route('resources') }}" class="nav-link p-0">Ресурсы</a>
-                            </li>
-                            --}}
                         </ul>
                     </div>
                 </div>

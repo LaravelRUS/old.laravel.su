@@ -15,7 +15,7 @@
 
                         <div class="d-flex flex-column gap-2 mt-3 small">
                             <span class="opacity-50 d-flex align-items-center">
-                                <x-icon path="bs.geo-alt-fill" class="me-2"/>
+                                <x-icon path="i.geo" class="me-2"/>
                                 {{$position->location}}
                             </span>
                         </div>

@@ -6,13 +6,13 @@
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true">
                     <span class="page-link rounded-3 btn">
-                         <x-icon path="bs.arrow-left"/>
+                         <x-icon path="i.arrow-left"/>
                     </span>
                 </li>
             @else
                 <li class="page-item">
                     <a class="page-link rounded-3 btn" href="{{ $paginator->previousPageUrl() }}" rel="prev">
-                        <x-icon path="bs.arrow-left"/>
+                        <x-icon path="i.arrow-left"/>
                     </a>
                 </li>
             @endif
@@ -21,13 +21,13 @@
             @if ($paginator->hasMorePages())
                 <li class="page-item">
                     <a class="page-link rounded-3 btn" href="{{ $paginator->nextPageUrl() }}" rel="next">
-                        <x-icon path="bs.arrow-right"/>
+                        <x-icon path="i.arrow-right" class="bi"/>
                     </a>
                 </li>
             @else
                 <li class="page-item disabled" aria-disabled="true">
                     <span class="page-link rounded-3 btn">
-                        <x-icon path="bs.arrow-right"/>
+                        <x-icon path="i.arrow-right" class="bi"/>
                     </span>
                 </li>
             @endif

@@ -36,7 +36,7 @@
                                         data-action="click->share#dialog"
                                         title="Поделиться"
                                 >
-                                    <x-icon path="bs.share-fill"/>
+                                    <x-icon path="i.share"/>
                                 </button>
                             </x-device>
 

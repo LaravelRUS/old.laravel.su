@@ -17,7 +17,7 @@
                 <a href="https://plugins.jetbrains.com/plugin/13441-laravel-idea"
                    class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                         Маркетплейс
-                        <x-icon path="bs.arrow-right"/>
+                        <x-icon path="i.arrow-right" class="bi"/>
                 </a>
             </x-slot>
     </x-header>

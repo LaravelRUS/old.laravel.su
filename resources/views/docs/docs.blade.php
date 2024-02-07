@@ -38,7 +38,7 @@
 
                         <a href="{{ $docs->goToOriginal() }}" title="Посмотреть оригинал" target="_blank"
                            class="link-body-emphasis text-decoration-none d-none d-md-block">
-                            <x-icon path="bs.translate" />
+                            <x-icon path="i.translation" />
                         </a>
                     </div>
 

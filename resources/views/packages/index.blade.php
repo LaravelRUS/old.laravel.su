@@ -44,7 +44,7 @@ return response()->json([
             <a href="{{route('packages.create')}}" class="btn btn-primary btn-lg px-4">Предложить пакет</a>
             <a href="{{ route('ecosystem') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Экосистема
-                <x-icon path="bs.arrow-right" />
+                <x-icon path="i.arrow-right" class="bi" />
             </a>
         </x-slot>
     </x-header>
@@ -65,11 +65,11 @@ return response()->json([
 
                                 @empty(!request()->query('q'))
                                     <a href="{{ route('packages') }}" class="btn btn-link icon-link text-secondary text-decoration-none">
-                                        <x-icon path="bs.x-lg"/>
+                                        <x-icon path="i.close"/>
                                     </a>
                                 @else
                                     <button type="submit" class="text-secondary fw-medium btn btn-link d-inline-flex align-items-center">
-                                        <x-icon path="bs.search" class="ms-2" />
+                                        <x-icon path="i.search" class="ms-2" />
                                     </button>
                                 @endif
                             </div>

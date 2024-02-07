@@ -35,7 +35,7 @@
                    <div class="ms-auto d-none d-md-block">
                        <a href="{{ $most->link }}" class="link-body-emphasis stretched-link text-decoration-none icon-link icon-link-hover">
                            Принять участие
-                           <x-icon path="bs.arrow-right"/>
+                           <x-icon path="i.arrow-right" class="bi"/>
                        </a>
                    </div>
                </div>

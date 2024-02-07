@@ -23,7 +23,7 @@
                                 <div class="small opacity-50">{{$position->schedule->text()}}</div>
                                 <div class="small opacity-50">{{$position->organization}}</div>
                                 <span class="opacity-50 d-inline-flex align-items-center mb-3">
-                                    <x-icon path="bs.geo-alt-fill" class="me-2"/>
+                                    <x-icon path="i.geo" class="me-2"/>
                                     {{$position->location}}
                                   </span>
                             </div>
@@ -60,7 +60,7 @@
                                         data-action="click->share#dialog"
                                         title="Поделиться"
                                 >
-                                    <x-icon path="bs.share-fill"/>
+                                    <x-icon path="i.share"/>
                                 </button>
                             </x-device>
                             <x-device desktop="true">

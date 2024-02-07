@@ -17,7 +17,7 @@
             @endauth
             <a href="{{ route('packages') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Пакеты сообщества
-                <x-icon path="bs.arrow-right" />
+                <x-icon path="i.arrow-right" class="bi" />
             </a>
         </x-slot>
 

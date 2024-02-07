@@ -35,7 +35,7 @@
 
                             <span class="d-none"
                                   data-clipboard-target="source">{{ $key->key }}</span>
-                            <x-icon path="bs.copy" class="copy-action" data-controller="tooltip"
+                            <x-icon path="i.copy" class="copy-action" data-controller="tooltip"
                                     title="Скопировать в буфер"/>
                             <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано"/>
                         </button>

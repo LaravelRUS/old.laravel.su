@@ -16,7 +16,7 @@
 
             <a href="{{ route('advertising') }}"
                class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">Присоединиться <x-icon
-                    path="bs.arrow-right" /></a>
+                    path="i.arrow-right" class="bi" /></a>
         </div>
         <!-- Left side END -->
     </div>
@@ -31,7 +31,7 @@
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
                    href="https://assisted-mindfulness.com/">
                     Перейти
-                    <x-icon path="bs.arrow-right"/>
+                    <x-icon path="i.arrow-right" class="bi"/>
                 </a>
             </div>
 
@@ -46,7 +46,7 @@
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
                    href="https://www.youtube.com/@agoalofalife/videos">
                     Перейти
-                    <x-icon path="bs.arrow-right"/>
+                    <x-icon path="i.arrow-right" class="bi"/>
                 </a>
             </div>
         </div>

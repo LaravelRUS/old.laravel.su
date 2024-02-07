@@ -19,7 +19,7 @@
             <a href="https://github.com/laravel-russia/docs"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                 Репозиторий
-                <x-icon path="bs.arrow-right"/>
+                <x-icon path="i.arrow-right" class="bi"/>
             </a>
         </x-slot>
     </x-header>
