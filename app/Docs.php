@@ -72,17 +72,7 @@ class Docs
         $this->path = "/$version/$this->file";
 
 
-        $content = $this->content();
-
-        $variables = Str::of($content)
-            ->after('---')
-            ->before('---');
-
-        try {
-            $this->variables = Yaml::parse($variables);
-        } catch (\Throwable) {
-
-        }
+        $this->content();
     }
 
     /**
@@ -110,6 +100,17 @@ class Docs
             $raw === null && Document::where('file', $this->file)->exists(),
             redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
         );
+
+
+        $variables = Str::of($raw)
+            ->after('---')
+            ->before('---');
+
+        try {
+            $this->variables = Yaml::parse($variables);
+        } catch (\Throwable) {
+
+        }
 
         $this->content = Str::of($raw)
             ->replace('{{version}}', $this->version)
@@ -346,6 +347,8 @@ class Docs
      */
     public function update()
     {
+        $this->content();
+
         $this->getModel()->fill([
             'behind'         => $this->fetchBehind(),
             'last_commit'    => $this->fetchLastCommit(),
