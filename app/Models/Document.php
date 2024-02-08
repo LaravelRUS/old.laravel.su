@@ -30,4 +30,15 @@ class Document extends Model
         'version' => Docs::DEFAULT_VERSION,
         'behind'  => null,
     ];
+
+
+    /**
+     * Get the URL to edit the page on GitHub.
+     *
+     * @return string The URL to edit the page on GitHub.
+     */
+    public function goToGitHub(): string
+    {
+        return "https://github.com/laravel-russia/docs/edit/$this->version/$this->file";
+    }
 }

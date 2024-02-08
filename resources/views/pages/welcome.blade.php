@@ -296,9 +296,8 @@
 
             <div class="row g-4 g-md-5">
                 <div class="col">
-                    <div class="p-4 p-xl-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="border-radius: 2rem;
-background: #1A1319!important;
-box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0, 0, 0, 0.09);">
+                    <div class="p-4 p-md-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden h-100" style="
+background: #1A1319!important;">
                         <img src="/img/ui/tentacle_bottom.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 mx-4 pe-none">
                         <img src="/img/ui/tentacle_top.svg" class="d-none d-xxl-block position-absolute top-0 start-0 mx-4 pe-none">
 
@@ -315,7 +314,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             </div>
 
 
-                            <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-3 mb-4">
+                            <div class="d-none d-md-flex row row-cols-1 row-cols-sm-1 g-3 mb-4">
                                 <div class="col d-flex flex-column gap-2">
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
@@ -371,7 +370,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-4 p-xl-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden" style="background: #1A1319!important;">
+                    <div class="p-4 p-md-5 bg-light-subtle bg-gradient rounded mb-5 position-relative overflow-hidden h-100" style="background: #1A1319!important;">
 
                         <img src="/img/ui/klubok.svg" class="d-none d-xxl-block position-absolute bottom-0 end-0 m-2 pe-none">
                         <img src="/img/ui/balalaika.svg" class="d-none d-xxl-block position-absolute top-0 start-0 m-1 pe-none">
@@ -389,7 +388,7 @@ box-shadow: 0px 142px 53px -120px rgba(20, 20, 24, 0.89), 0px 2px 4px 0px rgba(0
                             </div>
 
 
-                            <div class="d-none d-xl-flex row row-cols-1 row-cols-sm-1 g-3 mb-4">
+                            <div class="d-none d-md-flex row row-cols-1 row-cols-sm-1 g-3 mb-4">
                                 <div class="col d-flex flex-column gap-2">
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
