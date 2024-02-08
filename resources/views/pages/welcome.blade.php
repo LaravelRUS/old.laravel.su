@@ -561,18 +561,17 @@ background: #1A1319!important;">
                             <!-- Avatar -->
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle" loading="lazy"
-                                    src="https://avatars.githubusercontent.com/adamwathan?v=4" alt="avatar">
+                                    src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote class="px-3">
-                                <p class="text-balance">
-                                    Я использую Laravel уже почти десять лет, и у меня никогда не возникало искушения
-                                    переключиться на что-то другое.
+                                <p class="text-balance mb-0">
+                                    «Laravel - лучшее решение для <span class="text-primary">быстрого запуска</span> PHP приложений! 🚀»
                                 </p>
                             </blockquote>
 
                             <!-- Info -->
-                            <p class="mb-0 fw-semibold">Адам Ватан</p>
+                            <p class="mb-0 fw-semibold">Кирилл Несмеянов</p>
                         </div>
                     </div>
 
@@ -586,23 +585,40 @@ background: #1A1319!important;">
                             </div>
                             <!-- Title -->
                             <h6 class="mb-4"><span class="text-primary">150+</span> профессионалов в Laravel разработке</h6>
+
+
                             <!-- Mentor Item -->
                             <div class="d-flex align-items-center mb-4">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
                                          loading="lazy"
-                                        src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
+                                         src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
                                 </div>
                                 <!-- Info -->
                                 <div class="ms-2">
-                                    <h6 class="mb-0">Кирил Несмеянов</h6>
-                                    <p class="mb-0 small">Автор популярных пакетов</p>
+                                    <h6 class="mb-0">Алексей Буточников</h6>
+                                    <p class="mb-0 small">Лидер сообщества</p>
                                 </div>
                             </div>
 
                             <!-- Mentor Item -->
                             <div class="d-flex align-items-center mb-4">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-sm">
+                                    <img class="avatar-img rounded-circle"
+                                         loading="lazy"
+                                        src="https://avatars.githubusercontent.com/tabuna?v=4" alt="avatar">
+                                </div>
+                                <!-- Info -->
+                                <div class="ms-2">
+                                    <h6 class="mb-0">Александр Черняев</h6>
+                                    <p class="mb-0 small">Автор множества пакетов</p>
+                                </div>
+                            </div>
+
+                            <!-- Mentor Item -->
+                            <div class="d-flex align-items-center">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-sm">
                                     <img class="avatar-img rounded-circle"
@@ -616,20 +632,6 @@ background: #1A1319!important;">
                                 </div>
                             </div>
 
-                            <!-- Mentor Item -->
-                            <div class="d-flex align-items-center">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-circle"
-                                         loading="lazy"
-                                        src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
-                                </div>
-                                <!-- Info -->
-                                <div class="ms-2">
-                                    <h6 class="mb-0">Алексей Буточников</h6>
-                                    <p class="mb-0 small">Лидер сообщества</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div> <!-- Row END -->
@@ -651,11 +653,17 @@ background: #1A1319!important;">
                             </div>
                             <!-- Content -->
                             <blockquote>
-                                <p class="text-balance">
+                                <p class="text-balance mb-0">
                                     Laravel - <span class="text-primary">лучшее сообщество</span>, в котором находишь
                                     поддержку, знания и вдохновение.
                                     Всё это также мне стать лучшим разработчиком 🤙
                                 </p>
+
+                                {{--
+                                <p class="text-balance mb-0">
+                                    «Документация Laravel самое превосходное руководство для начинающих! 📚✨»
+                                </p>
+                                --}}
                             </blockquote>
 
                             <!-- Info -->
