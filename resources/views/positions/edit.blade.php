@@ -49,7 +49,7 @@
 
                                 <div class="form-text">
                                     <p class="small">Некоторые примеры:</p>
-                                    <ul class="list-unstyled mb-0">
+                                    <ul class="list-unstyled mb-0 pe-none">
                                         <li class="mb-2"><span class="me-2">✅</span>Пятёрочка</li>
                                         <li class="mb-2"><span class="me-2">✅</span>assisted-mindfulness.com</li>
                                         <li class="mb-2"><span class="me-2">❌</span>ООО Энд-Медиа</li>
@@ -101,11 +101,10 @@
 
                                     <div class="form-text">
                                         <p class="small">Некоторые примеры:</p>
-                                        <ul class="list-unstyled mb-0">
+                                        <ul class="list-unstyled mb-0 pe-none">
                                             <li class="mb-2"><span class="me-2">✅</span>м. Красногвардейская</li>
                                             <li class="mb-2"><span class="me-2">✅</span>г. Липецк</li>
-                                            <li class=""><span class="me-2">❌</span>г. Тула, Улица Пушкинская, 27
-                                            </li>
+                                            <li class=""><span class="me-2">❌</span>г. Тула, Улица Пушкинская, 12</li>
                                         </ul>
                                     </div>
                                 </div>

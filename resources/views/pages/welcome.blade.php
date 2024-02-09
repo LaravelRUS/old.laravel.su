@@ -649,7 +649,7 @@ background: #1A1319!important;">
                             <div class="avatar avatar-xl mb-3">
                                 <img class="avatar-img rounded-circle"
                                      loading="lazy"
-                                    src="https://laravel.com/images/testimonials/tony-lea.jpg" alt="avatar">
+                                    src="https://avatars.githubusercontent.com/adelf?v=4" alt="avatar">
                             </div>
                             <!-- Content -->
                             <blockquote>
@@ -667,7 +667,7 @@ background: #1A1319!important;">
                             </blockquote>
 
                             <!-- Info -->
-                            <p class="mb-0 fw-semibold">Тони Ли</p>
+                            <p class="mb-0 fw-semibold">Адель Файзрахманов</p>
                         </div>
                     </div>
                 </div> <!-- Row END -->
