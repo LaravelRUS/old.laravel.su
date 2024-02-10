@@ -19,21 +19,21 @@
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/butochnikov.jpg">
+                         src="/img/community/butochnikov.jpg">
 
                     <h6 class="mt-2 small"><strong>Алексей Буточников</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/nesmiyanov.jpg">
+                         src="/img/community/nesmiyanov.jpg">
 
                     <h6 class="mt-2 small"><strong>Кирилл Несмеянов</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/skirta.jpg">
+                         src="/img/community/skirta.jpg">
 
                     <h6 class="mt-2 small">
                         <strong>Дмитрий Скирта</strong>
@@ -45,7 +45,7 @@
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/gosteva.jpg">
+                         src="/img/community/gosteva.jpg">
 
                     <h6 class="mt-2 small">
                         <strong>Надежда Гостева</strong>
@@ -54,14 +54,14 @@
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/chernayev.jpeg">
+                         src="/img/community/chernayev.jpeg">
 
                     <h6 class="mt-2 small"><strong>Александр Черняев</strong></h6>
                 </div>
 
                 <div class="col">
                     <img alt="image" class="img-fluid rounded-circle mb-3"
-                         src="/img/team/chubarov.jpg">
+                         src="/img/community/chubarov.jpg">
 
                     <h6 class="mt-2 small"><strong>Илья Чубаров</strong></h6>
                 </div>

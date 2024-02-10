@@ -396,3 +396,8 @@ $utilities: (
         filter: blur(0);
     }
 }
+
+
+.hero-image {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $primary 150%);
+}

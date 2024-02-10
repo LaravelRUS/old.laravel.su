@@ -4,7 +4,7 @@
 @section('content')
 
     <x-header image="/img/bird.svg">
-        <x-slot:sup>Laravel: PHP-фреймворк №1</x-slot>
+        <x-slot:sup>PHP-фреймворк №1</x-slot>
         <x-slot:title>Современный подход для PHP-проектов</x-slot>
 
         <x-slot:description>

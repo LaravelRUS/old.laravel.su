@@ -9,7 +9,7 @@
                 <div class="col-12 col-lg-5">
                     <div class="d-flex flex-column align-items-md-start gap-4">
                         <h3 class="fw-bold text-body-emphasis text-balance">
-                            Чтобы учавствовать в сообществе, войдите в учетную запись.
+                            Чтобы участвовать в сообществе, войдите в учетную запись.
                         </h3>
 
                         <a href="{{ route('auth.login') }}" name="button" type="submit"
