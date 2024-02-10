@@ -13,6 +13,7 @@
         "intervention/image": "^2.7",
         "jolicode/jolitypo": "^1.4",
         "laminas/laminas-stdlib": "^3.18",
+        "laragear/preload": "^1.1",
         "laravel-notification-channels/webpush": "^7.1",
         "laravel/framework": "^10.31",
         "laravel/sanctum": "^3.2",
