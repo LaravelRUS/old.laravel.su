@@ -1,5 +1,6 @@
 @extends('layout')
-@section('title', 'Laravel: PHP-фреймворк №1')
+@section('title', 'Почему Laravel?')
+@section('description', 'Представь себе возможность создавать приложение с невероятной мощностью и легкостью - вот что ты получишь, выбрав Laravel.')
 
 @section('content')
 
