@@ -25,7 +25,7 @@
     <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#171923" media="(prefers-color-scheme: dark)">
 
-
+    <meta name="turbo-refresh-method" content="morph">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="alternate" type="application/atom+xml" title="Новости" href="/rss/feed">

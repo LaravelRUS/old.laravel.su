@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@hotwired/stimulus": "^3.2.2",
-        "@hotwired/turbo": "^7.3.0",
+        "@hotwired/turbo": "^8.0.2",
         "@popperjs/core": "^2.11.8",
         "@shufo/prettier-plugin-blade": "^1.13.3",
         "bootstrap": "^5.3.2",
