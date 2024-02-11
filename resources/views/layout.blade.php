@@ -131,6 +131,9 @@
                                 <a href="{{ route('home') }}" class="nav-link p-0">Домашняя страница</a>
                             </li>
                             <li class="nav-item mb-2">
+                                <a href="{{ route('why-laravel') }}" class="nav-link p-0">Почему Laravel?</a>
+                            </li>
+                            <li class="nav-item mb-2">
                                 <a href="{{ route('feature') }}" class="nav-link p-0">Возможности</a>
                             </li>
                             <li class="nav-item mb-2">

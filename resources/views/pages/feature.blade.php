@@ -12,7 +12,7 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="{{route('docs')}}" class="btn btn-primary btn-lg px-4">Для разработчика</a>
+            <a href="{{route('why-laravel')}}" class="btn btn-primary btn-lg px-4">Почему Laravel?</a>
 
             <a href="{{ route('courses') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Обучение
