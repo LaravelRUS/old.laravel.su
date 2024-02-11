@@ -8,17 +8,11 @@ use Illuminate\View\Component;
 
 class Hero extends Component
 {
-    public string $image;
-    public string $text;
-
     /**
      * Create a new component instance.
      */
-    public function __construct(string $text = '')
+    public function __construct(public string $image, public string $text = '')
     {
-        $number = random_int(1, 6);
-        $this->image = 'https://moodmentor.dev/img/hero/'.$number.'.jpg';
-        $this->text = $text;
     }
 
     /**
