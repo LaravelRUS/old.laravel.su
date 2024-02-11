@@ -42,92 +42,42 @@
 --}}
 
     <x-container>
-        <div class="row align-items-start g-5">
-
-            <div class="col-md-6">
-                <div class="row g-5 row-cols-md-2">
-                    <div class="col">
-                        <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                            <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                            <div>
-                                <div class="d-flex align-items-center mb-3 mb-md-0">
-                                    <p class="fs-4 mb-0"><span class="fs-3">5</span> тысяч</p>
-                                </div>
-                                <time class="small">Специалистов в России</time>
-                            </div>
+        <div class="row g-5 row-cols-md-3">
+            <div class="col">
+                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                    <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
+                    <div>
+                        <div class="d-flex align-items-center mb-3 mb-md-0">
+                            <p class="fs-4 mb-0"><span class="fs-3">150+</span> млн</p>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                            <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                            <div>
-                                <div class="d-flex align-items-center mb-3 mb-md-0">
-                                    <p class="fs-4 mb-0"><span class="fs-3">150+</span> млн</p>
-                                </div>
-                                <time class="small">Установок по всему миру</time>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                            <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                            <div>
-                                <div class="d-flex align-items-center mb-3 mb-md-0">
-                                    <p class="fs-4 mb-0"><span class="fs-3">19 030</span> тысяч</p>
-                                </div>
-                                <time class="small">Разработчиков Laravel говорящих на русском</time>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                            <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                            <div>
-                                <div class="d-flex align-items-center mb-3 mb-md-0">
-                                    <p class="fs-4 mb-0"><span class="fs-3">10+</span> лет</p>
-                                </div>
-                                <time class="small">Доказанной ценности</time>
-                            </div>
-                        </div>
+                        <time class="small">Установок по всему миру</time>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
-                    <main class="text-balance">
-                        <p>
-                            В мире веб-разработки существует целое множество инструментов и технологий, которые помогают
-                            создавать и воплощать идеи в интернете.
-                            Однако, если вы хотите построить что-то по-настоящему великое, то необходимо обратить свой
-                            взгляд на <abbr
-                                title="Фреймворки - это инструменты, которые включают готовые компоненты кода и позволяют упростить и ускорить процесс программирования.">фреймворки</abbr>.
-                        </p>
-
-                        <p>Laravel - это известный фреймворк, который помогает разработчикам создавать веб-сайты и
-                           веб-приложения на языке <abbr
-                                title="PHP — это язык программирования, используемый для создания веб-сайтов и веб-приложений">PHP</abbr>.
-
-
-                        <p class="mb-0">В отличие от CMS, которые предлагают ограниченный набор готовых решений, Laravel даёт
-                           полный контроль над каждой линией кода.
-                           Разработчики могут создавать уникальные функции, настраивать и
-                           оптимизировать процессы под наши нужды и требования, создавая продукт, который отражает
-                           индивидуальность и взгляд на мир.</p>
-
-
-                        {{--
-                        <p class="mb-0">С помощью Laravel можно создавать разные функциональности, такие как системы оплаты, страницы
-                           входа или управление пользователями. Laravel существует уже с 2011 года и пользуется огромной
-                           популярностью в сообществе разработчиков. Он выбирается более чем 50 000 разработчиков по
-                           всему миру, что свидетельствует о его значимости и широком применении.
-                        </p>
-                        --}}
-                    </main>
+            <div class="col">
+                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                    <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
+                    <div>
+                        <div class="d-flex align-items-center mb-3 mb-md-0">
+                            <p class="fs-4 mb-0"><span class="fs-3">19+</span> тысяч</p>
+                        </div>
+                        <time class="small">Специалистов в России и СНГ</time>
+                    </div>
                 </div>
             </div>
-
+            <div class="col">
+                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                    <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
+                    <div>
+                        <div class="d-flex align-items-center mb-3 mb-md-0">
+                            <p class="fs-4 mb-0"><span class="fs-3">10+</span> лет</p>
+                        </div>
+                        <time class="small">Доказанной ценности</time>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </x-container>
 
 
@@ -135,14 +85,12 @@
         <div class="row align-items-center">
 
 
-            <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
+            <div class="row g-4 g-md-5 justify-content-center align-items-end mb-2">
                 <!-- Right side START -->
                 <div class="col-lg-8 me-auto">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">
                         Быстро и уверенно
                     </span>
-                    <!-- Title -->
-                    <h2 class="display-5 fw-semibold mb-0">Увеличение производительности</h2>
                 </div>
                 <!-- Right side END -->
             </div>
@@ -151,18 +99,24 @@
             <div class="col-12 col-md-6">
                 <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
                     <main class="text-balance">
-
-                        <p>Простой и интуитивно понятный синтаксис упрощает процесс разработки.
-                           Благодаря этому разработчики смогут работать более эффективно и быстро
-                           достигать требуемых результатов.
-                        </p>
-
                         <p>
-                            Активное сообщество разработчиков, которое поддерживает фреймворк и создает
-                            дополнительные инструменты и расширения. А значит у вас будет доступ к огромному
-                            количеству готовых решений, которые помогут нам сократить время и ресурсы при разработке
-                            проектов.
+                            В мире веб-разработки существует целое множество инструментов и технологий, которые помогают
+                            создавать и воплощать идеи в интернете.
+                            Однако, если вы хотите построить что-то по-настоящему великое, то необходимо обратиться к
+                            <abbr
+                                title="Фреймворки - это инструменты, которые включают готовые компоненты кода и позволяют упростить и ускорить процесс программирования.">фреймворкам</abbr>.
                         </p>
+
+                        <p>Laravel - это известный фреймворк, который помогает разработчикам создавать веб-сайты и
+                           веб-приложения на языке <abbr
+                                title="PHP — это язык программирования, используемый для создания веб-сайтов и веб-приложений">PHP</abbr>.
+
+
+                        <p>В отличие от CMS, которые предлагают ограниченный набор готовых решений, Laravel даёт
+                                        полный контроль над каждой линией кода.
+                                        Разработчики могут создавать уникальные функции, настраивать и
+                                        оптимизировать процессы под наши нужды и требования, создавая продукт, который отражает
+                                        индивидуальность и взгляд на мир.</p>
                     </main>
                 </div>
             </div>
@@ -181,9 +135,9 @@
             <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
                 <!-- Right side START -->
                 <div class="col-lg-8">
-                    <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Открытый исходный код</span>
+                    <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Улучшение командной работы</span>
                     <!-- Title -->
-                    <h2 class="display-5 fw-semibold mb-0">Устойчивость</h2>
+                    <h2 class="display-5 fw-semibold mb-0">Увеличение производительности</h2>
                 </div>
                 <!-- Right side END -->
 
@@ -196,20 +150,44 @@
 
             <div class="row g-4 g-md-5">
                 <div class="col">
-                    <p>
-                        Laravel имеет одно из самых активных и дружелюбных сообществ веб-разработчиков. Если у вас
-                        возникнут вопросы или проблемы, вы всегда сможете найти помощь и ответы на форумах или
-                        специализированных ресурсах. Кроме того, Laravel предлагает подробную и обширную документацию,
-                        что облегчает изучение и использование фреймворка.
-                    </p>
+                    <main>
+                        <p>Простой и интуитивно понятный синтаксис упрощает процесс разработки.
+                           Благодаря этому разработчики смогут работать более эффективно и быстро
+                           достигать требуемых результатов.
+                        </p>
+
+                        <p>
+                            Активное сообщество разработчиков, которое поддерживает фреймворк и создает
+                            дополнительные инструменты и расширения. А значит у вас будет доступ к огромному
+                            количеству готовых решений, которые помогут нам сократить время и ресурсы при разработке
+                            проектов.
+                        </p>
+                    </main>
                 </div>
                     <div class="col">
-                        <p>
-                            Laravel предлагает встроенные инструменты для обеспечения безопасности вашего приложения,
-                            включая основные меры защиты от атак, такие как обработка CSRF-токенов, проверка доступа и
-                            хэширование паролей. Это позволяет вам сконцентрироваться на разработке функциональности
-                            вашего приложения, не отвлекаясь на проблемы безопасности.
-                        </p>
+                        <main>
+                            <p>Проекты с несколькими разработчиками могут пойти не так, как надо, если нет ясности в следующих
+                               вопросах:</p>
+
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
+                                <p class="mb-0 w-75 text-balance">Документация</p>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
+                                <p class="mb-0 w-75 text-balance">Дизайнерские решения</p>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
+                                <p class="mb-0 w-75 text-balance">Стандарты кода</p>
+                            </div>
+
+                            <p>Использование Laravel устанавливает четкие основные правила для вашего проекта. Даже если
+                               другой разработчик не знаком с инфраструктурой, он сможет быстро освоить основы и работать
+                               совместно.</p>
+                        </main>
                     </div>
             </div>
         </div>
@@ -227,50 +205,34 @@
 
             <div class="col-12 col-md-6">
 
+
                 <div class="mb-5">
                     <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">
-                        Быстро и уверенно
+                        Стандарты качества
                     </span>
-                    <h2 class="display-5 fw-semibold mb-0">Увеличение производительности</h2>
+                    <h2 class="display-5 fw-semibold mb-0">Следуйте лучшим практикам</h2>
                 </div>
 
                 <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
                     <main class="post">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Это открытый исходный код</p>
-                        </div>
+                        <p>Laravel следуют лучшим практикам разработки, например, аккуратно делит код на несколько
+                           каталогов в зависимости от функции.
+                           Это заставляет разработчиков организовывать код более чистым, аккуратным и удобным для
+                           сопровождения способом.
+                        </p>
 
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Это надежно и безопасно</p>
-                        </div>
+                        <p>
+                            Существует множество угроз безопасности, включая межсайтовый скриптинг, атаки
+                            SQL-инъекцией и подделку межсайтовых запросов. Если вы не предпримете правильные шаги для
+                            защиты своего кода, ваши веб-приложения будут уязвимы.
+                        </p>
 
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Приложения Laravel легкие и быстрые.</p>
-                        </div>
+                        <p>
+                            Использование Laravel не заменяет написание безопасного кода, но сводит к минимуму
+                            вероятность хакерских атак. Так как имеет встроенную защиту от распространенных угроз,
+                            упомянутых выше.
+                        </p>
 
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Приложения просты в обслуживании и масштабируемости.</p>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">риложения легко связать с другими системами.</p>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Возможность автоматического тестирования</p>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-3 mb-0">
-                            <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
-                            <p class="mb-0 w-75 text-balance">Сообщество, насчитывающее более 50 000 разработчиков, каждый день добавляет в фреймворк
-                                            новые компоненты.</p>
-                        </div>
                     </main>
                 </div>
             </div>
@@ -279,14 +241,14 @@
         </div>
     </x-container>
 
-    @include('particles.sponsors')
-
+{{--
     <x-call-to-action link="https://github.com/laravel-russia" text="Внесите свой вклад на GitHub">
         <x-slot:title>Аргументы убедили тебя?</x-slot>
 
-            <x-slot:description>
-                С вашим участием и энергией, вы можете вдохнуть новую жизнь в сообщество и внести положительные перемены для всех его членов.
-                </x-slot>
+        <x-slot:description>
+            С вашим участием и энергией, вы можете вдохнуть новую жизнь в сообщество и внести положительные перемены для всех его членов.
+        </x-slot>
     </x-call-to-action>
+--}}
 
 @endsection
