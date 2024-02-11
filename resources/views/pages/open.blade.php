@@ -45,7 +45,9 @@
 
     <div class="row g-5 pb-lg-5 align-items-center" data-controller="open-quiz">
         <div class="col-md-6">
-            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative">
+            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative"
+            title="Василиса: Загадки и тайны - это то, что тебя ждет. Не бойся, вместе мы справимся."
+            >
                 <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
                     <img src="/img/ui/chest.svg" height="130">
                 </figure>
@@ -65,7 +67,8 @@
             </div>
 
             <div class="mt-auto">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center"
+                     title="Мастер: Ишь чего удумал. Обратись за помощью к друзьям и единомышленникам.">
                     <img alt="image" height="50" class="rounded-circle"
                          src="/img/avatars/avatar2.svg">
                     <div class="ms-3 lh-1">
@@ -95,7 +98,7 @@
             <main class="post position-relative quiz-code-hover">
 
 
-                <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0" title="Василиса: Я уверена, что это не просто случайность. Это находка имеет смысл."><code
+                <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0" title="Василиса: Я уверена, что это не просто случайность. Что делает этот код?"><code
                         class="language-php">// Информация о Горыныче
 return response()->json([
     'status'   => 'Охраняет'
@@ -109,11 +112,12 @@ return response()->json([
 
 
         <div class="col-md-6">
-            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative">
+            <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative"
+                 title="Василиса: Обращайся ко мне так же как сейчас, по чаще.">
                 <p>Ах, я вижу, что ты стойкий и добрый человек.</p>
 
                 <p class="mb-0">По этому в помощь тебе я оставила несколько <abbr
-                        title="Используй один-один">подсказок</abbr>, но помни, что есть события которые будут сбивать тебя с пути.
+                        title="Используй один-один" data-encoded="{{ '<? str_rot13 ?>' }}">подсказок</abbr>, но помни, что есть события которые будут сбивать тебя с пути.
                 </p>
             </div>
 
@@ -153,7 +157,8 @@ return response()->json([
             </div>
 
             <div class="mt-auto">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center"
+                     title="Мастер: Ишь чего удумал. Обратись за помощью к друзьям и единомышленникам.">
                     <img alt="image" height="50" class="rounded-circle"
                          src="/img/avatars/avatar2.svg">
                     <div class="ms-3 lh-1">
@@ -165,7 +170,7 @@ return response()->json([
         </div>
 
 
-        <div class="col-md-6 position-relative">
+        <div class="col-md-6 position-relative" title="💭 Мысли: Как же мне попасть к Горынычу? Уверен, нужно посмотреть на код внимательнее и выяснить что он делает.">
             <img src="/img/ivan.svg" class="d-block img-fluid p-5 pe-none">
         </div>
 
@@ -214,7 +219,7 @@ return response()->json([
     </p>
 
     <div class="d-flex align-items-center mb-5">
-        <code class="opacity-75 h5 text-primary" title="Возьми меч в руки."><%%%%|==========></code>
+        <code class="opacity-75 h5 text-primary" title="💭 Мысли: Это легендарный меч Юлия Цезаря. Зачем он мне?"><%%%%|==========></code>
     </div>
 
     <div class="row">

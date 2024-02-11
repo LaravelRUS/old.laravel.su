@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Курсы')
+@section('title', 'Улучшите навыки разработки смотря видео курсы')
 
 @section('content')
 
@@ -24,7 +24,7 @@
 
         <div class="row g-4">
             <div class="col-md-4 mb-md-4">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
+                <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
                     <h3 class="mb-3 fw-bold">Закладки</h3>
                     <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                         Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
@@ -38,7 +38,7 @@
             </div>
 
             <div class="col-md-8 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
+                <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8">
@@ -58,7 +58,7 @@
 
         <div class="row">
             <div class="col-lg-4 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden h-100">
+                <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-3 fw-bold">Orchid</h3>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
+                <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-3 fw-bold">Livewire</h3>
@@ -89,7 +89,7 @@
 
             <div class="col-lg-4 mb-4">
                 <div class="h-100 d-flex flex-column gap-4">
-                    <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
+                    <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-3 fw-bold">Очереди</h3>
                             <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 Игнорирование <code>timeout</code>, дублирование задач и
@@ -102,7 +102,7 @@
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
                     </div>
-                    <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
+                    <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-50">
                             <h3 class="mb-3 fw-bold">PHP Итераторы</h3>
                             <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                                 В этом видео курсе представлено введение в использование итераторов в PHP, включая
@@ -123,7 +123,7 @@
         <div class="row g-4">
 
             <div class="col-md-8 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
+                <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
                     <img src="/img/ui/book.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
                     <div class="row">
                         <div class="col-sm-7">
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div class="col-md-4 mb-md-4">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
+                <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
                     <h3 class="mb-3 fw-bold">Закладки</h3>
                     <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                         Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
@@ -165,7 +165,7 @@
         {{--
         <div class="row g-4">
             <div class="col-md-8 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 position-relative overflow-hidden mb-4">
+                <div class="bg-primary bg-opacity-10 rounded p-5 position-relative overflow-hidden mb-4">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
@@ -178,7 +178,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden
+                        <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden
                         ">
                             <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0">
                             <div class="row">
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100 position-relative overflow-hidden">
+                        <div class="bg-secondary rounded bg-opacity-10 p-5 h-100 position-relative overflow-hidden">
                             <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                             <div class="row">
                                 <div class="col-sm-12 position-relative">
@@ -213,7 +213,7 @@
             </div>
 
             <div class="col-md-4 mb-4">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+                <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
 
                     <ul class="d-grid gap-4 list-unstyled">
                         <li class="d-flex gap-4 align-items-center">
@@ -269,7 +269,7 @@
         </div>
 --}}
         {{--
-        <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100 my-5">
+        <div class="bg-secondary rounded bg-opacity-10 p-5 h-100 my-5">
             <div class="row flex-lg-row-reverse align-items-center g-4">
                 <div class="col-10 col-sm-8 col-lg-6">
                     <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
@@ -287,7 +287,7 @@
 
         <div class="row g-4">
             <div class="col-lg-6 position-relative overflow-hidden">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100 position-relative overflow-hidden">
+                <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
@@ -300,7 +300,7 @@
             </div>
 
             <div class="col-lg-6 position-relative overflow-hidden">
-                <div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+                <div class="bg-secondary rounded bg-opacity-10 p-5 h-100">
                     <img src="/img/sign.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-8 position-relative">
@@ -568,7 +568,7 @@
 
 
         <div class="container py-5">
-            <div class="row align-items-md-stretch g-0 rounded-3 overflow-hidden">
+            <div class="row align-items-md-stretch g-0 rounded overflow-hidden">
                 <div class="col-md-6">
                     <div class="h-100 position-relative">
                         <img src="https://i3.ytimg.com/vi/jQITs6C-GjU/maxresdefault.jpg" class="d-block h-100 w-100 object-fit-cover" style="aspect-ratio: 16/9;">
