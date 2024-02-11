@@ -16,7 +16,7 @@
                     </div>
                 </div>
             @empty
-                <div class="p-4 p-md-5 border-bottom mb-5">
+                <div class="p-4 p-md-5">
                     <div class="text-center mb-0">
                         У пользователя ещё нет наград
                     </div>
