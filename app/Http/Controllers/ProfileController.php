@@ -27,6 +27,8 @@ class ProfileController extends Controller
      */
     public function show(User $user, Request $request)
     {
+        $user->load('achievements');
+
         return view('profile.profile', [
             'user'  => $user,
             'posts' => $this->getPosts($user, PostTypeEnum::Article, $request->user()),

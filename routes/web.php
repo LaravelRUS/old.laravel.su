@@ -6,6 +6,7 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\MeetController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
 use App\Http\Middleware\RedirectToBanPage;
@@ -425,6 +426,9 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 Route::feeds();
 
 
-Route::get('/info', function () {
-    phpinfo();
+Route::get('/info', function (Request $request) {
+
+    $request->user()->reward(\App\Achievements\Opening::class);
+
+    dd($request->user()->achievements()->get());
 });

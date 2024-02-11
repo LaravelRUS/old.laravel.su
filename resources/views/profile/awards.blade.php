@@ -2,24 +2,26 @@
 
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto">
-        <div class="bg-body-tertiary rounded p-md-5 rounded">
+        <div class="bg-body-tertiary rounded p-md-5">
 
-            <div class="p-4 p-md-5 border-bottom mb-5">
-                <div class="text-center mb-0">
-                    У пользователя ещё нет наград
-                </div>
-            </div>
+            @forelse($user->achievements as $achievement)
+                <div class="d-flex text-body-secondary gap-4">
+                    <div class="col-lg-3">
+                        <img src="{{ $achievement->presenter()->image() }}" class="flex-shrink-0 rounded img-fluid">
+                    </div>
 
-            <div class="d-flex text-body-secondary opacity-25">
-                <div class="col-4 col-lg-2">
-                    <img src="/img/achievements/opening.svg" class="flex-shrink-0 rounded img-fluid">
+                    <div class="mb-0 text-balance py-2">
+                        <div class="d-block fw-bolder h3 fw-bolder mb-2">{{ $achievement->presenter()->name }}</div>
+                        <p class="mb-0">{{ $achievement->presenter()->description }}</p>
+                    </div>
                 </div>
-
-                <div class="mb-0 ms-3 text-balance">
-                    <div class="d-block fw-bolder fs-5">Первооткрыватель</div>
-                    Первым преодолел все загадки на пути к обновлённому сайту
+            @empty
+                <div class="p-4 p-md-5 border-bottom mb-5">
+                    <div class="text-center mb-0">
+                        У пользователя ещё нет наград
+                    </div>
                 </div>
-            </div>
+            @endforelse
 
         </div>
     </div>

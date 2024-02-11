@@ -60,11 +60,10 @@
                         --}}
                     </div>
                 </div>
-
-
-                <div class="d-none d-md-block px-xxl-5 px-1 ">
+                
+                <div class="px-md-5 px-1">
                     <div class="nav nav-underline  vertical-overflow">
-                        <li class="nav-item me-2">
+                        <li class="nav-item me-2 ms-auto ms-md-0">
                             <a class="nav-link link-body-emphasis fw-normal {{ active('profile') }}"
                                data-turbo-frame="navigation"
                                href="{{ route('profile', $user) }}"
@@ -78,12 +77,13 @@
 
                             >Комментарии</a>
                         </li>
-                        <li class="nav-item me-2">
+                        <li class="nav-item me-2 me-auto me-md-0">
                             <a class="nav-link link-body-emphasis fw-normal {{ active('profile.awards') }}"
                                href="{{ route('profile.awards', $user) }}"
                             >Награды</a>
                         </li>
 
+                        {{--
                         <li class="nav-item me-2">
                             <a class="nav-link link-body-emphasis fw-normal {{ active('profile.packages') }}"
                                data-turbo-frame="navigation"
@@ -96,6 +96,7 @@
                                href="{{ route('profile.meets', $user) }}"
                             >События</a>
                         </li>
+                       --}}
                     </div>
                 </div>
 
@@ -105,6 +106,7 @@
         </div>
     </x-container>
 
+    {{--
         <div class="d-md-none">
             <div class="bg-body-tertiary overflow-hidden mb-4">
 
@@ -146,9 +148,9 @@
                 </div>
             </div>
         </div>
+        --}}
+
     <x-container>
-
-
         <div>
             @yield('tab')
         </div>

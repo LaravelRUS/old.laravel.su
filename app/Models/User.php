@@ -168,4 +168,32 @@ class User extends Authenticatable
         return $this->hasMany(Position::class);
     }
 
+    /**
+     * Define the "achievements" relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
+    }
+
+    /**
+     * Reward the user with an achievement.
+     *
+     * @param  string  $type
+     * @return \App\Models\Achievement
+     */
+    public function reward(string $type): Achievement
+    {
+        $exist = $this->achievements()->get()->where('achievement_type', $type);
+
+        if ($exist->isNotEmpty()) {
+            return $exist->first();
+        }
+
+        return $this->achievements()->create([
+            'achievement_type' => $type,
+        ]);
+    }
 }

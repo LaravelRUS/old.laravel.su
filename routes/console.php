@@ -24,6 +24,21 @@ use Illuminate\Support\Str;
 
 Artisan::command('inspire', function () {
 
+//array:1 [
+//    "file" => array:2 [
+//        "url" => "https://habrastorage.org/getpro/moikrug/uploads/redactor_image/08022024/images/f207f75c973a03a9018db1ebc83e4513.png"
+//        "id" => 1707360638
+//   ]
+//]
+
+
+
+$response = \Illuminate\Support\Facades\Http::asMultipart()
+    ->attach('file[]', fopen("/Users/tabuna/Sites/ru-laravel-project/public/img/hot-dog.png", 'r'))
+    ->post('https://career.habr.com/link/redactor_image');
+
+dd($response->json());
+
     $test = \Illuminate\Support\Facades\Http::delete(route('quiz.goronich'));
 
     dd($test->header('X-Vasilisa-Say'),$test->body());
