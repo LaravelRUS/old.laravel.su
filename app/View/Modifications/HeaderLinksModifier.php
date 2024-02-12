@@ -27,7 +27,41 @@ class HeaderLinksModifier extends HTMLModifier
                 $tag = $node->nodeName;
 
                 $content = Str::of($content)
-                    ->replace($elm->outerHtml(), "<$tag><a href='#$id' id='$id'>$textContent</a></$tag>");
+                    ->replace($elm->outerHtml(), sprintf('<%s><a href="#%s" id="%s">%s</a></%s>', $tag, $id, $id, $textContent, $tag));
+            });
+
+
+        $this->crawler($content)
+            ->filter('p > a:not([href])')
+            ->each(function (Crawler $elm) use (&$content) {
+
+                /** @var \DOMElement $pTag */
+                $pTag = $elm->getNode(0)->parentNode;
+
+
+                /** @var \DOMElement $pTag */
+                $nextSibling = $pTag->nextSibling;
+
+                while ($nextSibling) {
+                    if ($nextSibling instanceof \DOMElement) {
+                        break;
+                    }
+                    $nextSibling = $nextSibling->nextSibling;
+                }
+
+                if ($nextSibling === null) {
+                    return;
+                }
+
+                $idValue = Str::of($elm->outerHtml())->between('name="', '"');
+
+                $oldSiblingHtml = $nextSibling->ownerDocument->saveHTML($nextSibling);
+                $nextSibling->setAttribute('id', $idValue);
+                $newSiblingHtml = $nextSibling->ownerDocument->saveHTML($nextSibling);
+
+                $content = Str::of($content)
+                    ->replace($oldSiblingHtml, $newSiblingHtml)
+                    ->replace($pTag->ownerDocument->saveHTML($pTag), '');
             });
 
         return $next($content);
