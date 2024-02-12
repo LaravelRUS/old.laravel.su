@@ -10,8 +10,8 @@
 /*********************************************************
 * General
 */
-pre[class*='language-'],
-code[class*='language-'] {
+pre,
+code {
     color: #ffffff;
     text-shadow: none;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -35,26 +35,26 @@ code[class*='language-'] {
     -webkit-overflow-scrolling: touch;
     max-width: 100%;
 }
-pre[class*='language-']::selection,
-code[class*='language-']::selection,
-pre[class*='language-']::mozselection,
-code[class*='language-']::mozselection {
+pre::selection,
+code::selection,
+pre::mozselection,
+code::mozselection {
     text-shadow: none;
     background: #ffffff;
 }
 @media print {
-    pre[class*='language-'],
-    code[class*='language-'] {
+    pre,
+    code {
         text-shadow: none;
     }
 }
-pre[class*='language-'] {
+pre {
     padding: 1em 1.5em;
     margin: 0.5em 0;
     overflow: auto;
-    background: #171923;
+    background: #171923 !important;
 }
-:not(pre) > code[class*='language-'] {
+:not(pre) > code {
     padding: 0.1em 0.3em;
     border-radius: 0.3em;
     color: #f98f8c;
@@ -128,7 +128,7 @@ pre[class*='language-'] {
 pre[data-line] {
     position: relative;
 }
-pre[class*='language-'] > code[class*='language-'] {
+pre > code {
     position: relative;
     z-index: 1;
 }
@@ -144,4 +144,186 @@ pre[class*='language-'] > code[class*='language-'] {
     pointer-events: none;
     line-height: inherit;
     white-space: pre;
+}
+
+
+
+
+
+
+
+
+/*!
+  Theme: GitHub Dark
+  Description: Dark theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-dark
+  Current colors taken from GitHub's CSS
+*/
+
+.hljs {
+    color: #c9d1d9;
+    background: #0d1117;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+    /* prettylights-syntax-keyword */
+    color: #ff7b72;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+    /* prettylights-syntax-entity */
+    color: #d2a8ff;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+    /* prettylights-syntax-constant */
+    color: #79c0ff;
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+    /* prettylights-syntax-string */
+    color: #a5d6ff;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+    /* prettylights-syntax-variable */
+    color: #ffa657;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+    /* prettylights-syntax-comment */
+    color: #8b949e;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+    /* prettylights-syntax-entity-tag */
+    color: #7ee787;
+}
+
+.hljs-subst {
+    /* prettylights-syntax-storage-modifier-import */
+    color: #c9d1d9;
+}
+
+.hljs-section {
+    /* prettylights-syntax-markup-heading */
+    color: #1f6feb;
+    font-weight: bold;
+}
+
+.hljs-bullet {
+    /* prettylights-syntax-markup-list */
+    color: #f2cc60;
+}
+
+.hljs-emphasis {
+    /* prettylights-syntax-markup-italic */
+    color: #c9d1d9;
+    font-style: italic;
+}
+
+.hljs-strong {
+    /* prettylights-syntax-markup-bold */
+    color: #c9d1d9;
+    font-weight: bold;
+}
+
+.hljs-addition, .line-add {
+    /* prettylights-syntax-markup-inserted */
+    color: #aff5b4;
+    background-color: #033a16;
+    margin: 0 -1.5em;
+    padding: 0 1.5em;
+}
+
+.hljs-deletion, .line-remove {
+    /* prettylights-syntax-markup-deleted */
+    color: #ffdcd7;
+    background-color: #67060c;
+    margin: 0 -1.5em;
+    padding: 0 1.5em;
+}
+
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+    /* purposely ignored */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
+.shiki {
+
+    .line{
+        display: block;
+    }
+
+    .add {
+        background-color: rgba($success, 0.2);
+        margin: 0 -1.5em;
+        padding: 0 1.5em;
+    }
+
+    .remove{
+        background-color: rgba($danger, 0.2);
+        margin: 0 -1.5em;
+        padding: 0 1.5em;
+    }
+
+
+    &.has-focused {
+       .line:not(.focused) {
+            filter: blur(0.095rem);
+            opacity: .4;
+            transition: filter .35s,opacity .35s;
+        }
+    }
 }

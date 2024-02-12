@@ -1,0 +1,40 @@
+{
+    "subLanguage": "xml",
+    "contains": [
+        {
+            "begin": "(\\s*)(<script>)",
+            "end": "(\\s*)(</script>)",
+            "subLanguage": "javascript",
+            "excludeBegin": true,
+            "excludeEnd": true
+        },
+        {
+            "begin": "(?:\\s*)(?:<script\\s+lang=([\"'])ts\\1>)",
+            "end": "(\\s*)(</script>)",
+            "subLanguage": "typescript",
+            "excludeBegin": true,
+            "excludeEnd": true
+        },
+        {
+            "begin": "(\\s*)(<style(\\s+scoped)?>)",
+            "end": "(\\s*)(</style>)",
+            "subLanguage": "css",
+            "excludeBegin": true,
+            "excludeEnd": true
+        },
+        {
+            "begin": "(?:\\s*)(?:<style(?:\\s+scoped)?\\s+lang=([\"'])(?:s[ca]ss)\\1(?:\\s+scoped)?>)",
+            "end": "(\\s*)(</style>)",
+            "subLanguage": "scss",
+            "excludeBegin": true,
+            "excludeEnd": true
+        },
+        {
+            "begin": "(?:\\s*)(?:<style(?:\\s+scoped)?\\s+lang=([\"'])stylus\\1(?:\\s+scoped)?>)",
+            "end": "(\\s*)(</style>)",
+            "subLanguage": "stylus",
+            "excludeBegin": true,
+            "excludeEnd": true
+        }
+    ]
+}

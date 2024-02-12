@@ -81,7 +81,7 @@
             </div>
             <div class="px-0 px-md-2 px-xl-3 col-md-9 order-md-last order-first">
 
-                <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
+                <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism2 shiki">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
                         <div class="alert alert-warning rounded-2" role="alert">

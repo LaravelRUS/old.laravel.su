@@ -1,0 +1,53 @@
+{
+    "case_insensitive": true,
+    "subLanguage": "xml",
+    "contains": [
+        {
+            "className": "comment",
+            "begin": "\\{\\{--",
+            "end": "--\\}\\}"
+        },
+        {
+            "className": "template-variable",
+            "begin": "\\{\\{",
+            "starts": {
+                "end": "\\}\\}",
+                "returnEnd": true,
+                "subLanguage": "php"
+            }
+        },
+        {
+            "className": "template-variable",
+            "begin": "\\}\\}"
+        },
+        {
+            "className": "template-variable",
+            "begin": "\\{!!",
+            "starts": {
+                "end": "!!\\}",
+                "returnEnd": true,
+                "subLanguage": "php"
+            }
+        },
+        {
+            "className": "template-variable",
+            "begin": "!!\\}"
+        },
+        {
+            "className": "template-tag",
+            "begin": "@php",
+            "starts": {
+                "end": "@endphp",
+                "returnEnd": true,
+                "subLanguage": "php"
+            },
+            "relevance": 10
+        },
+        {
+            "begin": "@[\\w]+",
+            "end": "[\\W]",
+            "excludeEnd": true,
+            "className": "template-tag"
+        }
+    ]
+}

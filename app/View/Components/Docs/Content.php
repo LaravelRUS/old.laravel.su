@@ -5,6 +5,7 @@ namespace App\View\Components\Docs;
 use App\View\Modifications\BladeComponentModifier;
 use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\HeaderLinksModifier;
+use App\View\Modifications\HighlightModifier;
 use App\View\Modifications\BlockquoteColorModifier;
 use App\View\Modifications\RemoveFirstHeaderModifier;
 use App\View\Modifications\ResponsiveTableModifier;
@@ -57,6 +58,7 @@ class Content extends Component implements Htmlable
             return app(Pipeline::class)
                 ->send($content)
                 ->through([
+                    HighlightModifier::class, // Подсвечивает код
                     BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     RemoveFirstHeaderModifier::class, // Удаляет h1 заголовок
                     HeaderLinksModifier::class, // Добавляет ссылки для заголовков

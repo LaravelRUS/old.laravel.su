@@ -15,9 +15,12 @@
         "prettier": "^3.0.3",
         "prismjs": "^1.29.0",
         "sass": "^1.68.0",
+        "shiki": "^1.1.1",
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@shikijs/cli": "^1.1.1",
+        "@shikijs/transformers": "^1.1.1",
         "stimulus-textarea-autogrow": "^4.1.0",
         "stimulus-vite-helpers": "^3.0.1",
         "textarea-editor": "^2.1.1",
