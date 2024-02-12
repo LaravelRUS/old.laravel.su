@@ -57,32 +57,45 @@
 
 
         <div class="row">
-            <div class="col-lg-4 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden h-100">
-                    <img src="/img/ui/tentacle_bottom.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
+                    <div class="h-100 position-absolute w-50 bottom-0 end-0 z-n1 d-flex align-items-end justify-content-end justify-content-lg-center me-3 me-lg-0">
+                        <img src="/img/ui/tentacle_cource.svg" class="package-cover tentacle">
+                    </div>
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-3 fw-bold">Orchid</h3>
                         <p class="mb-4 fw-light mb-md-auto line-clamp line-clamp-5">
                             В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
                             как построить админ панель с готовым пользовательским интерфейсом.
                         </p>
-                        <a href="https://youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ&si=KERSYOr8_2YvcPDV"
-                           target="_blank"
-                           class="btn btn-primary mb-0 stretched-link mt-4">Построить админку</a>
+                        <div class="row">
+                            <div class="col-8 col-md-9 col-lg-12">
+
+                                <a href="https://youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ&si=KERSYOr8_2YvcPDV"
+                                   target="_blank"
+                                   class="btn btn-warning mb-0 stretched-link mt-4 w-100">Построить админку</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
                 <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
-                    <img src="/img/ui/livewire_cource.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
+                    <div class="h-100 position-absolute w-50 bottom-0 end-0 z-n1 d-flex align-items-end  justify-content-end justify-content-lg-center me-3 me-lg-0" >
+                        <img src="/img/ui/livewire_cource.svg" class="package-cover ">
+                    </div>
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-3 fw-bold">Livewire</h3>
                         <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-5">
                             Создавайте динамические компоненты в PHP, и полностью игнорируйте уровень JavaScript.
                         </p>
-                        <a href="https://www.youtube.com/playlist?list=PLM-y77GFP_D0Dan4oTbsseQGM6lFGbmUQ"
-                           target="_blank"
-                           class="btn btn-warning mb-0 stretched-link stretched-link mt-4">Посмотреть курс</a>
+                        <div class="row">
+                            <div class="col-8 col-md-9 col-lg-12">
+                                    <a href="https://www.youtube.com/playlist?list=PLM-y77GFP_D0Dan4oTbsseQGM6lFGbmUQ"
+                                       target="_blank"
+                                       class="btn  btn-primary mb-0 stretched-link stretched-link mt-4 w-100">Посмотреть курс</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -331,6 +344,9 @@
 
         <div class="row g-0 rounded bg-body-tertiary mb-5">
 
+            <div class="col-lg-4 order-lg-last">
+                <x-hero image="/img/community/orlov.jpg" text="Максим Орлов" class="rounded-end"/>
+            </div>
             <div class="col-lg-8">
                 <div class="p-4 p-xl-5 my-xl-5">
                     <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
@@ -387,9 +403,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <x-hero image="/img/community/orlov.jpg" text="Максим Орлов" class="rounded-end"/>
-            </div>
+
         </div>
 
 

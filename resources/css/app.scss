@@ -401,3 +401,17 @@ $utilities: (
 .hero-image {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $primary 150%);
 }
+
+.tentacle{
+    position: relative;
+    bottom: -10%;
+}
+@include media-breakpoint-down(lg) {
+    .package-cover {
+        height: 110px;
+    }
+    .tentacle{
+        position: relative;
+        bottom: -5%;
+    }
+}

@@ -22,7 +22,7 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->unique(['user_id', 'achievement_class']);
+            $table->unique(['user_id', 'achievement_type']);
         });
     }
 

@@ -43,12 +43,23 @@
 
 <x-container>
 
-    <div class="row g-5 pb-lg-5 align-items-center" data-controller="open-quiz">
+    <div class="row g-4 g-md-5 pb-lg-5 align-items-center" data-controller="open-quiz">
         <div class="col-md-6">
+            <main class="post position-relative quiz-code-hover d-flex flex-column h-100">
+
+
+                <pre class="rounded position-relative p-4 language-php mt-auto" tabindex="0"><code
+                        class="language-php" title="Василиса: Вперед, смельчак!">// Позволь оценить эстетику твоего мастерства
+{{ collect(str_split($evalWrongWay, 55))->implode("\r\n")  }}
+</code></pre>
+            </main>
+        </div>
+
+        <div class="col-md-6 order-md-first mb-4 mb-md-0">
             <div class="mb-4 text-balance bg-body-tertiary rounded p-4 p-xl-5 position-relative"
             title="Василиса: Загадки и тайны - это то, что тебя ждет. Не бойся, вместе мы справимся."
             >
-                <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
+                <figure class="d-none d-md-block position-absolute top-0 start-0 translate-middle z-n1 ms-4">
                     <img src="/img/ui/chest.svg" height="130">
                 </figure>
 
@@ -79,18 +90,9 @@
             </div>
         </div>
 
-        <div class="col-6">
-            <main class="post position-relative quiz-code-hover d-flex flex-column h-100">
 
 
-                <pre class="rounded position-relative overflow-hidden p-4 language-php mt-auto" tabindex="0"><code
-                        class="language-php" title="Василиса: Вперед, смельчак!">// Позволь оценить эстетику твоего мастерства
-{{ collect(str_split($evalWrongWay, 55))->implode("\r\n")  }}
-</code></pre>
-            </main>
-        </div>
-
-        <div class="col-6">
+        <div class="col-md-6">
 
             {{--
             <img src="/img/gusli.svg" class="img-fluid d-block ms-auto">
@@ -146,6 +148,9 @@ return response()->json([
             </figure>
         </div>
 --}}
+        <div class="col-md-6 order-md-last position-relative" title="💭 Мысли: Как же мне попасть к Горынычу? Уверен, нужно посмотреть на код внимательнее и выяснить что он делает.">
+            <img src="/img/ivan.svg" class="d-block img-fluid p-5 pe-none">
+        </div>
 
         <div class="col-md-6 position-relative">
 
@@ -173,9 +178,7 @@ return response()->json([
         </div>
 
 
-        <div class="col-md-6 position-relative" title="💭 Мысли: Как же мне попасть к Горынычу? Уверен, нужно посмотреть на код внимательнее и выяснить что он делает.">
-            <img src="/img/ivan.svg" class="d-block img-fluid p-5 pe-none">
-        </div>
+
 
     </div>
 

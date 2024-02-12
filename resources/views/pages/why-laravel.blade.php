@@ -43,9 +43,9 @@
 --}}
 
     <x-container>
-        <div class="row g-5 row-cols-md-3">
+        <div class="row g-5  row-cols-md-3">
             <div class="col">
-                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
+                <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
@@ -83,7 +83,7 @@
 
 
     <x-container>
-        <div class="row align-items-center">
+        <div class="row align-items-center justify-content-center">
 
 
             <div class="row g-4 g-md-5 justify-content-center align-items-end mb-2">
@@ -97,7 +97,7 @@
             </div>
 
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-6">
                 <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
                     <main class="text-balance">
                         <p>
@@ -122,7 +122,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-12 col-sm-8 col-md-6">
                 <img src="/img/ui/workers.svg" class="img-fluid">
             </div>
 
@@ -144,12 +144,12 @@
 
                 <!-- Left side START -->
                 <div class="col-lg-3 ms-auto position-relative ">
-                        <img src="/img/ui/hair-comb.svg" class="img-fluid"/>
+                        <img src="/img/ui/hair-comb.svg" class="img-fluid d-none d-lg-block"/>
                 </div>
                 <!-- Left side END -->
             </div>
 
-            <div class="row g-4 g-md-5">
+            <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
                 <div class="col">
                     <main>
                         <p>Простой и интуитивно понятный синтаксис упрощает процесс разработки.
@@ -200,11 +200,11 @@
         <div class="row align-items-center">
 
 
-            <div class="col-md-6">
-                <img src="/img/ui/matreshka-v.svg" class="img-fluid">
+            <div class="col-lg-6">
+                <img src="/img/ui/matreshka-v.svg" class="img-fluid d-none d-lg-block">
             </div>
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-6">
 
 
                 <div class="mb-5">
