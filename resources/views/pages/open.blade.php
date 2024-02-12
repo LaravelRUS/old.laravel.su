@@ -222,7 +222,7 @@ return response()->json([
     </p>
 
     <div class="d-flex align-items-center mb-5">
-        <code class="opacity-75 h5 text-primary" title="💭 Мысли: Это легендарный меч Юлия Цезаря. Зачем он мне?"><%%%%|==========></code>
+        <code class="opacity-75 h5 text-primary" title="💭 Мысли: Это легендарный меч Юлия. Зачем он мне?"><%%%%|==========></code>
     </div>
 
     <div class="row">
