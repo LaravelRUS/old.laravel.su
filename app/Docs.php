@@ -5,12 +5,12 @@ namespace App;
 use App\Models\Document;
 use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
-use Illuminate\Support\Facades\Cache;
 
 class Docs
 {
@@ -71,7 +71,6 @@ class Docs
         $this->version = $version;
         $this->path = "/$version/$this->file";
 
-
         $this->content();
     }
 
@@ -88,10 +87,9 @@ class Docs
      */
     public function content(): ?string
     {
-        if($this->content !== null){
+        if ($this->content !== null) {
             return $this->content;
         }
-
 
         $raw = Cache::remember('doc-file-'.$this->path, now()->addMinutes(30), fn () => Storage::disk('docs')->get($this->path));
 
@@ -100,7 +98,6 @@ class Docs
             $raw === null && Document::where('file', $this->file)->exists(),
             redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
         );
-
 
         $variables = Str::of($raw)
             ->after('---')
@@ -148,8 +145,8 @@ class Docs
      */
     public function getMenu(): array
     {
-        return Cache::remember("doc-navigation-" . $this->version, now()->addHours(2), function () {
-            $page = Storage::disk('docs')->get($this->version . '/documentation.md');
+        return Cache::remember('doc-navigation-'.$this->version, now()->addHours(2), function () {
+            $page = Storage::disk('docs')->get($this->version.'/documentation.md');
 
             $html = Str::of($page)
                 ->after('---')
@@ -219,7 +216,7 @@ class Docs
      *
      * @return \Illuminate\Support\Collection A collection of Docs instances.
      */
-    public static function every(string $version): \Illuminate\Support\Collection
+    public static function every(string $version): Collection
     {
         $files = Storage::disk('docs')->allFiles($version);
 
@@ -260,13 +257,13 @@ class Docs
      *
      * @return \Illuminate\Support\Collection
      */
-    private function fetchGitHubDiff(string $key = null): Collection
+    private function fetchGitHubDiff(?string $key = null): Collection
     {
         $hash = sha1($this->content());
 
         return Cache::remember("docs-diff-$this->version-$this->file-$hash",
             now()->addHours(2),
-            fn() => Http::withBasicAuth('token', config('services.github.token'))
+            fn () => Http::withBasicAuth('token', config('services.github.token'))
                 ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}")
                 ->collect($key)
         );

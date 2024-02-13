@@ -14,7 +14,7 @@ class MetaParser
     /**
      * @param string $html
      */
-    public function __construct(string $html, string $url = null)
+    public function __construct(string $html, ?string $url = null)
     {
         $this->crawler = new Crawler($html);
     }
@@ -38,7 +38,7 @@ class MetaParser
             })
                 ->first();
 
-            if (!empty($title)) {
+            if (! empty($title)) {
                 return $title;
             }
 
@@ -67,7 +67,7 @@ class MetaParser
             })
                 ->first();
 
-            if (!empty($description)) {
+            if (! empty($description)) {
                 return $description;
             }
 
@@ -96,12 +96,12 @@ class MetaParser
             })
                 ->first();
 
-            if (!empty($image) && filter_var($image, FILTER_VALIDATE_URL) !== false) {
+            if (! empty($image) && filter_var($image, FILTER_VALIDATE_URL) !== false) {
                 return $image;
             }
 
             return null;
-            //return $this->crawler->filter('body img')->first()->attr('src');
+            // return $this->crawler->filter('body img')->first()->attr('src');
         } catch (\Exception $exception) {
             return null;
         }
@@ -131,7 +131,7 @@ class MetaParser
             })
                 ->first();
 
-            if (!empty($favicon) && filter_var($favicon, FILTER_VALIDATE_URL) !== false) {
+            if (! empty($favicon) && filter_var($favicon, FILTER_VALIDATE_URL) !== false) {
                 return $favicon;
             }
 

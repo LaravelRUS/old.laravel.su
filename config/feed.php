@@ -12,7 +12,7 @@ return [
              * [App\Model::class, 'getAllFeedItems', 'parameterName' => 'argument']
              */
             'items' => [
-                \App\Models\Post::class, 'getFeedItems'
+                \App\Models\Post::class, 'getFeedItems',
             ],
 
             /*
@@ -20,9 +20,9 @@ return [
              */
             'url' => '/rss/feed',
 
-            'title' => env('APP_NAME', 'Laravel'),
+            'title'       => env('APP_NAME', 'Laravel'),
             'description' => 'The description of the feed.',
-            'language' => 'ru-RU',
+            'language'    => 'ru-RU',
 
             /*
              * The image to display for the feed. For Atom feeds, this is displayed as

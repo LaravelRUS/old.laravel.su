@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Meet;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use  Illuminate\Database\Eloquent\Builder;
 use Orchid\Support\Facades\Toast;
 
 class PostController extends Controller
 {
-
     /**
      * @return \Illuminate\Contracts\View\View|\Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse|null
      */
@@ -20,8 +19,7 @@ class PostController extends Controller
             ->withCount('comments')
             ->orderBy('likers_count', 'desc')
             ->orderBy('created_at', 'desc')
-            ->simplePaginate(5);//CursorPaginate не работает с сортировкой по полю из withCount
-
+            ->simplePaginate(5); // CursorPaginate не работает с сортировкой по полю из withCount
 
         if (request()->isMethod('GET')) {
 
@@ -53,7 +51,6 @@ class PostController extends Controller
             ])),
         ]);
     }
-
 
     /**
      * @param \App\Models\Post $post
@@ -102,7 +99,6 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
         ])->save();
 
-
         Toast::success('Изменения успешно сохранены.')->disableAutoHide();
 
         return redirect()->route('post.show', $post);
@@ -125,7 +121,6 @@ class PostController extends Controller
         return redirect()->route('feed');
     }
 
-
     /**
      * @param \Illuminate\Http\Request $request
      *
@@ -136,7 +131,7 @@ class PostController extends Controller
         $posts = Post::with(['author'])
             ->withCount('comments')
             ->withCount('likers')
-            ->when($request->has('user_id'), fn(Builder $query) => $query->where('user_id', $request->get('user_id')))
+            ->when($request->has('user_id'), fn (Builder $query) => $query->where('user_id', $request->get('user_id')))
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
@@ -153,5 +148,4 @@ class PostController extends Controller
             ])),
         ]);
     }
-
 }

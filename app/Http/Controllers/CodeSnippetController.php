@@ -15,7 +15,7 @@ class CodeSnippetController extends Controller
     public function show(CodeSnippet $snippet)
     {
         return view('pastebin.index', [
-            'content' => $snippet->content
+            'content' => $snippet->content,
         ]);
     }
 
@@ -27,11 +27,11 @@ class CodeSnippetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'code' => 'required'
+            'code' => 'required',
         ]);
 
         $snippet = new CodeSnippet([
-            'content' => $request->input('code')
+            'content' => $request->input('code'),
         ]);
 
         $request->user()

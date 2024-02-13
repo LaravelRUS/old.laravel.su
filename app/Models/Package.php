@@ -14,7 +14,7 @@ use Orchid\Screen\AsSource;
 
 class Package extends Model
 {
-    use HasFactory, AsSource, Filterable, Chartable;
+    use AsSource, Chartable, Filterable, HasFactory;
 
     /**
      * @var string[]
@@ -48,8 +48,8 @@ class Package extends Model
      * @var array
      */
     protected $allowedFilters = [
-        'name' => Like::class,
-        'description' => Like::class,
+        'name'           => Like::class,
+        'description'    => Like::class,
         'packagist_name' => Like::class,
         'website'        => Like::class,
     ];
@@ -61,6 +61,7 @@ class Package extends Model
         'stars',
         'approved',
     ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

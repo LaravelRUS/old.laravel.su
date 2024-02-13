@@ -9,9 +9,9 @@ class CaesarCipher
     /**
      * @param $shift
      */
-    public function __construct(private int $shift, string $alphabet = null)
+    public function __construct(private int $shift, ?string $alphabet = null)
     {
-        $this->alphabet = $alphabet === 'en' ? 'abcdefghijklmnopqrstuvwxyz' : "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        $this->alphabet = $alphabet === 'en' ? 'abcdefghijklmnopqrstuvwxyz' : 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
     }
 
     public function encrypt($text)

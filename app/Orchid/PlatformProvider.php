@@ -132,7 +132,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('GitHub')
                 ->icon('bs.github')
-                ->url("https://github.com/laravel-russia")
+                ->url('https://github.com/laravel-russia')
                 ->target('_blank'),
         ];
     }

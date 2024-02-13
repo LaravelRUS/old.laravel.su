@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Post;
 
 use App\Models\Post;
-use App\Notifications\IdeaRequestAcceptedNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Screen\Action;
@@ -13,7 +12,6 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\SimpleMDE;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
@@ -63,8 +61,6 @@ class EditScreen extends Screen
         ];
     }
 
-
-
     /**
      * The screen's action buttons.
      *
@@ -74,13 +70,13 @@ class EditScreen extends Screen
     {
         return [
             Link::make('Посмотреть на сайте')
-                ->href(route('post.show',$this->post))
+                ->href(route('post.show', $this->post))
                 ->target('_blank')
                 ->icon('bs.eye'),
 
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
-                ->confirm( "Удаление публикации будет окончательным и необратимым действием. Вся информация, связанная с этой публикацией, будет безвозвратно удалена из системы.")
+                ->confirm('Удаление публикации будет окончательным и необратимым действием. Вся информация, связанная с этой публикацией, будет безвозвратно удалена из системы.')
                 ->method('remove'),
 
         ];
@@ -100,28 +96,27 @@ class EditScreen extends Screen
                         ->title('Текст')
                         ->placeholder('Содержимое статьи'),
 
-
                 ]))
                 ->title(__('Статья'))
-                ->description("")
+                ->description('')
                 ->commands(
                     Button::make(__('Сохранить изменения'))
                         ->type(Color::SUCCESS)
                         ->icon('bs.check-circle')
                         ->method('update')
-                )
-            ];
+                ),
+        ];
     }
 
     /**
      * @return RedirectResponse
      */
-    public function update(Post $post,Request $request)
+    public function update(Post $post, Request $request)
     {
 
         $post->forceFill($request->input('post'))->save();
 
-        Toast::info("Информация обновлена");
+        Toast::info('Информация обновлена');
 
         return redirect()->route('platform.post');
     }
@@ -139,5 +134,4 @@ class EditScreen extends Screen
 
         return redirect()->route('platform.post');
     }
-
 }

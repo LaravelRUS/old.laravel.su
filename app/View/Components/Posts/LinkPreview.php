@@ -24,7 +24,7 @@ class LinkPreview extends Component
      */
     public function render(): View|Closure|string
     {
-        return Cache::remember('preview-' . sha1($this->link), now()->addWeek(), function () {
+        return Cache::remember('preview-'.sha1($this->link), now()->addWeek(), function () {
 
             $html = Http::timeout(30)->get($this->link)->body();
 

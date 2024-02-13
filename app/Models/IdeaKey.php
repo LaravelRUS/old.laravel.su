@@ -9,7 +9,7 @@ use Orchid\Metrics\Chartable;
 
 class IdeaKey extends Model
 {
-    use HasFactory, HasUuids, Chartable;
+    use Chartable, HasFactory, HasUuids;
 
     public function user()
     {

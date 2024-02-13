@@ -2,20 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Casts\PostTypeEnum;
-use App\Models\Comment;
-use App\Models\IdeaKey;
-use App\Models\Post;
-use App\Models\User;
-use App\Notifications\IdeaRequestAcceptedNotification;
-use App\Notifications\NewRelease;
-use App\Notifications\ReplyCommentNotification;
-use Esplora\Tracker\Facades\Tracker;
 use Illuminate\Http\Request;
 
 class NotificationsController extends Controller
 {
-
     public function index(Request $request)
     {
         $notifications = $request->user()
@@ -28,7 +18,6 @@ class NotificationsController extends Controller
 
         ]);
     }
-
 
     /**
      * @param string                   $id
@@ -57,7 +46,6 @@ class NotificationsController extends Controller
         $request->user()
             ->unreadNotifications()
             ->update(['read_at' => now()]);
-
 
         return redirect()->back();
     }

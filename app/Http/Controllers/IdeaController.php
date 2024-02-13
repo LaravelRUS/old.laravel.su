@@ -9,7 +9,6 @@ use Orchid\Support\Facades\Toast;
 
 class IdeaController extends Controller
 {
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|null
      */
@@ -45,14 +44,14 @@ class IdeaController extends Controller
     }
 
     /**
-     * @param \App\Models\IdeaKey      $key
+     * @param \App\Models\IdeaKey $key
      *
      * @return \Illuminate\Contracts\View\View
      */
     public function key(IdeaKey $key)
     {
         return view('idea.key', [
-            'key' => $key
+            'key' => $key,
         ]);
     }
 }

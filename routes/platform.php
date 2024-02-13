@@ -2,21 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Examples\ExampleActionsScreen;
-use App\Orchid\Screens\Examples\ExampleCardsScreen;
-use App\Orchid\Screens\Examples\ExampleChartsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsScreen;
-use App\Orchid\Screens\Examples\ExampleGridScreen;
-use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
-use App\Orchid\Screens\Examples\ExampleScreen;
-use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
-use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -77,8 +67,7 @@ Route::screen('roles', RoleListScreen::class)
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
 
-//Route::screen('idea', Idea::class, 'platform.screens.idea');
-
+// Route::screen('idea', Idea::class, 'platform.screens.idea');
 
 Route::screen('packages', App\Orchid\Screens\Package\ListScreen::class)
     ->name('platform.packages')
@@ -112,10 +101,9 @@ Route::screen('post', App\Orchid\Screens\Post\ListScreen::class)
 
 Route::screen('post/{post}/edit', App\Orchid\Screens\Post\EditScreen::class)
     ->name('platform.post.edit')
-    ->breadcrumbs(fn (Trail $trail,$post) => $trail
+    ->breadcrumbs(fn (Trail $trail, $post) => $trail
         ->parent('platform.post')
-        ->push($post->title, route('platform.post.edit',$post)));
-
+        ->push($post->title, route('platform.post.edit', $post)));
 
 Route::screen('position', App\Orchid\Screens\Position\ListScreen::class)
     ->name('platform.position')
@@ -125,6 +113,6 @@ Route::screen('position', App\Orchid\Screens\Position\ListScreen::class)
 
 Route::screen('position/{position}/edit', App\Orchid\Screens\Position\EditScreen::class)
     ->name('platform.position.edit')
-    ->breadcrumbs(fn (Trail $trail,$position) => $trail
+    ->breadcrumbs(fn (Trail $trail, $position) => $trail
         ->parent('platform.position')
-        ->push($position->title, route('platform.position.edit',$position)));
+        ->push($position->title, route('platform.position.edit', $position)));

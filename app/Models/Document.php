@@ -31,7 +31,6 @@ class Document extends Model
         'behind'  => null,
     ];
 
-
     /**
      * Get the URL to edit the page on GitHub.
      *

@@ -37,7 +37,7 @@ class TurboRedirect
 
         if ($response?->getStatusCode() === 403) {
             // сюда нужно что-то вставить
-           // Toast::error(__('error.demo.403.alert.message'));
+            // Toast::error(__('error.demo.403.alert.message'));
 
             return back(303);
         }
@@ -46,19 +46,18 @@ class TurboRedirect
             return $response;
         }
 
+        /*
+                $turbo = new TurboConfig($request);
 
-/*
-        $turbo = new TurboConfig($request);
+                if ($turbo->isNativeApp()) {
+                    header($request->getProtocolVersion().' 303 See Other', true, 303);
 
-        if ($turbo->isNativeApp()) {
-            header($request->getProtocolVersion().' 303 See Other', true, 303);
+                    return $response
+                        ->setStatusCode(303)
+                        ->setTargetUrl($response->getTargetUrl());
+                }
+        */
 
-            return $response
-                ->setStatusCode(303)
-                ->setTargetUrl($response->getTargetUrl());
-        }
-*/
-        
         return $response;
     }
 }

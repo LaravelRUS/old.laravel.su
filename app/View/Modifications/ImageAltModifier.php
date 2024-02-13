@@ -2,7 +2,6 @@
 
 namespace App\View\Modifications;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 

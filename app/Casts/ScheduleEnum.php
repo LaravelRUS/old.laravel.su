@@ -12,10 +12,9 @@ enum ScheduleEnum: string
     public function text(): string
     {
         return match ($this) {
-            self::FullDay => 'Полный день',
+            self::FullDay     => 'Полный день',
             self::DistantWork => 'Удалённая работа',
             self::ProjectWork => 'Проектная работа',
         };
     }
-
 }

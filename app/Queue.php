@@ -3,7 +3,6 @@
 namespace App;
 
 use Laravel\SerializableClosure\SerializableClosure;
-use Psy\Util\Str;
 
 class Queue
 {
@@ -35,7 +34,7 @@ class Queue
      */
     public function __construct(string $name)
     {
-        //ini_set('sysvshm.init_mem', 90000);
+        // ini_set('sysvshm.init_mem', 90000);
 
         $this->queue = msg_get_queue(crc32($name));
 
@@ -80,13 +79,10 @@ class Queue
 
     public function dispatchClosure(\Closure $closure, int $type = 1): void
     {
-        //$serialized = (string) serialize(new SerializableClosure($closure));
-        //$serialized = base64_encode($serialized);
-
-
+        // $serialized = (string) serialize(new SerializableClosure($closure));
+        // $serialized = base64_encode($serialized);
 
         $serialized = \Illuminate\Support\Str::random(2000);
-
 
         $result = msg_send($this->queue, $type, $serialized, false, false, $error);
 
@@ -106,7 +102,7 @@ class Queue
             flags: 0,
             error_code: $error);
 
-        if($receive){
+        if ($receive) {
             $closure = unserialize($receivedData)->getClosure();
             $closure();
         }

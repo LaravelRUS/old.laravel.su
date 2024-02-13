@@ -50,10 +50,10 @@ class SiteMessage extends DatabaseMessage
      *
      * @return $this
      */
-    public function action(string $action, string $text = null): self
+    public function action(string $action, ?string $text = null): self
     {
         $this->data['action'] = $action;
-        is_null($text) ?:  $this->data['action_text'] = $text;
+        is_null($text) ?: $this->data['action_text'] = $text;
 
         return $this;
     }
@@ -102,6 +102,7 @@ class SiteMessage extends DatabaseMessage
 
         return $this;
     }
+
     public function setCommentAuthor(string $author): self
     {
         $this->data['type'] = NotificationTypeEnum::ReplyComment;

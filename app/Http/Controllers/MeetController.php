@@ -7,8 +7,6 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
-use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class MeetController extends Controller
 {
@@ -50,8 +48,9 @@ class MeetController extends Controller
      * @param Request $request
      * @param Meet    $meet
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function update(Request $request, Meet $meet)
     {
@@ -59,25 +58,25 @@ class MeetController extends Controller
         $dateMax = now()->toDateString();
 
         $request->validate([
-            'meet'             => 'required|array',
-            'meet.name'        => 'required|string',
-            'meet.description' => 'required|string',
-            'meet.start_date'  => 'date|after:' . $dateMax,
+            'meet'              => 'required|array',
+            'meet.name'         => 'required|string',
+            'meet.description'  => 'required|string',
+            'meet.start_date'   => 'date|after:'.$dateMax,
             'meet.location'     => 'required|string',
-            'meet.online'      => 'sometimes|boolean',
-            'meet.link'        => 'required|url',
+            'meet.online'       => 'sometimes|boolean',
+            'meet.link'         => 'required|url',
         ]);
 
         $meet->fill(array_merge($request->get('meet'), [
-            'online' => $request->boolean('meet.online'),
-            'user_id' => $request->user()->id
+            'online'  => $request->boolean('meet.online'),
+            'user_id' => $request->user()->id,
 
         ]))
             ->save();
 
-        if($meet->approved){
+        if ($meet->approved) {
             Toast::success('Изменения успешно сохранены.')->disableAutoHide();
-        }else{
+        } else {
             Toast::success('Ваш запрос принят и будет проверен модератором.')
                 ->disableAutoHide();
         }
@@ -88,8 +87,9 @@ class MeetController extends Controller
     /**
      * @param Meet $meet
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function delete(Request $request, Meet $meet)
     {
@@ -99,6 +99,6 @@ class MeetController extends Controller
 
         Toast::success('Событие удалено.')->disableAutoHide();
 
-        return redirect()->route('profile.meets',  $request->user());
+        return redirect()->route('profile.meets', $request->user());
     }
 }

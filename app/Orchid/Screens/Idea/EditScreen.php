@@ -9,8 +9,6 @@ use App\Models\IdeaRequest;
 use App\Notifications\IdeaRequestAcceptedNotification;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Sight;
 use Orchid\Support\Color;
@@ -31,8 +29,7 @@ class EditScreen extends Screen
      */
     public function query(IdeaRequest $ideaRequest): iterable
     {
-        $ideaRequest->load(['user','key']);
-
+        $ideaRequest->load(['user', 'key']);
 
         return [
             'ideaRequest'       => $ideaRequest,
@@ -55,7 +52,6 @@ class EditScreen extends Screen
         return '';
     }
 
-
     /**
      * The screen's action buttons.
      *
@@ -67,7 +63,7 @@ class EditScreen extends Screen
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->canSee(is_null($this->ideaRequest->key))
-                ->confirm( "Удаление заявки будет окончательным и необратимым действием. Вся информация, связанная с этой заявкой, будет безвозвратно удалена из системы.")
+                ->confirm('Удаление заявки будет окончательным и необратимым действием. Вся информация, связанная с этой заявкой, будет безвозвратно удалена из системы.')
                 ->method('remove'),
         ];
     }
@@ -87,7 +83,7 @@ class EditScreen extends Screen
                 Sight::make('key.key', 'Ключ'),
             ]))
                 ->title(__('Данные запроса'))
-                ->description("Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, выделите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.")
+                ->description('Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, выделите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.')
                 ->commands(
                     Button::make(__('Принять и выдать ключ'))
                         ->type(Color::SUCCESS)
@@ -95,7 +91,7 @@ class EditScreen extends Screen
                         ->canSee(is_null($this->ideaRequest->key))
                         ->method('accept')
                 ),
-            ];
+        ];
     }
 
     /**
@@ -108,15 +104,14 @@ class EditScreen extends Screen
             ->first();
 
         $key->forceFill([
-            'user_id' => $ideaRequest->user_id,
+            'user_id'    => $ideaRequest->user_id,
             'request_id' => $ideaRequest->id,
-            'activated' => 1
+            'activated'  => 1,
         ])->save();
-
 
         $ideaRequest->user->notify(new IdeaRequestAcceptedNotification($key));
 
-        Toast::info("Информация обновлена");
+        Toast::info('Информация обновлена');
 
         return redirect()->route('platform.idea');
     }
@@ -134,5 +129,4 @@ class EditScreen extends Screen
 
         return redirect()->route('platform.idea');
     }
-
 }

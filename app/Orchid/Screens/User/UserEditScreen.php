@@ -6,11 +6,8 @@ namespace App\Orchid\Screens\User;
 
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
-use App\Orchid\Layouts\User\UserPasswordLayout;
 use App\Orchid\Layouts\User\UserRoleLayout;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Orchid\Access\Impersonation;
 use Orchid\Platform\Models\User;
@@ -77,7 +74,7 @@ class UserEditScreen extends Screen
         return [
             Link::make('Посмотреть на сайте')
                 ->canSee($this->user->exists)
-                ->href($this->user->exists ? route('profile',$this?->user) : "")
+                ->href($this->user->exists ? route('profile', $this?->user) : '')
                 ->target('_blank')
                 ->icon('bs.eye'),
             Button::make(__('Impersonate user'))

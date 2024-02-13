@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 
 class OpenQuizController extends Controller
 {
@@ -22,8 +21,8 @@ class OpenQuizController extends Controller
         $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
 
         return response(view('pages.open', [
-            'evalWrongWay' => $evalWrongWay,
-            'helpCaesarCipher' => $helpCaesarCipher
+            'evalWrongWay'     => $evalWrongWay,
+            'helpCaesarCipher' => $helpCaesarCipher,
         ]))->withHeaders([
             'X-Goronich-Key' => (new \App\CaesarCipher(11, 'en'))->encrypt(route('quiz.goronich')),
         ]);
@@ -35,15 +34,15 @@ class OpenQuizController extends Controller
     public function goronich(Request $request)
     {
         if ($request->isMethod('DELETE')) {
-            $text = base64_encode("Твоя победа надо мной неоспорима! И сейчас я раскрываю тебе тайну: все сокровища лежат перед тобой на самом видном месте, хотя и маскируются изображениями. Внимательно присмотрись к ним, разгадай их скрытый смысл.");
+            $text = base64_encode('Твоя победа надо мной неоспорима! И сейчас я раскрываю тебе тайну: все сокровища лежат перед тобой на самом видном месте, хотя и маскируются изображениями. Внимательно присмотрись к ним, разгадай их скрытый смысл.');
             $chars = str_split($text);
             $badText = '';
 
-            foreach($chars as $key => $char) {
+            foreach ($chars as $key => $char) {
 
                 $badText .= $char;
 
-                if( array_key_last($chars) !== $key){
+                if (array_key_last($chars) !== $key) {
                     $badText .= Arr::random(['@', '#', '$', '%', '🥹', '😢', '🫠']);
                 }
             }

@@ -4,7 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Comment;
 use App\Models\IdeaKey;
-use App\Models\Post;
 use App\Models\User;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
@@ -41,7 +40,7 @@ class CommentNotification extends Notification implements ShouldQueue
     {
         return [
             SiteChannel::class,
-            WebPushChannel::class
+            WebPushChannel::class,
         ];
     }
 
@@ -54,7 +53,8 @@ class CommentNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        $url  = route('post.show',$this->comment->post).'#'.dom_id($this->comment);
+        $url = route('post.show', $this->comment->post).'#'.dom_id($this->comment);
+
         return (new SiteMessage())
             ->title('оставил комментарий к вашей публикации')
             ->setCommentAuthor($this->comment->author->name)
@@ -69,13 +69,13 @@ class CommentNotification extends Notification implements ShouldQueue
      */
     public function toWebPush(User $user)
     {
-        $url = route('post.show', $this->comment->post) . '#' . dom_id($this->comment);
+        $url = route('post.show', $this->comment->post).'#'.dom_id($this->comment);
 
         return (new WebPushMessage)
             ->title('Новый комментарий')
             ->icon($this->comment->author->avatar)
             ->body($this->comment->content)
-            ->action('Посмотреть',$url)
+            ->action('Посмотреть', $url)
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

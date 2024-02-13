@@ -65,6 +65,7 @@ class ListScreen extends Screen
             'site.content',
         ];
     }
+
     /**
      * The screen's action buttons.
      *
@@ -78,51 +79,52 @@ class ListScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
      * @throws \ReflectionException
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
         return [
             Layout::table('approved', [
 
-                TD::make('name','Название')
+                TD::make('name', 'Название')
                     ->width(200)
                     ->sort()
                     ->cantHide()
                     ->render(function (Meet $meet) {
-                        return "<strong class='d-block'>".e($meet->name)."</strong>";
+                        return "<strong class='d-block'>".e($meet->name).'</strong>';
                     })->filter(Input::make()),
 
-                TD::make('location','Адрес')
+                TD::make('location', 'Адрес')
                     ->width(200)
                     ->filter(Input::make()),
 
-                TD::make('start_date','Начало')
+                TD::make('start_date', 'Начало')
                     ->usingComponent(DateTimeSplit::class)
                     ->width(150)
-                ->sort(),
+                    ->sort(),
 
-                TD::make('online','Онлайн')
+                TD::make('online', 'Онлайн')
                     ->width(100)
                     ->render(function (Meet $meet) {
-                        if($meet->online==1){
-                            return  Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
+                        if ($meet->online == 1) {
+                            return Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
                         }
+
                         return '-';
                     })
-                ->sort(),
-
+                    ->sort(),
 
                 TD::make('approved', 'Статус')
                     ->width(130)
                     ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
-                ->sort(),
+                    ->sort(),
 
                 TD::make('Добавил')
                     ->sort()
                     ->cantHide()
-                    ->render(fn(Meet $meet) => new Persona($meet->author->presenter())),
+                    ->render(fn (Meet $meet) => new Persona($meet->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -138,10 +140,10 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Meet $meet) => DropDown::make()
+                    ->render(fn (Meet $meet) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
-                            Link::make("Веб-сайт")
+                            Link::make('Веб-сайт')
                                 ->href($meet->link ?? '')
                                 ->target('_blank')
                                 ->icon('bs.box-arrow-up-right'),
@@ -226,7 +228,7 @@ class ListScreen extends Screen
     {
         $meet->forceFill($request->input('meet'))->save();
 
-        Toast::info("Информация обновлена");
+        Toast::info('Информация обновлена');
     }
 
     /**
@@ -238,6 +240,6 @@ class ListScreen extends Screen
     {
         $meet->delete();
 
-        Toast::info("Событие удалено");
+        Toast::info('Событие удалено');
     }
 }

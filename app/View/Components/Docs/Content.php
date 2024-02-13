@@ -3,9 +3,9 @@
 namespace App\View\Components\Docs;
 
 use App\View\Modifications\BladeComponentModifier;
-use App\View\Modifications\ImageAltModifier;
-use App\View\Modifications\HeaderLinksModifier;
 use App\View\Modifications\BlockquoteColorModifier;
+use App\View\Modifications\HeaderLinksModifier;
+use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\RemoveFirstHeaderModifier;
 use App\View\Modifications\ResponsiveTableModifier;
 use App\View\Modifications\TypografModifier;
@@ -49,7 +49,7 @@ class Content extends Component implements Htmlable
      */
     public function toHtml(): string
     {
-        return Cache::remember('doc-content-' . sha1($this->content), now()->addWeek(), function () {
+        return Cache::remember('doc-content-'.sha1($this->content), now()->addWeek(), function () {
             $crawler = new Crawler();
             $crawler->addHtmlContent(mb_convert_encoding($this->content, 'UTF-8'));
             $content = $crawler->filterXpath('//body')->first()->html();

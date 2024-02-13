@@ -2,8 +2,8 @@
 
 namespace App\Models\Concerns;
 
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 trait Taggable
@@ -179,12 +179,12 @@ trait Taggable
         $tagsToDel = array_diff($entityTags, $tags);
 
         // Detach the tags
-        if (!empty($tagsToDel)) {
+        if (! empty($tagsToDel)) {
             $this->untag($tagsToDel);
         }
 
         // Attach the tags
-        if (!empty($tagsToAdd)) {
+        if (! empty($tagsToAdd)) {
             $this->tag($tagsToAdd);
         }
 
@@ -201,13 +201,13 @@ trait Taggable
             'namespace' => $this->getEntityClassName(),
         ]);
 
-        if (!$tag->exists) {
+        if (! $tag->exists) {
             $tag->name = $name;
 
             $tag->save();
         }
 
-        if (!$this->tags()->get()->contains($tag->id)) {
+        if (! $this->tags()->get()->contains($tag->id)) {
             $tag->update(['count' => $tag->count + 1]);
 
             $this->tags()->attach($tag);
@@ -225,15 +225,14 @@ trait Taggable
 
         $namespace = $this->getEntityClassName();
 
-        $tag = self
-            ::createTagsModel()
-            ->whereNamespace($namespace)
-            ->where(function ($query) use ($name, $slug) {
-                $query
-                    ->orWhere('name', '=', $name)
-                    ->orWhere('slug', '=', $slug);
-            })
-            ->first();
+        $tag = self::createTagsModel()
+                ->whereNamespace($namespace)
+                ->where(function ($query) use ($name, $slug) {
+                    $query
+                        ->orWhere('name', '=', $name)
+                        ->orWhere('slug', '=', $slug);
+                })
+                ->first();
 
         if ($tag && $this->tags()->get()->contains($tag->id)) {
             $tag->update(['count' => $tag->count - 1]);

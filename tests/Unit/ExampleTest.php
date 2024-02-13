@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use App\Queue;
+use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
@@ -37,7 +37,7 @@ class ExampleTest extends TestCase
     {
         // Создание экземпляра класса Queue
         $queue = new Queue('test');
-        //$queue->clear();
+        // $queue->clear();
 
         // Создание фиктивного действия при получении сообщения
         $action = function () {
@@ -62,6 +62,6 @@ class ExampleTest extends TestCase
         };
 
         // Получение сообщения из очереди с указанием несуществующего типа сообщения
-        //$queue->listen(function () {}, $failedAction);
+        // $queue->listen(function () {}, $failedAction);
     }
 }

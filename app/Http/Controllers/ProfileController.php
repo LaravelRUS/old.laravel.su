@@ -67,7 +67,6 @@ class ProfileController extends Controller
         ]);
     }
 
-
     /**
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\User         $user
@@ -79,7 +78,7 @@ class ProfileController extends Controller
 
         $packages = $user->packages()
             ->orderBy('stars', 'desc')
-            ->orderBy('created_at', 'desc')//нужно для курсора
+            ->orderBy('created_at', 'desc')// нужно для курсора
             ->cursorPaginate(2);
 
         return view('profile.packages', [
@@ -87,7 +86,6 @@ class ProfileController extends Controller
             'user'     => $user,
         ]);
     }
-
 
     /**
      * @param \Illuminate\Http\Request $request
@@ -109,7 +107,6 @@ class ProfileController extends Controller
             'user'     => $user,
         ]);
     }
-
 
     public function awards(User $user)
     {
@@ -149,10 +146,8 @@ class ProfileController extends Controller
             'about' => $request->input('about'),
         ])->save();
 
-
         Toast::success('Профиль был обновлён.');
 
         return redirect()->route('profile', $request->user());
     }
-
 }

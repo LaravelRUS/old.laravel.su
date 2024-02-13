@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Policies;
 
 use App\Models\User;
@@ -9,7 +10,7 @@ trait HasBasePolicy
 {
     use HasOwner;
 
-    public function before(User $user, string $ability): bool|null
+    public function before(User $user, string $ability): ?bool
     {
         if ($user->banned) {
             return false;
@@ -18,10 +19,10 @@ trait HasBasePolicy
         return null;
     }
 
-
     /**
      * для маршрутов без указания модели вида /model/create
-     * @param User  $user
+     *
+     * @param User $user
      *
      * @return Response|mixed
      */
@@ -57,7 +58,4 @@ trait HasBasePolicy
 
         return $this->owner($user, $model);
     }
-
-
-
 }

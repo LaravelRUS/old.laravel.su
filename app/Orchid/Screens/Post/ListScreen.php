@@ -2,7 +2,6 @@
 
 namespace App\Orchid\Screens\Post;
 
-
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
@@ -28,7 +27,7 @@ class ListScreen extends Screen
         return [
             'posts' => Post::with('author')
                 ->filters()
-                ->defaultSort('created_at','desc')
+                ->defaultSort('created_at', 'desc')
                 ->paginate(),
         ];
     }
@@ -73,34 +72,33 @@ class ListScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
      * @throws \ReflectionException
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
         return [
             Layout::table('posts', [
 
-                TD::make('title','Заголовок')
+                TD::make('title', 'Заголовок')
                     ->width(200)
                     ->sort()
                     ->cantHide()
                     ->render(function (Post $post) {
-                        return "<strong class='d-block'>".e($post->title)."</strong>";
+                        return "<strong class='d-block'>".e($post->title).'</strong>';
                     })->filter(Input::make()),
 
-                TD::make('content','Содержимое')
+                TD::make('content', 'Содержимое')
                     ->width(400)
                     ->cantHide()
                     ->render(function (Post $post) {
                         return Str::of($post->content)->markdown()->stripTags()->words(20);
                     })->filter(Input::make()),
 
-
-
                 TD::make('Добавил')
                     ->cantHide()
-                    ->render(fn(Post $post) => new Persona($post->author->presenter())),
+                    ->render(fn (Post $post) => new Persona($post->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -116,11 +114,11 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Post $post) => DropDown::make()
+                    ->render(fn (Post $post) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make('Посмотреть на сайте')
-                                ->href(route('post.show',$post))
+                                ->href(route('post.show', $post))
                                 ->target('_blank')
                                 ->icon('bs.eye'),
 
@@ -140,7 +138,6 @@ class ListScreen extends Screen
         ];
     }
 
-
     /**
      * @param Post $post
      *
@@ -150,6 +147,6 @@ class ListScreen extends Screen
     {
         $post->delete();
 
-        Toast::info("Пост удален");
+        Toast::info('Пост удален');
     }
 }

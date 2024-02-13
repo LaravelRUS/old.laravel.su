@@ -10,8 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Support\Facades\Toast;
-use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class PackagesController extends Controller
 {
@@ -27,13 +25,13 @@ class PackagesController extends Controller
                 return $query->where('type', $request->input('type'));
             })
             ->when($request->filled('q'), function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->get('q') . '%')
-                    ->orWhere('packagist_name', 'like', '%' . $request->get('q') . '%')
-                    ->orWhere('description', 'like', '%' . $request->get('q') . '%');
+                $query->where('name', 'like', '%'.$request->get('q').'%')
+                    ->orWhere('packagist_name', 'like', '%'.$request->get('q').'%')
+                    ->orWhere('description', 'like', '%'.$request->get('q').'%');
             })
             ->when($request->get('sort') === SortEnum::Latest->value,
-                fn($query) => $query->latest(),
-                fn($query) => $query->orderByDesc('stars'))
+                fn ($query) => $query->latest(),
+                fn ($query) => $query->orderByDesc('stars'))
             ->paginate(6);
 
         return view('packages.index', [
@@ -54,8 +52,9 @@ class PackagesController extends Controller
      * @param Request $request
      * @param Package $pack
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function update(Request $request, Package $package)
     {
@@ -75,9 +74,9 @@ class PackagesController extends Controller
 
         $request->user()->packages()->saveMany([$package]);
 
-        if($package->approved){
+        if ($package->approved) {
             Toast::success('Изменения успешно сохранены.')->disableAutoHide();
-        }else{
+        } else {
             Toast::success('Ваш запрос принят и будет проверен модератором.')
                 ->disableAutoHide();
         }
@@ -88,8 +87,9 @@ class PackagesController extends Controller
     /**
      * @param Package $pack
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function delete(Request $request, Package $package)
     {
@@ -105,7 +105,7 @@ class PackagesController extends Controller
     public function latest()
     {
         $packages = Package::approved()
-            ->whereDate('created_at','>=',now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonth())
             ->inRandomOrder()
             ->limit(3)->get();
 

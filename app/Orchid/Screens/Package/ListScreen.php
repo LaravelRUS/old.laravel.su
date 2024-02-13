@@ -3,9 +3,7 @@
 namespace App\Orchid\Screens\Package;
 
 use App\Casts\PackageTypeEnum;
-use App\Casts\PostTypeEnum;
 use App\Models\Package;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -13,7 +11,6 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
-use Orchid\Screen\Components\Cells\Number;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Switcher;
@@ -80,15 +77,16 @@ class ListScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
      * @throws \ReflectionException
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
         return [
             Layout::table('approved', [
 
-                TD::make('name','Название')
+                TD::make('name', 'Название')
                     ->width(200)
                     ->sort()
                     ->cantHide()
@@ -96,7 +94,7 @@ class ListScreen extends Screen
                         return "<strong class='d-block'>$package->name</strong><span class='text-muted'>{$package->type->text()}</span>";
                     })->filter(Input::make()),
 
-                TD::make('description','Описание')
+                TD::make('description', 'Описание')
                     ->width(300)->filter(Input::make()),
 
                 /*
@@ -107,7 +105,6 @@ class ListScreen extends Screen
                     }),
                 */
 
-
                 TD::make('approved', 'Статус')
                     ->width(130)
                     ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
@@ -116,7 +113,7 @@ class ListScreen extends Screen
                 TD::make('Участник')
                     ->sort()
                     ->cantHide()
-                    ->render(fn(Package $package) => new Persona($package->author->presenter())),
+                    ->render(fn (Package $package) => new Persona($package->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -132,10 +129,10 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Package $package) => DropDown::make()
+                    ->render(fn (Package $package) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
-                            Link::make("Веб-сайт")
+                            Link::make('Веб-сайт')
                                 ->href($package->website ?? '')
                                 ->target('_blank')
                                 ->icon('bs.box-arrow-up-right'),
@@ -205,7 +202,7 @@ class ListScreen extends Screen
     {
         $package->forceFill($request->input('package'))->save();
 
-        Toast::info("Информация обновлена");
+        Toast::info('Информация обновлена');
     }
 
     /**
@@ -217,6 +214,6 @@ class ListScreen extends Screen
     {
         $package->delete();
 
-        Toast::info("Пакет удален");
+        Toast::info('Пакет удален');
     }
 }

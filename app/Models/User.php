@@ -4,11 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Orchid\Presenters\UserPresenter;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use NotificationChannels\WebPush\HasPushSubscriptions;
 use Orchid\Access\UserAccess;
@@ -18,13 +16,12 @@ use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
-use Orchid\Screen\Fields\Code;
 use Orchid\Support\Facades\Dashboard;
 use Overtrue\LaravelLike\Traits\Liker;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Liker, AsSource, Chartable, Filterable, UserAccess, HasPushSubscriptions;
+    use AsSource, Chartable, Filterable, HasApiTokens, HasFactory, HasPushSubscriptions, Liker, Notifiable, UserAccess;
 
     /**
      * The attributes that are mass assignable.
@@ -39,7 +36,7 @@ class User extends Authenticatable
         'github_id',
         'about',
         'github_name',
-        'github_bio'
+        'github_bio',
     ];
 
     /**
@@ -181,7 +178,8 @@ class User extends Authenticatable
     /**
      * Reward the user with an achievement.
      *
-     * @param  string  $type
+     * @param string $type
+     *
      * @return \App\Models\Achievement
      */
     public function reward(string $type): Achievement

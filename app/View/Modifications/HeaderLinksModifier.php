@@ -30,14 +30,12 @@ class HeaderLinksModifier extends HTMLModifier
                     ->replace($elm->outerHtml(), sprintf('<%s><a href="#%s" id="%s">%s</a></%s>', $tag, $id, $id, $textContent, $tag));
             });
 
-
         $this->crawler($content)
             ->filter('p > a:not([href])')
             ->each(function (Crawler $elm) use (&$content) {
 
                 /** @var \DOMElement $pTag */
                 $pTag = $elm->getNode(0)->parentNode;
-
 
                 /** @var \DOMElement $pTag */
                 $nextSibling = $pTag->nextSibling;

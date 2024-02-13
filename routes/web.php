@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Docs;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DocsController;
 use App\Http\Controllers\CommentsController;
-use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\DocsController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeetController;
+use App\Http\Controllers\PackagesController;
+use App\Http\Controllers\PostController;
+use App\Http\Middleware\RedirectToBanPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LikeController;
-use App\Http\Middleware\RedirectToBanPage;
-use App\Docs;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ Route::view('/challenges', 'pages.challenges')->name('challenges');
 
 Route::view('nav', 'pages.navigation')->name('nav');
 
-Route::view('/ban','pages.ban')->name('ban');
+Route::view('/ban', 'pages.ban')->name('ban');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,26 +63,26 @@ Route::any('goronich', [\App\Http\Controllers\OpenQuizController::class, 'goroni
 Route::get('/feed', [PostController::class, 'feed'])
     ->name('feed');
 
-Route::post('/feed',[PostController::class,'feed'])
+Route::post('/feed', [PostController::class, 'feed'])
     ->name('feed.popular');
 
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
 
-//Route::post('/posts', [PostController::class, 'list']);
+// Route::post('/posts', [PostController::class, 'list']);
 
 Route::get('/p/{post:slug}', [PostController::class, 'show'])
     ->name('post.show');
 
-Route::middleware(['auth',RedirectToBanPage::class])
+Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
 
         Route::get('/posts/create', [PostController::class, 'edit'])
-            ->can('create','App\Models\Post')
+            ->can('create', 'App\Models\Post')
             ->name('post.create');
 
         Route::post('/posts/create', [PostController::class, 'update'])
-            ->can('create','App\Models\Position')
+            ->can('create', 'App\Models\Position')
             ->name('post.store');
 
         Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
@@ -122,11 +122,11 @@ Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
 
         Route::get('/positions/create', [\App\Http\Controllers\PositionsController::class, 'edit'])
-            ->can('create','App\Models\Position')
+            ->can('create', 'App\Models\Position')
             ->name('position.create');
 
         Route::post('/positions', [\App\Http\Controllers\PositionsController::class, 'update'])
-            ->can('create','App\Models\Position')
+            ->can('create', 'App\Models\Position')
             ->name('position.store');
 
         Route::get('/positions/{position}/edit', [\App\Http\Controllers\PositionsController::class, 'edit'])
@@ -167,7 +167,7 @@ Route::middleware(['auth'])
             ->name('comments.update');
 
         Route::delete('/{comment}', [CommentsController::class, 'delete'])
-            ->can('delete','comment')
+            ->can('delete', 'comment')
             ->name('comments.delete');
 
         Route::post('/{comment}/reply', [CommentsController::class, 'showReply'])->name('comments.show.reply');
@@ -191,11 +191,11 @@ Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('meets')
     ->group(function () {
         Route::get('/create', [MeetController::class, 'edit'])
-            ->can('create','App\Models\Meet')
+            ->can('create', 'App\Models\Meet')
             ->name('meets.create');
 
         Route::post('/', [MeetController::class, 'update'])
-            ->can('create','App\Models\Meet')
+            ->can('create', 'App\Models\Meet')
             ->name('meets.store');
 
         Route::get('/{meet}/edit', [MeetController::class, 'edit'])
@@ -229,11 +229,11 @@ Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('packages')
     ->group(function () {
         Route::get('/create', [PackagesController::class, 'edit'])
-            ->can('create','App\Models\Package')
+            ->can('create', 'App\Models\Package')
             ->name('packages.create');
 
         Route::post('/', [PackagesController::class, 'update'])
-            ->can('create','App\Models\Package')
+            ->can('create', 'App\Models\Package')
             ->name('packages.store');
 
         Route::get('/{package}/edit', [PackagesController::class, 'edit'])
@@ -302,7 +302,6 @@ Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')
 Route::get('/auth/callback', [AuthController::class, 'callback'])->middleware('guest');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-
 /*
 |--------------------------------------------------------------------------
 | Documentation Routes
@@ -315,7 +314,7 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 Route::view('/documentation-contribution-guide', 'docs.contribution')
     ->name('documentation-contribution-guide');
 
-Route::redirect('/docs/', '/docs/' . Docs::DEFAULT_VERSION);
+Route::redirect('/docs/', '/docs/'.Docs::DEFAULT_VERSION);
 
 Route::get('/status/{version?}', [DocsController::class, 'status'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
@@ -329,7 +328,6 @@ Route::get('nav/docs/{version?}', [DocsController::class, 'navigation'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('nav.docs');
 
-
 /*
 |--------------------------------------------------------------------------
 | Profile Routes
@@ -339,7 +337,7 @@ Route::get('nav/docs/{version?}', [DocsController::class, 'navigation'])
 |
 */
 
-Route::get('/user/{nickname}', function ($nickname){
+Route::get('/user/{nickname}', function ($nickname) {
     return $nickname;
 })->name('user.show');
 
@@ -355,33 +353,32 @@ Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 
     ->middleware('auth')
     ->name('my.update');
 
-Route::get('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'index'])
+Route::get('/profile/notifications', [\App\Http\Controllers\NotificationsController::class, 'index'])
     ->middleware('auth')
     ->name('profile.notifications');
 
-Route::post('/profile/notifications',[\App\Http\Controllers\NotificationsController::class,'readAll'])
+Route::post('/profile/notifications', [\App\Http\Controllers\NotificationsController::class, 'readAll'])
     ->middleware('auth')
     ->name('profile.notifications.read.all');
 
-Route::get('/profile/notifications/{id}',[\App\Http\Controllers\NotificationsController::class,'read'])
+Route::get('/profile/notifications/{id}', [\App\Http\Controllers\NotificationsController::class, 'read'])
     ->middleware('auth')
     ->name('profile.notifications.read');
 
-Route::get('/@{user:nickname}',  [\App\Http\Controllers\ProfileController::class, 'show'])
+Route::get('/@{user:nickname}', [\App\Http\Controllers\ProfileController::class, 'show'])
     ->name('profile');
 
-Route::get('/@{user:nickname}/packages',[\App\Http\Controllers\ProfileController::class,'packages'])
+Route::get('/@{user:nickname}/packages', [\App\Http\Controllers\ProfileController::class, 'packages'])
     ->name('profile.packages');
 
-Route::get('/@{user:nickname}/comments',[\App\Http\Controllers\ProfileController::class,'comments'])
+Route::get('/@{user:nickname}/comments', [\App\Http\Controllers\ProfileController::class, 'comments'])
     ->name('profile.comments');
 
-Route::get('/@{user:nickname}/awards',[\App\Http\Controllers\ProfileController::class,'awards'])
+Route::get('/@{user:nickname}/awards', [\App\Http\Controllers\ProfileController::class, 'awards'])
     ->name('profile.awards');
 
-Route::get('/@{user:nickname}/meets',[\App\Http\Controllers\ProfileController::class,'meets'])
+Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::class, 'meets'])
     ->name('profile.meets');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -408,10 +405,9 @@ Route::post('/push/check', [\App\Http\Controllers\PushController::class, 'check'
 |--------------------------------------------------------------------------
 */
 
-Route::get('/manifest.json', fn() => response()->json(config('site.pwa')))
+Route::get('/manifest.json', fn () => response()->json(config('site.pwa')))
     ->middleware('cache.headers:public;max_age=300;etag')
     ->name('manifest');
-
 
 Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image'])
     ->middleware(['cache.headers:public;max_age=300;etag'])
@@ -424,7 +420,6 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 */
 
 Route::feeds();
-
 
 Route::get('/info', function (Request $request) {
 

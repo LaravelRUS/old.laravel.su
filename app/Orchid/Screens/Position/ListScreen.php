@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Position;
 
 use App\Models\Position;
-use App\Models\Post;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -74,45 +73,44 @@ class ListScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
      * @throws \ReflectionException
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
         return [
             Layout::table('positions', [
 
-                TD::make('title','Заголовок')
+                TD::make('title', 'Заголовок')
                     ->width(350)
                     ->sort()
                     ->cantHide()
                     ->render(function (Position $position) {
                         return "<strong class='d-block'>".e($position->title)."</strong>
-                                <p class='text-muted'>". Str::of($position->description)->markdown()->stripTags()->words(20)."</p>";
+                                <p class='text-muted'>".Str::of($position->description)->markdown()->stripTags()->words(20).'</p>';
                     })->filter(Input::make()),
 
-                TD::make('organization','Организвция')
+                TD::make('organization', 'Организвция')
                     ->width(200)
                     ->sort()
                     ->cantHide()
                     ->filter(Input::make()),
 
-                TD::make('location','Локация')
+                TD::make('location', 'Локация')
                     ->width(150)
                     ->sort()
                     ->cantHide()
                     ->filter(Input::make()),
-
 
                 TD::make('approved', 'Статус')
                     ->width(130)
                     ->usingComponent(Boolean::class, true: ' Утвержден', false: ' Ожидает')
                     ->sort(),
 
-
                 TD::make('Добавил')
                     ->cantHide()
-                    ->render(fn(Position $position) => new Persona($position->author->presenter())),
+                    ->render(fn (Position $position) => new Persona($position->author->presenter())),
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -129,11 +127,11 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(Position $position) => DropDown::make()
+                    ->render(fn (Position $position) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make('Посмотреть на сайте')
-                                ->href( route('position.show',$position))
+                                ->href(route('position.show', $position))
                                 ->target('_blank')
                                 ->icon('bs.eye'),
 
@@ -153,7 +151,6 @@ class ListScreen extends Screen
         ];
     }
 
-
     /**
      * @param Position $position
      *
@@ -163,6 +160,6 @@ class ListScreen extends Screen
     {
         $position->delete();
 
-        Toast::info("Вакансия удалена");
+        Toast::info('Вакансия удалена');
     }
 }

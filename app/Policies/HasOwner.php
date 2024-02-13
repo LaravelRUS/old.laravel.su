@@ -21,7 +21,7 @@ trait HasOwner
      */
     public function owner(User $user, Model $model)
     {
-        if (!$model->exists) {
+        if (! $model->exists) {
             return Response::allow();
         }
 
@@ -40,7 +40,7 @@ trait HasOwner
      */
     public function isOwner(User $user, Model $model): bool
     {
-        if (!$model->exists) {
+        if (! $model->exists) {
             return true;
         }
 

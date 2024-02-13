@@ -3,18 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Achievements\DiscussionStar;
-use App\Achievements\Educator;
 use App\Achievements\MasterOfDiscussions;
 use App\Achievements\PricelessCommentator;
-use App\Achievements\RecognizedAuthor;
-use App\Achievements\Writer;
-use App\Docs;
-use App\Models\Comment;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class UpdateAchievementsForComments extends Command
 {
@@ -38,20 +32,19 @@ class UpdateAchievementsForComments extends Command
     public function handle()
     {
         User::whereHas('comments', function (Builder $query) {
-                $query->where('created_at', '>=', now()->subWeek());
-            }, '>=', 10)
+            $query->where('created_at', '>=', now()->subWeek());
+        }, '>=', 10)
             ->withCount('comments')
             ->chunk(100, function (Collection $users) {
-                $users->each(function (User $user){
-                    if($user->comments_count >= 50){
+                $users->each(function (User $user) {
+                    if ($user->comments_count >= 50) {
                         $user->reward(DiscussionStar::class);
-                    }elseif ($user->comments_count >= 30){
+                    } elseif ($user->comments_count >= 30) {
                         $user->reward(MasterOfDiscussions::class);
-                    }else{
+                    } else {
                         $user->reward(PricelessCommentator::class);
                     }
                 });
-            });;
+            });
     }
-
 }

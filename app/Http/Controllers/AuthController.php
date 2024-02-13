@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Database\Eloquent\Builder;
 
 class AuthController extends Controller
 {
@@ -33,7 +32,7 @@ class AuthController extends Controller
         $githubUser = Socialite::driver('github')->user();
 
         $user = User::updateOrCreate(['github_id' => $githubUser->getId()], [
-            'github_name' => $githubUser->getName() ??  $githubUser->getNickname(),
+            'github_name' => $githubUser->getName() ?? $githubUser->getNickname(),
             'email'       => $githubUser->getEmail(),
             'avatar'      => $githubUser->getAvatar(),
             'nickname'    => $githubUser->getNickname() ?? $githubUser->getName(),

@@ -19,10 +19,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:compare-document')->daily();
         $schedule->command('app:update-packages')->daily();
 
-        //вот не знаю, оо тут нужно или нет?
+        // вот не знаю, оо тут нужно или нет?
         $schedule->command('model:prune', [
             '--model' => [
-                CodeSnippet::class
+                CodeSnippet::class,
             ],
         ])->daily();
     }

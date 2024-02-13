@@ -18,12 +18,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'github_id' => fake()->unique()->randomNumber(),
-            'github_name' => fake()->unique()->name(),
-            'avatar' => fake()->imageUrl(),
-            'nickname' => fake()->unique()->name(),
+            'name'           => fake()->name(),
+            'email'          => fake()->unique()->safeEmail(),
+            'github_id'      => fake()->unique()->randomNumber(),
+            'github_name'    => fake()->unique()->name(),
+            'avatar'         => fake()->imageUrl(),
+            'nickname'       => fake()->unique()->name(),
             'remember_token' => Str::random(10),
         ];
     }

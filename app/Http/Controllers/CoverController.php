@@ -18,9 +18,9 @@ class CoverController extends Controller
      */
     public function image(Request $request)
     {
-        $text = Str::limit($request->input('text', config('site.name')),60);
+        $text = Str::limit($request->input('text', config('site.name')), 60);
 
-        $key = "cover-" . sha1($text) . Str::random(1002);
+        $key = 'cover-'.sha1($text).Str::random(1002);
 
         $data = Cache::remember($key, now()->addHours(4), function () use ($text) {
             $width = 1920;
@@ -42,11 +42,11 @@ class CoverController extends Controller
 
             $image = Image::make(public_path('/img/share/socials.png'), 0, 0);
 
-            $image->fit($width, $height, fn($constraint) => $constraint->aspectRatio());
+            $image->fit($width, $height, fn ($constraint) => $constraint->aspectRatio());
 
-            $lines->each(function ($line) use ($image, $start_x, $font_size, $font_height, &$y, $lines) {
+            $lines->each(function ($line) use ($image, $start_x, $font_size, $font_height, &$y) {
 
-                $image->text($line, $start_x, round($y), fn(AbstractFont $font) => $font->file(public_path('fonts/cover.ttf'))
+                $image->text($line, $start_x, round($y), fn (AbstractFont $font) => $font->file(public_path('fonts/cover.ttf'))
                     ->size($font_size)
                     ->color('#222222')
                     ->align('left')

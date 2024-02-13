@@ -1,9 +1,7 @@
 <?php
 
 use App\Docs;
-use App\Jobs\UserAttributesCorrelation;
 use App\Models\IdeaKey;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -24,24 +22,22 @@ use Illuminate\Support\Str;
 
 Artisan::command('inspire', function () {
 
-//array:1 [
-//    "file" => array:2 [
-//        "url" => "https://habrastorage.org/getpro/moikrug/uploads/redactor_image/08022024/images/f207f75c973a03a9018db1ebc83e4513.png"
-//        "id" => 1707360638
-//   ]
-//]
+    // array:1 [
+    //    "file" => array:2 [
+    //        "url" => "https://habrastorage.org/getpro/moikrug/uploads/redactor_image/08022024/images/f207f75c973a03a9018db1ebc83e4513.png"
+    //        "id" => 1707360638
+    //   ]
+    // ]
 
+    $response = \Illuminate\Support\Facades\Http::asMultipart()
+        ->attach('file[]', fopen('/Users/tabuna/Sites/ru-laravel-project/public/img/hot-dog.png', 'r'))
+        ->post('https://career.habr.com/link/redactor_image');
 
-
-$response = \Illuminate\Support\Facades\Http::asMultipart()
-    ->attach('file[]', fopen("/Users/tabuna/Sites/ru-laravel-project/public/img/hot-dog.png", 'r'))
-    ->post('https://career.habr.com/link/redactor_image');
-
-dd($response->json());
+    dd($response->json());
 
     $test = \Illuminate\Support\Facades\Http::delete(route('quiz.goronich'));
 
-    dd($test->header('X-Vasilisa-Say'),$test->body());
+    dd($test->header('X-Vasilisa-Say'), $test->body());
 
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
@@ -62,18 +58,17 @@ Artisan::command('app:checkout-latest-docs', function () {
 
 })->purpose('Checkout the latest Laravel docs');
 
-
 Artisan::command('app:update-packages', function () {
     \App\Models\Package::approved()->chunk(100, function (Collection $packages) {
-        $packages->each(fn($package) => \App\Jobs\UpdateStatusPackages::dispatch($package));
+        $packages->each(fn ($package) => \App\Jobs\UpdateStatusPackages::dispatch($package));
     });
 })->purpose('Update information about users packages');
 
-//убрать после проверки
+// убрать после проверки
 Artisan::command('app:keys', function () {
-    for($i=0; $i<10; $i++){
+    for ($i = 0; $i < 10; $i++) {
         $key = new IdeaKey;
-        $key->key =  Str::uuid();
+        $key->key = Str::uuid();
         $key->save();
     }
 })->purpose('Update information about users packages');

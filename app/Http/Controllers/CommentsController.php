@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Notifications\CommentNotification;
-use App\Notifications\IdeaRequestAcceptedNotification;
 use App\Notifications\MentionNotification;
-use App\Notifications\Remind;
 use App\Notifications\ReplyCommentNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -46,7 +44,7 @@ class CommentsController extends Controller
         $this->authorize('create', Comment::class);
 
         $comment = new Comment([
-            'post_id' => $request->input('commentable_id'),
+            'post_id'  => $request->input('commentable_id'),
             'content'  => $request->input('message'),
             'approved' => true,
         ]);
@@ -57,7 +55,6 @@ class CommentsController extends Controller
 
         $comment->post->author->notify(new CommentNotification($comment));
         Notification::send($comment->getMentionedUsers(), new MentionNotification($comment));
-
 
         return turbo_stream([
             turbo_stream()
@@ -102,7 +99,7 @@ class CommentsController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Comment     $comment
+     * @param \App\Models\Comment      $comment
      *
      * @return string
      */
@@ -134,7 +131,7 @@ class CommentsController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Comment     $comment
+     * @param \App\Models\Comment      $comment
      *
      * @return string
      */

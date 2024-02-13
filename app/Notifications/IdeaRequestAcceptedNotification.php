@@ -2,11 +2,8 @@
 
 namespace App\Notifications;
 
-use App\Casts\FriendlyHugsType;
 use App\Models\IdeaKey;
 use App\Models\User;
-use App\Notifications\Channels\EmotionTrackerChannel;
-use App\Notifications\Channels\EmotionTrackerMessage;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
@@ -42,10 +39,9 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
     {
         return [
             SiteChannel::class,
-            WebPushChannel::class
-       ];
+            WebPushChannel::class,
+        ];
     }
-
 
     /**
      * Get the app representation of the notification.
@@ -66,8 +62,8 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
         return (new WebPushMessage)
             ->title('Бесплатный ключ Laravel IDEA доступен')
             ->icon(asset('icons/logo.svg'))
-            //->body('Пользователь '.$this->author->name."ответил на ваш комментарий")
-            ->action('Посмотреть',route('idea.key', $this->ideaKey))
+            // ->body('Пользователь '.$this->author->name."ответил на ваш комментарий")
+            ->action('Посмотреть', route('idea.key', $this->ideaKey))
             ->vibrate([300, 200, 300])
             ->options([
                 'TTL'     => 86400, // in seconds - 24 hours,

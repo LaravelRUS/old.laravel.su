@@ -57,6 +57,7 @@ class EditScreen extends Screen
     {
         return '';
     }
+
     public function permission(): ?iterable
     {
         return [
@@ -73,12 +74,12 @@ class EditScreen extends Screen
     {
         return [
             Link::make('Посмотреть')
-                ->href(route('position.show',$this->position))
+                ->href(route('position.show', $this->position))
                 ->target('_blank')
                 ->icon('bs.eye'),
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
-                ->confirm( "Удаление вакансии будет окончательным и необратимым действием.")
+                ->confirm('Удаление вакансии будет окончательным и необратимым действием.')
                 ->method('remove'),
         ];
     }
@@ -129,42 +130,39 @@ class EditScreen extends Screen
                         ->placeholder('Одобренный')
                         ->help('Одобренные вакансии будут видны на сайте'),
 
-
-
-
                 ]))
                 ->title(__('Вакансия'))
-                ->description("")
+                ->description('')
                 ->commands(
                     Button::make(__('Сохранить изменения'))
                         ->type(Color::SUCCESS)
                         ->icon('bs.check-circle')
                         ->method('update')
-                )
-            ];
+                ),
+        ];
     }
 
     /**
      * @return RedirectResponse
      */
-    public function update(Position $position,Request $request)
+    public function update(Position $position, Request $request)
     {
         $request->validate([
-            'position'              => 'required|array',
-            'position.title'        => 'required|string',
-            'position.description'  => 'required|string',
-            'position.organization' => 'required|string',
-            'position.salary_min'   => 'sometimes|numeric|nullable',
-            'position.salary_max'   => 'sometimes|numeric|nullable',
+            'position'               => 'required|array',
+            'position.title'         => 'required|string',
+            'position.description'   => 'required|string',
+            'position.organization'  => 'required|string',
+            'position.salary_min'    => 'sometimes|numeric|nullable',
+            'position.salary_max'    => 'sometimes|numeric|nullable',
             'position.location'      => 'required|string',
-            'position.schedule'     => [
+            'position.schedule'      => [
                 'required', Rule::enum(ScheduleEnum::class),
             ],
         ]);
 
         $position->forceFill($request->input('position'))->save();
 
-        Toast::info("Информация обновлена");
+        Toast::info('Информация обновлена');
 
         return redirect()->route('platform.position');
     }
@@ -182,5 +180,4 @@ class EditScreen extends Screen
 
         return redirect()->route('platform.position');
     }
-
 }

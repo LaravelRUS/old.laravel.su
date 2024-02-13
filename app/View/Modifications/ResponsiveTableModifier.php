@@ -2,7 +2,6 @@
 
 namespace App\View\Modifications;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -21,7 +20,7 @@ class ResponsiveTableModifier extends HTMLModifier
             ->each(function (Crawler $elm) use (&$content) {
                 $tag = $elm->outerHtml();
 
-                $content = Str::of($content)->replace($tag, '<div class="table-responsive">' . $tag . '</div>');
+                $content = Str::of($content)->replace($tag, '<div class="table-responsive">'.$tag.'</div>');
             });
 
         return $next($content);

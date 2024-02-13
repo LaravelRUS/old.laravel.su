@@ -7,7 +7,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class BlockquoteColorModifier extends HTMLModifier
 {
-
     protected array $types = [
         // docs-blockquote-note
         '{note}'                          => 'docs-blockquote-note', // for 8.x
@@ -40,10 +39,10 @@ class BlockquoteColorModifier extends HTMLModifier
                 $html = $tag;
 
                 collect($this->types)
-                    ->filter(fn(string $class, string $fragment) => Str::of($tag)->contains($fragment))
+                    ->filter(fn (string $class, string $fragment) => Str::of($tag)->contains($fragment))
                     ->each(function (string $class, string $fragment) use ($tag, &$html) {
                         $html = Str::of($tag)
-                            ->replace('<blockquote>', '<blockquote class="' . $class . '">')
+                            ->replace('<blockquote>', '<blockquote class="'.$class.'">')
                             ->replace($fragment, '');
                     });
 

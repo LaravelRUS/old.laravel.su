@@ -3,8 +3,6 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
-use App\Models\IdeaKey;
-use App\Models\Post;
 use App\Models\User;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
@@ -54,7 +52,8 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
+        $url = route('post.show', $this->reply->post).'#'.dom_id($this->reply);
+
         return (new SiteMessage())
             ->title('ответил на ваш комментарий')
             ->setCommentAuthor($this->reply->author->name)
@@ -69,7 +68,7 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
      */
     public function toWebPush(User $user)
     {
-        $url = route('post.show', $this->reply->post) . '#' . dom_id($this->reply);
+        $url = route('post.show', $this->reply->post).'#'.dom_id($this->reply);
 
         return (new WebPushMessage)
             ->title('Ответ на комментарий')

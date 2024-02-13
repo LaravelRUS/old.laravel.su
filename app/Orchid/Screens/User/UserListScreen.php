@@ -12,7 +12,6 @@ use Illuminate\Validation\Rule;
 use Orchid\Platform\Models\User;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 

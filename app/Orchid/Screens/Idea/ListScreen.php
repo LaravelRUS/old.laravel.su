@@ -2,10 +2,8 @@
 
 namespace App\Orchid\Screens\Idea;
 
-
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +12,6 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
-
 use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
@@ -79,8 +76,9 @@ class ListScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
      * @throws \ReflectionException
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
@@ -97,7 +95,7 @@ class ListScreen extends Screen
                 TD::make('Пользователь')
                     ->cantHide()
                     ->width(250)
-                    ->render(fn(IdeaRequest $ideaRequest) => new Persona($ideaRequest->user->presenter())),
+                    ->render(fn (IdeaRequest $ideaRequest) => new Persona($ideaRequest->user->presenter())),
 
                 /*
                 TD::make('first_name','Имя')
@@ -111,12 +109,10 @@ class ListScreen extends Screen
                     ->width(150),
                 */
 
-
                 TD::make('message', 'Сообщение')
                     ->alignLeft()
-                    ->render(fn(IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(30))
+                    ->render(fn (IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(30))
                     ->width(300),
-
 
                 TD::make('key', 'Статус')
                     ->width(100)
@@ -124,9 +120,9 @@ class ListScreen extends Screen
                         if ($ideaRequest->key()->exists()) {
                             return Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
                         }
+
                         return '-';
                     }),
-
 
                 TD::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class)
@@ -143,11 +139,10 @@ class ListScreen extends Screen
                 TD::make(__('Actions'))
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn(IdeaRequest $ideaRequest) => Link::make('Просмотр')
+                    ->render(fn (IdeaRequest $ideaRequest) => Link::make('Просмотр')
                         ->route('platform.idea.request', $ideaRequest->id)
                         ->icon('bs.pencil')),
             ]),
-
 
             Layout::modal('addKeys', [
                 Layout::rows([
@@ -167,6 +162,7 @@ class ListScreen extends Screen
      * Add keys from a file to the database.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     public function addKeys(Request $request): void
@@ -181,7 +177,7 @@ class ListScreen extends Screen
 
         // Prepare keys for insertion into the database.
         $keysForInsertion = collect($keys)
-            ->map(fn($key) => ['id' => Str::uuid(), 'key' => $key])
+            ->map(fn ($key) => ['id' => Str::uuid(), 'key' => $key])
             ->toArray();
 
         // Insert keys into the database, ignoring duplicates.

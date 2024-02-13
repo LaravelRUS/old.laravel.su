@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\User;
 
 use Orchid\Screen\Field;
-use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Layouts\Rows;
@@ -35,7 +34,7 @@ class UserEditLayout extends Rows
 
             Switcher::make('user.banned')
                 ->sendTrueOrFalse()
-                ->title('Забанен')
+                ->title('Забанен'),
         ];
     }
 }

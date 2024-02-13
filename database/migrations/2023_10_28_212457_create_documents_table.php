@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('last_commit')->nullable();
             $table->timestamps();
 
-
             $table->unique(['version', 'file']);
         });
     }

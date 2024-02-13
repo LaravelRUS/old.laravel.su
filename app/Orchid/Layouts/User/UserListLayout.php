@@ -65,7 +65,7 @@ class UserListLayout extends Table
                     ->list([
 
                         Link::make('Посмотреть на сайте')
-                            ->href( route('profile',$user))
+                            ->href(route('profile', $user))
                             ->target('_blank')
                             ->icon('bs.eye'),
 

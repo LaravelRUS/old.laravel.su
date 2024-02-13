@@ -11,8 +11,7 @@ enum SortEnum: string
     {
         return match ($this) {
             self::Popular => 'Популярные',
-            self::Latest => 'Новые',
+            self::Latest  => 'Новые',
         };
     }
-
 }

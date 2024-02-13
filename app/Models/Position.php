@@ -16,7 +16,7 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use HasFactory, AsSource, Filterable, Chartable;
+    use AsSource, Chartable, Filterable, HasFactory;
 
     /**
      * @var string[]
@@ -30,7 +30,7 @@ class Position extends Model
         'salary_max',
         'location',
         'schedule',
-        'contact'
+        'contact',
     ];
 
     /**
@@ -52,11 +52,11 @@ class Position extends Model
      * @var array
      */
     protected $allowedFilters = [
-        'title' => Like::class,
-        'description' => Like::class,
+        'title'        => Like::class,
+        'description'  => Like::class,
         'organization' => Like::class,
-        'location' => Like::class,
-        'contact' => Like::class,
+        'location'     => Like::class,
+        'contact'      => Like::class,
     ];
 
     protected $allowedSorts = [
@@ -68,10 +68,8 @@ class Position extends Model
         'location',
         'schedule',
         'contact',
-        'approved'
+        'approved',
     ];
-
-
 
     public static function boot()
     {
@@ -82,12 +80,13 @@ class Position extends Model
             $i = 1;
 
             while (static::where('slug', $slug)->exists()) {
-                $slug = Str::slug($position->organization) . '-' . $i++;
+                $slug = Str::slug($position->organization).'-'.$i++;
             }
 
             $position->slug = $slug;
         });
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

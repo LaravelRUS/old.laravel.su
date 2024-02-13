@@ -13,7 +13,7 @@ use Orchid\Screen\AsSource;
 
 class Meet extends Model
 {
-    use HasFactory, AsSource, Filterable, Chartable;
+    use AsSource, Chartable, Filterable, HasFactory;
 
     /**
      * @var string[]
@@ -37,9 +37,9 @@ class Meet extends Model
     ];
 
     protected $allowedFilters = [
-        'name' => Like::class,
+        'name'        => Like::class,
         'description' => Like::class,
-        'location' => Like::class,
+        'location'    => Like::class,
     ];
     /**
      * @var array

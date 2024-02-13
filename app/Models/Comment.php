@@ -14,7 +14,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes, Likeable, Chartable;
+    use Chartable, HasFactory, Likeable, SoftDeletes;
 
     /**
      * @var string
@@ -141,7 +141,7 @@ class Comment extends Model
      *
      * @return string
      */
-    protected function urlFromTextToHtmlUrl(string $text = null): string
+    protected function urlFromTextToHtmlUrl(?string $text = null): string
     {
         return Str::of($text)
             ->replaceMatches('/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/u', fn ($url) => "<a href='$url[0]' target='_blank'>$url[0]</a> ");
@@ -152,11 +152,11 @@ class Comment extends Model
      *
      * @return string
      */
-    protected function mentionedUserToHtmlUrl(string $text = null): string
+    protected function mentionedUserToHtmlUrl(?string $text = null): string
     {
         return Str::of($text)
             ->replaceMatches('/\@([a-zA-Z0-9_]+)/u', function ($mention) {
-                $href = route('user.show', $mention[1]);// над наверное заменить на route('profile', $mention[1])
+                $href = route('user.show', $mention[1]); // над наверное заменить на route('profile', $mention[1])
                 $name = Str::of($mention[0])->trim();
 
                 return "<a href='$href' class='text-decoration-none'>$name</a>";
@@ -168,7 +168,7 @@ class Comment extends Model
      *
      * @return string
      */
-    protected function nl2br(string $text = null)
+    protected function nl2br(?string $text = null)
     {
         return nl2br($text);
     }
@@ -186,14 +186,14 @@ class Comment extends Model
         return $this->nl2br($withMention);
     }
 
-
     public function getMentionedUsers()
     {
-       $usersNikNames  = Str::of($this->content)->matchAll('/\@([a-zA-Z0-9_]+)/u');
-       if($usersNikNames->isEmpty()){
-           return collect();
-       }
-       return User::whereIn('nickname', $usersNikNames)->get();
+        $usersNikNames = Str::of($this->content)->matchAll('/\@([a-zA-Z0-9_]+)/u');
+        if ($usersNikNames->isEmpty()) {
+            return collect();
+        }
+
+        return User::whereIn('nickname', $usersNikNames)->get();
 
     }
 }

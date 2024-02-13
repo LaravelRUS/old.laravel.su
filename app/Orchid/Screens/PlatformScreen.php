@@ -27,21 +27,22 @@ class PlatformScreen extends Screen
     {
         $start = Carbon::now()->subDays(30);
         $end = Carbon::now();
+
         return [
             'basicIndicators'                => [
-                User::countByDays($start,$end)->toChart('Пользователи'),
-                Comment::countByDays($start,$end)->toChart('комментарии'),
+                User::countByDays($start, $end)->toChart('Пользователи'),
+                Comment::countByDays($start, $end)->toChart('комментарии'),
             ],
             'content'                => [
                 Post::countByDays($start, $end)->toChart('Посты'),
-                Meet::countByDays($start,$end)->toChart('Мероприятия'),
-                Package::countByDays($start,$end)->toChart('Пакеты'),
-                Position::countByDays($start,$end)->toChart('Вакансии'),
+                Meet::countByDays($start, $end)->toChart('Мероприятия'),
+                Package::countByDays($start, $end)->toChart('Пакеты'),
+                Position::countByDays($start, $end)->toChart('Вакансии'),
             ],
             'idea' => [
-                IdeaRequest::countByDays($start,$end)->toChart('Запросы ключей'),
-                IdeaKey::where('activated',1)->countByDays($start,$end,'updated_at')->toChart('Выданные ключи')
-            ]
+                IdeaRequest::countByDays($start, $end)->toChart('Запросы ключей'),
+                IdeaKey::where('activated', 1)->countByDays($start, $end, 'updated_at')->toChart('Выданные ключи'),
+            ],
         ];
     }
 
@@ -90,7 +91,6 @@ class PlatformScreen extends Screen
             BasicIndicators::make('idea')
                 ->description('количество запросов и выданных ключей Laravel Idea по дням')
                 ->title('Idea'),
-
 
         ];
     }

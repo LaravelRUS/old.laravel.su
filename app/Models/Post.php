@@ -28,7 +28,7 @@ use Spatie\Feed\FeedItem;
  */
 class Post extends Model implements Feedable
 {
-    use HasFactory, Taggable, Searchable, Likeable, AsSource, Filterable, Chartable;
+    use AsSource, Chartable, Filterable, HasFactory, Likeable, Searchable, Taggable;
 
     /**
      * @var string[]
@@ -39,7 +39,7 @@ class Post extends Model implements Feedable
         'slug',
         'user_id',
         'type',
-        'status'
+        'status',
     ];
 
     /**
@@ -50,18 +50,18 @@ class Post extends Model implements Feedable
         'content' => 'string',
         'slug'    => 'string',
         'type'    => PostTypeEnum::class,
-        'status'  => StatusEnum::class
+        'status'  => StatusEnum::class,
     ];
 
     protected $attributes = [
-        'type' => PostTypeEnum::Article
+        'type' => PostTypeEnum::Article,
     ];
 
     /**
      * @var array
      */
     protected $allowedFilters = [
-        'title' => Like::class,
+        'title'   => Like::class,
         'content' => Like::class,
     ];
 
@@ -70,6 +70,7 @@ class Post extends Model implements Feedable
         'created_at',
         'updated_at',
     ];
+
     public static function boot()
     {
         parent::boot();
@@ -79,7 +80,7 @@ class Post extends Model implements Feedable
             $i = 1;
 
             while (static::where('slug', $slug)->exists()) {
-                $slug = Str::slug($post->title) . '-' . $i++;
+                $slug = Str::slug($post->title).'-'.$i++;
             }
 
             $post->slug = $slug;
@@ -103,7 +104,6 @@ class Post extends Model implements Feedable
     {
         return $this->user();
     }
-
 
     /**
      * Get only posts with a custom status.
@@ -200,6 +200,7 @@ class Post extends Model implements Feedable
      * Calculate the estimated time to read the content.
      *
      * @param int $wordsPerMinute Average number of words a reader can read per minute.
+     *
      * @return int Estimated time in minutes to read the content.
      */
     public function estimatedReadingTime(int $wordsPerMinute = 100): int

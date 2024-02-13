@@ -20,19 +20,18 @@ class BladeComponentModifier extends HTMLModifier
             $content = $this->replaceToBladeComponent($content, $tag);
         }
 
+        /*
 
-/*
+                $this->crawler($content)->filter('x-docs-banner, x-github, x-youtube')->each(function (Crawler $elm) use (&$content) {
+                    $tag = $elm->outerHtml();
 
-        $this->crawler($content)->filter('x-docs-banner, x-github, x-youtube')->each(function (Crawler $elm) use (&$content) {
-            $tag = $elm->outerHtml();
+                    // need normalizing to close tag
+                    $content = $this->crawler($content)->filterXpath('//body')->first()->html();
 
-            // need normalizing to close tag
-            $content = $this->crawler($content)->filterXpath('//body')->first()->html();
-
-            $content = Str::of($content)
-                ->replace($tag, Blade::render($tag));
-        });
-*/
+                    $content = Str::of($content)
+                        ->replace($tag, Blade::render($tag));
+                });
+        */
 
         return $next($content);
     }
@@ -45,7 +44,7 @@ class BladeComponentModifier extends HTMLModifier
      */
     protected function replaceToBladeComponent(string $content, string $tag): string
     {
-        if (!Str::containsAll($content, ['[!'. $tag, ']'])) {
+        if (! Str::containsAll($content, ['[!'.$tag, ']'])) {
             return $content;
         }
 
@@ -56,12 +55,12 @@ class BladeComponentModifier extends HTMLModifier
         }
 
         try {
-            $blade = Blade::render('<x-'.$tag . html_entity_decode($test) . '/>');
-        }catch (\Throwable $e){
+            $blade = Blade::render('<x-'.$tag.html_entity_decode($test).'/>');
+        } catch (\Throwable $e) {
             $blade = 'Ошибка при рендере компонента';
         }
 
-        $content = Str::replace('[!'.$tag . $test . ']', $blade, $content);
+        $content = Str::replace('[!'.$tag.$test.']', $blade, $content);
 
         return $this->replaceToBladeComponent($content, $tag);
     }

@@ -4,11 +4,10 @@ namespace App\Policies;
 
 use App\Models\Comment;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
 {
-    public function before(User $user, string $ability): bool|null
+    public function before(User $user, string $ability): ?bool
     {
         if ($user->banned) {
             return false;
@@ -16,6 +15,7 @@ class CommentPolicy
 
         return null;
     }
+
     /**
      * Determine whether the user can view any models.
      */
@@ -53,10 +53,10 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        if( $user->hasAccess('site.content'))
-        {
+        if ($user->hasAccess('site.content')) {
             return true;
         }
+
         return $user->getKey() == $comment->user_id;
     }
 
@@ -68,7 +68,7 @@ class CommentPolicy
      *
      * @return bool
      */
-    public function reply(User $user, Comment $comment) : bool
+    public function reply(User $user, Comment $comment): bool
     {
         return $user->getKey() != $comment->user_id;
     }

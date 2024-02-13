@@ -3,8 +3,8 @@
 namespace App\View\Components\Posts;
 
 use App\View\Modifications\BladeComponentModifier;
-use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\BlockquoteColorModifier;
+use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\ResponsiveTableModifier;
 use App\View\Modifications\TestModifier;
 use App\View\Modifications\TypografModifier;
@@ -47,16 +47,15 @@ class Content extends Component implements Htmlable
      */
     public function toHtml(): string
     {
-        return Cache::remember('post-content-' . sha1($this->content), now()->addWeek(), function () {
+        return Cache::remember('post-content-'.sha1($this->content), now()->addWeek(), function () {
             $content = \Illuminate\Support\Str::of($this->content)
-                //->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
+                // ->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
                 ->markdown([
                     'allow_unsafe_links' => false,
                     'html_input'         => 'escape',
                     'max_nesting_level'  => 20,
                 ])
                 ->toString();
-
 
             return app(Pipeline::class)
                 ->send($content)

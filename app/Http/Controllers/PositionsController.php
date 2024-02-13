@@ -9,19 +9,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Support\Facades\Toast;
-use Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse;
-use Tonysm\TurboLaravel\Http\PendingTurboStreamResponse;
 
 class PositionsController extends Controller
 {
-
     /**
      * @return \Illuminate\Contracts\View\View|\Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse|null
      */
     public function jobs()
     {
         $positions = Position::with(['author'])
-            ->whereDate('created_at','>=',now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonth())
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
@@ -29,7 +26,6 @@ class PositionsController extends Controller
             'positions' => $positions,
         ]);
     }
-
 
     /**
      * @param Position $position
@@ -59,35 +55,34 @@ class PositionsController extends Controller
      * @param Request  $request
      * @param Position $position
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function update(Request $request, Position $position)
     {
 
         $this->authorize('update', $position);
 
-
         $request->validate([
-            'position'              => 'required|array',
-            'position.title'        => 'required|string',
-            'position.description'  => 'required|string',
-            'position.organization' => 'required|string',
-            'position.salary_min'   => 'sometimes|numeric|nullable',
-            'position.salary_max'   => 'sometimes|numeric|nullable',
+            'position'               => 'required|array',
+            'position.title'         => 'required|string',
+            'position.description'   => 'required|string',
+            'position.organization'  => 'required|string',
+            'position.salary_min'    => 'sometimes|numeric|nullable',
+            'position.salary_max'    => 'sometimes|numeric|nullable',
             'position.location'      => 'required|string',
-            'position.schedule'     => [
+            'position.schedule'      => [
                 'required', Rule::enum(ScheduleEnum::class),
             ],
         ]);
 
-
         $position->fill(array_merge($request->get('position'), ['user_id' => $request->user()->id]))
             ->save();
 
-        if($position->approved){
+        if ($position->approved) {
             Toast::success('Изменения успешно сохранены.')->disableAutoHide();
-        }else{
+        } else {
             Toast::success('Ваш запрос принят и будет проверен модератором.')
                 ->disableAutoHide();
         }
@@ -99,8 +94,9 @@ class PositionsController extends Controller
      * @param Request  $request
      * @param Position $position
      *
-     * @return RedirectResponse
      * @throws AuthorizationException
+     *
+     * @return RedirectResponse
      */
     public function delete(Request $request, Position $position)
     {
@@ -113,7 +109,6 @@ class PositionsController extends Controller
         return redirect()->route('jobs');
     }
 
-
     /**
      * @param \Illuminate\Http\Request $request
      *
@@ -122,10 +117,9 @@ class PositionsController extends Controller
     public function list(Request $request)
     {
         $positions = Position::with(['author'])
-            ->whereDate('created_at','>=',now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonth())
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
-
 
         return turbo_stream([
             turbo_stream()->removeAll('.position-placeholder'),
@@ -151,7 +145,7 @@ class PositionsController extends Controller
     public function latest()
     {
         $positions = Position::with(['author'])
-            ->whereDate('created_at','>=',now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonth())
             ->orderBy('id', 'desc')
             ->limit(3)->get();
 
@@ -159,5 +153,4 @@ class PositionsController extends Controller
             'positions' => $positions,
         ]);
     }
-
 }

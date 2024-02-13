@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Middleware;
@@ -30,17 +31,17 @@ class Turbo
     public function handle(Request $request, Closure $next)
     {
         // Fallback header if dd/die/etc. functions are encountered during code execution
-        if ($this->turboVisit($request) && !headers_sent()) {
-            header($request->getProtocolVersion() . ' 303 See Other', true, 303);
+        if ($this->turboVisit($request) && ! headers_sent()) {
+            header($request->getProtocolVersion().' 303 See Other', true, 303);
         }
 
         $response = $next($request);
 
-        if (!$this->turboVisit($request)) {
+        if (! $this->turboVisit($request)) {
             return $response;
         }
 
-        if (!$response instanceof RedirectResponse) {
+        if (! $response instanceof RedirectResponse) {
             return $response;
         }
 
