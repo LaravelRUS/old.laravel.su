@@ -31,6 +31,6 @@ class DiscussionStar implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста комментария более 50 лайков в течении недели после публикации';
+        return 'Написал более 50 комментариев за неделю';
     }
 }

@@ -21,13 +21,6 @@ class Achievement extends Model
     ];
 
     /**
-     * @var string[]
-     */
-    protected $casts = [
-        'achievement_type' => 'object',
-    ];
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

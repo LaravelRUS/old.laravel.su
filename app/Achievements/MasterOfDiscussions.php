@@ -31,6 +31,6 @@ class MasterOfDiscussions implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста комментария более 30 лайков в течении недели после публикации';
+        return 'Написал более 30 комментариев за неделю';
     }
 }

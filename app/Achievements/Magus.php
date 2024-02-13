@@ -2,7 +2,7 @@
 
 namespace App\Achievements;
 
-class Writer implements Achievement
+class Magus implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +11,7 @@ class Writer implements Achievement
      */
     public function name(): string
     {
-        return 'Писатель';
+        return 'Волхв';
     }
 
     /**
@@ -21,7 +21,7 @@ class Writer implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/bogatyr.svg');
+        return asset('/img/achievements/морозко');
     }
 
     /**
@@ -31,6 +31,6 @@ class Writer implements Achievement
      */
     public function description(): string
     {
-        return 'автор поста набравшего более 10 лайков в течении недели после публикации';
+        return 'Они были до нас';
     }
 }
