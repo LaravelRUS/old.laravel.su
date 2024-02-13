@@ -1,6 +1,7 @@
 <?php
 
 use App\Docs;
+use App\Http\Controllers\AchievementsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\DocsController;
@@ -37,6 +38,8 @@ Route::view('/challenges', 'pages.challenges')->name('challenges');
 Route::view('nav', 'pages.navigation')->name('nav');
 
 Route::view('/ban', 'pages.ban')->name('ban');
+
+Route::get('/achievements', [ AchievementsController::class, 'index'])->name('achievements');
 
 /*
 |--------------------------------------------------------------------------

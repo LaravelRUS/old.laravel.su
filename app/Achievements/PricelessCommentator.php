@@ -21,7 +21,7 @@ class PricelessCommentator implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/goldfish.svg');
     }
 
     /**
@@ -31,6 +31,6 @@ class PricelessCommentator implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста комментария более 10 лайков в течении недели после публикации';
+        return 'Написал более 10 комментариев за неделю';
     }
 }

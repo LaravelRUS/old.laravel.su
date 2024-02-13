@@ -9,14 +9,14 @@ use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 
-class UpdateAchievementsForPost extends Command
+class UpdateAchievementsForPostWithLikes extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:update-achievements';
+    protected $signature = 'app:achievements-post-likers';
 
     /**
      * The console command description.
@@ -31,7 +31,7 @@ class UpdateAchievementsForPost extends Command
     public function handle()
     {
         Post::with(['author'])
-            ->has('likers', '>=10')
+            ->has('likers', '>=',10)
             ->withCount('likers')
             ->where('created_at', '>=', now()->subWeek())
             ->chunk(100, function (Collection $posts) {

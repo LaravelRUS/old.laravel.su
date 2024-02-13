@@ -17,7 +17,7 @@ class UpdateAchievementsForComments extends Command
      *
      * @var string
      */
-    protected $signature = 'app:update-achievements';
+    protected $signature = 'app:achievements-commenter';
 
     /**
      * The console command description.
