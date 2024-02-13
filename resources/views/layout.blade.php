@@ -79,12 +79,12 @@
                 <div class="col-12 col-md-4">
                     <ul class="nav justify-content-start align-items-center list-unstyled d-flex mb-4">
                         <li class="">
-                            <a href="https://vk.com/laravel_rus" class="link-body-emphasis">
+                            <a href="https://vk.com/laravel_rus" target="_blank" class="link-body-emphasis">
                                 <x-icon path="i.vk" width="24" height="24"/>
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a href="https://t.me/laravelrus" class="link-body-emphasis">
+                            <a href="https://t.me/laravelrus" target="_blank" class="link-body-emphasis">
                                 <x-icon path="bs.telegram" width="24" height="24"/>
                             </a>
                         </li>
@@ -97,7 +97,7 @@
 
 
                         <li class="ms-3">
-                            <a href="https://youtube.com" class="link-body-emphasis">
+                            <a href="https://www.youtube.com/@laravelrus" target="_blank" class="link-body-emphasis">
                                 <x-icon path="bs.youtube" width="24" height="24"/>
                             </a>
                         </li>
@@ -114,7 +114,7 @@
                     <p class="small text-muted mb-2">
                         Веб-сайт является неофициальным ресурсом, посвященным Laravel. Мы объединяем разработчиков и
                         энтузиастов, желающих обмениваться знаниями и опытом. Мы не имеем официального статуса от
-                        <a href="https://laravel.com" class="link-body-emphasis">Laravel</a> или Taylor Otwell.
+                        <a href="https://laravel.com" target="_blank" rel="nofollow" class="link-body-emphasis">Laravel</a> или <a href="https://github.com/taylorotwell" target="_blank" rel="nofollow" class="link-body-emphasis">Taylor Otwell</a>.
                     </p>
                     <p class="small text-muted">
                         Логотип Laravel и другие сопутствующие товарные знаки принадлежат их законным

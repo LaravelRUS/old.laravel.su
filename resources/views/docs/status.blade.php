@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Статус переводов')
+@section('title', 'Статус перевода Laravel ' .$current)
 
 @section('content')
 
