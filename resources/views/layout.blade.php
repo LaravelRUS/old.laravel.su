@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-auto me-auto me-lg-2">
                     <a href="{{ route('home') }}">
-                        <img src="/img/logo.svg" height="40" class="d-lg-inline d-none">
+                        <img src="/img/logo.svg" height="40" class="d-lg-inline d-none pe-none">
                     </a>
                 </div>
 
