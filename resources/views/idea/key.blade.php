@@ -12,12 +12,19 @@
         <x-slot:description>
             Приступайте к созданию магии с помощью Laravel IDEA и достигайте невероятных высот в области веб-разработки!
        </x-slot>
+
+        <x-slot:actions>
+            <a href="https://www.jetbrains.com/store/redeem/?plugins=&product=PLARAVEL"
+               rel="noreferrer"
+               target="_blank"
+               class="btn btn-primary btn-lg px-4">Активация на сайте JetBrains</a>
+        </x-slot>
     </x-header>
 
     <x-container>
 
         <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
-            <div class="row gy-4 align-items-end">
+            <div class="row align-items-end">
                 <div class="col-md-6">
                     <p class="text-balance">
                         Поздравляем! Ваш запрос одобрен.
@@ -26,7 +33,7 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <div class="d-flex justify-content-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end">
                         <button class="btn btn-link clipboard text-primary fw-semibold text-decoration-none" data-controller="clipboard"
                                 data-action="clipboard#copy"
                                 data-clipboard-done-class="done">
@@ -47,11 +54,9 @@
             </div>
         </div>
 
-        <p class="text-center opacity-50">Учтите, что ключ предназначен
-            <a href="https://www.jetbrains.com/store/redeem/?plugins=&product=PLARAVEL" rel="noreferrer"
-               target="_blank">для активации в JetBrains</a>
-           на территории RU,
-           BY, UA.</p>
+        <div class="col-md-6 text-balance mx-auto mb-3 text-center opacity-50">
+            Учтите, что ключ предназначен для активации и использования на территории России, Беларуси и Украины.
+        </div>
     </x-container>
 
 
