@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('idea_keys', function (Blueprint $table) {
             $table->uuid('id');
-            $table->text('key');
+            $table->text('key')->unique();
             $table->boolean('activated')->default(false);
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('request_id')->nullable();

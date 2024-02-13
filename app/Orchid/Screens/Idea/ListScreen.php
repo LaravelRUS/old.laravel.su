@@ -2,26 +2,19 @@
 
 namespace App\Orchid\Screens\Idea;
 
-use App\Casts\PackageTypeEnum;
-use App\Casts\PostTypeEnum;
+
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
-use App\Models\Package;
-use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
-use Orchid\Screen\Components\Cells\Number;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\Switcher;
-use Orchid\Screen\Fields\TextArea;
+
 use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
@@ -39,13 +32,13 @@ class ListScreen extends Screen
     {
         return [
             'ideaRequests' => IdeaRequest::with(['user', 'key'])
-                ->defaultSort('created_at','desc')
+                ->defaultSort('created_at', 'desc')
                 ->filters()
                 ->paginate(),
-            'metrics' => [
-                'unused_keys' =>  IdeaKey::where('activated',0)->count(),
-                'used_keys' => IdeaKey::where('activated',1)->count()
-            ]
+            'metrics'      => [
+                'unused_keys' => IdeaKey::where('activated', 0)->count(),
+                'used_keys'   => IdeaKey::where('activated', 1)->count(),
+            ],
         ];
     }
 
@@ -76,7 +69,11 @@ class ListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            ModalToggle::make('Добавить ключи')
+                ->modal('addKeys')
+                ->method('addKeys'),
+        ];
     }
 
     /**
@@ -90,8 +87,8 @@ class ListScreen extends Screen
         return [
 
             Layout::metrics([
-                'Выдано ключей:'              => 'metrics.used_keys',
-                'Не использовано ключей:'    => 'metrics.unused_keys',
+                'Выдано ключей:'          => 'metrics.used_keys',
+                'Не использовано ключей:' => 'metrics.unused_keys',
 
             ]),
 
@@ -115,18 +112,17 @@ class ListScreen extends Screen
                 */
 
 
-                TD::make('message','Сообщение')
+                TD::make('message', 'Сообщение')
                     ->alignLeft()
                     ->render(fn(IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(30))
                     ->width(300),
 
 
-
                 TD::make('key', 'Статус')
                     ->width(100)
                     ->render(function (IdeaRequest $ideaRequest) {
-                        if($ideaRequest->key()->exists()){
-                            return  Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
+                        if ($ideaRequest->key()->exists()) {
+                            return Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
                         }
                         return '-';
                     }),
@@ -152,6 +148,46 @@ class ListScreen extends Screen
                         ->icon('bs.pencil')),
             ]),
 
+
+            Layout::modal('addKeys', [
+                Layout::rows([
+                    Input::make('file')
+                        ->type('file')
+                        ->accept('*.txt')
+                        ->required()
+                        ->title('Выберите файл с ключами Laravel Idea')
+                        ->help('Пожалуйста, выберите файл формата .txt, содержащий ключи для Laravel Idea. Каждый ключ должен быть на новой строке.'),
+                ]),
+            ])->title('Загрузка ключей Laravel Idea'),
+
         ];
+    }
+
+    /**
+     * Add keys from a file to the database.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    public function addKeys(Request $request): void
+    {
+        // Validate the incoming request.
+        $request->validate([
+            'file' => 'required|file|mimes:txt',
+        ]);
+
+        // Read the keys from the uploaded file.
+        $keys = file($request->file('file')->getRealPath(), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        // Prepare keys for insertion into the database.
+        $keysForInsertion = collect($keys)
+            ->map(fn($key) => ['id' => Str::uuid(), 'key' => $key])
+            ->toArray();
+
+        // Insert keys into the database, ignoring duplicates.
+        DB::table('idea_keys')->insertOrIgnore($keysForInsertion);
+
+        // Display a success message.
+        Toast::info('Ключи успешно добавлены.');
     }
 }
