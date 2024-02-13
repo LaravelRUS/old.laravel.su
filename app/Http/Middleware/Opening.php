@@ -33,6 +33,10 @@ class Opening
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(config('site.quiz', false) === false) {
+            return $next($request);
+        }
+
         if ($request->user() !== null) {
             return $next($request);
         }
