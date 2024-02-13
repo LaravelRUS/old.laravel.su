@@ -19,10 +19,10 @@
         <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
             <div class="row gy-4 align-items-end">
                 <div class="col-md-6">
-                    <p class="mb-0 text-balance">
-                        Поздравляем! Ваш запрос был одобрен. Вы сможете использовать бесплатный ключ для Laravel IDEA и
-                        раскрыть свой потенциал в разработке. Теперь у вас есть возможность создавать великолепные
-                        проекты с помощью мощного инструмента.
+                    <p class="text-balance">
+                        Поздравляем! Ваш запрос одобрен.
+                        Активируйте ключ для Laravel IDEA и создавайте
+                        великолепные проекты.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -39,11 +39,7 @@
                                     title="Скопировать в буфер"/>
                             <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано"/>
                         </button>
-
                 </div>
-
-            </div>
-                <div class="col-12">
                     <div class="p-4 bg-body-secondary rounded text-break user-select-all">
                         {{$key->key}}
                     </div>
@@ -51,15 +47,12 @@
             </div>
         </div>
 
+        <p class="text-center opacity-50">Учтите, что ключ предназначен
+            <a href="https://www.jetbrains.com/store/redeem/?plugins=&product=PLARAVEL" rel="noreferrer"
+               target="_blank">для активации в JetBrains</a>
+           на территории RU,
+           BY, UA.</p>
     </x-container>
 
-    <x-call-to-action link="{{ route('docs') }}" text="Посмотреть документацию">
-        <x-slot:title>Мы лишь прикоснулись к поверхности.</x-slot>
-
-            <x-slot:description>
-                В Laravel есть все необходимое для создания веб-приложения, включая проверку электронной почты,
-                ограничение скорости и пользовательские консольные команды.
-                </x-slot>
-    </x-call-to-action>
 
 @endsection

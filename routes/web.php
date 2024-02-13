@@ -51,6 +51,11 @@ Route::get('open', [\App\Http\Controllers\OpenQuizController::class, 'index'])
 
 Route::any('goronich', [\App\Http\Controllers\OpenQuizController::class, 'goronich'])
     ->name('quiz.goronich');
+
+Route::get('/146q447w424c/auth/login', [AuthController::class, 'login'])
+    ->middleware('guest')
+    ->name('quiz.login');
+
 /*
 |--------------------------------------------------------------------------
 | Post/Feed Routes
@@ -299,7 +304,7 @@ Route::middleware('auth')
 
 Route::view('/login', 'auth.login')->middleware('guest')->name('login');
 Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('auth.login');
-Route::get('/auth/callback', [AuthController::class, 'callback'])->middleware('guest');
+Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback')->middleware('guest');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 /*
@@ -420,10 +425,3 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 */
 
 Route::feeds();
-
-Route::get('/info', function (Request $request) {
-
-    $request->user()->reward(\App\Achievements\Opening::class);
-
-    dd($request->user()->achievements()->get());
-});
