@@ -30,7 +30,7 @@
 
                             <span class="text-opacity-50">Слово:</span>
                             <h2 data-hangman-target="word" style="letter-spacing: 1.5rem;"
-                                class="text-primary"></h2>
+                                class="text-primary text-uppercase"></h2>
 
                             <p data-hangman-target="attempts"></p>
                         </div>
