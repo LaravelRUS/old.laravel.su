@@ -23,7 +23,7 @@
                 </div>
                 <!-- Card body START -->
                 <div class="px-5 mb-3 mb-xl-1">
-                    <div class="d-sm-flex align-items-center text-center text-sm-start">
+                    <div class="d-sm-flex align-items-start text-center text-sm-start">
                         <div>
                             <!-- Avatar -->
                             <div class="avatar avatar-xxl mt-n5 mb-3 mx-auto">
@@ -60,7 +60,7 @@
                         --}}
                     </div>
                 </div>
-                
+
                 <div class="px-md-5 px-1">
                     <div class="nav nav-underline  vertical-overflow">
                         <li class="nav-item me-2 ms-auto ms-md-0">

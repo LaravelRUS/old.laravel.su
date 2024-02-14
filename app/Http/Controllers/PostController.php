@@ -68,6 +68,19 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse
+     */
+    public function preview(Request $request)
+    {
+        return turbo_stream()->replace('post-preview', view('post.preview', [
+            'title'   => $request->input('title', ''),
+            'content' => $request->input('content', ''),
+        ]));
+    }
+
     public function edit(Request $request, Post $post)
     {
         $this->authorize('update', $post);

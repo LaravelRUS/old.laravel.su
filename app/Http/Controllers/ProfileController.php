@@ -122,8 +122,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
+        $user = $request->user();
+
+        $user->load('achievements');
+
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user'         => $request->user(),
         ]);
     }
 

@@ -38,11 +38,31 @@
 
 
                                 <div class="mb-4">
+                                    <label for="name" class="form-label">Достижение</label>
+                                    <select class="form-control" id="selected_achievement" name="selected_achievement">
+                                        <option value="">Выберите достижение</option>
+                                        @foreach($user->achievements as $achievement)
+                                            <option value="{{ $achievement->id }}"
+                                                    @if($user->selected_achievement === $achievement->id) selected @endif>
+                                                {{ $achievement->presenter()->name() }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    <x-error field="selected_achievement" class="invalid-feedback d-block"/>
+                                    <div class="form-text mt-2">
+                                        Позволит вам выделяться среди других пользователей и подчеркнет вашу
+                                        <a href="{{ route('achievements') }}">активность и значимость</a> в сообществе.
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
                                     <label for="about" class="form-label ">О себе</label>
                                     <textarea
                                         data-controller="textarea-autogrow"
                                         data-textarea-autogrow-resize-debounce-delay-value="500"
                                         rows="6"
+                                        maxlength="280"
                                         id="about"
                                         name="about"
                                         class="form-control">{{ old('about', $user->about) }}</textarea>
@@ -105,11 +125,8 @@
 
                                     </div>
 
-
                                     <div class="form-text">
-                                        {{--
-                                        тут будет какое-нибудь описание
-                                        --}}
+                                        Для уведомлений на мобильных телефонах установите сайт, как PWA, после этого вы будете получать уведомления вне сайта.
                                     </div>
                                 </div>
                                 <div class="d-flex d-md-inline-block">

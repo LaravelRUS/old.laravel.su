@@ -109,11 +109,11 @@ class Post extends Model implements Feedable
      * Get only posts with a custom status.
      *
      * @param Builder $query
-     * @param string  $postStatus
+     * @param StatusEnum|string  $postStatus
      *
      * @return Builder
      */
-    public function scopeStatus(Builder $query, string $postStatus): Builder
+    public function scopeStatus(Builder $query, string|StatusEnum $postStatus): Builder
     {
         return $query->where('status', $postStatus);
     }

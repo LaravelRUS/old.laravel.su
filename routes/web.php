@@ -90,8 +90,12 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->name('post.create');
 
         Route::post('/posts/create', [PostController::class, 'update'])
-            ->can('create', 'App\Models\Position')
+            ->can('create', 'App\Models\Post')
             ->name('post.store');
+
+        Route::post('/posts/preview', [PostController::class, 'preview'])
+            ->can('create', 'App\Models\Post')
+            ->name('post.preview');
 
         Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
             ->can('update', 'post')
@@ -428,3 +432,8 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 */
 
 Route::feeds();
+
+
+Route::get('/test', function (Request $request) {
+    return $request->user()->reward(\App\Achievements\Opening::class);
+})->middleware('auth');
