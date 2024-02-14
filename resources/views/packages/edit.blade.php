@@ -12,20 +12,6 @@
                           method="post"
                     class="my-5">
 
-                        {{--
-                        <textarea data-controller="textarea-autogrow"
-                                  data-textarea-autogrow-resize-debounce-delay-value="500"
-                                  id="name" name="pack[name]"
-                                  placeholder="Заголовок"
-                                  required
-                                  rows="1"
-                                  class="w-100 py-3 form-editor form-editor-title">{{ old('pack.name', $pack->name) }}</textarea>
-
-                        <x-text-editor name="pack[description]" id="description" placeholder="Описание"
-                                       :value="old('pack.description', $pack->description)"/>
-                                       --}}
-
-
                         <div class="row g-5">
 
                             <div class="col-12 col-lg-7">

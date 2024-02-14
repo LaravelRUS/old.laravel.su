@@ -76,8 +76,8 @@ class PostController extends Controller
     public function preview(Request $request)
     {
         return turbo_stream()->replace('post-preview', view('post.preview', [
-            'title'   => $request->input('title', ''),
-            'content' => $request->input('content', ''),
+            'title'   => $request->input('title', 'Заголовок'),
+            'content' => $request->input('content', 'Текст публикации'),
         ]));
     }
 

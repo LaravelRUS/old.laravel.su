@@ -49,7 +49,7 @@
                                           placeholder="Заголовок"
                                           required
                                           rows="1"
-                                          class="w-100 py-3 form-editor form-editor-title">{{ old('title', $post->title) }}</textarea>
+                                          class="w-100 py-3 form-editor form-editor-title text-balance">{{ old('title', $post->title) }}</textarea>
                                     <x-text-editor name="content" id="content" placeholder="Текст публикации"
                                                    :value="old('content', $post->content)"/>
                                 </div>
@@ -86,5 +86,6 @@
 
             </div>
         </div>
+    </div>
 
 @endsection

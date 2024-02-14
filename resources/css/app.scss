@@ -93,7 +93,7 @@ $utilities: (
 @import 'docs';
 @import 'ticket';
 @import 'transition';
-
+@import "markdown-editor";
 
 .text-balance {
     text-wrap: balance;
@@ -301,27 +301,6 @@ $utilities: (
 
 
 
-
-.form-editor {
-    overflow: hidden;
-    font-size: 1em;
-    line-height:1.5;
-    outline: none!important;
-    @extend .text-body-emphasis;
-    @extend .bg-body-tertiary;
-    @extend .rounded-0;
-    @extend .border-0;
-
-    &.form-editor-title {
-        @extend .fw-bold;
-        @extend .display-5;
-    }
-
-    &::placeholder {
-        @extend .text-body-emphasis;
-        opacity: 0.5;
-    }
-}
 .form-search {
     overflow: hidden;
     font-size: 1em;

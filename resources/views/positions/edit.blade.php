@@ -17,7 +17,7 @@
                                   placeholder="Название вакансии"
                                   required
                                   rows="1"
-                                  class="w-100 py-3 form-editor form-editor-title">{{ old('position.title', $position->title) }}</textarea>
+                                  class="w-100 py-3 form-editor form-editor-title text-balance">{{ old('position.title', $position->title) }}</textarea>
 
                         <x-text-editor name="position[description]" id="description"
                                        placeholder="Делайте вакансию максимально подробной! Чем больше информации, тем легче кандидату решиться и связаться с вами. Не стесняйтесь сообщать все важные детали."

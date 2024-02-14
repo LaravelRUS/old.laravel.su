@@ -18,7 +18,7 @@
                                   placeholder="Заголовок"
                                   required
                                   rows="1"
-                                  class="w-100 py-3 form-editor form-editor-title">{{ old('meet.name', $meet->name) }}</textarea>
+                                  class="w-100 py-3 form-editor form-editor-title text-balance">{{ old('meet.name', $meet->name) }}</textarea>
 
                         <div class="row row-cols-1 row-cols-md-2 mb-3">
                             <div class="col mb-3">

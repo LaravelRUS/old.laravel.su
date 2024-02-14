@@ -1,0 +1,86 @@
+
+.form-editor {
+    overflow: hidden;
+    outline: none!important;
+    @extend .text-body-emphasis;
+    @extend .bg-body-tertiary;
+    @extend .rounded-0;
+    @extend .border-0;
+
+    &.form-editor-title {
+        @extend .fw-bold;
+        @extend .display-5;
+    }
+
+    &::placeholder {
+        @extend .text-body-emphasis;
+        opacity: 0.5;
+    }
+}
+
+.clone-editor {
+    font-size: 1em!important;
+    line-height:1.5!important;
+    font-family: $font-family-sans-serif!important;
+
+    .important {
+        font-weight: $font-weight-base!important;
+    }
+
+    .bold {
+        font-weight: $font-weight-base!important;
+        text-decoration: underline;
+        //letter-spacing: -1em;
+    }
+    .blockquote {
+        margin: 0!important;
+        padding: 0!important;
+        font-size: 1rem;
+    }
+
+    .italic {
+        font-weight: $font-weight-base!important;
+        font-style: normal!important;
+        opacity: 0.75;
+    }
+}
+
+textarea.clone-editor{
+    padding: 0.80rem 0rem;
+    margin: 0;
+    font-size: inherit!important;
+    font-family: inherit!important;
+    line-height: inherit!important;
+    z-index: 1;
+    caret-color: var(--bs-emphasis-color)!important;
+    position: relative;
+    background-color: transparent !important;
+    width: 100% !important;
+    color: #fff0!important;
+}
+
+.wrapper-visualizer{
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0.8em 0em;
+    margin: 0px;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+code.clone-editor{
+    background-color: initial;
+    margin: 0;
+    padding: 0!important;
+    white-space: pre-wrap!important;
+    word-break: break-word !important;
+}

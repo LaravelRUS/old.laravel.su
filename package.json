@@ -18,6 +18,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "autosize": "^6.0.1",
         "stimulus-textarea-autogrow": "^4.1.0",
         "stimulus-vite-helpers": "^3.0.1",
         "textarea-editor": "^2.1.1",

@@ -1,5 +1,7 @@
 import {Controller}   from '@hotwired/stimulus';
 import TextareaEditor from 'textarea-editor';
+import Prism        from "prismjs";
+import autosize from 'autosize/dist/autosize.min';
 
 export default class extends Controller {
     static targets = [
@@ -7,7 +9,19 @@ export default class extends Controller {
     ];
 
     inputTargetConnected(input) {
+        autosize(input);
         this.editor = new TextareaEditor(input);
+
+        this.drawVisualizer(input.value);
+    }
+
+    drawVisualizer(text) {
+        document.getElementById('visualizer').textContent = text;
+        document.getElementById('visualizer').innerHTML = Prism.highlight(document.getElementById('visualizer').innerText, Prism.languages.markdown, "markdown");
+    }
+
+    onInput(event){
+        this.drawVisualizer(event.target.value);
     }
 
     format(e) {

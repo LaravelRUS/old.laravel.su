@@ -114,3 +114,4 @@ php artisan app:update-packages
 
 - Илья Чубаров: @agoalofalife
 - Александр Черняев: @tabuna
+

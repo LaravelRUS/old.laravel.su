@@ -5,7 +5,7 @@
         data-action="text-editor#format"
         data-text-editor-format-param="{{ is_array($format) ? json_encode($format) : $format }}"
     @endif
-    {{ $attributes->class('btn btn-icon') }}
+    class="btn btn-icon"
 >
     <x-icon :path="$icon"/>
 </button>

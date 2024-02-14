@@ -12,7 +12,7 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-3d392edb.css",
+    "file": "assets/app-e4b4068d.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
   },
@@ -24,7 +24,7 @@
     "css": [
       "assets/app-6b1fe032.css"
     ],
-    "file": "assets/app-95ffe266.js",
+    "file": "assets/app-8e80b060.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
