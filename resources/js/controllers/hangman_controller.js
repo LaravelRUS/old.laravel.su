@@ -159,7 +159,7 @@ export default class extends Controller {
                 this.audioLoseTarget.play();
 
                 let motivate = this.badList[Math.floor(Math.random() * this.badList.length)];
-                this.logTarget.innerHTML = "Игра окончена. Загаданное слово: «<span class='text-primary'>" + this.secretWord + "</span>» " + "<span class='d-block text-balance'>" + motivate + "</span>";
+                this.logTarget.innerHTML = "Игра окончена. Загаданное слово: «<span class='text-primary'>" + this.secretWord + "</span>» " + "<span class='d-block text-balance opacity-50'>🫣 " + motivate + "</span>";
                 console.log("Игра окончена. Загаданное слово: " + this.secretWord);
             } else {
                 console.log("Неверная буква. Осталось попыток: " + this.attemptsLeft);
