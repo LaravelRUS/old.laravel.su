@@ -294,6 +294,7 @@ main,.main,.post {
         @extend .text-wrap;
         @extend .text-break;
         overflow: hidden;
+        align-items: stretch;
 
         p {
             padding: 2rem 1.5rem;
@@ -312,6 +313,7 @@ main,.main,.post {
             text-align: center;
             font-weight: 600;
             font-size: 1.5em;
+            min-height: 5em;
         }
 
         @include media-breakpoint-down(md) {
@@ -323,11 +325,15 @@ main,.main,.post {
         }
 
         > p {
-            margin-bottom: 0;
+            //margin-bottom: 0;
+        }
+
+        p:first-child {
+            margin-top: auto;
         }
 
         p:last-child {
-            margin-bottom: 0;
+            margin-bottom: auto !important;
         }
     }
 }

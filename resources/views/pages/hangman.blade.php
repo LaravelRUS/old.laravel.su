@@ -59,9 +59,9 @@
                      </audio>
                  </div>
 
-                        <div class="position-relative text-center text-md-left mb-3 mb-md-0">
+                        <div class="position-relative text-center text-md-start mb-3 mb-md-0">
 
-                            <span class="text-opacity-50">Слово:</span>
+                            <span class="opacity-50">Слово:</span>
                             <h2 data-hangman-target="word" style="letter-spacing: 1.5rem;"
                                 class="text-primary text-uppercase"></h2>
 
@@ -78,7 +78,7 @@
 
                      <button type="button" data-action="hangman#startGame"
                              class="btn btn-link link-body-emphasis text-decoration-none icon-link icon-link-hover opacity-50 mt-4 mx-auto">
-                         Начать сначал
+                         Попробовать снова
                      </button>
                  </div>
              </x-slot:content>
