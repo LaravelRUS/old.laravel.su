@@ -3,9 +3,9 @@
 
 @section('content')
 
-    <x-header image="/img/ui/job.svg">
-        <x-slot:sup>какой-то текст </x-slot>
-        <x-slot:title>Достижения
+    <x-header image="/img/ui/achievements.svg">
+        <x-slot:sup>Полный список</x-slot>
+        <x-slot:title>Достижения в сообществе
             {{-- Работа не волк, в лес не убежит --}}</x-slot>
 
         <x-slot:description>
