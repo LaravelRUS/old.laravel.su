@@ -66,7 +66,6 @@ export default class extends Controller {
             "Клиент",
             "Сервер",
 
-
             "Айдишник",
             "Апишка",
             "Аутсорс",
@@ -112,17 +111,17 @@ export default class extends Controller {
         ];
 
         this.badList = [
-"Зачем вы пытаетесь? Ваша преданность WordPress выдает вас!",
-"Если не угадаете снова, Yii останется вашим повелителем.",
-"Не унывайте - угадайте слово и избавитесь от VSCode.",
-"Не угадаешь снова, и ты будешь писать на PHP в Notepad",
-"Хочешь писать JavaScript в блокноте или всё же попробуешь снова?",
-"Какого это загружать файлы через FTP в 2024 году? Попробуйте снова!",
-"Думаю вы с Битриксом на одной волне. Не стоит пытаться снова.",
-"Ну как так? А на вид ты такой умный. Попробуйте снова!",
-"Еще одна попытка - еще один шанс для тебя не выглядеть полным нубом. Не упусти его!",
-"Думаешь, угадывание слов - это сложно? Попробуй переписать всю свою кодовую базу на FORTRAN",
-"Твой код совершенен? Ты просто его не достаточно изучил. Попробуй снова!",
+            "Зачем вы пытаетесь? Ваша преданность WordPress выдает вас!",
+            "Если не угадаете снова, Yii останется вашим повелителем.",
+            "Не унывайте - угадайте слово и избавитесь от VSCode.",
+            "Не угадаешь снова, и ты будешь писать на PHP в Notepad",
+            "Хочешь писать JavaScript в блокноте или всё же попробуешь снова?",
+            "Какого это загружать файлы через FTP в 2024 году? Попробуйте снова!",
+            "Думаю вы с Битриксом на одной волне. Не стоит пытаться снова.",
+            "Ну как так? А на вид ты такой умный. Попробуйте снова!",
+            "Еще одна попытка - еще один шанс для тебя не выглядеть полным нубом. Не упусти его!",
+            "Думаешь, угадывание слов - это сложно? Попробуй переписать всю свою кодовую базу на FORTRAN",
+            "Твой код совершенен? Ты просто его не достаточно изучил. Попробуй снова!",
         ];
 
         this.secretWord = "";
@@ -169,7 +168,7 @@ export default class extends Controller {
                 this.hangmanInputTarget.readonly = true;
                 this.wordTarget.classList.add("animate-shake");
                 this.audioWrongTarget.play();
-                setTimeout(()=> {
+                setTimeout(() => {
                     this.hangmanInputTarget.readonly = false;
                     this.wordTarget.classList.remove("animate-shake");
                 }, 550)
@@ -219,7 +218,12 @@ export default class extends Controller {
     }
 
     guess(event) {
-        document.activeElement.blur();
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            document.activeElement.blur();
+        }
+
         event.preventDefault();
 
         if (this.gameOver) {
@@ -233,7 +237,7 @@ export default class extends Controller {
         this.logTarget.textContent = "";
         const letter = event.target.value.toLowerCase();
 
-        console.log("Введена буква: "+letter);
+        console.log("Введена буква: " + letter);
 
         if (!this.guesses.includes(letter)) {
             this.guesses.push(letter);
@@ -246,9 +250,8 @@ export default class extends Controller {
         this.hangmanInputTarget.value = "";
     }
 
-
-    updateImage(status){
-       this.imageTarget.querySelectorAll('img')
+    updateImage(status) {
+        this.imageTarget.querySelectorAll('img')
             .forEach((image) => {
                 if (image.dataset.status == status) {
                     image.classList.remove("d-none");
@@ -256,5 +259,12 @@ export default class extends Controller {
                     image.classList.add("d-none");
                 }
             });
+    }
+
+    clearInput(event) {
+        event.target.value = '';
+        this.hangmanInputTarget.value = '';
+
+        console.log(this.hangmanInputTarget.value, event.target.value)
     }
 }
