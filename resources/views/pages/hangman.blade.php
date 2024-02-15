@@ -13,12 +13,12 @@
         </div>
 
     <div class="container" data-hangman-target="image">
-        <img src="/img/hangman/pit-4.svg" data-status="4" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
-        <img src="/img/hangman/pit-3.svg" data-status="3" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
-        <img src="/img/hangman/pit-2.svg" data-status="2" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
-        <img src="/img/hangman/pit-1.svg" data-status="1" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
-        <img src="/img/hangman/pit-lose.svg" data-status="lose" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
-        <img src="/img/hangman/pit-win.svg" data-status="win" class="pe-none img-fluid d-block mx-auto d-none" style="max-height: 35vw;object-fit: cover;">
+        <img src="/img/hangman/pit-4.svg" data-status="4" class="pe-none img-fluid d-block mx-auto d-none hangman">
+        <img src="/img/hangman/pit-3.svg" data-status="3" class="pe-none img-fluid d-block mx-auto d-none hangman">
+        <img src="/img/hangman/pit-2.svg" data-status="2" class="pe-none img-fluid d-block mx-auto d-none hangman">
+        <img src="/img/hangman/pit-1.svg" data-status="1" class="pe-none img-fluid d-block mx-auto d-none hangman">
+        <img src="/img/hangman/pit-lose.svg" data-status="lose" class="pe-none img-fluid d-block mx-auto d-none hangman">
+        <img src="/img/hangman/pit-win.svg" data-status="win" class="pe-none img-fluid d-block mx-auto d-none hangman">
     </div>
 
         <x-header image="/img/sign.svg">

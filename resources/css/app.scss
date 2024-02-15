@@ -394,3 +394,11 @@ $utilities: (
         bottom: -5%;
     }
 }
+
+
+@include media-breakpoint-up(md) {
+    .hangman {
+        max-height: 35vw;
+        object-fit: cover;
+    }
+}
