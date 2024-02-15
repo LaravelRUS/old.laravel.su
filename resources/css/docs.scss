@@ -180,15 +180,7 @@ main,.main,.post {
         }
     }
 
-    h2 {
-        margin-bottom: 1em !important;
-
-        a:target {
-            &:before {
-                transform: rotate(200deg);
-            }
-        }
-
+    .base-header{
         a {
             padding-left: 1em;
             transition: all 340ms;
@@ -210,6 +202,21 @@ main,.main,.post {
         }
     }
 
+    h2 {
+        margin-bottom: 1em !important;
+
+        a:target {
+            &:before {
+                transform: rotate(200deg);
+            }
+        }
+
+        @extend .base-header;
+    }
+
+    h3,h4,h5,h6 {
+        @extend .base-header;
+    }
     /*
     p {
         margin: 0 0 1em;
@@ -218,6 +225,10 @@ main,.main,.post {
      */
 
     li {
+        padding-bottom: 1em;
+    }
+
+    li:last-child{
         padding-bottom: 0.33em;
     }
 
