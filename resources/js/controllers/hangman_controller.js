@@ -202,6 +202,7 @@ export default class extends Controller {
 
     startGame() {
         this.gameOver = false;
+        this.guesses = [];
         this.selectRandomWord();
         this.attemptsLeft = this.maxAttempts;
         this.updateImage(this.maxAttempts)
