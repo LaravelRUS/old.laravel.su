@@ -12,7 +12,7 @@
             <x-icon path="i.heart-fill" width="2rem" height="2rem"/>
         </div>
 
-    <div class="container" data-hangman-target="image">
+    <div class="container d-none d-md-block" data-hangman-target="image">
         <img src="/img/hangman/pit-4.svg" data-status="4" class="pe-none img-fluid d-block mx-auto d-none hangman">
         <img src="/img/hangman/pit-3.svg" data-status="3" class="pe-none img-fluid d-block mx-auto d-none hangman">
         <img src="/img/hangman/pit-2.svg" data-status="2" class="pe-none img-fluid d-block mx-auto d-none hangman">
@@ -31,6 +31,7 @@
             </x-slot>
 
              <x-slot:actions>
+                 <div class="d-none gap-3 d-md-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
                     <div class="">
                         <input type="text" class="form-control" placeholder="Введите букву"
                                data-hangman-target="hangmanInput" data-action="hangman#guess">
@@ -41,6 +42,7 @@
                         Начать сначала
                         <x-icon path="i.arrow-right" class="bi"/>
                     </button>
+                 </div>
              </x-slot>
 
              <x-slot:content>
@@ -57,7 +59,7 @@
                      </audio>
                  </div>
 
-                        <div class="position-relative">
+                        <div class="position-relative text-center text-md-left">
 
                             <span class="text-opacity-50">Слово:</span>
                             <h2 data-hangman-target="word" style="letter-spacing: 1.5rem;"
@@ -66,6 +68,19 @@
                             <p data-hangman-target="attempts" class="d-none"></p>
                             <p data-hangman-target="log" class="text-balance"></p>
                         </div>
+
+
+                 <div class="d-block d-md-none gap-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                     <div class="">
+                         <input type="text" class="form-control" placeholder="Введите букву"
+                                data-hangman-target="hangmanInput" data-action="hangman#guess">
+                     </div>
+
+                     <button type="button" data-action="hangman#startGame"
+                             class="btn btn-link link-body-emphasis text-decoration-none icon-link icon-link-hover opacity-50 mt-4 mx-auto">
+                         Начать сначал
+                     </button>
+                 </div>
              </x-slot:content>
         </x-header>
     </main>
