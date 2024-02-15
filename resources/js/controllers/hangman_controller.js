@@ -166,11 +166,11 @@ export default class extends Controller {
                 console.log("Игра окончена. Загаданное слово: " + this.secretWord);
             } else {
                 console.log("Неверная буква. Осталось попыток: " + this.attemptsLeft);
-                this.hangmanInputTarget.disabled = true;
+                this.hangmanInputTarget.readonly = true;
                 this.wordTarget.classList.add("animate-shake");
                 this.audioWrongTarget.play();
                 setTimeout(()=> {
-                    this.hangmanInputTarget.disabled = false;
+                    this.hangmanInputTarget.readonly = false;
                     this.wordTarget.classList.remove("animate-shake");
                 }, 550)
             }
@@ -219,6 +219,7 @@ export default class extends Controller {
     }
 
     guess(event) {
+        document.activeElement.blur();
         event.preventDefault();
 
         if (this.gameOver) {
