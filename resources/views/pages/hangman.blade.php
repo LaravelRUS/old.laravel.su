@@ -72,8 +72,11 @@
 
                  <div class="d-block d-md-none gap-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
                      <div class="">
-                         <input type="text" class="form-control" placeholder="Введите букву"
-                                data-hangman-target="hangmanInput" data-action="focus->hangman#clearInput hangman#guess">
+                         <input type="text" class="form-control"
+                                inputmode="text"
+                                placeholder="Введите букву"
+                                data-hangman-target="hangmanInput"
+                                data-action="focus->hangman#clearInput hangman#guess">
                      </div>
 
                      <button type="button" data-action="hangman#startGame"
