@@ -59,7 +59,7 @@
                      </audio>
                  </div>
 
-                        <div class="position-relative text-center text-md-left">
+                        <div class="position-relative text-center text-md-left mb-3 mb-md-0">
 
                             <span class="text-opacity-50">Слово:</span>
                             <h2 data-hangman-target="word" style="letter-spacing: 1.5rem;"
