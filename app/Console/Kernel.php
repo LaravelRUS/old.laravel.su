@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:checkout-latest-docs')->daily();
         $schedule->command('app:compare-document')->daily();
         $schedule->command('app:update-packages')->daily();
+        $schedule->command('telescope:prune')->daily();
 
         // вот не знаю, оо тут нужно или нет?
         $schedule->command('model:prune', [
