@@ -1,5 +1,5 @@
 @extends('html')
-@section('title', 'Колица')
+@section('title', 'На дне')
 
 @section('body')
 
@@ -87,4 +87,67 @@
              </x-slot:content>
         </x-header>
     </main>
+
+    <x-container>
+
+        <p class="small text-muted mb-2 pt-5">
+            Нет времени на игры сейчас?<br> Перейти к <a href="https://laravel.su" class="text-decoration-none">документации</a>.
+        </p>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-12 col-md-4">
+                <div class="d-flex align-items-center" data-controller="sound-toggle">
+                    <button
+                        class="btn btn-link text-primary text-decoration-none ps-0"
+                        data-sound-toggle-target="muteButton"
+                        data-action="click->sound-toggle#toggle">
+                        <x-icon path="bs.volume-mute-fill" width="2rem" height="2rem"/>
+                    </button>
+
+                    <button
+                        class="btn btn-link text-primary text-decoration-none ps-0"
+                        data-sound-toggle-target="unmuteButton"
+                        data-action="click->sound-toggle#toggle"
+                        id="unmuteButton">
+                        <x-icon path="bs.volume-up-fill" width="2rem" height="2rem"/>
+                    </button>
+
+                    <code class="opacity-75 h5 text-primary mb-0"><%%%%|==========></code>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-auto ms-auto">
+                <div class="navbar navbar-dark">
+                    <div class="nav flex-column">
+                        <form data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent
+                              class="btn-group" role="group" aria-label="Тема оформления" id="theme-checker-group">
+                            <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
+                                   name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
+                            <label class="btn btn-outline-secondary d-inline-flex align-items-center py-2"
+                                   for="theme-checker-auto">
+                                <x-icon path="i.theme-auto" class="my-1" width="1rem" height="1rem"/>
+                            </label>
+
+                            <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
+                                   name="theme-checker" id="theme-checker-light" autocomplete="off">
+                            <label class="btn btn-outline-secondary d-inline-flex align-items-center"
+                                   for="theme-checker-light">
+                                <x-icon path="i.theme-light" class="my-1" width="1rem" height="1rem"/>
+                            </label>
+
+                            <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
+                                   name="theme-checker" id="theme-checker-dark" autocomplete="off">
+                            <label class="btn btn-outline-secondary d-inline-flex align-items-center"
+                                   for="theme-checker-dark">
+                                <x-icon path="i.theme-dark" class="my-1" width="1rem" height="1rem"/>
+                            </label>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </x-container>
 @endsection
