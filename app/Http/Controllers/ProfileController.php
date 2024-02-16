@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Casts\PostTypeEnum;
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Orchid\Support\Facades\Toast;
 
 class ProfileController extends Controller
@@ -137,6 +139,12 @@ class ProfileController extends Controller
             [
                 'name'  => 'required|string',
                 'about' => 'sometimes|string',
+                'selected_achievement' =>[
+                    'nullable',
+                    Rule::exists('achievements','id')->where(function (Builder $query) use ($request) {
+                        return $query->where('user_id', $request->user()->id);
+                    }),
+                ]
             ],
             [],
             [
@@ -144,10 +152,14 @@ class ProfileController extends Controller
                 'about' => 'О себе',
             ]
         );
+        $selectedAchievementClass = $request->user()->achievements()
+            ->where('id',$request->input('selected_achievement'))
+            ->first()?->achievement_type;
 
         $request->user()->fill([
             'name'  => $request->input('name'),
             'about' => $request->input('about'),
+            'selected_achievement' => $selectedAchievementClass
         ])->save();
 
         Toast::success('Профиль был обновлён.');

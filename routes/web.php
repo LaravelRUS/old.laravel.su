@@ -41,6 +41,7 @@ Route::view('/ban', 'pages.ban')->name('ban');
 
 Route::get('/achievements', [ AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
+Route::view('/editor-guide','pages.editor-guide')->name('editor-guide');
 
 /*
 |--------------------------------------------------------------------------
