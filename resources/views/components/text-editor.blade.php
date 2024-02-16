@@ -40,6 +40,13 @@
                 <x-text-editor-button label="GitHub" :format="$github" icon="github"/>
                 <x-text-editor-button label="Ссылка превью" :format="$preview" icon="easel3-fill"/>
 
+                <a
+                    href="{{route('editor-guide')}}"
+                    class="btn btn-icon"
+                >
+                    <x-icon path="question-lg"/>
+                </a>
+
             {{--[!youtube link=""]
                 <button type="button" title="Загрузить файл" data-action="text-editor#chooseFiles" class="btn btn-icon">
                     <x-icon path="cloud-upload" class=""/>
