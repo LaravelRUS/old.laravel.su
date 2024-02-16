@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
                 CodeSnippet::class,
             ],
         ])->daily();
+
+        $schedule->command('sqlite:optimize')->daily();
     }
 
     /**

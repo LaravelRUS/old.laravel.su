@@ -7,6 +7,7 @@ use App\View\Components\Posts\LinkPreview;
 use App\View\Components\Posts\Youtube;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Don't kill the app if the database hasn't been created.
+        try {
+            DB::connection('sqlite')->statement('PRAGMA synchronous = normal;');
+        } catch (\Throwable $throwable) {
+            return;
+        }
+
         Paginator::useBootstrapFive();
 
         Blade::component('github', Github::class);
