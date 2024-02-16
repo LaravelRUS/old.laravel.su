@@ -3,6 +3,7 @@
 
 @section('body')
 
+    <div class="vh-100 d-flex flex-column">
     <main data-controller="hangman" class="position-relative">
 
         <div class="gap-4 d-flex position-absolute top-0 end-0 p-5 text-primary" data-hangman-target="hearts">
@@ -88,14 +89,10 @@
         </x-header>
     </main>
 
-    <x-container>
+    <x-container class="mt-auto">
 
-        <p class="small text-muted mb-2 pt-5">
-            Нет времени на игры сейчас?<br> Перейти к <a href="https://laravel.su" class="text-decoration-none">документации</a>.
-        </p>
-
-        <div class="row align-items-center mb-5">
-            <div class="col-12 col-md-4">
+        <div class="row align-items-center">
+            <div class="col-5">
                 <div class="d-flex align-items-center" data-controller="sound-toggle">
                     <button
                         class="btn btn-link text-primary text-decoration-none ps-0"
@@ -117,7 +114,7 @@
             </div>
 
 
-            <div class="col-12 col-md-auto ms-auto">
+            <div class="col-auto col-md-auto ms-auto">
                 <div class="navbar navbar-dark">
                     <div class="nav flex-column">
                         <form data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent
@@ -150,4 +147,6 @@
         </div>
 
     </x-container>
+
+    </div>
 @endsection
