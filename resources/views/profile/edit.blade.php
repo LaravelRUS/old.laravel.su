@@ -39,11 +39,14 @@
 
                                 <div class="mb-4">
                                     <label for="name" class="form-label">Достижение</label>
+
                                     <select class="form-control" id="selected_achievement" name="selected_achievement">
                                         <option value="">Выберите достижение</option>
+
                                         @foreach($user->achievements as $achievement)
+
                                             <option value="{{ $achievement->id }}"
-                                                    @if($user->selected_achievement === $achievement->id) selected @endif>
+                                                    @if($user->selected_achievement === $achievement->achievement_type) selected @endif>
                                                 {{ $achievement->presenter()->name() }}
                                             </option>
                                         @endforeach
