@@ -31,9 +31,9 @@ class AchievementsController extends Controller
     {
         $groups = collect([
             'Контент' => [
-                ContentCreator::class,
-                DiscussionInspirer::class,
-                DiscussionMagnet::class,
+                Writer::class,
+                RecognizedAuthor::class,
+                Educator::class,
             ],
 
             'Холивар' => [

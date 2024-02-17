@@ -169,7 +169,7 @@ public function attributes(): array
                         <h2>Дополнительные возможности</h2>
                         <p>Ссылка на ютуб:</p>
                         <pre class="rounded-3 mb-y"><code>[!youtube link="ссылка_на_видео_на_ютубе"]</code></pre>
-                        <x-youtube link="https://www.youtube.com/embed/L1h-nuy0Rnw?si=aaGSUUIvE-25KgWz"/>
+                        <x-posts.youtube link="https://www.youtube.com/embed/L1h-nuy0Rnw?si=aaGSUUIvE-25KgWz"/>
 
                         <p>Ссылка на гитхаб репозиторий:</p>
                         <pre class="rounded-3 mb-y">
@@ -179,7 +179,7 @@ public function attributes(): array
          description="Implement the JSON-RPC 2.0 server specification for Laravel"
 ] </code></pre>
 
-                        <x-github link="https://github.com/sajya"
+                        <x-posts.github link="https://github.com/sajya"
                                   title="Sajya - JSON RPC"
                                   description="Implement the JSON-RPC 2.0 server specification for Laravel"/>
 
