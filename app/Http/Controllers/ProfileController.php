@@ -77,7 +77,6 @@ class ProfileController extends Controller
      */
     public function packages(User $user)
     {
-
         $packages = $user->packages()
             ->orderBy('stars', 'desc')
             ->orderBy('created_at', 'desc')// нужно для курсора
@@ -129,29 +128,27 @@ class ProfileController extends Controller
         $user->load('achievements');
 
         return view('profile.edit', [
-            'user'         => $request->user(),
+            'user' => $request->user(),
         ]);
     }
 
     public function update(Request $request)
     {
-        $request->validate(
-            [
-                'name'                 => 'required|string',
-                'about'                => 'sometimes|string',
-                'selected_achievement' => [
-                    'nullable',
-                    Rule::exists('achievements', 'id')->where(function (Builder $query) use ($request) {
-                        return $query->where('user_id', $request->user()->id);
-                    }),
-                ],
-            ],
+        $request->validate([
+            'name'                 => 'required|string',
+            'about'                => 'sometimes|string',
+            'selected_achievement' => [
+                'nullable',
+                Rule::exists('achievements', 'id')->where(function (Builder $query) use ($request) {
+                    return $query->where('user_id', $request->user()->id);
+                }),
+            ]],
             [],
             [
                 'name'  => 'Имя',
                 'about' => 'О себе',
-            ]
-        );
+            ]);
+
         $selectedAchievementClass = $request->user()->achievements()
             ->where('id', $request->input('selected_achievement'))
             ->first()?->achievement_type;

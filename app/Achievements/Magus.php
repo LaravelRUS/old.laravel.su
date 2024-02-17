@@ -21,7 +21,7 @@ class Magus implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/морозко');
+        return asset('/img/achievements/morozko.svg');
     }
 
     /**

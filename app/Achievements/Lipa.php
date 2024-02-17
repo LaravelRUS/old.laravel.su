@@ -2,7 +2,7 @@
 
 namespace App\Achievements;
 
-class Educator implements Achievement
+class Lipa implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +11,7 @@ class Educator implements Achievement
      */
     public function name(): string
     {
-        return 'Легенда';
+        return 'Липак';
     }
 
     /**
@@ -21,7 +21,7 @@ class Educator implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/leaf.svg');
     }
 
     /**
@@ -31,6 +31,6 @@ class Educator implements Achievement
      */
     public function description(): string
     {
-        return 'Набрал более 50 лайков течении недели после публикации';
+        return 'Они были до нас';
     }
 }

@@ -31,6 +31,6 @@ class Troll implements Achievement
      */
     public function description(): string
     {
-        return '';
+        return 'Обладает магической способностью понимать язык животных и общаться с ними';
     }
 }

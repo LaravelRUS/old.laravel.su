@@ -11,7 +11,7 @@ class Writer implements Achievement
      */
     public function name(): string
     {
-        return 'Писатель';
+        return 'Баловень';
     }
 
     /**
@@ -31,6 +31,6 @@ class Writer implements Achievement
      */
     public function description(): string
     {
-        return 'автор поста набравшего более 10 лайков в течении недели после публикации';
+        return 'Набрал более 10 лайков в течении недели после публикации';
     }
 }

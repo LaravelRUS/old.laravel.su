@@ -7,10 +7,13 @@ use App\Achievements\DiscussionInspirer;
 use App\Achievements\DiscussionMagnet;
 use App\Achievements\DiscussionStar;
 use App\Achievements\Educator;
+use App\Achievements\Lipa;
+use App\Achievements\Magus;
 use App\Achievements\MasterOfDiscussions;
 use App\Achievements\Opening;
 use App\Achievements\PricelessCommentator;
 use App\Achievements\RecognizedAuthor;
+use App\Achievements\Troll;
 use App\Achievements\Writer;
 use App\Models\Achievement;
 use App\Models\User;
@@ -26,9 +29,33 @@ class AchievementsController extends Controller
      */
     public function index(Request $request)
     {
-        $achievements = [
-            Opening::class,
+        $groups = collect([
+            'Контент' => [
+                ContentCreator::class,
+                DiscussionInspirer::class,
+                DiscussionMagnet::class,
+            ],
 
+            'Холивар' => [
+                ContentCreator::class,
+                DiscussionInspirer::class,
+                DiscussionMagnet::class,
+            ],
+
+            'Дискуссии' => [
+                MasterOfDiscussions::class,
+                DiscussionStar::class,
+                PricelessCommentator::class,
+            ],
+
+            'Уникальные' => [
+                Magus::class,
+                Troll::class,
+                Opening::class,
+                Lipa::class,
+            ],
+
+            /*
             // за пост с лайками
             Writer::class,
             RecognizedAuthor::class,
@@ -44,20 +71,26 @@ class AchievementsController extends Controller
             MasterOfDiscussions::class,
             DiscussionStar::class,
 
-        ];
+            // Уникальные
+            Magus::class,
+            Troll::class,
+            */
+        ])->map(fn($achievements) => $this->setDataForAchievement($achievements, $request->user()));
 
         return view('achievements.index', [
-            'achievements' => $this->setDataForAchievement(collect($achievements), $request->user()),
+            'groups' => $groups,
         ]);
     }
 
-    protected function setDataForAchievement(Collection $achievements, User $user): Collection
+    protected function setDataForAchievement(array $achievements, User $user): Collection
     {
-        return $achievements
-            ->map(fn ($achievement) => app($achievement))
+        return collect($achievements)
+            ->map(fn($achievement) => app($achievement))
             ->map(function ($achievement) use ($user) {
 
-                $achievement->used = $user->achievements()->where('achievement_type', $achievement::class)->exists();
+                $achievement->used = $user->achievements()
+                    ->where('achievement_type', $achievement::class)
+                    ->exists();
 
                 $countAllUsers = User::count();
                 $countUses = Achievement::where('achievement_type', $achievement::class)->count();

@@ -11,7 +11,7 @@ class RecognizedAuthor implements Achievement
      */
     public function name(): string
     {
-        return 'Признанный автор';
+        return 'Самовар';
     }
 
     /**
@@ -31,6 +31,6 @@ class RecognizedAuthor implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста набравшего более 30 лайков в течении недели после публикации';
+        return 'Набрал более 30 лайков в течении недели после публикации';
     }
 }
