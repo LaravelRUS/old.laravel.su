@@ -31,7 +31,7 @@ class UpdateAchievementsForPostWithComments extends Command
     public function handle()
     {
         Post::with(['author'])
-            ->has('comments', '>=',10)
+            ->has('comments', '>=', 10)
             ->withCount('comments')
             ->where('created_at', '>=', now()->subWeek())
             ->chunk(100, function (Collection $posts) {

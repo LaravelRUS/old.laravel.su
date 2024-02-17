@@ -12,8 +12,8 @@
                class="link-body-emphasis text-decoration-none">
                 {{ $user->name }}
 
-                @if(!is_null($user->selected_achievement))
-                    <span class="text-primary small">( {{ $user->selected_achievement->name() }} )</span>
+                @if(!is_null($user->milestone))
+                    <span class="text-primary small">( {{ $user->milestone->name() }} )</span>
                 @endif
             </a>
         </h6>

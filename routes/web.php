@@ -39,9 +39,9 @@ Route::view('nav', 'pages.navigation')->name('nav');
 
 Route::view('/ban', 'pages.ban')->name('ban');
 
-Route::get('/achievements', [ AchievementsController::class, 'index'])->name('achievements');
+Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
-Route::view('/editor-guide','pages.editor-guide')->name('editor-guide');
+Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
 
 /*
 |--------------------------------------------------------------------------
@@ -434,7 +434,6 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 */
 
 Route::feeds();
-
 
 Route::get('/test', function (Request $request) {
     return $request->user()->reward(\App\Achievements\Opening::class);

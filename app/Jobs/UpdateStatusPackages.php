@@ -29,12 +29,12 @@ class UpdateStatusPackages implements ShouldQueue
     {
         $info = Http::get("https://packagist.org/packages/{$this->package->packagist_name}.json")
             ->collect('package')->only([
-                 'name',
-                 'description',
-                 'repository',
-                 'github_stars',
-                 'downloads',
-             ]);
+                'name',
+                'description',
+                'repository',
+                'github_stars',
+                'downloads',
+            ]);
 
         $this->package->update([
             'name'        => $info['name'],

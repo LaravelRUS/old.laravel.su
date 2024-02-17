@@ -34,8 +34,8 @@
                         <div class="ms-sm-4 mt-sm-3">
                             <h1 class="mb-0 h5 fw-bolder" title="Участник с {{ $user->created_at->isoFormat('MMMM YYYY', 'Do MMMM') }}">
                                 {{ $user->name }}
-                                @if(!is_null($user->selected_achievement))
-                                    <span class="text-primary small">( {{ $user->selected_achievement->name() }} )</span>
+                                @if(!is_null($user->milestone))
+                                    <span class="text-primary small">( {{ $user->milestone->name() }} )</span>
                                 @endif
                             </h1>
                             <small class="opacity-75 text-balance d-block">{{ $user->about ?? $user->github_bio }}</small>

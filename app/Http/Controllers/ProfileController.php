@@ -137,14 +137,14 @@ class ProfileController extends Controller
     {
         $request->validate(
             [
-                'name'  => 'required|string',
-                'about' => 'sometimes|string',
-                'selected_achievement' =>[
+                'name'                 => 'required|string',
+                'about'                => 'sometimes|string',
+                'selected_achievement' => [
                     'nullable',
-                    Rule::exists('achievements','id')->where(function (Builder $query) use ($request) {
+                    Rule::exists('achievements', 'id')->where(function (Builder $query) use ($request) {
                         return $query->where('user_id', $request->user()->id);
                     }),
-                ]
+                ],
             ],
             [],
             [
@@ -153,13 +153,13 @@ class ProfileController extends Controller
             ]
         );
         $selectedAchievementClass = $request->user()->achievements()
-            ->where('id',$request->input('selected_achievement'))
+            ->where('id', $request->input('selected_achievement'))
             ->first()?->achievement_type;
 
         $request->user()->fill([
-            'name'  => $request->input('name'),
-            'about' => $request->input('about'),
-            'selected_achievement' => $selectedAchievementClass
+            'name'                 => $request->input('name'),
+            'about'                => $request->input('about'),
+            'selected_achievement' => $selectedAchievementClass,
         ])->save();
 
         Toast::success('Профиль был обновлён.');

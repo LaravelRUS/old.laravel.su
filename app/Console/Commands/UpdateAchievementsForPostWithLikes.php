@@ -31,7 +31,7 @@ class UpdateAchievementsForPostWithLikes extends Command
     public function handle()
     {
         Post::with(['author'])
-            ->has('likers', '>=',10)
+            ->has('likers', '>=', 10)
             ->withCount('likers')
             ->where('created_at', '>=', now()->subWeek())
             ->chunk(100, function (Collection $posts) {

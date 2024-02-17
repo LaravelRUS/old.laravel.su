@@ -12,28 +12,27 @@ class Opening
      * @var string[]
      */
     protected $except = [
-        //common
+        // common
         'manifest',
         'cover',
 
         'quiz.open',
         'quiz.goronich',
 
-        //auth
+        // auth
         'quiz.login',
         'auth.callback',
         'auth.logout',
     ];
 
-
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(config('site.quiz', false) === false) {
+        if (config('site.quiz', false) === false) {
             return $next($request);
         }
 

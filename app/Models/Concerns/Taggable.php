@@ -226,13 +226,13 @@ trait Taggable
         $namespace = $this->getEntityClassName();
 
         $tag = self::createTagsModel()
-                ->whereNamespace($namespace)
-                ->where(function ($query) use ($name, $slug) {
-                    $query
-                        ->orWhere('name', '=', $name)
-                        ->orWhere('slug', '=', $slug);
-                })
-                ->first();
+            ->whereNamespace($namespace)
+            ->where(function ($query) use ($name, $slug) {
+                $query
+                    ->orWhere('name', '=', $name)
+                    ->orWhere('slug', '=', $slug);
+            })
+            ->first();
 
         if ($tag && $this->tags()->get()->contains($tag->id)) {
             $tag->update(['count' => $tag->count - 1]);

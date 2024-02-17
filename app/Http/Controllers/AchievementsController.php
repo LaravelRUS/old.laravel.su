@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Achievements\ContentCreator;
 use App\Achievements\DiscussionInspirer;
 use App\Achievements\DiscussionMagnet;
@@ -30,7 +29,7 @@ class AchievementsController extends Controller
         $achievements = [
             Opening::class,
 
-            //за пост с лайками
+            // за пост с лайками
             Writer::class,
             RecognizedAuthor::class,
             Educator::class,
@@ -43,21 +42,20 @@ class AchievementsController extends Controller
             // За количество комментариев в течение недели
             PricelessCommentator::class,
             MasterOfDiscussions::class,
-            DiscussionStar::class
+            DiscussionStar::class,
 
         ];
+
         return view('achievements.index', [
-            'achievements' => $this->setDataForAchievement( collect($achievements), $request->user() ),
+            'achievements' => $this->setDataForAchievement(collect($achievements), $request->user()),
         ]);
     }
 
     protected function setDataForAchievement(Collection $achievements, User $user): Collection
     {
         return $achievements
-            ->map(fn($achievement) => app($achievement))
-            ->map(function ($achievement) use ($user){
-
-
+            ->map(fn ($achievement) => app($achievement))
+            ->map(function ($achievement) use ($user) {
 
                 $achievement->used = $user->achievements()->where('achievement_type', $achievement::class)->exists();
 
@@ -69,5 +67,4 @@ class AchievementsController extends Controller
                 return $achievement;
             });
     }
-
 }

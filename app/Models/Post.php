@@ -108,8 +108,8 @@ class Post extends Model implements Feedable
     /**
      * Get only posts with a custom status.
      *
-     * @param Builder $query
-     * @param StatusEnum|string  $postStatus
+     * @param Builder           $query
+     * @param StatusEnum|string $postStatus
      *
      * @return Builder
      */

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Orchid\Presenters\UserPresenter;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,7 +38,7 @@ class User extends Authenticatable
         'about',
         'github_name',
         'github_bio',
-        'selected_achievement'
+        'selected_achievement',
     ];
 
     /**
@@ -177,7 +177,6 @@ class User extends Authenticatable
         return $this->hasMany(Achievement::class);
     }
 
-
     /**
      * Reward the user with an achievement.
      *
@@ -198,19 +197,22 @@ class User extends Authenticatable
         ]);
     }
 
-
-    protected function selectedAchievement(): Attribute
+    /**
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function milestone(): Attribute
     {
         return Attribute::make(
-            get: function ($value) {
-                if ($value !== null) {
-                    try {
-                        return app($value);
-                    } catch (\Error $e) {
-                        return null;
-                    }
+            get: function () {
+                if ($this->selected_achievement === null) {
+                    return null;
                 }
-                return null;
+
+                try {
+                    return app($this->selected_achievement);
+                } catch (\Error) {
+                    return null;
+                }
             },
         );
     }

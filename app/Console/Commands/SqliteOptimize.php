@@ -27,7 +27,8 @@ class SqliteOptimize extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Illuminate\Database\DatabaseManager $manager
+     * @param \Illuminate\Database\DatabaseManager $manager
+     *
      * @return void
      */
     public function handle(DatabaseManager $manager)
@@ -43,7 +44,8 @@ class SqliteOptimize extends Command
      * Runs the VACUUM command on the SQLite database.
      * This command rebuilds the database file, repacking it into minimal space and defragmenting the storage.
      *
-     * @param  \Illuminate\Database\ConnectionInterface  $connection
+     * @param \Illuminate\Database\ConnectionInterface $connection
+     *
      * @return bool
      */
     protected function vacuum(ConnectionInterface $connection)
@@ -55,7 +57,8 @@ class SqliteOptimize extends Command
      * Runs the PRAGMA optimize command on the SQLite database.
      * This command optimizes the database by running integrity checks and reindexing tables.
      *
-     * @param  \Illuminate\Database\ConnectionInterface  $connection
+     * @param \Illuminate\Database\ConnectionInterface $connection
+     *
      * @return bool
      */
     protected function optimize(ConnectionInterface $connection)
@@ -66,8 +69,9 @@ class SqliteOptimize extends Command
     /**
      * Returns the Database Connection
      *
-     * @param  \Illuminate\Database\DatabaseManager $manager
-     * @param  string $connection
+     * @param \Illuminate\Database\DatabaseManager $manager
+     * @param string                               $connection
+     *
      * @return \Illuminate\Database\Connection
      */
     protected function getDatabase(DatabaseManager $manager, string $connection)
@@ -75,7 +79,7 @@ class SqliteOptimize extends Command
         $db = $manager->connection($connection);
 
         // We will throw an exception if the database is not SQLite
-        if(!$db instanceof SQLiteConnection) {
+        if (! $db instanceof SQLiteConnection) {
             throw new LogicException("The '$connection' connection must be sqlite, [{$db->getDriverName()}] given.");
         }
 
