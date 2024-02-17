@@ -18,41 +18,55 @@
                 <div class="col-xxl-8 mx-auto">
                     <main data-controller="prism">
 
-
                         <h2>Основы Markdown</h2>
-                        <p>Ниже приведены некоторые примеры часто используемого синтаксиса Markdown. Если вы хотите
-                            погрузиться глубже, ознакомьтесь с
-                            <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"
-                               target="_blank"> этой шпаргалкой</a>.
-                        </p>
+                        <p>Markdown - это простой и удобный язык разметки, который позволяет быстро и легко
+                           форматировать текст. В этом разделе мы представляем примеры наиболее часто используемого
+                           синтаксиса Markdown в нашем редакторе. Эти примеры помогут вам быстро освоиться с основными
+                           инструментами форматирования и улучшат ваш опыт редактирования текста.</p>
 
-                        <h3>Жирный и курсив</h3>
+                        <p>В нашем редакторе также есть некоторые особенности, которые делают процесс редактирования еще
+                           более удобным и эффективным. Мы также предоставим примеры этих особенностей, чтобы вы могли
+                           использовать их в своей работе с Markdown.</p>
 
-                        <p>
-                            <em>Курсив: </em>
-                        </p>
-                        <pre class="rounded-3 mt-y"><code>*звёздочки*</code></pre>
-                        <p>
-                            или
-                        </p>
-                        <pre class="rounded-3 mb-y"><code>_подчёркивание_</code></pre>
-                        <p>
-                            <strong>Жирный шрифт:</strong>
-                        </p>
-                        <pre class="rounded-3 mt-y"><code>**две звёздочки**</code></pre>
-                        <p>
-                            или
-                        </p>
-                        <pre class="rounded-3 mb-y"><code>__два подчёркивания__</code></pre>
+                        <h3>Заголовки</h3>
+                        <p>Заголовки позволяют выделить важные части вашего сообщения. Используйте следующий синтаксис для добавления заголовков:</p>
+                        <pre class="rounded-3 mb-y"><code language="markdown" class="language-markdown">
+# Одна '#' для h1 заголовка
+## Две '#' для h2 заголовка
+...
+###### Шесть '#' для h6 заголовка
+                            </code></pre>
 
 
-                        <a name="links"></a>
-                        <h3> Ссылки</h3>
-                        <p><a href="google.com">Ссылка</a>:</p>
-                        <pre class="rounded-3 mb-y"><code>[Ссылка](google.com)</code></pre>
-                        <p><a href="#links">Якорные ссылки</a> (для таких вещей, как оглавление):</p>
+                        <h3>Выделение текста</h3>
+
+                        <p>Выделение текста может быть полезным для подчеркивания важных моментов или создания акцентов в вашем сообщении. Вот несколько примеров использования выделения текста:</p>
+
+                        <ul>
+                            <li><em>Курсив:</em> используйте <code>*звёздочки*</code> или <code>_подчёркивание_</code> для выделения текста курсивом.</li>
+                            <li><strong>Жирный шрифт:</strong> используйте <code>**две звёздочки**</code> или <code>__два подчёркивания__</code> для выделения текста жирным.</li>
+                        </ul>
+
+
+                        <a name="links" id="links"></a>
+                        <h3>Гиперссылки</h3>
+
+                        <p>Гиперссылки позволяют создавать переходы к другим веб-ресурсам или страницам. Используйте следующий синтаксис для создания гиперссылок:</p>
+
+                        <ul>
+                            <li><a href="https://laravel.su">Ссылка</a>: Это пример гиперссылки, которую вы можете создать.</li>
+                        </ul>
+                        <pre class="rounded-3 mb-y"><code>[Ссылка](https://laravel.su)</code></pre>
+
+
+                        <p>Якорные ссылки позволяют создавать ссылки внутри документа, которые переносят пользователя к
+                           определенной части страницы. Используйте следующий синтаксис для создания якорных ссылок:</p>
+
+                        <ul>
+                            <li><a href="#links">Перейти к разделу "Гиперссылки"</a>: Пример якорной ссылки, которая перенаправляет к разделу на этой странице.</li>
+                        </ul>
 @php
-$livewireViewCode = <<<'HTML'
+$viewLinkCode = <<<'HTML'
 ## Оглавление
     * [Глава 1](#chapter-1)
     * [Глава 2](#chapter-2)
@@ -62,30 +76,24 @@ $livewireViewCode = <<<'HTML'
 HTML;
 @endphp
                         <pre class="rounded-3 mb-y language-markup"><code language="html" class="language-html">
-{{ \Illuminate\Support\Str::of($livewireViewCode)->trim() }}
+{{ \Illuminate\Support\Str::of($viewLinkCode)->trim() }}
                         </code></pre>
 
 
 
 
 
-                        <h3>Встроенные изображения</h3>
-                        <p>Пример вставки изображения:</p>
+                        <h3>Изображения</h3>
+                        <p>Для вставки изображения используйте следующий синтаксис:</p>
                         <pre class="rounded-3 mb-y"><code>![Инструменты ремесла](https://laravel.su/img/ivan.svg)</code></pre>
-                        <p>Результат:</p>
+
+                        <p>Далее демонстрируется, как выглядит изображение:</p>
+
                         <picture alt="Инструменты ремесла">
                             <img src="{{asset('img/ivan.svg')}}" alt="Инструменты ремесла">
                         </picture>
-                        Обратите внимание, что описание отображается под изображением.
 
-                        <h3>Заголовки</h3>
-                        <p>Добавьте заголовок к своему сообщению, используя следующий синтаксис:</p>
-                        <pre class="rounded-3 mb-y"><code language="markdown" class="language-markdown">
-# Одна '#' для h1 заголовка
-## Две '#' для h2 заголовка
-...
-###### Шесть '#' для h6 заголовка
-                            </code></pre>
+                        <p>Обратите внимание, что описание отображается под изображением.</p>
 
                         <h3>Списки</h3>
                         <p> Для обозначения пункта ненумерованного списка используйте символы:
@@ -127,31 +135,23 @@ HTML;
                         <p>
                             Поддерживается подсветка для php, js, html, markdown и д.р. Пример вставки php кода:
                         </p>
-                        <pre class="rounded-3 mb-y"><code language="markdown" class="language-markdown">
-```php
-
-    public function attributes(): array
-    {
-        return [
-            'email' => 'email address',
-        ];
-    }
-
+                        <pre class="rounded-3 mb-y"><code language="markdown" class="language-markdown">```php
+public function attributes(): array
+{
+    return [
+        'email' => 'email address',
+    ];
+}
 ```
-
 </code></pre>
 
                         <p>Результат: </p>
-                        <pre class="rounded-3 mb-y"><code language="php" class="language-php">
-
-    public function attributes(): array
-    {
-        return [
-            'email' => 'email address',
-        ];
-    }
-
-
+                        <pre class="rounded-3 mb-y"><code language="php" class="language-php">public function attributes(): array
+{
+    return [
+        'email' => 'email address',
+    ];
+}
 </code></pre>
 
 
@@ -178,7 +178,10 @@ HTML;
          title="Sajya - JSON RPC"
          description="Implement the JSON-RPC 2.0 server specification for Laravel"
 ] </code></pre>
-                        <x-github link="https://github.com/Assisted-Mindfulness/naive-bayes" title="Naive Bayes" description="Naive Bayes works by looking at a training set and making a guess based on that set."/>
+
+                        <x-github link="https://github.com/sajya"
+                                  title="Sajya - JSON RPC"
+                                  description="Implement the JSON-RPC 2.0 server specification for Laravel"/>
 
                         <h3>Предупреждение и заметка</h3>
                         <p>
@@ -196,13 +199,10 @@ HTML;
                         <p>Используйте блок <code>NOTE</code> чтобы разместить заметку или дополнительную информацию:</p>
                         <pre class="rounded-3 mb-y"><code>
 > [!NOTE]
-> [Шпаргалка по Markdown](github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
+> Блоковые кавычки очень удобны для имитации текста ответа.
                             </code></pre>
                         <p>Результат</p>
-                        <blockquote class="docs-blockquote-tip"><p><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">
-
-                                    Вот еще раз шпаргалка по Markdown
-                                </a></p></blockquote>
+                        <blockquote class="docs-blockquote-tip"><p>Блоковые кавычки очень удобны для имитации текста ответа.</p></blockquote>
 
 
                     </main>
