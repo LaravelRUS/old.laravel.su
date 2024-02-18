@@ -27,8 +27,8 @@
 
                                 <div class="mb-4">
                                     <label for="name" class="form-label">Имя</label>
-                                    <input class="form-control" type="text" value="{{ old('name', $user->name) }}"
-                                           id="name" name="name">
+                                    <input class="form-control" placeholder="Как вас зовут?" required type="text" value="{{ old('name', $user->name) }}"
+                                          maxlength="100" id="name" name="name">
                                     <x-error field="name" class="invalid-feedback d-block"/>
                                     <div class="form-text mt-2">Использование настоящего имени помогает установить личное
                                                            взаимодействие и создать доверительную обстановку в
@@ -69,6 +69,7 @@
                                         maxlength="280"
                                         id="about"
                                         name="about"
+                                        placeholder="Над чем вы работаете?"
                                         class="form-control">{{ old('about', $user->about) }}</textarea>
                                     <x-error field="about" class="invalid-feedback d-block mt-3"/>
 

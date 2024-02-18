@@ -137,7 +137,7 @@
 
             <div class="col-md-8 mb-4">
                 <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4  h-100">
-                    <img src="/img/ui/book.svg" class="position-absolute w-50 bottom-0 end-0 z-n1">
+                    <img src="/img/ui/book.svg" class="position-absolute w-50 bottom-0 end-0 z-n1 ps-xl-4">
                     <div class="row">
                         <div class="col-sm-7">
                             <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений. <small class="small d-block">С примерами на Laravel.</small></h3>

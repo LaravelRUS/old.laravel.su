@@ -31,6 +31,8 @@ Route::view('/why-laravel', 'pages.why-laravel')->name('why-laravel');
 Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/contributors', 'pages.contributors')->name('contributors');
 Route::view('/rules', 'pages.rules')->name('rules');
+Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
+
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/challenges', 'pages.challenges')->name('challenges');

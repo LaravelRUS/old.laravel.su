@@ -13,7 +13,7 @@
                 {{ $user->name }}
 
                 @if(!is_null($user->milestone))
-                    <span class="text-primary small">( {{ $user->milestone->name() }} )</span>
+                    <span class="text-primary small">({{ $user->milestone->name() }})</span>
                 @endif
             </a>
         </h6>

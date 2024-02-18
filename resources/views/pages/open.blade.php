@@ -221,7 +221,7 @@ return response()->json([
 <x-container>
 
     <p class="small text-muted mb-2 pt-5">
-        Нет времени на игры сейчас?<br> Перейти к <a href="https://old.laravel.su" class="text-decoration-none">документации</a>.
+        Нет времени на игры сейчас?<br> Перейти к <a href="https://old.laravel.su" target="_blank" rel="nofollow" class="text-decoration-none">документации</a>.
     </p>
 
     <div class="d-flex align-items-center mb-5">

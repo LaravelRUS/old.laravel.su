@@ -5,7 +5,7 @@
         <div class="bg-body-tertiary rounded p-md-5">
 
             @forelse($user->achievements as $achievement)
-                <div class="d-flex text-body-secondary gap-4 mb-4">
+                <div class="d-flex text-body-secondary gap-4  {{ $loop->last ? '' : 'mb-4' }}">
                     <div class="col-lg-3">
                         <img src="{{ $achievement->presenter()->image() }}" class="flex-shrink-0 rounded img-fluid">
                     </div>

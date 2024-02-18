@@ -119,6 +119,14 @@
                                       placeholder="Мы будем рады узнать о ваших целях и мотивации для получения бесплатного ключа."
                                       rows="4"></textarea>
                         </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" name="accepted" value="1" required class="form-check-input" id="accepted-private-policy">
+                            <label class="form-check-label" for="accepted-private-policy">
+                                Я согласен на <a href="{{ route('privacy-policy') }}">обработку персональных данных</a>.
+                            </label>
+                        </div>
+
                         <div class="d-block d-sm-inline-block">
                             <button type="submit" class="w-100 btn btn-primary">Отправить заявку</button>
                         </div>

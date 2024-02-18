@@ -30,6 +30,7 @@ class IdeaController extends Controller
             'city'       => 'required|string|min:3',
             'email'      => 'required|email',
             'message'    => 'nullable|string',
+            'accepted'   => 'accepted',
         ]);
 
         $ideaRequest = new IdeaRequest();
@@ -38,9 +39,10 @@ class IdeaController extends Controller
             'user_id' => $request->user()->id,
         ])->save();
 
-        Toast::success('Ваш запрос принят и будет проверен модератором. При одобрении вы получите уведомление.')->disableAutoHide();
+        Toast::success('Ваш запрос принят и будет проверен модератором. При одобрении вы получите уведомление.')
+            ->disableAutoHide();
 
-        return redirect()->route('idea.index');
+        return redirect()->route('home');
     }
 
     /**

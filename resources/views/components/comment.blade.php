@@ -27,7 +27,7 @@
                     <div class="d-flex justify-content-start">
                         <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
                         @if(!is_null($comment->author->milestone))
-                            <span class="text-primary small">( {{ $comment->author->milestone->name() }} )</span>
+                            <span class="text-primary small">({{ $comment->author->milestone->name() }})</span>
                         @endif
 
 

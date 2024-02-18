@@ -135,8 +135,8 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name'                 => 'required|string',
-            'about'                => 'sometimes|string',
+            'name'                 => 'required|string|max:100',
+            'about'                => 'sometimes|string|max:280',
             'selected_achievement' => [
                 'nullable',
                 Rule::exists('achievements', 'id')->where(function (Builder $query) use ($request) {
