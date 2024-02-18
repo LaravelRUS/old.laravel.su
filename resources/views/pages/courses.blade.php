@@ -9,11 +9,6 @@
 
         <x-slot:description>
             Тут собраны учебные материалы, которые помогут вам освоить фреймворк и разработку в целом.
-
-            {{--
-            Независимо от того, являетесь ли вы новичком или уже используете Laravel, тут собраны учебные материалы,
-            которые помогут вам освоить фреймворк и разработку в целом.
-             --}}
         </x-slot>
     </x-header>
 
@@ -25,13 +20,13 @@
         <div class="row g-4">
             <div class="col-md-4 mb-md-4">
                 <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
-                    <h3 class="mb-3 fw-bold">Закладки</h3>
+                    <h3 class="mb-3 fw-bold">Документация</h3>
                     <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
-                        Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
+                        Это ключ к полному пониманию, даже если применение еще не ясно.
                     </p>
                     <a href="{{ route('courses') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                        Посмотреть курс
+                        Начать читать
                         <x-icon path="i.arrow-right" class="bi" />
                     </a>
                 </div>
@@ -82,7 +77,7 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden h-100">
                     <div class="h-100 position-absolute w-50 bottom-0 end-0 z-n1 d-flex align-items-end  justify-content-end justify-content-lg-center me-3 me-lg-0" >
-                        <img src="/img/ui/livewire_cource.svg" class="package-cover ">
+                        <img src="/img/ui/livewire_cource.svg" class="package-cover">
                     </div>
                     <div class="h-100 d-flex flex-column">
                         <h3 class="mb-3 fw-bold">Livewire</h3>
@@ -141,7 +136,7 @@
                     <div class="row">
                         <div class="col-sm-7">
                             <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений. <small class="small d-block">С примерами на Laravel.</small></h3>
-                            <p class="mb-4 fw-light mb-md-auto h5 lead">
+                            <p class="mb-4 fw-light mb-md-auto h5 lead text-balance">
                                 Проекты бывают разные. К некоторым хорошо придутся определённые шаблоны и практики. Для
                                 других они будут излишни.
                             </p>
@@ -158,13 +153,16 @@
             </div>
             <div class="col-md-4 mb-md-4">
                 <div class="bg-secondary rounded bg-opacity-10 p-4 p-xl-5 position-relative overflow-hidden mb-4 h-100">
-                    <h3 class="mb-3 fw-bold">Закладки</h3>
-                    <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
-                        Научись использовать закладки не только в подъёздах и палисадниках! Всё о закладках в нашем курсе!
+
+                    <img src="/img/ui/pastbin.svg" alt="pastbin" class="w-auto d-block mb-4" height="100">
+
+                    <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3 text-balance">
+                        Наш сервис делает обмен кодом максимально легким и быстрым.
                     </p>
-                    <a href="{{ route('courses') }}"
+
+                    <a href="{{ route('pastebin') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                        Посмотреть курс
+                        Поделиться
                         <x-icon path="i.arrow-right" class="bi" />
                     </a>
                 </div>

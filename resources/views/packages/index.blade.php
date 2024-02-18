@@ -129,7 +129,7 @@ return response()->json([
                                         {{ $type->text() }}
                                     </a>
                                     <p class="small opacity-50 fw-normal m-0">
-                                        {{ \App\Models\Package::where('type', $type)->count() }} пакетов
+                                        {{ \App\Models\Package::approved()->where('type', $type)->count() }} пакетов
                                     </p>
                                 </div>
                             </div>
