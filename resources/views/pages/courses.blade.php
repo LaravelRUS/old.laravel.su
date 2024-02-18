@@ -331,12 +331,10 @@
 
 
     <x-container>
-
         <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
             <div class="col-lg-8 me-auto">
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">В подборках</span>
-                <!-- Title -->
-                <h2 class="display-5 fw-semibold mb-0">Персональные русскоязычные курсы</h2>
+                <h2 class="display-5 fw-semibold mb-0">Персональные русскоязычные серии</h2>
             </div>
         </div>
 
