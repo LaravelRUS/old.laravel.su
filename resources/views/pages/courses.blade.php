@@ -24,7 +24,7 @@
                     <p class="mb-4 mb-md-auto fw-light line-clamp line-clamp-3">
                         Это ключ к полному пониманию, даже если применение еще не ясно.
                     </p>
-                    <a href="{{ route('courses') }}"
+                    <a href="{{ route('docs') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                         Начать читать
                         <x-icon path="i.arrow-right" class="bi" />
@@ -349,7 +349,7 @@
                 <div class="p-4 p-xl-5 my-xl-5">
                     <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/deploy.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5BNlRCGZqVFK1IMUampm3Q_"
                                    class="link-body-emphasis stretched-link text-decoration-none text-balance">
@@ -361,7 +361,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/laravel.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5CZf4X5ppNJTPsaGwSlBXLX"
                                    class="link-body-emphasis stretched-link text-decoration-none text-balance">
@@ -373,7 +373,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/helpers.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5DMQeuzyQwZW8QtslxsUxFy"
                                    class="link-body-emphasis stretched-link text-decoration-none">
@@ -386,7 +386,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/tailwind.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66hKbEvIVAZnp1h4CE-4Mtk4"
                                    class="link-body-emphasis stretched-link text-decoration-none">
@@ -415,7 +415,7 @@
                 <div class="p-4 p-xl-5 my-xl-5">
                     <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/git.svg" height="80">
                                     <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iUm84o7nadL-oqINzBLk5g"
                                        class="link-body-emphasis stretched-link text-decoration-none text-balance">
@@ -427,7 +427,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/php.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iZSicLNXhE4bxUYaKhIc-L"
                                    class="link-body-emphasis stretched-link text-decoration-none text-balance">
@@ -439,7 +439,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/laravel.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iP0fJPHhkLXa3k7CMef9ak"
                                    class="link-body-emphasis stretched-link text-decoration-none">
@@ -453,7 +453,7 @@
                         </div>
 
                         <div class="col">
-                            <div class="d-grid gap-4 d-md-flex justify-content-md-start position-relative">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/template.svg" height="80">
                                 <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66hKbEvIVAZnp1h4CE-4Mtk4"
                                    class="link-body-emphasis stretched-link text-decoration-none">
