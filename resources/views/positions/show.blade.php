@@ -22,10 +22,13 @@
                                 </div>
                                 <div class="small opacity-50">{{$position->schedule->text()}}</div>
                                 <div class="small opacity-50">{{$position->organization}}</div>
-                                <span class="opacity-50 d-inline-flex align-items-center mb-3">
-                                    <x-icon path="i.geo" class="me-2"/>
-                                    {{$position->location}}
-                                  </span>
+
+                                @if($position->location)
+                                    <span class="opacity-50 d-inline-flex align-items-center mb-3">
+                                        <x-icon path="i.geo" class="me-2"/>
+                                        {{$position->location}}
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

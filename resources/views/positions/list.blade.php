@@ -32,10 +32,13 @@
                 </div>
 
                 <div class="d-flex flex-column gap-2 col-md-3 mt-3 mt-md-0">
-                <span class="opacity-50 d-flex align-items-center">
-                    <x-icon path="i.geo" class="me-2"/>
-                    {{$position->location}}
-                </span>
+
+                    @if($position->location)
+                        <span class="opacity-50 d-flex align-items-center">
+                            <x-icon path="i.geo" class="me-2"/>
+                            {{$position->location}}
+                        </span>
+                    @endif
                     <span class="d-flex fw-medium">
                         {{ $position->presenter()->salary() }}
                     </span>

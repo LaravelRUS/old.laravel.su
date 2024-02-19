@@ -13,12 +13,14 @@
                                class="h5 link-body-emphasis stretched-link text-decoration-none">{{$position->title}}</a>
                         </div>
 
+                    @if($position->location)
                         <div class="d-flex flex-column gap-2 mt-3 small">
                             <span class="opacity-50 d-flex align-items-center">
                                 <x-icon path="i.geo" class="me-2"/>
                                 {{$position->location}}
                             </span>
                         </div>
+                    @endif
                         <div class="d-flex fw-medium mt-2">
                             {{ $position->presenter()->salary() }}
                         </div>
