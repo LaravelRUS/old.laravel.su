@@ -154,7 +154,7 @@ class EditScreen extends Screen
             'position.organization'  => 'required|string',
             'position.salary_min'    => 'sometimes|numeric|nullable',
             'position.salary_max'    => 'sometimes|numeric|nullable',
-            'position.location'      => 'required|string',
+            'position.location'      => 'sometimes|string|nullable',
             'position.schedule'      => [
                 'required', Rule::enum(ScheduleEnum::class),
             ],
