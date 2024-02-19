@@ -20,6 +20,30 @@ use Illuminate\Support\Str;
 |
 */
 
+Artisan::command('inspire2', function () {
+
+    $response = \Illuminate\Support\Facades\Http::get('https://feeds.tildacdn.com/api/getfeed/?feeduid=172673690982&recid=235945225&c=1708315592871&size=200');
+
+    \App\Models\Meet::all()->each->delete();
+
+    $posts = $response->collect('posts')->map(function (array $items) {
+
+
+        return (new \App\Models\Meet())->forceFill([
+            'user_id'     => 1,
+            'approved'    => true,
+            'name'        => trim(html_entity_decode(strip_tags(htmlspecialchars_decode($items['title']))), " \t\n\r\0\x0B\xC2\xA0"),
+            'description' => trim(html_entity_decode(strip_tags(htmlspecialchars_decode($items['descr']))), " \t\n\r\0\x0B\xC2\xA0"),
+            'start_date'  => $items['date'],
+            'online'      => Str::of($items['parts'])->contains('Есть трансляция'),
+            'link'        => $items['directlink'],
+        ]);
+    });
+
+    \App\Models\User::where('email', 'bliz48rus@gmail.com')->first()->meets()->saveMany($posts);
+});
+
+
 Artisan::command('inspire', function () {
 
     // array:1 [

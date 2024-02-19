@@ -35,7 +35,7 @@
                                     <!-- Time -->
                                     <div class="col-6">
                                         <small class="text-muted">Время</small>
-                                        <h6>Начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</h6>
+                                        <h6>Начало в {{ $most->start_date->isoFormat('HH:mm', 'Do MMMM') }}</h6>
                                     </div>
                                     <!-- location -->
                                     <div class="col-12">

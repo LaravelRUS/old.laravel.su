@@ -28,7 +28,7 @@
                             <x-icon path="i.tickets" width="2em" height="2em" class="d-md-none d-inline-block me-3"/>
                            <h5 class="mb-0"><a href="{{ $most->link }}" class="link-body-emphasis stretched-link text-decoration-none">{{ $most->name }}</a></h5>
                        </div>
-                       <time class="small">{{ $most->start_date->isoFormat('DD MMMM', 'Do MMMM') }}, начало в {{ $most->start_date->isoFormat('hh:mm', 'Do MMMM') }}</time>
+                       <time class="small">{{ $most->start_date->isoFormat('DD MMMM', 'Do MMMM') }}, начало в {{ $most->start_date->isoFormat('HH:mm', 'Do MMMM') }}</time>
                        <small class="opacity-50 d-block">{{ $most->location }}</small>
                    </div>
 
