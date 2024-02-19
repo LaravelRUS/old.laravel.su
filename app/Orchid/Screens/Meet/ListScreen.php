@@ -12,6 +12,7 @@ use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Fields\Switcher;
@@ -169,35 +170,42 @@ class ListScreen extends Screen
             ]),
 
             Layout::modal('editModal', Layout::rows([
-                Input::make('meet.name')
-                    ->title('Название мероприятия')
-                    ->placeholder('Название мероприятия'),
 
-                DateTimer::make('meet.start_date')
-                    ->enableTime()
-                    ->title('Дата и время начала'),
+                Group::make([
+                    Input::make('meet.name')
+                        ->title('Название мероприятия')
+                        ->placeholder('Название мероприятия'),
 
-                Input::make('meet.location')
-                    ->title('Место проведения')
-                    ->placeholder('Укажите адрес'),
+                    Input::make('meet.link')
+                        ->type('url')
+                        ->title('Ссылка'),
+                ]),
 
-                Switcher::make('meet.online')
-                    ->sendTrueOrFalse()
-                    ->title('Онлайн'),
+                Group::make([
+                    Input::make('meet.location')
+                        ->title('Место проведения')
+                        ->placeholder('Укажите адрес')
+                        ->help('Если мероприятие проводится только онлайн, оставьте поле пустым.'),
 
-                Input::make('meet.link')
-                    ->type('url')
-                    ->title('Ссылка'),
+                    Switcher::make('meet.online')
+                        ->sendTrueOrFalse()
+                        ->title('Онлайн'),
+                ]),
+
+                Group::make([
+                    DateTimer::make('meet.start_date')
+                        ->enableTime()
+                        ->title('Дата и время начала'),
+                    Switcher::make('meet.approved')
+                        ->sendTrueOrFalse()
+                        ->title('Статус')
+                        ->placeholder('Одобренный')
+                        ->help('Одобренные мероприятия будут отображаться на сайте'),
+                ]),
 
                 SimpleMDE::make('meet.description')
                     ->title('Описание')
                     ->placeholder('Добавьте краткое описание'),
-
-                Switcher::make('meet.approved')
-                    ->sendTrueOrFalse()
-                    ->title('Статус')
-                    ->placeholder('Одобренный')
-                    ->help('Одобренные мероприятия будут отображаться на сайте'),
             ]))
                 ->size(Modal::SIZE_LG)
                 ->async('asyncGetData')

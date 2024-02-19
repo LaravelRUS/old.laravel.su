@@ -46,8 +46,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Лента постов')
                 ->permission('site.content')
                 ->icon('bs.collection')
-                ->route('platform.post')
-                ->badge(fn () => 6),
+                ->route('platform.post'),
 
             Menu::make('Каталог пакетов')
                 ->icon('bs.box-seam')
@@ -87,29 +86,6 @@ class PlatformProvider extends OrchidServiceProvider
 
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),
-
-            /*
-            Menu::make('Form Elements')
-                ->icon('bs.card-list')
-                ->route('platform.example.fields'),
-
-            Menu::make('Overview Layouts')
-                ->icon('bs.window-sidebar')
-                ->route('platform.example.layouts'),
-
-            Menu::make('Grid System')
-                ->icon('bs.columns-gap')
-                ->route('platform.example.grid'),
-
-            Menu::make('Charts')
-                ->icon('bs.bar-chart')
-                ->route('platform.example.charts'),
-
-            Menu::make('Cards')
-                ->icon('bs.card-text')
-                ->route('platform.example.cards')
-                ->divider(),
-    */
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
