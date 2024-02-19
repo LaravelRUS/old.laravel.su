@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class ContentCreator implements Achievement
+use App\Achievements\Achievement;
+
+class CommentInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class ContentCreator implements Achievement
      */
     public function name(): string
     {
-        return 'Создатель Контента';
+        return 'Балабол';
     }
 
     /**
@@ -21,7 +23,7 @@ class ContentCreator implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/cat.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class ContentCreator implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста, к которому оставили более 10 комментариев в течении недели после публикации';
+        return '10+ комментариев за неделю: твой голос имеет значение.';
     }
 }

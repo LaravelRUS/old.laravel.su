@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class DiscussionInspirer implements Achievement
+use App\Achievements\Achievement;
+
+class AuthorInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class DiscussionInspirer implements Achievement
      */
     public function name(): string
     {
-        return 'Вдохновитель Обсуждений';
+        return 'Баловень';
     }
 
     /**
@@ -21,7 +23,7 @@ class DiscussionInspirer implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/bogatyr.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class DiscussionInspirer implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста, к которому оставили более 30 комментариев в течении недели после публикации';
+        return 'Набрал более 10 лайков в течении недели после публикации.';
     }
 }

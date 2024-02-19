@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class PricelessCommentator implements Achievement
+use App\Achievements\Achievement;
+
+class HighCommentInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class PricelessCommentator implements Achievement
      */
     public function name(): string
     {
-        return 'Бесценный комментатор';
+        return 'Всегда прав';
     }
 
     /**
@@ -31,6 +33,6 @@ class PricelessCommentator implements Achievement
      */
     public function description(): string
     {
-        return 'Написал более 10 комментариев за неделю';
+        return '30+ комментариев за неделю: твой голос неоспорим.';
     }
 }

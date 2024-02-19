@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Unique;
 
-class Magus implements Achievement
+use App\Achievements\Achievement;
+
+class BigMzungu implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class Magus implements Achievement
      */
     public function name(): string
     {
-        return 'Волхв';
+        return 'Большой Мзунгу';
     }
 
     /**
@@ -21,7 +23,7 @@ class Magus implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/morozko.svg');
+        return asset('/img/achievements/wizard.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class Magus implements Achievement
      */
     public function description(): string
     {
-        return 'Они были до нас';
+        return 'Ибо только истинный мзунгу, покаравший тысячи-тысяч новичков достоин сие.';
     }
 }

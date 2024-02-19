@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class Lipa implements Achievement
+use App\Achievements\Achievement;
+
+class AuthorHighCommentInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class Lipa implements Achievement
      */
     public function name(): string
     {
-        return 'Липак';
+        return 'Мегаинициатор';
     }
 
     /**
@@ -21,7 +23,7 @@ class Lipa implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/leaf.svg');
+        return asset('/img/achievements/phoenix.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class Lipa implements Achievement
      */
     public function description(): string
     {
-        return 'Они были до нас';
+        return 'Автор, получивший более 30 комментариев в течение недели после публикации.';
     }
 }

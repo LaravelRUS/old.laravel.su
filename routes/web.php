@@ -438,5 +438,5 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 Route::feeds();
 
 Route::get('/test', function (Request $request) {
-    return $request->user()->reward(\App\Achievements\Opening::class);
+    return $request->user()->reward(\App\Achievements\Events\OpeningWebSite::class);
 })->middleware('auth');

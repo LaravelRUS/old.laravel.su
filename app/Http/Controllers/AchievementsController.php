@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Achievements\ContentCreator;
-use App\Achievements\DiscussionInspirer;
-use App\Achievements\DiscussionMagnet;
-use App\Achievements\DiscussionStar;
-use App\Achievements\Educator;
-use App\Achievements\Lipa;
-use App\Achievements\Magus;
-use App\Achievements\MasterOfDiscussions;
-use App\Achievements\Opening;
-use App\Achievements\PricelessCommentator;
-use App\Achievements\RecognizedAuthor;
-use App\Achievements\Troll;
-use App\Achievements\Writer;
+use App\Achievements\Contents\AuthorCommentInteraction;
+use App\Achievements\Contents\AuthorHighCommentInteraction;
+use App\Achievements\Contents\HighCommentInteraction;
+use App\Achievements\Contents\CommentInteraction;
+use App\Achievements\Contents\AuthorHighInteraction;
+use App\Achievements\Contents\AuthorInteraction;
+use App\Achievements\Events\OpeningWebSite;
+use App\Achievements\Unique\BigMzungu;
+use App\Achievements\Unique\Lipa;
+use App\Achievements\Unique\Troll;
 use App\Models\Achievement;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,52 +27,25 @@ class AchievementsController extends Controller
     public function index(Request $request)
     {
         $groups = collect([
-            'Контент' => [
-                Writer::class,
-                RecognizedAuthor::class,
-                Educator::class,
-            ],
-
-            'Холивар' => [
-                ContentCreator::class,
-                DiscussionInspirer::class,
-                DiscussionMagnet::class,
-            ],
-
-            'Дискуссии' => [
-                MasterOfDiscussions::class,
-                DiscussionStar::class,
-                PricelessCommentator::class,
+            'Контент и Дискуссии' => [
+                AuthorInteraction::class,
+                AuthorHighInteraction::class,
+                AuthorCommentInteraction::class,
+                AuthorHighCommentInteraction::class,
+                CommentInteraction::class,
+                HighCommentInteraction::class,
             ],
 
             'Уникальные' => [
-                Magus::class,
                 Troll::class,
-                Opening::class,
                 Lipa::class,
+                BigMzungu::class,
             ],
 
-            /*
-            // за пост с лайками
-            Writer::class,
-            RecognizedAuthor::class,
-            Educator::class,
-
-            // за пост с комментариями
-            ContentCreator::class,
-            DiscussionInspirer::class,
-            DiscussionMagnet::class,
-
-            // За количество комментариев в течение недели
-            PricelessCommentator::class,
-            MasterOfDiscussions::class,
-            DiscussionStar::class,
-
-            // Уникальные
-            Magus::class,
-            Troll::class,
-            */
-        ])->map(fn($achievements) => $this->setDataForAchievement($achievements, $request->user()));
+            'Событийные' => [
+                OpeningWebSite::class,
+            ],
+        ])->map(fn ($achievements) => $this->setDataForAchievement($achievements, $request->user()));
 
         return view('achievements.index', [
             'groups' => $groups,
@@ -85,7 +55,7 @@ class AchievementsController extends Controller
     protected function setDataForAchievement(array $achievements, User $user): Collection
     {
         return collect($achievements)
-            ->map(fn($achievement) => app($achievement))
+            ->map(fn ($achievement) => app($achievement))
             ->map(function ($achievement) use ($user) {
 
                 $achievement->used = $user->achievements()

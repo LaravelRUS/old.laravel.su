@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Unique;
 
-class DiscussionMagnet implements Achievement
+use App\Achievements\Achievement;
+
+class Lipa implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class DiscussionMagnet implements Achievement
      */
     public function name(): string
     {
-        return 'Магнит для Дискуссий';
+        return 'Переводчик';
     }
 
     /**
@@ -21,7 +23,7 @@ class DiscussionMagnet implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/leaf.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class DiscussionMagnet implements Achievement
      */
     public function description(): string
     {
-        return 'Автор поста, к которому оставили более 50 комментариев в течении недели после публикации';
+        return 'Любовь нельзя купить, любовь нельзя украсть, но заслужить - вполне реально.';
     }
 }

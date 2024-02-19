@@ -210,7 +210,7 @@ class User extends Authenticatable
 
                 try {
                     return app($this->selected_achievement);
-                } catch (\Error) {
+                } catch (\Throwable) {
                     return null;
                 }
             },

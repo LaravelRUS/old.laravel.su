@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Events;
 
-class Educator implements Achievement
+use App\Achievements\Achievement;
+
+class OpeningWebSite implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class Educator implements Achievement
      */
     public function name(): string
     {
-        return 'Легенда';
+        return 'Первооткрыватель';
     }
 
     /**
@@ -31,6 +33,6 @@ class Educator implements Achievement
      */
     public function description(): string
     {
-        return 'Набрал более 50 лайков течении недели после публикации';
+        return 'Первым преодолел все загадки на пути к обновлённому сайту';
     }
 }

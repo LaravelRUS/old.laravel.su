@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Achievements\Contents\HighCommentInteraction;
+use App\Achievements\Contents\CommentInteraction;
 use App\Achievements\DiscussionStar;
-use App\Achievements\MasterOfDiscussions;
-use App\Achievements\PricelessCommentator;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,12 +37,10 @@ class UpdateAchievementsForComments extends Command
             ->withCount('comments')
             ->chunk(100, function (Collection $users) {
                 $users->each(function (User $user) {
-                    if ($user->comments_count >= 50) {
-                        $user->reward(DiscussionStar::class);
-                    } elseif ($user->comments_count >= 30) {
-                        $user->reward(MasterOfDiscussions::class);
+                    if ($user->comments_count >= 30) {
+                        $user->reward(HighCommentInteraction::class);
                     } else {
-                        $user->reward(PricelessCommentator::class);
+                        $user->reward(CommentInteraction::class);
                     }
                 });
             });

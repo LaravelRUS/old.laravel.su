@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class Troll implements Achievement
+use App\Achievements\Achievement;
+
+class AuthorHighInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class Troll implements Achievement
      */
     public function name(): string
     {
-        return 'Тролль';
+        return 'Весельчак';
     }
 
     /**
@@ -21,7 +23,7 @@ class Troll implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/ehh.svg');
+        return asset('/img/achievements/fire.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class Troll implements Achievement
      */
     public function description(): string
     {
-        return 'Обладает магической способностью понимать язык животных и общаться с ними';
+        return 'Набрал более 30 лайков в течении недели после публикации.';
     }
 }

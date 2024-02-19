@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Achievements\ContentCreator;
-use App\Achievements\DiscussionInspirer;
+use App\Achievements\Contents\AuthorCommentInteraction;
+use App\Achievements\Contents\AuthorHighCommentInteraction;
 use App\Achievements\DiscussionMagnet;
 use App\Models\Post;
 use Illuminate\Console\Command;
@@ -36,12 +36,10 @@ class UpdateAchievementsForPostWithComments extends Command
             ->where('created_at', '>=', now()->subWeek())
             ->chunk(100, function (Collection $posts) {
                 $posts->each(function (Post $post) {
-                    if ($post->comments_count >= 50) {
-                        $post->author->reward(DiscussionMagnet::class);
-                    } elseif ($post->comments_count >= 30) {
-                        $post->author->reward(DiscussionInspirer::class);
+                    if ($post->comments_count >= 30) {
+                        $post->author->reward(AuthorHighCommentInteraction::class);
                     } else {
-                        $post->author->reward(ContentCreator::class);
+                        $post->author->reward(AuthorCommentInteraction::class);
                     }
                 });
             });

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Contents;
 
-class MasterOfDiscussions implements Achievement
+use App\Achievements\Achievement;
+
+class AuthorCommentInteraction implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class MasterOfDiscussions implements Achievement
      */
     public function name(): string
     {
-        return 'Мастер Обсуждений';
+        return 'Боломутчик';
     }
 
     /**
@@ -21,7 +23,7 @@ class MasterOfDiscussions implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/morozko.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class MasterOfDiscussions implements Achievement
      */
     public function description(): string
     {
-        return 'Написал более 30 комментариев за неделю';
+        return 'Автор, получивший более 10 комментариев в течение недели после публикации';
     }
 }

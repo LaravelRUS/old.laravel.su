@@ -81,7 +81,7 @@
                                 </div>
 
 
-                                <div class="mb-4">
+                                <div class="mb-4 d-block d-md-none">
                                     <label for="theme-checker-auto" class="form-label d-block">Оформление</label>
 
                                     <div data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent

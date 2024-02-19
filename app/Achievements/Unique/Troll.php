@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Achievements;
+namespace App\Achievements\Unique;
 
-class RecognizedAuthor implements Achievement
+use App\Achievements\Achievement;
+
+class Troll implements Achievement
 {
     /**
      * Получить название достижения.
@@ -11,7 +13,7 @@ class RecognizedAuthor implements Achievement
      */
     public function name(): string
     {
-        return 'Самовар';
+        return 'Тролль';
     }
 
     /**
@@ -21,7 +23,7 @@ class RecognizedAuthor implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/opening.svg');
+        return asset('/img/achievements/ehh.svg');
     }
 
     /**
@@ -31,6 +33,6 @@ class RecognizedAuthor implements Achievement
      */
     public function description(): string
     {
-        return 'Набрал более 30 лайков в течении недели после публикации';
+        return 'Обладает магической способностью понимать язык животных и общаться с ними.';
     }
 }
