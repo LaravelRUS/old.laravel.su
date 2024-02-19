@@ -79,8 +79,9 @@
         &:hover {
             opacity: 1;
         }
-        &:before{
+        &:before {
             content: "# ";
+            color: $primary;
         }
     }
 }

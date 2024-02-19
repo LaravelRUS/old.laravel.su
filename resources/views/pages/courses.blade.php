@@ -402,8 +402,6 @@
 
         </div>
 
-
-
         <div class="row g-0 rounded bg-body-tertiary mb-5">
             <div class="col-lg-4">
                 <x-hero image="/img/community/afanasyev.jpg" text="Дмитрий Афанасьев" class="rounded-start"/>
@@ -468,6 +466,42 @@
         </div>
     </x-container>
 
+
+
+    <x-container>
+        <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
+            <div class="col-lg-8 me-auto">
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Это интересно</span>
+                <h2 class="display-5 fw-semibold mb-0">PHP Code Break</h2>
+            </div>
+        </div>
+
+        <div class="row g-0 rounded bg-body-tertiary mb-5">
+            <div class="col-lg-4">
+                <x-hero image="/img/community/udalcov.jpg" text="Валентин Удальцов" class="rounded-start"/>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="p-4 p-xl-5 my-xl-5">
+                    <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/php.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLbaJpLafV4JGhNHMU_PMy8RCou1WGRqpT"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">PHP-линч</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">
+                                        Анализируем код, ищем ошибки и делимся лучшими практиками.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </x-container>
 
 
 

@@ -20,7 +20,7 @@ class ResponsiveTableModifier extends HTMLModifier
             ->each(function (Crawler $elm) use (&$content) {
                 $tag = $elm->outerHtml();
 
-                $content = Str::of($content)->replace($tag, '<div class="table-responsive">'.$tag.'</div>');
+                $content = Str::of($content)->replace($tag, '<div class="table-responsive mb-3">'.$tag.'</div>');
             });
 
         return $next($content);
