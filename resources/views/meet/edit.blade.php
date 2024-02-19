@@ -23,7 +23,8 @@
                         <div class="row row-cols-1 row-cols-md-2 mb-3">
                             <div class="col mb-3">
                                 <label for="location" class="form-label">Адрес</label>
-                                <input class="form-control mb-3" name="meet[location]" id="location" type="text"
+                                <input class="form-control mb-3 {{ $errors->has('meet.location') ? 'is-invalid' : '' }}"
+                                       name="meet[location]" id="location" type="text"
                                        placeholder="Адрес"
                                        value="{{ old('meet.location', $meet->location) }}"/>
                                 <x-error field="meet.location" class="invalid-feedback"/>
@@ -44,7 +45,8 @@
                             </div>
                             <div class="col mb-3">
                                 <label for="link" class="form-label">Ссылка на сайт</label>
-                                <input class="form-control mb-3" name="meet[link]" id="link" type="url"
+                                <input class="form-control mb-3 {{ $errors->has('meet.link') ? 'is-invalid' : '' }}"
+                                       name="meet[link]" id="link" type="url"
                                        placeholder="Ссылка"
                                        value="{{ old('meet.link', $meet->link) }}"/>
                                 <x-error field="meet.link" class="invalid-feedback"/>

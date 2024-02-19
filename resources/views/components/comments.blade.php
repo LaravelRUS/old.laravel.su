@@ -6,7 +6,7 @@
     <div id="comments">
         <x-container>
             <div class="row">
-                <div class="col-xxl-8 mx-auto">
+                <div class="col-lg-8 mx-auto">
                     <p class="h5 mb-3 ms-3">
                         @if($comments->count() < 1)
                             Тут ещё нет комментариев
@@ -22,7 +22,7 @@
 
                 <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                     <div class="row">
-                        <div class="col-12 col-xxl-8 mx-auto comments-wrapper">
+                        <div class="col-12 col-lg-8 mx-auto comments-wrapper">
 
 
                             <div id="comments-wrapper">

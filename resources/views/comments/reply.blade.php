@@ -16,7 +16,7 @@
                                         data-textarea-autogrow-resize-debounce-delay-value="500"
                                         required
                                         placeholder="Написать комментарий"
-                                        class="form-control p-4 pb-5"
+                                        class="form-control p-4 pb-6"
                                         name="message"
                                         rows="3"
                                         minlength="3"

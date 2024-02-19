@@ -7,7 +7,7 @@
 <x-container>
         <div class="row">
             <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
-                <div class="col-xxl-8 mx-auto">
+                <div class="col-lg-8 mx-auto">
 
                     <main class="post" data-controller="prism">
                         {{--
@@ -117,7 +117,7 @@
 <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
     <x-container>
         <div class="row">
-            <div class="col-xxl-8 mx-auto">
+            <div class="col-lg-8 mx-auto">
                 <p class="h5 mb-3 ms-3">
                     <span class="placeholder rounded col-3"></span>
                 </p>
@@ -125,7 +125,7 @@
 
             <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                 <div class="row mb-4">
-                    <div class="col-12 col-xxl-8 mx-auto">
+                    <div class="col-12 col-lg-8 mx-auto">
                         <div class="d-flex align-content-between align-items-stretch">
                             <div class="col-1 me-3">
                                 <span class="placeholder avatar-img rounded-circle w-100 p-3">
@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xxl-8 mx-auto">
+                    <div class="col-12 col-lg-8 mx-auto">
                         <div class="d-flex align-content-between align-items-stretch">
                             <div class="col-1 me-3">
                                 <span class="placeholder avatar-img rounded-circle w-100 p-3">
