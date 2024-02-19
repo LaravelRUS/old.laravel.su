@@ -95,7 +95,6 @@
                                            class="form-label">Локация</label>
                                     <input class="form-control mb-3" name="position[location]" id="location" type="text"
                                            placeholder="Название города или метро"
-                                           required
                                            value="{{ old('position.location', $position->location) }}"/>
                                     <x-error field="position.location" class="invalid-feedback"/>
 
