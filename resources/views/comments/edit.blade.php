@@ -14,7 +14,7 @@
                       minlength="3"
                       data-action="keydown.enter->comment#send:prevent input->comment#toggleSubmitButton"
                       placeholder="Ваш комментарий"
-                      class="form-control p-4 pb-5"
+                      class="form-control p-4 pb-6"
                       name="message"
                       rows="3">{{ $comment->content }}</textarea>
             <div

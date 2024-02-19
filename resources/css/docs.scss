@@ -215,9 +215,12 @@ main,.main,.post {
         @extend .base-header;
     }
 
+    /* решётки для заголовков
     h3,h4,h5,h6 {
         @extend .base-header;
     }
+
+    */
     /*
     p {
         margin: 0 0 1em;

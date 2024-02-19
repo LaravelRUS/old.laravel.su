@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-controller="theme" data-bs-theme="auto">
 
 <head>
-    <meta name="robots" content="noindex,nofollow">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="google" content="notranslate">

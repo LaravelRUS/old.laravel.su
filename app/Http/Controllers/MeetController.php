@@ -58,14 +58,20 @@ class MeetController extends Controller
         $dateMax = now()->toDateString();
 
         $request->validate([
-            'meet'              => 'required|array',
-            'meet.name'         => 'required|string',
-            'meet.description'  => 'required|string',
-            'meet.start_date'   => 'date|after:'.$dateMax,
-            'meet.location'     => 'required|string',
-            'meet.online'       => 'sometimes|boolean',
-            'meet.link'         => 'required|url',
-        ]);
+                'meet'             => 'required|array',
+                'meet.name'        => 'required|string',
+                'meet.description' => 'required|string',
+                'meet.start_date'  => 'date|after:' . $dateMax,
+                'meet.location'    => 'required_without:meet.online|string|nullable',
+                'meet.online'      => 'sometimes|boolean',
+                'meet.link'        => 'required|url',
+            ],
+            [],
+            [
+                'meet.location' => 'Адрес',
+                'meet.link'     => 'ссылка',
+                'meet.online'   => 'Онлайн',
+            ]);
 
         $meet->fill(array_merge($request->get('meet'), [
             'online'  => $request->boolean('meet.online'),

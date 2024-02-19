@@ -55,8 +55,8 @@ return [
     */
 
     'pwa' => [
-        'name'             => 'Ларавель',
-        'short_name'       => 'Ларавель',
+        'name'             => 'Ларавел',
+        'short_name'       => 'Ларавел',
         'description'      => 'Русскоязычное комьюнити по Laravel',
         'background_color' => '#ffffff',
         'theme_color'      => '#f4645f',
