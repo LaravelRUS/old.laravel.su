@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Achievements\Contents\HighCommentInteraction;
 use App\Achievements\Contents\CommentInteraction;
-use App\Achievements\DiscussionStar;
+use App\Achievements\Contents\HighCommentInteraction;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;

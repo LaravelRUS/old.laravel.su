@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Achievements\Contents\RecognizedAuthor;
 use App\Achievements\Contents\AuthorInteraction;
-use App\Achievements\Educator;
+use App\Achievements\Contents\RecognizedAuthor;
 use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;

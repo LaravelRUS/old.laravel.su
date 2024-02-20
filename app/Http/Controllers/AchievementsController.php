@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Achievements\Contents\AuthorCommentInteraction;
 use App\Achievements\Contents\AuthorHighCommentInteraction;
-use App\Achievements\Contents\HighCommentInteraction;
-use App\Achievements\Contents\CommentInteraction;
 use App\Achievements\Contents\AuthorHighInteraction;
 use App\Achievements\Contents\AuthorInteraction;
+use App\Achievements\Contents\CommentInteraction;
+use App\Achievements\Contents\HighCommentInteraction;
 use App\Achievements\Events\OpeningWebSite;
 use App\Achievements\Unique\BigMzungu;
 use App\Achievements\Unique\Lipa;

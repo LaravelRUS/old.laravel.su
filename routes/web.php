@@ -61,6 +61,7 @@ Route::any('goronich', [\App\Http\Controllers\OpenQuizController::class, 'goroni
 
 Route::get('/goronich/open/146q447w424c', function (Request $request) {
     $request->user()->reward(\App\Achievements\Events\OpeningWebSite::class);
+
     return \route('home');
 })
     ->middleware('auth')

@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Achievements\Contents\AuthorCommentInteraction;
 use App\Achievements\Contents\AuthorHighCommentInteraction;
-use App\Achievements\DiscussionMagnet;
 use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;

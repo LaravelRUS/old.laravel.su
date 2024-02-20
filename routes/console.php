@@ -28,7 +28,6 @@ Artisan::command('inspire2', function () {
 
     $posts = $response->collect('posts')->map(function (array $items) {
 
-
         return (new \App\Models\Meet())->forceFill([
             'user_id'     => 1,
             'approved'    => true,
@@ -42,7 +41,6 @@ Artisan::command('inspire2', function () {
 
     \App\Models\User::where('email', 'bliz48rus@gmail.com')->first()->meets()->saveMany($posts);
 });
-
 
 Artisan::command('inspire', function () {
 
