@@ -1,11 +1,11 @@
 @extends('html')
 
 @section('body')
-    {{--
+
     <div class="bg-primary text-bg-primary bg-gradient text-center py-2 d-none d-xxl-block">
-        Скоро увидимся! Билеты уже доступны на <a href="{{ route('meets') }}" class="text-white">сайте</a>.
+        Любите загадки? Событие еще доступно на  <a href="{{ route('quiz.open') }}" class="text-white">сайте</a>.
     </div>
-    --}}
+
 
 
     <div class="container mt-md-4 mb-3">

@@ -47,11 +47,6 @@ class AuthController extends Controller
 
         Auth::login($user, true);
 
-
-        if (config('site.quiz')) {
-            $user->reward(\App\Achievements\Events\OpeningWebSite::class);
-        }
-
         return redirect()->intended(route('home'));
     }
 
