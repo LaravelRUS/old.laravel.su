@@ -59,8 +59,11 @@ Route::get('open', [\App\Http\Controllers\OpenQuizController::class, 'index'])
 Route::any('goronich', [\App\Http\Controllers\OpenQuizController::class, 'goronich'])
     ->name('quiz.goronich');
 
-Route::get('/146q447w424c/auth/login', [AuthController::class, 'login'])
-    ->middleware('guest')
+Route::get('/goronich/open/146q447w424c', function (Request $request) {
+    $request->user()->reward(\App\Achievements\Events\OpeningWebSite::class);
+    return \route('home');
+})
+    ->middleware('auth')
     ->name('quiz.login');
 
 /*

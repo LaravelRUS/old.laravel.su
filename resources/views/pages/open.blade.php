@@ -103,7 +103,7 @@
                 <pre class="rounded position-relative overflow-hidden p-4 language-php" tabindex="0" title="Василиса: Я уверена, что это не просто случайность. Что делает этот код?"><code
                         class="language-php">// Информация о Горыныче
 return response()->json([
-    'status'   => 'Охраняет'
+    'status'   => 'Охраняет',
     'location' => 'Калинов Мост',
 ])->header('X-Goronich-Key', '{{ $helpCaesarCipher }}');
 </code></pre>
