@@ -386,7 +386,7 @@
                         <div class="col">
                             <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
                                 <img src="/img/ui/courses/tailwind.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66hKbEvIVAZnp1h4CE-4Mtk4"
+                                <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5AjF_3jMD6tsDI6eS-yc92U"
                                    class="link-body-emphasis stretched-link text-decoration-none">
                                     <h5 class="mb-2">Tailwind</h5>
                                     <p class="opacity-75 line-clamp line-clamp-3 small">
