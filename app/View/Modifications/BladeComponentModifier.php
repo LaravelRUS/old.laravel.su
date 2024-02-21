@@ -16,7 +16,7 @@ class BladeComponentModifier extends HTMLModifier
      */
     public function handle(string $content, \Closure $next)
     {
-        foreach (['github', 'youtube', 'link', 'spoiler'] as $tag) {
+        foreach (['github', 'youtube', 'link', 'hidden'] as $tag) {
             $content = $this->replaceToBladeComponent($content, $tag);
         }
 

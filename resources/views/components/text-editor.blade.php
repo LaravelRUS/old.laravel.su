@@ -4,7 +4,7 @@
 >
     <div class="position-relative">
 
-        <div class="d-flex w-100 overflow-auto px-1 px-lg-5 border rounded-3 bg-light-subtle position-sticky top-0 z-1">
+        <div class="d-flex w-100 overflow-auto px-1 px-lg-5 border rounded-3 bg-light-subtle position-sticky top-0 z-2">
 
             @php
             $preview = [
@@ -23,9 +23,9 @@
                 'suffix' => '" title="" description=""]',
             ];
 
-           $spoiler = [
+           $hidden = [
                 'block' => false,
-                'prefix'=> '[!spoiler text="',
+                'prefix'=> '[!hidden text="',
                 'suffix' => '"]',
             ];
             @endphp
@@ -37,6 +37,8 @@
                 <x-text-editor-button label="Цитата" format="blockquote" icon="quote"/>
                 <x-text-editor-button label="Код" format="code" icon="code-slash"/>
                 <x-text-editor-button label="Ссылка" format="{!! json_encode(['link', 'https://']) !!}" icon="link"/>
+                <x-text-editor-button label="Скрытый текст" :format="$hidden" icon="eye-slash"/>
+
                 <x-text-editor-button label="Список" format="unorderedList" icon="list-ul"/>
                 <x-text-editor-button label="Нумерованный список" format="orderedList" icon="list-ol"/>
             {{--
@@ -45,7 +47,6 @@
                 <x-text-editor-button label="YouTube" :format="$youtube" icon="youtube"/>
                 <x-text-editor-button label="GitHub" :format="$github" icon="github"/>
                 <x-text-editor-button label="Ссылка превью" :format="$preview" icon="easel3-fill"/>
-                <x-text-editor-button label="Спойлер" :format="$spoiler" icon="asterisk"/>
 
                 <a
                     href="{{route('editor-guide')}}"

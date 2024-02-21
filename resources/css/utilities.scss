@@ -1,0 +1,16 @@
+.text-balance {
+    text-wrap: balance;
+}
+
+.hidden-text {
+    cursor: pointer;
+    filter: blur(0.2rem) grayscale(0.15);
+    transition: 340ms all;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

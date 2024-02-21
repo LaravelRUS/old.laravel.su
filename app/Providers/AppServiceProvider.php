@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\View\Components\Posts\Github;
 use App\View\Components\Posts\LinkPreview;
+use App\View\Components\Posts\Hidden;
 use App\View\Components\Posts\Youtube;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
@@ -39,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('github', Github::class);
         Blade::component('youtube', Youtube::class);
         Blade::component('link', LinkPreview::class);
+        Blade::component('hidden', Hidden::class);
     }
 }
