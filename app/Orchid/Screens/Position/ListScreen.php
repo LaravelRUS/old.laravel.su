@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Position;
 
 use App\Models\Position;
+use App\Notifications\BaseNotification;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -143,7 +144,7 @@ class ListScreen extends Screen
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'post' => $position->id,
+                                    'position' => $position->id,
                                 ]),
                         ])),
             ]),
@@ -159,6 +160,8 @@ class ListScreen extends Screen
     public function remove(Position $position): void
     {
         $position->delete();
+
+        $position->author->notify(new BaseNotification('Вакансия "'.$position->title.'" отклонена.'));
 
         Toast::info('Вакансия удалена');
     }

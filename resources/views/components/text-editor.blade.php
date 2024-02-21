@@ -22,6 +22,12 @@
                 'prefix'=> '[!github link="',
                 'suffix' => '" title="" description=""]',
             ];
+
+           $spoiler = [
+                'block' => false,
+                'prefix'=> '[!spoiler text="',
+                'suffix' => '"]',
+            ];
             @endphp
 
 
@@ -39,6 +45,7 @@
                 <x-text-editor-button label="YouTube" :format="$youtube" icon="youtube"/>
                 <x-text-editor-button label="GitHub" :format="$github" icon="github"/>
                 <x-text-editor-button label="Ссылка превью" :format="$preview" icon="easel3-fill"/>
+                <x-text-editor-button label="Спойлер" :format="$spoiler" icon="asterisk"/>
 
                 <a
                     href="{{route('editor-guide')}}"

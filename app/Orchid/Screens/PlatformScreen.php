@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
+use App\Models\CodeSnippet;
 use App\Models\Comment;
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
@@ -32,6 +33,7 @@ class PlatformScreen extends Screen
             'basicIndicators'                => [
                 User::countByDays($start, $end)->toChart('Пользователи'),
                 Comment::countByDays($start, $end)->toChart('комментарии'),
+                CodeSnippet::countByDays($start, $end)->toChart('pastebin'),
             ],
             'content'                => [
                 Post::countByDays($start, $end)->toChart('Посты'),

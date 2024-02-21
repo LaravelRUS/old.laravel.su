@@ -6,6 +6,7 @@ namespace App\Orchid\Screens\Position;
 
 use App\Casts\ScheduleEnum;
 use App\Models\Position;
+use App\Notifications\BaseNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -177,6 +178,8 @@ class EditScreen extends Screen
         $position->delete();
 
         Toast::info('Вакансия удалена');
+
+        $position->author->notify(new BaseNotification('Вакансия "'.$position->title.'" отклонена.'));
 
         return redirect()->route('platform.position');
     }
