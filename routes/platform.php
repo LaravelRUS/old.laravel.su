@@ -32,13 +32,6 @@ Route::screen('users/{user}/edit', UserEditScreen::class)
         ->parent('platform.systems.users')
         ->push($user->name, route('platform.systems.users.edit', $user)));
 
-// Platform > System > Users > Create
-Route::screen('users/create', UserEditScreen::class)
-    ->name('platform.systems.users.create')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.systems.users')
-        ->push(__('Create'), route('platform.systems.users.create')));
-
 // Platform > System > Users
 Route::screen('users', UserListScreen::class)
     ->name('platform.systems.users')

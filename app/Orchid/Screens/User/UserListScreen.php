@@ -40,7 +40,7 @@ class UserListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'User Management';
+        return 'Управление пользователями';
     }
 
     /**
@@ -65,11 +65,7 @@ class UserListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->route('platform.systems.users.create'),
-        ];
+        return [];
     }
 
     /**

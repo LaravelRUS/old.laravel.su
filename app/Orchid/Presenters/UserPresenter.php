@@ -53,6 +53,10 @@ class UserPresenter extends Presenter implements Personable, Searchable
      */
     public function image(): ?string
     {
+        if ($this->entity->avatar !== null) {
+            return $this->entity->avatar;
+        }
+
         $hash = md5(strtolower(trim($this->entity->email)));
 
         $default = urlencode('https://raw.githubusercontent.com/orchidsoftware/.github/main/web/avatars/gravatar.png');
