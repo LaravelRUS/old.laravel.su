@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Meet;
 
 use App\Models\Meet;
+use App\Notifications\BaseNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Orchid\Screen\Actions\Button;
@@ -247,6 +248,8 @@ class ListScreen extends Screen
     public function remove(Meet $meet): void
     {
         $meet->delete();
+
+        $meet->author->notify(new BaseNotification('Событие "'.$meet->name.'" отклонено.'));
 
         Toast::info('Событие удалено');
     }

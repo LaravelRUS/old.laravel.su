@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
+use Orchid\Metrics\Chartable;
+use Orchid\Screen\AsSource;
 
 class CodeSnippet extends Model
 {
-    use HasFactory, HasUuids, Prunable;
+    use HasFactory, HasUuids, Prunable, AsSource, Chartable;
 
     /**
      * @var array

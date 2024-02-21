@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Package;
 
 use App\Casts\PackageTypeEnum;
 use App\Models\Package;
+use App\Notifications\BaseNotification;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -213,6 +214,8 @@ class ListScreen extends Screen
     public function remove(Package $package): void
     {
         $package->delete();
+
+        $package->author->notify(new BaseNotification("Пакет '".$package->name."' отклонён."));
 
         Toast::info('Пакет удален');
     }
