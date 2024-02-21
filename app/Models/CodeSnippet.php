@@ -11,7 +11,7 @@ use Orchid\Screen\AsSource;
 
 class CodeSnippet extends Model
 {
-    use HasFactory, HasUuids, Prunable, AsSource, Chartable;
+    use AsSource, Chartable, HasFactory, HasUuids, Prunable;
 
     /**
      * @var array

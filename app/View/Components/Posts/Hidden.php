@@ -3,7 +3,6 @@
 namespace App\View\Components\Posts;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\View\Component;
 
 class Hidden extends Component
@@ -30,6 +29,6 @@ class Hidden extends Component
      */
     public function shouldRender()
     {
-        return !empty($this->text);
+        return ! empty($this->text);
     }
 }

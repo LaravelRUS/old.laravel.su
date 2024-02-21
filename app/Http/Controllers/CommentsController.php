@@ -53,7 +53,7 @@ class CommentsController extends Controller
 
         $comment->save();
 
-        if($comment->author->id != $comment->post->author->id){
+        if ($comment->author->id != $comment->post->author->id) {
             $comment->post->author->notify(new CommentNotification($comment));
         }
 
@@ -124,7 +124,7 @@ class CommentsController extends Controller
         $request->user()->comments()->saveMany([$reply]);
 
         // уведомление автору статьи, что добавился ещё один комментарий
-        if($reply->author->id != $comment->post->author->id){
+        if ($reply->author->id != $comment->post->author->id) {
             $comment->post->author->notify(new CommentNotification($reply));
         }
 

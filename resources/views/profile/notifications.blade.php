@@ -30,6 +30,7 @@
                                      'rounded',
                                      'hotwire-frame',
                                      'p-3',
+                                     'text-balance',
                                      'mb-3' => !$loop->last,
                                      'bg-body-secondary' => $notification->read(),
                                      'text-muted' => $notification->read(),
