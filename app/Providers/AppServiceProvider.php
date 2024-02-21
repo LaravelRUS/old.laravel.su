@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\View\Components\Posts\Github;
-use App\View\Components\Posts\LinkPreview;
 use App\View\Components\Posts\Hidden;
+use App\View\Components\Posts\LinkPreview;
 use App\View\Components\Posts\Youtube;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;

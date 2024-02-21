@@ -10,9 +10,9 @@ use App\Notifications\BaseNotification;
 use App\Notifications\IdeaRequestAcceptedNotification;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Sight;
-use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
@@ -66,6 +66,11 @@ class EditScreen extends Screen
                 ->canSee(is_null($this->ideaRequest->key))
                 ->confirm('Удаление заявки будет окончательным и необратимым действием. Вся информация, связанная с этой заявкой, будет безвозвратно удалена из системы.')
                 ->method('remove'),
+
+            Button::make(__('Принять и выдать ключ'))
+                ->icon('bs.check-circle')
+                ->canSee(is_null($this->ideaRequest->key))
+                ->method('accept'),
         ];
     }
 
@@ -81,17 +86,13 @@ class EditScreen extends Screen
                 Sight::make('email', 'Электронная почта'),
                 Sight::make('city', 'Город'),
                 Sight::make('message', 'Сообщение'),
-                Sight::make('key.key', 'Ключ'),
+                Sight::make('created_at', __('Created'))
+                    ->usingComponent(DateTimeSplit::class),
+                Sight::make('key.key', 'Ключ')
+                    ->canSee(!is_null($this->ideaRequest->key)),
             ]))
                 ->title(__('Данные запроса'))
-                ->description('Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, выделите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.')
-                ->commands(
-                    Button::make(__('Принять и выдать ключ'))
-                        ->type(Color::SUCCESS)
-                        ->icon('bs.check-circle')
-                        ->canSee(is_null($this->ideaRequest->key))
-                        ->method('accept')
-                ),
+                ->description('Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, одобрите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.')
         ];
     }
 
@@ -127,7 +128,7 @@ class EditScreen extends Screen
         $user = $ideaRequest->user;
         $ideaRequest->delete();
 
-        $user->notify(new BaseNotification("Ваш запрос на получение ключа Laravel Idea был отклонён"));
+        $user->notify(new BaseNotification('Ваш запрос на получение ключа Laravel Idea был отклонён'));
 
         Toast::info('Запрос удалён');
 
