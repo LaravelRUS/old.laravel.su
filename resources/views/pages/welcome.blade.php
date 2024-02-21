@@ -736,12 +736,12 @@ background: #1A1319!important;">
 
         <div class="row text-center no-gutters pt-md-5 overflow-hidden" title="Ведущие компаний России доверяют Laravel">
             <div class="col-12 col-md-12 col-lg-12 mx-auto">
-                <div class="row gap-4 gap-md-0 company-usage align-items-center vertical-overflow">
+                <div class="row gap-4 gap-md-0 company-usage align-items-center vertical-overflow pe-none">
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/zenit.svg">
+                        <img alt="image" class="img-fluid" src="/img/usage/gpn.svg">
                     </div>
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/leroy-merlin.svg">
+                        <img alt="image" class="img-fluid" src="/img/usage/tinkoff.svg">
                     </div>
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/megafon.svg">
@@ -750,10 +750,10 @@ background: #1A1319!important;">
                         <img alt="image" class="img-fluid" src="/img/usage/mts.svg">
                     </div>
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/eldorado.svg">
+                        <img alt="image" class="img-fluid" src="/img/usage/rbk.svg">
                     </div>
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/rifgosh.svg">
+                        <img alt="image" class="img-fluid" src="/img/usage/sber.svg">
                     </div>
                     {{--
                     <div class="col-4 col-sm-5 col-md-2 m-auto">

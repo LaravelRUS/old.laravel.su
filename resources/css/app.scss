@@ -1,6 +1,5 @@
 @import "bootstrap/scss/functions";
 
-
 // scss-docs-start theme-color-variables
 $primary: #f9322c;
 $dark: #212529;
@@ -187,7 +186,7 @@ $utilities: (
 }
 
 .company-usage img {
-    filter: grayscale(100%);
+    filter: grayscale(100%) contrast(0.5);
     opacity: 0.8;
     height: 60px;
     object-fit: contain;
