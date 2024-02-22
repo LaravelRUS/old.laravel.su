@@ -40,6 +40,7 @@ Route::view('/challenges', 'pages.challenges')->name('challenges');
 Route::view('nav', 'pages.navigation')->name('nav');
 
 Route::view('/ban', 'pages.ban')->name('ban');
+Route::view('/admin', 'errors.admin');
 
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');

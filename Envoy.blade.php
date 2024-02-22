@@ -16,3 +16,10 @@ php artisan optimize
 php artisan view:cache
 php artisan storage:link
 @endtask
+
+
+@task('deploy-static', ['on' => ['web']])
+su deployer
+cd /home/deployer/laravel.su/current
+git pull
+@endtask
