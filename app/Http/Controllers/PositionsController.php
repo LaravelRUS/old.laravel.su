@@ -77,11 +77,13 @@ class PositionsController extends Controller
             ],
         ]);
 
-        $position->fill(array_merge($request->get('position'), ['user_id' => $request->user()->id]))
-            ->save();
+        $position = new Position($request->input('position'));
+
+        $request->user()->positions()->save($position);
 
         if ($position->approved) {
-            Toast::success('Изменения успешно сохранены.')->disableAutoHide();
+            Toast::success('Изменения успешно сохранены.')
+                ->disableAutoHide();
         } else {
             Toast::success('Ваш запрос принят и будет проверен модератором.')
                 ->disableAutoHide();

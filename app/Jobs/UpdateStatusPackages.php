@@ -9,6 +9,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class UpdateStatusPackages implements ShouldQueue
 {
@@ -27,8 +28,18 @@ class UpdateStatusPackages implements ShouldQueue
      */
     public function handle(): void
     {
-        $info = Http::get("https://packagist.org/packages/{$this->package->packagist_name}.json")
-            ->collect('package')->only([
+        // Fetch package information from Packagist API
+        $response = Http::get("https://packagist.org/packages/{$this->package->packagist_name}.json");
+
+        // Check if the request was successful
+        if (!$response->successful()) {
+            Log::warning("Failed to fetch package information for package '{$this->package->packagist_name}'. Response: " . $response->body());
+            return;
+        }
+
+        $info = $response
+            ->collect('package')
+            ->only([
                 'name',
                 'description',
                 'repository',
@@ -43,5 +54,13 @@ class UpdateStatusPackages implements ShouldQueue
             'downloads'   => $info['downloads']['total'],
             'website'     => $info['repository'],
         ]);
+    }
+
+    /**
+     * Handle a job failure.
+     */
+    public function failed(\Throwable $exception): void
+    {
+        Log::error("Failed to update package '{$this->package->packagist_name}': {$exception->getMessage()}");
     }
 }
