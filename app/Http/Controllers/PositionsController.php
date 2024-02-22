@@ -17,7 +17,8 @@ class PositionsController extends Controller
      */
     public function jobs()
     {
-        $positions = Position::with(['author'])
+        $positions = Position::approved()
+            ->with(['author'])
             ->whereDate('created_at', '>=', now()->subMonth())
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
@@ -143,10 +144,12 @@ class PositionsController extends Controller
      */
     public function latest()
     {
-        $positions = Position::with(['author'])
+        $positions = Position::approved()
+            ->with(['author'])
             ->whereDate('created_at', '>=', now()->subMonth())
             ->orderBy('id', 'desc')
-            ->limit(3)->get();
+            ->limit(3)
+            ->get();
 
         return view('positions.latest', [
             'positions' => $positions,
