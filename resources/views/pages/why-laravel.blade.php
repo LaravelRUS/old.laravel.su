@@ -23,25 +23,6 @@
         </x-slot>
     </x-header>
 
-{{--
-    <x-container>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="feature col">
-                <h3 class="fs-2 text-body-emphasis">150 млн+</h3>
-                <p>Установок по всему миру</p>
-            </div>
-            <div class="feature col">
-                <h3 class="fs-2 text-body-emphasis">19 030</h3>
-                <p>Разработчиков Laravel говорящих на русском</p>
-            </div>
-            <div class="feature col">
-                <h3 class="fs-2 text-body-emphasis"> 10</h3>
-                <p>Годы доказанной ценности</p>
-            </div>
-        </div>
-    </x-container>
---}}
-
     <x-container>
         <div class="row g-5  row-cols-md-3">
             <div class="col">
@@ -306,6 +287,23 @@
                             <div class="ms-3 lh-1">
                                 <div class="fw-bolder mb-1">Илья Чубаров</div>
                                 <small class="opacity-50">@agoalofalife</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="position-relative mb-5">
+
+                    <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                        <blockquote>
+                            Laravel даёт свободу творить, упрощая сложное и вдохновляя на новое!
+                        </blockquote>
+
+                        <div class="d-flex align-items-center">
+                            <img alt="image" height="50" class="rounded-circle" src="/img/community/andrey-helldar.jpeg">
+                            <div class="ms-3 lh-1">
+                                <div class="fw-bolder mb-1">Андрей Хэллдар</div>
+                                <small class="opacity-50">@andrey-helldar</small>
                             </div>
                         </div>
                     </div>
