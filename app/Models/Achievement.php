@@ -14,6 +14,8 @@ class Achievement extends Model
     use HasFactory, HasUuids;
 
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [
@@ -22,14 +24,22 @@ class Achievement extends Model
         'user_id',
     ];
 
+    /**
+     * Boot the model's events.
+     *
+     * @return void
+     */
     protected static function booted(): void
     {
+        // Send notification when a new achievement is created
         static::created(function (Achievement $achievement) {
             Notification::send($achievement->user, new AchievementNotification($achievement));
         });
     }
 
     /**
+     * Get the user that owns the achievement.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -38,6 +48,8 @@ class Achievement extends Model
     }
 
     /**
+     * Get the presenter instance for the achievement.
+     *
      * @return \App\Orchid\Presenters\AchievementPresenter
      */
     public function presenter(): AchievementPresenter
