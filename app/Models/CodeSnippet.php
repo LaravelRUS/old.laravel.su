@@ -14,6 +14,8 @@ class CodeSnippet extends Model
     use AsSource, Chartable, HasFactory, HasUuids, Prunable;
 
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [
@@ -21,10 +23,13 @@ class CodeSnippet extends Model
     ];
 
     /**
+     * Get the query that represents the prunable data.
+     *
      * @return mixed
      */
     public function prunable()
     {
+        // Retrieve snippets older than one month
         return static::where('created_at', '<=', now()->subMonth());
     }
 }
