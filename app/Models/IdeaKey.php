@@ -11,15 +11,22 @@ class IdeaKey extends Model
 {
     use Chartable, HasFactory, HasUuids;
 
-    public function user()
+    /**
+     * Get the user associated with the idea key.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
+     * Get the idea request associated with the idea key.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function request()
+    public function request(): BelongsTo
     {
         return $this->belongsTo(IdeaRequest::class, 'request_id');
     }

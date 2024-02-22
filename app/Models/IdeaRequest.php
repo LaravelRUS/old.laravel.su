@@ -13,7 +13,9 @@ class IdeaRequest extends Model
     use AsSource, Chartable, Filterable, HasFactory;
 
     /**
-     * @var string[]
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
         'user_id',
@@ -25,17 +27,21 @@ class IdeaRequest extends Model
     ];
 
     /**
+     * Get the user associated with the idea request.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
+     * Get the idea key associated with the idea request.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function key()
+    public function key(): HasOne
     {
         return $this->hasOne(IdeaKey::class, 'request_id');
     }
