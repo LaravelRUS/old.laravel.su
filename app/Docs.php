@@ -132,7 +132,7 @@ class Docs
         $all = collect()->merge($this->variables)->merge([
             'docs'    => $this,
             'content' => $this->content(),
-            'edit'    => $this->goToGitHub(),
+            'edit'    => $this->getEditUrl(),
         ]);
 
         return view($view, $all);
@@ -274,7 +274,7 @@ class Docs
      *
      * @return string The URL to edit the page on GitHub.
      */
-    public function goToGitHub(): string
+    public function getEditUrl(): string
     {
         return "https://github.com/laravelRus/docs/edit/$this->path";
     }

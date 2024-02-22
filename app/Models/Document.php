@@ -12,7 +12,9 @@ class Document extends Model
     use HasFactory, HasUuids;
 
     /**
-     * @var string[]
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
         'id',
@@ -24,6 +26,8 @@ class Document extends Model
     ];
 
     /**
+     * The default values for attributes.
+     *
      * @var array
      */
     protected $attributes = [
@@ -36,7 +40,7 @@ class Document extends Model
      *
      * @return string The URL to edit the page on GitHub.
      */
-    public function goToGitHub(): string
+    public function getEditUrl(): string
     {
         return "https://github.com/laravel-russia/docs/edit/$this->version/$this->file";
     }

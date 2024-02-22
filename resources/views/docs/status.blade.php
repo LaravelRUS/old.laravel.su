@@ -56,7 +56,7 @@
                         <div class="position-relative" id="{{ $doc->file }}">
                             <div class="d-flex flex-column flex-lg-row align-items-start mb-4">
                                 <h5 class="mb-lg-0 me-auto user-select-all d-flex align-items-center">
-                                    <a href="{{ $doc->goToGitHub() }}" target="_blank" class="link-body-emphasis small opacity-50 text-decoration-none me-2">
+                                    <a href="{{ $doc->getEditUrl() }}" target="_blank" class="link-body-emphasis small opacity-50 text-decoration-none me-2">
                                         <x-icon path="i.edit" class="bi" width="0.85rem" height="0.85rem"/>
                                     </a>
 
