@@ -57,7 +57,7 @@ return [
     'pwa' => [
         'name'             => 'Ларавел',
         'short_name'       => 'Ларавел',
-        'description'      => 'Русскоязычное комьюнити по Laravel',
+        'description'      => 'Laravel - это фреймворк для веб-приложений на PHP с утонченным синтаксисом, который освобождает вас от мелочей. Русскоязычное сообщество и документация.',
         'background_color' => '#ffffff',
         'theme_color'      => '#f4645f',
         'display'          => 'standalone',
