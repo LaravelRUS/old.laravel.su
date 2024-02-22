@@ -17,22 +17,19 @@ class Comment extends Model
     use Chartable, HasFactory, Likeable, SoftDeletes;
 
     /**
-     * @var string
-     */
-    protected $table = 'comments';
-
-    /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [
         'post_id',
-        'user_id',
         'parent_id',
         'content',
-        'approved',
     ];
 
     /**
+     * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -43,21 +40,7 @@ class Comment extends Model
     ];
 
     /**
-     * Find a comment by post ID.
-     *
-     * @param int $postId
-     *
-     * @return mixed
-     */
-    public static function findByPostId(int $postId)
-    {
-        $instance = new static();
-
-        return $instance->where('post_id', $postId)->get();
-    }
-
-    /**
-     * Post relationship.
+     * Get the post that owns the comment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -67,7 +50,7 @@ class Comment extends Model
     }
 
     /**
-     * Replies relationship.
+     * Get the replies to the comment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -77,7 +60,7 @@ class Comment extends Model
     }
 
     /**
-     * Returns the comment to which this comment belongs to.
+     * Get the parent comment of the comment.
      */
     public function parent()
     {
@@ -115,7 +98,7 @@ class Comment extends Model
     }
 
     /**
-     *   Author relationship.
+     * Get the author of the comment.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -137,6 +120,8 @@ class Comment extends Model
     }
 
     /**
+     * Convert URLs in text to HTML links.
+     *
      * @param string|null $text
      *
      * @return string
@@ -148,6 +133,8 @@ class Comment extends Model
     }
 
     /**
+     * Convert mentioned usernames to HTML links.
+     *
      * @param string|null $text
      *
      * @return string
@@ -164,6 +151,8 @@ class Comment extends Model
     }
 
     /**
+     * Convert newlines to HTML line breaks.
+     *
      * @param string|null $text
      *
      * @return string
@@ -174,6 +163,8 @@ class Comment extends Model
     }
 
     /**
+     * Get the pretty formatted comment content.
+     *
      * @return string
      */
     public function prettyComment(): string
@@ -186,6 +177,11 @@ class Comment extends Model
         return $this->nl2br($withMention);
     }
 
+    /**
+     * Get the users mentioned in the comment content.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection
+     */
     public function getMentionedUsers()
     {
         $usersNikNames = Str::of($this->content)->matchAll('/\@([a-zA-Z0-9_]+)/u');
@@ -194,6 +190,5 @@ class Comment extends Model
         }
 
         return User::whereIn('nickname', $usersNikNames)->get();
-
     }
 }
