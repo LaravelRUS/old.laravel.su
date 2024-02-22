@@ -7,7 +7,7 @@
         @can('reply', $comment)
             <form method="POST"
                   action="{{ route('comments.reply', $comment->getKey()) }}"
-                  class="my-3 d-flex flex-column position-relative"
+                  class="my-3 d-flex flex-column position-relative me-1"
                   data-controller="comment"
             >
                                     <textarea

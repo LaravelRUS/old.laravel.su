@@ -87,6 +87,17 @@ class PlatformProvider extends OrchidServiceProvider
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),
 
+            Menu::make('Яндекс Метрика')
+                ->icon('pie-chart')
+                ->href('https://metrika.yandex.ru/dashboard?id=96430041')
+                ->target('_blank')
+                ->title('Сервисы'),
+
+            Menu::make('Telescope')
+                ->icon('arrow-clockwise')
+                ->route('platform.services.telescope')
+                ->permission('platform.services.telescope'),
+
             Menu::make(__('Users'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
@@ -127,6 +138,9 @@ class PlatformProvider extends OrchidServiceProvider
 
             ItemPermission::group('Данные')
                 ->addPermission('site.content', 'Контент'),
+
+            ItemPermission::group('Сервисы')
+                ->addPermission('platform.services.telescope', 'Telescope')
         ];
     }
 }

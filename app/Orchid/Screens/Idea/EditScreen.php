@@ -6,7 +6,7 @@ namespace App\Orchid\Screens\Idea;
 
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
-use App\Notifications\BaseNotification;
+use App\Notifications\SimpleMessageNotification;
 use App\Notifications\IdeaRequestAcceptedNotification;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
@@ -128,7 +128,7 @@ class EditScreen extends Screen
         $user = $ideaRequest->user;
         $ideaRequest->delete();
 
-        $user->notify(new BaseNotification('Ваш запрос на получение ключа Laravel Idea был отклонён'));
+        $user->notify(new SimpleMessageNotification('Ваш запрос на получение ключа Laravel Idea был отклонён'));
 
         Toast::info('Запрос удалён');
 

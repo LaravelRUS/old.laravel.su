@@ -3,8 +3,9 @@
 namespace App\Orchid\Screens\Package;
 
 use App\Casts\PackageTypeEnum;
+use App\Jobs\UpdateStatusPackages;
 use App\Models\Package;
-use App\Notifications\BaseNotification;
+use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -203,6 +204,10 @@ class ListScreen extends Screen
     {
         $package->forceFill($request->input('package'))->save();
 
+        if ($package->approved) {
+            UpdateStatusPackages::dispatch($package);
+        }
+
         Toast::info('Информация обновлена');
     }
 
@@ -215,7 +220,7 @@ class ListScreen extends Screen
     {
         $package->delete();
 
-        $package->author->notify(new BaseNotification("Пакет '".$package->name."' отклонён."));
+        $package->author->notify(new SimpleMessageNotification("Пакет '".$package->name."' отклонён."));
 
         Toast::info('Пакет удален');
     }

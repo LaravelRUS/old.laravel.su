@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Position;
 
 use App\Models\Position;
-use App\Notifications\BaseNotification;
+use App\Notifications\SimpleMessageNotification;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -161,7 +161,7 @@ class ListScreen extends Screen
     {
         $position->delete();
 
-        $position->author->notify(new BaseNotification('Вакансия "'.$position->title.'" отклонена.'));
+        $position->author->notify(new SimpleMessageNotification('Вакансия "'.$position->title.'" отклонена.'));
 
         Toast::info('Вакансия удалена');
     }

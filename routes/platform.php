@@ -60,6 +60,9 @@ Route::screen('roles', RoleListScreen::class)
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
 
+Route::screen('telescope', \App\Orchid\Screens\Services\Telescope::class)
+    ->name('platform.services.telescope');
+
 // Route::screen('idea', Idea::class, 'platform.screens.idea');
 
 Route::screen('packages', App\Orchid\Screens\Package\ListScreen::class)

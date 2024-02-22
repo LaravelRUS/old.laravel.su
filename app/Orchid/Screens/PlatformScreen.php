@@ -32,8 +32,8 @@ class PlatformScreen extends Screen
         return [
             'basicIndicators'                => [
                 User::countByDays($start, $end)->toChart('Пользователи'),
-                Comment::countByDays($start, $end)->toChart('комментарии'),
-                CodeSnippet::countByDays($start, $end)->toChart('pastebin'),
+                Comment::countByDays($start, $end)->toChart('Комментарии'),
+                CodeSnippet::countByDays($start, $end)->toChart('Pastebin'),
             ],
             'content'                => [
                 Post::countByDays($start, $end)->toChart('Посты'),
@@ -91,7 +91,7 @@ class PlatformScreen extends Screen
                 ->description('Количество новых стаей,пакетов,мероприятий и вакансий по дням'),
 
             BasicIndicators::make('idea')
-                ->description('количество запросов и выданных ключей Laravel Idea по дням')
+                ->description('Количество запросов и выданных ключей Laravel Idea по дням')
                 ->title('Idea'),
 
         ];

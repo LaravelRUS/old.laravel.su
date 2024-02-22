@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 
-class BaseNotification extends Notification implements ShouldQueue
+class SimpleMessageNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -46,7 +46,6 @@ class BaseNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-
         return (new SiteMessage())
             ->title($this->message)
             ->img(asset('/img/avatars/avatar2.svg'));
