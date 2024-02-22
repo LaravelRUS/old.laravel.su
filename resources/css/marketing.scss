@@ -1,0 +1,28 @@
+.marketing {
+    blockquote {
+        @extend .lead;
+        @extend .mb-4;
+    }
+
+    blockquote:before {
+        content: "«";
+        padding-right: 0.5em;
+        //content: open-quote;
+        //vertical-align: super;
+    }
+
+    blockquote:after {
+        //content: close-quote;
+        //vertical-align: sub;
+        content: "»";
+        padding-left: 0.5em;
+    }
+
+    blockquote:before,
+    blockquote:after {
+        display: inline-block;
+        color: $primary;
+        position: relative;
+        opacity: 0.5;
+    }
+}

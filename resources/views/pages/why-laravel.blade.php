@@ -242,6 +242,80 @@
         </div>
     </x-container>
 
+
+
+    <x-header image="/img/bird.svg">
+        <x-slot:sup>По всему миру</x-slot>
+        <x-slot:title>Его любят тысячи разработчиков.</x-slot>
+
+        <x-slot:description>
+            Их предпочтения это неслучайность – фреймворк отличается надежностью, гибкостью и простотой использования
+        </x-slot>
+    </x-header>
+    <x-container>
+
+        <div class="row marketing">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column align-items-md-baseline">
+                    <div class="position-relative mb-5">
+
+                        <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                            <blockquote>Laravel - элегантность PHP</blockquote>
+
+                            <div class="d-flex align-items-center">
+                                <img alt="image" height="50" class="rounded-circle" src="/img/community/afanasyev.jpg">
+                                <div class="ms-3 lh-1">
+                                    <div class="fw-bolder mb-1">Дмитрий Афанасьев</div>
+                                    <small class="opacity-50">@dmitriy-afanasyev</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="position-relative mb-5">
+
+                        <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                            <blockquote>
+                                Laravel — это истинное удовольствие. Позволяет создавать любые вещи, которые захочу.
+                            </blockquote>
+
+                            <div class="d-flex align-items-center">
+                                <img alt="image" height="50" class="rounded-circle" src="/img/community/chernayev.jpeg">
+                                <div class="ms-3 lh-1">
+                                    <div class="fw-bolder mb-1">Александр Черняев</div>
+                                    <small class="opacity-50">@tabuna</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="position-relative mb-5">
+
+                    <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                        <blockquote>
+                            Laravel - мой верный спутник уже много лет. Этот фреймворк идеально подходит для широкого
+                            спектра задач. Моя практика включает множество успешных проектов на Laravel, благодаря его
+                            стабильной работе, поддержке и разнообразию дополнительных инструментов.
+                        </blockquote>
+
+                        <div class="d-flex align-items-center">
+                            <img alt="image" height="50" class="rounded-circle" src="/img/community/chubarov.jpg">
+                            <div class="ms-3 lh-1">
+                                <div class="fw-bolder mb-1">Илья Чубаров</div>
+                                <small class="opacity-50">@agoalofalife</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </x-container>
+
+
 {{--
     <x-call-to-action link="https://github.com/laravel-russia" text="Внесите свой вклад на GitHub">
         <x-slot:title>Аргументы убедили тебя?</x-slot>
