@@ -22,7 +22,7 @@ class UpdateAchievementsForPostWithComments extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Update achievements for authors based on the comments on their posts.';
 
     /**
      * Execute the console command.
@@ -37,9 +37,9 @@ class UpdateAchievementsForPostWithComments extends Command
                 $posts->each(function (Post $post) {
                     if ($post->comments_count >= 30) {
                         $post->author->reward(AuthorHighCommentInteraction::class);
-                    } else {
-                        $post->author->reward(AuthorCommentInteraction::class);
                     }
+
+                    $post->author->reward(AuthorCommentInteraction::class);
                 });
             });
     }

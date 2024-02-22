@@ -23,13 +23,14 @@ class UpdateAchievementsForComments extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Update achievements for users based on their recent comments activity.';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
+        // Retrieve users who have made at least 10 comments in the last week
         User::whereHas('comments', function (Builder $query) {
             $query->where('created_at', '>=', now()->subWeek());
         }, '>=', 10)
@@ -38,9 +39,9 @@ class UpdateAchievementsForComments extends Command
                 $users->each(function (User $user) {
                     if ($user->comments_count >= 30) {
                         $user->reward(HighCommentInteraction::class);
-                    } else {
-                        $user->reward(CommentInteraction::class);
                     }
+
+                    $user->reward(CommentInteraction::class);
                 });
             });
     }

@@ -22,7 +22,7 @@ class UpdateAchievementsForPostWithLikes extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Update achievements for authors based on the likes on their posts.';
 
     /**
      * Execute the console command.
@@ -37,9 +37,9 @@ class UpdateAchievementsForPostWithLikes extends Command
                 $posts->each(function (Post $post) {
                     if ($post->likers_count >= 30) {
                         $post->author->reward(RecognizedAuthor::class);
-                    } else {
-                        $post->author->reward(AuthorInteraction::class);
                     }
+
+                    $post->author->reward(AuthorInteraction::class);
                 });
             });
     }

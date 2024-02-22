@@ -19,19 +19,22 @@ class CompareDocument extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Compare Russian and English documentation to find the discrepancies.';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        collect(Docs::SUPPORT_VERSIONS)->each(fn (string $version) => $this->updateVersion($version));
+        // Iterate through supported versions of documentation
+        collect(Docs::SUPPORT_VERSIONS)
+            ->each(fn (string $version) => $this->updateVersion($version));
     }
 
     /**
-     * @param string $version
+     * Update the specified version of documentation.
      *
+     * @param  string  $version
      * @return void
      */
     protected function updateVersion(string $version): void
@@ -40,7 +43,8 @@ class CompareDocument extends Command
             try {
                 $docs->update();
             } catch (\Exception $exception) {
-                $this->warn($exception->getMessage());
+                // Log a warning if an error occurs during update
+                $this->warn("Failed to update document: {$exception->getMessage()}");
             }
         });
     }
