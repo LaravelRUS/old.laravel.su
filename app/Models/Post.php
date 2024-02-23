@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\PostTypeEnum;
 use App\Casts\StatusEnum;
+use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Concerns\Taggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,7 +29,7 @@ use Spatie\Feed\FeedItem;
  */
 class Post extends Model implements Feedable
 {
-    use AsSource, Chartable, Filterable, HasFactory, Likeable, Searchable, Taggable;
+    use AsSource, Chartable, Filterable, HasFactory, Likeable, Searchable, Taggable, LogsActivityFillable;
 
     /**
      * @var string[]

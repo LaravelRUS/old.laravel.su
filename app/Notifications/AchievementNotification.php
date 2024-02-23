@@ -16,11 +16,12 @@ class AchievementNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private Achievement $achievement;
-
-    public function __construct(Achievement $achievement)
+    /**
+     * @param \App\Models\Achievement $achievement
+     */
+    public function __construct(private Achievement $achievement)
     {
-        $this->achievement = $achievement;
+
     }
 
     /**
@@ -30,7 +31,7 @@ class AchievementNotification extends Notification implements ShouldQueue
      *
      * @return array
      */
-    public function via(User $user)
+    public function via()
     {
         return [
             SiteChannel::class,
@@ -45,7 +46,7 @@ class AchievementNotification extends Notification implements ShouldQueue
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toSite(User $user)
+    public function toSite()
     {
         $url = route('achievements');
 
@@ -60,7 +61,7 @@ class AchievementNotification extends Notification implements ShouldQueue
      *
      * @return \NotificationChannels\WebPush\WebPushMessage
      */
-    public function toWebPush(User $user)
+    public function toWebPush()
     {
         $url = route('achievements');
 

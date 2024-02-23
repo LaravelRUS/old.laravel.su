@@ -31,7 +31,7 @@ class IdeaRequest extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -41,7 +41,7 @@ class IdeaRequest extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function key(): HasOne
+    public function key()
     {
         return $this->hasOne(IdeaKey::class, 'request_id');
     }

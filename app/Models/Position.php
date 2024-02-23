@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use App\Casts\ScheduleEnum;
-use App\Orchid\Presenters\PositionPresenter;
+use App\Models\Concerns\LogsActivityFillable;
+use App\Presenters\PositionPresenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,13 +17,14 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory;
+    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable;
 
     /**
-     * @var string[]
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
-        'user_id',
         'title',
         'description',
         'organization',
@@ -34,6 +36,8 @@ class Position extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -45,10 +49,18 @@ class Position extends Model
         'schedule'     => ScheduleEnum::class,
     ];
 
-    protected $attributes = [
-        'approved'       => 0,
-    ];
     /**
+     * The default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'approved' => 0,
+    ];
+
+    /**
+     * The allowed filters for the model.
+     *
      * @var array
      */
     protected $allowedFilters = [
@@ -59,6 +71,11 @@ class Position extends Model
         'contact'      => Like::class,
     ];
 
+    /**
+     * The allowed sorts for the model.
+     *
+     * @var array
+     */
     protected $allowedSorts = [
         'title',
         'description',
@@ -71,7 +88,10 @@ class Position extends Model
         'approved',
     ];
 
-    public static function boot()
+    /**
+     * Boot method for model.
+     */
+    public static function boot(): void
     {
         parent::boot();
 
@@ -80,7 +100,7 @@ class Position extends Model
             $i = 1;
 
             while (static::where('slug', $slug)->exists()) {
-                $slug = Str::slug($position->organization).'-'.$i++;
+                $slug = Str::slug($position->organization) . '-' . $i++;
             }
 
             $position->slug = $slug;
@@ -88,6 +108,8 @@ class Position extends Model
     }
 
     /**
+     * Get the user that owns the position.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
@@ -96,19 +118,20 @@ class Position extends Model
     }
 
     /**
-     * Author relationship.
+     * Get the author of the position.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function author()
+    public function author(): BelongsTo
     {
         return $this->user();
     }
 
     /**
-     * Get only posts with a custom status.
+     * Scope a query to only include approved positions.
      *
      * @param Builder $query
+     * @param bool $approved
      *
      * @return Builder
      */
@@ -118,7 +141,9 @@ class Position extends Model
     }
 
     /**
-     * @return \App\Orchid\Presenters\PositionPresenter
+     * Get the presenter for the model.
+     *
+     * @return \App\Presenters\PositionPresenter
      */
     public function presenter(): PositionPresenter
     {

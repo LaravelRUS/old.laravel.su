@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\Role;
 
 use Illuminate\Support\Collection;
-use Orchid\Platform\Models\User;
+use App\Models\User;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Group;

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\PackageTypeEnum;
+use App\Models\Concerns\LogsActivityFillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,13 +15,14 @@ use Orchid\Screen\AsSource;
 
 class Package extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory;
+    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable;
 
     /**
-     * @var string[]
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
-        'user_id',
         'name',
         'description',
         'packagist_name',
@@ -31,6 +33,8 @@ class Package extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -40,11 +44,19 @@ class Package extends Model
         'website'        => 'string',
         'type'           => PackageTypeEnum::class,
     ];
+
+    /**
+     * The default values for attributes.
+     *
+     * @var array
+     */
     protected $attributes = [
-        'approved'       => 0,
+        'approved' => 0,
     ];
 
     /**
+     * The allowed filters for the model.
+     *
      * @var array
      */
     protected $allowedFilters = [
@@ -54,6 +66,11 @@ class Package extends Model
         'website'        => Like::class,
     ];
 
+    /**
+     * The allowed sorts for the model.
+     *
+     * @var array
+     */
     protected $allowedSorts = [
         'name',
         'created_at',
@@ -63,6 +80,8 @@ class Package extends Model
     ];
 
     /**
+     * Get the author of the package.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function author(): BelongsTo
@@ -71,9 +90,10 @@ class Package extends Model
     }
 
     /**
-     * Get only posts with a custom status.
+     * Scope a query to only include approved packages.
      *
      * @param Builder $query
+     * @param bool $approved
      *
      * @return Builder
      */
