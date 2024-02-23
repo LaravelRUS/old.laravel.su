@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
             ],
         ])->daily();
 
-        $schedule->command('sqlite:optimize')->everyThirtyMinutes();
+        $schedule->command('sqlite:optimize')->everyMinute();
     }
 
     /**

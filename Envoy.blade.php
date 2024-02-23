@@ -3,6 +3,7 @@
 @task('deploy', ['on' => ['web']])
 su deployer
 cd /home/deployer/laravel.su/current
+php artisan down
 git pull
 
 php artisan cache:clear
@@ -13,6 +14,7 @@ composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev -
 php artisan view:clear
 php artisan migrate --force
 php artisan optimize
+php artisan up
 php artisan view:cache
 php artisan storage:link
 @endtask
