@@ -77,9 +77,12 @@ class PositionsController extends Controller
             ],
         ]);
 
-        $position = new Position($request->input('position'));
-
-        $request->user()->positions()->save($position);
+        if($position->exists){
+            $position->fill($request->input('position'))->save();
+        }else{
+            $position = new Position($request->input('position'));
+            $request->user()->positions()->save($position);
+        }
 
         if ($position->approved) {
             Toast::success('Изменения успешно сохранены.')
