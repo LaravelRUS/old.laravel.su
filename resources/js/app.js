@@ -7,7 +7,8 @@ import 'bootstrap';
 window.Turbo = Turbo;
 
 const application = (window.application = Application.start());
-const controllers = import.meta.globEager('./**/*_controller.js')
+const controllers = import.meta.glob('./**/*_controller.js', { eager: true })
+
 registerControllers(application, controllers)
 
 
