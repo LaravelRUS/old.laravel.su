@@ -7,6 +7,12 @@ use App\Models\User;
 
 class CommentPolicy
 {
+    /**
+     * @param \App\Models\User $user
+     * @param string           $ability
+     *
+     * @return bool|null
+     */
     public function before(User $user, string $ability): ?bool
     {
         if ($user->banned) {

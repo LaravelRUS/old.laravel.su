@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Presenters;
+namespace App\Presenters;
 
 use Illuminate\Support\Str;
 use Laravel\Scout\Builder;
