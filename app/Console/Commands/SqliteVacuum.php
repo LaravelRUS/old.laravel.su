@@ -7,14 +7,14 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\SQLiteConnection;
 
-class SqliteOptimize extends Command
+class SqliteVacuum extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sqlite:optimize
+    protected $signature = 'sqlite:vacuum
                             {connection=sqlite : The connection to optimize}';
 
     /**
@@ -22,7 +22,7 @@ class SqliteOptimize extends Command
      *
      * @var string
      */
-    protected $description = 'Optimize the SQLite database by running VACUUM and PRAGMA optimize.';
+    protected $description = 'Optimize the SQLite database by running VACUUM';
 
     /**
      * Execute the console command.
@@ -36,20 +36,20 @@ class SqliteOptimize extends Command
         $connection = $this->argument('connection');
         $db = $this->getDatabase($manager, $connection);
 
-        $this->optimize($db);
+        $this->vacuum($db);
     }
 
     /**
-     * Runs the PRAGMA optimize command on the SQLite database.
-     * This command optimizes the database by running integrity checks and reindexing tables.
+     * Runs the VACUUM command on the SQLite database.
+     * This command rebuilds the database file, repacking it into minimal space and defragmenting the storage.
      *
      * @param \Illuminate\Database\ConnectionInterface $connection
      *
      * @return bool
      */
-    protected function optimize(ConnectionInterface $connection)
+    protected function vacuum(ConnectionInterface $connection)
     {
-        return $connection->statement('PRAGMA optimize;');
+        return $connection->statement('PRAGMA vacuum;');
     }
 
     /**
