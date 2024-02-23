@@ -4,8 +4,13 @@
 
 .hidden-text {
     cursor: pointer;
-    filter: blur(0.2rem) grayscale(0.15);
+    filter: brightness(5.8);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='69' height='16' fill='none'%3E%3Cg fill='%23212121' clip-path='url(%23a)'%3E%3Ccircle cx='3.5' cy='3.5' r='.5'/%3E%3Ccircle cx='26.5' cy='3.5' r='.5'/%3E%3Ccircle cx='49.5' cy='3.5' r='.5'/%3E%3Ccircle cx='72.5' cy='3.5' r='.5'/%3E%3Ccircle cx='8.5' cy='4.5' r='.5'/%3E%3Ccircle cx='31.5' cy='4.5' r='.5'/%3E%3Ccircle cx='54.5' cy='4.5' r='.5'/%3E%3Ccircle cx='11.5' cy='6.5' r='.5'/%3E%3Ccircle cx='34.5' cy='6.5' r='.5'/%3E%3Ccircle cx='57.5' cy='6.5' r='.5'/%3E%3Ccircle cx='15.5' cy='9.5' r='.5'/%3E%3Ccircle cx='38.5' cy='9.5' r='.5'/%3E%3Ccircle cx='61.5' cy='9.5' r='.5'/%3E%3Ccircle cx='13.5' cy='5.5' r='.5'/%3E%3Ccircle cx='36.5' cy='5.5' r='.5'/%3E%3Ccircle cx='59.5' cy='5.5' r='.5'/%3E%3Ccircle cx='17.5' cy='8.5' r='.5'/%3E%3Ccircle cx='40.5' cy='8.5' r='.5'/%3E%3Ccircle cx='63.5' cy='8.5' r='.5'/%3E%3Ccircle cx='21.5' cy='4.5' r='.5'/%3E%3Ccircle cx='44.5' cy='4.5' r='.5'/%3E%3Ccircle cx='67.5' cy='4.5' r='.5'/%3E%3Ccircle cx='14.5' cy='2.5' r='.5'/%3E%3Ccircle cx='37.5' cy='2.5' r='.5'/%3E%3Ccircle cx='60.5' cy='2.5' r='.5'/%3E%3Ccircle cx='18.5' cy='5.5' r='.5'/%3E%3Ccircle cx='41.5' cy='5.5' r='.5'/%3E%3Ccircle cx='64.5' cy='5.5' r='.5'/%3E%3Ccircle cx='11.5' cy='3.5' r='.5'/%3E%3Ccircle cx='34.5' cy='3.5' r='.5'/%3E%3Ccircle cx='57.5' cy='3.5' r='.5'/%3E%3Ccircle cx='15.5' cy='6.5' r='.5'/%3E%3Ccircle cx='38.5' cy='6.5' r='.5'/%3E%3Ccircle cx='61.5' cy='6.5' r='.5'/%3E%3Ccircle cx='7.5' cy='1.5' r='.5'/%3E%3Ccircle cx='30.5' cy='1.5' r='.5'/%3E%3Ccircle cx='53.5' cy='1.5' r='.5'/%3E%3Ccircle cx='6.5' cy='6.5' r='.5'/%3E%3Ccircle cx='29.5' cy='6.5' r='.5'/%3E%3Ccircle cx='52.5' cy='6.5' r='.5'/%3E%3Ccircle cx='10.5' cy='9.5' r='.5'/%3E%3Ccircle cx='33.5' cy='9.5' r='.5'/%3E%3Ccircle cx='56.5' cy='9.5' r='.5'/%3E%3Ccircle cx='13.5' cy='9.5' r='.5'/%3E%3Ccircle cx='36.5' cy='9.5' r='.5'/%3E%3Ccircle cx='59.5' cy='9.5' r='.5'/%3E%3Ccircle cx='18.5' cy='2.5' r='.5'/%3E%3Ccircle cx='41.5' cy='2.5' r='.5'/%3E%3Ccircle cx='64.5' cy='2.5' r='.5'/%3E%3Ccircle cx='23.5' cy='2.5' r='.5'/%3E%3Ccircle cx='46.5' cy='2.5' r='.5'/%3E%3Ccircle cx='69.5' cy='2.5' r='.5'/%3E%3Ccircle cx='16.5' cy='11.5' r='.5'/%3E%3Ccircle cx='39.5' cy='11.5' r='.5'/%3E%3Ccircle cx='62.5' cy='11.5' r='.5'/%3E%3Ccircle cx='18.5' cy='12.5' r='.5'/%3E%3Ccircle cx='41.5' cy='12.5' r='.5'/%3E%3Ccircle cx='64.5' cy='12.5' r='.5'/%3E%3Ccircle cx='20.5' cy='9.5' r='.5'/%3E%3Ccircle cx='43.5' cy='9.5' r='.5'/%3E%3Ccircle cx='66.5' cy='9.5' r='.5'/%3E%3Ccircle cx='22.5' cy='12.5' r='.5'/%3E%3Ccircle cx='45.5' cy='12.5' r='.5'/%3E%3Ccircle cx='68.5' cy='12.5' r='.5'/%3E%3Ccircle cx='25.5' cy='9.5' r='.5'/%3E%3Ccircle cx='46.5' cy='5.5' r='.5'/%3E%3Ccircle cx='69.5' cy='8.5' r='.5'/%3E%3Ccircle cx='15.5' cy='14.5' r='.5'/%3E%3Ccircle cx='38.5' cy='14.5' r='.5'/%3E%3Ccircle cx='61.5' cy='14.5' r='.5'/%3E%3Ccircle cx='12.5' cy='12.5' r='.5'/%3E%3Ccircle cx='35.5' cy='12.5' r='.5'/%3E%3Ccircle cx='56.5' cy='13.5' r='.5'/%3E%3Ccircle cx='7.5' cy='11.5' r='.5'/%3E%3Ccircle cx='30.5' cy='11.5' r='.5'/%3E%3Ccircle cx='53.5' cy='11.5' r='.5'/%3E%3Ccircle cx='8.5' cy='8.5' r='.5'/%3E%3Ccircle cx='31.5' cy='8.5' r='.5'/%3E%3Ccircle cx='54.5' cy='8.5' r='.5'/%3E%3Ccircle cx='6.5' cy='9.5' r='.5'/%3E%3Ccircle cx='29.5' cy='9.5' r='.5'/%3E%3Ccircle cx='52.5' cy='9.5' r='.5'/%3E%3Ccircle cx='8.5' cy='13.5' r='.5'/%3E%3Ccircle cx='31.5' cy='13.5' r='.5'/%3E%3Ccircle cx='52.5' cy='14.5' r='.5'/%3E%3Ccircle cx='4.5' cy='11.5' r='.5'/%3E%3Ccircle cx='27.5' cy='11.5' r='.5'/%3E%3Ccircle cx='48.5' cy='9.5' r='.5'/%3E%3Ccircle cx='73.5' cy='11.5' r='.5'/%3E%3Ccircle cx='4.5' cy='7.5' r='.5'/%3E%3Ccircle cx='27.5' cy='7.5' r='.5'/%3E%3Ccircle cx='50.5' cy='7.5' r='.5'/%3E%3Ccircle cx='72.5' cy='9.5' r='.5'/%3E%3Ccircle cx='1.5' cy='8.5' r='.5'/%3E%3Ccircle cx='24.5' cy='5.5' r='.5'/%3E%3Ccircle cx='44.5' cy='14.5' r='.5'/%3E%3Ccircle cx='70.5' cy='6.5' r='.5'/%3E%3Ccircle cx='2.5' cy='13.5' r='.5'/%3E%3Ccircle cx='25.5' cy='13.5' r='.5'/%3E%3Ccircle cx='48.5' cy='13.5' r='.5'/%3E%3Ccircle cx='71.5' cy='13.5' r='.5'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Crect width='255' height='16' fill='%23fff' rx='2'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    //filter: blur(0.2rem) grayscale(0.15);
     transition: 340ms all;
+    color: transparent;
+    background-repeat: repeat no-repeat;
+    background-position-y: center;
 }
 
 .line-clamp {
@@ -13,4 +18,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+.feature-icon-small {
+    width: 3rem;
+    height: 3rem;
 }

@@ -97,68 +97,7 @@ $utilities: (
 @import "hangman";
 @import "thread";
 @import "marketing";
-
-.post {
-    @extend .text-break;
-
-    h1 {
-        @extend .display-5;
-        @extend .fw-bold;
-        @extend .text-body-emphasis;
-        @extend .mb-4;
-        //line-height: 1;
-        text-wrap: balance!important;
-    }
-
-    h2 {
-        line-height: 1.23;
-        margin: 0 0 1rem;
-    }
-
-    .h2,
-    .h3,
-    h2,
-    h3 {
-        margin-top: 1.5em;
-        margin-bottom: 1rem;
-    }
-
-    h4, h5, h6 {
-        margin-top: 1.25em;
-    }
-
-    table{
-        @extend .table;
-        @extend .table-bordered;
-    }
-
-    p {
-        line-height: 1.5rem;
-        margin: 0 0 1.5rem;
-    }
-
-    img {
-        @extend .bg-body-secondary;
-        @extend .rounded;
-        width: 100%;
-        min-height: 200px;
-        object-fit: cover;
-        display: block;
-    }
-
-    figure {
-        margin: 0 0 1.5rem;
-    }
-
-    figcaption {
-        @extend .small;
-        display: block;
-        margin: 1em;
-        padding: 0 2rem;
-        opacity: 0.75;
-        text-align: center;
-    }
-}
+@import "post";
 
 .avatar {
     border-radius: 10em;
@@ -192,12 +131,6 @@ $utilities: (
 }
 
 
-.feature-icon-small {
-    width: 3rem;
-    height: 3rem;
-}
-
-
 
 // Need usage Bootstrap settings
 
@@ -222,10 +155,10 @@ $utilities: (
         opacity: 0.5;
     }
 }
+
 .bg-light-danger{
     background-color: #FBDBD9 !important;
 }
-
 
 .to-transparent {
     background-image: linear-gradient(to top, var(--bs-tertiary-bg), rgb(var(--bs-tertiary-bg-rgb), 0%));
@@ -238,15 +171,6 @@ $utilities: (
     height: 4rem;
 }
 
-.post-preview-text {
-    max-height: 25rem;
-    overflow: hidden;
-    position: relative;
-
-    pre {
-        overflow: hidden!important;
-    }
-}
 
 .sponsors {
     img {
@@ -287,15 +211,16 @@ $utilities: (
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $primary 150%);
 }
 
-.tentacle{
+.tentacle {
     position: relative;
     bottom: -10%;
 }
+
 @include media-breakpoint-down(lg) {
     .package-cover {
         height: 110px;
     }
-    .tentacle{
+    .tentacle {
         position: relative;
         bottom: -5%;
     }

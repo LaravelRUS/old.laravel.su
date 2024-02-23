@@ -123,6 +123,7 @@ main div {
         margin-bottom: 1.5rem;
         @extend .text-wrap;
         @extend .text-break;
+        text-wrap: pretty !important;
 
         > a {
             text-decoration: underline;
@@ -135,6 +136,7 @@ main div {
 
     code {
         @extend .text-nowrap;
+        text-wrap: pretty !important;
         color: rgb(235, 68, 50);
     }
 
