@@ -9,9 +9,9 @@
                 <div class="col-lg-8 mx-auto">
                     <p class="h5 mb-3 ms-3">
                         @if($comments->count() < 1)
-                            Тут ещё нет комментариев
+                            Тут ещё нет комментариев.
                         @else
-                            {{ $comments->count() }} комментариев
+                            {{ trans_choice('{1} :count комментарий|[2,4] :count комментария|:count комментариев', $comments->count()) }}
                         @endif
                     </p>
                 </div>
