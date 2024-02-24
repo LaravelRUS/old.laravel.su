@@ -29,25 +29,20 @@
                         <div class="bg-body p-xl-5 p-4 rounded mb-3">
                             <div class="row">
 
-
                             <div class="col-md-6 d-flex flex-column h-100">
-                                <div class="mb-2">
-                                    <ul class="list-unstyled">
-                                        <li class="mb-2"><span class="me-2">✅</span>Laravel Russian Community</li>
-                                        <li class="mb-2"><span class="me-2">✅</span>Русскоязычное сообщество Laravel</li>
-                                        <li class="mb-2"><span class="me-2">✅</span>Laravel на русском</li>
-                                    </ul>
-                                </div>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><span class="me-2">✅</span>Laravel Russian Community</li>
+                                    <li class="mb-2"><span class="me-2">✅</span>Русскоязычное сообщество Laravel</li>
+                                    <li class="mb-2"><span class="me-2">✅</span>Laravel на русском</li>
+                                </ul>
                             </div>
 
                             <div class="col-md-6 d-flex flex-column h-100">
-                                <div class="mb-2">
-                                    <ul class="list-unstyled">
-                                        <li class=""><span class="me-2">❌</span>Community of Laravel in Russia</li>
-                                        <li class=""><span class="me-2">❌</span>Русское сообщество Laravel</li>
-                                        <li class=""><span class="me-2">❌</span>Русское Laravel сообщество</li>
-                                    </ul>
-                                </div>
+                                <ul class="list-unstyled mt-3 mt-md-0">
+                                    <li class=""><span class="me-2">❌</span>Community of Laravel in Russia</li>
+                                    <li class=""><span class="me-2">❌</span>Русское сообщество Laravel</li>
+                                    <li class=""><span class="me-2">❌</span>Русское Laravel сообщество</li>
+                                </ul>
                             </div>
 
                         </div>
