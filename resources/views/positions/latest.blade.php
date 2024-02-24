@@ -34,7 +34,7 @@
             position-relative">
 
                     <div class="text-center">
-                        Здесь еще нет публикаций
+                        Нет доступных вакансий на данный момент.
                     </div>
 
                 </div>
