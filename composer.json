@@ -1,9 +1,21 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravelrus/laravel.su",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": "Laravel Russian Community",
+    "authors": [
+        {
+            "name": "Alexandr Chernyaev",
+            "email": "bliz48rus@gmail.com",
+            "homepage": "https://tabuna.github.io"
+        },
+        {
+            "name": "Nadezhda Gosteva"
+        },
+        {
+            "name": "Dmitriy Skirta"
+        }
+    ],
+    "license": "CC BY-NC-SA 4.0",
     "require": {
         "php": ">=8.1",
         "cagilo/cagilo": "^3.2",
@@ -70,8 +82,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "config": {
