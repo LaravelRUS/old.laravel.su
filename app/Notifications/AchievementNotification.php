@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use App\Models\Achievement;
-use App\Models\User;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;

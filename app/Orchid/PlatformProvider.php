@@ -140,7 +140,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('site.content', 'Контент'),
 
             ItemPermission::group('Сервисы')
-                ->addPermission('platform.services.telescope', 'Telescope')
+                ->addPermission('platform.services.telescope', 'Telescope'),
         ];
     }
 }
