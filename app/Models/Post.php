@@ -185,6 +185,7 @@ class Post extends Model implements Feedable
             ->title($this->title)
             ->summary(Str::of($this->content)->markdown())
             ->updated($this->updated_at)
+            ->image(route('cover', ['text' => $this->title]))
             ->link(route('post.show', $this))
             ->authorName($this->author->name);
     }
