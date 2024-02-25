@@ -34,7 +34,8 @@ class CompareDocument extends Command
     /**
      * Update the specified version of documentation.
      *
-     * @param  string  $version
+     * @param string $version
+     *
      * @return void
      */
     protected function updateVersion(string $version): void

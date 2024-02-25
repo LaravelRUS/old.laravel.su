@@ -77,9 +77,9 @@ class PositionsController extends Controller
             ],
         ]);
 
-        if($position->exists){
+        if ($position->exists) {
             $position->fill($request->input('position'))->save();
-        }else{
+        } else {
             $position = new Position($request->input('position'));
             $request->user()->positions()->save($position);
         }

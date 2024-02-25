@@ -20,7 +20,7 @@ class CoverController extends Controller
     {
         $text = Str::limit($request->input('text', config('site.name')), 60);
 
-        $key = 'cover-'.sha1($text).Str::random(1002);
+        $key = 'cover-' . sha1($text);
 
         $data = Cache::remember($key, now()->addHours(4), function () use ($text) {
             $width = 1920;

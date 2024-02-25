@@ -42,7 +42,7 @@ class PushController extends Controller
         ]);
 
         $exists = $request->user()->whereHas('pushSubscriptions',
-            fn(Builder $query) => $query->where('endpoint', $request->input('endpoint'))
+            fn (Builder $query) => $query->where('endpoint', $request->input('endpoint'))
         )->exists();
 
         return response()->json(['exists' => $exists]);

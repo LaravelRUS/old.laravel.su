@@ -32,7 +32,7 @@ class AuthController extends Controller
         $githubUser = Socialite::driver('github')->user();
 
         // Determine email or generate a default GitHub noreply email
-        $email = $githubUser->getEmail() ?? sprintf("%s+%s@users.noreply.github.com", $githubUser->getId(), $githubUser->getNickname());
+        $email = $githubUser->getEmail() ?? sprintf('%s+%s@users.noreply.github.com', $githubUser->getId(), $githubUser->getNickname());
 
         // Update or create user based on GitHub ID
         $user = User::updateOrCreate(['github_id' => $githubUser->getId()], [

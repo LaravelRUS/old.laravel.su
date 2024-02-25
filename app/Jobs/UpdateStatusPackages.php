@@ -32,8 +32,9 @@ class UpdateStatusPackages implements ShouldQueue
         $response = Http::get("https://packagist.org/packages/{$this->package->packagist_name}.json");
 
         // Check if the request was successful
-        if (!$response->successful()) {
-            Log::warning("Failed to fetch package information for package '{$this->package->packagist_name}'. Response: " . $response->body());
+        if (! $response->successful()) {
+            Log::warning("Failed to fetch package information for package '{$this->package->packagist_name}'. Response: ".$response->body());
+
             return;
         }
 
