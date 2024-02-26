@@ -2,11 +2,11 @@
 
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto">
-        <div class="bg-body-tertiary rounded p-md-5">
+        <div class="bg-body-tertiary rounded py-3 p-md-5">
 
             @forelse($user->achievements as $achievement)
                 <div class="d-flex text-body-secondary gap-4  {{ $loop->last ? '' : 'mb-4' }}">
-                    <div class="col-lg-3">
+                    <div class="col-3 py-2 ps-4 p-md-0">
                         <img src="{{ $achievement->presenter()->image() }}" class="flex-shrink-0 rounded img-fluid">
                     </div>
 

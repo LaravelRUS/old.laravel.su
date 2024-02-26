@@ -1,5 +1,5 @@
 @if(auth()->user()?->id === $user->id)
-    <div {{ $attributes->merge(['class' => 'bg-body-tertiary rounded overflow-hidden my-5 px-5 py-4 position-relative'])->except(['user', 'link']) }}>
+    <div {{ $attributes->merge(['class' => 'bg-body-tertiary rounded overflow-hidden my-5 px-4 px-md-5 py-4 position-relative'])->except(['user', 'link']) }}>
         <div class="row align-items-center">
             <div class="col-auto col">
                 <div class="avatar avatar-sm">
