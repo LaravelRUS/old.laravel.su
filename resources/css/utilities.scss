@@ -20,8 +20,12 @@
     text-overflow: ellipsis;
 }
 
-
 .feature-icon-small {
     width: 3rem;
     height: 3rem;
+}
+
+.border-dashed {
+    --bs-border-style: dashed;
+    border-style: dashed;
 }

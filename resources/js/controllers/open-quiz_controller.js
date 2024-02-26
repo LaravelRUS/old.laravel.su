@@ -1,8 +1,7 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-
-    static targets = [ "output" ];
+    static targets = ['output'];
 
     /**
      * @type {number}
@@ -16,7 +15,6 @@ export default class extends Controller {
      * @param event
      */
     greet(event) {
-
         event.target.classList.add('disabled');
 
         let dragon = `
@@ -68,7 +66,6 @@ export default class extends Controller {
 <%%%%|==========>
 Все иди от сюда, больше тебе нечего тут делать!
 `;
-
 
         console.warn(dragon);
     }

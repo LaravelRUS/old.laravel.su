@@ -1,12 +1,10 @@
-import {Controller}   from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 import TextareaEditor from 'textarea-editor';
-import Prism        from "prismjs";
+import Prism from 'prismjs';
 import autosize from 'autosize/dist/autosize.min';
 
 export default class extends Controller {
-    static targets = [
-        'input',
-    ];
+    static targets = ['input'];
 
     inputTargetConnected(input) {
         autosize(input);
@@ -17,10 +15,14 @@ export default class extends Controller {
 
     drawVisualizer(text) {
         document.getElementById('visualizer').textContent = text;
-        document.getElementById('visualizer').innerHTML = Prism.highlight(document.getElementById('visualizer').innerText, Prism.languages.markdown, "markdown");
+        document.getElementById('visualizer').innerHTML = Prism.highlight(
+            document.getElementById('visualizer').innerText,
+            Prism.languages.markdown,
+            'markdown'
+        );
     }
 
-    onInput(event){
+    onInput(event) {
         this.drawVisualizer(event.target.value);
     }
 
@@ -45,9 +47,7 @@ export default class extends Controller {
         document.body.appendChild(input);
         input.addEventListener('change', () => {
             if (input.files) {
-                Array.from(input.files).forEach((file) =>
-                    this.uploadFile(file),
-                );
+                Array.from(input.files).forEach((file) => this.uploadFile(file));
             }
         });
         input.click();
@@ -67,7 +67,7 @@ export default class extends Controller {
 
             replacement = `${prefix}[${file.name}](${url})\n`;
         } catch (e) {
-            alert("Загрузка файла не удалась");
+            alert('Загрузка файла не удалась');
         }
 
         const start = this.inputTarget.value.indexOf(placeholder);
@@ -80,5 +80,4 @@ export default class extends Controller {
             .insert(replacement)
             .range([range[0] + delta, range[1] + delta]);
     }
-
 }

@@ -1,10 +1,10 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
         key: {
             type: String,
-            default: 'BLc3xxVvQg8Q6Hlj-tIpllTBydYs08zcFCqriRrja_0QfdUWlHvQ1I_WAQjDe3to0p8K2aF1pcs9zknZF2N1tmA',
+            default: import.meta.env.VITE_VAPID_PUBLIC_KEY,
         },
         errorSupported: {
             type: String,
@@ -16,9 +16,7 @@ export default class extends Controller {
         },
     };
 
-    static targets = [
-        "status"
-    ]
+    static targets = ['status'];
 
     connect() {
         this.checkSubscription();
@@ -34,8 +32,8 @@ export default class extends Controller {
 
     checkSubscription() {
         let switcher = this.statusTarget;
-        navigator.serviceWorker.ready.then(registration => {
-            registration.pushManager.getSubscription().then(subscription => {
+        navigator.serviceWorker.ready.then((registration) => {
+            registration.pushManager.getSubscription().then((subscription) => {
                 if (!subscription) {
                     switcher.checked = false;
                     return;
@@ -45,22 +43,21 @@ export default class extends Controller {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content')
+                        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content'),
                     },
                     body: JSON.stringify({
-                        endpoint: subscription.endpoint
-                    })
+                        endpoint: subscription.endpoint,
+                    }),
                 })
-                    .then(response => response.json())
-                    .then(data => {
+                    .then((response) => response.json())
+                    .then((data) => {
                         switcher.checked = data.exists;
                     })
                     .catch((error) => {
                         switcher.checked = false;
                     });
-            })
+            });
         });
-
     }
 
     // Entry point for push subscription
@@ -149,8 +146,8 @@ export default class extends Controller {
 
     // Subscribe the user
     disablePushNotifications() {
-        navigator.serviceWorker.ready.then(registration => {
-            registration.pushManager.getSubscription().then(subscription => {
+        navigator.serviceWorker.ready.then((registration) => {
+            registration.pushManager.getSubscription().then((subscription) => {
                 if (!subscription) {
                     return;
                 }
@@ -160,20 +157,20 @@ export default class extends Controller {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content')
+                            'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').getAttribute('content'),
                         },
                         body: JSON.stringify({
-                            endpoint: subscription.endpoint
-                        })
+                            endpoint: subscription.endpoint,
+                        }),
                     })
-                        .then(response => response.json())
-                        .then(data => {
+                        .then((response) => response.json())
+                        .then((data) => {
                             console.log('Success:', data);
                         })
                         .catch((error) => {
                             console.error('Error:', error);
                         });
-                })
+                });
             });
         });
     }

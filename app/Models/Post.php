@@ -29,7 +29,7 @@ use Spatie\Feed\FeedItem;
  */
 class Post extends Model implements Feedable
 {
-    use AsSource, Chartable, Filterable, HasFactory, Likeable, Searchable, Taggable, LogsActivityFillable;
+    use AsSource, Chartable, Filterable, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
 
     /**
      * @var string[]
@@ -208,5 +208,19 @@ class Post extends Model implements Feedable
     public function estimatedReadingTime(int $wordsPerMinute = 100): int
     {
         return ceil(Str::of($this->content)->matchAll("/\s+/")->count() / $wordsPerMinute);
+    }
+
+    /**
+     * Retrieve value for the HTML 'description' attribute.
+     *
+     * This method returns a truncated string with a maximum of 20 words,
+     * stripped of any HTML tags, to be used as the 'description' attribute
+     * for SEO purposes.
+     *
+     * @return \Illuminate\Support\Stringable The truncated description string.
+     */
+    public function getDescriptionAttribute()
+    {
+        return Str::of($this->content)->stripTags()->words(20);
     }
 }

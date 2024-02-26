@@ -5,7 +5,8 @@
         position: relative;
     }
 
-    .ticket-border:before, .ticket-border:after  {
+    .ticket-border:before,
+    .ticket-border:after {
         background: var(--bs-body-bg);
     }
     .ticket-border:before {

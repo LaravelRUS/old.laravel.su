@@ -1,4 +1,3 @@
-
 .post {
     @extend .text-break;
 
@@ -24,7 +23,9 @@
         margin-bottom: 1rem;
     }
 
-    h4, h5, h6 {
+    h4,
+    h5,
+    h6 {
         margin-top: 1.25em;
     }
 
@@ -60,7 +61,6 @@
         text-align: center;
     }
 }
-
 
 .post-preview-text {
     max-height: 25rem;

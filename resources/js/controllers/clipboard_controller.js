@@ -1,5 +1,5 @@
-import {Controller} from '@hotwired/stimulus';
-
+import { Controller } from '@hotwired/stimulus';
+import {copyText} from "../helpers/clipboard.js"
 export default class extends Controller {
     static targets = ['source'];
 
@@ -7,7 +7,7 @@ export default class extends Controller {
 
     copy(event) {
         event.preventDefault();
-        navigator.clipboard.writeText(this.sourceTarget.innerText);
+        copyText(this.sourceTarget.innerText);
 
         this.element.classList.add(this.doneClass);
 

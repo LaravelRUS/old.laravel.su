@@ -284,7 +284,7 @@ class Docs
      *
      * @return string The URL to the original Laravel documentation page.
      */
-    public function goToOriginal(): string
+    public function getOriginalUrl(): string
     {
         $urlPart = Str::of($this->path)->remove('.md');
 

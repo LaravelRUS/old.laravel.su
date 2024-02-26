@@ -1,8 +1,7 @@
-import {Controller} from '@hotwired/stimulus';
-import {Toast} from "bootstrap";
+import { Controller } from '@hotwired/stimulus';
+import { Toast } from 'bootstrap';
 
 export default class extends Controller {
-
     /**
      *
      */
@@ -34,9 +33,7 @@ export default class extends Controller {
     toast(message, type = 'warning') {
         const toast = this.template.content.querySelector('.toast').cloneNode(true);
 
-        toast.innerHTML = toast.innerHTML
-            .replace(/{message}/, message)
-            .replace(/{type}/, type);
+        toast.innerHTML = toast.innerHTML.replace(/{message}/, message).replace(/{type}/, type);
 
         this.element.appendChild(toast);
         this.showAllToasts();
@@ -53,6 +50,6 @@ export default class extends Controller {
             event.target.remove();
         });
 
-        (new Toast(el)).show();
+        new Toast(el).show();
     }
 }

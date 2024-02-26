@@ -88,7 +88,7 @@ class Meet extends Model
      * Scope a query to only include approved meets.
      *
      * @param Builder $query
-     * @param bool $approved
+     * @param bool    $approved
      *
      * @return Builder
      */

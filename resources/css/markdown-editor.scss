@@ -1,7 +1,6 @@
-
 .form-editor {
     overflow: hidden;
-    outline: none!important;
+    outline: none !important;
     @extend .text-body-emphasis;
     @extend .bg-body-tertiary;
     @extend .rounded-0;
@@ -19,47 +18,47 @@
 }
 
 .clone-editor {
-    font-size: 1em!important;
-    line-height:1.5!important;
-    font-family: $font-family-sans-serif!important;
+    font-size: 1em !important;
+    line-height: 1.5 !important;
+    font-family: $font-family-sans-serif !important;
 
     .important {
-        font-weight: $font-weight-base!important;
+        font-weight: $font-weight-base !important;
     }
 
     .bold {
-        font-weight: $font-weight-base!important;
+        font-weight: $font-weight-base !important;
         text-decoration: underline;
         //letter-spacing: -1em;
     }
     .blockquote {
-        margin: 0!important;
-        padding: 0!important;
+        margin: 0 !important;
+        padding: 0 !important;
         font-size: 1rem;
     }
 
     .italic {
-        font-weight: $font-weight-base!important;
-        font-style: normal!important;
+        font-weight: $font-weight-base !important;
+        font-style: normal !important;
         opacity: 0.75;
     }
 }
 
-textarea.clone-editor{
-    padding: 0.80rem 0rem;
+textarea.clone-editor {
+    padding: 0.8rem 0rem;
     margin: 0;
-    font-size: inherit!important;
-    font-family: inherit!important;
-    line-height: inherit!important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    line-height: inherit !important;
     z-index: 1;
-    caret-color: var(--bs-emphasis-color)!important;
+    caret-color: var(--bs-emphasis-color) !important;
     position: relative;
     background-color: transparent !important;
     width: 100% !important;
-    color: #fff0!important;
+    color: #fff0 !important;
 }
 
-.wrapper-visualizer{
+.wrapper-visualizer {
     margin: 0;
     padding: 0;
     pointer-events: none;
@@ -77,10 +76,10 @@ textarea.clone-editor{
     overflow: hidden;
 }
 
-code.clone-editor{
+code.clone-editor {
     background-color: initial;
     margin: 0;
-    padding: 0!important;
-    white-space: pre-wrap!important;
+    padding: 0 !important;
+    white-space: pre-wrap !important;
     word-break: break-word !important;
 }

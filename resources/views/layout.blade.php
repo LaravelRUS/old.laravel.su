@@ -24,9 +24,6 @@
                 </div>
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-none d-lg-flex">
-                    {{--
-                        <li><a href="{{ route('home') }}" class="nav-link px-3 link-body-emphasis">Главная</a></li>
-                    --}}
                     <li><a href="{{ route('feature') }}" class="nav-link px-3 link-body-emphasis">Возможности</a></li>
                     <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Трибуна</a></li>
                     <li><a href="{{ route('packages') }}" class="nav-link px-3 link-body-emphasis">Пакеты</a></li>
@@ -71,7 +68,7 @@
     @yield('content')
 
     <div class="mt-5 pe-none d-none d-md-block">
-        <img src="/img/sun.svg" class="w-100 object-fit-cover" style="object-position: top center;">
+        <img src="/img/sun.svg" class="w-100 object-fit-cover footer-sun">
     </div>
     <div class="bg-dark-subtle text-white d-none d-md-block" data-bs-theme="dark">
         <div class="container py-5">
@@ -176,13 +173,6 @@
                             <li class="nav-item mb-2">
                                 <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
                             </li>
-                            {{--
-                            <li class="nav-item mb-2">
-                                <a href="{{ asset('https://github.com/laravel-russia') }}" class="nav-link p-0">
-                                    Сообщить о проблеме
-                                </a>
-                            </li>
-                            --}}
                         </ul>
                     </div>
                 </div>

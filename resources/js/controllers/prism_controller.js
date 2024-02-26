@@ -1,13 +1,10 @@
-import {Controller} from '@hotwired/stimulus';
-import Prism        from "prismjs";
-import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-
+import { Controller } from '@hotwired/stimulus';
+import Prism from 'prismjs';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 export default class extends Controller {
-
-    static targets = ["editable", "output"]
-
+    static targets = ['editable', 'output'];
 
     /**
      *
@@ -26,20 +23,21 @@ export default class extends Controller {
 
     paste() {
         const text = this.editableTarget.innerText;
-        let code = Prism.highlight(text, Prism.languages.php, "php");
+        let code = Prism.highlight(text, Prism.languages.php, 'php');
 
-
-        this.changeContent(this.editableTarget, '<code data-prism-target="code" id="yaml" class="language-php">'+code+'</code>');
+        this.changeContent(
+            this.editableTarget,
+            '<code data-prism-target="code" id="yaml" class="language-php">' + code + '</code>'
+        );
         this.outputTarget.value = text;
-       // this.codeTarget.innerHTML = '<code data-prism-target="code" id="yaml" class="language-php">'+code+'</code>';
+        // this.codeTarget.innerHTML = '<code data-prism-target="code" id="yaml" class="language-php">'+code+'</code>';
     }
 
     /**
      *
      * @param event
      */
-    keydownPaste(event)
-    {
+    keydownPaste(event) {
         if (event.key === 'Enter') {
             setTimeout(() => {
                 const position = this.getCursorPosition(this.editableTarget);
@@ -49,7 +47,7 @@ export default class extends Controller {
     }
 
     // Изменяем содержимое элемента и сохраняем позицию курсора
-     changeContent(element, newContent) {
+    changeContent(element, newContent) {
         const position = this.getCursorPosition(element);
         element.innerHTML = newContent;
         this.setCursorPosition(element, position);
@@ -71,7 +69,7 @@ export default class extends Controller {
         return position;
     }
 
-     setCursorPosition(element, position) {
+    setCursorPosition(element, position) {
         const selection = window.getSelection();
 
         element.focus(); // Установка фокуса на элемент для активации курсора
@@ -105,8 +103,8 @@ export default class extends Controller {
         selection.addRange(range);
     }
 
-// Вспомогательная функция для получения всех текстовых узлов внутри элемента
-     getTextNodesIn(element) {
+    // Вспомогательная функция для получения всех текстовых узлов внутри элемента
+    getTextNodesIn(element) {
         const textNodes = [];
 
         function getTextNodes(node) {

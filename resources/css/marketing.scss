@@ -5,7 +5,7 @@
     }
 
     blockquote:before {
-        content: "«";
+        content: '«';
         padding-right: 0.5em;
         //content: open-quote;
         //vertical-align: super;
@@ -14,7 +14,7 @@
     blockquote:after {
         //content: close-quote;
         //vertical-align: sub;
-        content: "»";
+        content: '»';
         padding-left: 0.5em;
     }
 

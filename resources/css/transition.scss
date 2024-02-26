@@ -1,11 +1,14 @@
 @keyframes fade-in {
-    from { opacity: 0; }
+    from {
+        opacity: 0;
+    }
 }
 
 @keyframes fade-out {
-    to { opacity: 0; }
+    to {
+        opacity: 0;
+    }
 }
-
 
 ::view-transition-old(frame) {
     animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
@@ -15,11 +18,11 @@
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in;
 }
 
-.hotwire-frame, #popular-list > div{
+.hotwire-frame,
+#popular-list > div {
     view-transition-name: frame;
     animation-duration: 350ms;
 }
-
 
 @keyframes shake {
     0% {

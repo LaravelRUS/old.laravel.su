@@ -654,20 +654,8 @@ background: #1A1319!important;">
                             <!-- Content -->
                             <blockquote>
                                 <p class="text-balance mb-0">
-                                    Laravel - это <span class="text-primary">лучшее</span>, что произошло в моей карьере! 🤙
+                                    «Laravel - это <span class="text-primary">лучшее</span>, что произошло в моей карьере! 🤙»
                                 </p>
-
-                                {{--
-                                 <span class="text-primary">лучшее сообщество</span>, в котором находишь
-                                    поддержку, знания и вдохновение.
-                                    Всё это также мне стать лучшим разработчиком
-                                 --}}
-
-                                {{--
-                                <p class="text-balance mb-0">
-                                    «Документация Laravel самое превосходное руководство для начинающих! 📚✨»
-                                </p>
-                                --}}
                             </blockquote>
 
                             <!-- Info -->
@@ -686,20 +674,10 @@ background: #1A1319!important;">
                     20 минут. Астронавтов-архитекторов и хакеров выходного дня.
                     Для тех, у кого есть высшее образование, и для тех, кто бросил учебу ради своей мечты.
                     Вместе мы создаем удивительные вещи.
-
-                    {{--
-                    Не только знания и ресурсы, но и возможность общаться и взаимодействовать с другими разработчиками!
-                    Активное сообщество предоставляет вам уникальную платформу для обмена опытом, нахождения вдохновения и
-                    наставничества с опытными профессионалами Laravel.
-                    --}}
                 </p>
 
                 <div class="gap-3 d-block d-md-flex justify-content-center justify-content-md-start align-items-baseline">
-                @guest
-                    <a href="{{ route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
-                @else
-                    <a href="{{ route('feed') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
-                @endguest
+                    <a href="{{ auth()->check() ? route('feed') : route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
 
                     <a href="{{ route('meets') }}"
                        class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
@@ -755,11 +733,6 @@ background: #1A1319!important;">
                     <div class="col-4 col-sm-5 col-md-2 m-auto">
                         <img alt="image" class="img-fluid" src="/img/usage/sber.svg">
                     </div>
-                    {{--
-                    <div class="col-4 col-sm-5 col-md-2 m-auto">
-                        <img alt="image" class="img-fluid" src="/img/usage/vkusno.svg">
-                    </div>
-                    --}}
                 </div>
             </div>
         </div>

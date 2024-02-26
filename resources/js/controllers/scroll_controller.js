@@ -1,4 +1,4 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     /**
@@ -17,7 +17,7 @@ export default class extends Controller {
             } else {
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth'
+                    behavior: 'smooth',
                 });
             }
 

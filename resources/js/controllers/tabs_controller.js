@@ -1,90 +1,90 @@
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static classes = [ "activeTab", "inactiveTab" ]
-    static targets = ['tab', 'panel', 'select']
+    static classes = ['activeTab', 'inactiveTab'];
+    static targets = ['tab', 'panel', 'select'];
     static values = {
         index: 0,
-        updateAnchor: Boolean
-    }
+        updateAnchor: Boolean,
+    };
 
     connect() {
-        if (this.anchor) this.indexValue = this.tabTargets.findIndex((tab) => tab.id === this.anchor)
-        this.showTab()
+        if (this.anchor) this.indexValue = this.tabTargets.findIndex((tab) => tab.id === this.anchor);
+        this.showTab();
     }
 
     // Changes to the clicked tab
     change(event) {
-        if (event.currentTarget.tagName === "SELECT") {
-            this.indexValue = event.currentTarget.selectedIndex
+        if (event.currentTarget.tagName === 'SELECT') {
+            this.indexValue = event.currentTarget.selectedIndex;
 
             // If target specifies an index, use that
         } else if (event.currentTarget.dataset.index) {
-            this.indexValue = event.currentTarget.dataset.index
+            this.indexValue = event.currentTarget.dataset.index;
 
             // If target specifies an id, use that
         } else if (event.currentTarget.dataset.id) {
-            this.indexValue = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id)
+            this.indexValue = this.tabTargets.findIndex((tab) => tab.id == event.currentTarget.dataset.id);
 
             // Otherwise, use the index of the current target
         } else {
-            this.indexValue = this.tabTargets.indexOf(event.currentTarget)
+            this.indexValue = this.tabTargets.indexOf(event.currentTarget);
         }
 
-        window.dispatchEvent(new CustomEvent('tsc:tab-change'))
+        window.dispatchEvent(new CustomEvent('tsc:tab-change'));
     }
 
     nextTab() {
-        this.indexValue = Math.min(this.indexValue + 1, this.tabsCount - 1)
+        this.indexValue = Math.min(this.indexValue + 1, this.tabsCount - 1);
     }
 
     previousTab() {
-        this.indexValue = Math.max(this.indexValue - 1, 0)
+        this.indexValue = Math.max(this.indexValue - 1, 0);
     }
 
     firstTab() {
-        this.indexValue = 0
+        this.indexValue = 0;
     }
 
     lastTab() {
-        this.indexValue = this.tabsCount - 1
+        this.indexValue = this.tabsCount - 1;
     }
 
     indexValueChanged() {
-        this.showTab()
+        this.showTab();
 
         // Update URL with the tab ID if it has one
         // This will be automatically selected on page load
         if (this.updateAnchorValue) {
-            location.hash = this.tabTargets[this.indexValue].id
+            location.hash = this.tabTargets[this.indexValue].id;
         }
     }
 
     showTab() {
         this.panelTargets.forEach((panel, index) => {
-            const tab = this.tabTargets[index]
+            const tab = this.tabTargets[index];
 
             if (index === this.indexValue) {
-                panel.classList.remove('d-none')
-                if (this.hasInactiveTabClass) tab?.classList?.remove(...this.inactiveTabClasses)
-                if (this.hasActiveTabClass) tab?.classList?.add(...this.activeTabClasses)
+                panel.classList.remove('d-none');
+                if (this.hasInactiveTabClass) tab?.classList?.remove(...this.inactiveTabClasses);
+                if (this.hasActiveTabClass) tab?.classList?.add(...this.activeTabClasses);
             } else {
-                panel.classList.add('d-none')
-                if (this.hasActiveTabClass) tab?.classList?.remove(...this.activeTabClasses)
-                if (this.hasInactiveTabClass) tab?.classList?.add(...this.inactiveTabClasses)
+                panel.classList.add('d-none');
+                if (this.hasActiveTabClass) tab?.classList?.remove(...this.activeTabClasses);
+                if (this.hasInactiveTabClass) tab?.classList?.add(...this.inactiveTabClasses);
             }
-        })
+        });
 
         if (this.hasSelectTarget) {
-            this.selectTarget.selectedIndex = this.indexValue
+            this.selectTarget.selectedIndex = this.indexValue;
         }
     }
 
     get tabsCount() {
-        return this.tabTargets.length
+        return this.tabTargets.length;
     }
 
     get anchor() {
-        return (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
+        return document.URL.split('#').length > 1 ? document.URL.split('#')[1] : null;
     }
 }

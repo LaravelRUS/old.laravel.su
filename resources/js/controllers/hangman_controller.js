@@ -1,134 +1,144 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ["word", "attempts", "hangmanInput", "audioWrong", "audioLose", "audioWin", "hearts", "image", "log"];
+    static targets = [
+        'word',
+        'attempts',
+        'hangmanInput',
+        'audioWrong',
+        'audioLose',
+        'audioWin',
+        'hearts',
+        'image',
+        'log',
+    ];
 
     connect() {
         this.wordList = [
-            "Миграция",
-            "Контроллер",
-            "Модель",
-            "Представление",
-            "Авторизация",
-            "Кеширование",
-            "Фасад",
-            "Артизан",
-            "Компонент",
-            "Запрос",
-            "Ответ",
-            "Фильтр",
-            "Валидация",
-            "Шаблон",
-            "Сессия",
-            "Маршрутизация",
-            "Консоль",
-            "Макет",
-            "Директива",
-            "Фабрика",
-            "Исключение",
-            "Блейд",
-            "Провайдер",
-            "Контейнер",
-            "Стратегия",
-            "Генератор",
-            "Фасад",
-            "Очередь",
-            "Таск",
-            "Сборка",
-            "Конфигурация",
-            "Маршрут",
-            "Композер",
-            "Трейт",
-            "Метод",
-            "Кэш",
-            "Автозагрузка",
-            "Локализация",
-            "Стратегия",
-            "Пакет",
-            "Расширение",
-            "Функциональность",
-            "Тестирование",
-            "Оператор",
-            "Архитектура",
-            "Сервис",
-            "Контейнер",
-            "Структура",
-            "Сортировка",
-            "Подключение",
-            "Наследование",
-            "Обновление",
-            "Бэкап",
-            "Компиляция",
-            "Шифрование",
-            "Декодирование",
-            "Заголовок",
-            "Индексация",
-            "Клиент",
-            "Сервер",
+            'Миграция',
+            'Контроллер',
+            'Модель',
+            'Представление',
+            'Авторизация',
+            'Кеширование',
+            'Фасад',
+            'Артизан',
+            'Компонент',
+            'Запрос',
+            'Ответ',
+            'Фильтр',
+            'Валидация',
+            'Шаблон',
+            'Сессия',
+            'Маршрутизация',
+            'Консоль',
+            'Макет',
+            'Директива',
+            'Фабрика',
+            'Исключение',
+            'Блейд',
+            'Провайдер',
+            'Контейнер',
+            'Стратегия',
+            'Генератор',
+            'Фасад',
+            'Очередь',
+            'Таск',
+            'Сборка',
+            'Конфигурация',
+            'Маршрут',
+            'Композер',
+            'Трейт',
+            'Метод',
+            'Кэш',
+            'Автозагрузка',
+            'Локализация',
+            'Стратегия',
+            'Пакет',
+            'Расширение',
+            'Функциональность',
+            'Тестирование',
+            'Оператор',
+            'Архитектура',
+            'Сервис',
+            'Контейнер',
+            'Структура',
+            'Сортировка',
+            'Подключение',
+            'Наследование',
+            'Обновление',
+            'Бэкап',
+            'Компиляция',
+            'Шифрование',
+            'Декодирование',
+            'Заголовок',
+            'Индексация',
+            'Клиент',
+            'Сервер',
 
-            "Айдишник",
-            "Апишка",
-            "Аутсорс",
-            "Баг",
-            "Бэкап",
-            "Выпадашка",
-            "Движок",
-            "Деплой",
-            "Жабаскрипт",
-            "Легаси",
-            "Падаван",
-            "Пэхапэ",
-            "Пыха",
-            "Таска",
-            "Фидбек",
-            "Фреймворк",
-            "Хардкод",
-            "Апдейт",
-            "Апгрейд",
-            "Аттач",
-            "Валидный",
-            "Виндузятник",
-            "Говнокод",
-            "Гуглить",
-            "Декремент",
-            "Джун",
-            "Дока",
-            "Дыра",
-            "Кракозябра",
-            "Локалка",
-            "Манагер",
-            "Нативный",
-            "Продакшн",
-            "Редирект",
-            "Слоупок",
-            "Спам",
-            "Троллить",
-            "Формошлепство",
-            "Хакатон",
-            "Холивар",
-            "Эксплойт",
-            "Яблочник"
+            'Айдишник',
+            'Апишка',
+            'Аутсорс',
+            'Баг',
+            'Бэкап',
+            'Выпадашка',
+            'Движок',
+            'Деплой',
+            'Жабаскрипт',
+            'Легаси',
+            'Падаван',
+            'Пэхапэ',
+            'Пыха',
+            'Таска',
+            'Фидбек',
+            'Фреймворк',
+            'Хардкод',
+            'Апдейт',
+            'Апгрейд',
+            'Аттач',
+            'Валидный',
+            'Виндузятник',
+            'Говнокод',
+            'Гуглить',
+            'Декремент',
+            'Джун',
+            'Дока',
+            'Дыра',
+            'Кракозябра',
+            'Локалка',
+            'Манагер',
+            'Нативный',
+            'Продакшн',
+            'Редирект',
+            'Слоупок',
+            'Спам',
+            'Троллить',
+            'Формошлепство',
+            'Хакатон',
+            'Холивар',
+            'Эксплойт',
+            'Яблочник',
         ];
 
         this.badList = [
-            "Зачем вы пытаетесь? Ваша преданность WordPress выдает вас!",
-            "Если не угадаете снова, Yii останется вашим повелителем.",
-            "Не унывайте - угадайте слово и избавитесь от VSCode.",
-            "Не угадаешь снова, и ты будешь писать на PHP в Notepad",
-            "Хочешь писать JavaScript в блокноте или всё же попробуешь снова?",
-            "Какого это загружать файлы через FTP в 2024 году? Попробуйте снова!",
-            "Думаю вы с Битриксом на одной волне. Не стоит пытаться снова.",
-            "Ну как так? А на вид ты такой умный. Попробуйте снова!",
-            "Еще одна попытка - еще один шанс для тебя не выглядеть полным нубом. Не упусти его!",
-            "Думаешь, угадывание слов - это сложно? Попробуй переписать всю свою кодовую базу на FORTRAN",
-            "Твой код совершенен? Ты просто его не достаточно изучил. Попробуй снова!",
+            'Зачем вы пытаетесь? Ваша преданность WordPress выдает вас!',
+            'Если не угадаете снова, Yii останется вашим повелителем.',
+            'Не унывайте - угадайте слово и избавитесь от VSCode.',
+            'Не угадаешь снова, и ты будешь писать на PHP в Notepad',
+            'Хочешь писать JavaScript в блокноте или всё же попробуешь снова?',
+            'Какого это загружать файлы через FTP в 2024 году? Попробуйте снова!',
+            'Думаю вы с Битриксом на одной волне. Не стоит пытаться снова.',
+            'Ну как так? А на вид ты такой умный. Попробуйте снова!',
+            'Еще одна попытка - еще один шанс для тебя не выглядеть полным нубом. Не упусти его!',
+            'Думаешь, угадывание слов - это сложно? Попробуй переписать всю свою кодовую базу на FORTRAN',
+            'Твой код совершенен? Ты просто его не достаточно изучил. Попробуй снова!',
         ];
 
-        this.secretWord = "";
+        this.secretWord = '';
         this.guesses = [];
         this.maxAttempts = 4;
         this.attemptsLeft = this.maxAttempts;
-        this.hiddenWord = "";
+        this.hiddenWord = '';
         this.gameOver = false;
 
         this.startGame();
@@ -137,7 +147,7 @@ export default class extends Controller {
     selectRandomWord() {
         const randomIndex = Math.floor(Math.random() * this.wordList.length);
         this.secretWord = this.wordList[randomIndex].toLowerCase();
-        this.hiddenWord = "_".repeat(this.secretWord.length);
+        this.hiddenWord = '_'.repeat(this.secretWord.length);
         this.updateDisplay();
     }
 
@@ -148,11 +158,11 @@ export default class extends Controller {
                     this.hiddenWord = this.hiddenWord.substring(0, i) + letter + this.hiddenWord.substring(i + 1);
                 }
             }
-            if (!this.hiddenWord.includes("_")) {
+            if (!this.hiddenWord.includes('_')) {
                 this.gameOver = true;
-                this.logTarget.textContent = "Поздравляем! Вы выиграли!";
+                this.logTarget.textContent = 'Поздравляем! Вы выиграли!';
                 this.audioWinTarget.play();
-                console.log("Поздравляем! Вы выиграли!");
+                console.log('Поздравляем! Вы выиграли!');
             }
         } else {
             this.attemptsLeft--;
@@ -161,17 +171,23 @@ export default class extends Controller {
                 this.audioLoseTarget.play();
 
                 let motivate = this.badList[Math.floor(Math.random() * this.badList.length)];
-                this.logTarget.innerHTML = "Игра окончена. Загаданное слово: «<span class='text-primary'>" + this.secretWord + "</span>» " + "<span class='d-block text-balance opacity-50'>🫣 " + motivate + "</span>";
-                console.log("Игра окончена. Загаданное слово: " + this.secretWord);
+                this.logTarget.innerHTML =
+                    "Игра окончена. Загаданное слово: «<span class='text-primary'>" +
+                    this.secretWord +
+                    '</span>» ' +
+                    "<span class='d-block text-balance opacity-50'>🫣 " +
+                    motivate +
+                    '</span>';
+                console.log('Игра окончена. Загаданное слово: ' + this.secretWord);
             } else {
-                console.log("Неверная буква. Осталось попыток: " + this.attemptsLeft);
+                console.log('Неверная буква. Осталось попыток: ' + this.attemptsLeft);
                 this.hangmanInputTarget.readonly = true;
-                this.wordTarget.classList.add("animate-shake");
+                this.wordTarget.classList.add('animate-shake');
                 this.audioWrongTarget.play();
                 setTimeout(() => {
                     this.hangmanInputTarget.readonly = false;
-                    this.wordTarget.classList.remove("animate-shake");
-                }, 550)
+                    this.wordTarget.classList.remove('animate-shake');
+                }, 550);
             }
         }
         this.updateDisplay();
@@ -179,23 +195,24 @@ export default class extends Controller {
 
     updateDisplay() {
         this.wordTarget.textContent = this.hiddenWord;
-        this.attemptsTarget.textContent = "Осталось попыток: " + this.attemptsLeft;
+        this.attemptsTarget.textContent = 'Осталось попыток: ' + this.attemptsLeft;
 
         if (this.gameOver === true && this.attemptsLeft > 0) {
-            this.updateImage("win")
+            this.updateImage('win');
         } else if (this.attemptsLeft > 0) {
-            this.updateImage(this.attemptsLeft)
+            this.updateImage(this.attemptsLeft);
         } else {
-            this.updateImage("lose")
+            this.updateImage('lose');
         }
 
-        Array.prototype.slice.call(this.heartsTarget.querySelectorAll('svg'))
+        Array.prototype.slice
+            .call(this.heartsTarget.querySelectorAll('svg'))
             .reverse()
             .forEach((heart, index) => {
                 if (index + 1 > this.attemptsLeft) {
-                    heart.classList.add("opacity-25");
+                    heart.classList.add('opacity-25');
                 } else {
-                    heart.classList.remove("opacity-25");
+                    heart.classList.remove('opacity-25');
                 }
             });
     }
@@ -205,16 +222,15 @@ export default class extends Controller {
         this.guesses = [];
         this.selectRandomWord();
         this.attemptsLeft = this.maxAttempts;
-        this.updateImage(this.maxAttempts)
+        this.updateImage(this.maxAttempts);
         this.hangmanInputTarget.disabled = false;
 
-        this.heartsTarget.querySelectorAll('svg')
-            .forEach((heart, index) => {
-                heart.classList.remove("opacity-25");
-            });
+        this.heartsTarget.querySelectorAll('svg').forEach((heart, index) => {
+            heart.classList.remove('opacity-25');
+        });
 
-        this.logTarget.textContent = "";
-        console.log("Добро пожаловать в игру!");
+        this.logTarget.textContent = '';
+        console.log('Добро пожаловать в игру!');
         //console.log("Загаданное слово: " + this.secretWord);
     }
 
@@ -228,44 +244,43 @@ export default class extends Controller {
         event.preventDefault();
 
         if (this.gameOver) {
-            this.hangmanInputTarget.value = "";
+            this.hangmanInputTarget.value = '';
             this.hangmanInputTarget.disabled = true;
             //this.logTarget.textContent = "Игра окончена. Начните новую игру.";
-            console.log("Игра окончена. Начните новую игру.");
+            console.log('Игра окончена. Начните новую игру.');
             return;
         }
 
-        this.logTarget.textContent = "";
+        this.logTarget.textContent = '';
         const letter = event.target.value.toLowerCase();
 
-        console.log("Введена буква: " + letter);
+        console.log('Введена буква: ' + letter);
 
         if (!this.guesses.includes(letter)) {
             this.guesses.push(letter);
             this.checkLetter(letter);
         } else {
-            this.logTarget.textContent = "Вы уже вводили эту букву. Попробуйте другую.";
-            console.log("Вы уже вводили эту букву. Попробуйте другую.");
+            this.logTarget.textContent = 'Вы уже вводили эту букву. Попробуйте другую.';
+            console.log('Вы уже вводили эту букву. Попробуйте другую.');
         }
 
-        this.hangmanInputTarget.value = "";
+        this.hangmanInputTarget.value = '';
     }
 
     updateImage(status) {
-        this.imageTarget.querySelectorAll('img')
-            .forEach((image) => {
-                if (image.dataset.status == status) {
-                    image.classList.remove("d-none");
-                } else {
-                    image.classList.add("d-none");
-                }
-            });
+        this.imageTarget.querySelectorAll('img').forEach((image) => {
+            if (image.dataset.status == status) {
+                image.classList.remove('d-none');
+            } else {
+                image.classList.add('d-none');
+            }
+        });
     }
 
     clearInput(event) {
         event.target.value = '';
         this.hangmanInputTarget.value = '';
 
-        console.log(this.hangmanInputTarget.value, event.target.value)
+        console.log(this.hangmanInputTarget.value, event.target.value);
     }
 }

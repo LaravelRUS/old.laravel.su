@@ -10,18 +10,20 @@ use Symfony\Component\DomCrawler\Crawler;
 class Anchors extends Component
 {
     /**
-     * @var string
+     * @var array
      */
-    protected $content;
+    public array $anchors;
 
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param string $content
+     *
+     * @throws \DOMException
      */
     public function __construct(string $content)
     {
-        $this->content = $content;
+        $this->anchors = $this->findAnchors($content);
     }
 
     /**
@@ -33,24 +35,22 @@ class Anchors extends Component
      */
     public function render()
     {
-        return view('components.docs.anchors', [
-            'anchors' => $this->findAnchors(),
-        ]);
+        return view('components.docs.anchors');
     }
 
     /**
-     * @param $contents
+     * @param string $contents
      *
      * @throws \DOMException
      *
      * @return array
      */
-    private function findAnchors()
+    private function findAnchors(string $content)
     {
-        return Cache::remember('doc-anchors-'.sha1($this->content), now()->addHours(2), function () {
+        return Cache::remember('doc-anchors-'.sha1($content), now()->addHours(2), function () use ($content){
 
             $crawler = new Crawler();
-            $crawler->addHtmlContent($this->content);
+            $crawler->addHtmlContent($content);
 
             $anchors = [];
 
@@ -80,8 +80,16 @@ class Anchors extends Component
                 });
 
             return $anchors;
-
         });
+    }
 
+    /**
+     * Determine if the component should be rendered.
+     *
+     * @return bool
+     */
+    public function shouldRender()
+    {
+        return count($this->anchors) > 1;
     }
 }

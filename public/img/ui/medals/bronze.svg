@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #f78f4f;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-3 {
+        fill: #aa391f;
+      }
+
+      .cls-4 {
+        fill: #495487;
+      }
+
+      .cls-5 {
+        fill: #758baf;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="-944.81" y="197.96" width="1120" height="320"/>
+    </clipPath>
+  </defs>
+  <g class="cls-6">
+    <image width="3654" height="3654" transform="translate(-293.47 18.64) scale(.19)" xlink:href="../pizza/02.png"/>
+  </g>
+  <g>
+    <polygon class="cls-4" points="40 8.64 28 20.64 24 15.64 32 6.64 40 8.64"/>
+    <polygon class="cls-5" points="20 8.64 20 0 32.67 0 40 8.64 20 8.64"/>
+    <polygon class="cls-4" points="0 8.64 12 20.64 16 15.64 8 6.64 0 8.64"/>
+    <circle class="cls-2" cx="19.81" cy="27" r="13"/>
+    <circle class="cls-3" cx="19.81" cy="27" r="9.64"/>
+    <circle class="cls-2" cx="19.81" cy="27" r="5.64"/>
+    <polygon class="cls-5" points="20 8.64 20 0 7.33 0 0 8.64 20 8.64"/>
+  </g>
+</svg>

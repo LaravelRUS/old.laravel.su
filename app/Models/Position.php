@@ -100,7 +100,7 @@ class Position extends Model
             $i = 1;
 
             while (static::where('slug', $slug)->exists()) {
-                $slug = Str::slug($position->organization) . '-' . $i++;
+                $slug = Str::slug($position->organization).'-'.$i++;
             }
 
             $position->slug = $slug;
@@ -131,7 +131,7 @@ class Position extends Model
      * Scope a query to only include approved positions.
      *
      * @param Builder $query
-     * @param bool $approved
+     * @param bool    $approved
      *
      * @return Builder
      */

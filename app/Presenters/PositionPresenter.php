@@ -15,16 +15,16 @@ class PositionPresenter extends Presenter
      */
     public function salary(): string
     {
-        if (!is_null($this->entity->salary_min) && !is_null($this->entity->salary_max)) {
-            return $this->formatRange($this->entity->salary_min, $this->entity->salary_max) . ' ₽';
+        if (! is_null($this->entity->salary_min) && ! is_null($this->entity->salary_max)) {
+            return $this->formatRange($this->entity->salary_min, $this->entity->salary_max).' ₽';
         }
 
-        if (!is_null($this->entity->salary_min)) {
-            return 'от ' . $this->formatAmount($this->entity->salary_min) . ' ₽';
+        if (! is_null($this->entity->salary_min)) {
+            return 'от '.$this->formatAmount($this->entity->salary_min).' ₽';
         }
 
-        if (!is_null($this->entity->salary_max)) {
-            return 'до ' . $this->formatAmount($this->entity->salary_max) . ' ₽';
+        if (! is_null($this->entity->salary_max)) {
+            return 'до '.$this->formatAmount($this->entity->salary_max).' ₽';
         }
 
         return 'Не указано';
@@ -35,6 +35,7 @@ class PositionPresenter extends Presenter
      *
      * @param int $min
      * @param int $max
+     *
      * @return string
      */
     protected function formatRange(int $min, int $max): string
@@ -46,6 +47,7 @@ class PositionPresenter extends Presenter
      * Format the salary amount.
      *
      * @param int $amount
+     *
      * @return string
      */
     protected function formatAmount(int $amount): string

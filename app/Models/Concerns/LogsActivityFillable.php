@@ -2,8 +2,8 @@
 
 namespace App\Models\Concerns;
 
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 trait LogsActivityFillable
 {

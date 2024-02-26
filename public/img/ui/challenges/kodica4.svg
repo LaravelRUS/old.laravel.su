@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ff2d20;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g>
+    <polyline class="cls-1" points="19.68 24.57 15.76 28.49 11.51 24.24 15.61 20.15"/>
+    <polyline class="cls-1" points="20 15.76 33.19 2.56 38.85 1.15 37.44 6.81 24.24 20"/>
+    <path class="cls-1" d="m6.22,25.78h12c0,2.21-1.79,4-4,4h-4c-2.21,0-4-1.79-4-4h0Z" transform="translate(23.22 -.51) rotate(45)"/>
+    <path class="cls-1" d="m-.26,34.26H7.74c0,2.21-1.79,4-4,4h0c-2.21,0-4-1.79-4-4H-.26Z" transform="translate(26.74 7.98) rotate(45)"/>
+    <rect class="cls-1" x="5.98" y="28.02" width="4" height="8" transform="translate(24.98 3.74) rotate(45)"/>
+  </g>
+  <g>
+    <polygon class="cls-1" points="24.24 28.49 28.49 24.24 6.81 2.56 1.15 1.15 2.56 6.81 24.24 28.49"/>
+    <path class="cls-1" d="m25.78,25.78h4c2.21,0,4,1.79,4,4h-12c0-2.21,1.79-4,4-4Z" transform="translate(67.06 27.78) rotate(135)"/>
+    <path class="cls-1" d="m36.26,34.26h0c2.21,0,4,1.79,4,4h-8c0-2.21,1.79-4,4-4Z" transform="translate(87.55 36.26) rotate(135)"/>
+    <rect class="cls-1" x="30.02" y="28.02" width="4" height="8" transform="translate(77.31 32.02) rotate(135)"/>
+  </g>
+</svg>

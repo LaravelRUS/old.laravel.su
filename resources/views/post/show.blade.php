@@ -1,7 +1,6 @@
 @extends('layout')
-@section('type', "Трибуна")
 @section('title', $post->title)
-
+@section('description', $post->description)
 
 @section('content')
 <x-container>
@@ -87,32 +86,7 @@
         </div>
 </x-container>
 
-{{--
-<x-container>
-    <div class="col-xl-8 col-md-12 mx-auto">
-        <div class="p-4 p-xxl-5 bg-body-secondary rounded position-relative">
-            <p class="body-emphasis text-decoration-none fw-bolder">Примените талант</p>
-
-            <div class="position-absolute d-none d-xxl-block bottom-0 end-0 m-4"><img src="/img/ui/job.svg" width="200px" class="opacity-25"></div>
-            <div class="flex-column col-xxl-10">
-                @foreach(\App\Models\Position::limit(5)->get() as $position)
-                    <div class="mb-3">
-                        <a href="{{ route('position.show', $position) }}" class="nav-link p-0 link-body-emphasis align-items-baseline">
-                            <span class="me-2">{{ $position->title }}</span>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-            <a href="{{ route('jobs') }}"
-               data-turbo-method="post"
-               class="link-body-emphasis text-decoration-none fw-bolder">Все вакансии</a>
-        </div>
-    </div>
-</x-container>
---}}
-
 @include('particles.positions')
-
 
 <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
     <x-container>

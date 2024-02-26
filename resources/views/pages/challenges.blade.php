@@ -4,7 +4,7 @@
 @section('content')
 
 
-    <x-header image="/img/bird.svg">
+    <x-header image="/img/ui/challenges.svg">
         <x-slot:sup>Ежемесячная задача</x-slot>
         <x-slot:title>Кодица</x-slot>
 

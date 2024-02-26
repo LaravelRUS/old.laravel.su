@@ -83,14 +83,17 @@ class ListScreen extends Screen
     public function layout(): iterable
     {
         return [
-
             Layout::metrics([
                 'Выдано ключей:'          => 'metrics.used_keys',
                 'Не использовано ключей:' => 'metrics.unused_keys',
-
             ]),
 
             Layout::table('ideaRequests', [
+
+                TD::make(__('Actions'))
+                    ->render(fn (IdeaRequest $ideaRequest) => Link::make('Просмотр')
+                        ->route('platform.idea.request', $ideaRequest->id)
+                        ->icon('bs.pencil')),
 
                 TD::make('Пользователь')
                     ->cantHide()
@@ -135,13 +138,6 @@ class ListScreen extends Screen
                     ->defaultHidden()
                     ->align(TD::ALIGN_RIGHT)
                     ->sort(),
-
-                TD::make(__('Actions'))
-                    ->align(TD::ALIGN_CENTER)
-                    ->width('100px')
-                    ->render(fn (IdeaRequest $ideaRequest) => Link::make('Просмотр')
-                        ->route('platform.idea.request', $ideaRequest->id)
-                        ->icon('bs.pencil')),
             ]),
 
             Layout::modal('addKeys', [

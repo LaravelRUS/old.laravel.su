@@ -1,4 +1,4 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = ['preferred'];
@@ -30,7 +30,6 @@ export default class extends Controller {
 
         return theme;
     }
-
 
     // Получение текущей темы из localStorage
     getTheme(theme) {

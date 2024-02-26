@@ -1,4 +1,5 @@
-body, button {
+body,
+button {
     font-variant-numeric: lining-nums proportional-nums;
 }
 
@@ -6,21 +7,18 @@ textarea {
     resize: none;
 }
 
-
 .lead {
     font-family: $headings-font-family;
     @extend .text-balance;
 }
 
-
 pre {
     border-radius: 0.8rem;
 
     code {
-        white-space: inherit!important;
+        white-space: inherit !important;
     }
 }
-
 
 .turbo-progress-bar {
     height: 2px;
@@ -61,32 +59,30 @@ pre {
     }
 }
 
-
-[contenteditable=true]:not(:focus):empty:before,
-[contenteditable=true]:not(:focus) code:empty:before {
+[contenteditable='true']:not(:focus):empty:before,
+[contenteditable='true']:not(:focus) code:empty:before {
     content: attr(placeholder);
     pointer-events: none;
     display: block;
     color: rgba(255, 255, 255, 0.45);
 }
 
-[contenteditable="true"]:focus {
-    outline: none!important;
+[contenteditable='true']:focus {
+    outline: none !important;
 }
 
-
-img{
+img {
     color-scheme: var(--bs-color-scheme);
 }
 
 @include color-mode(light) {
-    img{
-        color-scheme: light!important;
+    img {
+        color-scheme: light !important;
     }
 }
 
 @include color-mode(dark) {
-    img{
-        color-scheme: dark!important;
+    img {
+        color-scheme: dark !important;
     }
 }

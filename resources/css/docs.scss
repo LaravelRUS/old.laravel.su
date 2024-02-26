@@ -16,13 +16,19 @@
 }
 */
 
-.docs-column-list, .docs-column-list-2, .docs-column-list-1 {
-    ul{
-        column-count: 1; -moz-column-count: 1; -webkit-column-count: 1; // Я думаю мы можем увеличь на больших экранах
-        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+.docs-column-list,
+.docs-column-list-2,
+.docs-column-list-1 {
+    ul {
+        column-count: 1;
+        -moz-column-count: 1;
+        -webkit-column-count: 1; // Я думаю мы можем увеличь на больших экранах
+        column-gap: 2em;
+        -moz-column-gap: 2em;
+        -webkit-column-gap: 2em;
         padding-left: 0;
         list-style: none;
-        li{
+        li {
             padding-bottom: 0;
         }
     }
@@ -33,28 +39,34 @@
 }
 @include media-breakpoint-up(md) {
     .docs-column-list {
-        ul{
-            column-count: 2 !important; -moz-column-count: 2 !important; -webkit-column-count: 2 !important;
+        ul {
+            column-count: 2 !important;
+            -moz-column-count: 2 !important;
+            -webkit-column-count: 2 !important;
         }
     }
 }
 
 @include media-breakpoint-up(xl) {
     .docs-column-list {
-        ul{
-            column-count: 3 !important; -moz-column-count: 3 !important; -webkit-column-count: 3 !important;
+        ul {
+            column-count: 3 !important;
+            -moz-column-count: 3 !important;
+            -webkit-column-count: 3 !important;
         }
     }
     .docs-column-list-2 {
-        ul{
-            column-count: 2 !important; -moz-column-count: 2 !important; -webkit-column-count: 2 !important;
+        ul {
+            column-count: 2 !important;
+            -moz-column-count: 2 !important;
+            -webkit-column-count: 2 !important;
         }
     }
 }
 // PORT FROM ORCHID NEED CHANGED (AND REMOVED)
 
 .anchors {
-    ul{
+    ul {
         list-style: none;
         padding: 0;
         li {
@@ -72,7 +84,7 @@
         }
     }
     a {
-        opacity: 0.50;
+        opacity: 0.5;
         @extend .link-body-emphasis;
         transition: all 340ms ease;
         text-decoration: none;
@@ -80,27 +92,26 @@
             opacity: 1;
         }
         &:before {
-            content: "# ";
+            content: '# ';
             color: $primary;
         }
     }
 }
 
-main,.main,
+main,
+.main,
 main div {
     line-height: 1.8em;
 
-
     *:last-child {
-        margin-bottom: 0!important;
+        margin-bottom: 0 !important;
     }
-
 
     ol {
         padding: 0 1.5rem;
     }
 
-    table{
+    table {
         @extend .table;
         @extend .table-bordered;
     }
@@ -113,7 +124,9 @@ main div {
         margin-bottom: 15px;
     }
 
-    h4, h5, h6 {
+    h4,
+    h5,
+    h6 {
         margin-top: 1.25em;
     }
 
@@ -141,16 +154,18 @@ main div {
     }
 
     #support-policy {
-       @extend .table-responsive;
+        @extend .table-responsive;
     }
 }
 
-main,.main,.post {
+main,
+.main,
+.post {
     line-height: 1.5em;
     overflow: initial;
 
     img {
-        display: block!important;
+        display: block !important;
         max-width: 100%;
         object-fit: cover;
         border-radius: 0.5em;
@@ -183,7 +198,7 @@ main,.main,.post {
         }
     }
 
-    .base-header{
+    .base-header {
         a {
             padding-left: 1em;
             transition: all 340ms;
@@ -234,7 +249,7 @@ main,.main,.post {
         padding-bottom: 1em;
     }
 
-    li:last-child{
+    li:last-child {
         padding-bottom: 0.33em;
     }
 
@@ -272,8 +287,8 @@ main,.main,.post {
         //border: 1px solid transparentize($info, 0.5);
         &:before {
             //background-color: transparentize($info, 0.65);
-            background-color: #8DF1A4;
-            background-image: url("$image/ui/info.svg");
+            background-color: #8df1a4;
+            background-image: url('$image/ui/info.svg');
             content: '';
         }
     }
@@ -283,8 +298,8 @@ main,.main,.post {
         //background: transparentize($danger, 0.90) !important;
         &:before {
             //background-color: transparentize($danger, 0.65);
-            background-color: #F1A58D;
-            background-image: url("$image/ui/warning.svg");
+            background-color: #f1a58d;
+            background-image: url('$image/ui/warning.svg');
             content: '';
         }
     }
@@ -305,7 +320,6 @@ main,.main,.post {
         p {
             padding: 2rem 1.5rem;
         }
-
 
         &:before {
             background-position: center;

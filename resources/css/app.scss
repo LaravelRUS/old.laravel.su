@@ -1,11 +1,11 @@
-@import "bootstrap/scss/functions";
+@import 'bootstrap/scss/functions';
 
 // scss-docs-start theme-color-variables
 $primary: #f9322c;
 $dark: #212529;
 
-$body-secondary-bg: #EBEEF4;
-$body-secondary-bg-dark: #1A1E28;
+$body-secondary-bg: #ebeef4;
+$body-secondary-bg-dark: #1a1e28;
 
 $container-max-widths: (
     sm: 540px,
@@ -15,7 +15,7 @@ $container-max-widths: (
 );
 
 $body-bg: #fafafa;
-$body-bg-dark: #161822;//#171923;
+$body-bg-dark: #161822; //#171923;
 $body-color: #222;
 
 $body-emphasis-color-dark: #dee2e6;
@@ -23,7 +23,7 @@ $body-emphasis-color-dark: #dee2e6;
 $body-tertiary-bg: #fff;
 $body-tertiary-bg-dark: #252a37;
 
-$dark-bg-subtle-dark: #14161f;//#111319;
+$dark-bg-subtle-dark: #14161f; //#111319;
 
 //$border-radius: 1.625rem;
 $border-radius: 0.85rem;
@@ -63,10 +63,8 @@ $input-bg: var(--bs-secondary-bg);
 $input-padding-y: 0.5rem;
 $input-padding-x: 1rem;
 
-
-
 $utilities: (
-    "line-clamp": (
+    'line-clamp': (
         property: -webkit-line-clamp,
         class: line-clamp,
         responsive: true,
@@ -76,7 +74,7 @@ $utilities: (
             3: 3,
             4: 4,
             5: 5,
-        )
+        ),
     ),
 );
 
@@ -85,19 +83,19 @@ $utilities: (
 }
 
 @import 'bootstrap/scss/bootstrap';
-@import "reset";
+@import 'reset';
 @import 'prism';
 @import 'back-to-top';
 @import 'clipboard';
 @import 'docs';
 @import 'ticket';
 @import 'transition';
-@import "markdown-editor";
-@import "utilities";
-@import "hangman";
-@import "thread";
-@import "marketing";
-@import "post";
+@import 'markdown-editor';
+@import 'utilities';
+@import 'hangman';
+@import 'thread';
+@import 'marketing';
+@import 'post';
 
 .avatar {
     border-radius: 10em;
@@ -130,21 +128,22 @@ $utilities: (
     object-fit: contain;
 }
 
-
+.footer-sun {
+    object-position: top center;
+}
 
 // Need usage Bootstrap settings
 
-.btn.btn-primary, .btn.btn-outline-primary:hover {
+.btn.btn-primary,
+.btn.btn-outline-primary:hover {
     color: var(--bs-body-bg);
 }
-
-
 
 .form-search {
     overflow: hidden;
     font-size: 1em;
-    line-height:1.5;
-    outline: none!important;
+    line-height: 1.5;
+    outline: none !important;
     @extend .text-body-emphasis;
     @extend .bg-body-secondary;
     @extend .rounded-0;
@@ -156,8 +155,8 @@ $utilities: (
     }
 }
 
-.bg-light-danger{
-    background-color: #FBDBD9 !important;
+.bg-light-danger {
+    background-color: #fbdbd9 !important;
 }
 
 .to-transparent {
@@ -171,14 +170,12 @@ $utilities: (
     height: 4rem;
 }
 
-
 .sponsors {
     img {
         max-width: 75%;
         height: 64px;
     }
 }
-
 
 .profile-cover {
     height: 150px;
@@ -195,17 +192,15 @@ $utilities: (
     }
 }
 
-
 .quiz-code-hover {
-    opacity: 0.25!important;
+    opacity: 0.25 !important;
     filter: blur(2px);
     transition: all 350ms ease-in-out;
     &:hover {
-        opacity: 1!important;
+        opacity: 1 !important;
         filter: blur(0);
     }
 }
-
 
 .hero-image {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $primary 150%);
@@ -225,7 +220,6 @@ $utilities: (
         bottom: -5%;
     }
 }
-
 
 .pb-6 {
     padding-bottom: 3.8rem !important;

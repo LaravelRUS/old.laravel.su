@@ -6,8 +6,8 @@ namespace App\Orchid\Screens\Idea;
 
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
-use App\Notifications\SimpleMessageNotification;
 use App\Notifications\IdeaRequestAcceptedNotification;
+use App\Notifications\SimpleMessageNotification;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
@@ -89,10 +89,10 @@ class EditScreen extends Screen
                 Sight::make('created_at', __('Created'))
                     ->usingComponent(DateTimeSplit::class),
                 Sight::make('key.key', 'Ключ')
-                    ->canSee(!is_null($this->ideaRequest->key)),
+                    ->canSee(! is_null($this->ideaRequest->key)),
             ]))
                 ->title(__('Данные запроса'))
-                ->description('Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, одобрите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.')
+                ->description('Проверьте, соответствуют ли данные условиям. Если все выглядит корректно, без несоответствий или сомнений, пожалуйста, одобрите заявку и отправьте участнику бесплатный ключ. Однако, если вы заметили какие-либо несоответствия или у вас возникли сомнения, рекомендуется отклонить данную заявку.'),
         ];
     }
 

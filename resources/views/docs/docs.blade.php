@@ -17,9 +17,13 @@
 
                     <div class="d-flex align-items-center p-4 p-sm-0">
                         <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
-                            @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
-                                <option value="{{ route('docs', ['version' => $version]) }}" @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version  }}</option>
-                            @endforeach
+                            <optgroup label="Версия">
+                                @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
+                                    <option
+                                        value="{{ route('docs', ['version' => $version]) }}"
+                                        @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version }}</option>
+                                @endforeach
+                            </optgroup>
                         </select>
 
                         @if($docs->behind() === null)
@@ -36,7 +40,7 @@
                             </a>
                         @endif
 
-                        <a href="{{ $docs->goToOriginal() }}" title="Посмотреть оригинал" target="_blank"
+                        <a href="{{ $docs->getOriginalUrl() }}" title="Посмотреть оригинал" target="_blank"
                            class="link-body-emphasis text-decoration-none d-none d-md-block">
                             <x-icon path="i.translation" />
                         </a>
@@ -71,12 +75,21 @@
                         @endforeach
                     </ul>
 
-                    <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block">
-                        <img src="/img/ui/pastbin.svg" alt="pastbin" class="w-auto mb-4" height="100">
-                        <h6 class="mb-2">Делитесь вашим кодом в чате!</h6>
-                        {{-- <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6> --}}
-                        <a class="btn w-100 btn-sm btn-primary" href="{{ route('pastebin') }}">Поделиться</a>
-                    </div>
+                    @if(random_int(0,1))
+                        <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block" id="banner" data-te>
+                            <img src="/img/ui/pastbin.svg" alt="pastbin" class="w-auto mb-4" height="100">
+                            <h6 class="mb-2">Делитесь вашим кодом в чате!</h6>
+                            {{-- <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6> --}}
+                            <a class="btn w-100 btn-sm btn-primary" href="{{ route('pastebin') }}">Поделиться</a>
+                        </div>
+                    @else
+                        <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block" id="banner">
+                            <img src="/img/ui/popular-fire.svg" alt="pastbin" class="w-auto mb-4" height="100">
+                            <h6 class="mb-2">Интересные советы и истории</h6>
+                            {{-- <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6> --}}
+                            <a class="btn w-100 btn-sm btn-primary" href="{{ route('feed') }}">Трибуна</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="px-0 px-md-2 px-xl-3 col-md-9 order-md-last order-first">
@@ -84,9 +97,11 @@
                 <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
-                        <div class="alert alert-warning rounded-2" role="alert">
-                            <p class="mb-0">⚠️ Вы просматриваете документ для прошлой версии.</p>
-                            Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                        <div class="alert alert-warning rounded-2 position-relative" role="alert">
+                            <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link">
+                                <p class="mb-0">⚠️ Вы просматриваете документ для прошлой версии.</p>
+                                Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                            </a>
                         </div>
                     @endif
 

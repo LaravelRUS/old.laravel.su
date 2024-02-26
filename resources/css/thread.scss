@@ -1,5 +1,4 @@
 .comments-wrapper {
-
     .thread {
         position: relative;
         overflow: hidden;
@@ -45,7 +44,7 @@
             display: block;
             top: 3.5rem;
             left: 1rem;
-            content: "";
+            content: '';
             width: 1px;
             height: 100%;
             background-color: rgba($gray-700, 0.2);

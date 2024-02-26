@@ -5,11 +5,13 @@
     <div class="p-5">
         <div class="d-flex align-items-center mb-4">
             <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
-                @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
-                    <option value="{{ route('docs', ['version' => $version]) }}" @selected(active(route('nav.docs', ['version' => $version]).'*'))>
-                        {{ $version }}
-                    </option>
-                @endforeach
+                <optgroup label="Версия">
+                    @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
+                        <option
+                            value="{{ route('docs', ['version' => $version]) }}"
+                            @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version }}</option>
+                    @endforeach
+                </optgroup>
             </select>
         </div>
         <ul class="list-unstyled">

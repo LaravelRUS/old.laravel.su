@@ -32,6 +32,7 @@ Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/contributors', 'pages.contributors')->name('contributors');
 Route::view('/rules', 'pages.rules')->name('rules');
 Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
+Route::view('/orchid-admin', 'pages.orchid')->name('orchid');
 
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
@@ -45,6 +46,10 @@ Route::view('/admin', 'errors.admin');
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
 Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
+
+Route::view('/library/clear-code', 'library.clear-code')->name('library.clear-code');
+Route::view('/library/upgrade', 'library.upgrade')->name('library.upgrade');
+Route::view('/library/security', 'library.security')->name('library.security');
 
 /*
 |--------------------------------------------------------------------------
@@ -344,6 +349,8 @@ Route::get('/status/{version?}', [DocsController::class, 'status'])
 Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('docs');
+
+Route::get('/docs/{page}', fn (string $page) => redirect()->route('docs', ['version' => Docs::DEFAULT_VERSION, 'page' => $page]));
 
 Route::get('nav/docs/{version?}', [DocsController::class, 'navigation'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)

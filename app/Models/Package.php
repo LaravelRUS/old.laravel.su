@@ -93,7 +93,7 @@ class Package extends Model
      * Scope a query to only include approved packages.
      *
      * @param Builder $query
-     * @param bool $approved
+     * @param bool    $approved
      *
      * @return Builder
      */

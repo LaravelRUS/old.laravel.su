@@ -3,7 +3,7 @@
 @task('deploy', ['on' => ['web']])
 su deployer
 cd /home/deployer/laravel.su/current
-php artisan down
+php artisan down --refresh=15
 git pull
 
 php artisan cache:clear
