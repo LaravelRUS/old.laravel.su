@@ -30,7 +30,7 @@
 
 
             <div class="col-12 col-xl-8">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
+                <div class="bg-primary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
 
 
                     <div class="row h-100">
@@ -90,22 +90,23 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 col-xl-4">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative h-100">
+                <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
 
                         <div class="mb-auto">
-                            <p class="h2 mb-3">Permissions</p>
+                            <p class="h2 mb-3">Разрешения</p>
 
                             <p>
-                                Manage user permissions and ensure application security effortlessly.
-                                Backed by an intuitive interface, it's easy to set up and manage roles, without complex coding or external plugins.
+                                Управляйте разрешениями пользователей и обеспечивайте безопасность приложений без особых усилий.
+                                <!--Благодаря интуитивно понятному интерфейсу можно легко настраивать роли и управлять ими без
+                                написания сложного кода или использования внешних плагинов.-->
                             </p>
                         </div>
 
 
                         <div class="mt-auto">
-                            <img src="/img/ui/shield.svg" class="img-fluid">
+                            <img src="/img/ui/shield.svg" class="img-fluid mb-2">
                             <a href="{{ asset('https://orchid.software/') }}"
                                class="d-none d-md-inline-flex link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
                                 Learn about Permissions
@@ -120,7 +121,7 @@
 
 
             <div class="col-12 col-lg-6 col-xl-4">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative h-100">
+                <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
 
@@ -147,7 +148,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 col-xl-4">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative h-100">
+                <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
 
@@ -173,7 +174,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 col-xl-4">
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative h-100">
+                <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
                     <div class="d-flex flex-column h-100">
                         <div class="mb-auto">
                             <p class="h2 mb-3">Никаких ограничений</p>

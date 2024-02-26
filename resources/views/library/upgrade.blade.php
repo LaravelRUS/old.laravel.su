@@ -12,12 +12,12 @@
             которого необходимо придерживаться
         </x-slot>
 
-        <x-slot:content>
-            <div class="lead fw-bold mx-md-auto text-md-center">
-                <span class="d-inline-block mx-3 display-5 opacity-25">7.x</span>
-                <span class="d-inline-block mx-3 display-4 opacity-50 border-5">8.x</span>
-                <span class="d-inline-block mx-3 display-3 opacity-75">9.x</span>
-                <span class="d-inline-block mx-3 display-1 border-bottom border-primary">10.x</span>
+        <x-slot:content >
+            <div class="d-none d-md-flex align-items-baseline lead fw-bold mx-md-auto text-md-center">
+                <span class="d-inline-block mx-2 mx-sm-3 display-5 opacity-25">7.x</span>
+                <span class="d-inline-block mx-2 mx-sm-3 display-4 opacity-50 border-5">8.x</span>
+                <span class="d-inline-block mx-2 mx-sm-3 display-3 opacity-75">9.x</span>
+                <span class="d-inline-block mx-2 mx-sm-3 display-1 border-bottom border-primary">10.x</span>
             </div>
 
             {{--
@@ -43,7 +43,7 @@
                     Защитите свой проект от угроз и сохраните свою репутацию.
                 </p>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-8 z-1">
                 <main class="bg-body-tertiary p-xl-5 p-4 rounded">
                     <p>
                         Никто не хочет, чтобы на его веб-сайте появилась
@@ -82,7 +82,7 @@
                     Простота. Скорость. Результат.
                 </p>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-8 z-1">
                 <main class="bg-body-tertiary p-xl-5 p-4 rounded">
                     <p>
                         Каждая новая версия Laravel включает улучшения, направленные на повышение производительности
@@ -119,7 +119,7 @@
                     Использование современных технологий делает вас более привлекательными для лучших разработчиков.
                 </p>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-8 z-1">
                 <main class="bg-body-tertiary p-xl-5 p-4 rounded">
                     <p>
                         Использование поддерживаемых версий Laravel также облегчает процесс найма новых разработчиков.
