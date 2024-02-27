@@ -78,6 +78,11 @@ class PlatformProvider extends OrchidServiceProvider
                     return $waiting > 0 ? $waiting : null;
                 }, Color::DANGER),
 
+            Menu::make('Челленджи')
+                ->permission('site.content')
+                ->icon('bs.collection')
+                ->route('platform.challenges'),
+
             Menu::make('Idea')
                 ->icon('bs.box-seam')
                 ->route('platform.idea')

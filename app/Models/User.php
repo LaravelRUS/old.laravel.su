@@ -177,6 +177,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Define the "achievements" relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function challengesReapositories()
+    {
+        return $this->hasMany(ChallengesReporitories::class);
+    }
+
+    /**
      * Reward the user with an achievement.
      *
      * @param string $type

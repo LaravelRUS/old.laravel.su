@@ -112,3 +112,24 @@ Route::screen('position/{position}/edit', App\Orchid\Screens\Position\EditScreen
     ->breadcrumbs(fn (Trail $trail, $position) => $trail
         ->parent('platform.position')
         ->push($position->title, route('platform.position.edit', $position)));
+
+
+
+Route::screen('challenges', App\Orchid\Screens\Challenges\ListScreen::class)
+    ->name('platform.challenges')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Челеннджи'));
+
+Route::screen('challenges/{challenge}/edit', App\Orchid\Screens\Challenges\EditScreen::class)
+    ->name('platform.challenges.edit')
+    ->breadcrumbs(fn (Trail $trail, $challenge) => $trail
+        ->parent('platform.challenges')
+        ->push($challenge->title, route('platform.position.edit', $challenge)));
+
+Route::screen('challenges/create', App\Orchid\Screens\Challenges\EditScreen::class)
+    ->name('platform.challenges.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.challenges')
+        ->push(__('Create'), route('platform.challenges.create')));
+

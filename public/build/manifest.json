@@ -12,12 +12,12 @@
     "src": "public/img/ui/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-BPtwI5TR.css",
+    "file": "assets/app-B3kjrHy8.css",
     "src": "resources/css/app.scss",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BMhzFGgZ.js",
+    "file": "assets/app-DoygXh2e.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
