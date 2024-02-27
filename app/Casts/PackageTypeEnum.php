@@ -6,82 +6,81 @@ use App\Services\ColorText;
 
 enum PackageTypeEnum: string
 {
+    // Типы пакетов
     case FileManagement = 'file-management';
-    // case AuthAndPermission = 'auth-and-permission';
-    case DatabaseAndEloquent = 'database-and-Eloquent';
+    case DatabaseAndEloquent = 'database-and-eloquent';
     case DebuggingAndDevTools = 'debugging-and-dev-tools';
     case DevOps = 'dev-ops';
-    // case Localization = 'localization';
     case API = 'api';
-    // case SEO = 'seo';
     case Testing = 'testing';
-    // case Payment = 'payment';
-    // case Security = 'security';
-    // case Mail = 'mail';
     case ECommerce = 'e-commerce';
     case CMSAndAdminPanels = 'cms-and-admin-panels';
     case CodeArchitecture = 'code-architecture';
-    // case Notifications = 'notifications';
     case UIAndBladeComponents = 'ui-and-blade-components';
     case UtilitiesAndHelpers = 'utilities-and-helpers';
 
+    /**
+     * Получить текстовое представление типа пакета.
+     *
+     * @return string
+     */
     public function text(): string
     {
         return match ($this) {
             self::FileManagement => 'Управление файлами',
-            // self::AuthAndPermission => 'Аутентификация и разрешения',
-            self::DatabaseAndEloquent  => 'Базы данных и Eloquent',
+            self::DatabaseAndEloquent => 'Базы данных и Eloquent',
             self::DebuggingAndDevTools => 'Инструменты разработчика',
-            self::DevOps               => 'Обслуживание',
-            // self::Localization         => 'Локализация',
+            self::DevOps => 'Обслуживание',
             self::API => 'API',
-            // self::SEO                  => 'Оптимизация для поисковых систем (SEO)',
             self::Testing => 'Тестирование',
-            // self::Payment              => 'Платежи',
-            // self::Security => 'Безопасность',
-            // self::Mail                 => 'Почта',
-            self::ECommerce         => 'Интернет-торговля',
+            self::ECommerce => 'Интернет-торговля',
             self::CMSAndAdminPanels => 'CMS и панели администратора',
-            self::CodeArchitecture  => 'Архитектура кода',
-            // self::Notifications => 'Уведомления',
+            self::CodeArchitecture => 'Архитектура кода',
             self::UIAndBladeComponents => 'UI и компоненты Blade',
-            self::UtilitiesAndHelpers  => 'Утилиты',
-
+            self::UtilitiesAndHelpers => 'Утилиты',
         };
     }
 
+    /**
+     * Получить цвет фона для текстового представления типа пакета.
+     *
+     * @return string
+     */
     public function colorBg(): string
     {
         return ColorText::Hex($this->text(), '21'); // подобрать подходящее значение
     }
 
+    /**
+     * Получить цвет текста для текстового представления типа пакета.
+     *
+     * @return string
+     */
     public function colorText(): string
     {
         return ColorText::Hex($this->text());
     }
 
+    /**
+     * Получить иконку для типа пакета.
+     *
+     * @return string
+     */
     public function icon(): string
     {
         return match ($this) {
             self::FileManagement => 'i.files',
-            // self::AuthAndPermission => 'bs.people-fill',
-            self::DatabaseAndEloquent  => 'i.database',// 'bs.server'
+            self::DatabaseAndEloquent => 'i.database',
             self::DebuggingAndDevTools => 'i.devtools',
-            self::DevOps               => 'i.maintenance',
-            // self::Localization         => 'bs.globe',
+            self::DevOps => 'i.maintenance',
             self::API => 'i.api',
-            // self::SEO                  => 'bs.search',
             self::Testing => 'i.testing',
-            // self::Payment              => 'bs.credit-card-fill',
-            // self::Security => 'bs.shield-shaded',
-            // self::Mail                 => 'bs.envelope-fill',
-            self::ECommerce         => 'i.internet-market',
+            self::ECommerce => 'i.internet-market',
             self::CMSAndAdminPanels => 'i.cms',
-            self::CodeArchitecture  => 'i.code',
-            // self::Notifications => 'bs.bell-fill',
+            self::CodeArchitecture => 'i.code',
             self::UIAndBladeComponents => 'i.ui',
-            self::UtilitiesAndHelpers  => 'i.utilities',
-
+            self::UtilitiesAndHelpers => 'i.utilities',
         };
     }
 }
+
