@@ -14,6 +14,6 @@ class PackagePresenter extends Presenter
      */
     public function stars(): ?string
     {
-        return Number::abbreviate(number: $this->entity->stars ?? 0);
+        return Number::abbreviate(number: $this->entity->stars ?? 0, maxPrecision: 1);
     }
 }
