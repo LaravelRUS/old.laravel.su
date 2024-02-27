@@ -1,33 +1,25 @@
 // Usage in markdown files
 
-/*
-#collection-method-list > ul {
-    column-count: 3; -moz-column-count: 3; -webkit-column-count: 3; // Я думаю мы можем увеличь на больших экранах
-    column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+@mixin column-settings($count, $gap) {
+    column-count: $count;
+    -moz-column-count: $count;
+    -webkit-column-count: $count;
+    column-gap: $gap;
+    -moz-column-gap: $gap;
+    -webkit-column-gap: $gap;
     padding-left: 0;
     list-style: none;
-    li{
+
+    li {
         padding-bottom: 0;
     }
 }
-
-#collection-method-list a {
-    display: block;
-}
-*/
 
 .docs-column-list,
 .docs-column-list-2,
 .docs-column-list-1 {
     ul {
-        column-count: 1;
-        -moz-column-count: 1;
-        -webkit-column-count: 1; // Я думаю мы можем увеличь на больших экранах
-        column-gap: 2em;
-        -moz-column-gap: 2em;
-        -webkit-column-gap: 2em;
-        padding-left: 0;
-        list-style: none;
+        @include column-settings(1, 2em);
         li {
             padding-bottom: 0;
         }
@@ -40,9 +32,7 @@
 @include media-breakpoint-up(md) {
     .docs-column-list {
         ul {
-            column-count: 2 !important;
-            -moz-column-count: 2 !important;
-            -webkit-column-count: 2 !important;
+            @include column-settings(2, 2em);
         }
     }
 }
@@ -50,16 +40,12 @@
 @include media-breakpoint-up(xl) {
     .docs-column-list {
         ul {
-            column-count: 3 !important;
-            -moz-column-count: 3 !important;
-            -webkit-column-count: 3 !important;
+            @include column-settings(3, 2em);
         }
     }
     .docs-column-list-2 {
         ul {
-            column-count: 2 !important;
-            -moz-column-count: 2 !important;
-            -webkit-column-count: 2 !important;
+            @include column-settings(2, 2em);
         }
     }
 }
@@ -72,19 +58,25 @@
         li {
             margin: 0;
             padding: 0;
-        }
-        li.anchor-h3 {
-            margin-left: 1.5em;
-            //list-style: inside;
-        }
 
-        li.anchor-h4 {
-            margin-left: 2.5em;
-            //list-style: inside;
+
+            &.anchor-h3 {
+                margin-left: 1.5em;
+                //list-style: inside;
+
+                a {
+                    opacity: 0.5;
+                }
+            }
+
+            &.anchor-h4 {
+                margin-left: 2.5em;
+                //list-style: inside;
+            }
         }
     }
     a {
-        opacity: 0.5;
+        opacity: 0.75;
         @extend .link-body-emphasis;
         transition: all 340ms ease;
         text-decoration: none;
