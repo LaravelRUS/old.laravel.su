@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\PackageTypeEnum;
 use App\Models\Concerns\LogsActivityFillable;
+use App\Presenters\PackagePresenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -100,5 +101,13 @@ class Package extends Model
     public function scopeApproved(Builder $query, bool $approved = true): Builder
     {
         return $query->where('approved', $approved);
+    }
+
+    /**
+     * @return \App\Presenters\PackagePresenter
+     */
+    public function presenter()
+    {
+        return new PackagePresenter($this);
     }
 }

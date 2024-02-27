@@ -6,11 +6,8 @@
             <div class="bg-body-tertiary rounded p-md-5 rounded">
                 <div class="p-4 p-md-5">
                     @if ($user->id === Auth::user()?->id)
-                        <div class="text-center mb-3">
+                        <div class="text-center mb-0">
                             Вы не написали ни одного комментария
-                        </div>
-                        <div class="text-center">
-                            <a href="{{ route('feed') }}" class="btn btn-secondary">Статьи</a>
                         </div>
                     @else
                         <div class="text-center mb-0">
