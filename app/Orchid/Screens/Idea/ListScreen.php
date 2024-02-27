@@ -91,13 +91,14 @@ class ListScreen extends Screen
             Layout::table('ideaRequests', [
 
                 TD::make(__('Actions'))
+                    ->width(100)
                     ->render(fn (IdeaRequest $ideaRequest) => Link::make('Просмотр')
                         ->route('platform.idea.request', $ideaRequest->id)
                         ->icon('bs.pencil')),
 
                 TD::make('Пользователь')
                     ->cantHide()
-                    ->width(250)
+                    ->width(200)
                     ->render(fn (IdeaRequest $ideaRequest) => new Persona($ideaRequest->user->presenter())),
 
                 /*
@@ -114,26 +115,28 @@ class ListScreen extends Screen
 
                 TD::make('message', 'Сообщение')
                     ->alignLeft()
-                    ->render(fn (IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(30))
+                    ->render(fn (IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(10))
                     ->width(300),
 
                 TD::make('key', 'Статус')
-                    ->width(100)
+                    ->align(TD::ALIGN_RIGHT)
                     ->render(function (IdeaRequest $ideaRequest) {
                         if ($ideaRequest->key()->exists()) {
                             return Blade::render('<x-icon path="bs.check" height="1.5em" width="1.5em" />');
                         }
 
-                        return '-';
+                        return '—';
                     }),
 
                 TD::make('created_at', __('Created'))
+                    ->width(100)
                     ->usingComponent(DateTimeSplit::class)
                     ->align(TD::ALIGN_RIGHT)
                     ->defaultHidden()
                     ->sort(),
 
                 TD::make('updated_at', 'Последнее обновление')
+                    ->width(100)
                     ->usingComponent(DateTimeSplit::class)
                     ->defaultHidden()
                     ->align(TD::ALIGN_RIGHT)

@@ -91,8 +91,6 @@ Route::post('/feed', [PostController::class, 'feed'])
 Route::get('/posts', [PostController::class, 'list'])
     ->name('posts');
 
-// Route::post('/posts', [PostController::class, 'list']);
-
 Route::get('/p/{post:slug}', [PostController::class, 'show'])
     ->name('post.show');
 
