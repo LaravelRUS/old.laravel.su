@@ -21,7 +21,7 @@ return [
             'url' => '/rss/feed',
 
             'title'       => env('APP_NAME', 'Laravel'),
-            'description' => 'The description of the feed.',
+            'description' => 'Laravel - это фреймворк для веб-приложений на PHP с утонченным синтаксисом, который освобождает вас от мелочей. Русскоязычное сообщество и документация.',
             'language'    => 'ru-RU',
 
             /*

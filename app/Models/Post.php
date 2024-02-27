@@ -185,7 +185,9 @@ class Post extends Model implements Feedable
             ->title($this->title)
             ->summary(Str::of($this->content)->markdown())
             ->updated($this->updated_at)
-            ->image(route('cover', ['text' => $this->title]))
+            ->enclosure(route('cover', ['text' => $this->title]))
+            ->enclosureType('image/jpg')
+            ->enclosureLength(0)
             ->link(route('post.show', $this))
             ->authorName($this->author->name);
     }
@@ -195,7 +197,7 @@ class Post extends Model implements Feedable
      */
     public static function getFeedItems()
     {
-        return static::orderBy('id', 'desc')->with('author')->limit(30)->get();
+        return static::orderBy('id', 'desc')->with('author')->limit(10)->get();
     }
 
     /**
