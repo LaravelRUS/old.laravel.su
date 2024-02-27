@@ -12,6 +12,7 @@ php artisan config:clear
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --classmap-authoritative
 
 php artisan view:clear
+php artisan sqlite:optimize
 php artisan migrate --force
 php artisan optimize
 php artisan up
