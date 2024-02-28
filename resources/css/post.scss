@@ -34,11 +34,6 @@
         @extend .table-bordered;
     }
 
-    p {
-        line-height: 1.5rem;
-        margin: 0 0 1.5rem;
-    }
-
     img {
         @extend .bg-body-secondary;
         @extend .rounded;
