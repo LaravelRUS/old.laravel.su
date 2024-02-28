@@ -3,9 +3,33 @@
 @section('description', $post->description)
 
 @section('content')
+
+    <script>
+        // TODO:
+        function back(url) {
+            if (history.length > 2) {
+                // if history is not empty, go back:
+                history.back();
+            } else if (url) {
+                // go to specified fallback url:
+                history.replaceState(null, null, url);
+            } else {
+                // go home:
+                history.replaceState(null, null, '/');
+            }
+        }
+    </script>
+
 <x-container>
         <div class="row">
-            <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1">
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
+
+                <a href="#"
+                   onclick="back('{{route('feed')}}')"
+                   class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
+                    <x-icon path="bs.x-lg"/>
+                </a>
+
                 <div class="col-lg-8 mx-auto">
 
                     <main class="post" data-controller="prism">

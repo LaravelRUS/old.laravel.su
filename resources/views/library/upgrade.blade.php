@@ -19,12 +19,6 @@
                 <span class="d-inline-block mx-2 mx-sm-3 display-3 opacity-75">9.x</span>
                 <span class="d-inline-block mx-2 mx-sm-3 display-1 border-bottom border-primary">10.x</span>
             </div>
-
-            {{--
-            <figure class="d-none d-md-block position-relative">
-                <x-icon path="l.dots" class="text-primary opacity-2 d-block mx-auto" height="300" width="300" />
-            </figure>
-            --}}
         </x-slot:content>
     </x-header>
 

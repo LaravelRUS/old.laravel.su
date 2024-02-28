@@ -4,30 +4,28 @@
 @section('content')
 
     <x-header align="align-items-end">
-        <x-slot:sup>Чистый код</x-slot>
-            <x-slot:title>Простые правила для вашего кода</x-slot>
+        <x-slot name="sup">Чистый код</x-slot>
+        <x-slot name="title">Простые правила для вашего кода</x-slot>
+        <x-slot name="description">
+            Код должен быть понятен всем членам команды и легко читаем для разработчиков, которые могут его изменять
+        </x-slot>
+        <x-slot name="content">
+            {{--
+            <div class="col-6 mx-auto">
+                <img src="/img/gusli.svg" class="img-fluid">
+            </div>
+            --}}
+            <div class="position-relative">
 
-            <x-slot:description>
-                Код должен быть понятен всем членам команды и легко читаем для разработчиков, которые могут его изменять
-            </x-slot>
-
-
-                <x-slot:content>
-                    {{--
-                    <div class="col-6 mx-auto">
-                        <img src="/img/gusli.svg" class="img-fluid">
-                    </div>
-                    --}}
-                    <div class="position-relative">
-
-                        <!-- Svg decoration -->
-    {{--
-                        <figure class="position-absolute top-0 end-0 d-none d-md-block me-5">
-                            <x-icon path="l.dots" class="text-primary opacity-2" height="400" width="400" />
-                        </figure>
---}}
-                        <pre class="rounded position-relative overflow-hidden bg-body p-4 text-white border border-dashed language-php" data-bs-theme="dark" tabindex="0"><code
-                                class="language-php">// Получаем инсайты трендов для маркетинговой кампании
+                <!-- Svg decoration -->
+                {{--
+                                    <figure class="position-absolute top-0 end-0 d-none d-md-block me-5">
+                                        <x-icon path="l.dots" class="text-primary opacity-2" height="400" width="400" />
+                                    </figure>
+            --}}
+                <pre class="rounded position-relative overflow-hidden bg-body p-4 text-white border border-dashed language-php" data-bs-theme="dark" tabindex="0" style="
+    transform: rotate(350deg);"><code
+                        class="language-php">// Получаем инсайты трендов для маркетинговой кампании
 $trendInsights = $this->getTrendInsights();
 
 // Запускаем кампанию с полученными данными
@@ -38,9 +36,10 @@ return response()->json([
     'status' => 'success',
     'campaignResults' => $campaignResults
 ]);</code></pre>
-                    </div>
-                </x-slot:content>
+            </div>
+        </x-slot>
     </x-header>
+
 
    <x-container>
 

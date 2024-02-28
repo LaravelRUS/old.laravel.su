@@ -151,17 +151,17 @@
                             <p>Проекты с несколькими разработчиками могут пойти не так, как надо, если нет ясности в следующих
                                вопросах:</p>
 
-                            <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="d-flex align-items-center gap-2 mb-2">
                                 <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
                                 <p class="mb-0 w-75 text-balance">Документация</p>
                             </div>
 
-                            <div class="d-flex align-items-center gap-3 mb-2">
+                            <div class="d-flex align-items-center gap-2 mb-2">
                                 <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
                                 <p class="mb-0 w-75 text-balance">Дизайнерские решения</p>
                             </div>
 
-                            <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="d-flex align-items-center gap-2 mb-3">
                                 <x-icon path="i.circle-fill" class="text-primary" width="40px"/>
                                 <p class="mb-0 w-75 text-balance">Стандарты кода</p>
                             </div>
