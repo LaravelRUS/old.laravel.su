@@ -52,15 +52,15 @@ class AchievementsController extends Controller
         ]);
     }
 
-    protected function setDataForAchievement(array $achievements, User $user): Collection
+    protected function setDataForAchievement(array $achievements, ?User $user): Collection
     {
         return collect($achievements)
             ->map(fn ($achievement) => app($achievement))
             ->map(function ($achievement) use ($user) {
 
-                $achievement->used = $user->achievements()
-                    ->where('achievement_type', $achievement::class)
-                    ->exists();
+                $achievement->used = ! is_null($user) && $user->achievements()
+                        ->where('achievement_type', $achievement::class)
+                        ->exists();
 
                 $countAllUsers = User::count();
                 $countUses = Achievement::where('achievement_type', $achievement::class)->count();
