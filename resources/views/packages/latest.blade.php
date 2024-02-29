@@ -6,7 +6,7 @@
 
                         <div class="d-flex align-items-center d-md-block">
                             <span class="badge text-white rounded-pill"
-                                  style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 1em black;">
+                                  style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 0.5em #161822;">
                                 {{ $package->type->text() }}
                             </span>
                         </div>

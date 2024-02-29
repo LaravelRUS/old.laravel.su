@@ -3,7 +3,7 @@
 
         <div class="d-flex align-items-center justify-content-between mb-2 text-balance">
         <span class="badge text-white"
-              style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 1em black;">
+              style="background-color: {{$package->type->colorText()}}; text-shadow: 0px 0px 0.5em #161822;">
             {{ $package->type->text() }}
         </span>
             @if(is_active('profile.packages'))
