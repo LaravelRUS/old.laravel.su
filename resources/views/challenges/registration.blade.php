@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', 'Принять участие в кодице')
 
 @section('content')
     <x-container>
