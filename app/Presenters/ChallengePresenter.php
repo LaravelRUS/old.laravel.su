@@ -67,14 +67,13 @@ class ChallengePresenter extends Presenter
      */
     public function htmlBeforeStart()
     {
-       return Str::of($this->entity->start_at->diffForHumans())
+        return Str::of($this->entity->start_at->diffForHumans())
             ->ucfirst()
             ->replaceMatches('/\d+/', function ($match) {
                 return "<span class='text-primary'>{$match[0]}</span>";
             });
 
-
-        //return $this->entity->start_at?->diffInDays(now());
+        // return $this->entity->start_at?->diffInDays(now());
     }
 
     /**

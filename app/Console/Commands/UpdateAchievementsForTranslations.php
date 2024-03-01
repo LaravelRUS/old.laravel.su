@@ -2,13 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Achievements\Contents\CommentInteraction;
-use App\Achievements\Contents\HighCommentInteraction;
 use App\Achievements\Unique\Lipa;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 class UpdateAchievementsForTranslations extends Command
@@ -32,20 +29,42 @@ class UpdateAchievementsForTranslations extends Command
      */
     public function handle()
     {
-        // Send GET request to GitHub API to fetch contributors
-        $response = Http::withBasicAuth('token', config('services.github.token'))
-            ->get('https://api.github.com/repos/laravel-russia/docs/contributors');
-
-
-        if (!$response->successful()) {
-            $this->error('Failed to fetch contributors from GitHub API.');
-        }
-
-        $contributors = $response->collect()->pluck('id')->filter();
+        $contributors = $this->loadContributors();
 
         $users = User::whereIn('github_id', $contributors)->get();
 
         // Reward each user for translation contribution
-        $users->each(fn(User $user) => $user->reward(Lipa::class));
+        $users->each(fn (User $user) => $user->reward(Lipa::class));
+    }
+
+    /**
+     * Load contributors from GitHub API.
+     *
+     * @param int                                 $page
+     * @param \Illuminate\Support\Collection|null $previous
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function loadContributors(int $page = 1, ?Collection $previous = null): Collection
+    {
+        $contributors = collect()->merge($previous);
+
+        // Send GET request to GitHub API to fetch contributors
+        $response = Http::withBasicAuth('token', config('services.github.token'))
+            ->get('https://api.github.com/repos/laravel-russia/docs/contributors', [
+                'page' => $page,
+            ]);
+
+        if (! $response->successful()) {
+            $this->error('Failed to fetch contributors from GitHub API.');
+        }
+
+        $new = $response->collect()->pluck('id')->filter();
+
+        $contributors = $contributors->merge($new);
+
+        return $new->isNotEmpty()
+            ? $this->loadContributors($page + 1, $contributors)
+            : $contributors;
     }
 }

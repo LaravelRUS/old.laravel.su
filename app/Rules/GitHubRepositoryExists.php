@@ -16,7 +16,7 @@ class GitHubRepositoryExists implements ValidationRule
         $response = Http::withBasicAuth('token', config('services.github.token'))
             ->get("https://api.github.com/repos/{$value}");
 
-        if(!$response->ok()){
+        if (! $response->ok()) {
             $fail('The repository does not exist on GitHub.');
         }
     }

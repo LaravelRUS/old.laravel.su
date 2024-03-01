@@ -116,7 +116,6 @@ class EditScreen extends Screen
         ];
     }
 
-
     /**
      * @return RedirectResponse
      */
@@ -128,8 +127,8 @@ class EditScreen extends Screen
             'challenge'             => 'required|array',
             'challenge.title'       => 'required|string',
             'challenge.description' => 'required|string',
-            'challenge.start_at'  => 'required|date|after:' . $dateMax,
-            'challenge.stop_at'   => 'required|date|after:challenge.start_at',
+            'challenge.start_at'    => 'required|date|after:'.$dateMax,
+            'challenge.stop_at'     => 'required|date|after:challenge.start_at',
         ]);
 
         $challenge->forceFill($request->input('challenge'))->save();
@@ -140,9 +139,9 @@ class EditScreen extends Screen
     }
 
     /**
-     * @return RedirectResponse
      * @throws \Exception
      *
+     * @return RedirectResponse
      */
     public function remove(Position $position)
     {

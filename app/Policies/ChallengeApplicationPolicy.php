@@ -6,7 +6,6 @@ use App\Models\Challenge;
 use App\Models\ChallengeApplication;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
-use Illuminate\Validation\Rule;
 
 class ChallengeApplicationPolicy
 {
@@ -27,7 +26,7 @@ class ChallengeApplicationPolicy
             return false;
         }
 
-        return !ChallengeApplication::where('challenge_id', $challenge->id)
+        return ! ChallengeApplication::where('challenge_id', $challenge->id)
             ->where('user_id', $user->id)
             ->exists();
     }
