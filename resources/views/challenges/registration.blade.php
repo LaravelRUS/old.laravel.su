@@ -18,80 +18,58 @@
                             <div class="col-12 col-lg-7">
 
                                 <div class="mb-3">
-                                    <label for="packagist_name" class="form-label">Регистрация команды</label>
+                                    <label for="packagist_name" class="form-label">Регистрация нового репозитория</label>
                                     <div class="form-text">
-                                        <p>Кодица - это уникальное событие, которое объединяет талантливых
-                                            разработчиков, программистов и креативных мыслителей. Это место,
-                                            где идеи становятся реальностью, а коды превращаются в функциональные
-                                            приложения. Но помимо этого, хакатон - это еще и невероятно весело!</p>
-                                        <p>Независимо от уровня ваших навыков, вы можете принять участие в этих
-                                            соревнованиях, чтобы ускорить обучение, навыки программирования и
-                                            уверенность в себе.</p>
+                                        <p>
+                                            Для вашего участия в текущей Кодице, необходимо создать новый репозиторий на
+                                            <a href="https://github.com/new" target="_blank">GitHub</a>, где вы будете
+                                            вести разработку.
+                                        </p>
+
+                                        <p>
+                                            Если вы разрабатываете не один, то каждому участнику не нужно создавать
+                                            собственный репозиторий или регистрироваться! Мы будем отслеживаем авторов
+                                            коммитов через API, по этому никого не потерям.
+                                        </p>
                                     </div>
                                 </div>
 
 
                                 <div class="mb-3">
-                                    <label for="url" class="form-label">Ссылка на репозиторий GitHub</label>
-                                    <input class="form-control mb-3 {{ $errors->has('url') ? 'is-invalid' : '' }}" name="url" id="url" type="text"
-                                           placeholder="laravel-russia/docs"
-                                           value="{{ old('url', $repo->url) }}" />
-                                    <x-error field="url" class="invalid-feedback my-3"/>
+                                    <label for="url" class="form-label">Имя репозитория</label>
+                                    <input class="form-control mb-3 {{ $errors->has('github_repository') ? 'is-invalid' : '' }}"
+                                           required
+                                           name="github_repository"
+                                           id="github_repository"
+                                           type="text"
+                                           title="Пожалуйста, введите название репозитория в формате 'username/repo'"
+                                           placeholder="tabuna/breadcrumbs"
+                                           value="{{ old('github_repository', $repo->github_repository) }}" />
+                                    <x-error field="github_repository" class="invalid-feedback my-3"/>
 
                                     <div class="form-text">
-                                        Кодица - это уникальное событие, которое объединяет талантливых разработчиков,
-                                        программистов и креативных мыслителей. Это место, где идеи становятся
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="count_participants" class="form-label">Количество участников</label>
-                                    <input class="form-control mb-3 {{ $errors->has('url') ? 'is-invalid' : '' }}" name="count_participants" id="count_participants" type="text"
-
-                                           value="{{ old('count_participants', $repo->count_participants) }}" />
-                                    <x-error field="count_participants" class="invalid-feedback my-3"/>
-
-                                    <div class="form-text">
-                                        Кодица - это уникальное событие, которое объединяет талантливых разработчиков,
-                                        программистов и креативных мыслителей. Это место, где идеи становятся
+                                        Этот репозиторий будет вашим центром разработки, где вы сможете создавать новый
+                                        код и загружать изменения. Вы можете работать над проектом самостоятельно или
+                                        пригласить коллег для совместной работы.
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12 col-lg-5 d-none d-lg-block">
                                 <div class="bg-body rounded p-4">
-                                <small class="fw-bolder mb-3 d-block">Где можно найти соратников?</small>
+                                <small class="fw-bolder mb-3 d-block">В поиске напарников?</small>
 
-                                <p>
-                                    Кодица - это уникальное событие, которое объединяет талантливых разработчиков,
-                                    программистов и креативных мыслителей. Это место, где идеи становятся реальностью,
-                                    а коды превращаются в функциональные приложения. Но помимо этого, хакатон - это еще
-                                    и невероятно весело!
+                                <p class="opacity-50 mb-0 small text-balance">
+                                    Просто взгляните на комментарии под анонсом. Там вы найдете единомышленников,
+                                    которые, как и вы, ищут напарника. Не стесняйтесь быть первым, кто начнет общение!
+                                    Ведь вместе всегда веселее и продуктивнее.
                                 </p>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
-                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">
-                                {{ $repo->exists ? "Обновить" : "Опубликовать" }}
-                            </button>
-
-                            @if($repo->exists)
-                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
-                                   data-turbo-confirm="Вы уверены, что хотите удалить публикацию?"
-                                   href="{{route('packages.delete', $pack)}}">
-                                    <x-icon path="i.delete" />
-                                    Удалить
-                                </a>
-                            @endif
+                            <button type="submit" class="btn btn-primary mb-3 mb-md-0">Принять участие</button>
                         </div>
-
-                        {{--
-                        <input class="form-control mb-3" name="pack[website]" id="website" type="url"
-                               placeholder="Сайт"
-                               value="{{ old('pack.website', $pack->website) }}" />
-                        <x-error field="website" class="invalid-feedback"/>
-                        --}}
                     </form>
 
                 </div>

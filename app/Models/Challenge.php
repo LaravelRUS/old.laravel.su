@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\LogsActivityFillable;
 use App\Presenters\ChallengePresenter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
@@ -23,9 +24,8 @@ class Challenge extends Model
     protected $fillable = [
         'title',
         'description',
-        'subject',
-        'start_date',
-        'stop__date',
+        'start_at',
+        'stop_at',
     ];
 
     /**
@@ -34,10 +34,9 @@ class Challenge extends Model
      * @var array
      */
     protected $casts = [
-        'start_date' => 'datetime',
-        'stop_date'  => 'datetime',
+        'start_at' => 'datetime',
+        'stop_at'  => 'datetime',
     ];
-
 
     /**
      * The allowed filters for the model.
@@ -46,8 +45,7 @@ class Challenge extends Model
      */
     protected $allowedFilters = [
         'title'        => Like::class,
-        'description' => Like::class,
-        'subject'    => Like::class,
+        'description'  => Like::class,
     ];
 
     /**
@@ -59,33 +57,59 @@ class Challenge extends Model
         'name',
         'created_at',
         'updated_at',
-        'start_date',
-        'stop_date',
+        'start_at',
+        'stop_at',
     ];
 
-
-    public function repositories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    /**
+     * Define a one-to-many relationship with ChallengeApplication.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function applications(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(ChallengesReporitories::class);
-    }
-
-    public static function active()
-    {
-        return static::where('stop_date','>=',now())->latest()
-            ->first();
-    }
-
-    public function isNotStarted(): bool
-    {
-        return $this->start_date > now() && $this->stop_date > now();
+        return $this->hasMany(ChallengeApplication::class);
     }
 
     /**
+     * Scope a query to only include active challenges.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive(Builder $query)
+    {
+        return $query->where('stop_at', '>=', now())->latest();
+    }
+
+    /**
+     * Determine if the challenge has started.
+     *
+     * @return bool
+     */
+    public function hasStarted(): bool
+    {
+        return now()->gte($this->start_at);
+    }
+
+    /**
+     * Determine if the challenge has not started.
+     *
+     * @return bool
+     */
+    public function hasNotStarted(): bool
+    {
+        return ! $this->hasStarted();
+    }
+
+    /**
+     * Get the presenter for the challenge.
+     *
      * @return ChallengePresenter
      */
-    public function presenter()
+    public function presenter(): ChallengePresenter
     {
         return new ChallengePresenter($this);
     }
-
 }

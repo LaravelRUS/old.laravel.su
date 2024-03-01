@@ -59,8 +59,8 @@ class AchievementsController extends Controller
             ->map(function ($achievement) use ($user) {
 
                 $achievement->used = ! is_null($user) && $user->achievements()
-                        ->where('achievement_type', $achievement::class)
-                        ->exists();
+                    ->where('achievement_type', $achievement::class)
+                    ->exists();
 
                 $countAllUsers = User::count();
                 $countUses = Achievement::where('achievement_type', $achievement::class)->count();

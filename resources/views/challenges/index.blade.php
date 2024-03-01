@@ -3,117 +3,177 @@
 
 @section('content')
 
-
     <x-header image="/img/ui/challenges.svg">
         <x-slot:sup>Ежемесячная задача</x-slot>
         <x-slot:title>Кодица</x-slot>
 
         <x-slot:description>
-            Выполняйте задания по программирования вместе с другими разработчиками, присоединившись к Кодицы 👇
+           Выполняйте задания по программирования вместе с другими разработчиками, присоединившись к Кодицы 👇
         </x-slot>
-
 
         <x-slot:actions>
-            @can('create', \App\Models\ChallengesReporitories::class)
-
-
-            <a href="{{route('challenges.registration')}}" class="btn btn-primary btn-lg px-4">Учавствовать</a>
+            @can('create', \App\Models\ChallengeApplication::class)
+                <a href="{{ route('challenges.registration') }}" class="btn btn-primary btn-lg px-4">Учавствовать</a>
+            @else
+                <a href="#" class="btn btn-primary btn-lg px-4 disabled">Учавствовать</a>
             @endcan
-            <a href="#"
-               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
-                Прошлые задачи <x-icon path="i.arrow-right" class="bi" />
+            <a href="#" class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
+                Прошлые задачи
+                <x-icon path="i.arrow-right" class="bi"/>
             </a>
         </x-slot>
-
     </x-header>
 
 
-
     <x-container>
-            <div class="row g-5 align-items-center">
-                <!-- Features -->
-                <div class="col-lg-8">
-                    <div class="row g-xl-5">
-                        <!-- Item -->
-                        <div class="col-md-6">
-                            <div class="bg-body-tertiary p-4 rounded position-relative mt-5">
-                                <!-- Icon -->
-                                <figure class="text-primary mb-3 flex-shrink-0">
-                                    <img src="{{asset('img/ui/challenges/kodica1.svg')}}" class="challenge-cover">
-                                </figure>
-                                <h5 class="fw-bold">Опыт не важен</h5>
-                                <p class="mb-0">Чтобы вы могли включить их в свое портфолио и показать потенциальным
-                                                работодателям в качестве примеров работ.
-                                </p>
+        <div class="row g-5 align-items-center text-balance">
+            <!-- Features -->
+            <div class="col-lg-8">
+                <div class="row g-xl-5 g-5">
+                    <!-- Item -->
+                    <div class="col-md-6">
+                        <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative mt-5">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <img src="{{asset('img/ui/challenges/kodica1.svg')}}" width="50px">
+                                <p class="fs-5 fw-bold mb-0 lead lh-1">Опыт не важен</p>
                             </div>
 
-                            <div class="bg-body-tertiary p-4 rounded position-relative mt-5">
-                                <!-- Icon -->
-                                <figure class="text-primary mb-3 flex-shrink-0">
-                                    <img src="{{asset('img/ui/challenges/kodica3.svg')}}" class="challenge-cover">
-                                </figure>
-                                <h5 class="fw-bold">Подключитесь к коллективному разуму</h5>
-                                <p class="mb-0">
-                                    Сравните свое решение с другими для лучшего понимания.
-                                    Обсуждайте лучшие практики и методы с сообществом. Вы будете поражены тем,
-                                    насколько другие решения могут отличаться от ваших собственных.
-                                </p>
-                            </div>
+                            <p class="mb-0">Чтобы вы могли включить их в свое портфолио и показать потенциальным
+                                            работодателям в качестве примеров работ.
+                            </p>
                         </div>
 
-                        <!-- Item -->
-                        <div class="col-md-6">
-                            <div class="bg-body-tertiary p-4 rounded position-relative">
-                                <!-- Icon -->
-                                <figure class="text-primary mb-3 flex-shrink-0">
-                                    <img src="{{asset('img/ui/challenges/kodica2.svg')}}" class="challenge-cover">
-                                </figure>
-                                <h5 class="fw-bold">Возможость стать лучше</h5>
-                                <p class="mb-0">Присоединиться к сообществу и завести новые знакомства</p>
+                        <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative mt-5">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <img src="{{asset('img/ui/challenges/kodica3.svg')}}" width="50px">
+                                <p class="fs-5 fw-bold mb-0 lead lh-1">Подключитесь к коллективу</p>
                             </div>
 
-                            <div class="bg-body-tertiary p-4 rounded position-relative mt-5">
-                                <!-- Icon -->
-                                <figure class="text-primary mb-3 flex-shrink-0">
-                                    <img src="{{asset('img/ui/challenges/kodica4.svg')}}" class="challenge-cover">
-                                </figure>
-                                <h5 class="fw-bold">Соревнуйтесь с коллегами</h5>
-                                <p class="mb-0">
-                                    Соревнуйтесь со своими друзьями, коллегами и сообществом в целом. Позвольте конкуренции мотивировать вас к совершенствованию своего ремесла.
-                                </p>
+                            <p class="mb-0">
+                                Сравните свое решение с другими для лучшего понимания.
+                                Обсуждайте лучшие практики и методы с сообществом. Вы будете поражены тем,
+                                насколько другие решения могут отличаться от ваших собственных.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item -->
+                    <div class="col-md-6">
+                        <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <img src="{{asset('img/ui/challenges/kodica2.svg')}}" width="50px">
+                                <p class="fs-5 fw-bold mb-0 lead lh-1">Стать лучше</p>
                             </div>
+
+
+                            <p class="mb-0">Присоединиться к сообществу и завести новые знакомства</p>
+                        </div>
+
+                        <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative mt-5">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <img src="{{asset('img/ui/challenges/kodica2.svg')}}" width="50px">
+                                <p class="fs-5 fw-bold mb-0 lead lh-1">Соревнуйтесь с коллегами</p>
+                            </div>
+
+                            <p class="mb-0">
+                                Соревнуйтесь со своими друзьями, коллегами и сообществом в целом. Позвольте конкуренции
+                                мотивировать вас к совершенствованию своего ремесла.
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Content -->
-                <div class="col-lg-4">
-                    <h2 class="mb-4 fw-bold">Что такое Кодица?</h2>
-                    <p><span class="text-primary">Кодица</span> - это событие, которое объединяет талантливых разработчиков, программистов и
-                       креативных мыслителей. Это место, где идеи становятся реальностью, а коды превращаются в
-                       функциональные приложения. Но помимо этого это еще и невероятно весело!
-                    </p>
+            <!-- Content -->
+            <div class="col-lg-4">
+                <h2 class="mb-4 fw-bold">Что такое Кодица?</h2>
+                <p><span class="text-primary">Кодица</span> - это событие, которое объединяет талантливых разработчиков,
+                                                            программистов и
+                                                            креативных мыслителей. Это место, где идеи становятся
+                                                            реальностью, а коды превращаются в
+                                                            функциональные приложения. Но помимо этого это еще и
+                                                            невероятно весело!
+                </p>
 
-                    <p class="opacity-75">Независимо от уровня ваших навыков, вы можете принять участие в этих соревнованиях, чтобы
-                       ускорить обучение, навыки программирования и уверенность
-                       в себе.
-                    </p>
-                </div>
-            </div> <!-- Row END -->
+                <p class="opacity-75 small">Независимо от уровня ваших навыков, вы можете принять участие в этих
+                                      соревнованиях, чтобы
+                                      ускорить обучение, навыки программирования и уверенность
+                                      в себе.
+                </p>
+            </div>
+        </div> <!-- Row END -->
     </x-container>
 
+    <x-container>
+        <div class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Как это работает</div>
+        <div class="bg-body-secondary p-5 rounded-5 overflow-hidden">
+            <div class="row gx-5 gy-4 gy-md-5 row-cols-1 row-cols-lg-3 text-balance">
+                <div class="col">
+                    <p class="display-1 text-primary fw-bolder">1</p>
+                    <h3 class="fs-2 fw-bolder">Подай заявку</h3>
+                    <hr class="w-25 text-primary">
+                    <p>Создайте учетную запись на сайте. Добавьте ссылку на GitHub репозиторий, который вы
+                       будете использовать в одиночку или совместно для разработки решения задачи.</p>
+                </div>
+                <div class="col">
+                    <p class="display-1 text-primary fw-bolder">2</p>
+                    <h3 class="fs-2 fw-bolder">Дождись задания</h3>
+                    <hr class="w-25 text-primary">
+                    <p>Дождитесь появления задачи. Она будет доступна на странице в указанный день.</p>
+                </div>
+                <div class="col">
+                    <p class="display-1 text-primary fw-bolder">3</p>
+                    <h3 class="fs-2 fw-bolder">Приступай к решению!</h3>
+                    <hr class="w-25 text-primary">
+                    <p>Начните веселиться. Примените свои программистские навыки для создания вашего уникального
+                       решения.</p>
+                </div>
+                <div class="col">
+                    <p class="display-1 text-primary fw-bolder">4</p>
+                    <h3 class="fs-2 fw-bolder">Оставайтесь на связи</h3>
+                    <hr class="w-25 text-primary">
+                    <p>Получите обратную связь от других участников или посмотрите их решения. Используйте ее для
+                       улучшения своих навыков и решения задач в будущем.</p>
+                </div>
+                <div class="col">
+                    <p class="display-1 text-primary fw-bolder">5</p>
+                    <h3 class="fs-2 fw-bolder">Стань лучше!</h3>
+                    <hr class="w-25 text-primary">
+                    <p>Получите признание за вашу работу и достижения в Кодицы. Лучшие решения могут быть награждены
+                       призами или поощрениями.</p>
+                </div>
+
+                <div class="col">
+                    <div
+                        class="p-4 p-xl-5 bg-body rounded d-flex flex-column h-100 position-relative d-flex align-items-center">
+                        <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none d-block text-center my-auto"
+                           href="#">
+
+                            <span class="d-block mb-3">
+                                <x-icon path="i.sun" width="3rem" height="3rem"></x-icon>
+                            </span>
+
+                            Присоединится
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </x-container>
 
     @if(!is_null($challenge))
-    <x-container>
-        <div class="bg-dark-subtle text-white p-5 rounded position-relative" style="background-image: url('/img/bg-packages.svg')"
-             data-bs-theme="dark">
+        <x-container>
+            <div class="bg-dark-subtle text-white p-5 rounded position-relative"
+                 style="background-image: url('/img/bg-packages.svg')"
+                 data-bs-theme="dark">
 
 
                 {{-- челлендж не начался, быводим блок с днями до него--}}
-                <div class="row">
+                <div class="row g-5">
                     <div class="col-md-6 col-lg-4">
                         <h4 class="fw-bold">Тема Кодицы</h4>
-                        {{ $challenge->presenter()->subject() }}
+                        {{ $challenge->presenter()->title() }}
                     </div>
 
                     <div class="col-md-6 col-lg-4">
@@ -122,127 +182,82 @@
                     </div>
                     <div class="col-12 col-lg-4">
                         <h4 class="fw-bold">Сроки </h4>
-                        <p>Начало: {{$challenge->presenter()->startDate()}}</p>
+                        <p class="mb-1">Начало: {{$challenge->presenter()->startDate()}}</p>
                         <p>Окончание: {{$challenge->presenter()->stopDate()}}</p>
 
                     </div>
                 </div>
 
-                @if($challenge->isNotStarted())
-                    <div class="challenge-blur rounded p-5 d-flex flex-column align-items-center justify-content-center "
-                         style="background-image: url('/img/bg-packages.svg')">
-                        <h3 class="fs-2 fw-bolder mb-5">До появления задачи</h3>
+                @if($challenge->hasNotStarted())
+                    <div
+                        class="challenge-blur rounded p-5 d-flex flex-column align-items-center justify-content-center">
+                        <p class="fs-4 fw-bolder mb-2 opacity-75">Задача будет доступна</p>
                         <div class="d-flex align-items-end">
-                            <span class="display-1 text-primary fw-bolder lh-1 me-2">{{$challenge->start_date->diffInDays(now())}} </span>
-                            <span class="fs-2 fw-bolder">{{trans_choice('{1}  день| [2,4]  дня | дней', $challenge->start_date->diffInDays(now()) )}}</span>
+                            <span class="display-2 fw-bolder lh-1 me-2">{!! $challenge->presenter()->htmlBeforeStart() !!}</span>
                         </div>
                     </div>
-               @endif
-        </div>
-    </x-container>
-
+                @endif
+            </div>
+        </x-container>
     @endif
 
-
-
-
-
-    <x-container>
-        <div class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Как это работает</div>
-        <div class="bg-body-secondary p-5 rounded-5 overflow-hidden">
-            <div class="row gx-5 gy-4 gy-md-5 row-cols-1 row-cols-lg-3 align-items-baseline">
-                <div class="col">
-                    <p class="display-1 text-primary fw-bolder">1</p>
-                    <h3 class="fs-2 fw-bolder">Регистрация</h3>
-                    <hr class="w-25 text-primary">
-                    <p>Создайте бесплатную учетную запись на сайте. Добавьте ссылку на GitHub репозиторий, который вы
-                       будете использовать вместе с вашей командой для разработки решения задачи.</p>
-                </div>
-                <div class="col">
-                    <p class="display-1 text-primary fw-bolder">2</p>
-                    <h3 class="fs-2 fw-bolder">Публикация задачи</h3>
-                    <hr class="w-25 text-primary">
-                    <p>Дождитесь появления задачи. Она будет доступна на странице в указанный день.</p>
-                </div>
-                <div class="col">
-                    <p class="display-1 text-primary fw-bolder">3</p>
-                    <h3 class="fs-2 fw-bolder">Разработка</h3>
-                    <hr class="w-25 text-primary">
-                    <p>Начните веселиться. Примените свои программистские навыки для создания вашего уникального решения.</p>
-                </div>
-                <div class="col">
-                    <p class="display-1 text-primary fw-bolder">4</p>
-                    <h3 class="fs-2 fw-bolder">Оставайтесь на связи</h3>
-                    <hr class="w-25 text-primary">
-                    <p>Получите обратную связь от других участников или посмотрите их решения. Используйте ее для улучшения своих навыков и решения задач в будущем.</p>
-                </div>
-                <div class="col">
-                    <p class="display-1 text-primary fw-bolder">5</p>
-                    <h3 class="fs-2 fw-bolder">Стань лучше!</h3>
-                    <hr class="w-25 text-primary">
-                    <p>Получите признание за вашу работу и достижения в Кодицы. Лучшие решения могут быть награждены призами или поощрениями.</p>
-                </div>
-            </div>
-        </div>
-    </x-container>
-
-
-
-
+    {{--
     <x-call-to-action link="#" text="Участвовать!">
         <x-slot:title>Достигайте мастерства через вызов</x-slot>
 
-        <x-slot:description>
-            Выполняйте задания по кодированию вместе с тысячами других разработчиков, присоединившись к Кодице прямо сейчас.
-        </x-slot>
+            <x-slot:description>
+                Выполняйте задания по кодированию вместе с тысячами других разработчиков, присоединившись к Кодице прямо
+                сейчас.
+                </x-slot>
 
     </x-call-to-action>
-    @if($challenge->repositories->isNotEmpty())
-    <x-container>
-        <div class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Участники</div>
-        <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
-            <div class="col">
-                <ul class="bg-body-tertiary rounded ps-0 overflow-hidden">
-                    @foreach($challenge->repositories->split(2)->get(0) as $repo)
-                        <li class="p-3 @if($loop->odd)bg-body-secondary @endif d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="fw-bold">{{$repo->url}}</h5>
-                                <div class="d-flex align-items-center">
-                                    <x-icon path="i.team" class="my-1" width="1rem" height="1rem" />
-                                    <span class="ms-2">{{$repo->count_participants}}</span>
-                                </div>
-                            </div>
-                            {{-- не удалять! блок для медальки.
-                            <div><img src="{{asset('img/ui/medals/gold.svg')}}" height="40"/></div>
-                            --}}
+--}}
 
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            @if($challenge->repositories->split(2)->get(1) !== null)
-            <div class="col">
-                <ul class="bg-body-tertiary rounded ps-0 overflow-hidden">
-                    @foreach($challenge->repositories->split(2)->get(1) as $repo)
-                        <li class="p-3 @if($loop->odd)bg-body-secondary @endif d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="fw-bold">{{$repo->url}}</h5>
-                                <div class="d-flex align-items-center">
-                                    <x-icon path="i.team" class="my-1" width="1rem" height="1rem" />
-                                    <span class="ms-2">{{$repo->count_participants}}</span>
+    @if($challenge->applications->isNotEmpty())
+        <x-container>
+            <div class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Участники</div>
+            <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
+                <div class="col">
+                    <ul class="bg-body-tertiary rounded ps-0 overflow-hidden">
+                        @foreach($challenge->applications->split(2)->get(0) as $repo)
+                            <li class="py-4 px-4 px-xl-5 {{ $loop->odd ? 'bg-body-secondary' : '' }} d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="fw-bold">{{$repo->github_repository}}</h5>
+                                    <div class="d-flex align-items-center">
+                                        <x-icon path="i.team" class="my-1" width="1rem" height="1rem"/>
+                                        <span class="ms-2">{{$repo->count_participants}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- не удалять! блок для медальки.
-                            <div><img src="{{asset('img/ui/medals/gold.svg')}}" height="40"/></div>
-                            --}}
+                                {{-- не удалять! блок для медальки.
+                                <div><img src="{{asset('img/ui/medals/gold.svg')}}" height="40"/></div>
+                                --}}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @if($challenge->applications->split(2)->get(1) !== null)
+                    <div class="col">
+                        <ul class="bg-body-tertiary rounded ps-0 overflow-hidden">
+                            @foreach($challenge->repositories->split(2)->get(1) as $repo)
+                                <li class="p-3 @if($loop->odd)bg-body-secondary @endif d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="fw-bold">{{$repo->github_repository}}</h5>
+                                        <div class="d-flex align-items-center">
+                                            <x-icon path="i.team" class="my-1" width="1rem" height="1rem"/>
+                                            <span class="ms-2">{{$repo->count_participants}}</span>
+                                        </div>
+                                    </div>
+                                    {{-- не удалять! блок для медальки.
+                                    <div><img src="{{asset('img/ui/medals/gold.svg')}}" height="40"/></div>
+                                    --}}
 
-                        </li>
-                    @endforeach
-                </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
-            @endif
-        </div>
-    </x-container>
+        </x-container>
 
     @endif
     <x-container>
@@ -296,6 +311,5 @@
         </div>
 
     </x-container>
-
 
 @endsection

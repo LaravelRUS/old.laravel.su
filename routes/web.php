@@ -37,7 +37,6 @@ Route::view('/orchid-admin', 'pages.orchid')->name('orchid');
 
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
-//Route::view('/challenges', 'pages.challenges')->name('challenges');
 
 Route::view('nav', 'pages.navigation')->name('nav');
 
@@ -283,20 +282,20 @@ Route::middleware(['auth', RedirectToBanPage::class])
 |
 */
 
-Route::get('/challenges', [ChallengesController::class, 'index'])->name('challenges');
+Route::get('/challenges', [ChallengesController::class, 'index'])
+    ->name('challenges');
 
 Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('challenges')
     ->group(function () {
-        Route::get('/registration', [\App\Http\Controllers\ChallengesRepositoriesController::class, 'edit'])
-            ->can('create', 'App\Models\ChallengesRepositories')
+        Route::get('/registration', [\App\Http\Controllers\ChallengesController::class, 'edit'])
+            ->can('create', 'App\Models\ChallengeApplication')
             ->name('challenges.registration');
 
-        Route::post('/registration', [\App\Http\Controllers\ChallengesRepositoriesController::class, 'update'])
-            ->can('create', 'App\Models\ChallengesRepositories')
+        Route::post('/registration', [\App\Http\Controllers\ChallengesController::class, 'update'])
+            ->can('create', 'App\Models\ChallengeApplication')
             ->name('challenges.registration.save');
     });
-
 
 /*
 |--------------------------------------------------------------------------

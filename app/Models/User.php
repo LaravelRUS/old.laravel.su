@@ -183,7 +183,7 @@ class User extends Authenticatable
      */
     public function challengesReapositories()
     {
-        return $this->hasMany(ChallengesReporitories::class);
+        return $this->hasMany(ChallengeApplication::class);
     }
 
     /**

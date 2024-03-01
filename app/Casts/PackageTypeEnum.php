@@ -27,17 +27,17 @@ enum PackageTypeEnum: string
     public function text(): string
     {
         return match ($this) {
-            self::FileManagement => 'Управление файлами',
-            self::DatabaseAndEloquent => 'Базы данных и Eloquent',
+            self::FileManagement       => 'Управление файлами',
+            self::DatabaseAndEloquent  => 'Базы данных и Eloquent',
             self::DebuggingAndDevTools => 'Инструменты разработчика',
-            self::DevOps => 'Обслуживание',
-            self::API => 'API',
-            self::Testing => 'Тестирование',
-            self::ECommerce => 'Интернет-торговля',
-            self::CMSAndAdminPanels => 'CMS и панели администратора',
-            self::CodeArchitecture => 'Архитектура кода',
+            self::DevOps               => 'Обслуживание',
+            self::API                  => 'API',
+            self::Testing              => 'Тестирование',
+            self::ECommerce            => 'Интернет-торговля',
+            self::CMSAndAdminPanels    => 'CMS и панели администратора',
+            self::CodeArchitecture     => 'Архитектура кода',
             self::UIAndBladeComponents => 'UI и компоненты Blade',
-            self::UtilitiesAndHelpers => 'Утилиты',
+            self::UtilitiesAndHelpers  => 'Утилиты',
         };
     }
 
@@ -69,18 +69,17 @@ enum PackageTypeEnum: string
     public function icon(): string
     {
         return match ($this) {
-            self::FileManagement => 'i.files',
-            self::DatabaseAndEloquent => 'i.database',
+            self::FileManagement       => 'i.files',
+            self::DatabaseAndEloquent  => 'i.database',
             self::DebuggingAndDevTools => 'i.devtools',
-            self::DevOps => 'i.maintenance',
-            self::API => 'i.api',
-            self::Testing => 'i.testing',
-            self::ECommerce => 'i.internet-market',
-            self::CMSAndAdminPanels => 'i.cms',
-            self::CodeArchitecture => 'i.code',
+            self::DevOps               => 'i.maintenance',
+            self::API                  => 'i.api',
+            self::Testing              => 'i.testing',
+            self::ECommerce            => 'i.internet-market',
+            self::CMSAndAdminPanels    => 'i.cms',
+            self::CodeArchitecture     => 'i.code',
             self::UIAndBladeComponents => 'i.ui',
-            self::UtilitiesAndHelpers => 'i.utilities',
+            self::UtilitiesAndHelpers  => 'i.utilities',
         };
     }
 }
-

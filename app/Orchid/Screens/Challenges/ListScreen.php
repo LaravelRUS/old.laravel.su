@@ -3,17 +3,13 @@
 namespace App\Orchid\Screens\Challenges;
 
 use App\Models\Challenge;
-use App\Models\Position;
-use App\Notifications\SimpleMessageNotification;
 use Illuminate\Support\Str;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Components\Cells\Boolean;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
@@ -42,7 +38,7 @@ class ListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Челленджи';
+        return 'Управление челленджами';
     }
 
     /**
@@ -52,7 +48,7 @@ class ListScreen extends Screen
      */
     public function description(): ?string
     {
-        return '';
+        return 'Здесь вы можете управлять вашими челленджами, добавлять новые и редактировать существующие.';
     }
 
     /**
@@ -97,18 +93,12 @@ class ListScreen extends Screen
                                 <p class='text-muted'>".Str::of($challenge->description)->markdown()->stripTags()->words(20).'</p>';
                     })->filter(Input::make()),
 
-                TD::make('subject', 'Тема')
-                    ->width(200)
-                    ->sort()
-                    ->cantHide()
-                    ->filter(Input::make()),
-
-                TD::make('start_date', 'Начало')
+                TD::make('start_at', 'Начало')
                     ->usingComponent(DateTimeSplit::class)
                     ->align(TD::ALIGN_RIGHT)
                     ->sort(),
 
-                TD::make('stop_date', 'Конец')
+                TD::make('stop_at', 'Конец')
                     ->usingComponent(DateTimeSplit::class)
                     ->align(TD::ALIGN_RIGHT)
                     ->sort(),

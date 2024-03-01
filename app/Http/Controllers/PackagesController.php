@@ -64,7 +64,7 @@ class PackagesController extends Controller
             'packagist_name' => ['string', 'required', 'regex:/^[a-z0-9_\-]+\/[a-z0-9_\-]+$/i', Rule::unique(Package::class, 'packagist_name')->ignore($package->packagist_name)],
             'type'           => ['required', Rule::enum(PackageTypeEnum::class)],
         ], [
-            'packagist_name.regex' => 'Имя пакета имеет не верный формат.',
+            'packagist_name.regex'  => 'Имя пакета имеет не верный формат.',
             'packagist_name.unique' => 'Пакет уже есть в каталоге или находиться на рассмотрении.',
         ]);
 

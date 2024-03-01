@@ -11,14 +11,9 @@ use Orchid\Filters\Types\Like;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 
-class ChallengesReporitories extends Model
+class ChallengeApplication extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory,HasUuids;
-
-    /**
-     * @var string
-     */
-    protected $table = 'challenges_repositories';
+    use AsSource, Chartable, Filterable, HasFactory, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -26,11 +21,9 @@ class ChallengesReporitories extends Model
      * @var array
      */
     protected $fillable = [
-        'url',
+        'github_repository',
         'count_participants',
     ];
-
-
 
     /**
      * The allowed filters for the model.
@@ -38,7 +31,7 @@ class ChallengesReporitories extends Model
      * @var array
      */
     protected $allowedFilters = [
-        'url'        => Like::class,
+        'github_repository' => Like::class,
     ];
 
     /**
@@ -47,7 +40,7 @@ class ChallengesReporitories extends Model
      * @var array
      */
     protected $allowedSorts = [
-        'url',
+        'github_repository',
         'created_at',
         'updated_at',
         'count_participants',
@@ -74,8 +67,4 @@ class ChallengesReporitories extends Model
     {
         return $this->belongsTo(Challenge::class, 'challenge_id');
     }
-
-
-
-
 }

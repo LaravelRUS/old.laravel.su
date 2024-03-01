@@ -4,24 +4,16 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Challenges;
 
-use App\Casts\ScheduleEnum;
 use App\Models\Challenge;
 use App\Models\Position;
-use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\SimpleMDE;
-use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Screen;
-use Orchid\Screen\TD;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -42,7 +34,7 @@ class EditScreen extends Screen
     {
 
         return [
-            'challenge'       => $challenge,
+            'challenge' => $challenge,
         ];
     }
 
@@ -51,7 +43,7 @@ class EditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'челлендж';
+        return 'Управление челленджом';
     }
 
     /**
@@ -59,7 +51,7 @@ class EditScreen extends Screen
      */
     public function description(): ?string
     {
-        return '';
+        return 'Измените параметры челленджа и сохраните изменения, чтобы обновить информацию.';
     }
 
     public function permission(): ?iterable
@@ -94,28 +86,27 @@ class EditScreen extends Screen
             Layout::block(
                 Layout::rows([
                     Input::make('challenge.title')
+                        ->placeholder('Введите заголовок челленджа')
                         ->title('Заголовок'),
-
-                    Input::make('challenge.subject')
-                        ->title('Тема'),
 
                     SimpleMDE::make('challenge.description')
                         ->title('Описание')
-                        ->placeholder('Задания челленджа'),
+                        ->placeholder('Введите описание челленджа'),
 
-                    DateTimer::make('challenge.start_date')
-                        ->title('начало')
+                    DateTimer::make('challenge.start_at')
+                        ->title('Дата и время начала')
+                        ->placeholder('Выберите дату и время начала челленджа')
+                        ->help('Выберите дату и время начала челленджа.')
                         ->enableTime(),
 
-                    DateTimer::make('challenge.stop_date')
-                        ->title('конец')
+                    DateTimer::make('challenge.stop_at')
+                        ->title('Дата и время окончания')
+                        ->placeholder('Выберите дату и время окончания челленджа')
+                        ->help('Выберите дату и время окончания челленджа.')
                         ->enableTime(),
-
-
-
                 ]))
-                ->title(__('Челлендж'))
-                ->description('')
+                ->title(__('Основное'))
+                ->description('Здесь вы можете изменить параметры челленджа.')
                 ->commands(
                     Button::make(__('Сохранить изменения'))
                         ->type(Color::SUCCESS)
@@ -125,6 +116,7 @@ class EditScreen extends Screen
         ];
     }
 
+
     /**
      * @return RedirectResponse
      */
@@ -133,32 +125,30 @@ class EditScreen extends Screen
         $dateMax = now()->toDateString();
 
         $request->validate([
-            'challenge'               => 'required|array',
-            'challenge.title'         => 'required|string',
-            'challenge.description'   => 'required|string',
-            'challenge.subject'  => 'required|string',
-            'challenge.start_date'  => 'required|date|after:'.$dateMax,
-            'challenge.stop_date'  => 'required|date|after:challenge.start_date',
+            'challenge'             => 'required|array',
+            'challenge.title'       => 'required|string',
+            'challenge.description' => 'required|string',
+            'challenge.start_at'  => 'required|date|after:' . $dateMax,
+            'challenge.stop_at'   => 'required|date|after:challenge.start_at',
         ]);
 
         $challenge->forceFill($request->input('challenge'))->save();
 
-        Toast::info('Информация обновлена');
+        Toast::info('Информация о челлендже успешно обновлена');
 
         return redirect()->route('platform.challenges');
     }
 
     /**
+     * @return RedirectResponse
      * @throws \Exception
      *
-     * @return RedirectResponse
      */
     public function remove(Position $position)
     {
         $position->delete();
 
-        Toast::info('Челлендж удалён');
-
+        Toast::info('Челлендж был удалён');
 
         return redirect()->route('platform.challenges');
     }

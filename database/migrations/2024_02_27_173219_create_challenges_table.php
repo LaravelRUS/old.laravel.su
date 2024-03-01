@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('subject');
             $table->text('description');
-            $table->timestamp('start_date');
-            $table->timestamp('stop_date');
+            $table->timestamp('start_at');
+            $table->timestamp('stop_at');
             $table->timestamps();
         });
     }

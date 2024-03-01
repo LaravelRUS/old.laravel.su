@@ -47,7 +47,7 @@ class Anchors extends Component
      */
     private function findAnchors(string $content)
     {
-        return Cache::remember('doc-anchors-'.sha1($content), now()->addHours(2), function () use ($content){
+        return Cache::remember('doc-anchors-'.sha1($content), now()->addHours(2), function () use ($content) {
 
             $crawler = new Crawler();
             $crawler->addHtmlContent($content);

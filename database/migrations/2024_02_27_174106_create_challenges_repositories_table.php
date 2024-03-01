@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('challenges_repositories', function (Blueprint $table) {
+        Schema::create('challenge_applications', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->unsignedBigInteger('challenge_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('url');
-            $table->unsignedInteger('count_participants');
+            $table->string('github_repository');
+            $table->unsignedInteger('count_participants')->default(1);
             $table->timestamps();
 
             $table->foreign('challenge_id')
@@ -29,7 +29,8 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-
+            $table->unique(['user_id', 'challenge_id']);
+            $table->unique(['github_repository', 'challenge_id']);
         });
     }
 
