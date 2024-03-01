@@ -285,6 +285,9 @@ Route::middleware(['auth', RedirectToBanPage::class])
 Route::get('/challenges', [ChallengesController::class, 'index'])
     ->name('challenges');
 
+Route::get('/challenges/past', [ChallengesController::class, 'past'])
+    ->name('challenges.past');
+
 Route::middleware(['auth', RedirectToBanPage::class])
     ->prefix('challenges')
     ->group(function () {

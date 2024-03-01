@@ -14,6 +14,8 @@
         <x-slot:actions>
             @can('create', \App\Models\ChallengeApplication::class)
                 <a href="{{ route('challenges.registration') }}" class="btn btn-primary btn-lg px-4">Учавствовать</a>
+            @elseif(!is_null($registredUserRepo))
+                <a href="{{ $registredUserRepo}}" class="btn btn-primary btn-lg px-4">Вы участвуете</a>
             @else
                 <a href="#" class="btn btn-primary btn-lg px-4 disabled">Учавствовать</a>
             @endcan
@@ -213,7 +215,7 @@
     </x-call-to-action>
 --}}
 
-    @if($challenge->applications->isNotEmpty())
+    @if($challenge?->applications->isNotEmpty())
         <x-container>
             <div class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Участники</div>
             <div class="row row-cols-1 row-cols-md-2 g-4 g-md-5">
@@ -238,8 +240,8 @@
                 @if($challenge->applications->split(2)->get(1) !== null)
                     <div class="col">
                         <ul class="bg-body-tertiary rounded ps-0 overflow-hidden">
-                            @foreach($challenge->repositories->split(2)->get(1) as $repo)
-                                <li class="p-3 @if($loop->odd)bg-body-secondary @endif d-flex justify-content-between align-items-center">
+                            @foreach($challenge->applications->split(2)->get(1) as $repo)
+                                <li class="py-4 px-4 px-xl-5 {{ $loop->odd ? 'bg-body-secondary' : '' }} d-flex justify-content-between align-items-center">
                                     <div>
                                         <h5 class="fw-bold">{{$repo->github_repository}}</h5>
                                         <div class="d-flex align-items-center">
