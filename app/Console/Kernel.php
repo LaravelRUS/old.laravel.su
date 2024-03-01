@@ -28,6 +28,9 @@ class Kernel extends ConsoleKernel
         ])->daily();
 
         $schedule->command('sqlite:optimize')->everyMinute();
+
+        $schedule->command('app:achievements-translation')
+            ->weeklyOn([Schedule::SATURDAY, Schedule::SUNDAY]);
     }
 
     /**
