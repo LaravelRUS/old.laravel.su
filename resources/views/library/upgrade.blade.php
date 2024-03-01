@@ -63,12 +63,59 @@
             </div>
         </div>
 
+
         <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
             <div class="col-xl-4 position-sticky top-0 py-3">
                 <div class="mb-4">
                     <div
                         class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
                         2
+                    </div>
+                </div>
+                <h5 class="fs-4 mt-2 fw-semibold">Трудозатраты</h5>
+                <p class="mb-0">
+                    Потеря времени на временные решения и накопление технического долга.
+                </p>
+            </div>
+            <div class="col-xl-8 z-3">
+                <main class="bg-body-tertiary p-xl-5 p-4 rounded">
+                    <p>Отставание от своевременных обновлений ведет к увеличению трудозатрат и созданию лишних проблем.
+                       Разберём почему игнорирование или низкий приоритет делает разработку неэффективной:</p>
+
+                    <ol class="fw-bold">
+                        1. Потеря времени на создание временных решений
+                    </ol>
+                    <p>Разработчики вынуждены тратить время на создание временных решений и костылей для работы с устаревшими компонентами, вместо использования стандартных средств и функциональности, доступных в новых версиях.</p>
+
+                    <div class="p-3 rounded bg-body text-balance border border-dashed mb-4">
+                        <p class="mb-0"><strong>Пример:</strong> Разработчики, использующие Laravel 5.0, разрабатывали собственную проверку, что бы клиент мог просматривать только свои заказы в интернет-магазине. Однако менее чем через полгода в версии 5.1 были представлены <code>Policies</code>, ставшие стандартом. Вместо обновления как можно скорее, увеличение кодовой базы лишь увеличивало время на последующее устранение технического долга.</p>
+                    </div>
+
+                    <ol class="fw-bold">
+                        2. Усложнение процесса обновления
+                    </ol>
+                    <p>Большие разрывы в обновлениях создают снежный ком эффект, который требует значительных усилий и ресурсов для обновления проекта. Это может привести к тому, что если вы захотите обновиться, придется потратить на это несколько месяцев без внедрения какого-либо нового функционала.</p>
+
+                    <div class="p-3 rounded bg-body text-balance border border-dashed mb-4">
+                        <p  class="mb-0"><strong>Пример:</strong> Разработчики "Яндекс.Еда" пропустили три мажорных релиза, и полное <a href="https://habr.com/ru/companies/yandex/articles/756498/" target="_blank" rel="noreferrer">обновление заняло целый год</a>. За время накопления технического долга поддержка фреймворка, пакетов и самого PHP изменилась.</p>
+                    </div>
+
+                    <ol class="fw-bold">
+                        3. Устранение технического долга
+                    </ol>
+                    <p>Те временные решения, которые создали разработчики на первом шаге, с большой вероятностью не будут оптимальными в новых версиях, так как "из коробки" будут доступны отраслевые решения. Так что разработчик теперь потратит время на то, чтобы избавиться от собственного ранее написанного кода (а это очень больно).</p>
+                </main>
+            </div>
+        </div>
+
+
+
+        <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
+            <div class="col-xl-4 position-sticky top-0 py-3">
+                <div class="mb-4">
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
+                        3
                     </div>
                 </div>
                 <h5 class="fs-4 mt-2  fw-semibold">Производительность</h5>
@@ -105,7 +152,7 @@
                 <div class="mb-4">
                     <div
                         class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                        3
+                        4
                     </div>
                 </div>
                 <h5 class="fs-4 mt-2 fw-semibold">Конкурентоспособность</h5>
