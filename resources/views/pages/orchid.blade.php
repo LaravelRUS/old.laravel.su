@@ -29,13 +29,13 @@
 
 
 
-            <div class="col-12 col-xl-8">
+            <div class="col-12 col-lg-8">
                 <div class="bg-primary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
 
 
                     <div class="row h-100">
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-6">
                             <div class="d-flex flex-column h-100">
 
                                 <div class="mb-auto">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="d-none d-md-block col-md-6">
+                        <div class="d-none d-md-block col-md-4 col-lg-6 col-xl-6">
                             <img src="/img/ui/start.svg" class="img-fluid">
                         </div>
 
@@ -89,7 +89,7 @@
 
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
@@ -105,11 +105,11 @@
                         </div>
 
 
-                        <div class="mt-auto">
-                            <img src="/img/ui/shield.svg" class="img-fluid mb-2">
+                        <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
+                            <img src="/img/ui/shield.svg" class="img-fluid package-cover mb-2">
                             <a href="{{ asset('https://orchid.software/') }}"
-                               class="d-none d-md-inline-flex link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
-                                Learn about Permissions
+                               class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
+                                Узнать больше
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
 
@@ -120,7 +120,7 @@
 
 
 
-            <div class="col-12 col-lg-6 col-xl-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
@@ -135,11 +135,11 @@
                         </div>
 
 
-                        <div class="mt-auto">
-                            <img src="/img/ui/files.svg" class="img-fluid">
+                        <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
+                            <img src="/img/ui/files.svg" class="img-fluid package-cover">
 
                             <a href="{{ asset('https://orchid.software/en/attachments') }}"
-                               class="d-none d-md-inline-flex link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
+                               class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
                                 Как работать с файлами
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
 
                     <div class="d-flex flex-column h-100">
@@ -162,10 +162,10 @@
                         </div>
 
 
-                        <div class="mt-auto">
-                            <img src="/img/ui/design.svg" class="img-fluid">
+                        <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
+                            <img src="/img/ui/design.svg" class="img-fluid package-cover">
                             <a href="{{ asset('https://orchid.software/en/hig') }}"
-                               class="d-none d-md-inline-flex link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
+                               class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
                                 Документация
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 col-xl-4">
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
                     <div class="d-flex flex-column h-100">
                         <div class="mb-auto">
