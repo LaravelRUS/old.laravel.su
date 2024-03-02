@@ -67,4 +67,12 @@ class ChallengeApplication extends Model
     {
         return $this->belongsTo(Challenge::class, 'challenge_id');
     }
+
+    /**
+     * @return string
+     */
+    public function url():string
+    {
+        return 'https://github.com/' . $this->github_repository;
+    }
 }

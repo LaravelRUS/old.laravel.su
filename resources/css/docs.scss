@@ -103,6 +103,12 @@ main div {
         padding: 0 1.5rem;
     }
 
+    a {
+        @extend .link-underline;
+        @extend .link-underline-opacity-25;
+        @extend .link-underline-opacity-75-hover;
+    }
+
     table {
         @extend .table;
         @extend .table-bordered;

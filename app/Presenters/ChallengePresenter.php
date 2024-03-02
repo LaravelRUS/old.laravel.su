@@ -43,21 +43,25 @@ class ChallengePresenter extends Presenter
     /**
      * Get the start date and time of the challenge in the format 'day.month.year hour:minute'.
      *
+     * @param string $format
+     *
      * @return string|null
      */
-    public function startDate(): ?string
+    public function startDate(string $format = 'd.m.Y H:i'): ?string
     {
-        return $this->entity->start_at?->format('d.m.Y H:i');
+        return $this->entity->start_at?->format($format);
     }
 
     /**
      * Get the end date and time of the challenge in the format 'day.month.year hour:minute'.
      *
+     * @param string $format
+     *
      * @return string|null
      */
-    public function stopDate(): ?string
+    public function stopDate(string $format = 'd.m.Y H:i'): ?string
     {
-        return $this->entity->stop_at?->format('d.m.Y H:i');
+        return $this->entity->stop_at?->format($format);
     }
 
     /**
@@ -67,7 +71,7 @@ class ChallengePresenter extends Presenter
      */
     public function htmlBeforeStart()
     {
-        return Str::of($this->entity->start_at->diffForHumans())
+        return Str::of($this->entity->start_at?->diffForHumans())
             ->ucfirst()
             ->replaceMatches('/\d+/', function ($match) {
                 return "<span class='text-primary'>{$match[0]}</span>";

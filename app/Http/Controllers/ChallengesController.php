@@ -20,13 +20,29 @@ class ChallengesController extends Controller
      */
     public function index(Request $request)
     {
+        $challenge = Challenge::latest()->first();
+
+        $registerApplication = $challenge?->applications()
+            ->where('user_id', $request->user()?->id)
+            ->first();
+
         return view('challenges.index', [
-            'challenge' => Challenge::latest()->first() ?? Challenge::make([
-                'title'       => 'test',
-                'description' => 'test',
-                'start_date'  => now()->addYear(),
-                'stop_date'   => now()->addYears(2),
-            ]),
+            'challenge'           => $challenge,
+            'readyApplicationUrl' => $registerApplication?->url(),
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function past()
+    {
+        $past = Challenge::whereDate('stop_at', '<', now())
+            ->orderBy('start_at', 'desc')
+            ->simplePaginate(5);
+
+        return view('challenges.past', [
+            'past' => $past,
         ]);
     }
 
