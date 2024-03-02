@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Challenge;
 use App\Models\ChallengeApplication;
-use App\Models\Meet;
 use App\Rules\GitHubRepositoryExists;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -22,15 +21,28 @@ class ChallengesController extends Controller
     public function index(Request $request)
     {
         $challenge = Challenge::latest()->first();
-        $registredUserRepo = ChallengeApplication::select('github_repository')
-            ->where('challenge_id', $challenge->id)
+
+        $registerApplication = $challenge?->applications()
             ->where('user_id', $request->user()?->id)
-            ->pluck('github_repository')
             ->first();
 
         return view('challenges.index', [
-            'challenge' => $challenge,
-            'registredUserRepo' => $registredUserRepo ? 'https://github.com/'.$registredUserRepo : null
+            'challenge'           => $challenge,
+            'readyApplicationUrl' => $registerApplication?->url(),
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function past()
+    {
+        $past = Challenge::whereDate('stop_at', '<', now())
+            ->orderBy('start_at', 'desc')
+            ->simplePaginate(5);
+
+        return view('challenges.past', [
+            'past' => $past,
         ]);
     }
 
@@ -77,17 +89,5 @@ class ChallengesController extends Controller
         Toast::success('Ваша заявка принята.')->disableAutoHide();
 
         return redirect()->route('challenges');
-    }
-
-    public function past()
-    {
-
-        $past = Challenge::whereDate('stop_at', '<', now())
-            ->orderBy('start_at', 'desc')
-            ->simplePaginate(5);
-
-        return view('challenges.past', [
-            'past'   => $past,
-        ]);
     }
 }

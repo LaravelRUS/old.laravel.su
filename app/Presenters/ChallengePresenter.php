@@ -43,21 +43,25 @@ class ChallengePresenter extends Presenter
     /**
      * Get the start date and time of the challenge in the format 'day.month.year hour:minute'.
      *
+     * @param string $format
+     *
      * @return string|null
      */
-    public function startDate(): ?string
+    public function startDate(string $format = 'd.m.Y H:i'): ?string
     {
-        return $this->entity->start_at?->format('d.m.Y H:i');
+        return $this->entity->start_at?->format($format);
     }
 
     /**
      * Get the end date and time of the challenge in the format 'day.month.year hour:minute'.
      *
+     * @param string $format
+     *
      * @return string|null
      */
-    public function stopDate(): ?string
+    public function stopDate(string $format = 'd.m.Y H:i'): ?string
     {
-        return $this->entity->stop_at?->format('d.m.Y H:i');
+        return $this->entity->stop_at?->format($format);
     }
 
     /**
