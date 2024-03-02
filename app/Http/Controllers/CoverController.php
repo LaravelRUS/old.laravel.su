@@ -28,7 +28,7 @@ class CoverController extends Controller
 
             $start_x = 230;
             $start_y = $height / 2 + 40;
-            $max_len = 23;
+            $max_len = 22;
 
             $mbWrap = new MbString();
             $textWrap = $mbWrap->wordWrap($text, $max_len);

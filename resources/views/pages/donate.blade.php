@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Способы поддержки сайта')
+@section('title', 'Способы поддержки сайта laravel.su')
 
 @section('content')
 
