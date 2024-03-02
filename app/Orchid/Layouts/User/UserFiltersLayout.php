@@ -16,7 +16,7 @@ class UserFiltersLayout extends Selection
     {
         return [
             RoleFilter::class,
-            AchievementFilter::class
+            AchievementFilter::class,
         ];
     }
 }

@@ -38,4 +38,8 @@ return [
         'redirect'      => env('GITHUB_REDIRECT'),
         'docs_repo_url' => 'git@github.com:laravel-russia/docs.git',
     ],
+
+    'donate' => [
+        'yoomoney' => 'https://yoomoney.ru/to/4100118551993725'
+    ],
 ];

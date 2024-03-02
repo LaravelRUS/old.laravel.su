@@ -157,6 +157,9 @@
                                 <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
                             </li>
                             <li class="nav-item mb-2">
+                                <a href="{{ route('donate') }}" class="nav-link p-0">Сделать пожертвование</a>
+                            </li>
+                            <li class="nav-item mb-2">
                                 <a href="{{ route('assets') }}"
                                    class="nav-link p-0">Графические материалы</a>
                             </li>

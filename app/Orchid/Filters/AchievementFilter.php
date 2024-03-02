@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Orchid\Filters;
 
@@ -21,7 +21,6 @@ use Orchid\Screen\Fields\Select;
 
 class AchievementFilter extends Filter
 {
-
     protected const ACHIEVEMENTS_LIST = [
         AuthorInteraction::class,
         AuthorHighInteraction::class,
@@ -65,7 +64,7 @@ class AchievementFilter extends Filter
     public function run(Builder $builder): Builder
     {
         return $builder->whereHas('achievements', function (Builder $query) {
-            $query->where('achievement_type', $this->getAchievementClass() );
+            $query->where('achievement_type', $this->getAchievementClass());
         });
     }
 
@@ -87,10 +86,9 @@ class AchievementFilter extends Filter
     /**
      * Value to be displayed
      */
-
     public function value(): string
     {
-        return $this->name() . ': ' . app( $this->getAchievementClass() )->name();
+        return $this->name().': '.app($this->getAchievementClass())->name();
     }
 
     /** для красоты, чтобы не пихать например App\Achievements\Events\OpeningWebSite в урл
@@ -100,12 +98,11 @@ class AchievementFilter extends Filter
     protected function getOptions()
     {
         return collect(self::ACHIEVEMENTS_LIST)
-            ->mapWithKeys(function ($achievement)
-            {
+            ->mapWithKeys(function ($achievement) {
                 $name = app($achievement)->name();
 
                 return [Str::slug($name) => $name];
-            } );
+            });
     }
 
     /**
@@ -114,14 +111,12 @@ class AchievementFilter extends Filter
     public function getAchievementClass()
     {
         $list = collect(self::ACHIEVEMENTS_LIST)
-            ->mapWithKeys(function ($achievement)
-            {
+            ->mapWithKeys(function ($achievement) {
                 $name = app($achievement)->name();
 
                 return [Str::slug($name) => $achievement];
-            } );
+            });
 
         return $list->get($this->request->get('achievement'));
     }
-
 }

@@ -71,8 +71,8 @@ class ChallengeApplication extends Model
     /**
      * @return string
      */
-    public function url():string
+    public function url(): string
     {
-        return 'https://github.com/' . $this->github_repository;
+        return 'https://github.com/'.$this->github_repository;
     }
 }
