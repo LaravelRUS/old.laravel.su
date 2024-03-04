@@ -364,7 +364,7 @@ background: #1A1319!important;">
                             </div>
 
                             <div class="col-xl-10 text-center mx-auto">
-                                <a href="https://orchid.software" target="_blank" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
+                                <a href="{{ route('orchid') }}" class="btn btn-outline-primary btn-lg w-100">Подробнее</a>
                             </div>
                         </div>
                     </div>
