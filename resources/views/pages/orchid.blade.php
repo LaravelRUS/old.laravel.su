@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Улучшите навыки разработки смотря видео курсы')
+@section('title', 'Админ панель | Самое важное вместе с Orchid')
 
 @section('content')
 
