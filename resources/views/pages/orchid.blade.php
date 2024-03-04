@@ -12,10 +12,10 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="https//orchid.software/ru/docs" class="btn btn-primary btn-lg px-4">Перейти на сайт</a>
+            <a href="{{ asset('https://orchid.software/ru/docs?utm_source=laravelsu&utm_medium=page&utm_campaign=friends') }}" class="btn btn-primary btn-lg px-4">Перейти на сайт</a>
 
-            <a href="{{ route('courses') }}"
-               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Видео-урок
+            <a href="{{ asset('https://github.com/orchidsoftware') }}"
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Репозиторий
                 <x-icon path="i.arrow-right" class="bi" />
             </a>
         </x-slot>
@@ -39,11 +39,16 @@
                             <div class="d-flex flex-column h-100">
 
                                 <div class="mb-auto">
-                                    <p class="h2 mb-3">Легко начать</p>
+                                    <p class="h2 mb-3">Легкий старт</p>
 
                                     <p>
-                                        Орхидеи поставляется с необходимой технической документацией и примерами для быстрого и успешного внедрения.
-                                        Широким выбором компонентов пользовательского интерфейса, включая формы ввода, диалоги и графики.
+                                        Орхидея поставляется с необходимой технической документацией и примерами для
+                                        быстрого и успешного внедрения.
+                                    </p>
+
+                                    <p>
+                                    "Из коробки" доступен широкий выбор компонентов пользовательского
+                                    интерфейса, включая формы ввода, диалоги и графику.
                                     </p>
                                 </div>
 
@@ -107,7 +112,7 @@
 
                         <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
                             <img src="/img/ui/shield.svg" class="img-fluid package-cover mb-2">
-                            <a href="{{ asset('https://orchid.software/') }}"
+                            <a href="{{ asset('https://orchid.software/ru/docs/access') }}"
                                class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
                                 Узнать больше
                                 <x-icon path="i.arrow-right" class="bi" />
@@ -130,7 +135,6 @@
 
                             <p>
                                 Просто добавляйте любой файл к записи с помощью гибкой функции вложения.
-                                Организуйте важные данные и упростите рабочий процесс, прикрепляя файлы к любой модели в приложении.
                             </p>
                         </div>
 
@@ -138,7 +142,7 @@
                         <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
                             <img src="/img/ui/files.svg" class="img-fluid package-cover">
 
-                            <a href="{{ asset('https://orchid.software/en/attachments') }}"
+                            <a href="{{ asset('https://orchid.software/ru/docs/attachments') }}"
                                class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
                                 Как работать с файлами
                                 <x-icon path="i.arrow-right" class="bi" />
@@ -156,8 +160,7 @@
                             <p class="h2 mb-3">Руководство по дизайну</p>
 
                             <p>
-                                Инвестиции в хороший UX увеличивают вовлеченность и предотвращают ошибки. Подробная
-                                документация поможет создавать исключительные приложения.
+                                Инвестиции в хороший UX увеличивают вовлеченность и предотвращают ошибки.
                             </p>
                         </div>
 
@@ -166,7 +169,7 @@
                             <img src="/img/ui/design.svg" class="img-fluid package-cover">
                             <a href="{{ asset('https://orchid.software/en/hig') }}"
                                class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
-                                Документация
+                                Прочитать
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
                         </div>
@@ -177,11 +180,20 @@
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
                     <div class="d-flex flex-column h-100">
                         <div class="mb-auto">
-                            <p class="h2 mb-3">Никаких ограничений</p>
+                            <p class="h2 mb-3">Пошаговые видео уроки</p>
 
                             <p>
-                                Полностью основывается на стандартах браузера и W3C, предоставляя возможности настройки для воплощения вашей идеи в жизнь.
+                                В этой серии вы познакомитесь с множеством примеров, демонстрирующих,
+                                как построить админ панель с готовым пользовательским интерфейсом.
                             </p>
+                        </div>
+                        <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
+                            <a href="{{ asset('https://www.youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ') }}"
+                               target="_blank"
+                               class="d-inline-flex w-100 link-body-emphasis text-end text-decoration-none stretched-link icon-link icon-link-hover">
+                                Построить админку
+                                <x-icon path="i.arrow-right" class="bi" />
+                            </a>
                         </div>
                     </div>
                 </div>

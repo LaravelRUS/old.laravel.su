@@ -4,11 +4,11 @@
 
 @section('content')
 
-    <x-container>
-        <div class="row g-xxl-5 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-md-3 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-md-block doc-navigation">
+    <div class="container container-docs my-4 my-xxl-5 mx-auto">
+        <div class="row gap-2 justify-content-center align-items-start position-relative mb-5">
+            <div class="col-3 col-xl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
 
-                <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
+                <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
                     {{--
                     <input class="form-control form-control-lg" type="text" placeholder="Поиск по документации..."
@@ -92,10 +92,10 @@
                     @endif
                 </div>
             </div>
-            <div class="px-0 px-md-2 px-xl-3 col-md-9 order-md-last order-first">
+            <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-7 col-xxl-6 order-md-1 order-first">
 
                 <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
-                    <h1 class="display-6 fw-bold text-body-emphasis mb-4">{{ $docs->title() }}</h1>
+                    <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
                         <div class="alert alert-warning rounded-2 position-relative" role="alert">
                             <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link">
@@ -105,10 +105,21 @@
                         </div>
                     @endif
 
-                    <x-docs.anchors :content="$content"/>
+                    <div class="d-block d-xl-none mt-3">
+                        <x-docs.anchors :content="$content"/>
+                    </div>
                     <x-docs.content :content="$content"/>
                 </main>
             </div>
+            <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xl-block doc-navigation">
+
+                <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
+
+                    <main>
+                    <x-docs.anchors :content="$content"/>
+                    </main>
+                </div>
+            </div>
         </div>
-    </x-container>
+    </div>
 @endsection

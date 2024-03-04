@@ -146,8 +146,9 @@ main div {
     }
 
     code {
-        @extend .text-nowrap;
-        text-wrap: pretty !important;
+        @extend .text-wrap;
+        //@extend .text-nowrap;
+        //text-wrap: pretty !important;
         color: rgb(235, 68, 50);
     }
 
@@ -365,4 +366,9 @@ main,
     &::-webkit-scrollbar {
         display: none;
     }
+}
+
+.container-docs {
+    max-width: 1680px;
+    margin: 0 auto
 }
