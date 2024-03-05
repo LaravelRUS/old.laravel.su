@@ -135,7 +135,7 @@ return [
              *
              * Setting of 0 for some algorithms may switch to the strongest compression.
              */
-            'compression_level' => 9,
+            'compression_level' => 1,
 
             /*
              * The filename prefix used for the backup zip file.
@@ -206,14 +206,7 @@ return [
          */
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
-        'mail' => [
-            'to' => 'your@example.com',
-
-            'from' => [
-                'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-                'name' => env('MAIL_FROM_NAME', 'Example'),
-            ],
-        ],
+        'mail' => null,
 
         'slack' => [
             'webhook_url' => '',
