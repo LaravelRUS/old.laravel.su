@@ -20,22 +20,25 @@ class PackagesController extends Controller
      */
     public function index(Request $request)
     {
+        $currentCategory = PackageTypeEnum::tryFrom($request->input('type'));
+        $currentSort = SortEnum::tryFrom($request->input('sort'));
+
         $packages = Package::approved()
-            ->when($request->filled('type'), function ($query) use ($request) {
-                return $query->where('type', $request->input('type'));
-            })
+            ->when($currentCategory !== null, fn ($query) => $query->where('type', $currentCategory->value))
             ->when($request->filled('q'), function ($query) use ($request) {
                 $query->where('name', 'like', '%'.$request->get('q').'%')
                     ->orWhere('packagist_name', 'like', '%'.$request->get('q').'%')
                     ->orWhere('description', 'like', '%'.$request->get('q').'%');
             })
-            ->when($request->get('sort') === SortEnum::Latest->value,
+            ->when($currentSort === SortEnum::Latest,
                 fn ($query) => $query->latest(),
                 fn ($query) => $query->orderByDesc('stars'))
             ->paginate(6);
 
         return view('packages.index', [
-            'packages' => $packages,
+            'packages'        => $packages,
+            'currentCategory' => $currentCategory,
+            'currentSort'     => $currentSort,
         ]);
     }
 
@@ -103,6 +106,9 @@ class PackagesController extends Controller
         return redirect()->route('profile.packages', $request->user());
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
     public function latest()
     {
         $packages = Package::approved()

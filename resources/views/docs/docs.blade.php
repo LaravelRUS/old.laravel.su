@@ -1,6 +1,5 @@
 @extends('layout')
-@section('type', "Документация")
-@section('title', $docs->title())
+@section('title', $docs->title(). " Laravel ". $docs->version)
 
 @section('content')
 
@@ -97,12 +96,16 @@
                 <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
-                        <div class="alert alert-warning rounded-2 position-relative" role="alert">
-                            <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link">
-                                <p class="mb-0">⚠️ Вы просматриваете документ для прошлой версии.</p>
-                                Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                        <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
+                            <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
+                                <div>
+                                    <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
+                                    <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                                        <span class="text-decoration-underline">Почему это важно?</span>
+                                    </div>
+                                </div>
                             </a>
-                        </div>
+                        </blockquote>
                     @endif
 
                     <div class="d-block d-xl-none mt-3">

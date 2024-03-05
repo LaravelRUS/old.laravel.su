@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Пакеты сообщества')
+@section('title', $currentCategory ?  'Пакеты '. $currentCategory->text()  : 'Пакеты сообщества')
 
 @section('content')
 
@@ -55,9 +55,7 @@
                                         Категории
                                     </option>
                                     @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
-                                        <option value="{{$type->value}}"
-                                            @selected( request()->get('type')==$type->value)
-                                        >
+                                        <option value="{{$type->value}}" @selected($currentCategory == $type)>
                                             {{$type->text()}}
                                         </option>
                                     @endforeach
@@ -69,9 +67,7 @@
                             <div class="d-flex bg-body-secondary small px-3 py-2 py-md-3 rounded">
                                 <select class="form-search fw-medium w-100" name="sort" onchange="this.form.requestSubmit()">
                                     @foreach(\App\Casts\SortEnum::cases() as $sort)
-                                        <option value="{{$sort->value}}"
-                                            @selected(request()->get('sort') == $sort->value)
-                                        >
+                                        <option value="{{$sort->value}}" @selected($currentSort == $sort->value)>
                                             {{$sort->text()}}
                                         </option>
                                     @endforeach
@@ -90,12 +86,12 @@
                         <div class="mb-4 position-relative">
                             <div class="d-flex align-items-center">
                                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center fs-4 rounded-3
-                                 {{ request()->get('type')==$type->value ? 'bg-primary text-white' : 'bg-body-secondary text-primary' }}">
+                                 {{ $currentCategory == $type ? 'bg-primary text-white' : 'bg-body-secondary text-primary' }}">
                                     <x-icon path="{{$type->icon()}}"/>
                                 </div>
                                 <div class="ms-3 w-75">
                                     <a href="{{ route('packages', ['type' => $type]) }}"
-                                       class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if(request()->get('type')==$type->value) active @endif"
+                                       class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none @if($currentCategory == $type->value) active @endif"
                                     >
                                         {{ $type->text() }}
                                     </a>
