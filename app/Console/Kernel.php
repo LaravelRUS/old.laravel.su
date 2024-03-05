@@ -31,6 +31,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('app:achievements-translation')
             ->weeklyOn([Schedule::SATURDAY, Schedule::SUNDAY]);
+
+        $schedule->command('backup:clean')->daily()->at('01:00');
+        $schedule->command('backup:run')->daily()->at('01:30');
     }
 
     /**
