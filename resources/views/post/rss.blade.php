@@ -14,7 +14,7 @@
             <item>
                 <title><![CDATA[{{ $item->title }}]]></title>
                 <link>{{ url($item->link) }}</link>
-                <description><![CDATA[{!! $item->summary !!}]]></description>
+                <description><![CDATA[{!! $item->title !!}]]></description>
                 <author><![CDATA[{{ $item->authorName }}]]></author>
                 <guid isPermaLink="false">{{ $item->id }}</guid>
                 <pubDate>{{ $item->updated->toRssString() }}</pubDate>
