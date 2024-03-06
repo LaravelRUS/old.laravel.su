@@ -1,4 +1,7 @@
-## SQL-инъекции
+---
+title: "SQL-инъекции"
+description: ""
+---
 
 ### Защита от SQL-инъекций в Eloquent ORM
 

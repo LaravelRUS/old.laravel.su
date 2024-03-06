@@ -15,46 +15,27 @@
             </figure>
         </x-slot>
     </x-header>
+    
+@php
+    $sections = collect([
+    'basics',
+    'auth',
+    'cookie',
+    'mass',
+    'csrf',
+    'exec',
+    'headers',
+    'hijacking',
+    'path',
+    'redirect',
+    'sql',
+    'upload',
+    'xss',
+])
+    ->map(fn ($file) => \Illuminate\Support\Str::of($file)->start('security/'))
+    ->map(fn ($file) => new \App\Library($file));
+@endphp
 
-    <x-container>
-
-        @foreach([
-        'basics.md',
-        'auth.md',
-        'cookie.md',
-        'mass.md',
-        'csrf.md',
-        'exec.md',
-        'headers.md',
-        'hijacking.md',
-        'path.md',
-        'redirect.md',
-        'sql.md',
-        'upload.md',
-        'xss.md'] as $key => $file)
-
-            <div class="row g-5 justify-content-center align-items-start position-relative mb-5">
-                <div class="col-xl-4 position-sticky top-0 py-3">
-                    <div class="mb-4">
-                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center border border-primary text-primary fs-4 rounded-3">
-                            {{ $key }}
-                        </div>
-                    </div>
-                    <h5 class="fs-4 mt-2 fw-semibold">{{ $file }}</h5>
-                    <p class="mb-0">
-                        Правильный выбор имен переменных, классов и методов в Laravel играет ключевую роль в создании
-                        чистого и понятного кода.
-                    </p>
-                </div>
-                <div class="col-xl-8">
-                    <main class="bg-body-tertiary p-xl-5 p-4 rounded shadow">
-                        {!! \Illuminate\Support\Str::of(file_get_contents(storage_path('library/security/'.$file)))->markdown() !!}
-                    </main>
-                </div>
-            </div>
-
-        @endforeach
-
-    </x-container>
+    @include('particles.library-section', ['sections' => $sections])
 
 @endsection
