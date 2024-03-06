@@ -13,25 +13,30 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-
+        // Ежедневные задачи
         $schedule->command('app:checkout-latest-docs')->daily();
         $schedule->command('app:compare-document')->daily();
         $schedule->command('app:update-packages')->daily();
+
+        // Ежедневная очистка логов и просмотров
+        $schedule->command('activitylog:clean')->daily();
         $schedule->command('telescope:prune')->daily();
 
-        // вот не знаю, оо тут нужно или нет?
+        // Ежедневная очистка моделей, таких как CodeSnippet
         $schedule->command('model:prune', [
             '--model' => [
                 CodeSnippet::class,
             ],
         ])->daily();
 
+        // Оптимизация SQLite каждую минуту смотри https://www.sqlite.org/pragma.html#pragma_optimize
         $schedule->command('sqlite:optimize')->everyMinute();
 
+        // Перевод достижений каждую неделю по выходным
         $schedule->command('app:achievements-translation')
             ->weeklyOn([Schedule::SATURDAY, Schedule::SUNDAY]);
 
+        // Ежедневное создание и очистка резервных копий в определенное время
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('01:30');
     }

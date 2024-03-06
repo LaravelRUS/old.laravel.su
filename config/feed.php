@@ -39,7 +39,7 @@ return [
             /*
              * The view that will render the feed.
              */
-            'view' => 'feed::atom',
+            'view' => 'post.rss',
 
             /*
              * The mime type to be used in the <link> tag. Set to an empty string to automatically
