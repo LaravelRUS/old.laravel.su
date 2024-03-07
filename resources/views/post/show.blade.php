@@ -4,29 +4,15 @@
 
 @section('content')
 
-    <script>
-        // TODO:
-        function back(url) {
-            if (history.length > 2) {
-                // if history is not empty, go back:
-                history.back();
-            } else if (url) {
-                // go to specified fallback url:
-                Turbo.visit(url);
-            } else {
-                // go home:
-                Turbo.visit('/');
-            }
-        }
-    </script>
-
 <x-container>
         <div class="row">
             <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
 
                 <button type="button"
-                   onclick="back('{{route('feed')}}')"
-                   class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
+                        data-controller="history"
+                        data-history-url-value="{{route('feed')}}"
+                        data-action="click->history#back"
+                        class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
                     <x-icon path="bs.x-lg"/>
                 </button>
 
