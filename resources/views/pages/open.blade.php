@@ -221,7 +221,7 @@ return response()->json([
 <x-container>
 
     <p class="small text-muted mb-2 pt-5">
-        Вам понравилась игра? <br> Поддержите крутой проект <a href="{{ config('services.donate.yoomoney') }}"
+        Вам понравилась игра? <br> Поддержите крутой проект <a href="{{ route('donate.frame') }}"
                                                                   target="_blank" rel="noreferrer"
                                                                   class="text-decoration-none">пожертвованием</a>.
     </p>

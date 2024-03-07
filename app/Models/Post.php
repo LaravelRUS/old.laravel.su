@@ -16,8 +16,6 @@ use Orchid\Filters\Types\Like;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
 use Overtrue\LaravelLike\Traits\Likeable;
-use Spatie\Feed\Feedable;
-use Spatie\Feed\FeedItem;
 
 /**
  *  Class Post
@@ -28,7 +26,7 @@ use Spatie\Feed\FeedItem;
  *  inherit. The 'type' attribute is used to distinguish between different
  *  post types in the single 'posts' table.
  */
-class Post extends Model implements Feedable
+class Post extends Model
 {
     use AsSource, Chartable, Filterable, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
 
@@ -174,31 +172,6 @@ class Post extends Model implements Feedable
         // Customize the data array...
 
         return $array;
-    }
-
-    /**
-     * @return \App\Models\FeedItem
-     */
-    public function toFeedItem(): FeedItem
-    {
-        return FeedItem::create()
-            ->id($this->id)
-            ->title($this->title)
-            ->summary(Str::of($this->content)->markdown())
-            ->updated($this->updated_at)
-            ->enclosure(route('cover', ['text' => $this->title]))
-            ->enclosureType('image/jpg')
-            ->enclosureLength(0)
-            ->link(route('post.show', $this))
-            ->authorName($this->author->name);
-    }
-
-    /**
-     * @return mixed
-     */
-    public static function getFeedItems()
-    {
-        return static::orderBy('id', 'desc')->with('author')->limit(10)->get();
     }
 
     /**

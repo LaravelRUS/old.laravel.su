@@ -115,11 +115,9 @@
                 </main>
             </div>
             <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xl-block doc-navigation">
-
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
-
                     <main>
-                    <x-docs.anchors :content="$content"/>
+                        <x-docs.anchors :content="$content"/>
                     </main>
                 </div>
             </div>

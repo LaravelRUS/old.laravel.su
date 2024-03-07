@@ -16,7 +16,7 @@ class Library
      */
     public function __construct(string $name)
     {
-        $raw = Storage::disk('library')->get($name . '.md');
+        $raw = Storage::disk('library')->get($name.'.md');
 
         $variables = Str::of($raw)->betweenFirst('---', '---');
 

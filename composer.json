@@ -37,7 +37,6 @@
         "overtrue/laravel-like": "^5.2",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-backup": "^8.6",
-        "spatie/laravel-feed": "^4.3",
         "symfony/dom-crawler": "^6.3",
         "symfony/yaml": "^6.3",
         "twbs/bootstrap-icons": "^1.11",

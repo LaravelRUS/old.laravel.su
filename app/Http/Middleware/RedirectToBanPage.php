@@ -26,7 +26,7 @@ class RedirectToBanPage
         }
 
         if ($user->banned) {
-            return redirect()->route('ban');
+            return response()->view('errors.ban', [], 403);
         }
 
         return $next($request);

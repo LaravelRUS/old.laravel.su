@@ -40,6 +40,6 @@ return [
     ],
 
     'donate' => [
-        'yoomoney' => 'https://yoomoney.ru/to/4100118551993725'
+        'yoomoney' => 'https://yoomoney.ru/to/4100118551993725',
     ],
 ];

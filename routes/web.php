@@ -35,13 +35,12 @@ Route::view('/rules', 'pages.rules')->name('rules');
 Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/orchid-admin', 'pages.orchid')->name('orchid');
 Route::view('/donate', 'pages.donate')->name('donate');
+Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
 
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
 
 Route::view('nav', 'pages.navigation')->name('nav');
-
-Route::view('/ban', 'pages.ban')->name('ban');
 Route::view('/admin', 'errors.admin');
 
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
@@ -469,12 +468,14 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 
 /*
 |--------------------------------------------------------------------------
-| RSS
+| RSS Feed
 |--------------------------------------------------------------------------
+|
+| This section contains the web routes for the RSS feed.
+| The routes handle the display of the RSS feed and provide related data.
+|
 */
 
-Route::feeds();
-
-Route::get('/test', function (Request $request) {
-    return $request->user()->reward(\App\Achievements\Events\OpeningWebSite::class);
-})->middleware('auth');
+Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
+    ->middleware(['cache.headers:public;max_age=300;etag'])
+    ->name('feeds.rss');

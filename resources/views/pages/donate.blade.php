@@ -12,7 +12,7 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="{{ config('services.donate.yoomoney') }}" target="_blank" rel="noreferrer" class="btn btn-primary btn-lg px-4">Сделать пожертвование</a>
+            <a href="{{ route('donate.frame') }}" class="btn btn-primary btn-lg px-4">Сделать пожертвование</a>
         </x-slot>
     </x-header>
 
