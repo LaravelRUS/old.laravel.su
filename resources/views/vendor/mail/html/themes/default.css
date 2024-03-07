@@ -112,6 +112,7 @@ img {
 /* Logo */
 
 .logo {
+    filter: grayscale(1);
     object-fit: contain;
     height: 77px;
     max-height: 120px;

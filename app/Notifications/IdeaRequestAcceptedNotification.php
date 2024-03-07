@@ -8,6 +8,7 @@ use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
@@ -40,6 +41,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
         return [
             SiteChannel::class,
             WebPushChannel::class,
+            'mail'
         ];
     }
 
@@ -69,6 +71,24 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
                 'TTL'     => 86400, // in seconds - 24 hours,
                 'urgency' => 'high',
             ]);
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param User $user
+     *
+     * @throws \Throwable
+     *
+     * @return MailMessage
+     */
+    public function toMail(User $user)
+    {
+        return (new MailMessage)
+            ->subject('Бесплатный ключ Laravel IDEA доступен')
+            ->line("Мы ценим вашу активность и стремимся делать ваше пребывание максимально полезным и интересным. Чтобы узнать, что новенького, перейдите по ссылке ниже:")
+            ->action('Посмотреть уведомления', route('idea.key', $this->ideaKey))
+            ->line("Внимательно слушаем ваши идеи и предложения, поэтому не стесняйтесь делиться ими с нами.");
     }
 
     /**
