@@ -40,7 +40,8 @@
         "symfony/dom-crawler": "^6.3",
         "symfony/yaml": "^6.3",
         "twbs/bootstrap-icons": "^1.11",
-        "watson/active": "^7.0"
+        "watson/active": "^7.0",
+        "esplora/spire": "0.0.1"
     },
     "require-dev": {
         "deployer/deployer": "^7.3",
