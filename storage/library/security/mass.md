@@ -9,11 +9,11 @@ description: ""
 
 ```php
 Route::any('/profile', function (Request $request) {
-    $request->user()->forceFill($request->all())->save();
+    $user = $request->user();
+    
+    $user->forceFill($request->all())->save();
 
-    $user = $request->user()->fresh();
-
-    return response()->json(compact('user'));
+    return response()->json(['user' => $user]);
 })->middleware('auth');
 ```
 

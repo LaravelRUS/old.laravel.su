@@ -40,7 +40,8 @@ DB::table('users')->whereRaw('email = "'.$request->input('email').'"')->get();
 Вышеуказанный код выполняет следующий запрос:
 
 ```sql
-select * from `users` where `email` = "значение параметра email запроса"
+select * from `users` 
+         where `email` = "значение параметра email запроса"
 ```
 
 Всегда помните использовать привязки SQL для данных запроса. Мы можем исправить код выше, сделав следующую модификацию:
@@ -48,7 +49,9 @@ select * from `users` where `email` = "значение параметра email
 ```php
 use App\Models\User;
 
-User::whereRaw('email = ?', [$request->input('email')])->get();
+User::whereRaw('email = ?', [
+    $request->input('email')
+])->get();
 ```
 
 Мы даже можем использовать именованные привязки SQL, как показано ниже:
@@ -56,7 +59,9 @@ User::whereRaw('email = ?', [$request->input('email')])->get();
 ```php
 use App\Models\User;
 
-User::whereRaw('email = :email', ['email' => $request->input('email')])->get();
+User::whereRaw('email = :email', [
+    'email' => $request->input('email')
+])->get();
 ```
 
 ### SQL-инъекции по именам столбцов
@@ -76,15 +81,16 @@ User::query()->orderBy($request->input('sortBy'))->get();
 
 По крайней мере, это может привести к уязвимости массового присваивания вместо SQL-инъекций, потому что вы, возможно, ожидали определенный набор значений столбцов, но поскольку они не проверяются здесь, пользователь может свободно использовать и другие столбцы.
 
-Всегда проверяйте пользовательский ввод для таких ситуаций, как п
-
-оказано ниже:
+Всегда проверяйте пользовательский ввод для таких ситуаций, как показано ниже:
 
 ```php
 use App\Models\User;
 
 $request->validate(['sortBy' => 'in:price,updated_at']);
-User::query()->orderBy($request->validated()['sortBy'])->get();
+
+User::query()
+    ->orderBy($request->validated()['sortBy'])
+    ->get();
 ```
 
 ### Правила валидации подверженные SQL-инъекциям
@@ -97,7 +103,8 @@ User::query()->orderBy($request->validated()['sortBy'])->get();
 use Illuminate\Validation\Rule;
 
 $request->validate([
-'id' => Rule::unique('users')->ignore($id, $request->input('colname'))
+    'id' => Rule::unique('users')
+                ->ignore($id, $request->input('colname'))
 ]);
 ```
 
@@ -107,7 +114,10 @@ $request->validate([
 use App\Models\User;
 
 $colname = $request->input('colname');
-User::where($colname, $request->input('id'))->where($colname, '<>', $id)->count();
+
+User::where($colname, $request->input('id'))
+    ->where($colname, '<>', $id)
+    ->count();
 ```
 
 Поскольку имя столбца диктуется вводом пользователя, это аналогично SQL-инъекции по именам столбцов.

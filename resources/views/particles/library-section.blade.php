@@ -16,7 +16,7 @@
             </div>
             <div class="col-xl-8">
                 <main class="bg-body-tertiary p-xl-5 p-4 rounded shadow">
-                    {!! $section->content() !!}
+                    <x-docs.content :content="$section->content()" />
                 </main>
             </div>
         </div>

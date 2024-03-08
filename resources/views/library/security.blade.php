@@ -7,7 +7,7 @@
         <x-slot name="sup">Разработчикам</x-slot>
         <x-slot name="title">Советы по безопасности</x-slot>
         <x-slot name="description">
-            Распространенные уязвимости и ошибки, для обеспечения безопасности ваших приложений Laravel
+            Распространенные ошибки в коде, приводящие к уязвимостям безопасности в приложениях на Laravel
         </x-slot>
         <x-slot name="content">
             <figure class="d-none d-md-block">
@@ -15,22 +15,21 @@
             </figure>
         </x-slot>
     </x-header>
-    
+
 @php
     $sections = collect([
     'basics',
-    'auth',
-    'cookie',
+    'xss',
     'mass',
-    'csrf',
-    'exec',
-    'headers',
-    'hijacking',
+    // 'cookie', TODO: Распространён ли он?
+    // 'csrf',  TODO: Распространён ли он?
+    //'headers', TODO: Распространён ли он?
+    'upload',
     'path',
     'redirect',
     'sql',
-    'upload',
-    'xss',
+    'exec',
+    'hijacking',
 ])
     ->map(fn ($file) => \Illuminate\Support\Str::of($file)->start('security/'))
     ->map(fn ($file) => new \App\Library($file));
