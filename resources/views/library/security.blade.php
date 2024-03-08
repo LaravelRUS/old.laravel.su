@@ -1,6 +1,6 @@
 @extends('layout')
-@section('title', 'Актуальный код')
-@section('description', 'Код должен быть понятен всем членам команды и легко читаем для разработчиков, которые могут его изменять')
+@section('title', 'Советы по безопасности')
+@section('description', 'Распространенные ошибки в коде, приводящие к уязвимостям безопасности в приложениях на Laravel')
 @section('content')
 
     <x-header align="align-items-end">
@@ -26,10 +26,10 @@
     //'headers', TODO: Распространён ли он?
     'upload',
     'path',
-    'redirect',
     'sql',
     'exec',
     'hijacking',
+    'redirect',
 ])
     ->map(fn ($file) => \Illuminate\Support\Str::of($file)->start('security/'))
     ->map(fn ($file) => new \App\Library($file));
