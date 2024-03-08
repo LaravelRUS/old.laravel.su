@@ -93,7 +93,7 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Package $package) {
-                        return "<strong class='d-block'>$package->name</strong><span class='text-muted'>{$package->type->text()}</span>";
+                        return "<strong class='d-block'>$package->packagist_name</strong><span class='text-muted'>{$package->type->text()}</span>";
                     })->filter(Input::make()),
 
                 TD::make('description', 'Описание')
@@ -160,7 +160,7 @@ class ListScreen extends Screen
             ]),
 
             Layout::modal('editModal', Layout::rows([
-                Input::make('package.name')
+                Input::make('package.packagist_name')
                     ->title('Имя пакета')
                     ->placeholder('Имя пакета')
                     ->help('Имя пакета которое зарегистрировано на Packagist, например orchid/platform, также используется в файле composer.json вашего проекта.'),
