@@ -39,7 +39,6 @@ class Handler extends ExceptionHandler
         // Send notification to Telegram
         try {
             TelegramMessage::create()
-                ->toNotGiven()
                 ->to(config('services.telegram-bot-api.chat_id'))
                 ->line('*⚠️ Ой-ой-ой!* Возникла неприятность в нашем коде. Пользователь столкнулся с неожиданной ошибкой на сайте.')
                 ->line('`')

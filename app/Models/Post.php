@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use NotificationChannels\Telegram\TelegramMessage;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Metrics\Chartable;
@@ -84,6 +85,22 @@ class Post extends Model
             }
 
             $post->slug = $slug;
+        });
+
+        static::created(function (Post $post){
+            try {
+                if (config('app.env') == 'local') {
+                    return;
+                }
+
+                TelegramMessage::create()
+                    ->to(config('services.telegram-bot-api.channel_id'))
+                    ->escapedLine($post->title)
+                    ->content(route('post.show', $post))
+                    ->send();
+            } catch (\Throwable $e) {
+                report($e);
+            }
         });
     }
 
