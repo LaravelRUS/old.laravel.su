@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
 
         // Оптимизация SQLite каждую минуту смотри https://www.sqlite.org/pragma.html#pragma_optimize
         $schedule->command('sqlite:optimize')->everyMinute();
+        $schedule->command('sqlite:vacuum')->everyFourHours();
 
         // Перевод достижений каждую неделю по выходным
         $schedule->command('app:achievements-translation')

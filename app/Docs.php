@@ -3,7 +3,9 @@
 namespace App;
 
 use App\Models\Document;
+use App\Models\DocumentationSection;
 use Exception;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -45,11 +47,6 @@ class Docs
     protected array $variables = [];
 
     /**
-     * @var string The content of the Markdown file.
-     */
-    protected $content;
-
-    /**
      * @var string The file name.
      */
     public string $file;
@@ -67,19 +64,48 @@ class Docs
      */
     public function __construct(string $version, string $file)
     {
-        $this->file = $file.'.md';
+        $this->file = $file . '.md';
         $this->version = $version;
         $this->path = "/$version/$this->file";
-
-        $this->content();
     }
 
     /**
+     * @return string|null
+     */
+    public function raw()
+    {
+        return once(function () {
+            $raw = Storage::disk('docs')->get($this->path);
+
+            // Abort the request if the page doesn't exist
+            abort_if(
+                $raw === null,
+                redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
+            );
+
+            return $raw;
+        });
+    }
+
+    /**
+     * @param string|null $key
+     *
      * @return array
      */
-    public function variables(): array
+    public function variables(string $key = null): array
     {
-        return $this->variables;
+        return once(function () use ($key) {
+
+            $variables = Str::of($this->raw())->betweenFirst('---', '---');
+
+            try {
+                $this->variables = Yaml::parse($variables);
+            } catch (\Throwable) {
+
+            }
+
+            return Arr::get($this->variables, $key);
+        });
     }
 
     /**
@@ -87,35 +113,13 @@ class Docs
      */
     public function content(): ?string
     {
-        if ($this->content !== null) {
-            return $this->content;
-        }
-
-        $raw = Cache::remember('doc-file-'.$this->path, now()->addMinutes(30), fn () => Storage::disk('docs')->get($this->path));
-
-        // Abort the request if the page doesn't exist
-        abort_if(
-            $raw === null && Document::where('file', $this->file)->exists(),
-            redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
-        );
-
-        $variables = Str::of($raw)
-            ->after('---')
-            ->before('---');
-
-        try {
-            $this->variables = Yaml::parse($variables);
-        } catch (\Throwable) {
-
-        }
-
-        $this->content = Str::of($raw)
-            ->replace('{{version}}', $this->version)
-            ->after('---')
-            ->after('---')
-            ->markdown();
-
-        return $this->content;
+        return once(function () {
+           return Str::of($this->raw())
+                ->replace('{{version}}', $this->version)
+                ->after('---')
+                ->after('---')
+                ->markdown();
+        });
     }
 
     /**
@@ -123,19 +127,19 @@ class Docs
      *
      * @param string $view The view name.
      *
+     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      *
-     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
      */
     public function view(string $view)
     {
-        $all = collect()->merge($this->variables)->merge([
+        $data = Cache::remember('doc-file-view-data' . $this->path, now()->addMinutes(30), fn() => collect()->merge($this->variables())->merge([
             'docs'    => $this,
             'content' => $this->content(),
             'edit'    => $this->getEditUrl(),
-        ]);
+        ]));
 
-        return view($view, $all);
+        return view($view, $data);
     }
 
     /**
@@ -145,8 +149,8 @@ class Docs
      */
     public function getMenu(): array
     {
-        return Cache::remember('doc-navigation-'.$this->version, now()->addHours(2), function () {
-            $page = Storage::disk('docs')->get($this->version.'/documentation.md');
+        return Cache::remember('doc-navigation-' . $this->version, now()->addHours(2), function () {
+            $page = Storage::disk('docs')->get($this->version . '/documentation.md');
 
             $html = Str::of($page)
                 ->after('---')
@@ -191,7 +195,7 @@ class Docs
         $menu = [];
 
         $crawler->filter('ul > li')->each(function (Crawler $node) use (&$menu) {
-            $subList = $node->filter('ul > li')->each(fn (Crawler $subNode) => [
+            $subList = $node->filter('ul > li')->each(fn(Crawler $subNode) => [
                 'title' => $subNode->filter('a')->text(),
                 'href'  => url($subNode->filter('a')->attr('href')),
             ]);
@@ -221,10 +225,10 @@ class Docs
         $files = Storage::disk('docs')->allFiles($version);
 
         return collect($files)
-            ->filter(fn (string $path) => Str::of($path)->endsWith('.md'))
-            ->filter(fn (string $path) => ! Str::of($path)->endsWith(['readme.md', 'license.md']))
-            ->map(fn (string $path) => Str::of($path)->after($version.'/')->before('.md'))
-            ->map(fn (string $path) => new static($version, $path));
+            ->filter(fn(string $path) => Str::of($path)->endsWith('.md'))
+            ->filter(fn(string $path) => !Str::of($path)->endsWith(['readme.md', 'license.md']))
+            ->map(fn(string $path) => Str::of($path)->after($version . '/')->before('.md'))
+            ->map(fn(string $path) => new static($version, $path));
     }
 
     /**
@@ -234,18 +238,18 @@ class Docs
      */
     public function fetchBehind(): int
     {
-        throw_unless(isset($this->variables['git']), new Exception("The document {$this->path} is missing a Git hash"));
+        throw_unless($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
 
         $response = $this->fetchGitHubDiff();
 
         return $response
-            ->takeUntil(fn ($commit) => $commit['sha'] === $this->variables['git'])
+            ->takeUntil(fn($commit) => $commit['sha'] === $this->variables('git'))
             ->count();
     }
 
     public function fetchLastCommit(): string
     {
-        throw_unless(isset($this->variables['git']), new Exception("The document {$this->path} is missing a Git hash"));
+        throw_unless($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
 
         $response = $this->fetchGitHubDiff();
 
@@ -263,7 +267,7 @@ class Docs
 
         return Cache::remember("docs-diff-$this->version-$this->file-$hash",
             now()->addHours(2),
-            fn () => Http::withBasicAuth('token', config('services.github.token'))
+            fn() => Http::withBasicAuth('token', config('services.github.token'))
                 ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}")
                 ->collect($key)
         );
@@ -349,7 +353,57 @@ class Docs
         $this->getModel()->fill([
             'behind'         => $this->fetchBehind(),
             'last_commit'    => $this->fetchLastCommit(),
-            'current_commit' => $this->variables['git'],
+            'current_commit' => $this->variables('git'),
         ])->save();
+
+        $this->updateSections();
+    }
+
+    /**
+     * Разбивает markdown файл на разделы по заголовкам.
+     *
+     * @return Массив разделов с заголовками и содержимым
+     */
+    public function getSections()
+    {
+        // Разбиваем HTML содержимое на разделы по заголовкам
+        preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $this->content(), $matches, PREG_SET_ORDER);
+
+        // Массив для хранения разделов
+        $sections = collect();
+        $prevEnd = 0;
+
+        foreach ($matches as $index => $match) {
+            $sectionTitle = $match[2];
+
+            // Получаем начальную и конечную позицию текущего заголовка в тексте
+            $startPos = strpos($this->content(), $match[0], $prevEnd);
+
+            // Получаем текст между текущим и предыдущим заголовком
+            if ($index > 0) {
+                $prevMatch = $matches[$index - 1];
+                $prevEnd = strpos($this->content(), $prevMatch[0]) + strlen($prevMatch[0]);
+                $sectionContent = substr($this->content(), $prevEnd, $startPos - $prevEnd);
+            } else {
+                $sectionContent = substr($this->content(), 0, $startPos);
+            }
+
+            $sections->push([
+                'title'   => $sectionTitle,
+                'slug'    => Str::of($sectionTitle)->slug()->toString(),
+                'content' => $sectionContent,
+                'file'    => $this->file,
+                'version' => $this->version,
+                'id'      => Str::uuid(),
+            ]);
+        }
+
+        return $sections;
+    }
+
+    public function updateSections()
+    {
+        //DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
+        //DocumentationSection::insert($this->getSections()->toArray());
     }
 }

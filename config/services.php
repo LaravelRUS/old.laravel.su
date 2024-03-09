@@ -42,4 +42,11 @@ return [
     'donate' => [
         'yoomoney' => 'https://yoomoney.ru/to/4100118551993725',
     ],
+
+    'telegram-bot-api' => [
+        'bot_name'       => env('TELEGRAM_BOT_NAME'),
+        'token'          => env('TELEGRAM_BOT_TOKEN'),
+        'chat_id'        => env('TELEGRAM_CHAT_ID'),
+        'report_chat_id' => env('TELEGRAM_REPORT_CHAT_ID'),
+    ],
 ];

@@ -20,12 +20,13 @@
         "php": ">=8.1",
         "cagilo/cagilo": "^3.2",
         "doctrine/dbal": "^3.7",
+        "esplora/spire": "0.0.1",
         "guzzlehttp/guzzle": "^7.2",
         "hotwired/turbo-laravel": "^1.12",
         "intervention/image": "^2.7",
         "jolicode/jolitypo": "^1.4",
         "laminas/laminas-stdlib": "^3.18",
-        "laragear/preload": "^1.1",
+        "laravel-notification-channels/telegram": "^4.0",
         "laravel-notification-channels/webpush": "^7.1",
         "laravel/framework": "^10.31",
         "laravel/sanctum": "^3.2",
@@ -37,11 +38,11 @@
         "overtrue/laravel-like": "^5.2",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-backup": "^8.6",
+        "spatie/once": "^3.1",
         "symfony/dom-crawler": "^6.3",
         "symfony/yaml": "^6.3",
         "twbs/bootstrap-icons": "^1.11",
-        "watson/active": "^7.0",
-        "esplora/spire": "0.0.1"
+        "watson/active": "^7.0"
     },
     "require-dev": {
         "deployer/deployer": "^7.3",
