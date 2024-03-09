@@ -40,7 +40,7 @@
                                 <p class="fs-5 fw-bold mb-0 lead lh-1">Опыт не важен</p>
                             </div>
 
-                            <p class="mb-0">Чтобы вы могли включить их в свое портфолио и показать потенциальным
+                            <p class="mb-0">Добавьте в свое портфолио и покажите
                                             работодателям в качестве примеров работ.
                             </p>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative">
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <img src="{{asset('img/ui/challenges/kodica2.svg')}}" width="50px">
-                                <p class="fs-5 fw-bold mb-0 lead lh-1">Стать лучше</p>
+                                <p class="fs-5 fw-bold mb-0 lead lh-1">Станьте лучше</p>
                             </div>
 
 
@@ -73,7 +73,7 @@
 
                         <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative mt-5">
                             <div class="d-flex align-items-center gap-3 mb-3">
-                                <img src="{{asset('img/ui/challenges/kodica2.svg')}}" width="50px">
+                                <img src="{{asset('img/ui/challenges/kodica4.svg')}}" width="50px">
                                 <p class="fs-5 fw-bold mb-0 lead lh-1">Соревнуйтесь с коллегами</p>
                             </div>
 
@@ -112,34 +112,33 @@
             <div class="row gx-5 gy-4 gy-md-5 row-cols-1 row-cols-lg-3 text-balance">
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">1</p>
-                    <h3 class="fs-2 fw-bolder">Подай заявку</h3>
+                    <h3 class="fs-2 fw-bolder">Регистрация</h3>
                     <hr class="w-25 text-primary">
-                    <p>Создайте учетную запись на сайте. Добавьте ссылку на GitHub репозиторий, который вы
-                       будете использовать в одиночку или совместно для разработки решения задачи.</p>
+                    <p>Добавьте репозиторий, который вы
+                       будете использовать в одиночку или совместно.</p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">2</p>
-                    <h3 class="fs-2 fw-bolder">Дождись задания</h3>
+                    <h3 class="fs-2 fw-bolder">Задача</h3>
                     <hr class="w-25 text-primary">
                     <p>Дождитесь появления задачи. Она будет доступна на странице в указанный день.</p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">3</p>
-                    <h3 class="fs-2 fw-bolder">Приступай к решению!</h3>
+                    <h3 class="fs-2 fw-bolder">Решение</h3>
                     <hr class="w-25 text-primary">
-                    <p>Начните веселиться. Примените свои программистские навыки для создания вашего уникального
-                       решения.</p>
+                    <p>Начните веселиться. Примените свои навыки для создания вашего уникального решения.</p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">4</p>
-                    <h3 class="fs-2 fw-bolder">Оставайтесь на связи</h3>
+                    <h3 class="fs-2 fw-bolder">Рецензия</h3>
                     <hr class="w-25 text-primary">
                     <p>Получите обратную связь от других участников или посмотрите их решения. Используйте ее для
                        улучшения своих навыков и решения задач в будущем.</p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">5</p>
-                    <h3 class="fs-2 fw-bolder">Стань лучше!</h3>
+                    <h3 class="fs-2 fw-bolder">Признание!</h3>
                     <hr class="w-25 text-primary">
                     <p>Получите признание за вашу работу и достижения в Кодицы. Лучшие решения могут быть награждены
                        призами или поощрениями.</p>
@@ -169,7 +168,7 @@
                                 Вы участвуете
                             </a>
                         @else
-                            <span class="text-decoration-none d-block text-center my-auto disabled">
+                            <span class="text-decoration-none d-block text-center my-auto disabled opacity-75">
                                 <span class="d-block mb-3">
                                     <x-icon path="i.sun" width="3rem" height="3rem"></x-icon>
                                 </span>

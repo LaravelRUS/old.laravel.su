@@ -74,21 +74,8 @@
                         @endforeach
                     </ul>
 
-                    @if(random_int(0,1))
-                        <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block" id="banner" data-te>
-                            <img src="/img/ui/pastbin.svg" alt="pastbin" class="w-auto mb-4" height="100">
-                            <h6 class="mb-2">Делитесь вашим кодом в чате!</h6>
-                            {{-- <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6> --}}
-                            <a class="btn w-100 btn-sm btn-primary" href="{{ route('pastebin') }}">Поделиться</a>
-                        </div>
-                    @else
-                        <div class="bg-body-secondary rounded-3 py-5 px-4 text-center mt-auto d-none d-md-block" id="banner">
-                            <img src="/img/ui/popular-fire.svg" alt="pastbin" class="w-auto mb-4" height="100">
-                            <h6 class="mb-2">Интересные советы и истории</h6>
-                            {{-- <h6>Посмотрите видео-уроки о том как сделать крутое приложение!</h6> --}}
-                            <a class="btn w-100 btn-sm btn-primary" href="{{ route('feed') }}">Трибуна</a>
-                        </div>
-                    @endif
+                    <x-docs.banner />
+
                 </div>
             </div>
             <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-7 col-xxl-6 order-md-1 order-first">

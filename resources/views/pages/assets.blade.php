@@ -19,15 +19,12 @@
                 <div class="col-xxl-8 mx-auto">
                     <main data-controller="prism">
 
-
                         <h2>Наше сообщество - Laravel Russian Community</h2>
-
-
 
                         <p>При упоминании, рекомендуется использовать один из следующих форматов:</p>
 
                         <div class="bg-body p-xl-5 p-4 rounded mb-3">
-                            <div class="row">
+                            <div class="row row g-2">
 
                             <div class="col-md-6 d-flex flex-column h-100">
                                 <ul class="list-unstyled">
@@ -53,11 +50,13 @@
                                                       включая русскоязычных участников из России, Беларуси, Украины и других стран</p>
 
                         <blockquote class="docs-blockquote-note">
+                            <div>
                             <p>
                                 Использование данных неправильных вариаций может создать неверное представление о нашем
                                 сообществе, подразумевая, что мы ограничены только участниками из России, что не соответствует
                                 действительности.
                             </p>
+                            </div>
                         </blockquote>
 
 
@@ -148,11 +147,13 @@
                         </div>
 
                         <blockquote class="docs-blockquote-note">
+                            <div>
                             <p>
                                 Если вы планируете использовать логотип Laravel в коммерческих целях или в любом контексте,
                                 который может быть считан как нарушение авторских прав, мы настоятельно рекомендуем получить
                                 разрешение у владельца торгового знака, а не фанатского сообщества.
                             </p>
+                            </div>
                         </blockquote>
 
                         <h2>Наше наследие</h2>
@@ -169,17 +170,17 @@
 
                         <div class="row">
                             <div class="col">
-                                <a href="/img/legend/human.png" download
+                                <a href="/img/assets/legends/human.png" download
                                    class="bg-black p-5 rounded d-block">
-                                    <img src="/img/legend/human.png" height="150">
+                                    <img src="/img/assets/legends/human.png" height="150">
                                 </a>
                             </div>
 
 
                             <div class="col">
-                                <a href="/img/legend/human.png" download
+                                <a href="/img/assets/legends/human.png" download
                                    class="bg-white p-5 rounded d-block">
-                                    <img src="/img/legend/human.png" height="150">
+                                    <img src="/img/assets/legends/human.png" height="150">
                                 </a>
                             </div>
                         </div>
