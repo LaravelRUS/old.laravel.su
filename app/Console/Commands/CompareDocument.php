@@ -45,7 +45,7 @@ class CompareDocument extends Command
                 $docs->update();
             } catch (\Exception $exception) {
                 // Log a warning if an error occurs during update
-                $this->warn("Failed to update document: {$exception->getMessage()}");
+                $this->warn("Failed to update document: {$exception->getMessage()} {$exception->getFile()} {$exception->getLine()}");
             }
         });
     }

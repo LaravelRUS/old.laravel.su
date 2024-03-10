@@ -26,7 +26,7 @@ class MeetController extends Controller
         $past = Meet::approved()
             ->whereDate('start_date', '<', now())
             ->orderBy('start_date', 'desc')
-            ->simplePaginate(5);
+            ->simplePaginate(6);
 
         return view('meet.index', [
             'most'   => $most,

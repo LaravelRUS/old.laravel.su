@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAuthor;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,17 +10,7 @@ use Orchid\Metrics\Chartable;
 
 class IdeaKey extends Model
 {
-    use Chartable, HasFactory, HasUuids;
-
-    /**
-     * Get the user associated with the idea key.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    use Chartable, HasFactory, HasUuids, HasAuthor;
 
     /**
      * Get the idea request associated with the idea key.

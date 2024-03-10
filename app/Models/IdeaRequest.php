@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAuthor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
@@ -10,7 +11,7 @@ use Orchid\Screen\AsSource;
 
 class IdeaRequest extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory;
+    use AsSource, Chartable, Filterable, HasFactory, HasAuthor;
 
     /**
      * The attributes that are mass assignable.
@@ -25,16 +26,6 @@ class IdeaRequest extends Model
         'email',
         'message',
     ];
-
-    /**
-     * Get the user associated with the idea request.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     /**
      * Get the idea key associated with the idea request.

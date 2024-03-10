@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\PostTypeEnum;
 use App\Casts\StatusEnum;
+use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Concerns\Taggable;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,7 +30,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
  */
 class Post extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
+    use AsSource, Chartable, Filterable, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable, HasAuthor;
 
     /**
      * @var string[]
@@ -102,24 +103,6 @@ class Post extends Model
                 report($e);
             }
         });
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Author relationship.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function author()
-    {
-        return $this->user();
     }
 
     /**

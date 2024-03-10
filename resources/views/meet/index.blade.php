@@ -86,19 +86,18 @@
                 @endif
             </div>
         </x-container>
+
+
+        <x-call-to-action link="{{ route('meets.create') }}" text="Опубликовать мероприятие">
+            <x-slot:title>Устраиваете встречу?</x-slot>
+
+            <x-slot:description>
+                Просто заполните форму с деталями: название, дата и время проведения, место, темы и другие подробности. Мы
+                опубликуем информацию на странице конференций, чтобы все могли узнать о вашем мероприятии.
+            </x-slot>
+
+        </x-call-to-action>
     @endif
-
-
-    <x-call-to-action link="{{ route('meets.create') }}" text="Опубликовать мероприятие">
-        <x-slot:title>Устраиваете встречу?</x-slot>
-
-        <x-slot:description>
-            Просто заполните форму с деталями: название, дата и время проведения, место, темы и другие подробности. Мы
-            опубликуем информацию на странице конференций, чтобы все могли узнать о вашем мероприятии.
-        </x-slot>
-
-    </x-call-to-action>
-
 
     <x-container>
         <div class="row g-4 justify-content-center align-items-start  position-relative mb-5">
@@ -125,11 +124,13 @@
             </div>
             <div class="col-xl-8">
 
-                @foreach($past as $meet)
-                    <div class="col">
-                        @include('particles.meet', ['meet' => $meet, 'loop' => $loop])
-                    </div>
-                @endforeach
+                <div class="row row-cols-lg-2 g-4 mb-4">
+                    @foreach($past as $meet)
+                        <div class="col">
+                            @include('particles.meet', ['meet' => $meet, 'loop' => $loop])
+                        </div>
+                    @endforeach
+                </div>
 
                 {!! $past->links() !!}
             </div>

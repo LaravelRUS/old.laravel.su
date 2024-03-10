@@ -1,10 +1,6 @@
 <div id="@domid($meet)"
-     class="d-flex flex-column justify-content-between bg-body-tertiary p-4 p-xl-5 rounded mb-4 hotwire-frame
-     @if(isset($loop) && ($loop->iteration <= (3*intdiv($loop->count,3))))
-     h-100
-     @endif
-     ">
-    <div >
+     class="d-flex flex-column h-100 justify-content-between bg-body-tertiary p-4 p-xl-5 rounded mb-4 hotwire-frame">
+    <div>
         <div class="d-flex align-items-center justify-content-between">
             <p class="mb-0 text-primary">{{ $meet->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</p>
             @if(is_active('profile.meets'))

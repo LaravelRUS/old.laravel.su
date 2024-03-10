@@ -220,7 +220,7 @@ class ListScreen extends Screen
     {
         $package->delete();
 
-        $package->author->notify(new SimpleMessageNotification("Пакет '".$package->name."' отклонён."));
+        $package->author->notify(new SimpleMessageNotification("Пакет '".$package->packagist_name."' отклонён."));
 
         Toast::info('Пакет удален');
     }

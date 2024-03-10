@@ -19,7 +19,7 @@
    <x-container>
        <div class="row">
            <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
-               <div class="d-flex flex-md-row flex-column px-4 px-xl-5 py-3 bg-body-secondary rounded position-relative align-items-md-center">
+               <div class="d-flex flex-md-row flex-column px-4 px-xl-5 py-3 py-xl-4 bg-body-secondary rounded position-relative align-items-md-center">
                    <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <x-icon path="i.tickets" width="2em" height="2em" class="d-none d-md-inline-block"/>
 

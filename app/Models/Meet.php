@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Approvable;
+use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +16,7 @@ use Orchid\Screen\AsSource;
 
 class Meet extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable;
+    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable, Approvable, HasAuthor;
 
     /**
      * The attributes that are mass assignable.
@@ -73,27 +75,4 @@ class Meet extends Model
         'online',
         'approved',
     ];
-
-    /**
-     * Get the author of the meet.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * Scope a query to only include approved meets.
-     *
-     * @param Builder $query
-     * @param bool    $approved
-     *
-     * @return Builder
-     */
-    public function scopeApproved(Builder $query, bool $approved = true): Builder
-    {
-        return $query->where('approved', $approved);
-    }
 }

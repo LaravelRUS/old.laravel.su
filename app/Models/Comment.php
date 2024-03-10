@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Approvable;
+use App\Models\Concerns\HasAuthor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +16,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 
 class Comment extends Model
 {
-    use Chartable, HasFactory, Likeable, SoftDeletes;
+    use Chartable, HasFactory, Likeable, SoftDeletes, Approvable, HasAuthor;
 
     /**
      * The attributes that are mass assignable.
@@ -68,16 +70,6 @@ class Comment extends Model
     }
 
     /**
-     * Verify if the current comment is approved.
-     *
-     * @return bool
-     */
-    public function isApproved(): bool
-    {
-        return $this->attributes['approved'] === 1 || $this->attributes['approved'] === true;
-    }
-
-    /**
      * Verify if the current comment is a reply from another comment.
      *
      * @return bool
@@ -95,28 +87,6 @@ class Comment extends Model
     public function hasReplies(): bool
     {
         return count($this->replies) > 0;
-    }
-
-    /**
-     * Get the author of the comment.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * Where clause for only approved comments.
-     *
-     * @param Builder $query
-     *
-     * @return Builder
-     */
-    public function scopeApproved(Builder $query): Builder
-    {
-        return $query->where('approved', 1);
     }
 
     /**

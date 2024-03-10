@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Casts\ScheduleEnum;
+use App\Models\Concerns\Approvable;
+use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Presenters\PositionPresenter;
 use Illuminate\Database\Eloquent\Builder;
@@ -17,7 +19,7 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable;
+    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable, Approvable, HasAuthor;
 
     /**
      * The attributes that are mass assignable.
@@ -105,39 +107,6 @@ class Position extends Model
 
             $position->slug = $slug;
         });
-    }
-
-    /**
-     * Get the user that owns the position.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the author of the position.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function author(): BelongsTo
-    {
-        return $this->user();
-    }
-
-    /**
-     * Scope a query to only include approved positions.
-     *
-     * @param Builder $query
-     * @param bool    $approved
-     *
-     * @return Builder
-     */
-    public function scopeApproved(Builder $query, bool $approved = true): Builder
-    {
-        return $query->where('approved', $approved);
     }
 
     /**
