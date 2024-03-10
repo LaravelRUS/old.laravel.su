@@ -5,10 +5,8 @@ namespace App\Models;
 use App\Models\Concerns\Approvable;
 use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Metrics\Chartable;
@@ -16,7 +14,7 @@ use Orchid\Screen\AsSource;
 
 class Meet extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable, Approvable, HasAuthor;
+    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable;
 
     /**
      * The attributes that are mass assignable.

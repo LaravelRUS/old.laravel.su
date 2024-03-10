@@ -21,28 +21,28 @@ class Banner extends Component
             [
                 'title' => 'Поделитесь своим кодом и идеями!',
                 'image' => asset('/img/ui/doc-banners/pastebin.svg'),
-                'href' => route('pastebin'),
+                'href'  => route('pastebin'),
             ],
             [
                 'title' => 'Поддержите нас - каждый вклад важен!',
                 'image' => asset('/img/ui/doc-banners/donate.svg'),
-                'href' => route('donate'),
+                'href'  => route('donate'),
             ],
             [
                 'title' => 'Будьте в курсе последних новостей!',
                 'image' => asset('/img/ui/doc-banners/feed.svg'),
-                'href' => route('feed'),
+                'href'  => route('feed'),
             ],
             [
                 'title' => 'Ищете работу? Мы поможем!',
                 'image' => asset('/img/ui/doc-banners/jobs.svg'),
-                'href' => route('jobs'),
+                'href'  => route('jobs'),
             ],
             [
                 'title' => 'Примите наш вызов и улучшите свои навыки!',
                 'image' => asset('/img/ui/doc-banners/challenges.svg'),
-                'href' => route('challenges'),
-            ]
+                'href'  => route('challenges'),
+            ],
         ])->random();
 
         $this->title = $banner['title'];

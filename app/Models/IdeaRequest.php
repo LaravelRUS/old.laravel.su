@@ -11,7 +11,7 @@ use Orchid\Screen\AsSource;
 
 class IdeaRequest extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, HasAuthor;
+    use AsSource, Chartable, Filterable, HasAuthor, HasFactory;
 
     /**
      * The attributes that are mass assignable.

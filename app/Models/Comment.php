@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Concerns\Approvable;
 use App\Models\Concerns\HasAuthor;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +15,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 
 class Comment extends Model
 {
-    use Chartable, HasFactory, Likeable, SoftDeletes, Approvable, HasAuthor;
+    use Approvable, Chartable, HasAuthor, HasFactory, Likeable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

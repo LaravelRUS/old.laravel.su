@@ -30,7 +30,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
  */
 class Post extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable, HasAuthor;
+    use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
 
     /**
      * @var string[]
@@ -88,7 +88,7 @@ class Post extends Model
             $post->slug = $slug;
         });
 
-        static::created(function (Post $post){
+        static::created(function (Post $post) {
             try {
                 if (config('app.env') == 'local') {
                     return;

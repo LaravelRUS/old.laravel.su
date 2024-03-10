@@ -12,7 +12,7 @@ use Orchid\Screen\AsSource;
 
 class CodeSnippet extends Model
 {
-    use AsSource, Chartable, HasFactory, HasUuids, Prunable, HasAuthor;
+    use AsSource, Chartable, HasAuthor, HasFactory, HasUuids, Prunable;
 
     /**
      * The attributes that are mass assignable.

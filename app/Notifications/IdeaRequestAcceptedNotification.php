@@ -41,7 +41,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
         return [
             SiteChannel::class,
             WebPushChannel::class,
-            'mail'
+            'mail',
         ];
     }
 
@@ -86,9 +86,9 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
     {
         return (new MailMessage)
             ->subject('Бесплатный ключ Laravel IDEA доступен')
-            ->line("Мы ценим вашу активность и стремимся делать ваше пребывание максимально полезным и интересным. Чтобы узнать, что новенького, перейдите по ссылке ниже:")
+            ->line('Мы ценим вашу активность и стремимся делать ваше пребывание максимально полезным и интересным. Чтобы узнать, что новенького, перейдите по ссылке ниже:')
             ->action('Посмотреть уведомления', route('idea.key', $this->ideaKey))
-            ->line("Внимательно слушаем ваши идеи и предложения, поэтому не стесняйтесь делиться ими с нами.");
+            ->line('Внимательно слушаем ваши идеи и предложения, поэтому не стесняйтесь делиться ими с нами.');
     }
 
     /**

@@ -7,10 +7,8 @@ use App\Models\Concerns\Approvable;
 use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Presenters\PositionPresenter;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -19,7 +17,7 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable, Approvable, HasAuthor;
+    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable;
 
     /**
      * The attributes that are mass assignable.

@@ -64,7 +64,7 @@ class Docs
      */
     public function __construct(string $version, string $file)
     {
-        $this->file = $file . '.md';
+        $this->file = $file.'.md';
         $this->version = $version;
         $this->path = "/$version/$this->file";
     }
@@ -90,21 +90,21 @@ class Docs
     /**
      * @param string|null $key
      *
-     * @return array
+     * @return mixed
      */
-    public function variables(string $key = null): array
+    public function variables(?string $key = null): mixed
     {
         return once(function () use ($key) {
-
-            $variables = Str::of($this->raw())->betweenFirst('---', '---');
+            $variables = [];
+            $yaml = Str::of($this->raw())->betweenFirst('---', '---');
 
             try {
-                $this->variables = Yaml::parse($variables);
+                $variables = Yaml::parse($yaml);
             } catch (\Throwable) {
 
             }
 
-            return Arr::get($this->variables, $key);
+            return Arr::get($variables, $key);
         });
     }
 
@@ -114,7 +114,7 @@ class Docs
     public function content(): ?string
     {
         return once(function () {
-           return Str::of($this->raw())
+            return Str::of($this->raw())
                 ->replace('{{version}}', $this->version)
                 ->after('---')
                 ->after('---')
@@ -127,13 +127,13 @@ class Docs
      *
      * @param string $view The view name.
      *
-     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      *
+     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
      */
     public function view(string $view)
     {
-        $data = Cache::remember('doc-file-view-data' . $this->path, now()->addMinutes(30), fn() => collect()->merge($this->variables())->merge([
+        $data = Cache::remember('doc-file-view-data'.$this->path, now()->addMinutes(30), fn () => collect()->merge($this->variables())->merge([
             'docs'    => $this,
             'content' => $this->content(),
             'edit'    => $this->getEditUrl(),
@@ -149,8 +149,8 @@ class Docs
      */
     public function getMenu(): array
     {
-        return Cache::remember('doc-navigation-' . $this->version, now()->addHours(2), function () {
-            $page = Storage::disk('docs')->get($this->version . '/documentation.md');
+        return Cache::remember('doc-navigation-'.$this->version, now()->addHours(2), function () {
+            $page = Storage::disk('docs')->get($this->version.'/documentation.md');
 
             $html = Str::of($page)
                 ->after('---')
@@ -195,7 +195,7 @@ class Docs
         $menu = [];
 
         $crawler->filter('ul > li')->each(function (Crawler $node) use (&$menu) {
-            $subList = $node->filter('ul > li')->each(fn(Crawler $subNode) => [
+            $subList = $node->filter('ul > li')->each(fn (Crawler $subNode) => [
                 'title' => $subNode->filter('a')->text(),
                 'href'  => url($subNode->filter('a')->attr('href')),
             ]);
@@ -225,10 +225,10 @@ class Docs
         $files = Storage::disk('docs')->allFiles($version);
 
         return collect($files)
-            ->filter(fn(string $path) => Str::of($path)->endsWith('.md'))
-            ->filter(fn(string $path) => !Str::of($path)->endsWith(['readme.md', 'license.md']))
-            ->map(fn(string $path) => Str::of($path)->after($version . '/')->before('.md'))
-            ->map(fn(string $path) => new static($version, $path));
+            ->filter(fn (string $path) => Str::of($path)->endsWith('.md'))
+            ->filter(fn (string $path) => ! Str::of($path)->endsWith(['readme.md', 'license.md']))
+            ->map(fn (string $path) => Str::of($path)->after($version.'/')->before('.md'))
+            ->map(fn (string $path) => new static($version, $path));
     }
 
     /**
@@ -238,18 +238,18 @@ class Docs
      */
     public function fetchBehind(): int
     {
-        throw_unless($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
+        throw_if($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
 
         $response = $this->fetchGitHubDiff();
 
         return $response
-            ->takeUntil(fn($commit) => $commit['sha'] === $this->variables('git'))
+            ->takeUntil(fn ($commit) => $commit['sha'] === $this->variables('git'))
             ->count();
     }
 
     public function fetchLastCommit(): string
     {
-        throw_unless($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
+        throw_if($this->variables('git') === null, new Exception("The document {$this->path} is missing a Git hash"));
 
         $response = $this->fetchGitHubDiff();
 
@@ -267,7 +267,7 @@ class Docs
 
         return Cache::remember("docs-diff-$this->version-$this->file-$hash",
             now()->addHours(2),
-            fn() => Http::withBasicAuth('token', config('services.github.token'))
+            fn () => Http::withBasicAuth('token', config('services.github.token'))
                 ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}")
                 ->collect($key)
         );
@@ -348,7 +348,6 @@ class Docs
      */
     public function update()
     {
-        $this->content();
 
         $this->getModel()->fill([
             'behind'         => $this->fetchBehind(),
@@ -356,7 +355,7 @@ class Docs
             'current_commit' => $this->variables('git'),
         ])->save();
 
-        $this->updateSections();
+        // $this->updateSections();
     }
 
     /**
@@ -403,7 +402,7 @@ class Docs
 
     public function updateSections()
     {
-        //DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
-        //DocumentationSection::insert($this->getSections()->toArray());
+        // DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
+        // DocumentationSection::insert($this->getSections()->toArray());
     }
 }
