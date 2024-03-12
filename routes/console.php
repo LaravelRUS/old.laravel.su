@@ -1,12 +1,12 @@
 <?php
 
 use App\Docs;
+use App\Jobs\UpdateStatusPackages;
+use App\Models\Package;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Package;
-use App\Jobs\UpdateStatusPackages;
 
 /*
 |--------------------------------------------------------------------------

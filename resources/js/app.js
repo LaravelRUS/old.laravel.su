@@ -1,7 +1,7 @@
-import * as Turbo            from '@hotwired/turbo';
-import {Application}         from '@hotwired/stimulus';
-import {registerControllers} from 'stimulus-vite-helpers';
-import TextareaAutogrow      from 'stimulus-textarea-autogrow';
+import * as Turbo from '@hotwired/turbo';
+import { Application } from '@hotwired/stimulus';
+import { registerControllers } from 'stimulus-vite-helpers';
+import TextareaAutogrow from 'stimulus-textarea-autogrow';
 import 'bootstrap';
 
 window.Turbo = Turbo;

@@ -19,7 +19,10 @@ export default class extends Controller {
                 show: 500,
                 hide: 100,
             },
-            title: this.titleValue || this.element.getAttribute('title') || this.element.getAttribute('data-bs-original-title'),
+            title:
+                this.titleValue ||
+                this.element.getAttribute('title') ||
+                this.element.getAttribute('data-bs-original-title'),
         });
     }
 

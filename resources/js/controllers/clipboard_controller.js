@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import {copyText} from "../helpers/clipboard.js"
+import { copyText } from '../helpers/clipboard.js';
 export default class extends Controller {
     static targets = ['source'];
 

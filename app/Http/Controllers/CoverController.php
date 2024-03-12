@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\GD\Driver;
+use Intervention\Image\ImageManager;
 use Intervention\Image\Typography\FontFactory;
 
 class CoverController extends Controller
@@ -34,13 +34,13 @@ class CoverController extends Controller
         $image = $manager->read(public_path('/img/share/socials.png'));
 
         $image
-            ->text($text, $start_x, $start_y, fn(FontFactory $font) => $font->filename(public_path('fonts/cover.ttf'))
-            ->size(90)
-            ->color('#222222')
-            ->align('left')
-            ->wrap(1100)
-            ->lineHeight(1.6)
-            ->valign('center'));
+            ->text($text, $start_x, $start_y, fn (FontFactory $font) => $font->filename(public_path('fonts/cover.ttf'))
+                ->size(90)
+                ->color('#222222')
+                ->align('left')
+                ->wrap(1100)
+                ->lineHeight(1.6)
+                ->valign('center'));
 
         $image->scaleDown($width, $height);
 

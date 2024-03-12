@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import {dragon}       from "../helpers/dragon.js";
+import { dragon } from '../helpers/dragon.js';
 
 export default class extends Controller {
     /**
@@ -9,7 +9,9 @@ export default class extends Controller {
     greet(event) {
         event.target.classList.add('disabled');
 
-        let message = dragon +`
+        let message =
+            dragon +
+            `
 
 Вы прерываете мой покой!
 

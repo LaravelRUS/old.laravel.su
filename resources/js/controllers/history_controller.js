@@ -1,12 +1,12 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static values = {
         url: {
             type: String,
-            default: '/'
+            default: '/',
         },
-    }
+    };
 
     back() {
         if (history.length > 2) {
