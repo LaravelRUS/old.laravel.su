@@ -57,6 +57,7 @@ jobs:
           timedatectl
       - name: Prepare the application
         run: |
+          touch database/database.sqlite
           php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate
       - name: Clear Config
