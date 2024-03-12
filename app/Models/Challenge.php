@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\LogsActivityFillable;
-use App\Presenters\ChallengePresenter;
+use App\Models\Presenters\ChallengePresenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

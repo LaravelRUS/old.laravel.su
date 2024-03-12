@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Casts\PackageTypeEnum;
-use App\Casts\SortEnum;
+use App\Models\Enums\PackageTypeEnum;
+use App\Models\Enums\SortEnum;
 use App\Models\Package;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;

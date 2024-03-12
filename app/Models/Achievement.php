@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Presenters\AchievementPresenter;
 use App\Notifications\AchievementNotification;
-use App\Presenters\AchievementPresenter;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -50,7 +50,7 @@ class Achievement extends Model
     /**
      * Get the presenter instance for the achievement.
      *
-     * @return \App\Presenters\AchievementPresenter
+     * @return \App\Models\Presenters\AchievementPresenter
      */
     public function presenter(): AchievementPresenter
     {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Casts\PostTypeEnum;
+use App\Models\Enums\PostTypeEnum;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
@@ -38,9 +38,9 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param \App\Models\User        $owner
-     * @param \App\Casts\PostTypeEnum $type
-     * @param \App\Models\User|null   $user
+     * @param \App\Models\User               $owner
+     * @param \App\Models\Enums\PostTypeEnum $type
+     * @param \App\Models\User|null          $user
      *
      * @return \Illuminate\Pagination\AbstractCursorPaginator|\Illuminate\Pagination\AbstractPaginator
      */

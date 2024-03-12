@@ -6,11 +6,11 @@ use App\View\Modifications\BladeComponentModifier;
 use App\View\Modifications\BlockquoteColorModifier;
 use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\ResponsiveTableModifier;
-use App\View\Modifications\TestModifier;
 use App\View\Modifications\TypografModifier;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class Content extends Component implements Htmlable
@@ -33,11 +33,9 @@ class Content extends Component implements Htmlable
     /**
      * Get the view / contents that represent the component.
      *
-     * @throws \DOMException
-     *
-     * @return \App\View\Components\DocsContent
+     * @return \App\View\Components\Posts\Content
      */
-    public function render()
+    public function render(): self
     {
         return $this;
     }
@@ -48,8 +46,7 @@ class Content extends Component implements Htmlable
     public function toHtml(): string
     {
         return Cache::remember('post-content-'.sha1($this->content), now()->addWeek(), function () {
-            $content = \Illuminate\Support\Str::of($this->content)
-                // ->stripTags(['x-github', 'x-youtube', 'code', 'pre'])
+            $content = Str::of($this->content)
                 ->markdown([
                     'allow_unsafe_links' => false,
                     'html_input'         => 'escape',
@@ -60,7 +57,6 @@ class Content extends Component implements Htmlable
             return app(Pipeline::class)
                 ->send($content)
                 ->through([
-                    TestModifier::class,
                     BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
                     BladeComponentModifier::class, // Применяет компоненты blade

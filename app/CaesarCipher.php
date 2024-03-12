@@ -4,17 +4,38 @@ namespace App;
 
 class CaesarCipher
 {
+    const ALPHABET_EN = 'abcdefghijklmnopqrstuvwxyz';
+    const ALPHABET_RU = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+
     private string $alphabet;
 
     /**
-     * @param $shift
+     * @param int         $shift
+     * @param string|null $alphabet
      */
-    public function __construct(private int $shift, ?string $alphabet = null)
+    public function __construct(private int $shift, ?string $alphabet = self::ALPHABET_RU)
     {
-        $this->alphabet = $alphabet === 'en' ? 'abcdefghijklmnopqrstuvwxyz' : 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+        $this->alphabet = $alphabet;
     }
 
-    public function encrypt($text)
+    /**
+     * @param string|null $alphabet
+     *
+     * @return $this
+     */
+    public function alphabet(?string $alphabet = self::ALPHABET_RU): static
+    {
+        $this->alphabet = $alphabet;
+
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    public function encrypt(string $text)
     {
         $encryptedText = '';
 
@@ -45,7 +66,12 @@ class CaesarCipher
         return $encryptedText;
     }
 
-    public function decrypt($encryptedText)
+    /**
+     * @param string $encryptedText
+     *
+     * @return string
+     */
+    public function decrypt(string $encryptedText)
     {
         $decryptedText = '';
         $shift = mb_strlen($this->alphabet) - $this->shift;

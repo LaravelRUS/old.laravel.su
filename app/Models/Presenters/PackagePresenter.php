@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Models\Presenters;
 
 use Illuminate\Support\Number;
 use Orchid\Support\Presenter;

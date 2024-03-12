@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\UserPresenter;
+use App\Models\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

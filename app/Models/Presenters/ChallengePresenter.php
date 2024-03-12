@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Presenters;
+namespace App\Models\Presenters;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
@@ -76,8 +76,6 @@ class ChallengePresenter extends Presenter
             ->replaceMatches('/\d+/', function ($match) {
                 return "<span class='text-primary'>{$match[0]}</span>";
             });
-
-        // return $this->entity->start_at?->diffInDays(now());
     }
 
     /**

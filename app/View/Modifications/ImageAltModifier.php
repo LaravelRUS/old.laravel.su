@@ -23,7 +23,8 @@ class ImageAltModifier extends HTMLModifier
                 $alt = $elm->attr('alt');
 
                 $content = Str::of($content)
-                    ->replace($imgTag, "<picture alt='$alt'>$imgTag</picture>");
+                    ->replace($imgTag, sprintf('<picture alt="%s">%s</picture>', $alt, $imgTag))
+                    ->toString();
             });
 
         return $next($content);

@@ -2,8 +2,8 @@
 
 namespace App\Orchid\Screens\Package;
 
-use App\Casts\PackageTypeEnum;
 use App\Jobs\UpdateStatusPackages;
+use App\Models\Enums\PackageTypeEnum;
 use App\Models\Package;
 use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\Request;

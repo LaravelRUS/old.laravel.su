@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Casts\PackageTypeEnum;
 use App\Models\Concerns\Approvable;
 use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
-use App\Presenters\PackagePresenter;
+use App\Models\Enums\PackageTypeEnum;
+use App\Models\Presenters\PackagePresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
@@ -81,7 +81,7 @@ class Package extends Model
     ];
 
     /**
-     * @return \App\Presenters\PackagePresenter
+     * @return \App\Models\Presenters\PackagePresenter
      */
     public function presenter()
     {

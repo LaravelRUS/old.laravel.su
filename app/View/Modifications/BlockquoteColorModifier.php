@@ -42,7 +42,8 @@ class BlockquoteColorModifier extends HTMLModifier
                     ->filter(fn (string $class, string $fragment) => Str::of($tag)->contains($fragment))
                     ->each(function (string $class, string $fragment) use ($tag, &$html) {
                         $html = Str::of($tag)
-                            ->replace('<blockquote>', '<blockquote class="'.$class.'">')
+                            ->replace('<blockquote>', '<blockquote class="'.$class.'"><div>')
+                            ->replace('</blockquote>', '</div></blockquote>')
                             ->replace($fragment, '');
                     });
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Presenters;
+namespace App\Models\Presenters;
 
 use Illuminate\Support\Str;
 use Laravel\Scout\Builder;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Position;
 
-use App\Casts\ScheduleEnum;
+use App\Models\Enums\ScheduleEnum;
 use App\Models\Position;
 use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\RedirectResponse;

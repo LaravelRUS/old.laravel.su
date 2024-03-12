@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Casts\ScheduleEnum;
 use App\Models\Concerns\Approvable;
 use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
-use App\Presenters\PositionPresenter;
+use App\Models\Enums\ScheduleEnum;
+use App\Models\Presenters\PositionPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -110,7 +110,7 @@ class Position extends Model
     /**
      * Get the presenter for the model.
      *
-     * @return \App\Presenters\PositionPresenter
+     * @return \App\Models\Presenters\PositionPresenter
      */
     public function presenter(): PositionPresenter
     {

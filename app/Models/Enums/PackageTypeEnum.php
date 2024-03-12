@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Casts;
-
-use App\Services\ColorText;
+namespace App\Models\Enums;
 
 enum PackageTypeEnum: string
 {
@@ -48,7 +46,7 @@ enum PackageTypeEnum: string
      */
     public function colorBg(): string
     {
-        return ColorText::Hex($this->text(), '21'); // подобрать подходящее значение
+        return $this->hex($this->text(), '21'); // подобрать подходящее значение
     }
 
     /**
@@ -58,7 +56,18 @@ enum PackageTypeEnum: string
      */
     public function colorText(): string
     {
-        return ColorText::Hex($this->text());
+        return $this->hex($this->text());
+    }
+
+    /**
+     * @param string $text
+     * @param string $opacity
+     *
+     * @return string
+     */
+    private function hex(string $text, string $opacity = ''): string
+    {
+        return '#'.substr(hash('crc32', $text, false), 0, 6).$opacity;
     }
 
     /**

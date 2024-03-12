@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Casts\PostTypeEnum;
-use App\Casts\StatusEnum;
 use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Concerns\Taggable;
+use App\Models\Enums\PostTypeEnum;
+use App\Models\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -10,6 +10,9 @@ use Orchid\Support\Facades\Toast;
 
 class MeetController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $most = Meet::approved()

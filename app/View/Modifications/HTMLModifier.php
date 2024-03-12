@@ -4,7 +4,7 @@ namespace App\View\Modifications;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class HTMLModifier
+abstract class HTMLModifier
 {
     /**
      * @param $content

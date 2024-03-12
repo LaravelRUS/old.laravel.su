@@ -73,7 +73,6 @@ class AchievementFilter extends Filter
      */
     public function display(): array
     {
-
         return [
             Select::make('achievement')
                 ->options($this->getOptions()->all())

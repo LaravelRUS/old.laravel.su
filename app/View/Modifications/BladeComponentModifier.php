@@ -4,7 +4,6 @@ namespace App\View\Modifications;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
-use Symfony\Component\DomCrawler\Crawler;
 
 class BladeComponentModifier extends HTMLModifier
 {
@@ -19,19 +18,6 @@ class BladeComponentModifier extends HTMLModifier
         foreach (['github', 'youtube', 'link', 'hidden'] as $tag) {
             $content = $this->replaceToBladeComponent($content, $tag);
         }
-
-        /*
-
-                $this->crawler($content)->filter('x-docs-banner, x-github, x-youtube')->each(function (Crawler $elm) use (&$content) {
-                    $tag = $elm->outerHtml();
-
-                    // need normalizing to close tag
-                    $content = $this->crawler($content)->filterXpath('//body')->first()->html();
-
-                    $content = Str::of($content)
-                        ->replace($tag, Blade::render($tag));
-                });
-        */
 
         return $next($content);
     }

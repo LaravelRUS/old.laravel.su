@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CaesarCipher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -18,13 +19,13 @@ class OpenQuizController extends Controller
         // Формируем строку для выполнения
         $evalWrongWay = sprintf('eval(base64_decode(%s));', var_export(base64_encode($evalWrongWayText), true));
 
-        $helpCaesarCipher = (new \App\CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
+        $helpCaesarCipher = (new CaesarCipher(11))->encrypt('Направь свой взор на начало ответа.');
 
         return response(view('pages.open', [
             'evalWrongWay'     => $evalWrongWay,
             'helpCaesarCipher' => $helpCaesarCipher,
         ]))->withHeaders([
-            'X-Goronich-Key' => (new \App\CaesarCipher(11, 'en'))->encrypt(route('quiz.goronich')),
+            'X-Goronich-Key' => (new CaesarCipher(11))->alphabet(CaesarCipher::ALPHABET_EN)->encrypt(route('quiz.goronich')),
         ]);
     }
 

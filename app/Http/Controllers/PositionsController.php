@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Casts\ScheduleEnum;
+use App\Models\Enums\ScheduleEnum;
 use App\Models\Position;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
