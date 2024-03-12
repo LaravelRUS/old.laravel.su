@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Models\Presenters\UserPresenter;
+use App\Notifications\GreetNotification;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 use Laravel\Sanctum\HasApiTokens;
 use NotificationChannels\WebPush\HasPushSubscriptions;
 use Orchid\Access\UserAccess;
@@ -86,6 +88,19 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    /**
+     * Boot the model's events.
+     *
+     * @return void
+     */
+    protected static function booted(): void
+    {
+        static::created(function (User $user) {
+            Notification::send($user, new GreetNotification());
+        });
+    }
+
 
     /**
      * Throw an exception if email already exists, create admin user.
