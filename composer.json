@@ -1,7 +1,7 @@
 {
-    "name": "laravelrus/laravel.su",
+    "name": "laravel-russia/laravel.su",
     "type": "project",
-    "description": "Laravel Russian Community",
+    "description": "Исходный код сайта русскоязычного сообщества Laravel.su",
     "authors": [
         {
             "name": "Alexandr Chernyaev",
@@ -25,7 +25,6 @@
         "hotwired/turbo-laravel": "^1.12",
         "intervention/image": "^3.4",
         "jolicode/jolitypo": "^1.4",
-        "laminas/laminas-stdlib": "^3.18",
         "laravel-notification-channels/telegram": "^4.0",
         "laravel-notification-channels/webpush": "^7.1",
         "laravel/framework": "^10.31",
