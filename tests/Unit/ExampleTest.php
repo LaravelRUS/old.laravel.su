@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Queue;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
