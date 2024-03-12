@@ -30,7 +30,10 @@ class Handler extends ExceptionHandler
         });
     }
 
-    private function notificationToTelegram($exception)
+    /**
+     * Send notification to Telegram.
+     */
+    private function notificationToTelegram($exception): void
     {
         if (config('app.env') == 'local') {
             return;
@@ -53,7 +56,7 @@ class Handler extends ExceptionHandler
                 ->line('*💪 Не сдавайтесь!*')
                 ->line('Каждая ошибка - это шанс стать лучше. Давайте использовать этот момент, чтобы улучшить наш код и стать еще сильнее. Удачи!')
                 ->send();
-        } catch (\Exception|Throwable $e) {
+        } catch (\Exception|Throwable) {
             // without recursive
         }
     }
