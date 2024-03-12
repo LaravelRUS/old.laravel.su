@@ -20,7 +20,7 @@ jobs:
       DB_USERNAME: root
       DB_PASSWORD: secret
       BROADCAST_DRIVER: log
-      CACHE_DRIVER: file
+      CACHE_DRIVER: array
       QUEUE_CONNECTION: sync
       SESSION_DRIVER: cookie
       MAIL_MAILER: array
@@ -40,7 +40,7 @@ jobs:
           coverage: pcov #optional
           tools: composer:v2
         env:
-          COMPOSER_TOKEN: ${{ secrets.TOKEN }}
+          COMPOSER_TOKEN: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
