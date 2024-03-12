@@ -31,10 +31,9 @@ class UpdateAchievementsForTranslations extends Command
     {
         $contributors = $this->loadContributors();
 
-        $users = User::whereIn('github_id', $contributors)->get();
-
-        // Reward each user for translation contribution
-        $users->each(fn (User $user) => $user->reward(Lipa::class));
+        User::whereIn('github_id', $contributors)
+            ->get()
+            ->each(fn (User $user) => $user->reward(Lipa::class));
     }
 
     /**
