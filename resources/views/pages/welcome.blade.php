@@ -4,13 +4,6 @@
 @section('content')
 
     <x-header image="/img/ivan.svg">
-
-        {{--
-            <x-slot:title>
-                Создавайте элегантные приложения с
-                <span class="text-primary">Laravel</span>
-            </x-slot>
-        --}}
             <x-slot:title>
                 Современный подход для PHP проектов с
                 <span class="text-primary">Laravel</span>
@@ -108,144 +101,11 @@
                 </div>
             </div>
         </div>
-
-
     </x-container>
 
-{{--
-    <div class="container py-5">
-
-        <div class="row g-5 justify-content-center align-items-center">
-
-            <!-- Right side START -->
-            <div class="col-xl-6 text-center text-xl-start">
-
-                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
-                    фантазией</span>
-
-                <!-- Title -->
-                <h2 class="display-5 fw-semibold mb-5">Реализовывайте потрясающие проекты.</h2>
-
-                <!-- Features START -->
-                <div class="row g-5">
-                    <!-- Item -->
-                    <div class="col-sm-6">
-                        <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                                <path
-                                    d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path
-                                    d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                        <h5 class="fs-4 mt-2  fw-semibold">Routing</h5>
-                        <p class="mb-0">Элегантная и эффективная система роутинга для реализации любых адресов в
-                                        приложении.</p>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-sm-6">
-                        <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                                <path
-                                    d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path
-                                    d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                        <h5 class="fs-4 mt-2  fw-semibold">Auth</h5>
-                        <p class="mb-0">Аутентификация и авторизация позволяет настроить любой уровень прав и
-                                        доступа.</p>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-sm-6">
-                        <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                                <path
-                                    d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                                <path
-                                    d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </div>
-                        <h5 class="fs-4 mt-2  fw-semibold">Eloquent ORM</h5>
-                        <p class="mb-0">Позволяет эффективно взаимодействовать с данными вашего приложения.</p>
-                    </div>
-                    <!-- Item -->
-                    <div class="col-sm-6">
-                        <div class="mb-4">
-                            <svg width="56" class="border border-danger" height="56" viewBox="0 0 56 56"
-                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="56" height="56" rx="6" fill="#dc35450"></rect>
-                                <path
-                                    d="M20 35.5C20 34.837 20.2634 34.2011 20.7322 33.7322C21.2011 33.2634 21.837 33 22.5 33H36"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                                <path
-                                    d="M22.5 18H36V38H22.5C21.837 38 21.2011 37.7366 20.7322 37.2678C20.2634 36.7989 20 36.163 20 35.5V20.5C20 19.837 20.2634 19.2011 20.7322 18.7322C21.2011 18.2634 21.837 18 22.5 18V18Z"
-                                    stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </div>
-                        <h5 class="fs-4 mt-2  fw-semibold">Validation</h5>
-                        <p class="mb-0">Содержит более 90 встроенных правил проверки произвольных данных.</p>
-                    </div>
-                </div>
-                <!-- Features END -->
-            </div>
-            <!-- Right side END -->
-
-            <!-- Left side START -->
-            <div class="col-lg-6">
-
-                <div class="col-6 mx-auto">
-                    <img src="/img/gusli.svg" class="img-fluid">
-                </div>
-                <div class="position-relative">
-
-                <!-- Svg decoration -->
-                <figure class="position-absolute top-0 end-0 d-none d-md-block me-5">
-                    <x-icon path="l.dots" class="text-primary opacity-2" height="400" width="400" />
-                </figure>
-
-                <pre class="rounded-3 position-relative bg-dark p-4 text-white shadow language-php" tabindex="0"><code
-                        class="language-php">Route::post('/task', function (Request $request) {
-
-     $request-&gt;validate([
-        'name' =&gt; 'required|max:255',
-     ])
-
-    $task = new Task;
-    $task-&gt;name = $request-&gt;name;
-    $task-&gt;save();
-
-    return redirect('/');
-});
-</code></pre>
-                </div>
-            </div>
-            <!-- Left side END -->
-
-        </div>
-
-    </div>
---}}
 
     <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
         <div class="container px-4 py-5 packages">
-
 
 
             <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
@@ -271,28 +131,6 @@
                 </div>
                 <!-- Left side END -->
             </div>
-
-            {{--
-            <div class="row mb-5">
-                <div class="col-12 col-md-10 col-lg-7">
-
-                    <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Пакеты сообщества</span>
-
-                    <!-- Heading -->
-                    <h2 class="display-5 fw-semibold mb-4">
-                        Великолепные дополнения
-                    </h2>
-
-                    <!-- Text -->
-                    <p class="fs-lg mb-6 mb-md-8">
-                        Стандартная поставка Laravel предлагает элегантные решения, необходимые всем современным
-                        веб-приложениям.
-                        Пришло время начать создавать потрясающие сервисы и перестать тратить время на поиск пакетов и
-                        изобретать велосипед.
-                    </p>
-                </div>
-            </div> <!-- / .row -->
-                   --}}
 
             <div class="row g-4 g-md-5">
                 <div class="col">

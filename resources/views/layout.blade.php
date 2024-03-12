@@ -31,6 +31,79 @@
                     <li><a href="{{ route('courses') }}" class="nav-link px-3 link-body-emphasis position-relative">Курсы
                             <span class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
                     </li>
+
+                    {{-- TODO: Add dropdown menu --}}
+                    {{--
+                    <li class="dropdown-menu-end">
+                        <a href="#" class="nav-link px-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown">Ресурсы</a>
+                        <div class="dropdown-menu bg-body-tertiary shadow-lg border-0 p-0">
+                            <div class="d-lg-flex p-5 gap-4">
+                                <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
+                                    <li>
+                                        <a href="{{ route('packages') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.ui" height="2em" width="2em" class="text-primary" />
+                                            <div>
+                                                <span class="d-block">Пакеты</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Великолепные дополнения сообщества</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('idea.index') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.idea1" height="2em" width="2em" />
+                                            <div>
+                                                <span class="d-block">Laravel Idea</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">
+                                                    Генерация кода для PHPStorm
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('meets') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.previous_meetings" height="2em" width="2em" class="text-primary" />
+                                            <div>
+                                                <span class="d-block">Мероприятия</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">
+                                                    Ни одна встреча не обходится без Laravel.
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
+                                    <li>
+                                        <a href="#" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.docs" height="2em" width="2em" />
+                                            <div>
+                                                <span class="d-block">Пакеты</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Великолепные дополнения сообщества</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('ecosystem') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.internet-market" height="2em" width="2em" class="text-primary"/>
+                                            <div>
+                                                <span class="d-block">Экосистема</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Без корпоративной сложности</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('pastebin') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.code" height="2em" width="2em" class="text-primary"/>
+                                            <div>
+                                                <span class="d-block">Pastebin</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Делитесь своим кодом правильно</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+    --}}
                 </ul>
 
                 <div class="nav text-end">
@@ -68,7 +141,7 @@
     @yield('content')
 
     <div class="mt-5 pe-none d-none d-md-block">
-        <img src="/img/sun.svg" class="w-100 object-fit-cover footer-sun">
+        <img src="/img/sun.svg" class="w-100 object-fit-cover footer-sun pe-none">
     </div>
     <div class="bg-dark-subtle text-white d-none d-md-block" data-bs-theme="dark">
         <div class="container py-5">

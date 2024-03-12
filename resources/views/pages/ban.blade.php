@@ -9,11 +9,5 @@
         <x-slot:description>
             Ваш аккаунт был заблокирован в связи с нарушениями правил ресурса.
         </x-slot>
-
-       {{--
-            <x-slot:actions>
-                <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Вернуться домой</a>
-            </x-slot>
-        --}}
     </x-header>
 @endsection

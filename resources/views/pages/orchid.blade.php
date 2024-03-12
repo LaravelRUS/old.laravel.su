@@ -26,9 +26,6 @@
     <x-container>
         <div class="row g-4 g-xxl-5 g-lg-4 g-md-3">
 
-
-
-
             <div class="col-12 col-lg-8">
                 <div class="bg-primary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
 
@@ -104,8 +101,6 @@
 
                             <p>
                                 Управляйте разрешениями пользователей и обеспечивайте безопасность приложений без особых усилий.
-                                <!--Благодаря интуитивно понятному интерфейсу можно легко настраивать роли и управлять ими без
-                                написания сложного кода или использования внешних плагинов.-->
                             </p>
                         </div>
 
@@ -122,8 +117,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
@@ -198,7 +191,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </x-container>

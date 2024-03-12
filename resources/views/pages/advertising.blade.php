@@ -276,36 +276,4 @@
             </div>
 
     </x-container>
-
-    {{--
-    <x-container>
-        <div class="row g-5 justify-content-center">
-
-            <div class="col-md-6">
-                <p class="h3 mb-4">Laravel и русскоязычное комьюнити - незаменимые ресурсы для нашего разработческого
-                    процесса. Благодарим за надежный фреймворк и поддержку!
-                </p>
-
-                <p class="mt-auto">
-                    <img alt="image" height="50" class="rounded-circle"
-                        src="https://xsgames.co/randomusers/avatar.php?g=male&1">
-                    <strong class="ms-3">Екатерина Смирнова <small class="opacity-50">- Генеральный менеджер Digital
-                            Solutions</small></strong>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p class="h3 mb-4">
-                    Спасибо Laravel и русскоязычному комьюнити за чистый код и ценную поддержку!
-                </p>
-                <p class="mt-auto">
-                    <img alt="image" height="50" class="rounded-circle"
-                        src="https://xsgames.co/randomusers/avatar.php?g=male&7">
-                    <strong class="ms-3">Александр Иванов <small class="opacity-50">- Генеральный директор Инновационные
-                            Технологии</small></strong>
-                </p>
-            </div>
-
-        </div>
-    </x-container>
---}}
 @endsection

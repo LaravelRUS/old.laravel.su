@@ -13,10 +13,10 @@
                 <div class="d-flex align-items-center col-md-2">
                     <span class="placeholder rounded w-100"></span>
                 </div>
+
                 <div class="col-md-3 mt-2 mt-md-0">
                     <span class="placeholder rounded w-100"></span>
                     <span class="placeholder rounded w-100"></span>
-
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between   d-md-block mt-3 mt-md-0 col-md-3">

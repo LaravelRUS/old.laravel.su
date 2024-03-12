@@ -38,9 +38,6 @@
                     <h6 class="mt-2 small">
                         <strong>Дмитрий Скирта</strong>
                     </h6>
-                    {{--
-                    <small class="opacity-75">Воплощает визуальную мечту в реальность</small>
-                    --}}
                 </div>
 
                 <div class="col">
