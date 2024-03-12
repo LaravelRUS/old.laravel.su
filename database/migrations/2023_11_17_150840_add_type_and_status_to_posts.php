@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('type')->default(\App\Casts\PostTypeEnum::Article);
-            $table->string('status')->default(\App\Casts\StatusEnum::Draft);
+            $table->string('type')->default(\App\Models\Enums\PostTypeEnum::Article);
+            $table->string('status')->default(\App\Models\Enums\StatusEnum::Draft);
         });
     }
 
