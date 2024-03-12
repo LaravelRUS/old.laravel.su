@@ -17,9 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-
-# Project exclude paths
-/storage/app/
-/storage/framework/
-
-preload.php
