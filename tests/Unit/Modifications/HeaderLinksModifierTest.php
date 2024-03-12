@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\View\Modifications;
+namespace Tests\Unit\Modifications;
 
 use App\View\Modifications\HeaderLinksModifier;
 use PHPUnit\Framework\TestCase;
