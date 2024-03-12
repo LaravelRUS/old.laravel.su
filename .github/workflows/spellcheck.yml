@@ -1,0 +1,16 @@
+name: Spell check
+
+on:
+  push: # (or pull requests)
+    paths:
+      - '.github/workflows/**'
+      - 'storage/library/**'
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-spellcheck]')"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run spellchecker for RU
+        run: npx yaspeller storage/library/**
