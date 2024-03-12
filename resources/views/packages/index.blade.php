@@ -54,7 +54,7 @@
                                     >
                                         Категории
                                     </option>
-                                    @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                                    @foreach(\App\Models\Enums\PackageTypeEnum::cases() as $type)
                                         <option value="{{$type->value}}" @selected($currentCategory == $type)>
                                             {{$type->text()}}
                                         </option>
@@ -65,8 +65,10 @@
                         </div>
                         <div class="col-12 col-md-auto ms-md-3">
                             <div class="d-flex bg-body-secondary small px-3 py-2 py-md-3 rounded">
-                                <select class="form-search fw-medium w-100" name="sort" onchange="this.form.requestSubmit()">
-                                    @foreach(\App\Casts\SortEnum::cases() as $sort)
+                                <select class="form-search fw-medium w-100"
+                                        name="sort"
+                                        onchange="this.form.requestSubmit()">
+                                    @foreach(\App\Models\Enums\SortEnum::cases() as $sort)
                                         <option value="{{$sort->value}}" @selected($currentSort == $sort->value)>
                                             {{$sort->text()}}
                                         </option>
@@ -82,7 +84,7 @@
             </div>
             <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
                 <div class="col-md-4 col-xl-3 position-sticky top-0 d-none d-md-block">
-                    @foreach(\App\Casts\PackageTypeEnum::cases() as $type)
+                    @foreach(\App\Models\Enums\PackageTypeEnum::cases() as $type)
                         <div class="mb-4 position-relative">
                             <div class="d-flex align-items-center">
                                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center fs-4 rounded-3
@@ -106,7 +108,7 @@
                 </div>
 
                 <div class="col-md-8 col-xl-9">
-                        @if($packages->isEmpty())
+                    @if($packages->isEmpty())
                         <div class="bg-body-tertiary rounded p-md-5 rounded">
                             <div class="p-4 p-md-5">
                                 <div class="col-lg-7 mx-auto text-center mb-3">
@@ -114,7 +116,7 @@
                                     <p class="mb-3 fs-4">¯\_(ツ)_/¯</p>
 
                                     <p class="mb-0">Сейчас пакетов подходящих под требуемые условия не найдены.
-                                    Но в базе есть много других классных пакетов.</p>
+                                                    Но в базе есть много других классных пакетов.</p>
                                 </div>
                             </div>
                         </div>
@@ -132,6 +134,5 @@
             </div>
         </x-turbo-frame>
     </x-container>
-
 
 @endsection

@@ -30,10 +30,12 @@
                                 <div class="bg-body rounded p-4">
                                     <div class="form-text">
                                         <p>Укажите название компании, так, как оно известно в сети (например,
-                                           М.Видео). Это поможет кандидатам получить более полное представление о вашей компании.
+                                           М.Видео). Это поможет кандидатам получить более полное представление о вашей
+                                           компании.
                                         </p>
-                                        <p class="mb-0">Если ваша компания только начинает свой путь, укажите название сайта, например laravel.su,
-                                           вместо формализма "ООО Рога и Копыта".</p>
+                                        <p class="mb-0">Если ваша компания только начинает свой путь, укажите название
+                                                        сайта, например laravel.su,
+                                                        вместо формализма "ООО Рога и Копыта".</p>
                                     </div>
                                 </div>
                             </div>
@@ -68,8 +70,9 @@
                                             Укажите, где будет проходить основная работа, что бы кандидаты могли оценить
                                             расстояние.
                                         </p>
-                                        <p class="mb-0">Если вакансия предполагает полностью удалённый формат работы, оставьте поле
-                                           не заполненным.</p>
+                                        <p class="mb-0">Если вакансия предполагает полностью удалённый формат работы,
+                                                        оставьте поле
+                                                        не заполненным.</p>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@
                                            class="form-label">Формат</label>
                                     <select id="schedule" name="position[schedule]"
                                             class="form-select mb-3">
-                                        @foreach(\App\Casts\ScheduleEnum::cases() as $schedule)
+                                        @foreach(\App\Models\Enums\ScheduleEnum::cases() as $schedule)
                                             <option
                                                 value="{{$schedule->value}}" @selected($position->schedule  == $schedule)>
                                                 {{$schedule->text()}}
@@ -116,8 +119,9 @@
                                 <div class="bg-body rounded p-4">
                                     <div class="form-text">
                                         <p class="mb-0">
-                                           Когда работодатель не указывает информацию о зарплате, потенциальный опытный кандитат
-                                           с высокой долей вероятности будет считать её малооплачиваемой.
+                                            Когда работодатель не указывает информацию о зарплате, потенциальный опытный
+                                            кандитат
+                                            с высокой долей вероятности будет считать её малооплачиваемой.
                                         </p>
                                     </div>
                                 </div>
@@ -164,10 +168,11 @@
                             </button>
 
                             @if($position->exists)
-                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none" data-turbo-method="delete"
+                                <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none"
+                                   data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить вакансию?"
                                    href="{{route('position.delete', $position)}}">
-                                    <x-icon path="i.delete" />
+                                    <x-icon path="i.delete"/>
                                     Удалить
                                 </a>
                             @endif

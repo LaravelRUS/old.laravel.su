@@ -104,8 +104,7 @@
                     <div class="row">
                         @foreach(range(0,2) as $placeholder)
                             <div class="col-4 position-relative">
-                                <div
-                                    class="bg-body-secondary p-4 rounded w-100">
+                                <div class="bg-body-secondary p-4 rounded w-100">
                                     <p class="card-text placeholder-glow mb-2">
                                         <span class="placeholder rounded col-6"></span>
                                         <span class="placeholder rounded col-6"></span>
@@ -114,8 +113,6 @@
                                         <span class="placeholder rounded col-6"></span>
                                         <span class="placeholder rounded col-9"></span>
                                     </p>
-
-
                                 </div>
                             </div>
                         @endforeach

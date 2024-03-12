@@ -3,22 +3,11 @@
         <div
             class="bg-body-tertiary rounded p-4 p-xl-5 position-relative">
             <div class="row d-md-flex align-items-center justify-content-between position-relative">
-                {{--
-          <div class="d-flex align-items-center col-md-2">
-              <div class="avatar avatar-xl">
-                  <img
-                      src="https://play-lh.googleusercontent.com/ADApjX-HvYOpnB4jqpe7UwzTL_sVs5_c8mv0H1ph4b1RYEu7qeXOpQuKdHmWBomv_2I"
-                      class="avatar-img rounded-3 shadow bg-white" alt="">
-              </div>
-          </div>
-          --}}
 
                 <div class="col-md-3 mt-2 mt-md-0">
-
                     <a href="{{route('position.show', $position)}}"
                        class="h5 link-body-emphasis text-decoration-none">{{$position->title}}</a>
                     <div class="opacity-50 mt-md-2"> {{$position->organization}}</div>
-
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between   d-md-block mt-3 mt-md-0 col-md-3">
@@ -48,8 +37,6 @@
                     <a href="{{route('position.show', $position)}}" class="d-block d-md-inline-block btn stretched-link btn-primary w-full ms-md-1">Посмотреть</a>
                 </div>
             </div>
-
-
 
         </div>
     </div>
