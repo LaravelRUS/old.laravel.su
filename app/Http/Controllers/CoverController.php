@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use Intervention\Image\AbstractFont;
-use Intervention\Image\Facades\Image;
-use Laminas\Stdlib\StringWrapper\MbString;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\GD\Driver;
+use Intervention\Image\Typography\FontFactory;
 
 class CoverController extends Controller
 {
@@ -18,46 +17,34 @@ class CoverController extends Controller
      */
     public function image(Request $request)
     {
-        $text = Str::limit($request->input('text', config('site.name')), 60);
+        $text = Str::of($request->input('text', config('site.name')))
+            ->replaceMatches('/[^\p{L}\p{N}\p{Z}\p{P}]/u', '') // remove all non-letters, non-numbers, non-punctuation
+            ->trim()
+            ->squish()
+            ->limit(60);
 
-        $key = 'cover-'.sha1($text);
+        $width = 1920;
+        $height = 1080;
 
-        $data = Cache::remember($key, now()->addHours(4), function () use ($text) {
-            $width = 1920;
-            $height = 1080;
+        $start_x = 230;
+        $start_y = $height / 2 + 40;
 
-            $start_x = 230;
-            $start_y = $height / 2 + 40;
-            $max_len = 22;
+        $manager = new ImageManager(new Driver());
 
-            $mbWrap = new MbString();
-            $textWrap = $mbWrap->wordWrap($text, $max_len);
+        $image = $manager->read(public_path('/img/share/socials.png'));
 
-            $lines = Str::of($textWrap)->explode("\n");
+        $image
+            ->text($text, $start_x, $start_y, fn(FontFactory $font) => $font->filename(public_path('fonts/cover.ttf'))
+            ->size(90)
+            ->color('#222222')
+            ->align('left')
+            ->wrap(1100)
+            ->lineHeight(1.6)
+            ->valign('center'));
 
-            $font_size = min(100 - $lines->count() * 5, 100);
-            $font_height = min(75 - $lines->count() * 5, 75);
+        $image->scaleDown($width, $height);
 
-            $y = round($start_y - ((count($lines) - 1) * $font_height));
-
-            $image = Image::make(public_path('/img/share/socials.png'), 0, 0);
-
-            $image->fit($width, $height, fn ($constraint) => $constraint->aspectRatio());
-
-            $lines->each(function ($line) use ($image, $start_x, $font_size, $font_height, &$y) {
-
-                $image->text($line, $start_x, round($y), fn (AbstractFont $font) => $font->file(public_path('fonts/cover.ttf'))
-                    ->size($font_size)
-                    ->color('#222222')
-                    ->align('left')
-                    ->valign('center'));
-
-                $y += $font_height * 2;
-            });
-
-            return (string) $image->encode('data-url');
-        });
-
-        return Image::make($data)->encode('jpg', 75)->response();
+        return response($image->toJpeg(75))
+            ->header('Content-Type', 'image/jpeg');
     }
 }

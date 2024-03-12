@@ -23,7 +23,7 @@
         "esplora/spire": "0.0.1",
         "guzzlehttp/guzzle": "^7.2",
         "hotwired/turbo-laravel": "^1.12",
-        "intervention/image": "^2.7",
+        "intervention/image": "^3.4",
         "jolicode/jolitypo": "^1.4",
         "laminas/laminas-stdlib": "^3.18",
         "laravel-notification-channels/telegram": "^4.0",
