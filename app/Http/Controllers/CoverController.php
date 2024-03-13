@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Intervention\Image\Drivers\GD\Driver;
+use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Typography\FontFactory;
 
@@ -29,7 +29,7 @@ class CoverController extends Controller
         $start_x = 230;
         $start_y = $height / 2 + 40;
 
-        $manager = new ImageManager(new Driver());
+        $manager = new ImageManager(Driver::class);
 
         $image = $manager->read(public_path('/img/share/socials.png'));
 
