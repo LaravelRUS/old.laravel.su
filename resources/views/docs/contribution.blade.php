@@ -21,7 +21,7 @@
                             href="https://github.com/laravel/docs">https://github.com/laravel/docs</a>.
                     </p>
                     <p>Перевод документации на русский находится на гитхабе по адресу <a
-                            href="https://github.com/laravel-russia/docs">https://github.com/laravel-russia/docs</a> . Апдейт
+                            href="https://github.com/laravelsu/docs">https://github.com/laravelsu/docs</a> . Апдейт
                         перевода осуществляется пулл-реквестами в этот репозиторий.</p>
                     <p>Редактирование репозитория с переводом может происходить в двух вариантах - внесение
                         незначительных изменений и обновление перевода файла до актуального.</p>

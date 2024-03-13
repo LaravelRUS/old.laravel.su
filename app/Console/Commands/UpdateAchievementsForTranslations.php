@@ -50,7 +50,7 @@ class UpdateAchievementsForTranslations extends Command
 
         // Send GET request to GitHub API to fetch contributors
         $response = Http::withBasicAuth('token', config('services.github.token'))
-            ->get('https://api.github.com/repos/laravel-russia/docs/contributors', [
+            ->get('https://api.github.com/repos/'.config('services.github.repos.docs').'/contributors', [
                 'page' => $page,
             ]);
 

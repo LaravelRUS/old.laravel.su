@@ -159,7 +159,7 @@
                             </a>
                         </li>
                         <li class="ms-3">
-                            <a class="link-body-emphasis" href="{{ asset('https://github.com/laravel-russia') }}"
+                            <a class="link-body-emphasis" href="{{ asset(config('services.github.org_url')) }}"
                                target="_blank">
                                 <x-icon path="bs.github" width="24" height="24"/>
                             </a>

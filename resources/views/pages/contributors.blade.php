@@ -67,7 +67,7 @@
 
     </x-header>
 
-    <x-call-to-action link="https://github.com/laravel-russia" text="Внесите свой вклад на GitHub">
+    <x-call-to-action link="{{ config('services.github.org_url') }}" text="Внесите свой вклад на GitHub">
         <x-slot:title>Но вы можете сделать сообщество ещё лучше!</x-slot>
 
         <x-slot:description>

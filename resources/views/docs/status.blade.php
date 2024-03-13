@@ -14,7 +14,7 @@
         <x-slot:actions>
             <a href="{{ route('documentation-contribution-guide') }}" class="btn btn-primary btn-lg px-4">Инструкция по
                 переводу</a>
-            <a href="https://github.com/laravel-russia/docs"
+            <a href="https://github.com/{{ config('services.github.repos.docs') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                 Репозиторий
                 <x-icon path="i.arrow-right" class="bi"/>
