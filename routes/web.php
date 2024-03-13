@@ -490,10 +490,9 @@ Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
 |
 */
 
-Route::get('/test', function (Request $request){
+Route::get('/test', function (Request $request) {
     Notification::send($request->user(), new GreetNotification());
 });
-
 
 Route::get('/quiz', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz');
 

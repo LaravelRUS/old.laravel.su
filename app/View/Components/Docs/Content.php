@@ -14,7 +14,6 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
-use Symfony\Component\DomCrawler\Crawler;
 
 class Content extends Component implements Htmlable
 {
