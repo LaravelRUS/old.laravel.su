@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Notifications\Channels;
 
-use App\Casts\NotificationTypeEnum;
+use App\Models\Enums\NotificationTypeEnum;
 use Carbon\Carbon;
 use Illuminate\Notifications\Messages\DatabaseMessage;
+use Illuminate\Support\Traits\Conditionable;
 
 class SiteMessage extends DatabaseMessage
 {
+    use Conditionable;
+
     /**
      * @param array $data
      */
