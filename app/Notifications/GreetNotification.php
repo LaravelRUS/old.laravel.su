@@ -6,8 +6,6 @@ use App\Models\User;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class GreetNotification extends Notification

@@ -101,7 +101,6 @@ class User extends Authenticatable
         });
     }
 
-
     /**
      * Throw an exception if email already exists, create admin user.
      *
