@@ -25,37 +25,34 @@
                     <div class="d-flex flex-column">
                         @foreach($notifications as $notification)
                             <div id="@domid($notification)"
-                                 @class([
-                                     'list-group-item',
-                                     'rounded',
-                                     'hotwire-frame',
-                                     'p-3',
-                                     'text-balance',
-                                     'mb-3' => !$loop->last,
-                                     'bg-body-secondary' => $notification->read(),
-                                     'text-muted' => $notification->read(),
-                                 ])>
+                                @class([
+                                    'list-group-item',
+                                    'rounded',
+                                    'hotwire-frame',
+                                    'p-3',
+                                    'text-balance',
+                                    'mb-3' => !$loop->last,
+                                    'bg-body-secondary' => $notification->read(),
+                                    'opacity-50' => $notification->read(),
+                                ])>
 
                                 <div class="d-flex align-items-center">
                                     <div class="avatar avatar-sm me-3">
                                         @isset($notification->data['img'])
                                             <img class="avatar-img rounded-circle" src="{{$notification->data['img']}}">
                                         @else
-                                            <img class="avatar-img rounded-circle" src="{{ asset('img/notification_logo.svg') }}">
+                                            <img class="avatar-img rounded-circle"
+                                                 src="{{ asset('img/notification_logo.svg') }}">
                                         @endif
                                     </div>
                                     <div>
-                                        @if(isset($notification->data['type'] ) && $notification->data['type'] == \App\Casts\NotificationTypeEnum::ReplyComment->value)
+                                        @if(isset($notification->data['type'] ) && $notification->data['type'] == \App\Models\Enums\NotificationTypeEnum::ReplyComment->value)
                                             <span class="fw-semibold">{{$notification->data['author']}}</span>
                                             {{$notification->data['title']}}
                                             @isset($notification->data['action'])
                                                 <a class="link-body-emphasis stretched-link fw-semibold text-decoration-none"
                                                    href="{{route('profile.notifications.read',$notification)}}">
-                                                    @isset($notification->data['action_text'])
-                                                        {{$notification->data['action_text'] }}
-                                                    @else
-                                                        Перейти
-                                                    @endif
+                                                    {{ $notification->data['action_text'] ?? 'Перейти' }}
                                                 </a>
                                             @endif
                                         @else
@@ -63,11 +60,7 @@
                                             @isset($notification->data['action'])
                                                 <a class="link-body-emphasis stretched-link fw-semibold text-decoration-none text-primary"
                                                    href="{{route('profile.notifications.read',$notification)}}">
-                                                    @isset($notification->data['action_text'])
-                                                        {{$notification->data['action_text'] }}
-                                                    @else
-                                                        Перейти
-                                                    @endif
+                                                    {{ $notification->data['action_text'] ?? 'Перейти' }}
                                                 </a>
                                             @endif
 
