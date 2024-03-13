@@ -4,6 +4,7 @@ namespace App\View\Components\Posts;
 
 use App\View\Modifications\BladeComponentModifier;
 use App\View\Modifications\BlockquoteColorModifier;
+use App\View\Modifications\HTMLCleanseModifier;
 use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\ResponsiveTableModifier;
 use App\View\Modifications\TypografModifier;
@@ -57,6 +58,7 @@ class Content extends Component implements Htmlable
             return app(Pipeline::class)
                 ->send($content)
                 ->through([
+                    HTMLCleanseModifier::class, // Стандартизирует HTML
                     BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
                     BladeComponentModifier::class, // Применяет компоненты blade

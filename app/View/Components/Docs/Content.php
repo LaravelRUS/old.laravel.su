@@ -5,6 +5,7 @@ namespace App\View\Components\Docs;
 use App\View\Modifications\BladeComponentModifier;
 use App\View\Modifications\BlockquoteColorModifier;
 use App\View\Modifications\HeaderLinksModifier;
+use App\View\Modifications\HTMLCleanseModifier;
 use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\RemoveFirstHeaderModifier;
 use App\View\Modifications\ResponsiveTableModifier;
@@ -50,13 +51,10 @@ class Content extends Component implements Htmlable
     public function toHtml(): string
     {
         return Cache::remember('doc-content-'.sha1($this->content), now()->addWeek(), function () {
-            $crawler = new Crawler();
-            $crawler->addHtmlContent(mb_convert_encoding($this->content, 'UTF-8'));
-            $content = $crawler->filterXpath('//body')->first()->html();
-
             return app(Pipeline::class)
-                ->send($content)
+                ->send($this->content)
                 ->through([
+                    HTMLCleanseModifier::class, // Стандартизирует HTML
                     BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     RemoveFirstHeaderModifier::class, // Удаляет h1 заголовок
                     HeaderLinksModifier::class, // Добавляет ссылки для заголовков

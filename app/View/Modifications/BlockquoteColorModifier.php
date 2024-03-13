@@ -44,7 +44,7 @@ class BlockquoteColorModifier extends HTMLModifier
                         $html = Str::of($tag)
                             ->replace('<blockquote>', '<blockquote class="'.$class.'"><div>')
                             ->replace('</blockquote>', '</div></blockquote>')
-                            ->replace($fragment, '');
+                            ->remove($fragment);
                     });
 
                 $content = Str::of($content)->replace($tag, $html);
