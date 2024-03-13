@@ -36,11 +36,20 @@ return [
         'client_id'     => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect'      => env('GITHUB_REDIRECT'),
-        'docs_repo_url' => 'git@github.com:laravel-russia/docs.git',
+        'docs_repo_url' => 'git@github.com:laravelsu/docs.git',
+        'org_url' => 'https://github.com/laravelsu',
+        'repos' => [
+            'docs' => 'laravelsu/docs',
+            'site' => 'laravelsu/laravel.su'
+        ]
     ],
 
     'donate' => [
         'yoomoney' => 'https://yoomoney.ru/to/4100118551993725',
+    ],
+
+    'telegram' => [
+        'channel_url' => 'https://t.me/laravelsu',
     ],
 
     'telegram-bot-api' => [

@@ -42,6 +42,6 @@ class Document extends Model
      */
     public function getEditUrl(): string
     {
-        return "https://github.com/laravel-russia/docs/edit/$this->version/$this->file";
+        return sprintf('https://github.com/%s/edit/%s/%s', config('services.github.repos.docs'), $this->version, $this->file);
     }
 }
