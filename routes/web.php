@@ -11,7 +11,9 @@ use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\RedirectToBanPage;
+use App\Notifications\GreetNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -463,7 +465,7 @@ Route::get('/manifest.json', fn () => response()->json(config('site.pwa')))
     ->name('manifest');
 
 Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image'])
-    ->middleware(['cache.headers:public;max_age=300;etag'])
+    ->middleware(['cache.headers:public;max_age=300;etag', 'throttle:60,10'])
     ->name('cover');
 
 /*
@@ -479,3 +481,22 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
     ->middleware(['cache.headers:public;max_age=300;etag'])
     ->name('feeds.rss');
+
+/*
+|--------------------------------------------------------------------------
+| Quiz
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+Route::get('/test', function (Request $request){
+    Notification::send($request->user(), new GreetNotification());
+});
+
+
+Route::get('/quiz', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz');
+
+Route::post('stream/quiz/start', [\App\Http\Controllers\QuizController::class, 'startQuiz'])->name('stream.quiz.start');
+Route::post('stream/quiz/set-answer', [\App\Http\Controllers\QuizController::class, 'setAnswer'])->name('stream.quiz.set-answer');
+Route::post('stream/quiz/next', [\App\Http\Controllers\QuizController::class, 'next'])->name('stream.quiz.next');
