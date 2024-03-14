@@ -5,7 +5,7 @@ namespace App\View\Modifications;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
-class BlockquoteColorModifier extends HTMLModifier
+class BlockquoteModifier extends HTMLModifier
 {
     protected array $types = [
         // docs-blockquote-note
@@ -16,6 +16,7 @@ class BlockquoteColorModifier extends HTMLModifier
 
         // docs-blockquote-tip
         '{tip}'                       => 'docs-blockquote-tip', // for 8.x
+        '{video}'                     => 'docs-blockquote-tip', // for 8.x
         '<strong>Note</strong>'       => 'docs-blockquote-tip', // for 10.x
         '<strong>Примечание</strong>' => 'docs-blockquote-tip', // for 10.x
         '[!NOTE]'                     => 'docs-blockquote-tip', // for 10.x
@@ -49,6 +50,18 @@ class BlockquoteColorModifier extends HTMLModifier
 
                 $content = Str::of($content)->replace($tag, $html);
             });
+
+        $this->crawler($content)
+            ->filter('blockquote p')
+            ->each(function (Crawler $elm) use (&$content) {
+                $tag = $elm->outerHtml();
+
+                $html = Str::of($tag)->between('<p>', '</p>')->replace('<br>', PHP_EOL)->trim()->toString();
+                $html = nl2br($html);
+
+                $content = Str::of($content)->replace($tag, '<p>'.$html.'</p>');
+            });
+
 
         return $next($content);
     }

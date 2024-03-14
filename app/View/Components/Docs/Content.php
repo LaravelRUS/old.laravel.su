@@ -3,7 +3,7 @@
 namespace App\View\Components\Docs;
 
 use App\View\Modifications\BladeComponentModifier;
-use App\View\Modifications\BlockquoteColorModifier;
+use App\View\Modifications\BlockquoteModifier;
 use App\View\Modifications\HeaderLinksModifier;
 use App\View\Modifications\HTMLCleanseModifier;
 use App\View\Modifications\ImageAltModifier;
@@ -54,7 +54,7 @@ class Content extends Component implements Htmlable
                 ->send($this->content)
                 ->through([
                     HTMLCleanseModifier::class, // Стандартизирует HTML
-                    BlockquoteColorModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
+                    BlockquoteModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     RemoveFirstHeaderModifier::class, // Удаляет h1 заголовок
                     HeaderLinksModifier::class, // Добавляет ссылки для заголовков
                     ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive

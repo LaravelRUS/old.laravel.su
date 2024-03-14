@@ -139,7 +139,7 @@ main div {
             text-decoration: underline;
         }
 
-        :empty {
+        > :empty:not(br) {
             display: none;
         }
     }
