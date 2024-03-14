@@ -62,7 +62,6 @@ class BlockquoteModifier extends HTMLModifier
                 $content = Str::of($content)->replace($tag, '<p>'.$html.'</p>');
             });
 
-
         return $next($content);
     }
 }
