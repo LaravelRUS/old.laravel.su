@@ -31,7 +31,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/scout": "^10.5",
         "laravel/socialite": "^5.9",
-        "laravel/telescope": "^4.17",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
         "orchid/platform": "^14.17",
         "overtrue/laravel-like": "^5.2",
